@@ -16,4 +16,11 @@ Após fazer suas alterações e comita-las no seu branch, você poderá abrir um
 
 O pulll request será aprovado pela staff e poderá entrar em produção.
 
+## Banco de dados
+
+Os dumps do banco de dados do jogo são baixados por uma Action:
+
+https://github.com/sugoigame/sugoigame/actions?query=workflow%3A%22Database+Dump%22
+
+Basta abrir a execução mais recente do workflow e na sessão de "artifacts" você encontrará 2 artefatos: structure.sql e data.sql. Basta importa-los no seu banco MySQL para rodar o jogo.
 
