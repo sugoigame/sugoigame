@@ -31,6 +31,7 @@ jobs:
             node_modules/pm2/bin/pm2 start /var/www/servers/map/server.php --name="map-sugoi"
           
   database-dump:
+    name: Database Dump
     needs: [deploy]
     runs-on: ubuntu-latest
     steps:
