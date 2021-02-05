@@ -1,4 +1,4 @@
-var db = require('..\db.json');
+var db = require('../db.json');
 
 /**
  * Created by Luiz Eduardo on 21/05/2017.
