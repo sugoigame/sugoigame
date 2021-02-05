@@ -31,5 +31,153 @@ jobs:
             node_modules/pm2/bin/pm2 delete map-sugoi
             node_modules/pm2/bin/pm2 start /var/www/servers/map/server.php --name="map-sugoi"
           
-            
+  database-dump:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Atualizar apt-get
+      run: sudo apt-get update
+    - name: Instalando mysql-client
+      run: sudo apt-get install mysql-client
+      
+    - name: Dumping database
+      run: |
+        mysqldump -h ${{ secrets.DB_HOST }} -u ${{ secrets.DB_USER }} --password=${{ secrets.DB_PASSWORD }} ${{ secrets.DB_NAME }} \
+        --ignore-table=tb_afilhados \
+        --ignore-table=tb_afilhados_recrutados \
+        --ignore-table=tb_akuma \
+        --ignore-table=tb_akuma_skil_atk \
+        --ignore-table=tb_akuma_skil_buff \
+        --ignore-table=tb_akuma_skil_passiva \
+        --ignore-table=tb_alianca \
+        --ignore-table=tb_alianca_aliados \
+        --ignore-table=tb_alianca_banco \
+        --ignore-table=tb_alianca_banco_log \
+        --ignore-table=tb_alianca_convite \
+        --ignore-table=tb_alianca_guerra \
+        --ignore-table=tb_alianca_guerra_ajuda \
+        --ignore-table=tb_alianca_guerra_pedidos \
+        --ignore-table=tb_alianca_membros \
+        --ignore-table=tb_alianca_missoes \
+        --ignore-table=tb_amigos \
+        --ignore-table=tb_ban \
+        --ignore-table=tb_boss_damage \
+        --ignore-table=tb_buff_global \
+        --ignore-table=tb_chat \
+        --ignore-table=tb_chat_bloqueio \
+        --ignore-table=tb_coliseu_cp \
+        --ignore-table=tb_coliseu_fila \
+        --ignore-table=tb_coliseu_ranking \
+        --ignore-table=tb_combate \
+        --ignore-table=tb_combate_apostas \
+        --ignore-table=tb_combate_bot \
+        --ignore-table=tb_combate_buff \
+        --ignore-table=tb_combate_buff_bot \
+        --ignore-table=tb_combate_buff_npc \
+        --ignore-table=tb_combate_desafio \
+        --ignore-table=tb_combate_log \
+        --ignore-table=tb_combate_log_npc \
+        --ignore-table=tb_combate_log_personagem_morto \
+        --ignore-table=tb_combate_npc \
+        --ignore-table=tb_combate_personagens \
+        --ignore-table=tb_combate_personagens_bot \
+        --ignore-table=tb_combate_skil_espera \
+        --ignore-table=tb_combate_special_effect \
+        --ignore-table=tb_conta \
+        --ignore-table=tb_dobroes_leilao_log \
+        --ignore-table=tb_dobroes_log \
+        --ignore-table=tb_dobroes_oferta \
+        --ignore-table=tb_enquetes \
+        --ignore-table=tb_enquetes_ip \
+        --ignore-table=tb_fight \
+        --ignore-table=tb_fight_personagens \
+        --ignore-table=tb_fight_tripulacao \
+        --ignore-table=tb_forum_likes \
+        --ignore-table=tb_forum_post \
+        --ignore-table=tb_forum_topico \
+        --ignore-table=tb_forum_topico_lido \
+        --ignore-table=tb_gold_log \
+        --ignore-table=tb_haki_treino \
+        --ignore-table=tb_ilha_bonus_ativo \
+        --ignore-table=tb_ilha_disputa \
+        --ignore-table=tb_ilha_disputa_progresso \
+        --ignore-table=tb_ilha_incursao_protecao \
+        --ignore-table=tb_incursao_nivel \
+        --ignore-table=tb_incursao_personagem \
+        --ignore-table=tb_incursao_pontos \
+        --ignore-table=tb_incursao_progresso \
+        --ignore-table=tb_incursao_recompensa_recebida \
+        --ignore-table=tb_inimigos \
+        --ignore-table=tb_jardim_laftel \
+        --ignore-table=tb_log_acesso \
+        --ignore-table=tb_marcenaria_reparos \
+        --ignore-table=tb_mensagens \
+        --ignore-table=tb_mensagens_globais \
+        --ignore-table=tb_mensagens_globais_lidas \
+        --ignore-table=tb_mini_eventos_concluidos \
+        --ignore-table=tb_missoes_concluidas \
+        --ignore-table=tb_missoes_concluidas_dia \
+        --ignore-table=tb_missoes_iniciadas \
+        --ignore-table=tb_missoes_r \
+        --ignore-table=tb_missoes_r_dia \
+        --ignore-table=tb_natal \
+        --ignore-table=tb_news_coo \
+        --ignore-table=tb_noticia_comment \
+        --ignore-table=tb_noticia_lida \
+        --ignore-table=tb_noticia_likes \
+        --ignore-table=tb_noticias \
+        --ignore-table=tb_noticias_banner \
+        --ignore-table=tb_obstaculos \
+        --ignore-table=tb_personagem_equip_treino \
+        --ignore-table=tb_personagem_equipamentos \
+        --ignore-table=tb_personagem_habilidade \
+        --ignore-table=tb_personagem_habilidade_pontos \
+        --ignore-table=tb_personagem_titulo \
+        --ignore-table=tb_personagens \
+        --ignore-table=tb_personagens_skil \
+        --ignore-table=tb_pvp_imune \
+        --ignore-table=tb_ranking_fa \
+        --ignore-table=tb_ranking_fugas \
+        --ignore-table=tb_ranking_reputacao \
+        --ignore-table=tb_ranking_reputacao_mensal \
+        --ignore-table=tb_ranking_score_atirador \
+        --ignore-table=tb_ranking_score_espadachim \
+        --ignore-table=tb_ranking_score_lutador \
+        --ignore-table=tb_ranking_vd \
+        --ignore-table=tb_ranking_vitorias \
+        --ignore-table=tb_realizacoes_concluidas \
+        --ignore-table=tb_recompensa_recebida_era \
+        --ignore-table=tb_recompensa_recebida_grandes_poderes \
+        --ignore-table=tb_recompensa_recebida_haki \
+        --ignore-table=tb_relatorio \
+        --ignore-table=tb_relatorio_afetados \
+        --ignore-table=tb_relatorio_diario \
+        --ignore-table=tb_relatorio_diario_acesso \
+        --ignore-table=tb_reset_senha_token \
+        --ignore-table=tb_resets \
+        --ignore-table=tb_rnk_patente \
+        --ignore-table=tb_rota_mercador \
+        --ignore-table=tb_rotas \
+        --ignore-table=tb_torneio_inscricao \
+        --ignore-table=tb_torneio_rodadas \
+        --ignore-table=tb_tripulacao_animacoes_skills \
+        --ignore-table=tb_tripulacao_bordas \
+        --ignore-table=tb_tripulacao_buff \
+        --ignore-table=tb_tripulacao_formacao \
+        --ignore-table=tb_tripulacao_skin_navio \
+        --ignore-table=tb_tripulacao_skins \
+        --ignore-table=tb_usuario_itens \
+        --ignore-table=tb_usuario_navio \
+        --ignore-table=tb_usuarios \
+        --ignore-table=tb_vip \
+        --ignore-table=tb_vip_confirmar \
+        --ignore-table=tb_vip_pagamentos \
+        --ignore-table=tb_wanted_log \
+        > dump.sql
+      
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: dump.sql
+        path: dump.sql
             
