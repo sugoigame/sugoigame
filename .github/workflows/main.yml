@@ -24,14 +24,12 @@ jobs:
             git status
             git reset --hard
             git pull origin prod
-            cd /var/www/servers/chat
             node_modules/pm2/bin/pm2 stop chat-sugoi
             node_modules/pm2/bin/pm2 delete chat-sugoi
-            node_modules/pm2/bin/pm2 start index.js --name="chat-sugoi"
-            cd /var/www/servers/map
+            node_modules/pm2/bin/pm2 start /var/www/servers/chat/index.js --name="chat-sugoi"
             node_modules/pm2/bin/pm2 stop map-sugoi
             node_modules/pm2/bin/pm2 delete map-sugoi
-            node_modules/pm2/bin/pm2 start server.php --name="map-sugoi"
+            node_modules/pm2/bin/pm2 start /var/www/servers/map/server.php --name="map-sugoi"
           
             
             
