@@ -1,5 +1,0 @@
----
-applications:
- - name: sugoigame
-   random-route: true
-   memory: 128M
