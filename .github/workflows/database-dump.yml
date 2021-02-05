@@ -1,0 +1,166 @@
+name: Database Dump
+
+on: 
+    schedule:
+    - cron:  '0 0 * * *'
+      
+    workflow_dispatch:
+
+jobs:
+  database-dump:
+    name: Database Dump
+    runs-on: ubuntu-latest
+    steps:
+    - name: Atualizar apt-get
+      run: sudo apt-get update
+    - name: Instalando mysql-client
+      run: sudo apt-get install mysql-client
+    - name: Dumping structure
+      run: mysqldump -h ${{ secrets.DB_HOST }} -u ${{ secrets.DB_USER }} --password=${{ secrets.DB_PASSWORD }} ${{ secrets.DB_NAME }} --no-data > structure.sql
+    - name: Upload structure artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: structure.sql
+        path: structure.sql
+    - name: Dumping data
+      run: |
+        mysqldump -h ${{ secrets.DB_HOST }} -u ${{ secrets.DB_USER }} --password=${{ secrets.DB_PASSWORD }} ${{ secrets.DB_NAME }} \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_afilhados \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_afilhados_recrutados \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_akuma \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_akuma_skil_atk \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_akuma_skil_buff \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_akuma_skil_passiva \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_alianca \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_alianca_aliados \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_alianca_banco \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_alianca_banco_log \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_alianca_convite \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_alianca_guerra \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_alianca_guerra_ajuda \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_alianca_guerra_pedidos \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_alianca_membros \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_alianca_missoes \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_amigos \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ban \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_boss_damage \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_buff_global \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_chat \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_chat_bloqueio \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_coliseu_cp \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_coliseu_fila \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_coliseu_ranking \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_apostas \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_bot \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_buff \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_buff_bot \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_buff_npc \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_desafio \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_log \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_log_npc \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_log_personagem_morto \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_npc \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_personagens \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_personagens_bot \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_skil_espera \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_combate_special_effect \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_conta \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_dobroes_leilao_log \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_dobroes_log \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_dobroes_oferta \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_enquetes \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_enquetes_ip \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_fight \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_fight_personagens \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_fight_tripulacao \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_forum_likes \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_forum_post \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_forum_topico \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_forum_topico_lido \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_gold_log \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_haki_treino \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ilha_bonus_ativo \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ilha_disputa \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ilha_disputa_progresso \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ilha_incursao_protecao \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_incursao_nivel \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_incursao_personagem \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_incursao_pontos \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_incursao_progresso \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_incursao_recompensa_recebida \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_inimigos \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_jardim_laftel \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_log_acesso \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_marcenaria_reparos \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_mensagens \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_mensagens_globais \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_mensagens_globais_lidas \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_mini_eventos_concluidos \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_missoes_concluidas \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_missoes_concluidas_dia \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_missoes_iniciadas \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_missoes_r \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_missoes_r_dia \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_natal \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_news_coo \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_noticia_comment \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_noticia_lida \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_noticia_likes \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_noticias \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_noticias_banner \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_obstaculos \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_personagem_equip_treino \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_personagem_equipamentos \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_personagem_habilidade \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_personagem_habilidade_pontos \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_personagem_titulo \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_personagens \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_personagens_skil \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_pve \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_pvp_imune \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ranking_fa \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ranking_fugas \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ranking_reputacao \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ranking_reputacao_mensal \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ranking_score_atirador \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ranking_score_espadachim \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ranking_score_lutador \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ranking_vd \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_ranking_vitorias \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_realizacoes_concluidas \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_recompensa_recebida_era \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_recompensa_recebida_grandes_poderes \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_recompensa_recebida_haki \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_relatorio \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_relatorio_afetados \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_relatorio_diario \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_relatorio_diario_acesso \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_reset_senha_token \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_resets \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_rnk_patente \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_rota_mercador \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_rotas \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_torneio_inscricao \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_torneio_rodadas \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_tripulacao_animacoes_skills \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_tripulacao_bordas \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_tripulacao_buff \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_tripulacao_formacao \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_tripulacao_skin_navio \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_tripulacao_skins \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_usuario_itens \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_usuario_navio \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_usuarios \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_vip \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_vip_confirmar \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_vip_pagamentos \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_wanted_log \
+        > data.sql
+      
+    - name: Upload data artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: data.sql
+        path: data.sql
+            
