@@ -1,0 +1,11 @@
+---
+application:
+  name: "sugoigame"
+  project: "sugoigame"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-sugoigame"
+  routes:
+  - application_name: "sugoigame"
+    paths:
+    - "/*"
