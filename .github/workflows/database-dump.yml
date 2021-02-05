@@ -12,8 +12,14 @@ jobs:
       run: sudo apt-get update
     - name: Instalando mysql-client
       run: sudo apt-get install mysql-client
-      
-    - name: Dumping database
+    - name: Dumping structure
+      run: mysqldump -h ${{ secrets.DB_HOST }} -u ${{ secrets.DB_USER }} --password=${{ secrets.DB_PASSWORD }} ${{ secrets.DB_NAME }} -no-data > structure.sql
+    - name: Upload structure artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: structure.sql
+        path: structure.sql
+    - name: Dumping data
       run: |
         mysqldump -h ${{ secrets.DB_HOST }} -u ${{ secrets.DB_USER }} --password=${{ secrets.DB_PASSWORD }} ${{ secrets.DB_NAME }} \
         --ignore-table=${{ secrets.DB_NAME }}.tb_afilhados \
@@ -147,11 +153,11 @@ jobs:
         --ignore-table=${{ secrets.DB_NAME }}.tb_vip_confirmar \
         --ignore-table=${{ secrets.DB_NAME }}.tb_vip_pagamentos \
         --ignore-table=${{ secrets.DB_NAME }}.tb_wanted_log \
-        > dump.sql
+        > data.sql
       
-    - name: Upload artifact
+    - name: Upload data artifact
       uses: actions/upload-artifact@v1
       with:
-        name: dump.sql
-        path: dump.sql
+        name: data.sql
+        path: data.sql
             
