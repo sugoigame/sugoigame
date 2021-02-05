@@ -16,7 +16,7 @@ jobs:
     - name: Instalando mysql-client
       run: sudo apt-get install mysql-client
     - name: Dumping structure
-      run: mysqldump -h ${{ secrets.DB_HOST }} -u ${{ secrets.DB_USER }} --password=${{ secrets.DB_PASSWORD }} ${{ secrets.DB_NAME }} -no-data > structure.sql
+      run: mysqldump -h ${{ secrets.DB_HOST }} -u ${{ secrets.DB_USER }} --password=${{ secrets.DB_PASSWORD }} ${{ secrets.DB_NAME }} --no-data > structure.sql
     - name: Upload structure artifact
       uses: actions/upload-artifact@v1
       with:
