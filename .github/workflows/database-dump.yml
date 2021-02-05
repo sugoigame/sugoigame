@@ -1,10 +1,11 @@
-    
 name: Database Dump
+on: 
+    schedule:
+    - cron:  '0 0 * * *'
 
 jobs:
   database-dump:
     name: Database Dump
-    needs: [deploy]
     runs-on: ubuntu-latest
     steps:
     - name: Atualizar apt-get
