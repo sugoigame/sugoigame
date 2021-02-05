@@ -1,0 +1,33 @@
+<div>
+    <h3>Usuários silenciados por você</h3>
+
+    <div class="alert alert-info" ng-if="silenciados.length === 0">
+        <strong>Você ainda não silenciou um usuário!!</strong>
+    </div>
+
+    <ul class="chat" ng-if="silenciados.length > 0">
+        <li class="left clearfix" ng-repeat="silenciado in silenciados">
+            <div class="chat-img pull-left">
+                <img ng-src="{{'https://sugoigame.com.br/Imagens/Personagens/Icons/'+ silenciado.capitaoImg +'('+ silenciado.capitaoSkin_rosto +').jpg'}}"
+                     alt="User Avatar">
+            </div>
+            <div class="chat-body clearfix">
+                <div class="header">
+
+                    <!-- NOME DO CAPITÃO -->
+                    <strong class="{{(silenciado.adm === 1 ? ' adm-text' : '')}} primary-font espacamento">
+                        {{silenciado.capitao + (silenciado.adm === 1 ? ' [GM]' : ' - ' + silenciado.capitaoTitulo)}}
+                    </strong><br>
+
+                    <!-- NOME DA TRIPULAÇÂO -->
+                    <p>{{silenciado.tripulacao}}</p>
+
+                    <!-- REMOVER SILENCIAR -->
+                    <a href="#" class="pull-right espacamento" ng-click='removeSilenciado($index);'>
+                        <span class="glyphicon glyphicon-ban-circle"></span>Remover silenciar
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

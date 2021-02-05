@@ -1,0 +1,441 @@
+1:    # Ilha Dawn
+  rdm: 22
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 35
+
+2:    # Shells Town
+  rdm: 23
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 36
+
+3:    # Orange Town
+  rdm: 24
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 37
+
+4:    # Vila Syrup
+  rdm: 25
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 38
+
+5:    # Baratie
+  rdm: 26
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 39
+
+6:    # Ilha Cocoyashi
+  rdm: 27
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 40
+
+7:    # Loguetown
+  rdm: 28
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 41
+
+ # North
+
+8:    # Lvneel Kingdom
+  rdm: 29
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 42
+
+9:   # Burlywood Town
+  rdm: 30
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 43
+
+10:   # GoldenRod Town
+  rdm: 31
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 44
+
+11:   # Oubliette Town
+  rdm: 32
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 45
+
+12:   # Vila Whitewood
+  rdm: 33
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 46
+
+13:   # Ilha North Coral
+  rdm: 34
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 47
+
+14:   # Cartigen
+  rdm: 35
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 48
+
+ # South
+
+15:   # Baterilla
+  rdm: 36
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 49
+
+16:   # Zozu Town
+  rdm: 37
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 50
+
+17:   # Karatê island
+  rdm: 38
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 51
+
+18:   # Avalien Town
+  rdm: 39
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 52
+
+19:   # Torino
+  rdm: 40
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 53
+
+20:   # Cinturão das luas
+  rdm: 41
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 54
+
+21:   # Kimotsu Town
+  rdm: 42
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 55
+
+ # West
+
+22:   # Ilusia Kingdom
+  rdm: 43
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 56
+
+23:   # Ohara
+  rdm: 44
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 57
+
+24:   # Ilha Toroa
+  rdm: 45
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 58
+
+25:   # Las Camp
+  rdm: 46
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 59
+
+26:   # Kima Town
+  rdm: 47
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 60
+
+27:   # Jumbo Town
+  rdm: 48
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 61
+
+28:   # Ilha Kagero
+  rdm: 49
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 62
+
+ # Grand Line
+
+29:   # Farol => lvl 17 => (68 + 65) => 133 * 5 => 665 pontos
+  rdm: 50
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 63
+
+30:   # Whiskey peaks => lvl 19 => (76 + 65) => 171 * 7 => 987 pontos
+  rdm: 51
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 64
+
+31:   # Litle Garden - Marinha => lvl 21 => (84 + 65) => 149 * 9 => 1341 pontos
+  rdm: 52
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 65
+
+32:   # Drum => lvl 23 => (92 + 65) => 157 * 9 => 1413 pontos
+  rdm: 53
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 66
+
+33:   # Alabasta - Rainbase => lvl 24 => (96 + 65) => 161 * 9 => 1449 pontos
+  rdm: 54
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 67
+
+34:   # Alabasta - Yuba => lvl 26 => (100 + 65) => 164 * 9 => 1476 pontos
+  rdm: 55
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 68
+
+35:   # Alabasta - Alubarna => lvl 26 => (104 + 65) => 169 * 9 => 1521 pontos
+  rdm: 56
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 69
+
+36:   # Alabasta - Nanohana => lvl 27 => (108 + 65) => 173 * 9 => 1557 pontos
+  rdm: 57
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 70
+
+37:   # Jaya MockTown => lvl 28 => (112 + 65) => 177 * 9 => 1593 pontos
+  rdm: 58
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 71
+
+38:   # Jaya Cricket House => lvl 29 => (116 + 65) => 181 * 9 => 1629 pontos
+  rdm: 59
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 72
+
+39:   # Long Ring Long Land => lvl 30 => (120 + 65) => 185 * 9 => 1665 pontos
+  rdm: 60
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 73
+
+41:  # Triller bark => lvl 31 => (124 + 65) => 189 * 9 => 1701 pontos
+  rdm: 61
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 74
+
+40:    # Water 7 => lvl 32 => (128 + 65) => 193 * 11 => 2123 pontos
+  rdm: 62
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 75
+
+42:   # Arquipélago Sabaody => lvl 33 => (132 + 65) => 197 * 12 => 2364 pontos
+  rdm: 63
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 76
+
+43:   # Mariejois => lvl 34 => (136 + 65) => 201 * 12 => 2412 pontos
+  rdm: 64
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 77
+
+ # Novo Mundo
+
+44:   # Punk Hazard => lvl 47 => (188 + 65) => 253 * 15 => 3795 pontos
+  rdm: 65
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 78
+
+45:   # Ilha Yukiryu => lvl 48 => (192 + 65) => 257 * 15 => 3855 pontos
+  rdm: 66
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 79
+
+46:   # Ilha Raijin => lvl 50 => (200 + 65) => 265 * 15 => 3975 pontos
+  rdm: 67
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 80
+
+47:   # Laftel => lvl 50 => (100 + 65) => 164 * 9 => 1476 pontos
+  rdm: 68
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 81
+
+101:  # Impel Down
+  rdm: 80
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 162

@@ -1,0 +1,54 @@
+1:
+  skin_navio: 4
+  preco: 1
+2:
+  akuma: 1
+  preco: 1
+3:
+  skin: 12
+  img: 2
+  preco: 1
+4:
+  skin: 13
+  img: 2
+  preco: 1
+5:
+  skin: 13
+  img: 3
+  preco: 1
+6:
+  skin: 8
+  img: 4
+  preco: 1
+7:
+  skin: 8
+  img: 5
+  preco: 1
+8:
+  skin: 11
+  img: 6
+  preco: 1
+9:
+  skin: 7
+  img: 7
+  preco: 1
+10:
+  skin: 7
+  img: 8
+  preco: 1
+11:
+  skin: 3
+  img: 9
+  preco: 1
+12:
+  skin: 3
+  img: 10
+  preco: 1
+13:
+  skin: 4
+  img: 17
+  preco: 1
+14:
+  skin: 3
+  img: 57
+  preco: 1

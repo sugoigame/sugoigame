@@ -1,0 +1,69 @@
+1:
+  objetivo: "Derrote Rudolph"
+  rdm_id: 94
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+2:
+  objetivo: "Derrote Dasher"
+  rdm_id: 95
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+3:
+  objetivo: "Derrote Dancer"
+  rdm_id: 97
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+4:
+  objetivo: "Derrote Prancer"
+  rdm_id: 96
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+5:
+  objetivo: "Derrote Vixen"
+  rdm_id: 98
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+6:
+  objetivo: "Derrote Comet"
+  rdm_id: 99
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+7:
+  objetivo: "Derrote Cupid"
+  rdm_id: 100
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+8:
+  objetivo: "Derrote Donner"
+  rdm_id: 116
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+9:
+  objetivo: "Derrote Blitzen"
+  rdm_id: 117
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+10:
+  objetivo: "Derrote todas as renas"
+  minimo: 9
+  tipo: reagent
+  cod_item: 183
+  quant: 1

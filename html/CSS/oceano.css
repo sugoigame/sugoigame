@@ -1,0 +1,93 @@
+
+#agua tr td {
+    display: block;
+    width: 40px;
+    height: 40px;
+    float: left;
+    z-index: 1;
+    margin: 0;
+}
+
+.seletor-oceano:hover {
+    cursor: pointer;
+    box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.3);
+}
+
+.mapa_vento {
+    position: absolute;
+    z-index: 5;
+}
+
+.mapa_hp {
+    margin-top: 43px;
+    z-index: 15;
+}
+
+.info_mapa_title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#coord_selec {
+    max-height: 500px;
+    padding: 20px;
+    overflow: auto;
+}
+
+#rota_1,
+#rota_2,
+#rota_3,
+#rota_4,
+#rota_5 {
+    text-align: center;
+    background: transparent;
+    border: none;
+    color: white;
+}
+
+#rota_andamento {
+    height: 150px;
+    overflow: auto;
+}
+
+#rota_andamento_tempo {
+    font-size: 12px;
+}
+
+#oceano_selecoes_borda {
+    z-index: 10;
+    position: absolute;
+    padding: 5px;
+    width: 100%;;
+}
+
+#oceano_tudo {
+    overflow: auto;
+    height: 380px;
+    touch-action: none;
+}
+
+#oceano_tudo table {
+    background: transparent;
+    width: 360px;
+    height: 360px;
+    margin: auto;
+}
+
+#oceano_selecoes tr td {
+    display: block;
+    width: 40px;
+    height: 40px;
+    float: left;
+    z-index: 1;
+    margin: 0px;
+}
+
+#npc {
+    position: absolute;
+    top: 116px;
+    left: 0px;
+    margin: 0px 0px 0px 237px;
+    height: 260px;
+    width: 330px;
+}

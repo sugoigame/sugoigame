@@ -1,0 +1,116 @@
+1:
+  icon: bonus_1.jpg
+  descricao: Aumenta em 20% o dano causado pela sua tripulação ao enfrentar qualquer NPC exceto em incursões
+  aumento_dano_causado_npc: 0.2
+2:
+  icon: bonus_1.jpg
+  descricao: Reduz em 20% o dano sofrido pela sua tripulação ao enfrentar qualquer NPC exceto em incursões
+  reducao_dano_recebido_npc: 0.2
+3:
+  icon: bonus_1.jpg
+  descricao: O mercado das ilhas paga 25% mais caro pelos itens que você vender
+  aumento_preco_venda_ilha: 0.25
+4:
+  icon: bonus_1.jpg
+  descricao: Aumenta em 10% a velocidade de navegação do seu barco
+  aumento_velocidade_barco: 0.1
+5:
+  icon: bonus_1.jpg
+  descricao: Reduz em 15 minutos o tempo de espera para se realizar um novo Mergulho ou Exploração
+  reducao_tempo_mergulho: 900
+  reducao_tempo_expedicao: 900
+6:
+  icon: bonus_3.jpg
+  descricao: Toda vez que saquear um jogador você receberá 20% dos Berries daquele jogador em vez de 10%
+  aumento_berries_saque: 0.1
+7:
+  icon: bonus_3.jpg
+  descricao: Toda vez que um de seus tripulantes derrotar um tripulante inimigo, o preço de sua recompensa será aumentado com um bônus de 20%
+  aumento_ganho_fa: 0.2
+8:
+  icon: bonus_3.jpg
+  descricao: Toda vez que um de seus tripulantes for derrotado por um tripulante inimigo, o preço de sua recompensa terá uma redução 20% menor do que teria normalmente.
+  reducao_perda_fa: 0.2
+9:
+  icon: bonus_3.jpg
+  descricao: Seus disparos de canhão causam o dobro do dano nos navios atingidos.
+  aumento_dano_canhao: 1
+10:
+  icon: bonus_3.jpg
+  descricao: Anula todas as vantagens e desvantagens de todas as suas Akuma no Mi
+  anula_efeito_akuma: 1
+11:
+  icon: bonus_0.jpg
+  descricao: Bônus semanal. Os jogadores recebem 10% a mais de experiência por completar missões e derrotar NPCs
+  bonus_xp: 0.1
+12:
+  icon: bonus_0.jpg
+  descricao: Bônus semanal. Os jogadores recebem 5% mais Haki
+  bonus_haki: 0.05
+13:
+  icon: bonus_2.jpg
+  descricao: Bônus habilitado pelo governante de alguma ilha próxima. Aumenta em 20% o dano causado pela sua tripulação ao enfrentar qualquer NPC exceto em incursões
+  aumento_dano_causado_npc: 0.2
+14:
+  icon: bonus_2.jpg
+  descricao: Bônus habilitado pelo governante de alguma ilha próxima. Reduz em 20% o dano sofrido pela sua tripulação ao enfrentar qualquer NPC exceto em incursões
+  reducao_dano_recebido_npc: 0.2
+15:
+  icon: bonus_2.jpg
+  descricao: Bônus habilitado pelo governante de alguma ilha próxima. O mercado das ilhas paga 25% mais caro pelos itens que você vender
+  aumento_preco_venda_ilha: 0.25
+16:
+  icon: bonus_2.jpg
+  descricao: Bônus habilitado pelo governante de alguma ilha próxima. Aumenta em 20% a velocidade de navegação do seu barco
+  aumento_velocidade_barco: 0.2
+17:
+  icon: bonus_2.jpg
+  descricao: Bônus habilitado pelo governante de alguma ilha próxima. Toda vez que saquear um jogador você receberá 20% dos Berries daquele jogador em vez de 10%
+  aumento_berries_saque: 0.1
+18:
+  icon: bonus_2.jpg
+  descricao: Bônus habilitado pelo governante de alguma ilha próxima. Toda vez que um de seus tripulantes derrotar um tripulante inimigo, o preço de sua recompensa será aumentado com um bônus de 20%
+  aumento_ganho_fa: 0.2
+19:
+  icon: bonus_2.jpg
+  descricao: Bônus habilitado pelo governante de alguma ilha próxima. Toda vez que um de seus tripulantes for derrotado por um tripulante inimigo, o preço de sua recompensa terá uma redução 20% menor do que teria normalmente.
+  reducao_perda_fa: 0.2
+20:
+  icon: bonus_2.jpg
+  descricao: Bônus habilitado pelo governante de alguma ilha próxima. Seus disparos de canhão causam o dobro do dano nos navios atingidos.
+  aumento_dano_canhao: 1
+21:
+  icon: bonus_2.jpg
+  descricao: Bônus habilitado pelo governante de alguma ilha próxima. Os jogadores recebem 50% a mais de experiência por completar missões e derrotar NPCs
+  bonus_xp: 0.5
+22:
+  icon: bonus_2.jpg
+  descricao: Bônus habilitado pelo governante de alguma ilha próxima. Os jogadores recebem 20% mais Haki
+  bonus_haki: 0.2
+23:
+  icon: bonus_0.jpg
+  descricao: Bônus semanal. Os comerciantes das ilhas pagam 10% mais Berries pelos itens que você vender
+  aumento_preco_venda_ilha: 0.1
+24:
+  icon: bonus_0.jpg
+  descricao: Bônus semanal. Toda vez que um de seus tripulantes derrotar um tripulante inimigo, o preço de sua recompensa será aumentado com um bônus de 10%
+  aumento_ganho_fa: 0.01
+25:
+  icon: bonus.jpg
+  descricao: Reduz o tamanho do seu navio.
+  escala_navio: 0.5
+  nao_acumulativo: 1
+26:
+  icon: bonus_4.jpg
+  descricao: Seus tripulantes que estiverem no nível 50 recebem 10 vezes mais Experiência. Você só pode ter um bônus desse ativo por vez. Esse bônus é acumulativo com outros tipos de bônus de Experiência.
+  multiplicador_xp_lvl_max: 10
+  nao_acumulativo: 1
+27:
+  icon: bonus_4.jpg
+  descricao: Chamado Infantil. Ao participar de Batalhas PvP de qualquer tipo, uma criança aparecerá como membro da sua tripulação.
+  chamado_infantil: 1
+28:
+  icon: bonus.jpg
+  descricao: Fantasia de Halloween. Quando entrar em combate, um de seus tripulantes se fantasiará e aparecerá como outro personagem do jogo.
+  fantasia_imgs: 2,13;10,3;39,1;119,0;87,6;12,5
+  fantasia_quant_trips: 1

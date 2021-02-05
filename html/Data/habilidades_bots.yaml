@@ -1,0 +1,29 @@
+1:
+  - dano: 20
+    consumo: 0
+    area: 1
+    nome: Soco
+    descricao: Tenta acerta um soco no oponente.
+    img: 1
+    tipo: 1
+  - dano: 20
+    consumo: 10
+    area: 4
+    nome: Ichirin Zashi
+    descricao: Posiciona sua espada na vertical e desce caindo na direção do oponente a fim de perfurá-lo com a espada.
+    img: 5
+    tipo: 1
+  - dano: 20
+    consumo: 10
+    area: 4
+    nome: Hell Wink
+    descricao: Uma versão muito mais poderosa do Death Wink, geralmente utilizada após o okama aumentar o tamanho de sua cabeça. Bastante usado para se impulsionar para longe.
+    img: 8
+    tipo: 1
+  - dano: 20
+    consumo: 10
+    area: 4
+    nome: Anti-Manner Kick
+    descricao: Um chute em que as pernas do lutador chegam a atingir 180º de abertura. O golpe é tão poderoso que pode facilmente arremessar uma criatura inúmeras vezes maior e mais pesada para o ar.
+    img: 10
+    tipo: 1

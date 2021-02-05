@@ -1,0 +1,81 @@
+1:
+  minimo: 100000
+  tipo: reagent
+  cod_item: 146
+  quant: 1
+2:
+  minimo: 200000
+  tipo: reagent
+  cod_item: 146
+  quant: 1
+3:
+  minimo: 300000
+  tipo: reagent
+  cod_item: 146
+  quant: 1
+4:
+  minimo: 400000
+  tipo: reagent
+  cod_item: 146
+  quant: 1
+5:
+  minimo: 500000
+  tipo: reagent
+  cod_item: 146
+  quant: 1
+6:
+  minimo: 600000
+  tipo: reagent
+  cod_item: 146
+  quant: 1
+7:
+  minimo: 700000
+  tipo: reagent
+  cod_item: 146
+  quant: 1
+8:
+  minimo: 800000
+  tipo: reagent
+  cod_item: 146
+  quant: 1
+9:
+  minimo: 900000
+  tipo: reagent
+  cod_item: 146
+  quant: 1
+10:
+  minimo: 1000000
+  tipo: akuma
+11:
+  minimo: 1000000
+  tipo: reagent
+  cod_item: 184
+  quant: 1
+12:
+  minimo: 1000000
+  tipo: reagent
+  cod_item: 185
+  quant: 1
+13:
+  minimo: 1000000
+  tipo: moeda_evento
+  quant: 1
+15:
+  minimo: 1000000
+  tipo: reagent
+  cod_item: 147
+  quant: 1
+16:
+  minimo: 1000000
+  tipo: reagent
+  cod_item: 155
+  quant: 1
+18:
+  minimo: 1000000
+  tipo: haki
+  quant: 50000
+19:
+  minimo: 1000000
+  tipo: reagent
+  cod_item: 200
+  quant: 1

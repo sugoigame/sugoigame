@@ -1,0 +1,294 @@
+{2021/02/03 23:40:32} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 1,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/03 23:40:32} [Error] Exception: PagSeguroLibrary: cURL library is required. 
+{2021/02/03 23:41:16} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 2,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/03 23:42:04} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 3,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/03 23:42:44} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 4,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/03 23:42:49} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 4,
+  'SenderEmail' => 'null',
+)) - end {1}A60111364F4F291994A9EFA6605F03AE 
+{2021/02/03 23:50:17} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 5,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/03 23:50:23} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 5,
+  'SenderEmail' => 'null',
+)) - end {1}917733F6F3F3B94444BD8FB2A92C6568 
+{2021/02/03 23:54:45} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 6,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/03 23:54:51} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 6,
+  'SenderEmail' => 'null',
+)) - end {1}A7F38A74E4E4C4DBB4386FBB3583C0C0 
+{2021/02/03 23:56:25} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 7,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/03 23:56:30} [Error] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 7,
+  'SenderEmail' => 'null',
+)) - error [HTTP 404] - NOT_FOUND  
+{2021/02/03 23:57:45} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 8,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/03 23:57:51} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 8,
+  'SenderEmail' => 'null',
+)) - end {1}679E6C67D0D020EAA4098F9F75D8ACA7 
+{2021/02/04 00:50:08} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 9,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 00:50:14} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 9,
+  'SenderEmail' => 'null',
+)) - end {1}5B20DF87D4D4FA1AA428EF8F10BDCC5F 
+{2021/02/04 00:52:09} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 10,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 00:52:09} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 10,
+  'SenderEmail' => 'null',
+)) - end {1}35214B76B8B84B7FF4999FB37BFF8F3F 
+{2021/02/04 00:54:05} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 11,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 00:54:05} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 11,
+  'SenderEmail' => 'null',
+)) - end {1}FA7E12EFB5B53779947B4FA0828B656F 
+{2021/02/04 00:58:10} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 1,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 00:58:10} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 1,
+  'SenderEmail' => 'null',
+)) - end {1}B669583D4343F0A9947FEFA075804FBF 
+{2021/02/04 01:00:29} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 2,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 01:00:29} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 2,
+  'SenderEmail' => 'null',
+)) - end {1}D4758C1EBCBC23AAA4226F92A7774749 
+{2021/02/04 01:02:36} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 3,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 01:02:36} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 3,
+  'SenderEmail' => 'null',
+)) - end {1}C68A8EDDBCBCFC92246AAF964D023C8A 
+{2021/02/04 01:11:08} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 4,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 01:11:08} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 4,
+  'SenderEmail' => 'null',
+)) - end {1}96ED73908B8B5FEDD49FEF8AFFA40E98 
+{2021/02/04 01:20:01} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 5,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 01:20:01} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 5,
+  'SenderEmail' => 'null',
+)) - end {1}B73822B46C6C7CC114A31F9F42CAA696 
+{2021/02/04 01:21:11} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 6,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 01:21:11} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 6,
+  'SenderEmail' => 'null',
+)) - end {1}C829D3488585357EE4BFFF99773980E1 
+{2021/02/04 01:22:17} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=C8ADD7-E850CC50CC72-C224F49F9229-AAD7B8) - begin 
+{2021/02/04 01:22:17} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=C8ADD7-E850CC50CC72-C224F49F9229-AAD7B8) - end Transaction: array (
+  'code' => 'B5877BA2-4C34-487E-807D-4AB7C7B86958',
+  'email' => 'conquer.aliance@gmail.com',
+  'date' => '2021-02-04T01:21:11.000-03:00',
+  'reference' => '6',
+  'status' => '4',
+  'itemsCount' => 1,
+)) 
+{2021/02/04 01:27:57} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 7,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 01:27:58} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 7,
+  'SenderEmail' => 'null',
+)) - end {1}FCD8686BB9B9F87664B4AF8E6FA3E987 
+{2021/02/04 01:29:49} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=A5D5C7-70E171E1718B-2114A84F8C1E-7DA6A1) - begin 
+{2021/02/04 01:29:49} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=A5D5C7-70E171E1718B-2114A84F8C1E-7DA6A1) - end Transaction: array (
+  'code' => '3AEF758C-5621-4F4C-A7A7-FD052136C43A',
+  'email' => 'conquer.aliance@gmail.com',
+  'date' => '2021-02-04T01:27:58.000-03:00',
+  'reference' => '7',
+  'status' => '4',
+  'itemsCount' => 1,
+)) 
+{2021/02/04 02:18:22} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=D64902-9CC6DDC6DDA6-0AA4CADFB873-A4D2B2) - begin 
+{2021/02/04 02:18:22} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=D64902-9CC6DDC6DDA6-0AA4CADFB873-A4D2B2) - end Transaction: array (
+  'code' => 'F65BA5F0-3956-46E4-80AE-4ED12C26727B',
+  'email' => 'medeiros.dev@gmail.com',
+  'date' => '2021-02-04T00:52:10.000-03:00',
+  'reference' => '10',
+  'status' => '4',
+  'itemsCount' => 1,
+)) 
+{2021/02/04 02:18:31} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=AA2722-77EB1AEB1AEA-9224E0FFB06C-9D848F) - begin 
+{2021/02/04 02:18:31} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=AA2722-77EB1AEB1AEA-9224E0FFB06C-9D848F) - end Transaction: array (
+  'code' => 'A0B481CB-99B6-4523-8635-F0E40C24F8F0',
+  'email' => 'conquer.aliance@gmail.com',
+  'date' => '2021-02-04T00:54:06.000-03:00',
+  'reference' => '11',
+  'status' => '4',
+  'itemsCount' => 1,
+)) 
+{2021/02/04 02:19:19} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=9F5FFB-2153B153B12E-7EE436CF82C5-66F5A4) - begin 
+{2021/02/04 02:19:20} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=9F5FFB-2153B153B12E-7EE436CF82C5-66F5A4) - end Transaction: array (
+  'code' => '3F6279D0-CD20-4C72-812E-3CEBAD3166B8',
+  'email' => 'medeiros.dev@gmail.com',
+  'date' => '2021-02-04T01:02:37.000-03:00',
+  'reference' => '3',
+  'status' => '4',
+  'itemsCount' => 1,
+)) 
+{2021/02/04 02:20:10} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=DB78E7-5BA523A52353-9EE4414F992E-666740) - begin 
+{2021/02/04 02:20:10} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=DB78E7-5BA523A52353-9EE4414F992E-666740) - end Transaction: array (
+  'code' => 'B1AADF42-8069-4F8C-BC99-4BC5F6F819B3',
+  'email' => 'conquer.aliance@gmail.com',
+  'date' => '2021-02-04T01:11:09.000-03:00',
+  'reference' => '4',
+  'status' => '4',
+  'itemsCount' => 1,
+)) 
+{2021/02/04 03:41:12} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 8,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 03:41:13} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 8,
+  'SenderEmail' => 'null',
+)) - end {1}FCF6321A7D7D963CC4395FB9CEF007D1 
+{2021/02/04 11:15:51} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 9,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 11:15:52} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 9,
+  'SenderEmail' => 'null',
+)) - end {1}3A6BB3E0FBFB183FF4019FBBFA778FAD 
+{2021/02/04 13:02:45} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 10,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 13:02:45} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 10,
+  'SenderEmail' => 'null',
+)) - end {1}1742DD65A4A46DD334987F8513316442 
+{2021/02/04 13:02:46} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 11,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 13:02:46} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 11,
+  'SenderEmail' => 'null',
+)) - end {1}19E23E310909CB88844DDF886BB10848 
+{2021/02/04 16:12:49} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 12,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 16:12:50} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 12,
+  'SenderEmail' => 'null',
+)) - end {1}1C3D89240B0BC06224C66FBEF289C7B2 
+{2021/02/04 16:14:58} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 13,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 16:14:59} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 13,
+  'SenderEmail' => 'null',
+)) - end {1}13CC0CC3BABA1A2FF442EF82A83B6074 
+{2021/02/04 16:18:32} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=552C64-D5141E141EB3-E2242DFFA654-44D15D) - begin 
+{2021/02/04 16:18:33} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=552C64-D5141E141EB3-E2242DFFA654-44D15D) - end Transaction: array (
+  'code' => 'A84946E8-BA95-4CB9-B92D-23FBFE43DFDA',
+  'email' => 'wwebrbr@outlook.com',
+  'date' => '2021-02-04T16:14:59.000-03:00',
+  'reference' => '13',
+  'status' => '4',
+  'itemsCount' => 1,
+)) 
+{2021/02/04 16:20:08} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 14,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 16:20:09} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 14,
+  'SenderEmail' => 'null',
+)) - end {1}CEAC640FAEAED45EE4FCCF86CC732A5A 
+{2021/02/04 19:21:50} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 15,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 19:21:51} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 15,
+  'SenderEmail' => 'null',
+)) - end {1}287ED392B6B623D3349DAF94927A16E5 
+{2021/02/04 19:28:17} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=0B748D-2958EE58EEFC-9BB4DA0FB500-B4E4AC) - begin 
+{2021/02/04 19:28:17} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=0B748D-2958EE58EEFC-9BB4DA0FB500-B4E4AC) - end Transaction: array (
+  'code' => 'ADB849B5-9044-421F-BBA1-E454614B1F91',
+  'email' => 'adrielfaria2020@hotmail.com',
+  'date' => '2021-02-04T19:21:51.000-03:00',
+  'reference' => '15',
+  'status' => '4',
+  'itemsCount' => 1,
+)) 
+{2021/02/04 19:55:12} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 16,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/04 19:55:13} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 16,
+  'SenderEmail' => 'null',
+)) - end {1}B5547E27B3B3BB6224972F91B9C7BD26 
+{2021/02/04 20:02:03} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=F7AF54-452B4F2B4F3A-7334CDCFA05E-B8C6F5) - begin 
+{2021/02/04 20:02:04} [Info] PagSeguroNotificationService.CheckTransaction(notificationCode=F7AF54-452B4F2B4F3A-7334CDCFA05E-B8C6F5) - end Transaction: array (
+  'code' => '93753337-75B8-424B-BD57-31ACF19D68C1',
+  'email' => 'murilo0140@gmail.com',
+  'date' => '2021-02-04T19:55:58.000-03:00',
+  'reference' => '16',
+  'status' => '3',
+  'itemsCount' => 1,
+)) 
+{2021/02/05 10:29:40} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 17,
+  'SenderEmail' => 'null',
+)) - begin 
+{2021/02/05 10:29:40} [Info] PagSeguroPaymentService.Register(PagSeguroPaymentRequest: array (
+  'Reference' => 17,
+  'SenderEmail' => 'null',
+)) - end {1}4CC5D422B9B994C444349F95A9BCA853 

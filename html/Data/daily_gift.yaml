@@ -1,0 +1,156 @@
+0:
+  berries: 10000
+  reputacao: 15
+1:
+  berries: 20000
+  reputacao: 15
+2:
+  berries: 30000
+  haki: 10000
+  reputacao: 15
+3:
+  berries: 40000
+  xp: 2000
+  reputacao: 15
+4:
+  berries: 50000
+  tipo_item: 15
+  cod_item: 51
+  quant: 25
+  reputacao: 15
+5:
+  berries: 60000
+  tipo_item: 15
+  cod_item: 75
+  quant: 25
+  reputacao: 15
+6:
+  berries: 70000
+  haki: 20000
+  tipo_item: 15
+  cod_item: 155
+  quant: 1
+  reputacao: 15
+7:
+  berries: 2000000
+  reputacao: 15
+8:
+  berries: 90000
+  xp: 5000
+  reputacao: 15
+9:
+  berries: 100000
+  tipo_item: 15
+  cod_item: 180
+  quant: 1
+  reputacao: 15
+10:
+  berries: 110000
+  dobroes: 5
+  reputacao: 15
+11:
+  berries: 120000
+  xp: 7000
+  reputacao: 15
+12:
+  berries: 130000
+  tipo_item: 15
+  cod_item: 51
+  quant: 50
+  reputacao: 15
+13:
+  berries: 140000
+  tipo_item: 15
+  cod_item: 75
+  quant: 50
+  reputacao: 15
+14:
+  berries: 150000
+  tipo_item: 15
+  cod_item: 155
+  quant: 1
+  reputacao: 15
+15:
+  berries: 5000000
+  reputacao: 15
+16:
+  berries: 200000
+  haki: 30000
+  reputacao: 15
+17:
+  berries: 250000
+  xp: 10000
+  dobroes: 5
+  reputacao: 15
+18:
+  berries: 500000
+  tipo_item: 15
+  cod_item: 1
+  quant: 10
+  reputacao: 15
+19:
+  berries: 750000
+  tipo_item: 15
+  cod_item: 2
+  quant: 3
+  reputacao: 15
+20:
+  berries: 1000000
+  tipo_item: 15
+  cod_item: 155
+  quant: 1
+  reputacao: 15
+21:
+  berries: 1000000
+  tipo_item: 15
+  cod_item: 180
+  quant: 1
+  reputacao: 15
+22:
+  berries: 1000000
+  tipo_item: 15
+  cod_item: 180
+  quant: 1
+  reputacao: 15
+23:
+  berries: 1000000
+  tipo_item: 15
+  cod_item: 180
+  quant: 1
+  reputacao: 15
+24:
+  berries: 1000000
+  tipo_item: 15
+  cod_item: 180
+  quant: 1
+  reputacao: 15
+25:
+  berries: 1000000
+  tipo_item: 15
+  cod_item: 180
+  quant: 1
+  reputacao: 15
+26:
+  berries: 1000000
+  tipo_item: 15
+  cod_item: 180
+  quant: 1
+  reputacao: 15
+27:
+  berries: 1000000
+  haki: 50000
+  tipo_item: 15
+  cod_item: 155
+  quant: 1
+  reputacao: 15
+28:
+  berries: 1000000
+  dobroes: 5
+  reputacao: 15
+29:
+  berries: 1000000
+  akuma: 1
+  tipo_item: 15
+  cod_item: 155
+  quant: 1
+  reputacao: 15

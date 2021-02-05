@@ -1,0 +1,103 @@
+0:
+  objetivo: 10000000
+  recompensas:
+    - tipo_item: 15
+      cod_item: 180
+      quant: 1
+      tipo: reagent
+    - tipo_item: 15
+      cod_item: 146
+      quant: 1
+      tipo: reagent
+1:
+  objetivo: 20000000
+  recompensas:
+    - tipo_item: 15
+      cod_item: 144
+      quant: 1
+      tipo: reagent
+    - tipo_item: 15
+      cod_item: 146
+      quant: 1
+      tipo: reagent
+2:
+  objetivo: 50000000
+  recompensas:
+    - tipo_item: 15
+      cod_item: 155
+      quant: 1
+      tipo: reagent
+    - tipo_item: 15
+      cod_item: 146
+      quant: 1
+      tipo: reagent
+3:
+  objetivo: 100000000
+  recompensas:
+    - tipo_item: 15
+      cod_item: 122
+      quant: 1
+      tipo: reagent
+    - tipo_item: 15
+      cod_item: 147
+      quant: 1
+      tipo: reagent
+    - tipo: alcunha
+      cod_titulo: 3
+4:
+  objetivo: 200000000
+  recompensas:
+    - tipo_item: 15
+      cod_item: 155
+      quant: 2
+      tipo: reagent
+    - tipo_item: 15
+      cod_item: 147
+      quant: 1
+      tipo: reagent
+    - tipo: alcunha
+      cod_titulo: 4
+5:
+  objetivo: 300000000
+  recompensas:
+    - tipo_item: 15
+      cod_item: 155
+      quant: 3
+      tipo: reagent
+    - tipo_item: 15
+      cod_item: 147
+      quant: 1
+      tipo: reagent
+    - tipo: alcunha
+      cod_titulo: 5
+6:
+  objetivo: 400000000
+  recompensas:
+    - tipo_item: 15
+      cod_item: 183
+      quant: 1
+      tipo: reagent
+    - tipo_item: 15
+      cod_item: 147
+      quant: 1
+      tipo: reagent
+    - tipo: alcunha
+      cod_titulo: 6
+7:
+  objetivo: 500000000
+  recompensas:
+    - tipo_item: 15
+      cod_item: 155
+      quant: 5
+      tipo: reagent
+    - tipo_item: 15
+      cod_item: 147
+      quant: 1
+      tipo: reagent
+    - tipo: alcunha
+      cod_titulo: 7
+    - tipo_item: 15
+      cod_item: 162
+      quant: 1
+      tipo: reagent
+      unico: 1

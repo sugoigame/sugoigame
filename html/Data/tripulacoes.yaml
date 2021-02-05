@@ -1,0 +1,656 @@
+1:
+  nome: Bandidos
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 1
+2:
+  nome: Bandidos
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 1
+    - 2
+3:
+  nome: Bandidos
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 1
+    - 2
+    - 3
+4:
+  nome: Marinheiros Inadiplentes
+  bandeira: "020113096723040114396618010115204020"
+  faccao: 0
+  tripulantes:
+    - 4
+    - 5
+5:
+  nome: Marinheiros Inadiplentes
+  bandeira: "020113096723040114396618010115204020"
+  faccao: 0
+  tripulantes:
+    - 4
+    - 5
+    - 6
+6:
+  nome: Marinheiros Inadiplentes
+  bandeira: "020113096723040114396618010115204020"
+  faccao: 0
+  tripulantes:
+    - 4
+    - 5
+    - 6
+    - 94
+7:
+  nome: Buggy Pirates
+  bandeira: "010113046758090125084349100235262113"
+  faccao: 1
+  tripulantes:
+    - 7
+    - 8
+    - 97
+8:
+  nome: Buggy Pirates
+  bandeira: "010113046758090125084349100235262113"
+  faccao: 1
+  tripulantes:
+    - 7
+    - 34
+    - 96
+9:
+  nome: Buggy Pirates
+  bandeira: "010113046758090125084349100235262113"
+  faccao: 1
+  tripulantes:
+    - 7
+    - 8
+    - 95
+10:
+  nome: Black Cat Pirates
+  bandeira: "010113046758010828123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 64
+    - 65
+11:
+  nome: Black Cat Pirates
+  bandeira: "010113046758010828123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 64
+    - 65
+    - 116
+12:
+  nome: Black Cat Pirates
+  bandeira: "010113046758010828123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 64
+    - 65
+    - 117
+13:
+  nome: Piratas Krieg
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 64
+    - 65
+    - 136
+14:
+  nome: Piratas Krieg
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 64
+    - 65
+    - 137
+15:
+  nome: Piratas Krieg
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 64
+    - 65
+    - 138
+16:
+  nome: Arlong Pirates
+  bandeira: "010117045951120228123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 142
+    - 141
+    - 140
+17:
+  nome: Arlong Pirates
+  bandeira: "010117045951120228123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 142
+    - 141
+    - 139
+    - 140
+18:
+  nome: Arlong Pirates
+  bandeira: "010117045951120228123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 141
+    - 142
+    - 139
+    - 140
+    - 201
+19:
+  nome: Aliança Pirata
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 202
+    - 203
+    - 204
+    - 208
+    - 207
+20:
+  nome: Aliança Pirata
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 202
+    - 203
+    - 207
+    - 205
+    - 206
+21:
+  nome: Aliança Pirata
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 202
+    - 203
+    - 204
+    - 205
+    - 206
+22:
+  nome: Piratas
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 223
+    - 224
+    - 225
+    - 226
+    - 227
+    - 228
+    - 229
+23:
+  nome: Caçadores de Recompensas
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 242
+    - 243
+    - 244
+    - 245
+    - 246
+    - 247
+    - 248
+24:
+  nome: Baroque Works
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 264
+    - 265
+    - 266
+    - 267
+    - 268
+    - 269
+    - 270
+25:
+  nome: Tripulação Pirata
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 294
+    - 295
+    - 296
+    - 297
+    - 298
+    - 299
+    - 300
+    - 301
+    - 302
+26:
+  nome: Tripulação Pirata
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 316
+    - 317
+    - 318
+    - 319
+    - 320
+    - 321
+    - 322
+    - 323
+    - 324
+27:
+  nome: Tripulação Pirata
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 336
+    - 337
+    - 338
+    - 339
+    - 340
+    - 341
+    - 342
+    - 343
+    - 344
+28:
+  nome: Tripulação Pirata
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 336
+    - 337
+    - 338
+    - 339
+    - 340
+    - 341
+    - 342
+    - 343
+    - 366
+29:
+  nome: Baroque Works
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 426
+    - 427
+    - 428
+    - 429
+    - 430
+    - 431
+    - 432
+    - 433
+    - 434
+    - 435
+    - 436
+    - 437
+30:
+  nome: Baroque Works
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 426
+    - 427
+    - 428
+    - 429
+    - 430
+    - 431
+    - 432
+    - 433
+    - 435
+    - 436
+    - 459
+31:
+  nome: Piratas Bellamy
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 603
+    - 604
+    - 605
+    - 606
+    - 607
+    - 608
+    - 609
+    - 610
+    - 611
+    - 612
+    - 613
+32:
+  nome: Piratas Foxy
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 651
+    - 652
+    - 653
+    - 654
+    - 655
+    - 656
+    - 657
+    - 658
+    - 659
+    - 660
+    - 661
+33:
+  nome: Moriah Pirates
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 666
+    - 667
+    - 668
+    - 669
+    - 670
+    - 671
+    - 672
+    - 673
+    - 674
+    - 675
+    - 676
+    - 677
+34:
+  nome: Familia Franky
+  bandeira: "010117045951040128123542060132053015"
+  faccao: 1
+  tripulantes:
+    - 686
+    - 687
+    - 688
+    - 689
+    - 690
+    - 691
+    - 692
+    - 693
+    - 694
+    - 695
+    - 696
+35:
+  nome: Supernovas
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 724
+    - 725
+    - 726
+    - 727
+    - 728
+    - 729
+    - 730
+    - 731
+    - 732
+    - 733
+    - 734
+36:
+  nome: Tripulação Pirata
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 735
+    - 736
+    - 737
+    - 738
+    - 739
+    - 740
+    - 741
+    - 742
+    - 743
+    - 744
+    - 745
+    - 746
+37:
+  nome: Tripulação Pirata
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 779
+    - 780
+    - 781
+    - 782
+    - 783
+    - 784
+    - 785
+    - 786
+    - 787
+    - 788
+    - 789
+    - 790
+    - 791
+    - 792
+    - 793
+38:
+  nome: Baroque Works
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 794
+    - 795
+    - 796
+    - 797
+    - 798
+    - 799
+    - 800
+    - 801
+    - 802
+    - 803
+    - 804
+    - 805
+    - 806
+    - 807
+    - 808
+39:
+  nome: Baroque Works
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 794
+    - 795
+    - 796
+    - 798
+    - 800
+    - 801
+    - 802
+    - 803
+    - 804
+    - 805
+    - 806
+    - 807
+    - 808
+    - 809
+    - 813
+40:
+  nome: Baroque Works
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 794
+    - 795
+    - 796
+    - 798
+    - 800
+    - 801
+    - 802
+    - 803
+    - 804
+    - 805
+    - 806
+    - 807
+    - 808
+    - 810
+    - 814
+41:
+  nome: Baroque Works
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 794
+    - 795
+    - 796
+    - 798
+    - 800
+    - 801
+    - 802
+    - 803
+    - 804
+    - 805
+    - 806
+    - 807
+    - 808
+    - 811
+    - 815
+42:
+  nome: Baroque Works
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 794
+    - 795
+    - 796
+    - 798
+    - 800
+    - 801
+    - 802
+    - 803
+    - 804
+    - 805
+    - 806
+    - 807
+    - 808
+    - 797
+    - 816
+43:
+  nome: Baroque Works
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 794
+    - 795
+    - 796
+    - 798
+    - 800
+    - 801
+    - 802
+    - 803
+    - 804
+    - 805
+    - 806
+    - 807
+    - 808
+    - 812
+    - 817
+44:
+  nome: Baroque Works
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 794
+    - 795
+    - 796
+    - 798
+    - 800
+    - 801
+    - 802
+    - 803
+    - 804
+    - 805
+    - 806
+    - 809
+    - 812
+    - 811
+    - 810
+45:
+  nome: Baroque Works
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 794
+    - 795
+    - 796
+    - 798
+    - 800
+    - 801
+    - 802
+    - 803
+    - 804
+    - 805
+    - 813
+    - 814
+    - 815
+    - 816
+    - 817
+46:
+  nome: Baroque Works
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 794
+    - 795
+    - 796
+    - 798
+    - 800
+    - 801
+    - 809
+    - 810
+    - 811
+    - 812
+    - 813
+    - 814
+    - 815
+    - 816
+    - 817
+47:
+  nome: Baroque Works
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 794
+    - 795
+    - 796
+    - 798
+    - 800
+    - 818
+    - 809
+    - 810
+    - 811
+    - 812
+    - 813
+    - 814
+    - 815
+    - 816
+    - 817
+48:
+  nome: Impel Down
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 0
+  tripulantes:
+    - 833
+    - 832
+    - 831
+    - 830
+    - 829
+    - 828
+    - 827
+    - 826
+    - 825
+    - 824
+    - 823
+    - 822
+    - 821
+    - 820
+    - 819
+49:
+  nome: Enies Lobby
+  bandeira: "010113046758010128123542010115204020"
+  faccao: 1
+  tripulantes:
+    - 834
+    - 835
+    - 836
+    - 837
+    - 838
+    - 839
+    - 840
+    - 841
+    - 842
+    - 843
+    - 844
+    - 845
+    - 846
+    - 847
+    - 848

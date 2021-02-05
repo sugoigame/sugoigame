@@ -1,0 +1,40 @@
+body{
+	background: transparent;
+	text-align: center;
+	font-family: "Times New Roman", serif;
+	font-size: 14 px;
+}
+#mensagens{
+	height: 350px;
+	overflow: auto;
+}
+#minha_msg{
+	padding: 2px;
+	height: 20px;
+	margin: auto;
+	font-family: "Times New Roman", serif;
+	font-size: 12px;
+}
+#canal{
+	height: 23px;
+}
+.text_msg b{
+	font-weight: bold;
+	font-size: 12px;
+}
+.text_msg{
+	font-size: 13px;
+}
+.o{
+	color: #000066;
+}
+.i{
+	color: #002200;
+}
+.f{
+	color: #660000;
+}
+.a{
+	color: #006600;
+}
+

@@ -1,0 +1,51 @@
+1:
+  tipo: akuma
+  preco: 50
+9:
+  tipo: reagent
+  cod_item: 155
+  quant: 1
+  preco: 60
+2:
+  preco: 10
+  tipo: alcunha
+  cod_titulo: 135
+3:
+  preco: 10
+  tipo: alcunha
+  cod_titulo: 130
+4:
+  preco: 10
+  tipo: alcunha
+  cod_titulo: 131
+5:
+  preco: 10
+  tipo: skin
+  img: 87
+  skin: 10
+6:
+  preco: 10
+  tipo: skin
+  img: 12
+  skin: 9
+7:
+  preco: 1
+  tipo: berries
+  quant: 100000
+8:
+  preco: 10
+  tipo: skin
+  img: 64
+  skin: 3
+10:
+  preco: 10
+  tipo: alcunha
+  cod_titulo: 132
+11:
+  preco: 10
+  tipo: alcunha
+  cod_titulo: 133
+12:
+  preco: 10
+  tipo: alcunha
+  cod_titulo: 134

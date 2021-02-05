@@ -1,0 +1,1134 @@
+1:
+  nome_bom_1: Bandido
+  img_bom_1: 297
+  skin_bom_1: 0
+
+  nome_mau_1: Dono do bar
+  img_mau_1: 197
+  skin_mau_1: 0
+
+  nome_bom_0: Bandido
+  img_bom_0: 297
+  skin_bom_0: 0
+
+  nome_mau_0: Dono do bar
+  img_mau_0: 197
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 300
+  hp_max: 300
+  mp: 300
+  mp_max: 300
+  lvl: 1
+  atk: 1
+  def: 1
+  agl: 1
+  res: 1
+  pre: 1
+  dex: 1
+  con: 1
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Soco
+      nome_mau_1: Soco
+      nome_bom_0: Soco
+      nome_mau_0: Soco
+      dano: 10
+      consumo: 3
+      area: 1
+      espera: 0
+2:
+  nome_bom_1: Bandido Irritado
+  img_bom_1: 303
+  skin_bom_1: 0
+
+  nome_mau_1: Freguês irritado
+  img_mau_1: 307
+  skin_mau_1: 0
+
+  nome_bom_0: Bandido Irritado
+  img_bom_0: 303
+  skin_bom_0: 0
+
+  nome_mau_0: Freguês irritado
+  img_mau_0: 307
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 300
+  hp_max: 300
+  mp: 300
+  mp_max: 300
+  lvl: 1
+  atk: 1
+  def: 1
+  agl: 1
+  res: 1
+  pre: 1
+  dex: 1
+  con: 1
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Soco
+      nome_mau_1: Soco
+      nome_bom_0: Soco
+      nome_mau_0: Soco
+      dano: 10
+      consumo: 3
+      area: 1
+      espera: 0
+3 :
+  nome_bom_1: Assassino
+  img_bom_1: 308
+  skin_bom_1: 0
+
+  nome_mau_1: Viajante descuidado
+  img_mau_1: 306
+  skin_mau_1: 0
+
+  nome_bom_0: Assassino
+  img_bom_0: 308
+  skin_bom_0: 0
+
+  nome_mau_0: Cidadão inocente suspeito
+  img_mau_0: 302
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 2500
+  hp_max: 2500
+  mp: 500
+  mp_max: 500
+  lvl: 2
+  atk: 15
+  def: 5
+  agl: 4
+  res: 1
+  pre: 1
+  dex: 5
+  con: 1
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Soco
+      nome_mau_1: Soco
+      nome_bom_0: Soco
+      nome_mau_0: Soco
+      dano: 15
+      consumo: 3
+      area: 1
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Chute
+      nome_mau_1: Chute
+      nome_bom_0: Chute
+      nome_mau_0: Chute
+      dano: 10
+      consumo: 3
+      area: 1
+      espera: 0
+4:
+  nome_bom_1: Arruaceiro Moreno
+  img_bom_1: 338
+  skin_bom_1: 0
+
+  nome_mau_1: Marinheiro Moreno
+  img_mau_1: 301
+  skin_mau_1: 0
+
+  nome_bom_0: Arruaceiro Moreno
+  img_bom_0: 338
+  skin_bom_0: 0
+
+  nome_mau_0: Cidadão inocente Moreno
+  img_mau_0: 298
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 2000
+  hp_max: 2000
+  mp: 500
+  mp_max: 500
+  lvl: 3
+  atk: 30
+  def: 25
+  agl: 1
+  res: 1
+  pre: 1
+  dex: 1
+  con: 1
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Golpe de direita
+      nome_mau_1: Golpe de direita
+      nome_bom_0: Golpe de direita
+      nome_mau_0: Golpe de direita
+      dano: 25
+      consumo: 3
+      area: 1
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Golpe de esquerda
+      nome_mau_1: Golpe de esquerda
+      nome_bom_0: Golpe de esquerda
+      nome_mau_0: Golpe de esquerda
+      dano: 20
+      consumo: 3
+      area: 1
+      espera: 0
+5:
+  nome_bom_1: Arruaceiro Loiro
+  img_bom_1: 309
+  skin_bom_1: 0
+
+  nome_mau_1: Marinheiro Assustado
+  img_mau_1: 300
+  skin_mau_1: 0
+
+  nome_bom_0: Arruaceiro Loiro
+  img_bom_0: 309
+  skin_bom_0: 0
+
+  nome_mau_0: Cidadão inocente Irritado
+  img_mau_0: 197
+  skin_mau_0: 1
+
+  cod: 1
+  hp: 2000
+  hp_max: 2000
+  mp: 500
+  mp_max: 500
+  lvl: 3
+  atk: 30
+  def: 25
+  agl: 1
+  res: 1
+  pre: 1
+  dex: 1
+  con: 1
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Golpe de direita
+      nome_mau_1: Golpe de direita
+      nome_bom_0: Golpe de direita
+      nome_mau_0: Golpe de direita
+      dano: 25
+      consumo: 3
+      area: 1
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Golpe de esquerda
+      nome_mau_1: Golpe de esquerda
+      nome_bom_0: Golpe de esquerda
+      nome_mau_0: Golpe de esquerda
+      dano: 20
+      consumo: 3
+      area: 1
+      espera: 0
+6:
+  nome_bom_1: Assassino contumaz
+  img_bom_1: 340
+  skin_bom_1: 0
+
+  nome_mau_1: Viajante perdido
+  img_mau_1: 341
+  skin_mau_1: 0
+
+  nome_bom_0: Assassino contumaz
+  img_bom_0: 340
+  skin_bom_0: 0
+
+  nome_mau_0: Cidadão inocente estranho
+  img_mau_0: 305
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 1500
+  hp_max: 1500
+  mp: 500
+  mp_max: 500
+  lvl: 4
+  atk: 10
+  def: 35
+  agl: 5
+  res: 20
+  pre: 1
+  dex: 5
+  con: 1
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Bomba de fumaça
+      nome_mau_1: Esplosão
+      nome_bom_0: Bomba de fumaça
+      nome_mau_0: Arrastão
+      dano: 5
+      consumo: 3
+      area: 3
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Investida fatal
+      nome_mau_1: Soco
+      nome_bom_0: Investida fatal
+      nome_mau_0: Soco
+      dano: 10
+      consumo: 3
+      area: 1
+      espera: 0
+7:
+  nome_bom_1: Bandido frenético
+  img_bom_1: 344
+  skin_bom_1: 0
+
+  nome_mau_1: Acompanhante perneta
+  img_mau_1: 329
+  skin_mau_1: 0
+
+  nome_bom_0: Bandido frenético
+  img_bom_0: 344
+  skin_bom_0: 0
+
+  nome_mau_0: Cidadão inocente careca
+  img_mau_0: 310
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 1500
+  hp_max: 1500
+  mp: 500
+  mp_max: 500
+  lvl: 5
+  atk: 10
+  def: 35
+  agl: 10
+  res: 1
+  pre: 1
+  dex: 5
+  con: 1
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Arrastão
+      nome_mau_1: Explosão
+      nome_bom_0: Arrastão
+      nome_mau_0: Arrastão
+      dano: 5
+      consumo: 3
+      area: 3
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Soco
+      nome_mau_1: Soco
+      nome_bom_0: Soco
+      nome_mau_0: Soco
+      dano: 10
+      consumo: 3
+      area: 1
+      espera: 0
+8:
+  nome_bom_1: Atirador prodígio
+  img_bom_1: 23
+  skin_bom_1: 12
+
+  nome_mau_1: Mula com carga
+  img_mau_1: 335
+  skin_mau_1: 0
+
+  nome_bom_0: Atirador prodígio
+  img_bom_0: 23
+  skin_bom_0: 12
+
+  nome_mau_0: Cidadão inocente loiro
+  img_mau_0: 309
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 900
+  hp_max: 900
+  mp: 500
+  mp_max: 500
+  lvl: 5
+  atk: 10
+  def: 15
+  agl: 5
+  res: 1
+  pre: 1
+  dex: 5
+  con: 1
+  haki_esq: 0
+  haki_cri: 0
+  classe: 3
+  classe_score: 1100
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Disparo estraçalhado
+      nome_mau_1: Coice em área
+      nome_bom_0: Disparo estraçalhado
+      nome_mau_0: Arrastão
+      dano: 5
+      consumo: 3
+      area: 3
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Tiro preciso
+      nome_mau_1: Coice
+      nome_bom_0: Tiro preciso
+      nome_mau_0: Soco
+      dano: 10
+      consumo: 3
+      area: 1
+      espera: 0
+9:
+  nome_bom_1: Assassino contumaz
+  img_bom_1: 302
+  skin_bom_1: 0
+
+  nome_mau_1: Viajante perdido
+  img_mau_1: 306
+  skin_mau_1: 0
+
+  nome_bom_0: Assassino contumaz
+  img_bom_0: 302
+  skin_bom_0: 0
+
+  nome_mau_0: Cidadão inocente
+  img_mau_0: 336
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 2500
+  hp_max: 2500
+  mp: 500
+  mp_max: 500
+  lvl: 5
+  atk: 30
+  def: 10
+  agl: 5
+  res: 20
+  pre: 1
+  dex: 5
+  con: 10
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Bomba de fumaça
+      nome_mau_1: Esplosão
+      nome_bom_0: Bomba de fumaça
+      nome_mau_0: Arrastão
+      dano: 5
+      consumo: 3
+      area: 3
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Bomba de fumaça
+      nome_mau_1: Esplosão
+      nome_bom_0: Bomba de fumaça
+      nome_mau_0: Soco
+      dano: 30
+      consumo: 3
+      area: 1
+      espera: 0
+10:
+  nome_bom_1: Espadachim violento
+  img_bom_1: 338
+  skin_bom_1: 0
+
+  nome_mau_1: Marinheiro de renome
+  img_mau_1: 301
+  skin_mau_1: 0
+
+  nome_bom_0: Espadachim violento
+  img_bom_0: 338
+  skin_bom_0: 0
+
+  nome_mau_0: Cidadão inocente
+  img_mau_0: 336
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 4000
+  hp_max: 4000
+  mp: 500
+  mp_max: 500
+  lvl: 8
+  atk: 30
+  def: 10
+  agl: 15
+  res: 20
+  pre: 15
+  dex: 10
+  con: 10
+  haki_esq: 0
+  haki_cri: 0
+  classe: 1
+  classe_score: 1500
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Corte diagonal
+      nome_mau_1: Corte diagonal
+      nome_bom_0: Corte diagonal
+      nome_mau_0: Corte diagonal
+      dano: 25
+      consumo: 3
+      area: 1
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Corte Veloz
+      nome_mau_1: Corte Veloz
+      nome_bom_0: Corte Veloz
+      nome_mau_0: Corte Veloz
+      dano: 30
+      consumo: 3
+      area: 1
+      espera: 0
+11:
+  nome_bom_1: Viajante trapaceiro
+  img_bom_1: 328
+  skin_bom_1: 0
+
+  nome_mau_1: Marinheiro famoso
+  img_mau_1: 281
+  skin_mau_1: 0
+
+  nome_bom_0: Viajante trapaceiro
+  img_bom_0: 328
+  skin_bom_0: 0
+
+  nome_mau_0: Viajante perdido
+  img_mau_0: 308
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 4500
+  hp_max: 4500
+  mp: 500
+  mp_max: 500
+  lvl: 10
+  atk: 30
+  def: 10
+  agl: 25
+  res: 20
+  pre: 15
+  dex: 15
+  con: 10
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Trapaça em área
+      nome_mau_1: Investida avassaladora
+      nome_bom_0: Trapaça em área
+      nome_mau_0: Furacão de chutes
+      dano: 10
+      consumo: 3
+      area: 4
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Sossega leão
+      nome_mau_1: Golpe cruel
+      nome_bom_0: Sossega leão
+      nome_mau_0: Sossega leão
+      dano: 30
+      consumo: 3
+      area: 1
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Trapaça em área moderada
+      nome_mau_1: Investida destruidora
+      nome_bom_0: Trapaça em área moderada
+      nome_mau_0: tornado de chutes
+      dano: 15
+      consumo: 3
+      area: 3
+      espera: 0
+12:
+  nome_bom_1: Bandido procurado
+  img_bom_1: 296
+  skin_bom_1: 0
+
+  nome_mau_1: Tenente da marinha
+  img_mau_1: 346
+  skin_mau_1: 3
+
+  nome_bom_0: Bandido procurado
+  img_bom_0: 296
+  skin_bom_0: 0
+
+  nome_mau_0: Pirata aventureiro
+  img_mau_0: 307
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 4500
+  hp_max: 4500
+  mp: 500
+  mp_max: 500
+  lvl: 14
+  atk: 55
+  def: 15
+  agl: 25
+  res: 20
+  pre: 15
+  dex: 35
+  con: 10
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Golpe destruidor
+      nome_mau_1: Golpe destruidor
+      nome_bom_0: Golpe destruidor
+      nome_mau_0: Golpe destruidor
+      dano: 30
+      consumo: 3
+      area: 1
+      espera: 0
+13:
+  nome_bom_1: Bandido traiçoeiro
+  img_bom_1: 327
+  skin_bom_1: 0
+
+  nome_mau_1: Capitão da marinha
+  img_mau_1: 74
+  skin_mau_1: 0
+
+  nome_bom_0: Bandido traiçoeiro
+  img_bom_0: 327
+  skin_bom_0: 0
+
+  nome_mau_0: Pirata muito aventureiro
+  img_mau_0: 306
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 4500
+  hp_max: 4500
+  mp: 500
+  mp_max: 500
+  lvl: 15
+  atk: 55
+  def: 15
+  agl: 25
+  res: 20
+  pre: 15
+  dex: 35
+  con: 10
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Golpe destruidor
+      nome_mau_1: Golpe destruidor
+      nome_bom_0: Golpe destruidor
+      nome_mau_0: Golpe destruidor
+      dano: 30
+      consumo: 3
+      area: 2
+      espera: 0
+14:
+  nome_bom_1: Pirata trapaceiro
+  img_bom_1: 344
+  skin_bom_1: 0
+
+  nome_mau_1: Marinheiro
+  img_mau_1: 301
+  skin_mau_1: 0
+
+  nome_bom_0: Pirata trapaceiro
+  img_bom_0: 344
+  skin_bom_0: 0
+
+  nome_mau_0: Civil
+  img_mau_0: 217
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 3900
+  hp_max: 3900
+  mp: 500
+  mp_max: 500
+  lvl: 15
+  atk: 35
+  def: 15
+  agl: 25
+  res: 20
+  pre: 15
+  dex: 35
+  con: 10
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Dedo no olho
+      nome_mau_1: Soco
+      nome_bom_0: Dedo no olho
+      nome_mau_0: Soco
+      dano: 20
+      consumo: 3
+      area: 1
+      espera: 0
+15:
+  nome_bom_1: Bandido traiçoeiro
+  img_bom_1: 245
+  skin_bom_1: 0
+
+  nome_mau_1: Marinheiro
+  img_mau_1: 301
+  skin_mau_1: 0
+
+  nome_bom_0: Bandido traiçoeiro
+  img_bom_0: 245
+  skin_bom_0: 0
+
+  nome_mau_0: Civil
+  img_mau_0: 336
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 3200
+  hp_max: 3200
+  mp: 500
+  mp_max: 500
+  lvl: 15
+  atk: 25
+  def: 1
+  agl: 15
+  res: 10
+  pre: 15
+  dex: 15
+  con: 10
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Soco no nariz
+      nome_mau_1: Soco
+      nome_bom_0: Soco no nariz
+      nome_mau_0: Soco
+      dano: 20
+      consumo: 3
+      area: 1
+      espera: 0
+16:
+  nome_bom_1: Ladrão sorrateiro
+  img_bom_1: 333
+  skin_bom_1: 0
+
+  nome_mau_1: Marinheiro
+  img_mau_1: 299
+  skin_mau_1: 0
+
+  nome_bom_0: Ladrão sorrateiro
+  img_bom_0: 333
+  skin_bom_0: 0
+
+  nome_mau_0: Civil
+  img_mau_0: 336
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 2900
+  hp_max: 2900
+  mp: 500
+  mp_max: 500
+  lvl: 5
+  atk: 15
+  def: 1
+  agl: 15
+  res: 10
+  pre: 15
+  dex: 15
+  con: 10
+  haki_esq: 0
+  haki_cri: 0
+  classe: 0
+  classe_score: 1000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Soco na gartanta
+      nome_mau_1: Soco
+      nome_bom_0: Soco na gartanta
+      nome_mau_0: Soco
+      dano: 20
+      consumo: 3
+      area: 1
+      espera: 0
+17:
+  nome_bom_1: Espadachim Poderoso
+  img_bom_1: 3
+  skin_bom_1: 2
+
+  nome_mau_1: Marinheiro
+  img_mau_1: 300
+  skin_mau_1: 0
+
+  nome_bom_0: Pirata Infame
+  img_bom_0: 314
+  skin_bom_0: 0
+
+  nome_mau_0: Civil
+  img_mau_0: 199
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 4000
+  hp_max: 4000
+  mp: 500
+  mp_max: 500
+  lvl: 20
+  atk: 15
+  def: 1
+  agl: 15
+  res: 10
+  pre: 15
+  dex: 15
+  con: 10
+  haki_esq: 0
+  haki_cri: 15
+  classe: 1
+  classe_score: 2000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Corte mortal
+      nome_mau_1: Soco
+      nome_bom_0: Soco na gartanta
+      nome_mau_0: Soco
+      dano: 20
+      consumo: 3
+      area: 1
+      espera: 0
+18:
+  nome_bom_1: Lutador Infame
+  img_bom_1: 186
+  skin_bom_1: 9
+
+  nome_mau_1: Marinheiro
+  img_mau_1: 299
+  skin_mau_1: 0
+
+  nome_bom_0: Pirata Procurado
+  img_bom_0: 313
+  skin_bom_0: 0
+
+  nome_mau_0: Civil
+  img_mau_0: 201
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 3500
+  hp_max: 3500
+  mp: 500
+  mp_max: 500
+  lvl: 20
+  atk: 15
+  def: 1
+  agl: 15
+  res: 10
+  pre: 15
+  dex: 15
+  con: 10
+  haki_esq: 15
+  haki_cri: 0
+  classe: 2
+  classe_score: 2000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Chute no pescoco
+      nome_mau_1: Soco
+      nome_bom_0: Soco na gartanta
+      nome_mau_0: Soco
+      dano: 20
+      consumo: 3
+      area: 1
+      espera: 0
+19:
+  nome_bom_1: Atirador Preciso
+  img_bom_1: 11
+  skin_bom_1: 0
+
+  nome_mau_1: Marinheiro
+  img_mau_1: 275
+  skin_mau_1: 0
+
+  nome_bom_0: Pirata Procurado
+  img_bom_0: 255
+  skin_bom_0: 0
+
+  nome_mau_0: Civil
+  img_mau_0: 200
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 4000
+  hp_max: 4000
+  mp: 500
+  mp_max: 500
+  lvl: 30
+  atk: 15
+  def: 1
+  agl: 15
+  res: 10
+  pre: 15
+  dex: 15
+  con: 10
+  haki_esq: 7
+  haki_cri: 7
+  classe: 3
+  classe_score: 2000
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Tiro de longo alcance
+      nome_mau_1: Soco
+      nome_bom_0: Soco na gartanta
+      nome_mau_0: Soco
+      dano: 20
+      consumo: 3
+      area: 1
+      espera: 0
+20:
+  nome_bom_1: Espadachim do Novo Mundo
+  img_bom_1: 19
+  skin_bom_1: 0
+
+  nome_mau_1: Espadachim do Novo Mundo
+  img_mau_1: 19
+  skin_mau_1: 0
+
+  nome_bom_0: Espadachim do Novo Mundo
+  img_bom_0: 19
+  skin_bom_0: 0
+
+  nome_mau_0: Espadachim do Novo Mundo
+  img_mau_0: 19
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 4000
+  hp_max: 4000
+  mp: 500
+  mp_max: 500
+  lvl: 50
+  atk: 150
+  def: 1
+  agl: 1
+  res: 50
+  pre: 50
+  dex: 50
+  con: 1
+  haki_esq: 0
+  haki_cri: 20
+  classe: 1
+  classe_score: 6500
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Corte Imperial
+      nome_mau_1: Corte Imperial
+      nome_bom_0: Corte Imperial
+      nome_mau_0: Corte Imperial
+      dano: 70
+      consumo: 3
+      area: 1
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Furação Navalha
+      nome_mau_1: Furação Navalha
+      nome_bom_0: Furação Navalha
+      nome_mau_0: Furação Navalha
+      dano: 40
+      consumo: 3
+      area: 3
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Corte Duplo
+      nome_mau_1: Corte Duplo
+      nome_bom_0: Corte Duplo
+      nome_mau_0: Corte Duplo
+      dano: 50
+      consumo: 3
+      area: 2
+      espera: 0
+21:
+  nome_bom_1: Lutador do Novo Mundo
+  img_bom_1: 227
+  skin_bom_1: 3
+
+  nome_mau_1: Lutador do Novo Mundo
+  img_mau_1: 227
+  skin_mau_1: 3
+
+  nome_bom_0: Lutador do Novo Mundo
+  img_bom_0: 227
+  skin_bom_0: 3
+
+  nome_mau_0: Lutador do Novo Mundo
+  img_mau_0: 227
+  skin_mau_0: 3
+
+  cod: 1
+  hp: 4000
+  hp_max: 4000
+  mp: 500
+  mp_max: 500
+  lvl: 50
+  atk: 100
+  def: 50
+  agl: 50
+  res: 1
+  pre: 50
+  dex: 50
+  con: 1
+  haki_esq: 20
+  haki_cri: 0
+  classe: 2
+  classe_score: 6500
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Golpe com a força do sol
+      nome_mau_1: Golpe com a força do sol
+      nome_bom_0: Golpe com a força do sol
+      nome_mau_0: Golpe com a força do sol
+      dano: 70
+      consumo: 3
+      area: 1
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Investida Imperial
+      nome_mau_1: Investida Imperial
+      nome_bom_0: Investida Imperial
+      nome_mau_0: Investida Imperial
+      dano: 40
+      consumo: 3
+      area: 3
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Avanço sinérgico
+      nome_mau_1: Avanço sinérgico
+      nome_bom_0: Avanço sinérgico
+      nome_mau_0: Avanço sinérgico
+      dano: 50
+      consumo: 3
+      area: 2
+      espera: 0
+22:
+  nome_bom_1: Atirador do Novo Mundo
+  img_bom_1: 104
+  skin_bom_1: 0
+
+  nome_mau_1: Atirador do Novo Mundo
+  img_mau_1: 104
+  skin_mau_1: 0
+
+  nome_bom_0: Atirador do Novo Mundo
+  img_bom_0: 104
+  skin_bom_0: 0
+
+  nome_mau_0: Atirador do Novo Mundo
+  img_mau_0: 104
+  skin_mau_0: 0
+
+  cod: 1
+  hp: 4000
+  hp_max: 4000
+  mp: 500
+  mp_max: 500
+  lvl: 50
+  atk: 100
+  def: 1
+  agl: 25
+  res: 25
+  pre: 100
+  dex: 50
+  con: 1
+  haki_esq: 10
+  haki_cri: 10
+  classe: 3
+  classe_score: 6500
+  akuma: 0
+  habilidades:
+    - tipo: 1
+      nome_bom_1: Tiro certeiro
+      nome_mau_1: Tiro certeiro
+      nome_bom_0: Tiro certeiro
+      nome_mau_0: Tiro certeiro
+      dano: 70
+      consumo: 3
+      area: 1
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Estilhaços
+      nome_mau_1: Estilhaços
+      nome_bom_0: Estilhaços
+      nome_mau_0: Estilhaços
+      dano: 40
+      consumo: 3
+      area: 3
+      espera: 0
+    - tipo: 1
+      nome_bom_1: Tiro Duplo
+      nome_mau_1: Tiro Duplo
+      nome_bom_0: Tiro Duplo
+      nome_mau_0: Tiro Duplo
+      dano: 50
+      consumo: 3
+      area: 2
+      espera: 0

@@ -1,0 +1,199 @@
+1:
+  akuma: 1
+  preco: 10
+2:
+  fa: 80000
+  preco: 1
+3:
+  xp: 5000
+  preco: 1
+9:
+  tipo_item: 15
+  cod_item: 51
+  quant: 50
+  preco: 10
+10:
+  tipo_item: 15
+  cod_item: 75
+  quant: 50
+  preco: 10
+11:
+  haki: 5000
+  preco: 3
+12:
+  alcunha: 111
+  preco: 7
+13:
+  alcunha: 112
+  preco: 7
+14:
+  alcunha: 113
+  preco: 7
+15:
+  alcunha: 114
+  preco: 7
+16:
+  alcunha: 115
+  preco: 7
+19:
+  skin: 16
+  img: 3
+  preco: 15
+20:
+  skin: 4
+  img: 10
+  preco: 15
+21:
+  skin: 13
+  img: 6
+  preco: 15
+22:
+  skin: 10
+  img: 8
+  preco: 15
+23:
+  skin: 11
+  img: 5
+  preco: 15
+24:
+  skin: 11
+  img: 7
+  preco: 15
+25:
+  skin: 10
+  img: 4
+  preco: 15
+26:
+  skin: 6
+  img: 9
+  preco: 15
+26:
+  skin: 16
+  img: 2
+  preco: 15
+27:
+  effect: Golpe especial 1
+  preco: 1
+28:
+  effect: Golpe especial 2
+  preco: 1
+29:
+  effect: Slash especial 1
+  preco: 1
+30:
+  effect: Slash especial 2
+  preco: 1
+31:
+  effect: Slash especial 3
+  preco: 1
+32:
+  effect: Perfuração especial 1
+  preco: 1
+33:
+  effect: Perfuração especial 2
+  preco: 1
+34:
+  effect: Garra especial
+  preco: 1
+35:
+  effect: Seta especial
+  preco: 1
+36:
+  effect: Especial físico 1
+  preco: 1
+37:
+  effect: Especial físico 2
+  preco: 1
+38:
+  effect: Bafo de fogo
+  preco: 1
+39:
+  effect: Pólen
+  preco: 1
+40:
+  effect: Onda sônica
+  preco: 1
+41:
+  effect: Canção
+  preco: 1
+42:
+  effect: Grito
+  preco: 1
+43:
+  effect: Varredura
+  preco: 1
+44:
+  effect: Bodyslam
+  preco: 1
+45:
+  effect: Flash
+  preco: 1
+46:
+  effect: Venenoso
+  preco: 1
+47:
+  effect: Blind
+  preco: 1
+48:
+  effect: Morte
+  preco: 1
+49:
+  effect: Incendiar 1
+  preco: 1
+51:
+  effect: Incendiar 2
+  preco: 1
+52:
+  effect: Incendiar tudo 1
+  preco: 1
+53:
+  effect: Incendiar tudo 2
+  preco: 1
+54:
+  effect: Gelar 1
+  preco: 1
+55:
+  effect: Gelar 2
+  preco: 1
+56:
+  effect: Gelar todos 1
+  preco: 1
+57:
+  effect: Trovejar 1
+  preco: 1
+58:
+  effect: Trovejar 2
+  preco: 1
+59:
+  effect: Trovejar todos 1
+  preco: 1
+60:
+  effect: Trovejar todos 2
+  preco: 1
+61:
+  effect: Escuridão 1
+  preco: 1
+62:
+  effect: Escuridão 2
+  preco: 1
+63:
+  effect: Escuridão 3
+  preco: 1
+64:
+  effect: Escuridão 4
+  preco: 1
+65:
+  effect: Escuridão 5
+  preco: 1
+66:
+  effect: Disparo normal
+  preco: 1
+67:
+  effect: Disparo de barragem
+  preco: 1
+68:
+  effect: Disparar tudo
+  preco: 1
+69:
+  effect: Disparo especial
+  preco: 1

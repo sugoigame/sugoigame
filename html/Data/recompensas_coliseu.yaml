@@ -1,0 +1,1005 @@
+0:
+  minimo: 500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+1:
+  minimo: 1000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+2:
+  minimo: 1500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+3:
+  minimo: 2000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+4:
+  minimo: 2500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+5:
+  minimo: 3000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+6:
+  minimo: 3500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+7:
+  minimo: 4000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+8:
+  minimo: 4500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+9:
+  minimo: 5000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+10:
+  minimo: 5500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+11:
+  minimo: 6000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+12:
+  minimo: 6500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+13:
+  minimo: 7000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+14:
+  minimo: 7500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+15:
+  minimo: 8000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+16:
+  minimo: 8500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+17:
+  minimo: 9000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+18:
+  minimo: 9500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+19:
+  minimo: 10000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+20:
+  minimo: 10500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+21:
+  minimo: 11000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+22:
+  minimo: 11500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+23:
+  minimo: 12000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+24:
+  minimo: 12500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+25:
+  minimo: 13000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+26:
+  minimo: 13500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+27:
+  minimo: 14000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+28:
+  minimo: 14500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+29:
+  minimo: 15000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+30:
+  minimo: 15500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+31:
+  minimo: 16000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+32:
+  minimo: 16500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+33:
+  minimo: 17000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+34:
+  minimo: 17500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+35:
+  minimo: 18000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+36:
+  minimo: 18500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+37:
+  minimo: 19000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+38:
+  minimo: 19500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+39:
+  minimo: 20000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+40:
+  minimo: 20500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+41:
+  minimo: 21000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+42:
+  minimo: 21500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+43:
+  minimo: 22000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+44:
+  minimo: 22500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+45:
+  minimo: 23000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+46:
+  minimo: 23500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+47:
+  minimo: 24000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+48:
+  minimo: 24500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+49:
+  minimo: 25000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+50:
+  minimo: 25500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+51:
+  minimo: 26000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+52:
+  minimo: 26500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+53:
+  minimo: 27000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+54:
+  minimo: 27500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+55:
+  minimo: 28000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+56:
+  minimo: 28500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+57:
+  minimo: 29000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+58:
+  minimo: 29500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+59:
+  minimo: 30000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+60:
+  minimo: 30500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+61:
+  minimo: 31000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+62:
+  minimo: 31500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+63:
+  minimo: 32000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+64:
+  minimo: 32500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+65:
+  minimo: 33000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+66:
+  minimo: 33500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+67:
+  minimo: 34000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+68:
+  minimo: 34500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+69:
+  minimo: 35000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+70:
+  minimo: 35500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+71:
+  minimo: 36000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+72:
+  minimo: 36500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+73:
+  minimo: 37000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+74:
+  minimo: 37500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+75:
+  minimo: 38000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+76:
+  minimo: 38500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+77:
+  minimo: 39000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+78:
+  minimo: 39500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+79:
+  minimo: 40000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+80:
+  minimo: 40500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+81:
+  minimo: 41000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+82:
+  minimo: 41500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+83:
+  minimo: 42000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+84:
+  minimo: 42500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+85:
+  minimo: 43000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+86:
+  minimo: 43500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+87:
+  minimo: 44000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+88:
+  minimo: 44500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+89:
+  minimo: 45000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+90:
+  minimo: 45500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+91:
+  minimo: 46000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+92:
+  minimo: 46500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+93:
+  minimo: 47000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+94:
+  minimo: 47500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+95:
+  minimo: 48000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+96:
+  minimo: 48500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+97:
+  minimo: 49000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+98:
+  minimo: 49500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+99:
+  minimo: 50000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+100:
+  minimo: 50500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+101:
+  minimo: 51000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+102:
+  minimo: 51500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+103:
+  minimo: 52000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+104:
+  minimo: 52500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+105:
+  minimo: 53000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+106:
+  minimo: 53500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+107:
+  minimo: 54000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+108:
+  minimo: 54500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+109:
+  minimo: 55000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+110:
+  minimo: 55500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+111:
+  minimo: 56000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+112:
+  minimo: 56500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+113:
+  minimo: 57000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+114:
+  minimo: 57500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+115:
+  minimo: 58000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+116:
+  minimo: 58500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+117:
+  minimo: 59000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+118:
+  minimo: 59500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+119:
+  minimo: 60000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+120:
+  minimo: 60500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+121:
+  minimo: 61000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+122:
+  minimo: 61500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+123:
+  minimo: 62000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+124:
+  minimo: 62500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+125:
+  minimo: 63000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+126:
+  minimo: 63500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+127:
+  minimo: 64000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+128:
+  minimo: 64500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+129:
+  minimo: 65000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+130:
+  minimo: 65500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+131:
+  minimo: 66000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+132:
+  minimo: 66500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+133:
+  minimo: 67000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+134:
+  minimo: 67500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+135:
+  minimo: 68000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+136:
+  minimo: 68500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+137:
+  minimo: 69000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+138:
+  minimo: 69500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+139:
+  minimo: 70000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+140:
+  minimo: 70500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+141:
+  minimo: 71000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+142:
+  minimo: 71500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+143:
+  minimo: 72000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+144:
+  minimo: 72500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+145:
+  minimo: 73000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+146:
+  minimo: 73500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+147:
+  minimo: 74000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+148:
+  minimo: 74500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+149:
+  minimo: 75000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+150:
+  minimo: 75500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+151:
+  minimo: 76000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+152:
+  minimo: 76500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+153:
+  minimo: 77000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+154:
+  minimo: 77500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+155:
+  minimo: 78000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+156:
+  minimo: 78500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+157:
+  minimo: 79000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+158:
+  minimo: 79500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+159:
+  minimo: 80000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+160:
+  minimo: 80500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+161:
+  minimo: 81000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+162:
+  minimo: 81500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+163:
+  minimo: 82000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+164:
+  minimo: 82500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+165:
+  minimo: 83000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+166:
+  minimo: 83500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+167:
+  minimo: 84000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+168:
+  minimo: 84500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+169:
+  minimo: 85000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+170:
+  minimo: 85500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+171:
+  minimo: 86000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+172:
+  minimo: 86500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+173:
+  minimo: 87000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+174:
+  minimo: 87500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+175:
+  minimo: 88000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+176:
+  minimo: 88500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+177:
+  minimo: 89000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+178:
+  minimo: 89500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+179:
+  minimo: 90000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+180:
+  minimo: 90500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+181:
+  minimo: 91000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+182:
+  minimo: 91500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+183:
+  minimo: 92000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+184:
+  minimo: 92500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+185:
+  minimo: 93000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+186:
+  minimo: 93500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+187:
+  minimo: 94000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+188:
+  minimo: 94500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+189:
+  minimo: 95000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+190:
+  minimo: 95500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+191:
+  minimo: 96000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+192:
+  minimo: 96500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+193:
+  minimo: 97000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+194:
+  minimo: 97500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+195:
+  minimo: 98000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+196:
+  minimo: 98500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+197:
+  minimo: 99000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+198:
+  minimo: 99500
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+199:
+  minimo: 100000
+  tipo: reagent
+  cod_item: 191
+  quant: 1
+
+
+
+
+

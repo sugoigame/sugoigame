@@ -1,0 +1,133 @@
+# Logia
+8:
+  - nome: Ame Ame no Mi
+    descricao: Permite ao usuário criar, controlar e se transformar em melaço
+  - nome: Basa Basa no Mi
+    descricao: Permite ao usuário criar, controlar e se transformar em pedaços de papel
+  - nome: Goro Goro no Mi
+    descricao: Permite ao usuário criar e se transformar em raio.
+  - nome: Hie Hie no Mi
+    descricao: Permite ao usuário transformar a si mesmo ou as coisas ao redor em gelo
+  - nome: Mera Mera no Mi
+    descricao: Permite ao usuário criar, controlar e se transformar em fogo.
+  - nome: Moku Moku no Mi
+    descricao: Permite ao usuário transformar seu corpo em fumaça e controlá-la.
+  - nome: Pika Pika no Mi
+    descricao: Permite ao usuário produzir ou se tornar luz
+  - nome: Suna Suna no Mi
+    descricao: Permite ao usuário transformar seu corpo em areia e controlá-la.
+  - nome: Toro Toro no Mi
+    descricao: Permite ao usuário se transformar em uma substância líquida, mas não é água
+  - nome: Yami Yami no Mi
+    descricao: Permite ao usuário controlar a escuridão e a gravidade
+# Paramecia
+9:
+  - nome: Gomu Gomu no Mi
+    descricao: Permite ao usuário ter um corpo de borracha.
+  - nome: Bara Bara no Mi
+    descricao: O usuário pode dividir todo o seu corpo, tirar braços, pernas, cabeça etc.
+  - nome: Sube Sube no Mi
+    descricao: Permite ao usuário adquirir um corpo escorregadio
+  - nome: Bomu Bomu no Mi
+    descricao: Permite ao usuário explodir partes do seu corpo inclusive cabelo, meleca do nariz e bafo
+  - nome: Kilo Kilo no Mi
+    descricao: Permite ao usuário alterar seu peso desde 1 a 10.000 kg
+  - nome: Doru Doru no Mi
+    descricao: Permite ao usuário produzir cera do seu corpo e moldá-la em qualquer forma que quiser.
+  - nome: Baku Baku no Mi
+    descricao: Permite ao usuário expandir sua boca em grandes proporções, mastigar e comer qualquer coisa, desde madeira até os mais fortes metais.
+  - nome: Mane Mane no Mi
+    descricao: Permite ao usuário se transformar em alguém que ele tocou
+  - nome: Supa Supa no Mi
+    descricao: Permite ao usuário adquirir um corpo composto completamente de aço e transformar qualquer parte do mesmo em lâminas de aço para atacar
+  - nome: Toge Toge no Mi
+    descricao: Permite ao usuário brotar espinhos de qualquer parte do seu corpo que podem atravessar paredes de pedra.
+  - nome: Hana Hana no Mi
+    descricao: Permite ao usuário brotar réplicas de partes do seu corpo em qualquer superfície de objeto ou coisa viva, inclusive em si mesmo.
+  - nome: Ori Ori no Mi
+    descricao: Permite ao usuário colocar algemas de ferro em seus inimigos
+  - nome: Bane Bane no Mi
+    descricao: Permite ao usuário transformar suas pernas em molas.
+  - nome: Noro Noro no Mi
+    descricao: Permite ao usuário lançar raios de Noroma Fótons que diminui a velocidade de qualquer coisa
+  - nome: Doa Doa no Mi
+    descricao: Permite ao usuário criar porta em qualquer superfície, inclusive no seu próprio corpo e no ar.
+  - nome: Kachi Kachi no Mi
+    descricao: Permite ao usuário ter um corpo duro como pedra e aumentar a temperatura corporal
+  - nome: Kama Kama no Mi
+    descricao: Permite ao usuário lançar lâminas de vento com apenas 2 dedos
+  - nome: Goe Goe no Mi
+    descricao: Permite ao usuário lançar raios sonoros da boca
+  - nome: Hiso Hiso no Mi
+    descricao: Permite ao usuário entender o coração de um animal, em outras palavras, permite falar com animais.
+  - nome: Nemu Nemu no Mi
+    descricao: Permite ao usuário adormecer qualquer pessoa em um estado de sono profundo
+  - nome: Awa Awa no Mi
+    descricao: Permite ao usuário emitir e controlar bolhas de sabão que não só limpam sujeira, mas também "limpam" poder
+  - nome: Atsu Atsu no Mi
+    descricao: Permite ao usuário produzir e controlar grandes quantidades de calor, podendo até acordar vulcões nos arredores.
+  - nome: Beri Beri no Mi
+    descricao: Permite ao usuário transformar partes do seu corpo em grandes quantidades de esferas parecidas com pedaços de grãos
+  - nome: Choki Choki no Mi
+    descricao: Permite ao usuário transformar os dedos e mãos em tesouras que cortam qualquer material como se fosse papel
+  - nome: Doku Doku no Mi
+    descricao: Permite ao usuário produzir e controlar veneno, além de conceder imunidade ao mesmo
+  - nome: Fuwa Fuwa no Mi
+    descricao: Permite ao usuário tornar objetos e o próprio corpo leves e controlá-los
+  - nome: Gouma Gouma no Mi
+    descricao: Permite ao usuário transformar-se num espantalho gigante e posteriormente dando-lhe a capacidade de transferir os danos que recebe para outras pessoas através de bonecos voodoo.
+  - nome: Gura Gura no Mi
+    descricao: Permite ao usuário criar ondas de choque com força suficiente para criar um terremoto
+  - nome: Horo Horo no Mi
+    descricao: Permite ao usuário produzir e controlar réplicas espectrais que podem vir em diferentes formas, basicamente em Fantasmas Negativos
+  - nome: Horu Horu no Mi
+    descricao: Permite ao usuário criar e controlar hormônios especiais que podem afetar qualquer um
+  - nome: Kage Kage no Mi
+    descricao: Permite ao usuário manifestar e controlar sombras em uma forma física, podendo alterar a forma ou o tamanho, colocar uma sombra em um cadáver sem vida para criar um zombie e trocar de lugar com uma para evitar ataques físicos
+  - nome: Mini Mini no Mi
+    descricao: Permite o usuário se tornar muito pequeno comparado ao tamanho normal.
+  - nome: Nikyu Nikyu no Mi
+    descricao: Permite ao usuário refletir praticamente qualquer coisa que toca, desde materiais tangíveis, como pessoas ou objetos
+  - nome: Noko Noko no Mi
+    descricao: Permite ao usuário criar e controlar esporos venenosos de cogumelos do seu corpo.
+  - nome: Sabi Sabi no Mi
+    descricao: Permite ao usuário enferrujar objetos metálicos e quebrá-los
+  - nome: Shari Shari no Mi
+    descricao: Permite ao usuário transformar seus braços e pés em rodas, girando-os em alta velocidade
+  - nome: Suke Suke no Mi
+    descricao: Permite ao usuário tornar a si mesmo ou qualquer coisa que toca invisível
+  - nome: Yomi Yomi no Mi
+    descricao: Permite ao usuário voltar à vida depois de morto até que o mesmo sofra uma segunda morte.
+# Zoan
+10:
+  - nome: Ushi Ushi no Mi Modelo Girafa
+    descricao: Permite se transformar em uma girafa
+  - nome: Ushi Ushi no Mi Modelo Bisão
+    descricao: Permite se transformar em um bisão
+  - nome: Hito Hito no Mi
+    descricao: Permite ao usuário se transformar em um humano.
+  - nome: Inu Inu no Mi Modelo Bassê
+    descricao: Permite se transformar em um bassê
+  - nome: Inu Inu no Mi Modelo Chacal
+    descricao: Permite se transformar em um chacal
+  - nome: Inu Inu no Mi Modelo Lobo
+    descricao: Permite se transformar em um lobo
+  - nome: Mogu Mogu no Mi
+    descricao: Permite se transformar em uma toupeira
+  - nome: Tori Tori no Mi Modelo Falcão
+    descricao: Permite se transformar em um falcão
+  - nome: Uma Uma no Mi
+    descricao: Permite se transformar em um cavalo
+  - nome: Neko Neko no Mi Modelo Guepardo
+    descricao: Permite se transformar em um guepardo
+  - nome: Neko Neko no Mi Modelo Leopardo
+    descricao: Permite se transformar em um leopardo
+  - nome: Zou Zou no Mi
+    descricao: Permite se transformar em um elefante
+  - nome: Hebi Hebi no Mi Modelo Anaconda
+    descricao: Permite se transformar em uma anaconda
+  - nome: Hebi Hebi no Mi Modelo Naja-Rei
+    descricao: Permite se transformar em uma naja-rei
+  - nome: Tori Tori no Mi Modelo Fênix
+    descricao: Permite se transformar em uma fênix
+
