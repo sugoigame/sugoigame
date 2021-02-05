@@ -135,6 +135,7 @@ jobs:
         --ignore-table=${{ secrets.DB_NAME }}.tb_personagem_titulo \
         --ignore-table=${{ secrets.DB_NAME }}.tb_personagens \
         --ignore-table=${{ secrets.DB_NAME }}.tb_personagens_skil \
+        --ignore-table=${{ secrets.DB_NAME }}.tb_pve \
         --ignore-table=${{ secrets.DB_NAME }}.tb_pvp_imune \
         --ignore-table=${{ secrets.DB_NAME }}.tb_ranking_fa \
         --ignore-table=${{ secrets.DB_NAME }}.tb_ranking_fugas \
