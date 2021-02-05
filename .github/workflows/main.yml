@@ -22,4 +22,4 @@ jobs:
             cd /var/www
             git status
             git reset --hard
-            git pull upstream master
+            git pull upstream prod
