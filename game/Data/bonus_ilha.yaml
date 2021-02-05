@@ -1,0 +1,60 @@
+1:
+  buff_id: 13
+  preco_0: 50
+  preco_1: 50
+  preco_2: 50
+  fa: 25000000
+2:
+  buff_id: 14
+  preco_0: 50
+  preco_1: 50
+  preco_2: 50
+  fa: 25000000
+3:
+  buff_id: 15
+  preco_0: 60
+  preco_1: 60
+  preco_2: 60
+  fa: 30000000
+4:
+  buff_id: 16
+  preco_0: 70
+  preco_1: 70
+  preco_2: 70
+  fa: 35000000
+5:
+  buff_id: 17
+  preco_0: 60
+  preco_1: 60
+  preco_2: 60
+  fa: 30000000
+6:
+  buff_id: 18
+  preco_0: 100
+  preco_1: 100
+  preco_2: 100
+  fa: 50000000
+7:
+  buff_id: 19
+  preco_0: 100
+  preco_1: 100
+  preco_2: 100
+  fa: 50000000
+8:
+  buff_id: 20
+  preco_0: 70
+  preco_1: 70
+  preco_2: 70
+  fa: 35000000
+9:
+  buff_id: 21
+  preco_0: 100
+  preco_1: 100
+  preco_2: 100
+  fa: 50000000
+10:
+  buff_id: 22
+  preco_0: 100
+  preco_1: 100
+  preco_2: 100
+  fa: 50000000

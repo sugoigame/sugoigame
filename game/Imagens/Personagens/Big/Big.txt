@@ -1,0 +1,368 @@
+0001-Gold D Roger
+0002-Monkey D Luffy
+0003-Roronoa Zoro
+0004-Usopp
+0005-Vinsmoke Sanji
+0006-Nami
+0007-Tony Tony Chopper
+0008-Nico Robin
+0009-Franky
+0010-Brook
+0011-Sogeking
+0012-Buggy (Bando do Buggy)
+0013-Portgas D Ace
+0014-Edward Newgate (Barba Branca)
+0015-Shanks
+0016-Arlong
+0017-Boa Hancock
+0018-Marshall D. Teach (Barba Negra)
+0019-Dracule Mihawk 
+0020-Gekko Moriah
+0021-Crocodile
+0022-Jinbei
+0023-Donquixote Doflamingo
+0024-Bartholomew Kuma
+0025-Dr Hogback
+0026-Kaku
+0027-Rob Lucci
+0028-Fukuro (Chapapa)
+0029-Kumadori
+0030-Kalifa
+0031-Jabra
+0032-Spandam
+0033-Blueno
+0034-Smoker
+0035-Tashigi
+0036-Coby
+0037-Helmeppo
+0038-Hina
+0039-Kuro
+0040-Jango
+0041-Bon Clay
+0042-Mr.5
+0043-Daz Bones (Mr.1)
+0044-Mr.3
+0045-Nefertari Vivi
+0046-Nefertari Cobra
+0047-Magellan
+0048-Ivankov
+0049-Iceberg
+0050-Paulie (Water 7)
+0051-Bellamy
+0052-Kizaru
+0053-Akainu
+0054-Aokiji
+0055-Holy (Skypiea)
+0056-Monkey D Garp
+0057-Silvers Rayleigh
+0058-Monkey D Dragon
+0059-Lucky Roo (Bando do Shanks)
+0060-Zeo (Ilha dos Tritões)
+0061-Alvida
+0062-Jaguar D Saul (Ohara)
+0063-Madame Shyarly (Ilha dos Tritões)
+0064-Caesar Clown
+0065-Montblanc Cricket (Jaya)
+0066-Igaram (Alabasta)
+0067-Miss Doublefinger
+0068-Doc Q (Bando do Barba Negra)
+0069-Yasopp (Bando do Shanks)
+0070-Johnny (Orange Town)
+0071-Tom (Water 7)
+0072-Absalon (Thriller Bark)
+0073-Chou-Chou (Romance Dawn)
+0074-Morgan (Romance Dawn)
+0075-Fukaboshi (Ilha dos Tritões)
+0076-Vander Decken (Ilha dos Tritões)
+0077-Calgara (Ilha do Céu)
+0078-Shiliew (Bando do Barba Negra)
+0079-Bellemere (Orange Town)
+0080-Catarina Devon (Bando do Barba Negra)
+0081-Mr.4 (Alabasta)
+0082-Demaro Black (Sabaody)
+0083-Don Krieg (Baratie)
+0084-X Drake
+0085-Trafalgar Law
+0086-Jewelry Bonney
+0087-Eustass Captain Kid
+0088-Enel
+0089-Foxy
+0090-Hannyabal (Impel Down)
+0091-Dr. Hiluluk
+0092-Hody Jones
+0093-Jesus Burgess (Bando do Barba Negra)
+0094-Jozu (Bando do Barba Branca)
+0095-Shiki (Filme)
+0096-Koshiro (Mestre do Zoro)
+0097-Dr. Kureha (Doctorine)
+0098-Laffite (Bando do Barba Negra)
+0099-Marco The Phoenix
+0100-hawguerite (Amazon Lily)
+0101-Montblanc Norland (Ilha do Céu)
+0102-Nico Olvia (Ohara)
+0103-Duval (Sabondy)
+0104-Ben Beckman (Bando do Shanks)
+0105-Fisher Tiger (Piratas do Sol)
+0106-Chef Zeff (Baratie)
+0107-Perona (Thriller Bark)
+0108-Ryuma (Thriller Bark)
+0109-Sengoku
+0110-Yokozuna (Water 7)
+0111-Van Auger (Bando do Barba Negra)
+0112-Vasco Shot (Bando do Barba Negra)
+0113-Wapol (Drum)
+0114-San Juan Wolf (Bando do Barba Negra)
+0115-Yosaku (Orange Town)
+0116-Hatchan (Piratas do Sol)
+0117-Domino (Impel Down)
+0118-Saldeath (Impel Down)
+0119-Inazuma (Impel Down)
+0120-Gin (Baratie)
+0121-Basil Hawkins (Sabaody)
+0122-Gen-san (Orange Town)
+0123-Killer (Sabaody)
+0124-Mohji (Bando do Buggy)
+0125-Gedatsu (Skypiea)
+0126-Ohm (Skypiea)
+0127-Satori (Skypiea)
+0128-Shura (Skypiea)
+0129-Gan Fall (Skypiea)
+0130-Conis (Skypiea)
+0131-Pagaya (Skypiea)
+0132-Yama (Skypiea)
+0133-Kamakiri (Skypiea)
+0134-Fuza (Skypiea)
+0135-The South Bird (Jaya)
+0136-Aisa (Skypiea)
+0137-Amazon (Skypiea)
+0138-McKinley (Skypiea)
+0139-Laki (Skypiea)
+0140-Pierre (Sypiea)
+0141-Su (Skypiea)
+0142-Wyper (Sypiea)
+0143-Richie (Bando do Buggy)
+0144-Crocus (Laboon)
+0145-Laboon
+0146-Vista (Bando do Barba Branca)
+0147-Shirahoshi
+0148-Olive (Impel Down)
+0149-Oars (Thriller Bark)
+0150-Neptune (Ilha dos Tritões)
+0151-Sentomaru (Sabaody)
+0152-Baskerville (Enies Lobby)
+0153-Heracles (Mestre de Ussop)
+0154-Kuroobi (Orange Town)
+0155-Little Oars Jr. (Bando do Barba Branca)
+0156-Victoria Cindry (Thriller Bark)
+0157-Gonbe (Water 7)
+0158-Itomimizu (Bando do Foxy)
+0159-Mozu Square (Water 7)
+0160-Genbo (Skypiea)
+0161-Nola (Skypiea)
+0162-Pell (Alabasta)
+0163-Carue (Alabasta)
+0164-Heredas (Mestre da Nami)
+0165-Blamenco (Bando do Barba Branca)
+0166-Nezumi (Orange Town)
+0167-Nero (Water 7)
+0168-Whitey Bay (Bando do Barba Branca)
+0169-Mr. 7 (Alabasta)
+0170-Chaka (Alabasta)
+0171-Miss Valentine (Alabasta)
+0172-Kuromarimo (Drum)
+0173-Hyouzou (Ilha dos Tritões)
+0174-Manboshi (Ilha dos Tritões)
+0175-Ryuboshi (Ilha dos Tritões)
+0176-Tonjit (Arco do Foxy)
+0177-Miss Golden Week (Alabasta)
+0178-Minorhinoceros (Impel Down)
+0179-Kohza (Alabasta)
+0180-Capone Bege
+0181-Miss Merry Christimas (Alabasta)
+0182-Minozebra (Impel Down)
+0183-Minotauros (Impel Down)
+0184-Minokoala (Impel Down)
+0185-Funkfreed (Water 7)
+0186-Sabo
+0187-Hammond (Ilha dos Tritões)
+0188-Megalo (Ilha dos Tritões)
+0189-Masira (Jaya)
+0190-Bepo (Bando do Law)
+0191-Nojiko (Orange Town)
+0192-Lola (Thriller Bark)
+0193-Lassoo (Alabasta)
+0194-Kumashi (Thriller Bark)
+0195-Boa Marigold (Amazon Lily)
+0196-Boa Sandersonia (Amazon Lily)
+0197-Boodle (Arco do Buggy)
+0198-Braham (Skypiea)
+0199-Kuina (Amiga do Zoro)
+0200-Kokoro (Water 7)
+0201-Gaimon (Baú)
+0202-Miss Fhater´s Days (Alabasta)
+0203-Kiwi Square (Water 7)
+0204-Kaya (Amiga do Usopp)
+0205-Laskey (Ohara)
+0206-Shoujou (Jaya)
+0207-Cabaji (Bando do Buggy)
+0208-Peepley Lulu (Water 7)
+0209-Chimney (Water 7)
+0210-Tilestone (Water 7)
+0211-Curly Dadan (Passado do Luffy)
+0212-Dalmatian (Marinha)
+0213-Jerry (Water 7)
+0214-Jean Bart (Bando do Law)
+0215-Thatch (Bando do Barba Branca)
+0216-Pearl (Baratie)
+0217-Ippon-Matsu (Vendedor de espadas)
+0218-Fullbody (Baratie)
+0219-Baby 5 (Dressrosa)
+0220-Bartolomeo (Dressrosa)
+0221-Cavendish (Dressrosa) 
+0222-Fujitora (Dressrosa)
+0223-Kinemon (Punk Hazard)
+0224-Koala (Revolucionários)
+0225-Monet (Punk Hazard)
+0226-Rebecca(Dressrosa)
+0227-Kyros (Dressrosa)
+0228-Sugar (Dressrosa)
+0229-Mr. 9 (Alabasta)
+0230-Caimie (Sabaody)
+0231-Abdullah (Dressrosa)
+0232-Acilia (Dressrosa)
+0233-Agyo (Dressrosa)
+0234-Blue Gilly (Dressrosa)
+0235-Bobby Kunk (Dressrosa)
+0236-Boo (Dressrosa)
+0237-Chinjao (Dressrosa)
+0238-Dagama (Dressrosa)
+0239-Elizabello II (Dressrosa)
+0240-Gambia (Dressrosa)
+0241-Gatz (Dressrosa) 
+0242-Hack (Dressrosa)
+0243-Hajrudin (Dressrosa)
+0244-Ideo (Dressrosa)
+0245-Jean Ango (Dressrosa)
+0246-Jeet (Dressrosa)
+0247-Kelly Funk (Dressrosa)
+0248-Rolling Logan (Dressrosa)
+0249-Maynard (Dressrosa)
+0250-Meadows (Dressrosa)
+0251-Mummy (Dressrosa)
+0252-Orlumbus (Dressrosa)
+0253-Rei Riku lll (Dressrosa)
+0254-Sai (Dressrosa)
+0255-Spartan (Dressrosa)
+0256-Suleiman (Dressrosa)
+0257-Tank Lepanto (Dressrosa)
+0258-Buffalo (Dressrosa)
+0259-Dellinger (Dressrosa)
+0260-Diamante (Dressrosa)
+0261-Gladius (Dressrosa)
+0262-Jora (Dressrosa)
+0263-Lao G (Dressrosa)
+0264-Machvise (Dressrosa)
+0265-Senor Pink (Dressrosa)
+0266-Trebol (Dressrosa)
+0267-Viola (Dressrosa)
+0268-Avalo Pizarro (Bando do Barba Negra)
+0269-Curiel (Bando do Barba Branca)
+0270-Pekoms (Bando da Big Mom)
+0271-Squard (Bando do Barba Branca)
+0272-Tamago (Bando da Big Mom)
+0273-Urouge (Sabaody)
+0274-Tsuru (Marinha)
+0275-John Giant (Marinha)
+0276-Comil (Marinha)
+0277-Momonga (Marinha)
+0278-Onigumo (Marinha)
+0279-Doberman (Marinha)
+0280-Strawberry (Marinha)
+0281-Yamakaji (Marinha)
+0282-Lacroix (Marinha)
+0283-Ronse (Marinha)
+0284-Stainless (Marinha)
+0285-Mozambia (Marinha)
+0286-Cancer (Marinha)
+0287-Bastille (Marinha)
+0288-Atmos (Bando do Barba Branca)
+0289-Keiichi Noda (Gorosei)
+0290-Yasunori Masutani (Gorosei)
+0291-Kenichi Ogata (Gorosei)
+0292-Keiichi Sonobe (Gorosei)
+0293-Masato Hirano (Gorosei)
+0294-Donquixote Rosinante (Corazon) (Dressrosa)
+0295-Kaidou (Dressrosa)
+0296-Higuma (Bandidos)
+0297-?
+0298-?
+0299-Mashikaku (Marinha)
+0300-Ukkari (Marinha)
+0301-Rokkaku (Marinha)
+0302-?
+0303-?
+0304-Chew (Orange Town)
+0305-Pisaro (Orange Town)
+0306-?
+0307-Puzzle (Phoenix Pirates)
+0308-Vigaro (Phoenix Pirates)
+0309-Guyle (Phoenix Pirates)
+0310-Troff (Phoenix Pirates)
+0311-Sarkies (Bando do Bellamy)
+0312-Porche (Bando do Foxy)
+0313-Hamburg (Bando do Foxy)
+0314-Kibagaeru (Bando do Foxy)
+0315-Chuchun (Bando do Foxy)
+0316-Capote (Bando do Foxy)
+0317-Monda (Bando do Foxy)
+0318-Pickles (Bando do Foxy)
+0319-Big Pan (Bando do Foxy)
+0320-Gina (Bando do Foxy)
+0321-Fanged Toad Pirates (Bando do Foxy)
+0322-Absalom (Thriller Bark)
+0323-Hildon (Thriller Bark)
+0324-Tararan (Thriller Bark)
+0325-Cerberus (Thriller Bark)
+0326-Tamagon (Water 7)
+0327-Kiev (Water 7)
+0328-Schollzo (Water 7)
+0329-Kop (Water 7)
+0330-Zambai (Water 7)
+0331-Kairiki Destroyers 1 (Water 7)
+0332-Kairiki Destroyers 2 (Water 7)
+0333-Kairiki Destroyers 3 (Water 7)
+0334-Scratchmen Apoo (Sabaody)
+0335-Banchi (Alabasta)
+0336-Mr. Beans (Alabasta)
+0337-Miss Catherine (Alabasta)
+0338-Geronimo (Alabasta)
+0339-Mr. Love (Alabasta)
+0340-Mr. Mellow (Alabasta)
+0341-Akumai (Alabasta)
+0342-Mr. 13 (Alabasta)
+0343-Miss Friday (Alabasta)
+0344-Mr.11 (Alabasta)
+0345-Miss Monday (Alabasta)
+0346-Z (Filme)
+0347-Sadi-chan (Impel Down)
+0348-Basilisk (Impel Down)
+0349-Sphinx (Impel Down)
+0350-Manticora (Impel Down)
+0351-Blugori (Impel Down)
+0352-Charlotte Katakuri (Bando da Big Mom)
+0353-Charlotte Cracker (Bando da Big Mom)
+0354-Broggy (Little Garden)
+0355-Bluejam (Pos Guerra)
+0356-Dorry (Little Garden)
+0357-Kashi (Enies Lobby)
+0358-Fossa (Barba Branca)
+0359-Izo (Barba Branca)
+0360-Pica (Dressrosa)
+0361-Porchemy (Passado do Luffy)
+0362-Rakuyo (Bando do Barba Branca)
+0363-Shu (Marinha)
+0364-Gild Tesoro (Filme)
+0365-Vergo (Punk Hazard)
+0366-Edward Weevil (Filho do Barba Branca)
+0367-Wiper (Skypie)
+0368-Big Mom

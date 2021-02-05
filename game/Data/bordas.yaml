@@ -1,0 +1,128 @@
+0:
+  msg: Padrão
+  sorteavel: false
+  preco: -1
+1:
+  msg: Borda exclusiva para o Rei dos Piratas e Almirante de Frota
+  sorteavel: false
+  preco: -1
+3:
+  msg: Borda exclusiva para os Almirantes e Yonkou
+  sorteavel: false
+  preco: -1
+4:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 4
+5:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 6
+6:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 3
+7:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 3
+8:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 3
+9:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 3
+10:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 4
+11:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 5
+12:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 6
+13:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 4
+14:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 6
+15:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 6
+16:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 3
+17:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 4
+18:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 5
+19:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 3
+20:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 3
+21:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 3
+22:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 3
+23:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 3
+24:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 3
+25:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 6
+26:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 4
+27:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 4
+28:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 5
+29:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 4
+30:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 4
+31:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 4
+32:
+  msg: Recompensa encontrada dentro de Baús do Tesouro
+  sorteavel: true
+  preco: 5

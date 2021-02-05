@@ -1,0 +1,22 @@
+.sessao {
+    display: none;
+}
+
+#navegador_voltar {
+    display: none;
+}
+
+#sessao_1 {
+    display: block;
+}
+
+.fail {
+    font-size: 11px;
+    color: #FF0000;
+}
+
+.sel-personagem {
+    max-height: 300px;
+    overflow: auto;
+    margin-bottom: 50px;
+}

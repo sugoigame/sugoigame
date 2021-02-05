@@ -1,0 +1,2643 @@
+1:
+  requisito_lvl: 1
+  turnos: 10
+  duracao: 10
+  recompensa_xp: 250
+  karma: 1
+  recompensa_berries: 1000
+  inimigos:
+    - 1
+  battle_back: 1
+2:
+  requisito_lvl: 1
+  turnos: 10
+  duracao: 10
+  recompensa_xp: 250
+  karma: 1
+  recompensa_berries: 4000
+  inimigos:
+    - 1
+    - 2
+  battle_back: 1
+3:
+  requisito_lvl: 2
+  turnos: 20
+  duracao: 30
+  recompensa_xp: 250
+  karma: 3
+  recompensa_berries: 4000
+  inimigos:
+    - 3
+  battle_back: 1
+4:
+  requisito_lvl: 2
+  turnos: 20
+  duracao: 30
+  recompensa_xp: 250
+  karma: 3
+  recompensa_berries: 4000
+  inimigos:
+    - 3
+  battle_back: 1
+5:
+  requisito_lvl: 2
+  turnos: 20
+  duracao: 30
+  recompensa_xp: 250
+  karma: 3
+  recompensa_berries: 4000
+  inimigos:
+    - 4
+    - 5
+  battle_back: 1
+6:
+  requisito_lvl: 3
+  turnos: 20
+  duracao: 60
+  recompensa_xp: 500
+  karma: 6
+  recompensa_berries: 4000
+  inimigos:
+    - 4
+    - 5
+  battle_back: 1
+7:
+  requisito_lvl: 3
+  turnos: 20
+  duracao: 60
+  recompensa_xp: 500
+  karma: 6
+  recompensa_berries: 4000
+  inimigos:
+    - 4
+    - 5
+  battle_back: 1
+8:
+  requisito_lvl: 4
+  turnos: 20
+  duracao: 180
+  recompensa_xp: 500
+  karma: 18
+  recompensa_berries: 4000
+  inimigos:
+    - 6
+    - 7
+    - 8
+  battle_back: 38
+9:
+  requisito_lvl: 4
+  turnos: 20
+  duracao: 180
+  recompensa_xp: 500
+  karma: 18
+  recompensa_berries: 4000
+  inimigos:
+    - 6
+    - 7
+    - 8
+  battle_back: 38
+10:
+  requisito_lvl: 4
+  turnos: 20
+  duracao: 180
+  recompensa_xp: 500
+  karma: 18
+  recompensa_berries: 4000
+  inimigos:
+    - 6
+    - 7
+    - 8
+  battle_back: 38
+11:
+  requisito_lvl: 4
+  turnos: 20
+  duracao: 180
+  recompensa_xp: 500
+  karma: 18
+  recompensa_berries: 4000
+  inimigos:
+    - 6
+    - 7
+    - 8
+  battle_back: 38
+12:
+  requisito_lvl: 5
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 520
+  karma: 30
+  recompensa_berries: 5000
+  inimigos:
+    - 9
+  battle_back: 38
+13:
+  requisito_lvl: 5
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 520
+  karma: 30
+  recompensa_berries: 5000
+  inimigos:
+    - 9
+  battle_back: 38
+14:
+  requisito_lvl: 5
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 520
+  karma: 30
+  recompensa_berries: 5000
+  inimigos:
+    - 9
+  battle_back: 38
+15:
+  requisito_lvl: 5
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 520
+  karma: 30
+  recompensa_berries: 5000
+  inimigos:
+    - 9
+  battle_back: 38
+16:
+  requisito_lvl: 6
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 540
+  karma: 30
+  recompensa_berries: 6000
+  inimigos:
+    - 9
+    - 8
+  battle_back: 22
+17:
+  requisito_lvl: 6
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 540
+  karma: 30
+  recompensa_berries: 6000
+  inimigos:
+    - 9
+    - 8
+  battle_back: 22
+18:
+  requisito_lvl: 6
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 540
+  karma: 30
+  recompensa_berries: 6000
+  inimigos:
+    - 9
+    - 8
+  battle_back: 22
+19:
+  requisito_lvl: 6
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 540
+  karma: 30
+  recompensa_berries: 6000
+  inimigos:
+    - 9
+    - 8
+  battle_back: 22
+20:
+  requisito_lvl: 6
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 540
+  karma: 30
+  recompensa_berries: 6000
+  inimigos:
+    - 9
+    - 8
+  battle_back: 22
+21:
+  requisito_lvl: 7
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 560
+  karma: 30
+  recompensa_berries: 7000
+  inimigos:
+    - 9
+    - 8
+    - 7
+  battle_back: 22
+22:
+  requisito_lvl: 7
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 560
+  karma: 30
+  recompensa_berries: 7000
+  inimigos:
+    - 9
+    - 8
+    - 7
+  battle_back: 22
+23:
+  requisito_lvl: 7
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 560
+  karma: 30
+  recompensa_berries: 7000
+  inimigos:
+    - 9
+    - 8
+    - 7
+  battle_back: 22
+24:
+  requisito_lvl: 7
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 560
+  karma: 30
+  recompensa_berries: 7000
+  inimigos:
+    - 9
+    - 8
+    - 7
+  battle_back: 22
+25:
+  requisito_lvl: 7
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 560
+  karma: 30
+  recompensa_berries: 7000
+  inimigos:
+    - 9
+    - 8
+    - 7
+  battle_back: 22
+26:
+  requisito_lvl: 8
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 580
+  karma: 30
+  recompensa_berries: 8000
+  inimigos:
+    - 9
+    - 10
+  battle_back: 25
+27:
+  requisito_lvl: 8
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 580
+  karma: 30
+  recompensa_berries: 8000
+  inimigos:
+    - 9
+    - 10
+  battle_back: 25
+28:
+  requisito_lvl: 8
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 580
+  karma: 30
+  recompensa_berries: 8000
+  inimigos:
+    - 9
+    - 10
+  battle_back: 25
+29:
+  requisito_lvl: 8
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 580
+  karma: 30
+  recompensa_berries: 8000
+  inimigos:
+    - 9
+    - 10
+  battle_back: 25
+30:
+  requisito_lvl: 8
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 580
+  karma: 30
+  recompensa_berries: 8000
+  inimigos:
+    - 9
+    - 10
+  battle_back: 25
+31:
+  requisito_lvl: 9
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 600
+  karma: 30
+  recompensa_berries: 9000
+  inimigos:
+    - 9
+    - 10
+  battle_back: 25
+32:
+  requisito_lvl: 9
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 600
+  karma: 30
+  recompensa_berries: 9000
+  inimigos:
+    - 9
+    - 10
+  battle_back: 25
+33:
+  requisito_lvl: 9
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 600
+  karma: 30
+  recompensa_berries: 9000
+  inimigos:
+    - 9
+    - 10
+  battle_back: 25
+34:
+  requisito_lvl: 9
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 600
+  karma: 30
+  recompensa_berries: 9000
+  inimigos:
+    - 9
+    - 10
+  battle_back: 25
+35:
+  requisito_lvl: 9
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 600
+  karma: 30
+  recompensa_berries: 9000
+  inimigos:
+    - 9
+    - 10
+  battle_back: 25
+36:
+  requisito_lvl: 10
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 620
+  karma: 30
+  recompensa_berries: 10000
+  inimigos:
+    - 8
+    - 9
+    - 10
+  battle_back: 32
+37:
+  requisito_lvl: 10
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 620
+  karma: 30
+  recompensa_berries: 10000
+  inimigos:
+    - 8
+    - 9
+    - 10
+  battle_back: 32
+38:
+  requisito_lvl: 10
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 620
+  karma: 30
+  recompensa_berries: 10000
+  inimigos:
+    - 8
+    - 9
+    - 10
+  battle_back: 32
+39:
+  requisito_lvl: 10
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 620
+  karma: 30
+  recompensa_berries: 10000
+  inimigos:
+    - 8
+    - 9
+    - 10
+  battle_back: 32
+40:
+  requisito_lvl: 10
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 620
+  karma: 30
+  recompensa_berries: 10000
+  inimigos:
+    - 8
+    - 9
+    - 10
+  battle_back: 32
+41:
+  requisito_lvl: 10
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 620
+  karma: 30
+  recompensa_berries: 10000
+  inimigos:
+    - 8
+    - 9
+    - 10
+  battle_back: 32
+42:
+  requisito_lvl: 11
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 640
+  karma: 30
+  recompensa_berries: 11000
+  inimigos:
+    - 11
+  battle_back: 32
+43:
+  requisito_lvl: 11
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 640
+  karma: 30
+  recompensa_berries: 11000
+  inimigos:
+    - 11
+  battle_back: 32
+44:
+  requisito_lvl: 11
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 640
+  karma: 30
+  recompensa_berries: 11000
+  inimigos:
+    - 11
+  battle_back: 32
+45:
+  requisito_lvl: 11
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 640
+  karma: 30
+  recompensa_berries: 11000
+  inimigos:
+    - 11
+  battle_back: 32
+46:
+  requisito_lvl: 11
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 640
+  karma: 30
+  recompensa_berries: 11000
+  inimigos:
+    - 11
+  battle_back: 32
+47:
+  requisito_lvl: 11
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 640
+  karma: 30
+  recompensa_berries: 11000
+  inimigos:
+    - 11
+  battle_back: 32
+48:
+  requisito_lvl: 12
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 660
+  karma: 30
+  recompensa_berries: 12000
+  inimigos:
+    - 10
+    - 11
+  battle_back: 25
+49:
+  requisito_lvl: 12
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 660
+  karma: 30
+  recompensa_berries: 12000
+  inimigos:
+    - 10
+    - 11
+  battle_back: 25
+50:
+  requisito_lvl: 12
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 660
+  karma: 30
+  recompensa_berries: 12000
+  inimigos:
+    - 10
+    - 11
+  battle_back: 25
+51:
+  requisito_lvl: 12
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 660
+  karma: 30
+  recompensa_berries: 12000
+  inimigos:
+    - 10
+    - 11
+  battle_back: 25
+52:
+  requisito_lvl: 12
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 660
+  karma: 30
+  recompensa_berries: 12000
+  inimigos:
+    - 10
+    - 11
+  battle_back: 25
+53:
+  requisito_lvl: 12
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 660
+  karma: 30
+  recompensa_berries: 12000
+  inimigos:
+    - 10
+    - 11
+  battle_back: 25
+54:
+  requisito_lvl: 13
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 680
+  karma: 30
+  recompensa_berries: 13000
+  inimigos:
+    - 10
+    - 11
+  battle_back: 25
+55:
+  requisito_lvl: 13
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 680
+  karma: 30
+  recompensa_berries: 13000
+  inimigos:
+    - 10
+    - 11
+  battle_back: 25
+56:
+  requisito_lvl: 13
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 680
+  karma: 30
+  recompensa_berries: 13000
+  inimigos:
+    - 10
+    - 11
+  battle_back: 25
+57:
+  requisito_lvl: 13
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 680
+  karma: 30
+  recompensa_berries: 13000
+  inimigos:
+    - 10
+    - 11
+  battle_back: 25
+58:
+  requisito_lvl: 13
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 680
+  karma: 30
+  recompensa_berries: 13000
+  inimigos:
+    - 10
+    - 11
+  battle_back: 25
+59:
+  requisito_lvl: 13
+  turnos: 20
+  duracao: 300
+  recompensa_xp: 680
+  karma: 30
+  recompensa_berries: 13000
+  inimigos:
+    - 10
+    - 11
+  battle_back: 25
+60:
+  requisito_lvl: 14
+  turnos: 30
+  duracao: 300
+  recompensa_xp: 680
+  karma: 30
+  recompensa_berries: 14000
+  inimigos:
+    - 12
+  battle_back: 35
+61:
+  requisito_lvl: 14
+  turnos: 30
+  duracao: 300
+  recompensa_xp: 680
+  karma: 30
+  recompensa_berries: 14000
+  inimigos:
+    - 12
+  battle_back: 35
+62:
+  requisito_lvl: 14
+  turnos: 30
+  duracao: 300
+  recompensa_xp: 680
+  karma: 30
+  recompensa_berries: 14000
+  inimigos:
+    - 12
+  battle_back: 35
+63:
+  requisito_lvl: 14
+  turnos: 30
+  duracao: 300
+  recompensa_xp: 680
+  karma: 30
+  recompensa_berries: 14000
+  inimigos:
+    - 12
+  battle_back: 35
+64:
+  requisito_lvl: 14
+  turnos: 30
+  duracao: 300
+  recompensa_xp: 680
+  karma: 30
+  recompensa_berries: 14000
+  inimigos:
+    - 12
+  battle_back: 35
+65:
+  requisito_lvl: 14
+  turnos: 30
+  duracao: 300
+  recompensa_xp: 680
+  karma: 30
+  recompensa_berries: 14000
+  inimigos:
+    - 12
+  battle_back: 35
+66:
+  requisito_lvl: 15
+  turnos: 30
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 15000
+  inimigos:
+    - 13
+    - 12
+  battle_back: 35
+67:
+  requisito_lvl: 15
+  turnos: 30
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 15000
+  inimigos:
+    - 13
+    - 12
+  battle_back: 35
+68:
+  requisito_lvl: 15
+  turnos: 30
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 15000
+  inimigos:
+    - 13
+    - 12
+  battle_back: 35
+69:
+  requisito_lvl: 15
+  turnos: 30
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 15000
+  inimigos:
+    - 13
+    - 12
+  battle_back: 35
+70:
+  requisito_lvl: 15
+  turnos: 30
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 15000
+  inimigos:
+    - 13
+    - 12
+  battle_back: 35
+71:
+  requisito_lvl: 15
+  turnos: 30
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 15000
+  inimigos:
+    - 13
+    - 12
+  battle_back: 35
+72:
+  requisito_lvl: 16
+  turnos: 40
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 16000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 14
+  battle_back: 28
+73:
+  requisito_lvl: 16
+  turnos: 40
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 16000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+  battle_back: 28
+74:
+  requisito_lvl: 16
+  turnos: 40
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 16000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 28
+75:
+  requisito_lvl: 17
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 17000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 28
+76:
+  requisito_lvl: 17
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 17000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 28
+77:
+  requisito_lvl: 17
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 17000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 28
+78:
+  requisito_lvl: 18
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 18000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 12
+79:
+  requisito_lvl: 18
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 18000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 12
+80:
+  requisito_lvl: 18
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 18000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 12
+81:
+  requisito_lvl: 19
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 19000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 12
+82:
+  requisito_lvl: 19
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 19000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 12
+83:
+  requisito_lvl: 19
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 19000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 12
+84:
+  requisito_lvl: 20
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 20000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 21
+85:
+  requisito_lvl: 20
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 20000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 21
+86:
+  requisito_lvl: 20
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 20000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 21
+87:
+  requisito_lvl: 21
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 21000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 21
+88:
+  requisito_lvl: 21
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 21000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 21
+89:
+  requisito_lvl: 21
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 21000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 21
+90:
+  requisito_lvl: 22
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 22000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 6
+91:
+  requisito_lvl: 22
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 22000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 6
+92:
+  requisito_lvl: 22
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 22000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 6
+93:
+  requisito_lvl: 23
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 23000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 6
+94:
+  requisito_lvl: 23
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 23000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 6
+95:
+  requisito_lvl: 23
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 23000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 6
+96:
+  requisito_lvl: 24
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 24000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 25
+97:
+  requisito_lvl: 24
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 24000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 25
+98:
+  requisito_lvl: 24
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 30
+  recompensa_berries: 24000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 25
+99:
+  requisito_lvl: 25
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 31
+  recompensa_berries: 25000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 25
+100:
+  requisito_lvl: 25
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 31
+  recompensa_berries: 25000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 25
+101:
+  requisito_lvl: 25
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 31
+  recompensa_berries: 25000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+  battle_back: 25
+102:
+  requisito_lvl: 26
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 32
+  recompensa_berries: 26000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+  battle_back: 25
+103:
+  requisito_lvl: 26
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 32
+  recompensa_berries: 26000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+  battle_back: 25
+104:
+  requisito_lvl: 26
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 32
+  recompensa_berries: 26000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+  battle_back: 25
+105:
+  requisito_lvl: 27
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 33
+  recompensa_berries: 27000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+  battle_back: 25
+106:
+  requisito_lvl: 27
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 33
+  recompensa_berries: 27000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+  battle_back: 25
+107:
+  requisito_lvl: 27
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 33
+  recompensa_berries: 27000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+  battle_back: 25
+108:
+  requisito_lvl: 28
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 34
+  recompensa_berries: 28000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+  battle_back: 47
+109:
+  requisito_lvl: 28
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 34
+  recompensa_berries: 28000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+  battle_back: 47
+110:
+  requisito_lvl: 28
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 34
+  recompensa_berries: 28000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+  battle_back: 47
+111:
+  requisito_lvl: 29
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 35
+  recompensa_berries: 29000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+  battle_back: 47
+112:
+  requisito_lvl: 29
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 35
+  recompensa_berries: 29000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+  battle_back: 47
+113:
+  requisito_lvl: 29
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 35
+  recompensa_berries: 29000
+  inimigos:
+    - 16
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+  battle_back: 47
+114:
+  requisito_lvl: 30
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 36
+  recompensa_berries: 30000
+  inimigos:
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+  battle_back: 25
+115:
+  requisito_lvl: 30
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 36
+  recompensa_berries: 30000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+  battle_back: 25
+116:
+  requisito_lvl: 30
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 36
+  recompensa_berries: 30000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+  battle_back: 25
+117:
+  requisito_lvl: 31
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 37
+  recompensa_berries: 31000
+  inimigos:
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+  battle_back: 25
+118:
+  requisito_lvl: 31
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 37
+  recompensa_berries: 31000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+  battle_back: 25
+119:
+  requisito_lvl: 31
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 37
+  recompensa_berries: 31000
+  inimigos:
+    - 16
+    - 16
+    - 15
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+  battle_back: 25
+120:
+  requisito_lvl: 32
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 38
+  recompensa_berries: 32000
+  inimigos:
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+  battle_back: 30
+121:
+  requisito_lvl: 32
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 38
+  recompensa_berries: 32000
+  inimigos:
+    - 16
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+  battle_back: 30
+122:
+  requisito_lvl: 32
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 38
+  recompensa_berries: 32000
+  inimigos:
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+  battle_back: 30
+123:
+  requisito_lvl: 33
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 39
+  recompensa_berries: 33000
+  inimigos:
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+  battle_back: 30
+124:
+  requisito_lvl: 33
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 39
+  recompensa_berries: 33000
+  inimigos:
+    - 16
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+  battle_back: 30
+125:
+  requisito_lvl: 33
+  turnos: 50
+  duracao: 300
+  recompensa_xp: 700
+  karma: 39
+  recompensa_berries: 33000
+  inimigos:
+    - 16
+    - 15
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+  battle_back: 30
+126:
+  requisito_lvl: 34
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 40
+  recompensa_berries: 34000
+  inimigos:
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+  battle_back: 12
+127:
+  requisito_lvl: 34
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 40
+  recompensa_berries: 34000
+  inimigos:
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+  battle_back: 12
+128:
+  requisito_lvl: 34
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 40
+  recompensa_berries: 34000
+  inimigos:
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+  battle_back: 12
+129:
+  requisito_lvl: 35
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 41
+  recompensa_berries: 35000
+  inimigos:
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+  battle_back: 12
+130:
+  requisito_lvl: 35
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 41
+  recompensa_berries: 35000
+  inimigos:
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+  battle_back: 12
+131:
+  requisito_lvl: 35
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 41
+  recompensa_berries: 35000
+  inimigos:
+    - 15
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+  battle_back: 12
+132:
+  requisito_lvl: 36
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 42
+  recompensa_berries: 36000
+  inimigos:
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+  battle_back: 38
+133:
+  requisito_lvl: 36
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 42
+  recompensa_berries: 36000
+  inimigos:
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+  battle_back: 38
+134:
+  requisito_lvl: 36
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 42
+  recompensa_berries: 36000
+  inimigos:
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+  battle_back: 38
+135:
+  requisito_lvl: 37
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 43
+  recompensa_berries: 37000
+  inimigos:
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+  battle_back: 38
+136:
+  requisito_lvl: 37
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 43
+  recompensa_berries: 37000
+  inimigos:
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+  battle_back: 38
+137:
+  requisito_lvl: 37
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 43
+  recompensa_berries: 37000
+  inimigos:
+    - 15
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+  battle_back: 38
+138:
+  requisito_lvl: 38
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 44
+  recompensa_berries: 38000
+  inimigos:
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+  battle_back: 18
+139:
+  requisito_lvl: 38
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 44
+  recompensa_berries: 38000
+  inimigos:
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+  battle_back: 18
+140:
+  requisito_lvl: 38
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 44
+  recompensa_berries: 38000
+  inimigos:
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+  battle_back: 18
+141:
+  requisito_lvl: 39
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 45
+  recompensa_berries: 39000
+  inimigos:
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+  battle_back: 18
+142:
+  requisito_lvl: 39
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 45
+  recompensa_berries: 39000
+  inimigos:
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+  battle_back: 18
+143:
+  requisito_lvl: 39
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 45
+  recompensa_berries: 39000
+  inimigos:
+    - 15
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+  battle_back: 18
+144:
+  requisito_lvl: 40
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 46
+  recompensa_berries: 40000
+  inimigos:
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+  battle_back: 30
+145:
+  requisito_lvl: 40
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 46
+  recompensa_berries: 40000
+  inimigos:
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+  battle_back: 30
+146:
+  requisito_lvl: 40
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 46
+  recompensa_berries: 40000
+  inimigos:
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+  battle_back: 30
+147:
+  requisito_lvl: 41
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 47
+  recompensa_berries: 41000
+  inimigos:
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+  battle_back: 30
+148:
+  requisito_lvl: 41
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 47
+  recompensa_berries: 41000
+  inimigos:
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+  battle_back: 30
+149:
+  requisito_lvl: 41
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 47
+  recompensa_berries: 41000
+  inimigos:
+    - 15
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+  battle_back: 30
+150:
+  requisito_lvl: 42
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 48
+  recompensa_berries: 42000
+  inimigos:
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+    - 19
+  battle_back: 38
+151:
+  requisito_lvl: 42
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 48
+  recompensa_berries: 42000
+  inimigos:
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+    - 19
+  battle_back: 38
+152:
+  requisito_lvl: 42
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 48
+  recompensa_berries: 42000
+  inimigos:
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+    - 19
+  battle_back: 38
+153:
+  requisito_lvl: 43
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 49
+  recompensa_berries: 43000
+  inimigos:
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+    - 19
+  battle_back: 38
+154:
+  requisito_lvl: 43
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 49
+  recompensa_berries: 43000
+  inimigos:
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+    - 19
+  battle_back: 38
+155:
+  requisito_lvl: 43
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 49
+  recompensa_berries: 43000
+  inimigos:
+    - 14
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+    - 19
+  battle_back: 38
+156:
+  requisito_lvl: 44
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 44000
+  inimigos:
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+    - 19
+    - 19
+  battle_back: 15
+157:
+  requisito_lvl: 44
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 44000
+  inimigos:
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+    - 19
+    - 19
+  battle_back: 15
+158:
+  requisito_lvl: 44
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 44000
+  inimigos:
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+    - 19
+    - 19
+  battle_back: 15
+159:
+  requisito_lvl: 45
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 51
+  recompensa_berries: 45000
+  inimigos:
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+    - 19
+    - 19
+  battle_back: 15
+160:
+  requisito_lvl: 45
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 45000
+  inimigos:
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+    - 19
+    - 19
+  battle_back: 15
+161:
+  requisito_lvl: 45
+  turnos: 60
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 45000
+  inimigos:
+    - 14
+    - 17
+    - 17
+    - 17
+    - 18
+    - 18
+    - 18
+    - 19
+    - 19
+    - 19
+  battle_back: 15
+162:
+  requisito_lvl: 46
+  turnos: 70
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 46000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 43
+163:
+  requisito_lvl: 46
+  turnos: 70
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 46000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 43
+164:
+  requisito_lvl: 46
+  turnos: 70
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 46000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 43
+165:
+  requisito_lvl: 47
+  turnos: 70
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 47000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 43
+166:
+  requisito_lvl: 47
+  turnos: 70
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 47000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 43
+167:
+  requisito_lvl: 47
+  turnos: 70
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 47000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 43
+168:
+  requisito_lvl: 48
+  turnos: 70
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 48000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 3
+169:
+  requisito_lvl: 48
+  turnos: 70
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 48000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 3
+170:
+  requisito_lvl: 48
+  turnos: 70
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 48000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 3
+171:
+  requisito_lvl: 49
+  turnos: 70
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 49000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 3
+172:
+  requisito_lvl: 49
+  turnos: 70
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 49000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 3
+173:
+  requisito_lvl: 49
+  turnos: 70
+  duracao: 300
+  recompensa_xp: 700
+  karma: 50
+  recompensa_berries: 49000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 3
+174:
+  requisito_lvl: 50
+  turnos: 70
+  duracao: 600
+  recompensa_xp: 700
+  karma: 110
+  recompensa_berries: 50000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 38
+175:
+  requisito_lvl: 50
+  turnos: 70
+  duracao: 600
+  recompensa_xp: 700
+  karma: 110
+  recompensa_berries: 50000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 38
+176:
+  requisito_lvl: 50
+  turnos: 70
+  duracao: 600
+  recompensa_xp: 700
+  karma: 110
+  recompensa_berries: 50000
+  inimigos:
+    - 20
+    - 20
+    - 20
+    - 20
+    - 20
+    - 21
+    - 21
+    - 21
+    - 21
+    - 21
+    - 22
+    - 22
+    - 22
+    - 22
+    - 22
+  battle_back: 38

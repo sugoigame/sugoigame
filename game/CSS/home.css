@@ -1,0 +1,75 @@
+
+#recompensas {
+    position: relative;
+    top: 30px;
+    background: url("Imagens/1/Cabecalho/rodape.jpg");
+    border: 1px solid #9d6f31;
+    border-radius: 5px;
+    width: 257px;
+    height: 480px;
+    padding: 20px;
+    margin: 0px 0px 40px 0px;
+    float: left;
+}
+
+#recompensas .wanted {
+    background: url("Imagens/1/Conteudo/cartaz.jpg");
+    width: 85px;
+    height: 120px;
+    display: block;
+    float: left;
+}
+
+#recompensas .wanted img {
+    position: relative;
+    width: 75px;
+    height: 52px;
+    top: 25px;
+}
+
+#recompensas .wanted .text {
+    color: #2C1201;
+    font-size: 10px;
+    position: relative;
+    top: 34px;
+}
+
+#gratificacoes {
+    position: relative;
+    top: 30px;
+    background: url("Imagens/0/Cabecalho/rodape.jpg");
+    border: 1px solid #50816b;
+    border-radius: 5px;
+    width: 257px;
+    height: 480px;
+    padding: 20px;
+    margin: 0px 0px 40px 0px;
+    float: right;
+}
+
+#gratificacoes .wanted {
+    background: url("Imagens/0/Conteudo/cartaz.jpg");
+    width: 85px;
+    height: 120px;
+    display: block;
+    float: left;
+}
+
+#gratificacoes .wanted img {
+    position: relative;
+    top: 23px;
+    height: 55px;
+}
+
+#gratificacoes .wanted .text {
+    color: #000000;
+    font-size: 10px;
+    position: relative;
+    top: 34px;
+}
+
+#titulo_recompensas {
+    position: absolute;
+    left: 400px;
+    z-index: 3;
+}

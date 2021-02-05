@@ -1,0 +1,141 @@
+
+#batalha_background,
+.batalha_background {
+    background: url("Imagens/Batalha/Background.jpg");
+    position: relative;
+}
+
+.fight-zone {
+    overflow: auto;
+}
+
+.fight-zone .navio {
+    width: 1000px;
+    position: relative;
+}
+
+.fight-zone .navio-npc {
+    height: 300px;
+    margin: auto;
+}
+
+.fight-zone .navio-npc .progress {
+    margin-bottom: 5px;
+}
+
+.fight-zone #npc {
+    width: 100%;
+    height: 250px;
+}
+
+.fight-zone .navio-player {
+    height: 280px;
+    margin: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.table_batalha {
+    margin: auto;
+    background: transparent;
+}
+
+.table_batalha tr td {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.table_batalha .progress {
+    height: 5px;
+    margin-bottom: 0;
+}
+
+.table_batalha .progress-red {
+    background-color: red;
+}
+
+.td-mira {
+    position: relative;
+}
+
+.table_batalha .tabuleiro-mira {
+    position: absolute;
+    right: 10px;
+    top: -10px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2px 7px 3px;
+    border-radius: 50%;
+}
+
+.table_batalha_selecao {
+    margin: -200px auto;
+    z-index: 5;
+    background: transparent;
+}
+
+.table_batalha_selecao tr td {
+    display: inline-block;
+}
+
+#relatorio-combate-content {
+    max-height: 400px;
+    overflow: auto;
+}
+
+.personagem-aliado {
+    border: 2px solid #0000ff !important;
+}
+
+.personagem-inimigo {
+    border: 2px solid #ff0000 !important;
+}
+
+.personagem-inimigo {
+
+}
+
+.personagem-info {
+    position: absolute;
+    max-width: 350px;
+    z-index: 10;
+}
+
+.personagem-info .progress {
+    margin: 0;
+}
+
+.personagem-selecionavel:hover {
+    box-shadow: 0 0 9px 3px #fff;
+    position: relative;
+    z-index: 5;
+}
+
+.special-effect-1 {
+    border: 5px solid #800;
+}
+
+.special-effect-2 {
+    border: 5px solid #060;
+}
+
+.special-effect-3 {
+    border: 5px solid #006;
+}
+
+.icon-skill-cbt {
+    width: 100px;
+    height: 120px;
+    display: inline-block;
+}
+
+.popover-skill {
+    position: absolute;
+    margin-top: 60px;
+    width: 250px;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+    border: 1px solid #000;
+    z-index: 5;
+    padding: 20px;
+}

@@ -1,0 +1,68 @@
+1:
+  minimo: 1
+  tipo: berries
+  quant: 1000000
+14:
+  minimo: 1
+  tipo: effect
+  effect: Golpe de fogo
+2:
+  minimo: 2
+  tipo: haki
+  quant: 1000
+15:
+  minimo: 2
+  tipo: effect
+  effect: Golpe de gelo
+3:
+  minimo: 3
+  tipo: berries
+  quant: 1000000
+16:
+  minimo: 3
+  tipo: effect
+  effect: Golpe de trovão
+4:
+  minimo: 4
+  tipo: haki
+  quant: 1000
+17:
+  minimo: 4
+  tipo: effect
+  effect: Slash físico
+5:
+  minimo: 5
+  tipo: berries
+  quant: 2000000
+18:
+  minimo: 5
+  tipo: effect
+  effect: Fogo slash
+7:
+  minimo: 6
+  tipo: berries
+  quant: 5000000
+19:
+  minimo: 6
+  tipo: effect
+  effect: Gelo slash
+22:
+  minimo: 7
+  tipo: effect
+  effect: Incendiar tudo 1
+10:
+  minimo: 7
+  tipo: akuma
+11:
+  minimo: 7
+  tipo: alcunha
+  cod_titulo: 102
+12:
+  minimo: 7
+  tipo: skin
+  img: 145
+  skin: 1
+13:
+  minimo: 7
+  tipo: moeda_evento
+  quant: 1

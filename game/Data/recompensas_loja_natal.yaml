@@ -1,0 +1,86 @@
+1:
+  tipo_item: 15
+  cod_item: 146
+  quant: 1
+  preco: 10
+  xp: 200
+  haki: 2000
+3:
+  tipo_item: 15
+  cod_item: 121
+  quant: 1
+  preco: 50
+  xp: 5000
+  haki: 50000
+4:
+  skin: 25
+  img: 2
+  preco: 10
+  xp: 300
+  haki: 3000
+5:
+  skin: 14
+  img: 4
+  preco: 10
+  xp: 400
+  haki: 4000
+6:
+  skin: 17
+  img: 7
+  preco: 10
+  xp: 300
+  haki: 3000
+7:
+  skin: 10
+  img: 10
+  preco: 10
+  xp: 300
+  haki: 3000
+8:
+  skin: 14
+  img: 8
+  preco: 10
+  xp: 300
+  haki: 3000
+9:
+  skin: 17
+  img: 6
+  preco: 10
+  xp: 300
+  haki: 3000
+10:
+  skin: 26
+  img: 3
+  preco: 10
+  xp: 300
+  haki: 3000
+11:
+  skin: 9
+  img: 9
+  preco: 10
+  xp: 300
+  haki: 3000
+12:
+  skin: 15
+  img: 5
+  preco: 10
+  xp: 300
+  haki: 3000
+13:
+  skin: 4
+  img: 86
+  preco: 10
+  xp: 300
+  haki: 3000
+14:
+  skin: 5
+  img: 86
+  preco: 10
+  xp: 300
+  haki: 3000
+15:
+  skin: 21
+  img: 85
+  preco: 10
+  xp: 300
+  haki: 3000

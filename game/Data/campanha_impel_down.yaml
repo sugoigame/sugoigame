@@ -1,0 +1,767 @@
+1:
+  titulo: Você recebeu uma estranha mensagem.
+  dialogo:
+    0:
+      formato: pergaminho
+      mensagem: "<p>Ao capitão %capitao_nome%.</p><p>Eu vi o que você fez e te desprezo por isso! Um rato imundo como você não merece viver.</p><p>Se você for realmente tão forte quanto diz ser, não será um problema me enfrentar.</p><p>Me Encontre em 38ºL, -12ºN.</p>"
+  objetivo: "Viaje até 305ºL, 250ºN"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 100000
+  next: 2
+2:
+  titulo: Um poderoso inimigo apareceu.
+  atacar_rdm_id: 79
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Bocaj - O Medonho
+      npc_id: 14
+      mensagem: "<p>Eu sabia que você iria aparecer.</p><p>Vamos resolver nossos problemas de maneira civilizada: me mostre a força dos seus punhos!</p>"
+      atacar: true
+  objetivo: "Derrote Bocaj"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 200000
+    - tipo: reagent
+      cod_item: 144
+      quant: 1
+  next: 3
+3:
+  titulo: Seu companheiro precisa de ajuda.
+  dialogo:
+    0:
+      formato: pergaminho
+      mensagem: "<p>Capitão, estou com problemas!</p><p>Nossa última luta foi uma armadilha. Aqueles malditos me capturaram e fui entregue ao Governo por crimes que não cometi. Agora estão me levando a Impel Down!</p><p>Consegui enganar alguns guardas para lhe enviar essa mensagem, não colocarei os nossos nomes para que ela não seja interceptada. Quando você estiver lendo isso já estarei preso.</p><p>Preciso muito de sua ajuda, o Governo se voltará contra nós em breve e precisamos agir rápido!</p><p>Em uma de minhas aventuras no passado soube de um homem que vive em Sabaody que dizia saber uma forma de invadir Impel Down. Procure pelo Leprechaun.</p><p>Sinto muito pelo meu descuido.</p><p>Seu companheiro desaparecido.</p>"
+  objetivo: "Viaje até Sabaody e procure pelo Leprechaun"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 100000
+  next: 4
+4:
+  titulo: O Leprechaun
+  aceitavel: true
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Olá forasteiro! Em que posso ajudar?</p>"
+      botao: "Você é quem eles chamam de Leprechaun?"
+    1:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Leprechaun? Fazia tempo que não ouvia esse nome. Buaroho-ho-ho-ho! </p><p>Sim, é verdade, recebi esse título por causa de minhas \"habilidades\".</p><p>Mas como você ficou sabendo disso?</p>"
+      botao: "Um de meus companheiros te conhece, e ele está correndo perigo. Achamos que você pode nos ajudar."
+    2:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Há sim, um velho conhecido. Estou sempre disposto a ajudar meus antigos contatos.</p><p>Mas apesar disso, não tenho como saber se VOCÊ é de confiança.</p>"
+      botao: "Como assim?"
+    3:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Você deve saber que eu sou um homem de negócios certo? Então o que acha de negociarmos?</p>"
+      botao: "O que você quer?"
+    4:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Nada muito complicado, considere isso um teste sobre sua capacidade e boa intenção.</p><p>Consiga para mim 1 Lingote de aço que lhe darei a informação que você procura.</p>"
+      botao: "Mas eu nem te disse o que eu preciso"
+    5:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Você parece ser um sujeitinho bem desinformado viu. Os boatos sobre o que aconteceu com seu companheiro já circulam pelo sub mundo a um bom tempo.</p><p>Apenas me traga o que pedi que lhe ajudarei.</p>"
+      aceitar: true
+  objetivo: "Negocie com o Leprechaun"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 100000
+  next: 5
+5:
+  titulo: Consiga a confiança do Leprechaun.
+  objetivo: "Consiga 1 Lingote de aço"
+  recompensas:
+    - tipo: xp
+      quant: 700
+    - tipo: berries
+      quant: 200000
+  next: 6
+6:
+  titulo: A preciosa informação
+  aceitavel: true
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Muito bem. Isso irá me ajudar bastante!</p>"
+      botao: "Agora me diga o que eu quero saber."
+    1:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Certo, vamos lá.</p><p>Como você deve saber, Impel Down fica em uma área do Calm Belt cercada por um denso nevoeiro, e você pode usar isso em seu favor.</p><p>Eu criei uma fórmula de um revestimento de navio especial, parecido com aqueles que os piratas usam para chegar à ilha dos homens peixe, mas com um efeito especial bastante interessante. Esse revestimento é capaz de distorcer a luz em volta dele e camuflar navios durante nevoeiros</p>"
+      botao: "Haaa, então é um revestimento mágico?"
+    2:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Sim, pode ser.</p><p>Eu ensinarei a receita desse revestimento ao seu carpinteiro. Consiga os materiais necessários para cria-lo e a aplique no seu navio, assim você conseguirá chegar à Impel Down sem ser encontrado!</p>"
+      aceitar: true
+  objetivo: "Receba a informação do Leprechaun"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 100000
+    - tipo: reagent
+      cod_item: 163
+      quant: 1
+  next: 7
+7:
+  titulo: O Revestimento Especial
+  objetivo: "Crie um revestimento especial e use-o para conseguir o acesso à Impel Down"
+  recompensas:
+    - tipo: xp
+      quant: 700
+    - tipo: berries
+      quant: 200000
+  next: 8
+8:
+  titulo: Chegando à Impel Down
+  objetivo: "Viaje até Impel Down"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 100000
+  next: 9
+9:
+  titulo: Invadindo Impel Down
+  aceitavel: true
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Caramba! Estou surpreso com sua capacidade!</p>"
+      botao: "Mas o que você está fazendo aqui?"
+    1:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Eu disse que estou sempre disposto a ajudar antigos contatos. E como você chegou tão longe, tenho interesse em manter contato com você. Por isso resolvi te ajudar!</p>"
+      botao: "Que seja..."
+    2:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Enquanto você estava vindo pra cá, eu consegui preciosas informações. Parece que seu companheiro está preso no terceiro nível.</p>"
+      botao: "Terceiro nível?"
+    3:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Sim. Impel Down é dividida em 6 níveis, eles colocam os criminosos no nível correspondente à força daquele criminoso. Os piratas mais perigosos do mundo estão presos no sexto nível.</p>"
+      botao: "Certo, e como chegamos até lá?"
+    4:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Para que alcancemos o terceiro nível será necessário antes passar pelo primeiro e segundo.</p><p>Por hora parece uma boa ideia iniciar uma incursão em busca de uma forma de avançar para o segundo nível.</p>"
+      botao: "Me parece bom"
+    5:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Ok! Eu vi os guardas conversando e descobri que existem duas passagens para o segundo nível. A primeira é se jogando em buraco no centro do primeiro nível, e a segunda é abrindo uma porta que só pode ser aberta com três chaves.</p><p>Mas existe outro problema, quando precisarmos sair daqui não conseguiremos voltar pelo buraco do centro, por isso precisaremos das chaves de qualquer jeito</p>"
+      botao: "Entendi"
+    6:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Vamos então buscar as chaves do primeiro nível, assim que conseguirmos, continuaremos avançando!</p>"
+      aceitar: true
+  objetivo: "Descubra como invadir Impel Down"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 100000
+  next: 10
+10:
+  titulo: Conseguindo as chaves
+  objetivo: "Faça a Incursão de Impel Down e consiga 3 Chaves para o Segundo Nível"
+  recompensas:
+    - tipo: xp
+      quant: 700
+    - tipo: berries
+      quant: 200000
+  next: 11
+11:
+  titulo: Avançando pelo segundo nível
+  aceitavel: true
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Ótimo! Com essas chaves poderemos avançar para o segundo nível.</p><p>Agora preste atençao que irei te explicar como as funcionam lá.</p>"
+      botao: "Certo."
+    1:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>O segundo nível é infestado de criaturas monstruosas, e duas em particular são os guardas que protegem a passagem para o teceiro nível.</p><p>Nós só conseguiremos avançar quando derrotarmos as duas.</p>"
+      botao: "Entendi"
+    2:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Só que para ganhar tempo dessa vez nós iremos nos separar.</p><p>Você vai por alí e irá lutar contra o Sphinx. Derrote-o enquanto eu vou por aqui e luto contra o Basilisk.</p><p>Assim que terminar me espere na porta para o terceiro nível.</p>"
+      aceitar: true
+  objetivo: "Descubra como passar pelo Segundo Nível"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 100000
+  next: 12
+12:
+  titulo: Um poderoso inimigo apareceu.
+  atacar_rdm_id: 81
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Sphinx
+      npc_id: 16
+      mensagem: "<p>HUUUAAAAAHHHHHH!!!</p>"
+      atacar: true
+  objetivo: "Derrote Sphinx"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 200000
+    - tipo: reagent
+      cod_item: 155
+      quant: 1
+  next: 13
+13:
+  titulo: Algo deu errado
+  atacar_rdm_id: 82
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Shiliew - Carcereiro-Chefe
+      npc_id: 17
+      mensagem: "<p>Ora ora, vejam só o que eu encontrei por aqui...</p>"
+      botao: "Quem é você?"
+    1:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 18
+      mensagem: "<p>%capitao_nome%! CUIDADO!!!</p>"
+      botao: "O quê?"
+    2:
+      formato: npc
+      npc_nome: Shiliew - Carcereiro-Chefe
+      npc_id: 17
+      mensagem: "<p>Tarde de mais, agora será o seu fim!</p>"
+      atacar: true
+  objetivo: "Derrote Shiliew"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 200000
+    - tipo: alcunha
+      cod_titulo: 138
+  next: 14
+14:
+  titulo: Segredos revelados
+  aceitavel: true
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Você derrotou o Carcereiro-Chefe sozinho?</p>"
+      botao: "Você pode me explicar o que está acontecendo aqui?"
+    1:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Bem... Eu...</p>"
+      botao: "Desembucha!"
+    2:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Tudo bem, tudo bem... Eu conto...</p><p>Depois de derrotar o Basilisk, eu fui atrás de uma coisa que eu precisava...</p>"
+      botao: "Que coisa?"
+    3:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>O meu capitão está preso aqui. Esse é o real motivo de eu ter te seguido.</p>"
+      botao: "O seu capitão?"
+    4:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Sim, eu já fui um pirata, mas quando meu capitão foi preso nossa tripulação se separou e eu passei a viver em Sabaody desde então.</p>"
+      botao: "Mas o que isso tem a ver com o Carcereiro?"
+    5:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Eu sabia que ele carrega as chaves dos prisioneiros do sexto nível, e quando soube que ele estava patrulhando este andar eu fui atras dele.</p>"
+      botao: "Pera aí! Você disse SEXTO NÍVEL?"
+    6:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Sim, é lá que o meu capitão está preso... e bem... eu... tenho mais uma coisa pra te contar...</p>"
+      botao: "E do que se trata? Anda, fala logo!"
+    7:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Eu nunca conheci o seu companheiro de verdade.</p>"
+      botao: "Como assim?"
+    8:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>O Governo Mundial tem emitido recompensas secretas no sub mundo pela captura de diversas pessoas, sejam eles piratas ou marinheiros.</p>"
+      botao: "Até para marinheiros?"
+    9:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Sim, essa é a parte mais estranha.</p><p>Ninguém sabe porque o Governo está recorrendo ao sub mundo para capturar seus marinheiros se o próprio Governo tem o controle sobre eles.</p><p>Alguns caçadores suspeitam que seja uma forma silenciosa de se livrar de maus elementos, pois assim eles não precisam emitir notas públicas a respeito, mas eu suspeito que exista algo maior por trás.</p>"
+      botao: "E o que isso tem a ver com essa história?"
+    10:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Eu estou nesse ramo a algum tempo enviando cartas como aquela que você recebeu para as tripulações que tiveram um membro listado nas listas secretas do Governo, e você mordeu a isca.</p><p>Eu comi a Fruta do Disfarce, me disfarcei de Bocaj e desafiei você para uma batalha, assim poderia levar seu companheiro para o Governo.</p><p>Mas meu grande plano era na verdade o de me aproveitar de bandos poderosos para invadir Impel Down e resgatar o meu capitão.</p>"
+      botao: "SEU PILANTRA!"
+    11:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Mas eu não imaginei que eu seria derrotado tão facilmente pelo Carcereiro Chefe, eu estava prestes a ser morto e você me salvou.</p><p>Eu peço desculpas por ter te enganado.</p>"
+      botao: "DESCULPAS? EM UMA HORA DESSAS? HAAA AGORA QUEM VAI TE MATAR SOU EU!!!"
+    12:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>ESPERE! POR FAVOR! NÃO FAÇA ISSSO!</p><p>Olha onde nós já estamos! Os den den mushi de vigilância já viram o seu rosto, se você me matar aqui não conseguirá sair impune de Impel Down sem minha ajuda!</p><p>Eu tenho um plano, por favor me dê mais uma chance. É a nossa única saida!</p>"
+      botao: "De que plano você está falando?"
+    13:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>O meu capitão comeu a Fruta da Telepatia. Uma de suas habilidades é a capacidade de se comunicar com os Den Den Mushi e manipular as transmissões a sua vontade.</p><p>Se você me ajudar a resgata-lo, ele pode usar os seus poderes para apagar todas as gravações registradas e poderemos sair daqui sem deixar rastros.</p>"
+      botao: "Por que você acha que eu iria confiar nessa história agora?"
+    14:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Porque é a sua melhor escolha</p><p>Os den den mushi não são monitoramos o tempo todo, a marinha é muito orgulhosa e acha mesmo que Impel Down é impenetrável, por isso ela não coloca guardas para monitorar as câmeras, mas você acabou de derrotar o carcereiro chefe, não vai demorar até que eles percebam a falta dele e comecem a vasculhar a prisão.</p><p>Se não agirmos rápido será tarde de mais para nós.</p>"
+      botao: "Aposto que tudo isso fazia parte do seu plano... Você não me deixa escolhas."
+    15:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Então vamos logo para o terceiro nível resgatar seu companheiro.</p><p>Assim que atravessarmos a porta nós encontraremos o Guarda Chefe que carrega as chaves dos presos do terceiro andar.</p><p>Derrote-o e iremos ao encontro do seu companheiro.</p>"
+      aceitar: true
+  objetivo: "Descubra a história do Leprechaum"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 100000
+  next: 15
+15:
+  titulo: Recuperando a chave.
+  atacar_rdm_id: 83
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Saldeath - Guarda-Chefe
+      npc_id: 20
+      mensagem: "<p>Mas o quê?</p><p>Intrusos?</p>"
+      atacar: true
+  objetivo: "Derrote Saldeath"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 200000
+  next: 16
+16:
+  titulo: O Reencontro
+  aceitavel: true
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>BUUUAAAAAAAAAHH!!!</p>"
+      botao: "Mas por quê você está chorando?"
+    1:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Reencontros me emocionam.</p><p>Seu companheiro não está mais preso. Esse momento é lindo de se ver y.y</p>"
+      botao: "E o que vamos fazer agora?"
+    2:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Vamos para o quarto nível!</p><p>Agora precisamos derrotar os guardas deste nível para prosseguir.</p>"
+      aceitar: true
+  objetivo: "Obtenha informações sobre o próximo nível."
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 200000
+  next: 17
+17:
+  titulo: Complete o terceiro nível da incursão à Impel Down.
+  objetivo: "Derrote os nove adversários da incursão à Impel Down"
+  recompensas:
+    - tipo: xp
+      quant: 700
+    - tipo: berries
+      quant: 200000
+  next: 18
+18:
+  titulo: Quase no quarto nível
+  aceitavel: true
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Ótimo, etamos perto. Só precisamos de mais uma coisinha agora.</p>"
+      botao: "Do que você está falando?"
+    1:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>A maneira mais rápida de chegarmos ao quarto nível é descendo pelo buraco que existe no centro do terceiro nível. Porém, logo abaixo dele existe um calderão de sangue fervendo, por isso nós não podemos simplesmente pular.</p>"
+      botao: "E o que você sugere então?"
+    2:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Vamos construir um planador!</p>"
+      botao: "Um planador?"
+    3:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Sim! Assim nós poderemos cair tranquilamente onde quizermos e aí...</p>"
+      botao: "Quer saber de uma coisa?"
+    4:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Han? O que foi?</p>"
+      botao: "Eu me cansei desses planos, vamos seguir do meu jeito agora!"
+    5:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Como assim?</p>"
+      botao: "Eu vou destruir o chão, assim nós cairemos fora do calderão fervente!"
+    6:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>O quê? Do que você está falando? Não faça isso!</p>"
+      aceitar: true
+  objetivo: "Chegue ao quarto nível"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 200000
+  next: 19
+19:
+  titulo: Vaso ruim não quebra
+  aceitavel: true
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Seu maluco! Olha o que você fez!</p><p>Está querendo mesmo nos matar?</p>"
+      botao: "Mas a gente já chegou! Foi muito mais rápido!"
+    1:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Sim, mas poderíamos ter morrido!</p>"
+      botao: "Mas não morremos, vamos em frente agora! Eu vou destruir o chão mais uma vez e..."
+    2:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>NÃÃÃO!!! Não faça isso outra vez, tem uma maneira melhor!</p>"
+      botao: "Como?"
+    3:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Neste andar fica a sala do diretor da prisão e ela da acesso a um elevador que a conecta aos outros andares.</p><p>Vamos usar a minha habilidade com desfarces para usa-lo.</p>"
+      botao: "A sua habilidade?"
+    4:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Sim, lembra que eu disse que eu comi a Fruta do Disfarce?</p><p>Pois ela permite que eu me disfarce de quem eu quiser. E mais do que isso, eu também posso construir disfarces para outras pessoas!</p>"
+      botao: "Tudo bem, parece ser uma boa ideia. Vamos tentar!"
+    5:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 19
+      mensagem: "<p>Muito bem! Vista esse disfarce de guarda e me siga.</p><p>Vamos para o quinto nível!</p>"
+      aceitar: true
+  objetivo: "Se disfarce para chegar ao quinto nível"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 200000
+    - tipo: skin
+      img: 47
+      skin: 2
+  next: 20
+20:
+  titulo: Encontrando antigas alianças
+  aceitavel: true
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Deu certo! Ninguém desconfiou da gente. Chegamos ao quinto nível!</p>"
+      botao: "Espera, por quê não podemos aproveitar o elevador e ir direto para o sexto nível?"
+    1:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Parece que você ainda não percebeu.</p><p>Olhe para si mesmo, o desfarce expirou.</p>"
+      botao: "É verdade... Sua habilidade é limitada?"
+    2:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Sim, meus desfarces duram apenas por alguns minutos, depois não consigo me disfarçar de novo por algumas horas, hehe.</p>"
+      botao: "Que inútil..."
+    3:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Mas apesar de não podermos usar o elevador por enquanto, existe uma outra passagem para o sexto nível.</p>"
+      botao: "Quer que eu destrua o chão novamente? É pra já!"
+    4:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Infelizmente dessa vez não irá funcionar.</p><p>O piso do quinto andar é muito grosso, tão grosso que permite a existência de um nível secreto entre o quinto e o sexto andar.</p>"
+      botao: "Nível secreto?"
+    5:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Sim, vamos chama-lo de piso 5 e meio, ou se preferir: Newkama Land</p>"
+      botao: "Newkama?"
+    6:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Sim, não temos tempo para conversa agora. Precisamos achar alguns sinalizadores que ficam escondidos por aqui.</p><p>Me ajude a procura-los</p>"
+      aceitar: true
+  objetivo: "Obtenha informações sobre o nível 5 e meio"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 200000
+  next: 21
+21:
+  titulo: Encontrando os sinalizadores
+  objetivo: "Complete o quinto nível da incursão de Impel Down e consiga 2 Sinalizadores Newkama"
+  recompensas:
+    - tipo: xp
+      quant: 700
+    - tipo: berries
+      quant: 200000
+  next: 22
+22:
+  titulo: Acessando o nível secreto
+  aceitavel: true
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Muito bem, agora esses sinalizadores irão nos mostrar a passagem que procuramos.</p>"
+      botao: "Você disse que existe um nível secreto por aqui?"
+    1:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Sim.</p><p>A muito tempo atrás misteriosos acontecimentos assombraram esse nível de Impel Down. Muitos prisioneiros desapareceram sem explicação, devido a isso, os funcionarios e detentos intitularam este fenômeno de \"puxadas de pé do demônio\".</p>"
+      botao: "Puxadas de pé do demônio?"
+    2:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Sim, a superstição é que os prisoneiros desaparecidos tenham sido capturados por demônios e arrastados até os portões do inferno.</p>"
+      botao: "E isso é verdade?"
+    3:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Claro que não.</p><p>A verdade é que um antigo prisioneiro que comeu a Akuma da escavação escavou um nível secreto entre o quinto e sexto nível.</p>"
+      botao: "E você conhece esse escavador?"
+    4:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>É provável que esse escavador tenha morrido a muitos anos atrás. Mas nós não queremos fazer contato com ninguém de lá, imagine só o problema que iríamos criar se mais prisioneiros soubessem que vamos fugir daqui.</p>"
+      botao: "Então vamos passar de fininho?"
+    5:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Não.</p><p>Eu não faço ideia de como seja esse lugar, é mais seguir irmos preparados para derrotar todos.</p>"
+      aceitar: true
+  objetivo: "Planeje sua investida no nível secreto."
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 200000
+  next: 23
+23:
+  titulo: Avançando pelo nível secreto
+  objetivo: "Derrote os 15 adversários da incursão à Impel Down"
+  recompensas:
+    - tipo: xp
+      quant: 700
+    - tipo: berries
+      quant: 200000
+  next: 24
+24:
+  titulo: Enfim no sexto nível
+  aceitavel: true
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Enfim chegamos ao sexto nível!</p><p>A sela do meu capitão deve estar por aqui.</p>"
+      botao: "(Ok)"
+    1:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>CAPITÃÃÃÃÃÃOOO!!!</p>"
+      botao: "(Que surpresa)"
+    2:
+      formato: npc
+      npc_nome: Kiritsugu
+      npc_id: 21
+      mensagem: "<p>Jacob... O que você está fazendo aqui?</p>"
+      botao: "(Esse cara é o capitão dele?)"
+    3:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Capitão, nós viemos te resgatar!</p><p>Este é o %capitao_nome%, ele é muito poderoso e me ajudou a chegar até aqui.</p><p>Vou usar a chave que pegamos do Carcereiro-Chefe para te libertar agora!</p>"
+      botao: "Espera um minutinho aí!"
+    4:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>O que foi %capitao_nome%?</p>"
+      botao: "Eu não fiz essa pergunta antes porque não tive escolha se não aceitar a sua ajuda para fugir daqui, mas agora eu preciso saber. Quem é o seu capitão e por quê ele está no sexto nível de Impel Down?"
+    5:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Há, onde foram parar os meus modos?</p><p>%capitao_nome%, conheça Kiritsugu, o capitão dos piratas de Avalon.</p><p>E ele foi preso porque o governo suspeita que ele conseguiu ler um Poneglyph.</p>"
+      botao: "Poneglyph?"
+    6:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Sim, os Poneglyph são blocos de pedra misteriosos que escondem histórias, segredes ou até planos de construção de algumas armas.</p><p>Mas você já deve ter ouvido falar em Ohara? A ilha do West Blue que o governo destruiu porque os arqueólogos de lá estavam estudando o idioma dos Poneglyphs secretamente.</p><p>Parece que o Governo se preocupa muito para que ninguém descubra o que tem escrito nessas pedras.</p>"
+      botao: "Certo, então vamos sair logo daqui."
+    7:
+      formato: npc
+      npc_nome: Kiritsugu
+      npc_id: 21
+      mensagem: "<p>%capitao_nome%, sua ajuda é muito apreciada e eu não me esquecerei disso. Os Piratas de Avalon estão em dívida com você.</p>"
+      botao: "Fico feliz por sua gratidão, mas vamos sair logo daqui."
+    8:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>Você está certo.</p><p>Eu já recuperei meus poderes e posso usa-los para nos desfarçarmos e subirmos o elevador de novo para a saída.</p><p>Tomem, vistam esses desfarces e vamos sair daqui.</p>"
+      aceitar: true
+  objetivo: "Liberte Kiritsugu"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 200000
+  next: 25
+25:
+  titulo: Liberdade a vista
+  aceitavel: true
+  dialogo:
+    0:
+      formato: npc
+      npc_nome: Jacob - O Leprechaun
+      npc_id: 13
+      mensagem: "<p>%capitao_nome%, agradeço mais uma vez por sua ajuda.</p><p>Para que saiba que não me esqueci do transtorno que lhe causei, eu te entrego esse singelo presente.</p><p>Agora iremos nos separar para seguir nossos rumos, mas saiba que você irá ouvir falar nos Piratas de Avalon mais uma vez em breve.</p>"
+      aceitar: true
+  objetivo: "Se despeça do Leprechaun"
+  recompensas:
+    - tipo: xp
+      quant: 500
+    - tipo: berries
+      quant: 200000
+    - tipo: skin_navio
+      skin: 10
+    - tipo: reagent
+      cod_item: 155
+      quant: 1
+    - tipo: reagent
+      cod_item: 181
+      quant: 1
+  next: 0

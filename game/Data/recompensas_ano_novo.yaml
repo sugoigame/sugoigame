@@ -1,0 +1,48 @@
+1:
+  objetivo: "Encontre a Estrela Norte"
+  rdm_id: 118
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+2:
+  objetivo: "Encontre a Estrela Sul"
+  rdm_id: 119
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+3:
+  objetivo: "Encontre a Estrela Leste"
+  rdm_id: 120
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+4:
+  objetivo: "Encontre a Estrela Oeste"
+  rdm_id: 121
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+5:
+  objetivo: "Encontre a Estrela Menor"
+  rdm_id: 122
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+6:
+  objetivo: "Encontre a Estrela Maior"
+  rdm_id: 123
+  minimo: 1
+  tipo: reagent
+  cod_item: 188
+  quant: 1
+10:
+  objetivo: "Encontre todas as Estrelas"
+  minimo: 6
+  tipo: reagent
+  cod_item: 183
+  quant: 1

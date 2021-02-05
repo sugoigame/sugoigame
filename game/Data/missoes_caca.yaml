@@ -1,0 +1,135 @@
+1:
+  nome: Caça aos Golfinhos
+  objetivo: 1
+  mares:
+    - 1
+    - 2
+    - 3
+    - 4
+  quant: 15
+  berries: 10000
+2:
+  nome: Caça as Baleias
+  objetivo: 2
+  mares:
+    - 1
+    - 2
+    - 3
+    - 4
+  quant: 15
+  berries: 50000
+3:
+  nome: Caça Tubarões
+  objetivo: 3
+  mares:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  quant: 15
+  berries: 100000
+4:
+  nome: Caça aos Filhotes de Reis dos Mares
+  objetivo: 4
+  mares:
+    - 5
+  quant: 15
+  berries: 300000
+5:
+  nome: Caça aos Reis dos Mares
+  objetivo: 5
+  mares:
+    - 5
+  quant: 15
+  berries: 400000
+6:
+  nome: Caça aos Reis dos Mares Gigante
+  objetivo: 6
+  mares:
+    - 5
+  quant: 15
+  berries: 500000
+7:
+  nome: Caça aos Filhotes de Dragão Marítimos
+  objetivo: 7
+  mares:
+    - 6
+  quant: 15
+  berries: 600000
+8:
+  nome: Caça aos Dragões Marítimos
+  objetivo: 8
+  mares:
+    - 6
+  quant: 15
+  berries: 650000
+9:
+  nome: Derrote Mohmoo
+  objetivo: 9
+  boss: true
+  mares:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  quant: 1
+  berries: 5000000
+  diario: 1
+  recompensas:
+    - tipo: reagent
+      cod_item: 159
+      quant: 1
+10:
+  nome: Derrote o Kraken
+  objetivo: 10
+  boss: true
+  mares:
+    - 5
+  quant: 1
+  berries: 8000000
+  diario: 1
+  recompensas:
+    - tipo: reagent
+      cod_item: 159
+      quant: 1
+11:
+  nome: Derrote o Peixe Cavalo
+  objetivo: 12
+  boss: true
+  mares:
+    - 6
+  quant: 1
+  berries: 10000000
+  diario: 1
+  recompensas:
+    - tipo: reagent
+      cod_item: 159
+      quant: 1
+12:
+  nome: Derrote o Peixe Boi
+  objetivo: 13
+  boss: true
+  mares:
+    - 6
+  quant: 1
+  berries: 15000000
+  diario: 1
+  recompensas:
+    - tipo: reagent
+      cod_item: 159
+      quant: 1
+13:
+  nome: Derrote o Peixe Coelho
+  objetivo: 14
+  boss: true
+  mares:
+    - 6
+  quant: 1
+  berries: 20000000
+  diario: 1
+  recompensas:
+    - tipo: reagent
+      cod_item: 159
+      quant: 1
