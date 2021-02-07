@@ -18,11 +18,10 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            sudo su -
             cd /var/www
-            git status
-            git reset --hard
-            git pull origin prod
-            node_modules/pm2/bin/pm2 stop sugoi-map
-            node_modules/pm2/bin/pm2 delete sugoi-map
-            node_modules/pm2/bin/pm2 start /var/www/servers/map/server.php --name="sugoi-map"
+            sudo git status
+            sudo git reset --hard
+            sudo git pull origin prod
+            sudo pm2 stop sugoi-map
+            sudo pm2 delete sugoi-map
+            sudo pm2 start /var/www/servers/map/server.php --name="sugoi-map"
