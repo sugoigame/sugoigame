@@ -1,4 +1,6 @@
 <?php
+$_SERVER['HTTP_HOST'] = 'map.sugoigame.com.br';
+
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/../../html/Includes/database/mywrap.php';
 require __DIR__ . '/../../html/Classes/requires.php';
@@ -21,8 +23,6 @@ $connection->run("SET CHARACTER SET utf8");
 $connection->run("SET sql_mode='NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'");
 
 $navigation = new Navigation($connection);
-
-$_SERVER['HTTP_HOST'] = OCEANO_SERVER;
 
 // Run the server application through the WebSocket protocol on port 9000
 $app = new Ratchet\App("localhost", 9000, "0.0.0.0");
