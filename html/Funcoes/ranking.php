@@ -68,9 +68,7 @@ function get_patente_nome($faccao, $reputacao) {
 
     return $patentes[$faccao][$id];
 }
-
 ?>
-
 <?php function render_painel_grandes_poderes($titulo, $titulo_plural, $id1, $id2, $id3, $id4) { ?>
     <?php global $connection; ?>
     <div class="panel panel-default">
@@ -99,7 +97,6 @@ function get_patente_nome($faccao, $reputacao) {
         </div>
     </div>
 <?php } ?>
-
 <?php function render_top_player($famoso, $titulo) { ?>
     <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "", 'style="max-width: 100%"') ?>
     <div class="texto-top">
@@ -111,7 +108,6 @@ function get_patente_nome($faccao, $reputacao) {
         <p class="texto-top-alcunha"><?= $famoso["tripulacao"] ?></p>
     </div>
 <?php } ?>
-
 <?php function render_painel_yonkou($id1, $id2, $id3, $id4) {
     render_painel_grandes_poderes("Yonkou", "Yonkou", $id1, $id2, $id3, $id4);
 } ?>
@@ -152,14 +148,12 @@ function get_patente_nome($faccao, $reputacao) {
         </div>
     </div>
 <?php } ?>
-
 <?php function render_painel_rdp($id) {
     render_painel_grande_era("Rei dos Piratas", $id);
 } ?>
 <?php function render_painel_adf($id) {
     render_painel_grande_era("Almirante de Frota", $id);
 } ?>
-
 <?php function render_top_ranking_reputacao($coluna_reputacao, $faccoes, $limit = 6) { ?>
     <?php global $connection; ?>
     <?php $rep_mais_forte = $connection->run(
@@ -173,7 +167,6 @@ function get_patente_nome($faccao, $reputacao) {
     ); ?>
     <?php render_top_ranking($result, $rep_mais_forte, "reputacao", "pontos de reputação"); ?>
 <?php } ?>
-
 <?php function render_campeao_incursao($id, $titulo) { ?>
     <?php global $connection; ?>
     <?php $result = $connection->run(
@@ -189,7 +182,6 @@ function get_patente_nome($faccao, $reputacao) {
         <img src="Imagens/Bandeiras/img.php?cod=<?= $result["bandeira"]; ?>&f=<?= $result["faccao"]; ?>"/>
     </div>
 <?php } ?>
-
 <?php function render_top_ranking($result, $mais_forte, $column, $label) { ?>
     <?php while ($famoso = $result->fetch_array()): ?>
         <div class="list-group-item">

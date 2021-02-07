@@ -1,5 +1,4 @@
 <?php
-
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
@@ -35,6 +34,8 @@ class WsServer implements MessageComponentInterface {
         $this->connection = $connection;
         $this->eventBroker = new EventBroker($this->clients, $navigation, $connection);
         $this->navigation = $navigation;
+
+        echo "Server Started!\n";
     }
 
     public function onOpen(ConnectionInterface $conn) {

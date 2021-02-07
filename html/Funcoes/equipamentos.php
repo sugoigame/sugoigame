@@ -1,5 +1,4 @@
 <?php
-
 function load_equipamentos($pers) {
     global $connection;
     $result = $connection->run("SELECT * FROM tb_personagem_equipamentos WHERE cod = ?", "i", $pers["cod"]);

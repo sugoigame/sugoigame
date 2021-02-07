@@ -16,14 +16,12 @@
         </div>
     </div>
 <?php } ?>
-
 <?php function render_navio_icon() { ?>
     <?php global $userDetails; ?>
     <?php for ($d = 0; $d < 8; $d++): ?>
         <img src="Imagens/Bandeiras/navio_skin.php?cod=<?= $userDetails->tripulacao["bandeira"]; ?>&f=<?= $userDetails->tripulacao["faccao"]; ?>&s=<?= $userDetails->tripulacao["skin_navio"] ?>&d=<?= $d ?>"/>
     <?php endfor; ?>
 <?php } ?>
-
 <?php function render_navio_skin($bandeira, $faccao, $skin) { ?>
     <?php for ($d = 0; $d < 8; $d++): ?>
         <img src="Imagens/Bandeiras/navio_skin.php?cod=<?= $bandeira ?>&f=<?= $faccao ?>&s=<?= $skin ?>&d=<?= $d ?>"/>

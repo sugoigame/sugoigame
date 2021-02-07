@@ -194,9 +194,7 @@ function insert_personagens_combate($id, $all_pers, $vip, $tatic_type, $x1, $x2,
 function preco_selo_exp($pers) {
     return round($pers["lvl"] < 50 ? max($pers["xp_max"] / 2, $pers["xp"] / 4) : $pers["xp_max"] / 2 * 10);
 }
-
 ?>
-
 <?php function render_personagens_pills($personagens = NULL, $on_click = null, $alert_func = '0') { ?>
     <?php global $userDetails ?>
     <?php $cod = isset($_GET["cod"]) && !empty($_GET["cod"]) ? $_GET["cod"] : NULL; ?>
@@ -217,17 +215,14 @@ function preco_selo_exp($pers) {
         <?php endforeach; ?>
     </ul>
 <?php } ?>
-
 <?php function render_personagem_panel_top($pers, $index) { ?>
     <?php $cod = isset($_GET["cod"]) && !empty($_GET["cod"]) ? $_GET["cod"] : NULL; ?>
     <div id="personagem-<?= $pers["cod"] ?>"
     class="tab-pane <?= $cod ? ($pers["cod"] == $cod ? "active" : "") : ($index == 0 ? "active" : "") ?>">
 <?php } ?>
-
 <?php function render_personagem_panel_bottom() { ?>
     </div>
 <?php } ?>
-
 <?php function render_personagem_sub_panel_with_img_top($pers) { ?>
     <div class="row">
     <div class="col-md-3 hidden-sm hidden-xs">
@@ -236,13 +231,11 @@ function preco_selo_exp($pers) {
     <div class="col-md-9">
     <div class="panel panel-default">
 <?php } ?>
-
 <?php function render_personagem_sub_panel_with_img_bottom() { ?>
     </div>
     </div>
     </div>
 <?php } ?>
-
 <?php function render_personagem_status_bars($pers, $text = true) { ?>
     <div class="clearfix">
         <?php render_personagem_hp_bar($pers, $text); ?>
@@ -250,7 +243,6 @@ function preco_selo_exp($pers) {
         <?php render_personagem_xp_bar($pers, $text); ?>
     </div>
 <?php } ?>
-
 <?php function render_personagem_hp_bar($pers, $text = true) { ?>
     <?php global $userDetails; ?>
     <div class="progress">
@@ -262,7 +254,6 @@ function preco_selo_exp($pers) {
         </div>
     </div>
 <?php } ?>
-
 <?php function render_personagem_mp_bar($pers, $text = true) { ?>
     <?php global $userDetails; ?>
     <div class="progress">
@@ -274,7 +265,6 @@ function preco_selo_exp($pers) {
         </div>
     </div>
 <?php } ?>
-
 <?php function render_personagem_xp_bar($pers, $text = true) { ?>
     <div class="progress">
         <div class="progress-bar progress-bar-default" role="progressbar"
@@ -285,8 +275,6 @@ function preco_selo_exp($pers) {
         </div>
     </div>
 <?php } ?>
-
-
 <?php function render_personagem_haki_bars($pers) { ?>
     <div class="clearfix">
         <?php render_personagem_mantra_bar($pers); ?>
@@ -296,7 +284,6 @@ function preco_selo_exp($pers) {
         <?php endif; ?>
     </div>
 <?php } ?>
-
 <?php function render_personagem_mantra_bar($pers, $text = true) { ?>
     <div class="progress">
         <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
@@ -307,7 +294,6 @@ function preco_selo_exp($pers) {
         </div>
     </div>
 <?php } ?>
-
 <?php function render_personagem_armamento_bar($pers, $text = true) { ?>
     <div class="progress">
         <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
@@ -328,7 +314,6 @@ function preco_selo_exp($pers) {
         </div>
     </div>
 <?php } ?>
-
 <?php function render_cartaz_procurado($famoso, $faccao) { ?>
     <div class="tripulante_quadro <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>">
         <img class="tripulante_quadro_img  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>"

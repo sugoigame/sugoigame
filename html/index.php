@@ -38,19 +38,9 @@ require "Includes/conectdb.php";
 	<script type="text/javascript">
 		var gameTitle = document.title;
 
-		if (location.host.startsWith('www.')) {
-			location.href = 'https:' + window.location.href.substring(window.location.protocol.length).replace('www.', '');
-		}
-		if (location.host !== 'localhost' && location.protocol !== 'https:') {
-			location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-		}
 		if (!navigator.serviceWorker.controller) {
 			navigator.serviceWorker.register("/sw.js").then(function(reg) {
 				console.log("Service worker has been registered for scope: " + reg.scope);
-				/*setInterval(() => {
-					reg.update();
-					console.log('check update')
-				}, 5000);*/
 			});
 		}
 	</script>

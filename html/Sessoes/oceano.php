@@ -744,14 +744,7 @@
             websockets['mar'].close();
         }
 
-        var mapServer = '';
-        if (location.host == 'localhost')
-            mapServer = 'localhost:9000';
-        else
-            mapServer = 'map.sugoigame.com.br';
-
-        websockets['mar'] = new ReconnectingWebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + mapServer + '/mar');
-        // websockets['mar'] = new ReconnectingWebSocket('wss://map.sugoigame.com.br/mar');
+        websockets['mar'] = new ReconnectingWebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + '<?=OCEANO_SERVER;?>' + '/mar');
         ws = websockets['mar'];
         ws.onopen = function () {
             if (game.state.current === 'game') {

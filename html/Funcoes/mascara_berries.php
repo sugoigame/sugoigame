@@ -1,4 +1,4 @@
-  <?php
+<?php
 function mascara_numeros_grandes($rec) {
     return number_format($rec, 0, ',', '.');
 }

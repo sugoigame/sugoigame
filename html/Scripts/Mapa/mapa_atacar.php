@@ -133,7 +133,7 @@ if ($result->count()) {
     $protector->exit_error("Seu alvo já está em combate contra bots");
 }
 
-if ($_SERVER["HTTP_HOST"] != "localhost" && $usuario_alvo["adm"]) {
+if ($usuario_alvo["adm"]) {
     $protector->exit_error("Um dos requisitos para atacar esse alvo não está cumprido.");
 }
 
