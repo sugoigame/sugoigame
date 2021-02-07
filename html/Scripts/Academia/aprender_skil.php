@@ -43,6 +43,32 @@ if ($pers["lvl"] < $skill["requisito_lvl"]
     $protector->exit_error("Você não cumpre os requisitos para aprender essa habilidade");
 }
 
+$skills_personagem = $connection->run("SELECT * FROM tb_personagens_skil WHERE cod = ? AND (tipo = 1 OR tipo = 2 OR tipo = 3)",
+    "i", array($pers["cod"]))->fetch_all_array();
+
+foreach ($skills_personagem as $x => $outra_skill) {
+	switch ($outra_skill["tipo"]) {
+		case TIPO_SKILL_ATAQUE_CLASSE:
+			$table = "tb_skil_atk";
+			break;
+		case TIPO_SKILL_BUFF_CLASSE:
+			$table = "tb_skil_buff";
+			break;
+		default:
+			$table = "tb_skil_passiva";
+			break;
+	}
+
+	$result = $connection->run(
+		"SELECT * FROM tb_personagens_skil ps INNER JOIN $table info ON ps.cod_skil = info.cod_skil WHERE ps.cod = ? AND ps.tipo = ? AND info.requisito_lvl = ?",
+		"iii", array($pers["cod"], $tipo_skill, $skill["requisito_lvl"])
+	);
+
+	if ($result->count()) {
+		$protector->exit_error("Você já aprendeu outra habilidade desse nível.");
+	}
+}
+
 $habilidade = habilidade_random();
 $icon = rand(1, SKILLS_ICONS_MAX);
 

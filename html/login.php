@@ -124,6 +124,7 @@ if (!isset($banners[$banner_id])) {
 			});
 		}
 	</script>
+	<script data-ad-client="ca-pub-6665062829379662" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
 <div class="wrapper">
