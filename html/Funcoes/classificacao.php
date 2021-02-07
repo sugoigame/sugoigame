@@ -141,4 +141,3 @@ function getPatente($id,&$pat=array()){
 	
 	return $resul["nome_".$trip["faccao"]];
 }
-?>

@@ -107,20 +107,9 @@ if (!isset($banners[$banner_id])) {
 		<link rel="stylesheet" href="Login/assets/css/ie9.css" />
 	<![endif]-->
 	<script type="text/javascript">
-		if (location.host.startsWith('www.')) {
-			location.href = 'https:' + window.location.href.substring(window.location.protocol.length).replace('www.', '');
-		}
-		if (location.host !== 'localhost' && location.protocol !== 'https:') {
-			location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-		}
-
 		if (!navigator.serviceWorker.controller) {
 			navigator.serviceWorker.register("/sw.js").then(function(reg) {
 				console.log("Service worker has been registered for scope: " + reg.scope);
-				/*setInterval(() => {
-					reg.update();
-					console.log('check update')
-				}, 5000);*/
 			});
 		}
 	</script>
@@ -131,12 +120,13 @@ if (!isset($banners[$banner_id])) {
 	<!-- Header -->
 	<header id="header">
 		<h1><img src="Imagens/logo.png"/></h1>
-		<p>Um MMORPG estratégico cheio de PvP feito por fãs de One Piece.</p>
+		<p class="text-justify">Um MMORPG estratégico gratuito cheio de PvP feito por fãs de One Piece.<br />
+			É um jogo de mundo aberto com batalhas em turnos e muito PvP.</p>
 	</header>
 
 	<!-- Signup Form -->
 	<div id="signup-form">
-		<a class="button" id="jogar-button" data-toggle="modal" href="#modal-login">Comece a Jogar!</a>
+		<a class="button" id="jogar-button" data-toggle="modal" href="#modal-login">Comece a jogar!</a>
 		<a class="button bt-facebook" href="<?= $facebook_url ?>">
 			<i class="fa fa-facebook-square fa-fw"></i>
 			Entrar com Facebook
@@ -144,7 +134,7 @@ if (!isset($banners[$banner_id])) {
 	</div>
 </div>
 
-<div id="content">
+<div id="content" class="hidden-sm hidden-xs">
 	<h2>A jornada mais incrível da sua vida!</h2>
 	<p class="text-justify">
 		Sugoi Game é um jogo de <strong>estratégia</strong> online, <strong>multiplayer</strong>, com uma
@@ -159,114 +149,60 @@ if (!isset($banners[$banner_id])) {
 	<div class="embed-responsive embed-responsive-16by9">
 		<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/DKpJXAFIYY4" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 	</div>
-
-	<?php /*<h3>Screenshots</h3>
-	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" title="Clique para ampliar">
-		<!-- Indicators -->
-		<ol class="carousel-indicators">
-			<?php for ($x = 1; $x <= 12; $x++): ?>
-				<li data-target="#carousel-example-generic" data-slide-to="<?= $x - 1 ?>"
-					class="<?= $x == 1 ? "active" : "" ?>">
-				</li>
-			<?php endfor; ?>
-		</ol>
-
-		<!-- Wrapper for slides -->
-		<div class="carousel-inner" role="listbox">
-			<?php for ($x = 1; $x <= 12; $x++): ?>
-				<div class="item <?= $x == 1 ? "active" : "" ?>">
-					<a href="Login/images/pic<?= str_pad($x, 2, "0", STR_PAD_LEFT) ?>.jpg" class="image"
-					   data-lightbox="demo">
-						<img src="Login/images/pic<?= str_pad($x, 2, "0", STR_PAD_LEFT) ?>.jpg" alt="" width="100%"
-							 data-position="25% 25%"/>
-					</a>
-				</div>
-			<?php endfor; ?>
-		</div>
-
-		<!-- Controls -->
-		<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>*/ ?>
 </div>
 
 <!-- Footer -->
 <footer id="footer">
-	<?php /*<ul class="icons">
-		<li>
-			<a href="https://www.facebook.com/sugoigamebr/" class="icon fa-facebook" target="_blank">
-				<span class="label">Facebook</span>
-			</a>
-		</li>
-	</ul>
-	<ul class="icons">
-		<li><a href="#" class="icon brands fa-instagram fa-fw"><span class="label">Instagram</span></a></li>
-		<li><a href="https://fb.com/sugoigamebr" class="icon brands fa-facebook fa-fw" target="_blank"><span class="label">Facebook</span></a></li>
-		<li><a href="#" class="icon brands fa-twitter fa-fw"><span class="label">Twitter</span></a></li>
-	</ul>*/ ?>
 	<ul class="copyright">
 		<li>&copy; 2017 - <?=date('Y');?> <b>Sugoi Game</b></li>
-		<li><a href="./?ses=politica" class="link_content">Política de Privacidade</a></li>
-		<li><a href="./?ses=regras" class="link_content">Regras e Punições</a><br/></li>
+		<li class="hidden-xs"><a href="./?ses=politica" class="link_content">Política de Privacidade</a></li>
+		<li class="hidden-xs"><a href="./?ses=regras" class="link_content">Regras e Punições</a><br/></li>
 	</ul>
 </footer>
-
-<div class="modal fade" id="modal-login">
-	<div class="modal-dialog" role="document">
+<div id="modal-login" class="modal fade">
+	<div class="modal-dialog modal-login">
 		<div class="modal-content">
+			<div class="modal-header">
+				<div class="avatar">
+					<img src="https://www.tutorialrepublic.com/examples/images/avatar.png" alt="Avatar">
+				</div>				
+				<h4 class="modal-title">Acessar minha conta</h4>	
+                <span href="javascript:void(0);" class="close" data-dismiss="modal" aria-hidden="true">&times;</span>
+			</div>
 			<div class="modal-body">
-				<a class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></a>
-			</div>
-			<div class="modal-body text-center">
-				<div>Ainda não tem uma conta?</div>
-				<a id="button-cadastrar" href="./?ses=cadastro" class="btn btn-danger btn-lg">
-					Cadastre-se grátis!
-				</a>
-			</div>
-			<form name="login" action="Scripts/Geral/logar.php" method="POST">
-				<div class="modal-body">
-					<?php if (isset($_GET["erro"])) : ?>
-						<div class="row">
-							<div class="alert alert-danger" role="alert">
-								Login e/ou senha inválidos.
-							</div>
-						</div>
-					<?php endif; ?>
+				<?php
+				if (isset($_GET["erro"])) {
+					switch ($_GET["erro"]) {
+						case '1':
+							$msg = 'Login e/ou senha inválidos.';
+							break;
+						case '2':
+							$msg = 'Você não participa do beta.';
+							break;
+						default:
+							$msg = 'Falha ao fazer login.';
+					}
+					echo "<div class='alert alert-danger text-center'>{$msg}</div>";
+				}
+				?>
+				<form name="login" action="Scripts/Geral/logar.php" method="post" style="margin-bottom: 0;">
 					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-							<input class="form-control" type="email" name="login" placeholder="Email" required/>
-						</div>
+						<input type="email" class="form-control" name="login" placeholder="E-mail" required />
 					</div>
 					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-							<input class="form-control" type="password" name="senha" placeholder="Senha" required/>
+						<input type="password" class="form-control" name="senha" placeholder="Senha" required />
+						<div class="text-right">
+							<a href="./?ses=recuperarSenha" class="recSenha">Esqueci minha senha?</a>
 						</div>
+					</div>        
+					<div class="form-group">
+						<button type="submit" class="btn btn-danger btn-lg btn-block login-btns">Acessar</button>
 					</div>
-					<div class="text-center">
-						<button type="submit" class="btn btn-danger btn-lg">
-							Jogar!
-						</button>
-					</div>
-					<div class="text-center">
-						<a href="./?ses=recuperarSenha">Esqueci minha senha</a>
-					</div>
-
-				</div>
-				<div class="modal-body text-center">
-					<a class="button bt-facebook" href="<?= $facebook_url ?>">
-						<i class="fa fa-facebook-square"></i> Entrar com Facebook
-					</a>
-				</div>
-			</form>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<a href="./?ses=cadastro" class="irCadastro">Cadastre-se agora!</a>
+			</div>
 		</div>
 	</div>
 </div>

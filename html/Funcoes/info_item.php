@@ -205,5 +205,3 @@ function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcen
 
     return $return . "</div>";
 }
-
-

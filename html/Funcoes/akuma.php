@@ -107,7 +107,6 @@ function render_status_akuma($pers, $img_akuma, $tipoakuma) {
         </div>
     </div>
 <?php } ?>
-
 <?php function render_criador_akuma($pers, $img_akuma, $tipoakuma, $nome_akuma = null, $descricao_akuma = null) { ?>
     <input type="hidden" name="cod_pers" value="<?= $pers["cod"] ?>">
     <input type="hidden" name="img_akuma" value="<?= $img_akuma ?>">
