@@ -1,6 +1,5 @@
 <?php
 include "../../Includes/conectdb.php";
-include "../../sendgrid-php/sendgrid-php.php";
 
 if (!isset($_POST["nome"])
     OR !isset($_POST["email"]) || !validate_email($_POST["email"])
@@ -56,22 +55,31 @@ if (isset($_POST["padrinho"])) {
     }
 }
 
-/*$url = "http://www.sugoigame.com.br/Scripts/Geral/ativar_id.php?i=$u_id&cod=$ativacao";
+$url = "http://www.sugoigame.com.br/Scripts/Geral/ativar_id.php?i=$u_id&cod=$ativacao";
 
-$sendgrid = new SendGrid('', '', array("turn_off_ssl_verification" => true));
-$emailS = new SendGrid\Email();
-$emailS
-    ->addTo($email)
-    ->setFrom('cadastro@sugoigame.com.br')
-    ->setSubject('Criação de conta - Sugoi Game')
-    ->setHtml('Bem vindo ao Sugoi Game!<br/><br/>Código de ativação: ' . $ativacao
-        . '<br/><br/>Ou se preferir acesse o linnk:<br/><br/>'
-        . "<a href=\"$url\" target=\"_blank\">$url</a>");
+require_once '../../Classes/PHPMailer.php';
+$mail = new PHPMailer();
+$mail->setFrom("cadastro@sugoigame.com.br", "Sugoi Game");
+$mail->AddAddress($email, $inlognaam);
+$mail->Subject = 'Sugoi Game - Criação de conta';
+$mail->msgHTML('<div style="margin: 0 auto; background: #F5F5F5; border-radius: 5px; width: 520px; border: 1px dotted #D8D8D8; border-left: 4px solid #CE3233; border-right: 4px solid #CE3233;">
+    <table width="100%" cellspacing="0" cellpadding="0" align="center">
+        <tr><td><div style="padding: 1px 5px; font-size:12px; font-family: Arial, Helvetica, sans-serif;">
+            Bem vindo ao Sugoi Game!<br /><br />
+            Código de ativação: ' . $ativacao . '<br /><br />
+            Ou se preferir acesse o linnk:<br /><br />
+            <a href="' . $url . '" target="_blank">' . $url . '</a>
+        </div></td></tr>
+        <tr><td align="center"><div style="background: rgba(0, 0, 0, .5); margin-top: 10px; padding: 5px; font-size: 12px; font-family: Arial, Helvetica, sans-serif;">
+            <b style="color: #FFF;">&copy; 2017 - ' . date("Y"). ' - Sugoi Game | Todos os direitos reservados.</b>
+        </div></td></tr>
+    </table>
+</div>');
+if($mail->Send()) {
+    $mail->ClearAllRecipients();
+    $mail->ClearAttachments();
 
-$sendgrid->send($emailS);*/
-
-
-// $userDetails->set_authentication($u_id);
-
+    $userDetails->set_authentication($u_id);
+}
 header("location:../../?ses=home");
-// header("location:../../?ses=seltrip");
+exit;

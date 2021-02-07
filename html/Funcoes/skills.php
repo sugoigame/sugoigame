@@ -161,7 +161,6 @@ function get_basic_skills($filter_column, $filter_value, $tipo_base = 0, $maestr
     return $skills_ordered;
 }
 
-
 function aprende_habilidade_random($pers, $cod_skill, $tipo_skill) {
     global $connection;
 
@@ -214,9 +213,7 @@ function aprende_todas_habilidades_disponiveis_akuma($pers) {
         }
     }
 }
-
 ?>
-
 <?php function render_habilidades_classe_tab($skills, $pers, $form_url, $pode_aprender_func) { ?>
     <?php global $connection; ?>
     <?php $lvls = array(3, 5, 10, 15, 20, 30, 40, 50); ?>
@@ -317,7 +314,6 @@ function aprende_todas_habilidades_disponiveis_akuma($pers) {
         <?php endif; ?>
     <?php endforeach; ?>
 <?php } ?>
-
 <?php function render_skill_requisitos($skill, $pers) { ?>
     <?php global $userDetails; ?>
     <div>
@@ -360,7 +356,6 @@ function aprende_todas_habilidades_disponiveis_akuma($pers) {
         <?php endif; ?>
     </div>
 <?php } ?>
-
 <?php function render_skill_efeitos($skill) { ?>
     <ul>
         <?php if (!empty($skill["dano"])): ?>
@@ -403,7 +398,6 @@ function aprende_todas_habilidades_disponiveis_akuma($pers) {
         <?php endif; ?>
     </ul>
 <?php } ?>
-
 <?php function render_new_skill_form($skill, $pers, $form_url, $pode_aprender_func, $submit_button_text = "Aprender", $confirm = false) { ?>
     <?php if ($pode_aprender_func($pers, $skill)): ?>
         <button class="btn btn-success link_<?= $confirm ? "confirm" : "send" ?>"
@@ -458,7 +452,6 @@ function aprende_todas_habilidades_disponiveis_akuma($pers) {
         </form>
     <?php endif; ?>
 <?php } ?>
-
 <?php function render_skill_selecao_img($img_id) { ?>
     <input name="img" type="hidden" value="0" id="input_img_<?= $img_id ?>" required>
 

@@ -128,7 +128,6 @@ function diff_mais_forte_equilibrada($alvo) {
     }
 }
 
-
 function can_dispair_cannon($content) {
     global $userDetails;
 
@@ -661,7 +660,6 @@ function fadiga_batalha_ativa($personagens) {
 }
 
 ?>
-
 <?php function render_tabuleiro($tabuleiro, $x1, $x2, $id_blue = NULL, $mira = NULL, $special_effects = array()) { ?>
     <?php global $userDetails; ?>
     <?php if ($id_blue === NULL) {
@@ -719,7 +717,6 @@ function fadiga_batalha_ativa($personagens) {
         <?php endfor; ?>
     </table>
 <?php } ?>
-
 <?php function render_personagens_info($personagens_combate, $buffs, $id_blue = NULL, $special_effects = array()) { ?>
     <?php global $userDetails; ?>
     <?php if ($id_blue === NULL) {
@@ -807,7 +804,6 @@ function fadiga_batalha_ativa($personagens) {
         <?php endif; ?>
     <?php endforeach; ?>
 <?php } ?>
-
 <?php function render_row_atributo($abr, $img, $pers) { ?>
     <div>
         <img src="Imagens/Icones/<?= $img ?>.png" width="25px">
@@ -816,13 +812,11 @@ function fadiga_batalha_ativa($personagens) {
         </div>
     </div>
 <?php } ?>
-
 <?php function get_img_combate($log) {
     return ($log["skin_r"] === "npc")
         ? "Imagens/Batalha/Npc/" . $log["img"] . ".png"
         : "Imagens/Personagens/Icons/" . get_img($log, "r") . ".jpg";
 } ?>
-
 <?php function render_relatorio_data($relatorio, $id_azul, $avancado = false) { ?>
     <ul class="list-group">
         <?php foreach ($relatorio as $index => $log): ?>
@@ -928,7 +922,6 @@ function fadiga_batalha_ativa($personagens) {
         <?php endforeach; ?>
     </ul>
 <?php } ?>
-
 <?php function render_combate_pvp_header($combate, $tripulacao, $id_blue = NULL) { ?>
     <?php global $userDetails; ?>
     <?php if ($id_blue === NULL) {
@@ -951,7 +944,6 @@ function fadiga_batalha_ativa($personagens) {
     </div>
     <h3><?= nome_tipo_combate($combate["tipo"]); ?></h3>
 <?php } ?>
-
 <?php function render_combate_pvp_placar($tripulacao, $id_blue = NULL) { ?>
     <?php global $userDetails; ?>
     <?php if ($id_blue === NULL) {

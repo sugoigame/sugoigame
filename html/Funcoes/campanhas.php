@@ -2,7 +2,6 @@
     global $userDetails;
     return str_replace("%capitao_nome%", $userDetails->capitao["nome"], $text);
 } ?>
-
 <?php function render_campanha_etapa($etapa, Campanha $validator, $nome) { ?>
     <h4><?= $etapa["titulo"] ?></h4>
     <div class="etapa-dialogo">
