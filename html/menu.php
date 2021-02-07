@@ -374,7 +374,7 @@ function super_menu_can_be_active($menu) {
 	</div>
 </div>
 <?php if ($userDetails->conta): ?>
-	<div class="vertical-menu-header clearfix hidden-xs hidden-sm">
+	<div class="vertical-menu-header clearfix">
 		<p class="navbar-text">
 			<?php $total = $connection->run("SELECT count(id) AS total FROM tb_usuarios WHERE ultimo_logon > ?", "i", atual_segundo() - (10 * 60))->fetch_array()["total"]; ?>
 			Jogadores online: <?=($total);?>

@@ -2,7 +2,7 @@
 $valida = "EquipeSugoiGame2012";
 require "Includes/conectdb.php";
 
-if (!$userDetails->conta AND
+/*if (!$userDetails->conta AND
 	!isset($_GET["ses"]) AND
 	!isset($_GET["erro"]) AND
 	!isset($_GET["msg"]) AND
@@ -10,7 +10,7 @@ if (!$userDetails->conta AND
 ) {
 	header("location: ./login.php");
 	exit;
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -54,6 +54,7 @@ if (!$userDetails->conta AND
 			});
 		}
 	</script>
+	<script data-ad-client="ca-pub-6665062829379662" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
 
