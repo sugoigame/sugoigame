@@ -22,6 +22,8 @@ $connection->run("SET sql_mode='NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'");
 
 $navigation = new Navigation($connection);
 
+$_SERVER['HTTP_HOST'] = OCEANO_SERVER;
+
 // Run the server application through the WebSocket protocol on port 9000
 $app = new Ratchet\App("localhost", 9000, "0.0.0.0");
 $app->route('/mar', new WsServer($connection, $navigation), ['*']);
