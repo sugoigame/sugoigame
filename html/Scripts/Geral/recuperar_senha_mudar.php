@@ -1,7 +1,6 @@
 <?php
 $valida = "EquipeSugoiGame2012";
 include "../../Includes/conectdb.php";
-include "../../sendgrid-php/sendgrid-php.php";
 
 $protector->reject_conta();
 
@@ -33,14 +32,26 @@ $connection->run(
 
 $connection->run("DELETE FROM tb_reset_senha_token WHERE conta_id = ?", "i", $conta["conta_id"]);
 
-$sendgrid = new SendGrid('', '', array("turn_off_ssl_verification" => true));
-$emailS = new SendGrid\Email();
-$emailS
-    ->addTo($conta["email"])
-    ->setFrom('cadastro@sugoigame.com.br')
-    ->setSubject('Recuperação de senha - Sugoi Game')
-    ->setHtml("Sua senha foi alterada!<br/><br/>http://www.sugoigame.com.br/");
-
-$sendgrid->send($emailS);
+require_once '../../Classes/PHPMailer.php';
+$mail = new PHPMailer();
+$mail->setFrom("cadastro@sugoigame.com.br", "Sugoi Game");
+$mail->AddAddress($email, $inlognaam);
+$mail->Subject = 'Sugoi Game - Recuperação de senha';
+$mail->msgHTML('<div style="margin: 0 auto; background: #F5F5F5; border-radius: 5px; width: 520px; border: 1px dotted #D8D8D8; border-left: 4px solid #CE3233; border-right: 4px solid #CE3233;">
+    <table width="100%" cellspacing="0" cellpadding="0" align="center">
+        <tr><td><div style="padding: 1px 5px; font-size:12px; font-family: Arial, Helvetica, sans-serif;">
+            Sua senha foi alterada!<br /><br />
+            https://sugoigame.com.br/
+        </div></td></tr>
+        <tr><td align="center"><div style="background: rgba(0, 0, 0, .5); margin-top: 10px; padding: 5px; font-size: 12px; font-family: Arial, Helvetica, sans-serif;">
+            <b style="color: #FFF;">&copy; 2017 - ' . date("Y"). ' - Sugoi Game | Todos os direitos reservados.</b>
+        </div></td></tr>
+    </table>
+</div>');
+if($mail->Send()) {
+    $mail->ClearAllRecipients();
+    $mail->ClearAttachments();
+}
 
 header("location:../../?msg2=Senha alterada! Efetue login para começar a jogar!");
+exit;
