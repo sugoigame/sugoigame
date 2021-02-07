@@ -1,7 +1,7 @@
 .idea
 
 logs/*.log
-html/Logs
+html/Logs/
 
 node_modules/
 package-lock.json
