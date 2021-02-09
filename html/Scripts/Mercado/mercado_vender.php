@@ -41,13 +41,13 @@ if ($conect) {
     $query = "SELECT * FROM tb_ilha_mod WHERE ilha='" . $usuario["ilha"] . "'";
     $result = mysql_query($query);
     $sql = mysql_fetch_array($result);
-    $mod = $sql["mod_venda"];
+    $mod = 0.5;
 
     if ($tipo == 0) {
         $query = "SELECT * FROM tb_item_acessorio WHERE cod_acessorio='$item'";
         $result = mysql_query($query);
         $item_info = mysql_fetch_array($result);
-        $preco = preco_compra_acessorio($item_info);
+        $preco = preco_venda_acessorio($item_info);
         if ($aumento = $userDetails->buffs->get_efeito("aumento_preco_venda_ilha")) {
             $preco += $aumento * $preco;
             if ($preco >= preco_compra_acessorio($item_info)) {
@@ -91,7 +91,7 @@ if ($conect) {
             }
         }
     } else if ($tipo == 8 OR $tipo == 9 OR $tipo == 10) {
-        $preco = 6500000;
+        $preco = 6500000 * $mod;
         if ($aumento = $userDetails->buffs->get_efeito("aumento_preco_venda_ilha")) {
             $preco += $aumento * $preco;
             if ($preco >= 6500000) {
