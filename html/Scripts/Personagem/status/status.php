@@ -253,13 +253,13 @@ if (!$pers) {
                 </div>
                 <br/>
                 <p>
-                    <button class="btn btn-info link_confirm"
+                    <!-- <button class="btn btn-info link_confirm"
                             data-question="Resetar os atributos desse personagem?<br>obs: Todas habilidades de classe (exceto soco) serão removidas"
                             href="Vip/reset_atributos.php?cod=<?= $pers["cod"]; ?>&tipo=gold"
                         <?= $userDetails->conta["gold"] < PRECO_GOLD_RESET_ATRIBUTOS ? "disabled" : "" ?>>
                         <?= PRECO_GOLD_RESET_ATRIBUTOS ?> <img src="Imagens/Icones/Gold.png"> <br/>
                         Resetar Atributos
-                    </button>
+                    </button> -->
                     <button class="btn btn-info link_confirm"
                             data-question="Resetar os atributos desse personagem?<br>obs: Todas habilidades de classe (exceto soco) serão removidas"
                             href="Vip/reset_atributos.php?cod=<?= $pers["cod"]; ?>&tipo=dobrao"
