@@ -72,7 +72,6 @@ define('ILHA_COLISEU',				42);
 define('ILHA_COLISEU_2',			44);
 
 require_once(dirname(__FILE__) . "/../Funcoes/requires.php");
-require_once(dirname(__FILE__) . "/../Constantes/requires.php");
 require_once(dirname(__FILE__) . "/../Classes/requires.php");
 
 $userDetails	= new UserDetails($connection);

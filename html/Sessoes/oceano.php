@@ -390,10 +390,10 @@
             var npsSprite = game.add.image(np.x * SQUARE_SIZE, np.y * SQUARE_SIZE, 'nps_' + np.icon);
             npsSprite.anchor.set(0.5);
             npsSprite.data = np;
-//            npsSprite.tween = game.add.tween(npsSprite.position).to({
-//                x: (np.x + np.move_x) * SQUARE_SIZE,
-//                y: (np.y + np.move_y) * SQUARE_SIZE
-//            }, 15000, Phaser.Easing.Linear.None, true);
+            // npsSprite.tween = game.add.tween(npsSprite.position).to({
+            //     x: (np.x + np.move_x) * SQUARE_SIZE,
+            //     y: (np.y + np.move_y) * SQUARE_SIZE
+            // }, 15000, Phaser.Easing.Linear.None, true);
             nps.push(npsSprite);
 
             if (gameState.target && !gameState.target.sprite && gameState.target.data.id == np.id) {

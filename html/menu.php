@@ -1,5 +1,4 @@
 <?php
-
 function menu_link($ses, $text, $img, $title, $href_prefix = "./?ses=", $class = "link_content", $id = "", $data = "") {
 	$sess = $_GET["sessao"];
 	global $userDetails;
@@ -36,7 +35,6 @@ function super_menu_active($menu) {
 function super_menu_can_be_active($menu) {
 	return get_super_menu() == $menu;
 }
-
 ?>
 <?php if ($userDetails->tripulacao) : ?>
 	<div class="vertical-menu-news clearfix">
@@ -92,23 +90,19 @@ function super_menu_can_be_active($menu) {
 						<?= menu_link("noticias", "Notícias", "fa fa-newspaper-o", "") ?>
 						<?= menu_link("recrutamento", "Recrute um Amigo", "fa fa-user-plus", "") ?>
 						<?= menu_link("akumaBook", "Akuma Book", "fa fa-book", "Veja quais foram as Akuma no Mi já encontradas") ?>
-						<?/*= menu_link("torneio", "Torneio dos Melhores", "fa fa-trophy", "") */?>
-						<?/*= menu_link("hall", "Hall da fama", "fa fa-trophy", "Veja quais foram os melhores jogadores de eras passadas") */?>
+						<?= menu_link("hall", "Hall da fama", "fa fa-trophy", "Veja quais foram os melhores jogadores de eras passadas") ?>
 						<?= menu_link("ranking", "Ranking", "fa fa-trophy", "") ?>
-						<?/*= menu_link("calendario", "Calendário do jogo", "fa fa-calendar", "") */?>
 						<?= menu_link("conta", "Minha Conta", "fa fa-address-card", "") ?>
-						<?/*= menu_link("kanban", "Sugestões e desenvolvimento", "fa fa-list", "") */?>
 						<?= menu_link("calculadoras", "Calculadoras", "fa fa-calculator", "") ?>
 						<?= menu_link("#", "Destravar Tripulação", "fa fa-cogs", "Corrigir bugs que podem ter travado sua conta.", "", "", "unstuck-acc") ?>
-						<?= menu_link("vipLoja", "Loja VIP", "fa fa-shopping-cart", "") ?>
-						<?= menu_link("vipComprar", "Comprar Ouro", "fa fa-diamond", "") ?>
+						<?= menu_link("vipLoja", "Gold Shop", "fa fa-shopping-cart", "") ?>
+						<?= menu_link("vipComprar", "Faça uma doação", "fa fa-diamond", "") ?>
 						<?= menu_link("#", "Selecionar tripulação", "fa fa-sign-out", "É hora de dar tchau!", "", "link_redirect", "link_Scripts/Geral/deslogartrip") ?>
 						<?= menu_link("#", "Logout", "fa fa-sign-out", "É hora de dar tchau!", "", "link_redirect", "link_Scripts/Geral/deslogar") ?>
 					</ul>
 				</div>
 				<?php if (!$userDetails->combate_pvp && !$userDetails->combate_pve && !$userDetails->combate_bot) : ?>
-					<?php if ($userDetails->tripulacao["campanha_impel_down"]
-						|| $userDetails->tripulacao["campanha_enies_lobby"]) : ?>
+					<?php if ($userDetails->tripulacao["campanha_impel_down"] || $userDetails->tripulacao["campanha_enies_lobby"]) : ?>
 						<?= super_menu_link("campanhaImpelDown", "menu-campanha", "Campanhas", "campanha", "campanha") ?>
 						<div id="menu-campanha" class="collapse <?= super_menu_in_out("campanha") ?>">
 							<ul class="vertical-nav nav navbar-nav">
@@ -127,15 +121,8 @@ function super_menu_can_be_active($menu) {
 					<div id="menu-tripulacao" class="collapse <?= super_menu_in_out("tripulacao") ?>">
 						<ul class="vertical-nav nav navbar-nav">
 							<?= menu_link("status", "Visão Geral", "fa fa-file-text", "") ?>
-							<?/*= menu_link("status&nav=habilidades", "Habilidades", "fa fa-star", "") */?>
-							<?/*= menu_link("status&nav=equipamentos", "Equipamentos", "fa fa-shield", "") */?>
-							<?php if (!$userDetails->missao && !$userDetails->tripulacao["recrutando"]) : ?>
-								<?/*= menu_link("status&nav=profissao", "Profissões", "fa fa-gavel", "") */?>
-								<?/*= menu_link("status&nav=akuma", " Akuma no Mi", "glyphicon glyphicon-apple", "") */?>
-							<?php endif; ?>
 							<?= menu_link("haki", "Haki", "fa fa-certificate", "") ?>
 							<?= menu_link("karma", "Karma", "glyphicon glyphicon-adjust", "") ?>
-							<?/*= menu_link("status&nav=customizacao", "Aparências", "fa fa-male", "") */?>
 							<?= menu_link("realizacoes", "Conquistas", "glyphicon glyphicon-star-empty", "") ?>
 							<?= menu_link("listaNegra", "Lista Negra", "fa fa-th-list", "") ?>
 							<?= menu_link("tatics", "Táticas", "glyphicon glyphicon-knight", "") ?>
@@ -358,18 +345,18 @@ function super_menu_can_be_active($menu) {
 				<ul class="vertical-nav nav navbar-nav">
 					<?= menu_link("faq", "F.A.Q", "fa fa-question-circle", "") ?>
 					<?= menu_link("https://discord.gg/guXVHb9mZt", "Sugoi no Discord", "fa fa-comments-o", "", "", "", "", 'target="_blank"') ?>
-					<?= menu_link("#", "Sugoi no Facebook", "fa fa-facebook-square", "") ?>
+					<?= menu_link("https://fb.com/SugoiGameBrasil", "Sugoi no Facebook", "fa fa-facebook-square", "", "", "", "", 'target="_blank"') ?>
 					<?= menu_link("https://instagram.com/sugoigamebr", "Sugoi no Instagram", "fa fa-instagram", "", "", "", "", 'target="_blank"') ?>
 				</ul>
 			</div>
 
-			<?= super_menu_link("parceiros", "menu-parceiros", "Parceiros", "parceiros", "alianca") ?>
+			<!-- <?= super_menu_link("parceiros", "menu-parceiros", "Parceiros", "parceiros", "alianca") ?>
 			<div id="menu-parceiros" class="collapse <?= super_menu_in_out("parceiros") ?>">
 				<ul class="vertical-nav nav navbar-nav">
 					<?= menu_link("https://www.facebook.com/groups/vicioanimeoficial/", "Vício em Animes", "fa fa-fire", "", "", "", "", 'target="_blank"') ?>
 					<?= menu_link("https://www.facebook.com/ZueiraOtakuCompartilhe/", "Zueira Otaku", "fa fa-bolt", "", "", "", "", 'target="_blank"') ?>
 				</ul>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>
