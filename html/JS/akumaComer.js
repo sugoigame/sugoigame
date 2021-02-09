@@ -77,7 +77,7 @@ function sel_buf(cod) {
     document.getElementById(select).innerHTML = "Buff " + sel;
     var dano = [];
     var duracao = [];
-    var calc = 50;
+    var calc = 45;
     for (x = 0; x < 56; x += 5) {
         calc += 5;
         if (x == 0) {
