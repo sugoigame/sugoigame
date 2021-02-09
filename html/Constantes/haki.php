@@ -1,0 +1,2 @@
+<?php
+define('PRECO_TREINO_HAKI', 2000000);

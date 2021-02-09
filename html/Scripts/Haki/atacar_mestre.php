@@ -20,13 +20,13 @@ $treinosRealizados = $connection->run("SELECT * FROM tb_haki_treino WHERE tripul
     $userDetails->tripulacao["id"]
 ])->count();
 
-$treinosLimite = $userDetails->tripulacao['haki_treinos'] - $treinosRealizados;
+$treinosLimite = $userDetails['treinos_haki_disponiveis'] - $treinosRealizados;
 
 if ($treinosLimite < $quant || $quant > 6) {
     $protector->exit_error('Quantidade de treinos inválida');
 }
 
-$preco_unitario = 2000000;
+$preco_unitario = PRECO_TREINO_HAKI;
 $preco = $quant * $preco_unitario;
 
 $protector->need_berries($preco);

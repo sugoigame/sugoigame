@@ -32,7 +32,7 @@
         $userDetails->tripulacao["id"]
     ])->count();
 
-    $treinosLimite = $userDetails->tripulacao['haki_treinos'] - $treinosRealizados;
+    $treinosLimite = $userDetails->tripulacao['treinos_haki_disponiveis'] - $treinosRealizados;
     ?>
 
     <div class="panel panel-default">
@@ -40,47 +40,36 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-9">
+                    <h3>Treinos realizados: <?=$treinosRealizados;?> / <?=$userDetails->tripulacao['treinos_haki_disponiveis'];?></h3>
                     <?php if ($treinosLimite < 1): ?>
-                        <p>Os treinos são liberados sempre as 0 e 12 horas.</p>
+                        <p>Os treinos de haki são liberados sempre as 0h, 6h, 12h e 18h.</p>
                     <?php else: ?>
-                        <form class="ajax_form form-inline" action="Haki/atacar_mestre"
-                              method="post"
-                              data-question="Deseja enfrentar o mestre?">
-                            <?php if ($treinosLimite == 1): ?>
-                                <h4>Você já pode treinar com o mestre!</h4>
-                                <input type="hidden" value="1" name="quant">
-                            <?php else: ?>
-                                <h4>
-                                    Treinos acumulados: <?=$treinosLimite;?>
-                                </h4>
-
-                                <div class="form-group">
-                                    <label>Informe quantos treinos simultâneos deseja fazer (Máximo 6):</label>
-                                    <input id="select-quant-treino" class="form-control" name="quant" type="number" max="<?=min(6, $treinosLimite);?>" min="1" value="1" require />
-                                </div>
-
-                                <script type="text/javascript">
-                                    $(function () {
-                                        $('#select-quant-treino').on('change', function () {
-                                            var quant           = parseInt($(this).val(), 10),
-                                                precoUnitario   = 2000000;
-                                            if (!quant || quant < 1)
-                                                quant = 1;
-                                            $('#berries-treinar-mestre').html(
-                                                mascaraBerries(quant * precoUnitario)
-                                            );
-                                        });
-                                    });
-                                </script>
-                            <?php endif; ?>
-                            <div>
-                                <p>Custo:</p>
-                                <div>
-                                    <img src="Imagens/Icones/Berries.png"/>
-                                    <span id="berries-treinar-mestre">2.000.000</span>
-                                </div>
+                        <form class="ajax_form form-inline" action="Haki/atacar_mestre" method="post" data-question="Deseja enfrentar o mestre?">
+                            <h4>Treinos restantes: <?=$treinosLimite;?></h4>
+                            <div class="form-group">
+                                <label>Informe quantos treinos simultâneos deseja fazer (Máximo 6):</label>
+                                <input id="select-quant-treino" class="form-control" name="quant" type="number" max="<?=min(6, $treinosLimite);?>" min="1" value="1" require />
                             </div>
-                            <button class="btn btn-success">Treinar</button>
+
+                            <script type="text/javascript">
+                                $(function () {
+                                    $('#select-quant-treino').on('change', function () {
+                                        var quant           = parseInt($(this).val(), 10),
+                                            precoUnitario   = <?=PRECO_TREINO_HAKI;?>;
+                                        if (!quant || quant < 1)
+                                            quant = 1;
+                                        $('#berries-treinar-mestre').html(
+                                            mascaraBerries(quant * precoUnitario)
+                                        );
+                                    });
+                                });
+                            </script>
+                            <div>
+                                <p><b>Custo:</b>
+                                    <img src="Imagens/Icones/Berries.png" /> <span id="berries-treinar-mestre"><?=mascara_numeros_grandes(PRECO_TREINO_HAKI);?></span>
+                                </p>
+                            </div>
+                            <button class="btn btn-success">Realizar Treino</button>
                         </form>
                     <?php endif; ?>
                 </div>
