@@ -53,6 +53,7 @@ $allowed = [
     'luizxxi@live.com',
     'adrieloliveira-pessoal@hotmail.com',
     'washingtonrodjf@gmail.com',
+    'ivan.i.n@hotmail.com',
 
     'matheus1298@gmail.com',
     'raphaelribeirocaetano@gmail.com',
