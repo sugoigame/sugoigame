@@ -61,7 +61,7 @@ foreach ($skills_personagem as $x => $outra_skill) {
 
 	$result = $connection->run(
 		"SELECT * FROM tb_personagens_skil ps INNER JOIN $table info ON ps.cod_skil = info.cod_skil WHERE ps.cod = ? AND ps.tipo = ? AND info.requisito_lvl = ?",
-		"iii", array($pers["cod"], $tipo_skill, $skill["requisito_lvl"])
+		"iii", array($pers["cod"], $outra_skill["tipo"], $skill["requisito_lvl"])
 	);
 
 	if ($result->count()) {
