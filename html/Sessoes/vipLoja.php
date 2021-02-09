@@ -49,9 +49,7 @@
     </li>
 <?php } ?>
 
-<div class="panel-heading">
-    Loja VIP
-</div>
+<div class="panel-heading">Gold Shop</div>
 <script type="text/javascript">
     $(function () {
         $("#renomeia_trip").click(function () {
@@ -71,7 +69,7 @@
     });
 </script>
 <div class="panel-body">
-    <?= ajuda("Loja VIP", "Adquira vantagens exclusivas com suas moedas de ouro.") ?>
+    <?= ajuda("O que é o Gold SHop", "Adquira vantagens exclusivas com suas moedas de ouro.") ?>
 
     <ul class="list-group">
         <?php render_vantagem(
@@ -107,7 +105,7 @@
             "Vip/formacao_comprar.php?tipo=dobrao"
         ); ?>
 
-        <?php render_vantagem(
+        <?php /*render_vantagem(
             "atributos.png",
             "Conhecimento estratégico",
             "Permite ver os atributos, experiência de profissão, categoria de akuma e score dos seus tripulantes durante um combate. Exibe também os atributos dos personagens ao clicar nos respectivos cartazes de procurado no topo da tela.",
@@ -116,7 +114,7 @@
             PRECO_DOBRAO_CONHECIMENTO,
             "Vip/conhecimento_comprar.php?tipo=gold",
             "Vip/conhecimento_comprar.php?tipo=dobrao"
-        ); ?>
+        );*/ ?>
 
         <?php render_vantagem(
             "coup-de-burst.gif",
