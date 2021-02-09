@@ -6,7 +6,6 @@ include_once(dirname(__FILE__) . "/akuma.php");
 include_once(dirname(__FILE__) . "/alerts.php");
 include_once(dirname(__FILE__) . "/campanhas.php");
 include_once(dirname(__FILE__) . "/classes.php");
-include_once(dirname(__FILE__) . "/classificacao.php");
 include_once(dirname(__FILE__) . "/coliseu.php");
 include_once(dirname(__FILE__) . "/combate.php");
 include_once(dirname(__FILE__) . "/denden.php");

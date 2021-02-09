@@ -293,6 +293,11 @@ class UserDetails {
 		$tripulacao = $result->fetch_array();
 		$tripulacao["gold"] = $this->conta["gold"];
 
+		$global = $this->connection->run("SELECT valor_int FROM tb_variavel_global WHERE variavel = ? LIMIT 1", 's', [
+			VARIAVEL_TOTAL_HAKI_TREINOS
+		])->fetch_array();
+		$tripulacao["treinos_haki_disponiveis"] = (int)$global['valor_int'];
+
 		return ($this->tripulacao = $tripulacao);
 	}
 

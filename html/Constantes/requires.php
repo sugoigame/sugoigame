@@ -6,6 +6,7 @@ if (in_array($_SERVER['HTTP_HOST'], ['sugoigame.com.br', 'map.sugoigame.com.br']
 require_once(dirname(__FILE__) . '/configs.' . $env . '.php');
 require_once(dirname(__FILE__) . "/classes.php");
 require_once(dirname(__FILE__) . "/combate.php");
+require_once(dirname(__FILE__) . "/haki.php");
 require_once(dirname(__FILE__) . "/ilhas.php");
 require_once(dirname(__FILE__) . "/itens.php");
 require_once(dirname(__FILE__) . "/karma.php");
