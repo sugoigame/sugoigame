@@ -1,5 +1,5 @@
 <?php
-// $_SERVER['HTTP_HOST'] = 'map.sugoigame.com.br';
+$_SERVER['HTTP_HOST'] = 'map.sugoigame.com.br';
 
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/../../html/Includes/database/mywrap.php';
