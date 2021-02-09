@@ -205,7 +205,7 @@
         <?php endif; ?>
         <h3>
             Na última edição você
-            conseguiu <?= mascara_numeros_grandes($userDetails->tripulacao["coliseu_points_edicao_passada"]) ?>
+            conseguiu <?= mascara_numeros_grandes($userDetails->tripulacao["coliseu_points_edicao"]) ?>
             <img src="Imagens/Icones/CP.png"/>
         </h3>
         <p>
