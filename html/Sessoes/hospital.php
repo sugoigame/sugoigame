@@ -76,7 +76,7 @@ function filter_personagem_pode_finalizar($pers) {
             <?php render_personagem_sub_panel_with_img_top($pers); ?>
             <div class="panel-body">
                 <?php if (!$pers["respawn"]) : ?>
-                    <?php $tempo = max(0, 10 * ($pers["lvl"] - 20)); ?>
+                    <?php $tempo = max(0, 10 * ($pers["lvl"])); ?>
                     <p>
                         <strong>Tempo de espera:</strong>
                         <?= transforma_tempo_min($tempo) ?>

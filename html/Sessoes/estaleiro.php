@@ -77,49 +77,52 @@
 
     <div class="row">
         <?php foreach ($items as $item) : ?>
-            <?php $preco = $item["preco"] * $mods["mod"]; ?>
-            <div class="list-group-item col-md-4">
-                <?= info_item_with_img($item, $item, FALSE, FALSE, FALSE) ?>
+            <div class="col-md-4">
+                <?php $preco = $item["preco"] * $mods["mod"]; ?>
+                <div class="list-group-item">
+                    <?= info_item_with_img($item, $item, FALSE, FALSE, FALSE) ?>
+                    <div>
+                        <img src="Imagens/Icones/Berries.png"/> <?= mascara_berries($preco) ?>
+                    </div>
+                    <?php if ($userDetails->tripulacao["berries"] >= $preco): ?>
+                        <p>
+                            <?php if ($item["tipo_item"] == 11 AND $item["limite"] >= count($userDetails->personagens)) : ?>
+                                <button href='Mercado/marcenaria_comprar.php?item=<?= $item["cod_item"]; ?>&tipo=<?= $item["tipo_item"]; ?>'
+                                        class="bt_comprar_barco btn btn-success">
+                                    Comprar
+                                </button>
+                            <?php elseif ($item["tipo_item"] != 11): ?>
+                                <button href='link_Mercado/marcenaria_comprar.php?item=<?= $item["cod_item"]; ?>&tipo=<?= $item["tipo_item"]; ?>'
+                                        class="link_send btn btn-success">
+                                    Comprar
+                                </button>
+                            <?php endif; ?>
+                        </p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        <div class=" col-md-4">
+            <div class="list-group-item">
+                <p class="equipamentos_casse_0">
+                    <img src="Imagens/Itens/168.png" /><br />
+                    Bala de Canhão
+                </p>
                 <div>
+                    <?php $preco = 10000 * $mods["mod"]; ?>
                     <img src="Imagens/Icones/Berries.png"/> <?= mascara_berries($preco) ?>
                 </div>
                 <?php if ($userDetails->tripulacao["berries"] >= $preco): ?>
                     <p>
-                        <?php if ($item["tipo_item"] == 11 AND $item["limite"] >= count($userDetails->personagens)) : ?>
-                            <button href='Mercado/marcenaria_comprar.php?item=<?= $item["cod_item"]; ?>&tipo=<?= $item["tipo_item"]; ?>'
-                                    class="bt_comprar_barco btn btn-success">
-                                Comprar
-                            </button>
-                        <?php elseif ($item["tipo_item"] != 11): ?>
-                            <button href='link_Mercado/marcenaria_comprar.php?item=<?= $item["cod_item"]; ?>&tipo=<?= $item["tipo_item"]; ?>'
-                                    class="link_send btn btn-success">
-                                Comprar
-                            </button>
-                        <?php endif; ?>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <input class="form-control" size="5" id="13_quant" value="1"><br/>
+                        </div>
+                        <button id="13" class="comprar_material btn btn-success">Comprar</button>
+                    </div>
                     </p>
                 <?php endif; ?>
             </div>
-        <?php endforeach; ?>
-        <div class="list-group-item col-md-4">
-            <h5><img src="Imagens/Itens/168.png"/><br>Bala de Canhão</h5>
-            <div>
-                Usada no canhão do navio para batalhas em alto mar.
-            </div>
-            <div>
-                <?php $preco = 10000 * $mods["mod"]; ?>
-                <img src="Imagens/Icones/Berries.png"/> <?= mascara_berries($preco) ?>
-            </div>
-            <?php if ($userDetails->tripulacao["berries"] >= $preco): ?>
-                <p>
-                <div class="form-inline">
-                    <div class="form-group">
-                        <input class="form-control" size="5" id="13_quant" value="1"><br/>
-                    </div>
-                    <button id="13" class="comprar_material btn btn-success">Comprar</button>
-                </div>
-                </p>
-            <?php endif; ?>
         </div>
     </div>
-
 </div>

@@ -209,7 +209,6 @@ function appendLinks() {
 		e.preventDefault();
 		$(this).blur();
 		var locale = $(this).attr("href");
-		console.log(locale);
 		locale = locale.substr(5, (locale.length - 5));
 		sendGet(locale);
 	});
@@ -265,7 +264,6 @@ function appendLinks() {
 	$(document).on("click", ".play-effect", function (e) {
 		var effect = $(this).data('effect');
 		var animation = new Animation(effect);
-		console.log(animation);
 		animation.play({
 			fixed: true,
 			left: $(window).width() / 2,
@@ -358,7 +356,6 @@ function setQueryParam(param, value) {
 	}
 
 	pagina_atual = paramsFromPaginaAtual.join('&');
-	console.log(pagina_atual);
 
 	window.history.pushState({status: 'ok'}, 'One Piece Sugoi Game - ' + paramsFromPaginaAtual[0], '?ses=' + pagina_atual);
 }
@@ -698,8 +695,8 @@ function pauseAudio(elementId) {
 
 function setAudioEnableButtonAparence() {
 	var content = audioEnable
-		? '<i class="glyphicon glyphicon-volume-up"></i> On'
-		: '<i class="glyphicon glyphicon-volume-off"></i> Off';
+		? '<i class="glyphicon glyphicon-volume-up fa-fw"></i> Som Ligado'
+		: '<i class="glyphicon glyphicon-volume-off fa-fw"></i> Som Desligado';
 	$('#audio-toggle').html(content);
 }
 

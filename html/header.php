@@ -1,71 +1,46 @@
 <?php
-
 function get_berries() {
     global $userDetails;
+
     return mascara_berries($userDetails->tripulacao["berries"]);
 }
-
 function get_current_mar() {
     global $userDetails;
+
     return nome_mar($userDetails->ilha["mar"]);
 }
-
 function get_current_ilha() {
     global $userDetails;
+
     return nome_ilha($userDetails->ilha["ilha"]);
 }
-
-function get_rota() {
-    global $userDetails;
-    $tempo_nav = "";
-    $tempo_nav_sec = "";
-    if ($userDetails->rotas) {
-        if ($userDetails->rotas[0]["momento"] > atual_segundo()) {
-            $tempo_nav_sec = $userDetails->rotas[0]["momento"] - atual_segundo();
-            $tempo_nav = transforma_tempo_min($tempo_nav_sec);
-        } else {
-            $tempo_nav = transforma_tempo_min(0);
-            $tempo_nav_sec = 0;
-        }
-    }
-    return array(
-        "tempo_nav" => $tempo_nav,
-        "tempo_nav_sec" => $tempo_nav_sec
-    );
-}
-
 function has_mapa() {
-    global $userDetails;
-    global $connection;
-    return $connection->run("SELECT * FROM tb_usuario_itens WHERE tipo_item=2 AND id= ?", "i", $userDetails->tripulacao["id"])->count();
-}
+    global $userDetails, $connection;
 
+    return $connection->run("SELECT * FROM tb_usuario_itens WHERE tipo_item = 2 AND id= ?", "i", $userDetails->tripulacao["id"])->count();
+}
 ?>
 <nav class="header-navbar navbar navbar-default">
     <div class="container-fluid">
         <div>
             <ul class="nav navbar-nav">
-                <li data-toggle="tooltip" title="Estamos em fase BETA!" data-placement="bottom">
+                <?php /*<li data-toggle="tooltip" title="Estamos em fase BETA!" data-placement="bottom">
                     <a href="./?ses=beta" class="link_content">
                         BETA
                     </a>
-                </li>
+                </li>*/ ?>
                 <li data-toggle="tooltip" title="A bandeira da sua tripulação" data-placement="bottom">
                     <a class="link_content" href="./?ses=bandeira">
                         <img height="21px"
                              src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->tripulacao["bandeira"]; ?>&f=<?= $userDetails->tripulacao["faccao"]; ?>"/>
                     </a>
                 </li>
-                <li id="div_icon_coordenada" data-toggle="tooltip" title="Sua localização atual"
-                    data-placement="bottom">
+                <li id="div_icon_coordenada" data-toggle="tooltip" title="Sua localização atual" data-placement="bottom">
                     <a>
                         <img src="Imagens/Icones/Pose.png" height="21px"/>
                         <span id="location"><?= get_current_location() ?></span>,
                         <span id="destino_mar"><?= get_current_mar() ?></span> -
                         <span id="destino_ilha"><?= get_current_ilha() ?></span>
-                        <?php $nav = get_rota(); ?>
-                        <span id="destino"><?= $nav["tempo_nav"] ?></span>
-                        <span id="destino_sec"><?= $nav["tempo_nav_sec"] ?></span>
                     </a>
                 </li>
             </ul>
@@ -206,26 +181,25 @@ function has_mapa() {
                         <?php endif; ?>
                     </a>
                 </li>
-                <li id="div_icon_berries" class="div_icon" data-toggle="tooltip" title="Berries"
-                    data-placement="bottom">
+                <li id="div_icon_berries" class="div_icon" data-toggle="tooltip" title="Berries" data-placement="bottom">
                     <a>
                         <img height="21px" src="Imagens/Icones/Berries.png"/>
-                        <span id="span_berries"> <?= get_berries(); ?> </span>
+                        <span id="span_berries"> <?= mascara_numeros_grandes($userDetails->tripulacao["berries"]); ?> </span>
                     </a>
                 </li>
-                <li id="div_icon_gold" data-toggle="tooltip" title="Moedas de Ouro"
-                    data-placement="bottom">
+                <li id="div_icon_gold" data-toggle="tooltip" title="Moedas de Ouro" data-placement="bottom">
                     <a href="link_vipComprar" class="link_content2">
                         <img height="21px" src="Imagens/Icones/Gold.png"/>
                         <span id="span_gold"><?= mascara_numeros_grandes($userDetails->conta["gold"]); ?></span>
                     </a>
                 </li>
-                <li id="div_icon_gold" data-toggle="tooltip" title="Dobrões de Ouro"
-                    data-placement="bottom">
-                    <a href="link_leiloes" class="link_content2">
+                <li id="div_icon_gold" data-toggle="tooltip" title="Dobrões de Ouro" data-placement="bottom">
+                    <!-- <a href="link_leiloes" class="link_content2"> -->
+                    <a>
                         <img height="21px" src="Imagens/Icones/Dobrao.png"/>
                         <span id="span_gold"><?= mascara_numeros_grandes($userDetails->conta["dobroes"]); ?></span>
                     </a>
+                    <!-- </a> -->
                 </li>
             </ul>
         </div>
