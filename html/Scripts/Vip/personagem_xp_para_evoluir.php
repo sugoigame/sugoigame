@@ -19,7 +19,7 @@ if ($pers["lvl"] >= $userDetails->capitao["lvl"] || $pers["xp"] >= $pers["xp_max
 if ($tipo == "gold") {
     $protector->need_gold(PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO);
 } else {
-    $protector->need_dobroes(ceil(PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO));
+    $protector->need_dobroes(PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO);
 }
 
 $connection->run("UPDATE tb_personagens SET xp = xp + xp_max WHERE cod = ?",
@@ -28,7 +28,7 @@ $connection->run("UPDATE tb_personagens SET xp = xp + xp_max WHERE cod = ?",
 if ($tipo == "gold") {
     $userDetails->reduz_gold(PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO, "comprar_lvl");
 } else {
-    $userDetails->reduz_dobrao(ceil(PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO), "comprar_lvl");
+    $userDetails->reduz_dobrao(PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO, "comprar_lvl");
 }
 
 echo("|Experiência adquirida!");

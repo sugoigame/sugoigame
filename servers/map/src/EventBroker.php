@@ -86,7 +86,10 @@ class EventBroker {
             && isset($data->destination->x)
             && isset($data->destination->y)
         ) {
-            if ($from->details->travel(array("x" => $data->destination->x, "y" => $data->destination->y), $this->navigation)) {
+            if ($from->details->travel([
+                "x" => $data->destination->x,
+                "y" => $data->destination->y
+            ], $this->navigation)) {
                 $this->broadcast("muda_status", $from->details->get_public_data(), $from->details);
             }
         }
@@ -121,6 +124,8 @@ class EventBroker {
                 "destination" => $data->destination,
                 "targets" => $damages ? count($damages) : 0
             ));
+
+            $this->get_field_of_view($from);
         }
     }
 
@@ -138,6 +143,8 @@ class EventBroker {
                     "destination" => $result["destination"],
                     "targets" => $result["damages"] ? count($result["damages"]) : 0
                 ));
+
+                $this->get_field_of_view($from);
             }
         }
     }
@@ -164,15 +171,15 @@ class EventBroker {
         }
     }
 
-//    public function atacar($from, $data) {
-//        if ($from->details && $from->details->tripulacao && isset($data->alvo) && isset($data->type)) {
-//            $result = $from->details->attack_target($data->alvo, $data->type, $this->navigation);
-//            if ($result) {
-//                $from->send($this->encode("redirect", "combate"));
-//                $this->send_to($data->alvo, "redirect", "combate");
-//            }
-//        }
-//    }
+   public function atacar($from, $data) {
+       if ($from->details && $from->details->tripulacao && isset($data->alvo) && isset($data->type)) {
+           $result = $from->details->attack_target($data->alvo, $data->type, $this->navigation);
+           if ($result) {
+               $from->send($this->encode("redirect", "combate"));
+               $this->send_to($data->alvo, "redirect", "combate");
+           }
+       }
+   }
 
     public function atacar_nps($from, $data) {
         if ($from->details && $from->details->tripulacao && isset($data->destination) && isset($data->destination->x) && isset($data->destination->y)) {

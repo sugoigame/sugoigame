@@ -39,22 +39,25 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
                                 </a>
                             </li>
                         </ul>
-                        <form class="navbar-form navbar-right" name="login" action="Scripts/Geral/logar.php"
-                              method="POST">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></div>
-                                    <input type="email" name="login" class="form-control" placeholder="Email" required>
+                        <form class="navbar-form navbar-right" name="login" action="Scripts/Geral/logar.php" method="POST">
+                            <div class="row">
+                                <div class="col-md-5 form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></div>
+                                        <input type="email" name="login" class="form-control" placeholder="Email" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-key fa-fw"></i></div>
+                                        <input type="password" name="senha" class="form-control" placeholder="Senha"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 form-group">
+                                    <button class="btn btn-block btn-info" type="submit" style="height: 38px;">Acessar!</button>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-key fa-fw"></i></div>
-                                    <input type="password" name="senha" class="form-control" placeholder="Senha"
-                                           required>
-                                </div>
-                            </div>
-                            <button class="btn btn-info" type="submit">Jogar</button>
                         </form>
                     </div>
                 </nav>
@@ -73,14 +76,6 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
         </div>
     </div>
     <div id="fundo">
-        <?php if ($userDetails->conta["ativacao"]): ?>
-            <div class="alert alert-danger" role="alert">
-                Sua conta ainda não foi ativada. Quando ativar sua conta você receberá
-                600 Dobrões de Ouro.
-                <a href="./?ses=cadastrosucess" class="link_content">Clique aqui</a>
-                para inserir o código de ativação que foi enviado para o seu E-mail.
-            </div>
-        <?php endif; ?>
         <div class="container-fluid fundo-container">
             <div class="row main-container-row">
                 <?php if (!$protector->is_ful_wide_session($sessao)): ?>
@@ -100,19 +95,141 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
                     </div>
                 <?php endif; ?>
                 <div class="col-sm-<?= $protector->is_ful_wide_session($sessao) ? "12" : "9" ?> main-col">
-                    <?php //if($sessao == "home"): ?> 
-                    <div class="container-fluid main-panel" style="    padding-left: 0;margin-left: 16px;padding-right: 31px;margin-bottom: 10px;">
+                    <div class="main-panel">
+                        <?php $rdp          = explode(",", get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_ERA_PIRATA)); ?>
+                        <?php $adf          = explode(",", get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_ERA_MARINHA)); ?>
+                        <?php $yonkou       = explode(",", get_value_varchar_variavel_global(VARIAVEL_YONKOUS)); ?>
+                        <?php $almirante    = explode(",", get_value_varchar_variavel_global(VARIAVEL_ALMIRANTES)); ?>
+                        <?php $incursao     = explode(",", get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_INCURSAO)); ?>
                         <?php if ($userDetails->tripulacao) : ?>
-                            <div class="row">
-                                <div id="tripulantes-bar" class="col-xs-12" style="padding: 0;">
-                                    <?php include "tripulantes.php"; ?>
-                                </div>
+                            <div id="tripulantes-bar" style="margin-bottom: 10px;;">
+                                <?php include "tripulantes.php"; ?>
                             </div>
+                            <div class="row">
+                                <?php if (count($userDetails->personagens) < 15): ?>
+                                    <?php render_progress(
+                                        "progress-tripulantes",
+                                        count($userDetails->personagens) / 15,
+                                        count($userDetails->personagens),
+                                        count($userDetails->personagens) . " de 15 tripulantes recrutados",
+                                        "#5bc0de",
+                                        "recrutar"
+                                    ); ?>
+                                <?php endif; ?>
+
+                                <?php if ($userDetails->lvl_mais_forte < 50): ?>
+                                    <?php render_progress(
+                                        "progress-mais-forte",
+                                        $userDetails->lvl_mais_forte / 50,
+                                        $userDetails->lvl_mais_forte,
+                                        "Personagem mais forte no nível " . $userDetails->lvl_mais_forte . " de 50",
+                                        "#f89406",
+                                        "status"
+                                    ); ?>
+                                <?php endif; ?>
+
+                                <?php $rep_mais_forte = $connection->run(
+                                    "SELECT max(reputacao) AS total FROM tb_usuarios"
+                                )->fetch_array()["total"]; ?>
+                                <?php if (count($userDetails->personagens) >= 15): ?>
+                                    <?php render_progress(
+                                        "progress-reputacao",
+                                        $userDetails->tripulacao["reputacao"] / $rep_mais_forte,
+                                        mascara_numeros_grandes($userDetails->tripulacao["reputacao"]),
+                                        mascara_numeros_grandes($userDetails->tripulacao["reputacao"]) . " pontos de reputação",
+                                        "#62c462",
+                                        "ranking"
+                                    ); ?>
+                                <?php endif; ?>
+
+                                <?php if ($userDetails->lvl_mais_forte >= 50): ?>
+                                    <?php $fa_mais_forte = $connection->run(
+                                        "SELECT max(fama_ameaca) AS total FROM tb_personagens"
+                                    )->fetch_array()["total"]; ?>
+                                    <?php render_progress(
+                                        "progress-wanted",
+                                        $userDetails->fa_mais_alta / $fa_mais_forte,
+                                        abrevia_numero_grande(calc_recompensa($userDetails->fa_mais_alta)),
+                                        ($userDetails->tripulacao["faccao"] == FACCAO_PIRATA ? "Recompensa" : "Gratificação") . " mais alta de " . abrevia_numero_grande(calc_recompensa($userDetails->fa_mais_alta)),
+                                        "#ee5f5b",
+                                        "ranking&rank=fa"
+                                    ); ?>
+                                <?php endif; ?>
+
+                                <?php $missoes_concluidas = $connection->run(
+                                    "SELECT count(conc.cod_missao) AS total
+                                        FROM tb_missoes_concluidas conc
+                                        WHERE conc.id = ?",
+                                    "i", array($userDetails->tripulacao["id"])
+                                )->fetch_array()["total"]; ?>
+                                <?php $missoes_total = 176 ?>
+                                <?php render_progress(
+                                    "progress-missoes",
+                                    $missoes_concluidas / $missoes_total,
+                                    $missoes_concluidas,
+                                    "$missoes_concluidas missões concluídas " . ($userDetails->tripulacao["faccao"] == FACCAO_PIRATA ? "no Subúrbio" : "na Base da Marinha"),
+                                    "#5bc0de",
+                                    "missoes"
+                                ); ?>
+
+                                <?php $chefes_derrotados = $connection->run(
+                                    "SELECT count(conc.tripulacao_id) AS total
+                                        FROM tb_missoes_chefe_ilha conc
+                                        WHERE conc.tripulacao_id = ?",
+                                    "i", array($userDetails->tripulacao["id"])
+                                )->fetch_array()["total"]; ?>
+                                <?php $chefes_total = 47 ?>
+                                <?php render_progress(
+                                    "progress-chefes",
+                                    $chefes_derrotados / $chefes_total,
+                                    $chefes_derrotados,
+                                    "$chefes_derrotados de $chefes_total Chefes das Ilhas derrotados",
+                                    "#f89406",
+                                    "missoes"
+                                ); ?>
+                            </div>
+                            
+                            <?php if ($userDetails->conta["ativacao"]): ?>
+                                <div class="alert alert-danger" style="margin-bottom: 10px;">
+                                    Sua conta ainda não foi ativada. Quando ativar sua conta você receberá <?=mascara_numeros_grandes(BONUS_DOBROES_ATIVACAO);?> Dobrões.
+                                    Clique <a href="./?ses=cadastrosucess" class="link_content">aqui</a> para inserir o código de ativação que foi enviado para o seu E-mail.
+                                </div>
+                            <?php endif; ?>
+                            <?php if (in_array($userDetails->tripulacao["id"], $rdp) || in_array($userDetails->tripulacao["id"], $adf)): ?>
+                                <?php $recompensa = $connection->run("SELECT * FROM tb_recompensa_recebida_era WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"]))->count(); ?>
+                                <?php if (!$recompensa): ?>
+                                    <div class="alert alert-info" style="margin-bottom: 10px;;">
+                                        <b>Parabéns!</b> Você foi um dos melhores na Grande Era dos Piratas! Clique <a href="link_Eventos/recompensa_era.php" class="alert-link link_send">aqui</a> para receber sua recompensa.
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <?php if (in_array($userDetails->tripulacao["id"], $yonkou) || in_array($userDetails->tripulacao["id"], $almirante)): ?>
+                                <?php $recompensa = $connection->run("SELECT * FROM tb_recompensa_recebida_grandes_poderes WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"]))->count(); ?>
+                                <?php if (!$recompensa): ?>
+                                    <div class="alert alert-info" style="margin-bottom: 10px;;">
+                                        <b>Parabéns!</b> Você foi um dos melhores na Batalha dos Grandes Poderes! Clique <a href="link_Eventos/recompensa_grandes_poderes.php" class="alert-link link_send">aqui</a> para receber sua recompensa.
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <?php if (in_array($userDetails->tripulacao["id"], $incursao)): ?>
+                                <?php $recompensa = $connection->run("SELECT * FROM tb_recompensa_recebida_incursao WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"]))->count(); ?>
+                                <?php if (!$recompensa): ?>
+                                    <div class="alert alert-info" style="margin-bottom: 10px;;">
+                                        <b>Parabéns!</b> Você foi um dos ganhadores da Incursão Especial! Clique <a href="link_Eventos/recompensa_incursao.php" class="alert-link link_send">aqui</a> para receber sua recompensa.
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
+                            <?php $convocacao_torneio = $connection->run("SELECT * FROM tb_torneio_inscricao WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"])); ?>
+                            <?php if ($convocacao_torneio->count()): ?>
+                                <div class="alert alert-warning" style="margin-bottom: 10px;;">
+                                    <b>Atenção!</b> Você está sendo convocado para o Torneio dos Melhores Sugoi Game! Clique <a href="./?ses=torneio" class="alert-link link_content">aqui</a> para apresentar-se.
+                                </div>
+                            <?php endif; ?>
                         <?php endif; ?>
-                    </div>
-                <?php //endif; ?>
-                    <div class="panel panel-default main-panel">
-                        <?php include "Sessoes/$sessao.php"; ?>
+                        <div class="panel panel-default">
+                            <?php include "Sessoes/$sessao.php"; ?>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -646,10 +646,11 @@ function n_puru(hidePopover) {
     $("#denden_mushi")
         .attr("src", "Imagens/Icones/Denden_0.png")
         .popover({
+            html: true,
             title: 'Puru Puru Puru Puru...',
-            content: 'Mensagem não lida!',
+            content: '<div style="width: 145px;" class="text-center">Mensagem não lida!</div>',
             placement: 'bottom',
-            animation: true
+            animation: true,
         });
 
     if (!hidePopover) {

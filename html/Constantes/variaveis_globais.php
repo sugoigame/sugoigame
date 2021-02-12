@@ -14,14 +14,15 @@ define('VARIAVEL_TOTAL_HAKI_TREINOS',       'TOTAL_HAKI_TREINOS');
 
 function get_value_variavel_global($variavel) {
     global $connection;
-    $result = $connection->run("SELECT * FROM tb_variavel_global WHERE variavel = ?", "s", [
+
+    $result = $connection->run("SELECT * FROM tb_variavel_global WHERE variavel = ? LIMIT 1", "s", [
         $variavel
     ]);
-    return $result->count() ? $result->fetch_array() : NULL;
+    return $result->count() == 1 ? $result->fetch_array() : FALSE;
 }
 
 function get_value_varchar_variavel_global($variavel) {
     $value = get_value_variavel_global($variavel);
 
-    return $value["valor_varchar"];
+    return $value ? $value["valor_varchar"] : FALSE;
 }
