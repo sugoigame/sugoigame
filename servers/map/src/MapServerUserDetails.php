@@ -162,7 +162,10 @@ class MapServerUserDetails extends UserDetails {
         unset($this->combate_bot);
         unset($this->combate_pve);
 
-        if ($navigation->collide($this->project_next_position($this->get_direction($this->tripulacao, $destino)), $this->capitao["lvl"]) || $this->in_combate) {
+        if ($navigation->collide(
+            $this->project_next_position(
+                $this->get_direction($this->tripulacao, $destino)
+            ), $this->capitao["lvl"]) || $this->in_combate) {
             return false;
         }
 
