@@ -344,12 +344,12 @@ function super_menu_can_be_active($menu) {
 	</div>
 </div>
 <?php if ($userDetails->conta): ?>
-	<?php /*<div class="vertical-menu-header clearfix">
+	<div class="vertical-menu-header clearfix">
 		<p class="navbar-text">
 			<?php $total = $connection->run("SELECT count(id) AS total FROM tb_usuarios WHERE ultimo_logon > ?", "i", atual_segundo() - (10 * 60))->fetch_array()["total"]; ?>
 			Jogadores online: <?=($total);?>
 		</p>
-	</div>*/ ?>
+	</div>
 	<div style="margin: 10px 0; text-align: left">
 		<button class="btn btn-primary btn-blocks" id="audio-toggle">
 			<i class="glyphicon glyphicon-volume-up"></i> Som Ligado
