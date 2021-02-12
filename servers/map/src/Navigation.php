@@ -54,7 +54,6 @@ class Navigation {
     }
 
     public function collide($point, $lvl = 15) {
-        return false;
         return (isset($this->no_navigable[$point["x"]])
                 && isset($this->no_navigable[$point["x"]][$point["y"]]))
             || ($lvl < 15
