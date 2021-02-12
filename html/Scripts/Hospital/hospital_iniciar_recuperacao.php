@@ -21,7 +21,7 @@ if (isset($_GET["cod"])) {
 }
 
 foreach ($personagens as $personagem) {
-    $tempo = 10 * max(0, $personagem["lvl"] - 20);
+    $tempo = 10 * max(0, $personagem["lvl"]);
     $tempo = $tempo + atual_segundo();
 
     $connection->run("UPDATE tb_personagens SET respawn = ?, respawn_tipo = ? WHERE cod = ?",

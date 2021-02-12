@@ -13,6 +13,7 @@ include_once(dirname(__FILE__) . "/dobrao.php");
 include_once(dirname(__FILE__) . "/equipamentos.php");
 include_once(dirname(__FILE__) . "/eventos.php");
 include_once(dirname(__FILE__) . "/forum.php");
+include_once(dirname(__FILE__) . "/geral.php");
 include_once(dirname(__FILE__) . "/get_img.php");
 include_once(dirname(__FILE__) . "/habilidade_random.php");
 include_once(dirname(__FILE__) . "/haki.php");

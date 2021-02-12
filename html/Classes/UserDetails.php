@@ -587,8 +587,13 @@ class UserDetails {
 		if (!$this->tripulacao) {
 			return ($this->navio = false);
 		}
-		$result = $this->connection->run("SELECT * FROM tb_usuario_navio usrnav INNER JOIN tb_navio nav ON usrnav.cod_navio = nav.cod_navio WHERE usrnav.id = ?",
-			"i", $this->tripulacao["id"]);
+		$result = $this->connection->run("SELECT
+			*,
+			(SELECT quant FROM tb_usuario_itens WHERE id = usrnav.id AND tipo_item = 13) AS canhao_balas
+			FROM tb_usuario_navio usrnav
+			INNER JOIN tb_navio nav
+			ON usrnav.cod_navio = nav.cod_navio
+			 WHERE usrnav.id = ?", "i", $this->tripulacao["id"]);
 
 		if (!$result->count()) {
 			return ($this->navio = false);

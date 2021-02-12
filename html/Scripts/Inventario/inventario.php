@@ -65,7 +65,7 @@ while ($item = $result->fetch_array()) {
 }
 
 // Bala de canhao
-$result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id = ? AND tipo_item = 13 ORDER BY cod_item",
+$result = $connection->run("SELECT * FROM tb_usuario_itens WHERE quant > 0 AND id = ? AND tipo_item = 13 ORDER BY cod_item",
     "i", $userDetails->tripulacao["id"]);
 
 while ($item = $result->fetch_array()) {
@@ -77,7 +77,7 @@ while ($item = $result->fetch_array()) {
 }
 
 // Isca
-$result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id = ? AND tipo_item = 16 ORDER BY cod_item",
+$result = $connection->run("SELECT * FROM tb_usuario_itens WHERE quant > 0 AND id = ? AND tipo_item = 16 ORDER BY cod_item",
     "i", $userDetails->tripulacao["id"]);
 
 while ($item = $result->fetch_array()) {
@@ -89,7 +89,7 @@ while ($item = $result->fetch_array()) {
     ));
 }
 // Isca Dourada
-$result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id = ? AND tipo_item = 17 ORDER BY cod_item",
+$result = $connection->run("SELECT * FROM tb_usuario_itens WHERE quant > 0 AND id = ? AND tipo_item = 17 ORDER BY cod_item",
     "i", $userDetails->tripulacao["id"]);
 
 while ($item = $result->fetch_array()) {

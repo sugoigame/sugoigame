@@ -84,7 +84,7 @@ function get_patente_nome($faccao, $reputacao) {
                 "iiii", array($id1, $id2, $id3, $id4)
             ); ?>
             <?php while ($famoso = $result->fetch_array()): ?>
-                <div class="col-md-3" style="padding: 0">
+                <div class="col-xs-12 col-sm-6 col-md-3" style="padding: 0">
                     <div class="div-top">
                         <?php render_top_player($famoso, $titulo); ?>
                     </div>
@@ -93,7 +93,7 @@ function get_patente_nome($faccao, $reputacao) {
             <?php endwhile; ?>
         </div>
         <div class="panel-footer">
-            Os <?= $titulo_plural ?> são eleitos nas Batalhas pelos Grandes Poderes
+            Os <?= $titulo_plural ?> são eleitos nas Batalhas dos Grandes Poderes
         </div>
     </div>
 <?php } ?>
@@ -119,14 +119,14 @@ function get_patente_nome($faccao, $reputacao) {
     <div class="panel panel-default">
         <div class="panel-heading"><?= $titulo ?></div>
         <div class="panel-panel-body clearfix">
-            <?php $famoso = $connection->run(
+            <?php $result = $connection->run(
                 "SELECT *, IF (pers.sexo = 0, titulo.nome, titulo.nome_f) titulo_nome 
                   FROM tb_personagens pers
                   INNER JOIN tb_usuarios usr ON usr.cod_personagem = pers.cod
                   LEFT JOIN tb_titulos titulo ON pers.titulo = titulo.cod_titulo
                   WHERE usr.id = ?",
                 "i", array($id)
-            )->fetch_array(); ?>
+            ); if($result->count() > 0): $famoso = $result->fetch_array(); ?>
             <div class="col-md-12">
                 <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "", 'style="max-width: 100%"') ?>
                 <div class="texto-top">
@@ -142,9 +142,10 @@ function get_patente_nome($faccao, $reputacao) {
                 <img src="Imagens/Bandeiras/img.php?cod=<?= $famoso["bandeira"]; ?>&f=<?= $famoso["faccao"]; ?>"
                      style="margin: 20px"/>
             </div>
+            <?php endif; ?>
         </div>
         <div class="panel-footer">
-            O <?= $titulo ?> é eleito na Grande Era dos Piratas.
+            Eleito na Grande Era dos Piratas.
         </div>
     </div>
 <?php } ?>
@@ -174,14 +175,14 @@ function get_patente_nome($faccao, $reputacao) {
                 FROM tb_usuarios usr
                 INNER JOIN tb_personagens pers ON usr.cod_personagem = pers.cod
                 WHERE usr.adm='0' AND usr.id = ?", "i", array($id)
-    )->fetch_array(); ?>
-    <div class="col-md-4">
+    )->fetch_array(); if ($result): ?>
+    <div class="col-sm-4 col-md-4">
         <div class="div-top">
             <?php render_top_player($result, $titulo); ?>
         </div>
         <img src="Imagens/Bandeiras/img.php?cod=<?= $result["bandeira"]; ?>&f=<?= $result["faccao"]; ?>"/>
     </div>
-<?php } ?>
+<?php endif; } ?>
 <?php function render_top_ranking($result, $mais_forte, $column, $label) { ?>
     <?php while ($famoso = $result->fetch_array()): ?>
         <div class="list-group-item">

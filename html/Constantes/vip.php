@@ -38,8 +38,8 @@ define('PRECO_DOBRAO_RESET_AKUMA',                      960);
 define('PRECO_GOLD_REDEFINE_AKUMA',                     300); // 10
 define('PRECO_DOBRAO_REDEFINE_AKUMA',                   720);
 
-define('PRECO_GOLD_RESET_ATRIBUTOS',                    50); // 5
-define('PRECO_DOBRAO_RESET_ATRIBUTOS',                  120);
+define('PRECO_GOLD_RESET_ATRIBUTOS',                    25); // 5
+define('PRECO_DOBRAO_RESET_ATRIBUTOS',                  60);
 
 define('PRECO_GOLD_RESET_CLASSE',                       100); // 15
 define('PRECO_DOBRAO_RESET_CLASSE',                     240);
@@ -62,8 +62,8 @@ define('PRECO_DOBRAO_RESET_PROFISSAO',                  240);
 define('PRECO_GOLD_VIAJA_RETORNO',                      200);
 define('PRECO_DOBRAO_VIAJA_RETORNO',                    480);
 
-define('PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO',           50);
-define('PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO',    120);
+define('PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO',           15);
+define('PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO',    36);
 
 define('PRECO_GOLD_RECUPERAR_OFENSIVA_MESTRE_HAKI',     1);
 define('PRECO_DOBRAO_RECUPERAR_OFENSIVA_MESTRE_HAKI',   2);

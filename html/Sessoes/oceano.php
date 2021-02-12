@@ -320,6 +320,13 @@
                 .css('background', data.me.kairouseki_ativo ? 'green' : 'red');
             $('#skill-kairouseki .badge').html(data.me.kairouseki_ativo ? 'Ativ.' : 'Des.');
         }
+
+        if (data.me.canhao) {
+            $('#skill-shot').removeClass('hidden');
+        } else {
+            $('#skill-shot').addClass('hidden');
+        }
+
         if (data.me.coup_de_burst) {
             $('#skill-coup-de-burst').removeClass('hidden');
             $('#skill-coup-de-burst .badge').html('x' + data.me.coup_de_burst);
@@ -919,14 +926,16 @@
             }
         });
 
-        this.shotSkill = new Skill({
-            interval: 5,
-            element: '#skill-shot',
-            key: Phaser.Keyboard.TWO,
-            trigger: function () {
-                gameState.useShot();
-            }
-        });
+        if (this.player.data.canhao) {
+            this.shotSkill = new Skill({
+                interval: 5,
+                element: '#skill-shot',
+                key: Phaser.Keyboard.TWO,
+                trigger: function () {
+                    gameState.useShot();
+                }
+            });
+        }
 
         this.attackSkill = new Skill({
             interval: 0,
@@ -987,7 +996,7 @@
     Game.prototype.useHeal = function () {
         if (parseFloat(this.player.data.hp_navio) >= 1 && !this.floatingHealError) {
             this.floatingHealError = true;
-            this.player.showFloatingText('Navio 100%', {
+            this.player.showFloatingText('Seu navio já está consertado!', {
                 font: '15px',
                 fill: '#ff0000',
                 align: 'center',
@@ -1008,6 +1017,26 @@
     };
 
     Game.prototype.useShot = function (destination) {
+        if (!this.player.data.canhao) {
+            this.player.showFloatingText('Seu navio não possui um canhão!', {
+                font: '15px',
+                fill: '#ff0000',
+                align: 'center',
+                wordWrap: false
+            }, Phaser.Easing.Linear.None);
+
+            return;
+        }
+        if (this.player.data.canhao_balas < 1) {
+            this.player.showFloatingText('Você está sem balas de canhão!', {
+                font: '15px',
+                fill: '#ff0000',
+                align: 'center',
+                wordWrap: false
+            }, Phaser.Easing.Linear.None);
+
+            return;
+        }
         if (destination) {
             ws.send(JSON.stringify({
                 event: 'disparar',
@@ -1019,10 +1048,22 @@
             this.wantUseShot = false;
             this.shotSkill.postUse();
         } else if (this.target && this.target.sprite) {
+            var distance = Phaser.Point.distance(this.player, this.target.sprite ? this.target : this.target.data);
+            if (distance > 10) {
+                this.player.showFloatingText('Você está muito longe do seu alvo!', {
+                    font: '15px',
+                    fill: '#ff0000',
+                    align: 'center',
+                    wordWrap: false
+                }, Phaser.Easing.Linear.None);
+
+                return;
+            }
+
             for (i = 0; i < islands.length; i++) {
                 if (Math.abs(islands[i].data.x - this.target.data.x) <= 2
                     && Math.abs(islands[i].data.y - this.target.data.y) <= 2) {
-                    this.player.showFloatingText('O seu alvo está em uma área segura', {
+                    this.player.showFloatingText('O seu alvo está em uma área segura!', {
                         font: '15px',
                         fill: '#ff0000',
                         align: 'center',
@@ -1057,7 +1098,7 @@
 
     Game.prototype.useAttack = function (destination) {
         if (!this.target) {
-            this.player.showFloatingText('Precisa de um alvo', {
+            this.player.showFloatingText('Você precisa de um alvo!', {
                 font: '15px',
                 fill: '#ff0000',
                 align: 'center',
@@ -1068,7 +1109,7 @@
 
         var distance = Phaser.Point.distance(this.player, this.target.sprite ? this.target : this.target.data);
         if (distance > 2) {
-            this.player.showFloatingText('Você está muito longe do seu alvo', {
+            this.player.showFloatingText('Você está muito longe do seu alvo!', {
                 font: '15px',
                 fill: '#ff0000',
                 align: 'center',
@@ -1082,7 +1123,7 @@
             for (var i = 0; i < islands.length; i++) {
                 if (Math.abs(islands[i].data.x - this.player.data.x) <= 2
                     && Math.abs(islands[i].data.y - this.player.data.y) <= 2) {
-                    this.player.showFloatingText('Você está em uma área segura', {
+                    this.player.showFloatingText('Você está em uma área segura!', {
                         font: '15px',
                         fill: '#ff0000',
                         align: 'center',
@@ -1096,7 +1137,7 @@
             for (i = 0; i < islands.length; i++) {
                 if (Math.abs(islands[i].data.x - this.target.data.x) <= 2
                     && Math.abs(islands[i].data.y - this.target.data.y) <= 2) {
-                    this.player.showFloatingText('O seu alvo está em uma área segura', {
+                    this.player.showFloatingText('O seu alvo está em uma área segura!', {
                         font: '15px',
                         fill: '#ff0000',
                         align: 'center',
@@ -1106,6 +1147,12 @@
                     return;
                 }
             }
+
+            /*ws.send(JSON.stringify({
+                event: 'atacar',
+                alvo: this.target.data.id,
+                type: 1
+            }));*/
             sendGet('Mapa/mapa_atacar.php?id=' + this.target.data.id + '&tipo=1');
         } else {
             ws.send(JSON.stringify({

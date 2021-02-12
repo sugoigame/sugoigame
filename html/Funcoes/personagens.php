@@ -315,11 +315,46 @@ function preco_selo_exp($pers) {
     </div>
 <?php } ?>
 <?php function render_cartaz_procurado($famoso, $faccao) { ?>
-    <div class="tripulante_quadro <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>">
+    <div class="tripulante_quadro <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>" style="margin: 2px;;">
         <img class="tripulante_quadro_img  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>"
              src="Imagens/Personagens/Icons/<?= getImg($famoso, "r"); ?>.jpg">
         <div class="recompensa_text  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>">
             <?= $famoso["nome"] . "<br>" . mascara_berries(calc_recompensa($famoso["fama_ameaca"])); ?>
+        </div>
+    </div>
+<?php } ?>
+<?php function render_progress($id, $progress, $inner_text, $text, $color, $link) { ?>
+    <div class="col-xs-6 col-md-3" style="margin-bottom: 10px">
+        <div class="list-group-item" style="height: 100%;">
+
+            <div id="<?= $id ?>"></div>
+            <div>
+                <a href="./?ses=<?= $link ?>" class="link_content">
+                    <?= $text ?>
+                </a>
+            </div>
+
+            <script>
+                $(function () {
+                    var container = document.getElementById('<?= $id ?>');
+                    var bar = new ProgressBar.Circle(container, {
+                        strokeWidth: 10,
+                        easing: 'easeInOut',
+                        duration: 1400,
+                        color: '<?= $color ?>',
+                        trailColor: '#3b3b3b',
+                        trailWidth: 1,
+                        svgStyle: {
+                            width: '4em'
+                        },
+                        text: {
+                            value: '<?= $inner_text ?>'
+                        }
+                    });
+
+                    bar.animate(<?= $progress ?>);  // Number from 0.0 to 1.0
+                });
+            </script>
         </div>
     </div>
 <?php } ?>

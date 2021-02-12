@@ -92,9 +92,10 @@ function can_recruit($img) {
 
         var lvl = parseInt($('#input_lvl').val(), 10);
         if (lvl > 1) {
-            var preco = lvl * <?= PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO ?>;
-            $('#preco-lvl-gold').html(preco);
-            $('#preco-lvl-dobrao').html(Math.ceil(preco * <?= PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO ?>));
+            var precoGold   = (lvl - 1) * <?= PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO ?>;
+            var precoDobrao = (lvl - 1) * <?= PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO ?>;
+            $('#preco-lvl-gold').html(precoGold);
+            $('#preco-lvl-dobrao').html(precoDobrao);
         } else {
             $('#preco-lvl-gold').html(0);
             $('#preco-lvl-dobrao').html(0);

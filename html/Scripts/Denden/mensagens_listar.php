@@ -8,9 +8,7 @@ $protector->need_tripulacao();
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                 aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title">
-        Mensagens Recebidas <img src="Imagens/Icones/Denden_0.png"/>
-    </h4>
+    <h4 class="modal-title">Mensagens Recebidas</h4>
 </div>
 <div class="modal-body">
     <h5>Mensagens do Governo Mundial</h5>
@@ -87,6 +85,5 @@ $protector->need_tripulacao();
 <div class="modal-footer">
     <button id="bt_msg_enviadas" class="btn btn-info">Mensagens enviadas</button>
     <button id="bt_apaga_msgs" class="btn btn-danger">Apagar todas</button>
-    <button id="bt_nova_msg_governo" data-dismiss="modal" class="btn btn-success">Mensagem para a Staff</button>
     <button id="bt_nova_msg" class="btn btn-success">Nova mensagem</button>
 </div>

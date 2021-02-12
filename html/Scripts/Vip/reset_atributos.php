@@ -17,33 +17,30 @@ $personagem = $pers["cod"];
 
 $connection->run("INSERT INTO tb_resets (tipo, cod) VALUES ('1', '$personagem')");
 
-$att = (($pers["lvl"] - 1) * 4) + 69;
-$hp = (($pers["lvl"] - 1) * 100) + 2500;
-$mp = (($pers["lvl"] - 1) * 7) + 100;
+$att    = (($pers["lvl"] - 1) * PONTOS_POR_NIVEL) + PONTOS_POR_NIVEL;
+$hp     = (($pers["lvl"] - 1) * 100) + 2500;
+$mp     = (($pers["lvl"] - 1) * 7) + 100;
 
 $bonus = get_bonus_excelencia($pers["classe"], $pers["excelencia_lvl"]);
 
 $hp += $bonus["hp_max"];
 $mp += $bonus["mp_max"];
 
-$connection->run(
-    "UPDATE tb_personagens 
-	SET 
-	atk = ?, 
-	def = ?, 
-	agl = ?, 
-	res = ?, 
-	pre = ?, 
-	dex = ?, 
-	con = ?, 
-	vit = ?, 
-	pts = '$att', 
-	hp = '$hp', 
-	hp_max = '$hp', 
-	mp_max = '$mp', 
-	mp = '$mp' 
-	WHERE cod = ?",
-    "iiiiiiiii", array(
+$connection->run("UPDATE tb_personagens 
+	SET atk     = ?,
+        def     = ?,
+        agl     = ?,
+        res     = ?,
+        pre     = ?,
+        dex     = ?,
+        con     = ?,
+        vit     = ?,
+        pts     = ?,
+        hp      = ?,
+        hp_max  = ?,
+        mp_ma   = ?,
+        mp      = ?
+	WHERE cod = ?", "iiiiiiiiiiiiii", [
         1 + $bonus["atk"],
         1 + $bonus["def"],
         1 + $bonus["agl"],
@@ -52,8 +49,13 @@ $connection->run(
         1 + $bonus["dex"],
         1 + $bonus["con"],
         1 + $bonus["vit"],
+        $att,
+        $hp,
+        $hp,
+        $mp,
+        $mp,
         $personagem
-    )
+    ]
 );
 
 $userDetails->remove_skills_classe($pers);

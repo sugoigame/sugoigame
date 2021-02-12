@@ -35,7 +35,7 @@ if (!empty($login) AND !empty($cod)) {
             exit();
         }
 
-        $query = "UPDATE tb_conta SET ativacao = NULL, dobroes = dobroes + 600 WHERE email='$login'";
+        $query = "UPDATE tb_conta SET ativacao = NULL, dobroes = dobroes + " . BONUS_DOBROES_ATIVACAO . " WHERE email='$login'";
         mysql_query($query) or die ("nao foi possivel ativar a conta");
 
         //redireciona

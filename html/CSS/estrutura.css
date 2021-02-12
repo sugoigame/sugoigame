@@ -875,12 +875,19 @@ table tr td {
 .btn {
     background-image: url(../Imagens/Backgrounds/conteudo-black-2.png);
     border-radius: 4px;
+    background-repeat: repeat;
 }
 
 .btn:hover {
     background-image: url(../Imagens/Backgrounds/conteudo-black-2.png);
+    background-repeat: repeat;
 }
-
+.alert {
+    text-align: left;
+    background-image: url(../Imagens/Backgrounds/conteudo-black-2.png);
+    border-color: rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 30%);
+}
 .panel-heading {
     background-image: url(../Imagens/Backgrounds/conteudo-black-2.png);
 }
@@ -1076,4 +1083,21 @@ table tr td {
     border: 1px solid rgba(224, 190, 122, 0.6);
     padding: 10px 15px;
     margin-bottom: 5px;
+}
+
+.modal-header {
+    border-bottom: 3px double rgba(224, 190, 122, 0.6);
+    background: url(../Imagens/Layout/panel-heading-bg.jpg) center repeat-x;
+    background-size: auto 100%;
+}
+.modal-header .close {
+    border-left: 3px double rgba(224, 190, 122, 0.6);
+    opacity: 1;
+    width: 70px;
+    height: 50px;
+    margin: -14px;
+    color: #e5e5e5;
+}
+.popover{
+    max-width:600px;
 }

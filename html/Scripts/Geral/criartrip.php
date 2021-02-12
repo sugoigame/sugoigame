@@ -1,10 +1,8 @@
 <?php
-$valida = "EquipeSugoiGame2012";
 include "../../Includes/conectdb.php";
 include "../../Includes/verifica_login_sem_pers.php";
 
 if (!$contaOk) {
-    mysql_close();
     header("location:../../?msg=Vocce precisa estar logado.");
     exit();
 }
@@ -15,43 +13,37 @@ if (!isset($_POST["faccao"])
     OR !isset($_POST["oceano"])
     OR !isset($_POST["apelido"])
 ) {
-    mysql_close();
     header("location:../../?ses=seltrip&msg=Formulário incompleto.");
     exit();
 }
 
-$faccao = mysql_real_escape_string(strip_tags($_POST["faccao"]));
-$capitao = trim(mysql_real_escape_string($_POST["capitao"]));
-$icon = mysql_real_escape_string(strip_tags($_POST["icon_capitao"]));
-$oceano = mysql_real_escape_string(strip_tags($_POST["oceano"]));
-$apelido = trim(mysql_real_escape_string($_POST["apelido"]));
+$faccao     = strip_tags($_POST["faccao"]);
+$capitao    = trim($_POST["capitao"]);
+$icon       = strip_tags($_POST["icon_capitao"]);
+$oceano     = strip_tags($_POST["oceano"]);
+$apelido    = trim($_POST["apelido"]);
 
 if (!preg_match("/^[\d]+$/", $faccao)) {
-    mysql_close();
     header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido4.");
     exit();
 }
 if (!preg_match("/^[\w ]+$/", $capitao)) {
-    mysql_close();
     header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido5.");
     exit();
 }
 if (!preg_match("/^[\d]+$/", $icon)) {
-    mysql_close();
     header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido6.");
     exit();
 }
 if (!preg_match("/^[\d]+$/", $oceano)) {
-    mysql_close();
     header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido7.");
     exit();
 }
 if (!preg_match("/^[\w ]+$/", $apelido)) {
-    mysql_close();
     header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido8.");
     exit();
 }
-$capitao = mysql_real_escape_string(stripslashes($capitao));
+$capitao = stripslashes($capitao);
 
 $erro = false;
 if ($faccao != 0 AND $faccao != 1) {
@@ -71,33 +63,33 @@ if (strlen($oceano) == 0) {
 }
 
 if ($erro) {
-    mysql_close();
     header("location:../../?ses=seltrip&msg=Algum valor informado nao atende os requisitos de tamanho.");
     exit();
 } else {
-    $query = "SELECT nome FROM tb_personagens WHERE nome='$capitao'";
-    $result = mysql_query($query);
-    $cont = mysql_num_rows($result);
+    $cont = $connection->run("SELECT nome FROM tb_personagens WHERE nome = ? LIMIT 1", 's', [
+        $capitao
+    ])->count();
 
     if ($cont != 0) {
-        mysql_close();
         header("location:../../?ses=seltrip&msg=O nome de capitão informado já está cadastrado.");
         exit();
     } else {
-        $query = "SELECT * FROM tb_usuarios WHERE conta_id = '" . $conta["conta_id"] . "'";
-        $result = mysql_query($query);
-        if (mysql_num_rows($result) >= 3) {
-            mysql_close();
+        $result = $connection->run("SELECT * FROM tb_usuarios WHERE conta_id = ?", 'i', [
+            $conta['conta_id']
+        ]);
+        if ($result->count() >= 3) {
             header("location:../../?ses=seltrip&msg=O limite de tripulações por conta é de 3.");
             exit();
         }
 
         $id_encrip = md5(time());
-        $query = "INSERT INTO tb_usuarios (conta_id, faccao, tripulacao) 
-            VALUES ('" . $conta["conta_id"] . "', '$faccao', '$apelido')";
-        mysql_query($query) or die("Nao foi possivel cadastrar a tripulacao");
+        $connection->run("INSERT INTO tb_usuarios (conta_id, faccao, tripulacao)  VALUES (?, ?, ?)", 'iis', [
+            $conta['conta_id'],
+            $faccao,
+            $apelido
+        ]);
 
-        $id = mysql_insert_id();
+        $id = $connection->last_id();
 
         $i = 0;
         while ($i == 0) {
@@ -122,32 +114,36 @@ if ($erro) {
             }
         }
 
-        $query = "UPDATE tb_usuarios SET x='$x', y= '$y',
-            res_x='$x', res_y='$y'
-            WHERE id='$id'";
-        mysql_query($query) or die ("nao foi possivel cadastrar coordenadas do usuario");
+        $connection->run("UPDATE tb_usuarios SET x = ?, y = ?, res_x = ?, res_y = ? WHERE id = ?", 'iiiii', [
+            $x,
+            $y,
+            $x,
+            $y,
+            $id
+        ]);
+        $connection->run("INSERT INTO tb_personagens (id, img, nome, xp_max, pts) VALUES (?, ?, ?, ?, ?)", 'iisii', [
+            $id,
+            $icon,
+            $capitao,
+            formulaExp(),
+            PONTOS_POR_NIVEL
+        ]);
 
-        $query = "INSERT INTO tb_personagens (id, img, nome)
-            VALUES ('$id', '$icon', '$capitao')";
-        mysql_query($query) or die ("nao foi possivel criar personagem");
+        $codcapitao = $connection->last_id();
 
-        $codcapitao = mysql_insert_id();
+        $connection->run("UPDATE tb_usuarios SET cod_personagem = ? WHERE id = ?", 'ii', [
+            $codcapitao,
+            $id
+        ]);
+        $connection->run("INSERT INTO tb_personagens_skil (cod, cod_skil, tipo, nome, descricao, icon) VALUES (?, ?, ?, 'Soco', 'Tenta acerta um soco no oponente.', '1')", 'iii', [
+            $codcapitao,
+            COD_SKILL_SOCO,
+            TIPO_SKILL_ATAQUE_CLASSE
+        ]);
 
-        $query = "UPDATE tb_usuarios SET cod_personagem='$codcapitao' WHERE id='$id'";
-        mysql_query($query) or die ("nao foi possivel cadastrar capitao");
+        $connection->run("INSERT INTO tb_vip (id) VALUES (?)", 'i', $id);
 
-        $query = "INSERT INTO tb_personagens_skil (cod, cod_skil, tipo, nome, descricao, icon)
-            VALUES ('$codcapitao', '1', '1', 'Soco', 'Tenta acerta um soco no oponente.', '1')";
-        mysql_query($query) or die ("nao foi possivel criar skil1");
-
-        $query = "INSERT INTO tb_vip (id)
-            VALUES ('$id')";
-        mysql_query($query) or die ("nao foi possivel criar tb_vip");
-
-        mysql_close();
         header("location:../../?ses=seltrip");
         exit();
     }
 }
-
-?>

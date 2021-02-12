@@ -54,6 +54,7 @@ class Navigation {
     }
 
     public function collide($point, $lvl = 15) {
+        return false;
         return (isset($this->no_navigable[$point["x"]])
                 && isset($this->no_navigable[$point["x"]][$point["y"]]))
             || ($lvl < 15
@@ -87,7 +88,7 @@ class Navigation {
         $this->last_hide_players = atual_segundo();
 
         $this->connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = NULL, navegacao_inicio = NULL, navegacao_fim = NULL WHERE ultimo_logon < ?",
-            "i", array(atual_segundo() - 24 * 60 * 60));
+            "i", array(atual_segundo() - (1 * 60 * 60)));
     }
 
     function update_nps() {

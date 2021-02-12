@@ -8,7 +8,7 @@ function menu_link($ses, $text, $img, $title, $href_prefix = "./?ses=", $class =
 
 	return "<li class=\"" . ($sess == $ses ? "active" : "") . "\">
 			<a id=\"$id\" href=\"$href_prefix$ses\" class=\"$class \" title=\"$title\" $data>
-				 <i class=\"$img fa-fw\"></i>$text" . ($userDetails->has_alert($ses) ? get_alert("pull-right") : "") . "
+				 <i class=\"$img fa-fw hidden-sm\"></i>$text" . ($userDetails->has_alert($ses) ? get_alert("pull-right") : "") . "
 			</a>
 		</li>";
 }
@@ -17,7 +17,7 @@ function super_menu_link($href, $href_toggle, $text, $super_menu, $icon) {
 	global $userDetails;
 	return "<div class=\"nav navbar-nav text-left\">
 				<a href=\"#$href_toggle\" class=\"" . super_menu_active($super_menu) . "\" data-toggle=\"collapse\" data-parent=\"#vertical-menu\">
-					<img height='35px' src=\"Imagens/Icones/Sessoes/$icon.png\">
+					<img height='35px' src=\"Imagens/Icones/Sessoes/$icon.png\" class=\"hidden-sm\" />
 					<span class='super-menu-text'>$text</span>
 					" . ($userDetails->has_super_alert($super_menu) ? get_alert("pull-right") : "") . "
 				</a>
@@ -37,19 +37,23 @@ function super_menu_can_be_active($menu) {
 }
 ?>
 <?php if ($userDetails->tripulacao) : ?>
-	<div class="vertical-menu-news clearfix">
-		<?php $news = $connection->run("SELECT *, unix_timestamp(data) AS timestamp FROM tb_news_coo ORDER BY data DESC LIMIT 6")->fetch_all_array(); ?>
-		<?php foreach ($news as $new): ?>
-			<div class="row <?= $new["timestamp"] > ($userDetails->tripulacao["ultimo_logon"] - 300) ? "new" : "" ?>">
-				<img class="col-md-4" src="Imagens/news.png"/>
-				<div class="col-md-8 news-coo-text">
-					<small><?= date("d/m/Y - h:i", $new["timestamp"]) ?></small>
-					<br/>
-					<?= $new["msg"] ?>
+	<?php $news = $connection->run("SELECT *, unix_timestamp(data) AS timestamp FROM tb_news_coo ORDER BY data DESC LIMIT 6")->fetch_all_array(); ?>
+	<?php if ($news): ?>
+		<div class="vertical-menu-news clearfix" style="margin-bottom: 10px;">
+			<?php foreach ($news as $new): ?>
+				<div class="row <?= $new["timestamp"] > ($userDetails->tripulacao["ultimo_logon"] - 300) ? "new" : "" ?>">
+					<div class="col-xs-4 col-sm-12 col-md-4">
+						<img class="hidden-sm" src="Imagens/news.png" />
+					</div>
+					<div class="col-xs-8 col-sm-12 col-md-8 news-coo-text">
+						<small><?=date("d/m/Y - h:i", $new["timestamp"]);?></small>
+						<br />
+						<p class="text-justify"><?=$new["msg"];?></p>
+					</div>
 				</div>
-			</div>
-		<?php endforeach; ?>
-	</div>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
 
 	<?php $anuncios = array(
 		// 1 => "./?ses=noticia&cod=22",
@@ -63,7 +67,7 @@ function super_menu_can_be_active($menu) {
 
 	$anuncio = array_rand($anuncios); ?>
 
-	<div style="border-left: 1px solid #000; border-right: 1px solid #000;">
+	<div style="border-left: 1px solid #000; border-right: 1px solid #000; margin-bottom: 10px;">
 		<a class="link_content" href="<?= $anuncios[$anuncio]; ?>">
 			<img src="Imagens/Banners/destaque-<?= $anuncio ?>.jpg" width="100%"/>
 		</a>
@@ -126,8 +130,8 @@ function super_menu_can_be_active($menu) {
 							<?= menu_link("realizacoes", "Conquistas", "glyphicon glyphicon-star-empty", "") ?>
 							<?= menu_link("listaNegra", "Lista Negra", "fa fa-th-list", "") ?>
 							<?= menu_link("tatics", "Táticas", "glyphicon glyphicon-knight", "") ?>
-							<?= menu_link("combateLog", "Histórico de combate", "fa fa-file-text", "") ?>
-							<?= menu_link("wantedLog", "Histórico de recompensas", "fa fa-file-text", "") ?>
+							<?= menu_link("combateLog", "Meus Combate", "fa fa-file-text", "") ?>
+							<?= menu_link("wantedLog", "Minhas Recompensas", "fa fa-file-text", "") ?>
 						</ul>
 					</div>
 					<?php if ($userDetails->navio) : ?>
@@ -226,7 +230,7 @@ function super_menu_can_be_active($menu) {
 									&& !$userDetails->missao && !$userDetails->tripulacao["recrutando"]
 									&& $userDetails->navio
 								) : ?>
-									<?/*= menu_link("transporte", "Serviço de transporte", "fa fa-paper-plane", "")*/ ?>
+									<?= menu_link("transporte", "Serviço de transporte", "fa fa-paper-plane", "") ?>
 								<?php endif; ?>
 							</ul>
 						</div>
@@ -320,27 +324,7 @@ function super_menu_can_be_active($menu) {
 				</div>
 			<?php endif; ?>
 
-			<?php if ($userDetails->tripulacao): ?>
-				<?= super_menu_link("forum", "menu-forum", "Fórum", "forum", "tutoriais") ?>
-				<div id="menu-forum" class="collapse <?= super_menu_in_out("forum") ?>">
-					<ul class="vertical-nav nav navbar-nav">
-						<?= menu_link("forum", "Tópicos recentes", "fa fa-bars", "") ?>
-						<?php $categorias = $connection->run(
-							"SELECT *, 
-							  (SELECT count(*) FROM tb_forum_topico p WHERE p.categoria_id = c.id) AS topics,
-							  (SELECT count(*) FROM tb_forum_topico p INNER JOIN tb_forum_topico_lido l ON p.id = l.topico_id AND l.tripulacao_id = ? WHERE p.categoria_id = c.id) AS topics_lidos 
-							 FROM tb_forum_categoria c ",
-							"i", array($userDetails->tripulacao["id"])); ?>
-						<?php while ($categoria = $categorias->fetch_array()): ?>
-							<?php $nao_lidos = $categoria["topics"] - $categoria["topics_lidos"]; ?>
-							<?php $badge = $nao_lidos ? " (" . ($categoria["topics"] - $categoria["topics_lidos"]) . ")" : ""; ?>
-							<?= menu_link("forumTopics&categoria=" . $categoria["id"], $categoria["nome"] . $badge, $categoria["icon"], "") ?>
-						<?php endwhile; ?>
-					</ul>
-				</div>
-			<?php endif; ?>
-
-			<?= super_menu_link("faq", "menu-help", "Ajuda", "ajuda", "help") ?>
+			<?= super_menu_link("faq", "menu-help", "Suporte", "ajuda", "help") ?>
 			<div id="menu-help" class="collapse <?= super_menu_in_out("ajuda") ?>">
 				<ul class="vertical-nav nav navbar-nav">
 					<?= menu_link("faq", "F.A.Q", "fa fa-question-circle", "") ?>
@@ -350,28 +334,25 @@ function super_menu_can_be_active($menu) {
 				</ul>
 			</div>
 
-			<!-- <?= super_menu_link("parceiros", "menu-parceiros", "Parceiros", "parceiros", "alianca") ?>
+			<?= super_menu_link("parceiros", "menu-parceiros", "Parceiros", "parceiros", "alianca") ?>
 			<div id="menu-parceiros" class="collapse <?= super_menu_in_out("parceiros") ?>">
 				<ul class="vertical-nav nav navbar-nav">
-					<?= menu_link("https://www.facebook.com/groups/vicioanimeoficial/", "Vício em Animes", "fa fa-fire", "", "", "", "", 'target="_blank"') ?>
-					<?= menu_link("https://www.facebook.com/ZueiraOtakuCompartilhe/", "Zueira Otaku", "fa fa-bolt", "", "", "", "", 'target="_blank"') ?>
+					<?= menu_link("mailto: medeiros.dev@gmail.com", "Seja um Parceiro", "fa fa-envelope", "", "", "", "", '') ?>
 				</ul>
-			</div> -->
+			</div>
 		</div>
 	</div>
 </div>
 <?php if ($userDetails->conta): ?>
-	<div class="vertical-menu-header clearfix">
+	<?php /*<div class="vertical-menu-header clearfix">
 		<p class="navbar-text">
 			<?php $total = $connection->run("SELECT count(id) AS total FROM tb_usuarios WHERE ultimo_logon > ?", "i", atual_segundo() - (10 * 60))->fetch_array()["total"]; ?>
 			Jogadores online: <?=($total);?>
 		</p>
+	</div>*/ ?>
+	<div style="margin: 10px 0; text-align: left">
+		<button class="btn btn-primary btn-blocks" id="audio-toggle">
+			<i class="glyphicon glyphicon-volume-up"></i> Som Ligado
+		</button>
 	</div>
 <?php endif; ?>
-<div class="clearfix">
-	<p class="navbar-text text-left">
-		<button class="btn btn-primary hidden-xs hidden-sm" id="audio-toggle">
-			<i class="glyphicon glyphicon-volume-up"></i> On
-		</button>
-	</p>
-</div>
