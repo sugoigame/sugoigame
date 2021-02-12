@@ -38,7 +38,7 @@ $connection->run("UPDATE tb_personagens
         pts     = ?,
         hp      = ?,
         hp_max  = ?,
-        mp_ma   = ?,
+        mp_max  = ?,
         mp      = ?
 	WHERE cod = ?", "iiiiiiiiiiiiii", [
         1 + $bonus["atk"],
