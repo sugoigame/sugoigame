@@ -46,7 +46,7 @@ if (!$result->count()) {
 }
 $conta = $result->fetch_array();
 
-$allowed = [
+/*$allowed = [
     'contato@fmedeiros.com.br',
     'nelis@bct.ect.ufrn.br',
     'lucasalexandresampaioferreira@hotmail.com',
@@ -98,7 +98,7 @@ if (!in_array($user->email, $allowed))
 {
     header("Location: ../../?ses=home&msg=" . urlencode('Você não possui permissão!') . "&");
     exit;
-}
+}*/
 
 $id     = $conta["conta_id"];
 $cookie = md5(uniqid(time()));
