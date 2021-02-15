@@ -1,16 +1,13 @@
 <?php
 require_once 'Includes/conectdb.php';
 
-$result = $connection->run("SELECT cod FROM tb_personagens");
+$result = $connection->run("SELECT * FROM tb_personagens");
 while ($row = $result->fetch_array()) {
-    $_GET['cod']    = $row['cod'];
-    $personagem     = $protector->get_tripulante_or_exit('cod');
+    $att    = (($row['lvl'] - 1) * PONTOS_POR_NIVEL) + 69;
+    $hp     = (($row['lvl'] - 1) * 100) + 2500;
+    $mp     = (($row['lvl'] - 1) * 7) + 100;
 
-    $att    = (($personagem['lvl'] - 1) * PONTOS_POR_NIVEL) + 69;
-    $hp     = (($personagem['lvl'] - 1) * 100) + 2500;
-    $mp     = (($personagem['lvl'] - 1) * 7) + 100;
-
-    $bonus = get_bonus_excelencia($personagem['classe'], $personagem['excelencia_lvl']);
+    $bonus = get_bonus_excelencia($row['classe'], $row['excelencia_lvl']);
 
     $hp += $bonus['hp_max'];
     $mp += $bonus['mp_max'];
@@ -44,9 +41,9 @@ while ($row = $result->fetch_array()) {
             $hp,
             $mp,
             $mp,
-            formulaExp($personagem['lvl']),
-            $personagem['cod']
+            formulaExp($row['lvl']),
+            $row['cod']
         ]
     );
-    $userDetails->remove_skills_classe($personagem);
+    $userDetails->remove_skills_classe($row);
 }
