@@ -1,8 +1,8 @@
 <?php
-require "../../Includes/conectdb.php";
-include "../../Includes/verifica_login.php";
-include "../../Includes/verifica_missao.php";
-include "../../Includes/verifica_combate.php";
+require_once "../../Includes/conectdb.php";
+require_once "../../Includes/verifica_login.php";
+require_once "../../Includes/verifica_missao.php";
+require_once "../../Includes/verifica_combate.php";
 
 if (!$conect) {
     echo("#Você precisa estar logado!");
@@ -130,13 +130,12 @@ if ($lvl > 1) {
     }
 }
 
-$result = $connection->run("INSERT INTO tb_personagens (id, img, nome, xp, xp_max, pts) VALUES (?, ?, ?, ?, ?, ?)", "iisiii", [
+$result = $connection->run("INSERT INTO tb_personagens (id, img, nome, xp, xp_max) VALUES (?, ?, ?, ?, ?)", "iisii", [
     $userDetails->tripulacao["id"],
     $img,
     $nome,
     $xp,
-    formulaExp(),
-    PONTOS_POR_NIVEL
+    formulaExp()
 ]);
 $personagemId = $result->last_id();
 

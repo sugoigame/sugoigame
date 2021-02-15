@@ -3,7 +3,7 @@ require "../../Includes/conectdb.php";
 
 $protector->need_tripulacao();
 
-$tipo = $protector->get_enum_or_exit("tipo", array(/*"gold", */"dobrao", "free"));
+$tipo = $protector->get_enum_or_exit("tipo", array("gold", "dobrao", "free"));
 if ($tipo == "free") {
     if (!$userDetails->tripulacao["free_reset_atributos"]) {
         $protector->exit_error("você não pode resetar seus atributos gratuitamente");
@@ -17,7 +17,7 @@ $personagem = $pers["cod"];
 
 $connection->run("INSERT INTO tb_resets (tipo, cod) VALUES ('1', '$personagem')");
 
-$att    = (($pers["lvl"] - 1) * PONTOS_POR_NIVEL) + PONTOS_POR_NIVEL;
+$att    = (($pers["lvl"] - 1) * PONTOS_POR_NIVEL) + 69;
 $hp     = (($pers["lvl"] - 1) * 100) + 2500;
 $mp     = (($pers["lvl"] - 1) * 7) + 100;
 
