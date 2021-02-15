@@ -268,9 +268,9 @@ function preco_selo_exp($pers) {
 <?php function render_personagem_xp_bar($pers, $text = true) { ?>
     <div class="progress">
         <div class="progress-bar progress-bar-default" role="progressbar"
-             style="width: <?= $pers["xp"] / ($pers["lvl"] >= 50 ? $pers["excelencia_xp_max"] : $pers["xp_max"]) * 100 ?>%;">
+             style="width: <?= $pers["xp"] / ($pers["lvl"] >= 51 ? $pers["excelencia_xp_max"] : $pers["xp_max"]) * 100 ?>%;">
             <?php if ($text) : ?>
-                <span>XP:<?= $pers["xp"] . "/" . ($pers["lvl"] >= 50 ? $pers["excelencia_xp_max"] : $pers["xp_max"]) ?></span>
+                <span>EXP:<?= $pers["xp"] . "/" . ($pers["lvl"] >= 51 ? $pers["excelencia_xp_max"] : $pers["xp_max"]) ?></span>
             <?php endif; ?>
         </div>
     </div>

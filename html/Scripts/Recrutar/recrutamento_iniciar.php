@@ -38,7 +38,7 @@ if (sizeof($personagem) >= $navio["limite"]) {
     echo("#Você ja possui o limite de tripulantes!");
     exit();
 }
-$time = (int)((sizeof($personagem) * 180) + atual_segundo());
+$time = (int)((sizeof($personagem) * 60) + atual_segundo());
 
 $connection->run("UPDATE tb_usuarios SET recrutando = ? WHERE id = ?", 'ii', [
     $time,

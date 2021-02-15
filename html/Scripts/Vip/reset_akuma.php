@@ -3,7 +3,6 @@ $valida = "EquipeSugoiGame2012";
 require "../../Includes/conectdb.php";
 include "../../Includes/verifica_login_sem_pers.php";
 if (!$conect) {
-    mysql_close();
     echo("#Você precisa estar logado!");
     exit();
 }
@@ -11,27 +10,28 @@ if (!$conect) {
 $protector->need_gold(PRECO_GOLD_RESET_AKUMA);
 
 if (!isset($_GET["cod"])) {
-    mysql_close();
     echo("#Você informou algum caracter inválido.");
     exit();
 }
-$personagem = mysql_real_escape_string($_GET["cod"]);
+$personagem = $protector->get_number_or_exit($_GET["cod"]);
 
 if (!preg_match("/^[\d]/", $personagem)) {
-    mysql_close();
     echo("#Você informou algum caracter inválido.");
     exit();
 }
+
 $query = "SELECT * FROM tb_personagens WHERE cod='$personagem' AND id='" . $usuario["id"] . "'";
-$result = mysql_query($query);
-if (mysql_num_rows($result) == 0) {
-    mysql_close();
+$result = $connection->run("SELECT * FROM tb_personagens WHERE cod = ? AND id = ?", 'ii', [
+    $personagem,
+    $usuario['id']
+]);
+if ($result->count() == 0) {
     echo("#Persoangem nao encontrado");
     exit();
 }
-$pers = mysql_fetch_array($result);
+$pers = $result->fetch_array();
 
-$query = "SELECT * FROM tb_akuma WHERE cod='$personagem'";
+$query = "SELECT * FROM tb_akuma WHERE cod = ?'$personagem'";
 $result = mysql_query($query);
 if (mysql_num_rows($result) == 0) {
     mysql_close();
