@@ -90,10 +90,10 @@ if ($erro) {
         ]);
 
         $id     = $connection->last_id();
-        $navio = $connection->run("SELECT id FROM tb_navio ORDER BY limite ASC LIMIT 1")->fetch_array();
+        $navio = $connection->run("SELECT cod_navio FROM tb_navio ORDER BY limite ASC LIMIT 1")->fetch_array();
         $connection->run("INSERT INTO tb_usuario_navio (id,cod_navio,cod_casco,cod_leme,cod_velas,hp,hp_max,lvl) VALUES (?,?,'0','0','0','100','100','1')", 'ii', [
             $id,
-            $navio['id']
+            $navio['cod_navio']
         ]);
 
         $i = 0;
