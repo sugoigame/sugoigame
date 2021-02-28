@@ -37,7 +37,7 @@ define('COORD_FORMAT',				"/^\\d{1,3}_\\d{1,3}$/");
 
 define('IS_BETA', 					FALSE);
 
-define('BONUS_DOBROES_ATIVACAO', 	1200);
+define('BONUS_DOBROES_ATIVACAO', 	600);
 
 define('PONTOS_POR_NIVEL',			4);		// Pontos para distribuir em atributos
 
