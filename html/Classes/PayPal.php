@@ -1,173 +1,208 @@
 <?php
 class PayPal {
-   public   $last_error,                 // holds the last error encountered
-            $ipn_log,                    // bool: log IPN results to text file?
-            $ipn_log_file,               // filename of the IPN log
-            $ipn_response,               // holds the IPN response from paypal   
-            $ipn_data   = [],            // array contains the POST values for IPN
-            $fields     = [];            // array holds the fields to submit to paypal
+	private	$use_sandbox	= FALSE,
+				$fields			= [],
+				$ipn_response 	= '',
+				$ipn_log			= TRUE,
+				$log_file_dir 	= '',
+				$last_error		= '';
 
-   
-   function __construct() {
-      // initialization constructor.  Called when class is created.
-      $this->paypal_url    = 'https://www.paypal.com/cgi-bin/webscr';
+	public	$ipn_data		= [];
 
-      $this->last_error    = '';
+	const VERIFY_URI            = 'https://ipnpb.paypal.com/cgi-bin/webscr';
+	const SANDBOX_VERIFY_URI    = 'https://ipnpb.sandbox.paypal.com/cgi-bin/webscr';
 
-      $this->ipn_log_file  = '.ipn_results.log';
-      $this->ipn_log       = TRUE; 
-      $this->ipn_response  = '';
+	const PAYPAL_URI            = 'https://www.paypal.com/cgi-bin/webscr';
+	const SANDBOX_PAYPAL_URI    = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
 
-      // populate $fields array with a few default values.  See the paypal
-      // documentation for a list of fields and their data types. These defaul
-      // values can be overwritten by the calling script.
+	const VALID     = 'VERIFIED';
+	const INVALID   = 'INVALID';
 
-      $this->add_field('rm', '2');           // Return method = POST
-      $this->add_field('cmd', '_xclick'); 
-      
-   }
-   
-   function add_field($field, $value) {
-      
-      // adds a key=>value pair to the fields array, which is what will be 
-      // sent to paypal as POST variables.  If the value is already in the 
-      // array, it will be overwritten.
-            
-      $this->fields[$field] = $value;
-   }
+	public function __construct() {
+		$this->log_file_dir = dirname(dirname(__FILE__)) . '/Logs/PayPal';
+	}
 
-   function submit_paypal_post() {
- 
-      // this function actually generates an entire HTML page consisting of
-      // a form with hidden elements which is submitted to paypal via the 
-      // BODY element's onLoad attribute.  We do this so that you can validate
-      // any POST vars from you custom form before submitting to paypal.  So 
-      // basically, you'll have your own form which is submitted to your script
-      // to validate the data, which in turn calls this function to create
-      // another hidden form and submit to paypal.
- 
-      // The user will briefly see a message on the screen that reads:
-      // "Please wait, your order is being processed..." and then immediately
-      // is redirected to paypal.
+	public function useSandbox() {
+		$this->use_sandbox = TRUE;
+	}
 
-      echo "<html>\n";
-      echo "<head><title>Processing Payment...</title></head>\n";
-      echo "<body onLoad=\"document.forms['paypal_form'].submit();\">\n";
-      echo "<center><h2>Please wait, your order is being processed and you";
-      echo " will be redirected to the paypal website.</h2></center>\n";
-      echo "<form method=\"post\" name=\"paypal_form\" ";
-      echo "action=\"" . $this->paypal_url . "\">\n";
+	public function getPayPalUri() {
+		if ($this->use_sandbox) {
+			return self::SANDBOX_PAYPAL_URI;
+		} else {
+			return self::PAYPAL_URI;
+		}
+	}
 
-      foreach ($this->fields as $name => $value) {
-         echo "<input type=\"hidden\" name=\"{$name}\" value=\"{$value}\"/>\n";
-      }
-      echo "<center><br/><br/>If you are not automatically redirected to ";
-      echo "paypal within 5 seconds...<br/><br/>\n";
-      echo "<input type=\"submit\" value=\"Click Here\"></center>\n";
-      
-      echo "</form>\n";
-      echo "</body></html>\n";
-    
-   }
-   
-   function validate_ipn() {
-      // parse the paypal URL
-      $url_parsed = parse_url($this->paypal_url);        
+	public function getPayPalIPNUri() {
+		if ($this->use_sandbox) {
+			return self::SANDBOX_VERIFY_URI;
+		} else {
+			return self::VERIFY_URI;
+		}
+	}
 
-      // generate the post string from the _POST vars aswell as load the
-      // _POST vars into an arry so we can play with them from the calling
-      // script.
-      $post_string = '';    
-      foreach ($_POST as $field => $value) { 
-         $this->ipn_data[$field] = $value;
-         $post_string .= $field . '=' . urlencode(stripslashes($value)) . '&'; 
-      }
-      $post_string .= "cmd=_notify-validate"; // append ipn command
+	public function addField($field, $value) {
+		$this->fields[$field] = $value;
+	}
 
-      // open the connection to paypal
-      $fp = fsockopen($url_parsed['host'], "80", $err_num, $err_str, 30);
-      if (!$fp) {
-         // could not open the connection.  If loggin is on, the error message
-         // will be in the log.
-         $this->last_error = "fsockopen error no. {$err_num}: {$err_str}";
-         $this->log_ipn_results(FALSE);
+	public function submitPayment() {
+		$this->addField('rm',   '2');
+		$this->addField('cmd',  '_xclick'); 
 
-         return FALSE;
-      } else { 
-          // Post the data back to paypal
-         fputs($fp, "POST {$url_parsed['path']} HTTP/1.1\r\n"); 
-         fputs($fp, "Host: {$url_parsed['host']}\r\n"); 
-         fputs($fp, "Content-type: application/x-www-form-urlencoded\r\n"); 
-         fputs($fp, "Content-length: " . strlen($post_string) . "\r\n"); 
-         fputs($fp, "Connection: close\r\n\r\n"); 
-         fputs($fp, $post_string . "\r\n\r\n"); 
+		echo "<html>\n";
+		echo "<head><meta charset=\"utf-8\" /><title>Processing Payment...</title></head>\n";
+		echo "<body onLoad=\"document.forms['paypal_form'].submit();\">\n";
+		echo "<center><h2>Please wait, your order is being processed and you";
+		echo " will be redirected to the paypal website.</h2></center>\n";
+		echo "<form method=\"post\" name=\"paypal_form\" ";
+		echo "action=\"" . $this->getPayPalUri() . "\">\n";
 
-         // loop through the response from the server and append to variable
-         while (!feof($fp)) { 
-            $this->ipn_response .= fgets($fp, 1024); 
-         } 
+		foreach ($this->fields as $name => $value) {
+			echo "<input type=\"hidden\" name=\"{$name}\" value=\"{$value}\" />\n";
+		}
+		echo "<center><br /><br />If you are not automatically redirected to ";
+		echo "paypal within 5 seconds...<br /><br />\n";
+		echo "<input type=\"submit\" value=\"Click Here\" /></center>\n";
 
-         fclose($fp); // close connection
-      }
+		echo "</form>\n";
+		echo "</body></html>";
+	}
 
-      if (preg_match("/VERIFIED/", $this->ipn_response)) {
-         // Valid IPN transaction.
-         $this->log_ipn_results(TRUE);
+	public function dumpFields() {
+		echo "<h3>PayPal->dumpFields() Output:</h3>";
+		echo "<table width=\"95%\" border=\"1\" cellpadding=\"2\" cellspacing=\"0\">
+				<tr>
+					<td bgcolor=\"black\"><b><font color=\"white\">Field Name</font></b></td>
+					<td bgcolor=\"black\"><b><font color=\"white\">Value</font></b></td>
+				</tr>"; 
 
-         return TRUE;
-      } else {
-         // Invalid IPN transaction.  Check the log for details.
-         $this->last_error = 'IPN Validation Failed.';
-         $this->log_ipn_results(FALSE);   
+		ksort($this->fields);
+		foreach ($this->fields as $key => $value) {
+			echo "<tr><td>{$key}</td><td>" . urldecode($value) . "</td></tr>";
+		}
 
-         return FALSE;
-      }
-   }
-   
-   function log_ipn_results($success) {
-      if (!$this->ipn_log)
-         return;  // is logging turned off?
+		echo "</table><br />"; 
+	}
 
-      // Timestamp
-      $text = '[' . date('d/m/Y H:i:s') . '] - '; 
+	public function verifyIPN() {
+		if (!count($_POST)) {
+			$this->last_error = "Missing POST Data";
+			$this->logResults(FALSE);
 
-      // Success or failure being logged?
-      if ($success)  $text .= "SUCCESS!\n";
-      else           $text .= 'FAIL: ' . $this->last_error . "\n";
+			throw new Exception($this->last_error);
+		}
 
-      // Log the POST variables
-      $text .= "IPN POST Vars from Paypal:\n";
-      foreach ($this->ipn_data as $key=>$value) {
-         $text .= "{$key}={$value}, ";
-      }
+		$raw_post_data  = file_get_contents('php://input');
+		$raw_post_array = explode('&', $raw_post_data);
+		$myPost         = [];
+		foreach ($raw_post_array as $keyval) {
+			$keyval = explode('=', $keyval);
+			if (count($keyval) == 2) {
+				// Since we do not want the plus in the datetime string to be encoded to a space, we manually encode it.
+				if ($keyval[0] === 'payment_date') {
+					if (substr_count($keyval[1], '+') === 1) {
+						$keyval[1] = str_replace('+', '%2B', $keyval[1]);
+					}
+				}
+				$myPost[$keyval[0]] = urldecode($keyval[1]);
+			}
+		}
 
-      // Log the response from the paypal server
-      $text .= "\nIPN Response from Paypal Server:\n " . $this->ipn_response;
+		// Build the body of the verification post request, adding the _notify-validate command.
+		$req = 'cmd=_notify-validate';
+		$get_magic_quotes_exists = FALSE;
+		if (function_exists('get_magic_quotes_gpc')) {
+			$get_magic_quotes_exists = TRUE;
+		}
+		foreach ($myPost as $key => $value) {
+			$this->ipn_data[$key] = $value;
+			if ($get_magic_quotes_exists == TRUE && get_magic_quotes_gpc() == 1) {
+				$value = urlencode(stripslashes($value));
+			} else {
+				$value = urlencode($value);
+			}
+			$req .= "&{$key}={$value}";
+		}
 
-      // Write to log
-      $fp = fopen($this->ipn_log_file, 'a');
-      fwrite($fp, $text . "\n\n"); 
+		// Post the data back to PayPal, using curl. Throw exceptions if errors occur.
+		$ch = curl_init($this->getPayPalIPNUri());
+		curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $req);
+		curl_setopt($ch, CURLOPT_SSLVERSION, 6);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+		curl_setopt($ch, CURLOPT_FORBID_REUSE, 1);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'User-Agent: PHP-IPN-Verification-Script',
+			'Connection: Close',
+		));
+		$this->ipn_response = curl_exec($ch);
+		if (!($this->ipn_response)) {
+			$errno  = curl_errno($ch);
+			$errstr = curl_error($ch);
+			curl_close($ch);
 
-      fclose($fp);  // close file
-   }
+			$this->last_error = "cURL error: [{$errno}] {$errstr}";
+			$this->logResults(FALSE);
 
-   function dump_fields() {
-      // Used for debugging, this function will output all the field/value pairs
-      // that are currently defined in the instance of the class using the
-      // add_field() function.
+			throw new Exception($this->last_error);
+		}
 
-      echo "<h3>paypal_class->dump_fields() Output:</h3>";
-      echo "<table width=\"95%\" border=\"1\" cellpadding=\"2\" cellspacing=\"0\">
-            <tr>
-               <td bgcolor=\"black\"><b><font color=\"white\">Field Name</font></b></td>
-               <td bgcolor=\"black\"><b><font color=\"white\">Value</font></b></td>
-            </tr>"; 
+		$info       = curl_getinfo($ch);
+		$http_code  = $info['http_code'];
+		if ($http_code != 200) {
+			$this->last_error = "PayPal responded with http code {$http_code}";
+			$this->logResults(FALSE);
 
-      ksort($this->fields);
-      foreach ($this->fields as $key => $value) {
-         echo "<tr><td>{$key}</td><td>" . urldecode($value) . "&nbsp;</td></tr>";
-      }
+			throw new Exception($this->last_error);
+		}
 
-      echo "</table><br>"; 
-   }
+		curl_close($ch);
+
+		// Check if PayPal verifies the IPN data, and if so, return true.
+		if ($this->ipn_response == self::VALID) {
+			$this->logResults(TRUE);
+
+			return TRUE;
+		} else {
+			$this->logResults(FALSE);
+
+			return FALSE;
+		}
+	}
+
+	private function logResults($success) {
+		if (!$this->ipn_log)
+			return;  // is logging turned off?
+
+		$logText	= '';
+		$logDate	= date('Y-m-d H:i:s');
+
+		// date and POST url
+		for ($i=0; $i<90; $i++) { $logText .= '-'; }
+		$logText .= "\n[{$logDate}] - {$this->getPayPalIPNUri()} | " . (!$success ? 'FAIL: ' . $this->last_error : 'SUCCESS') . "!\n";
+
+		// HTTP Response
+		for ($i=0; $i<90; $i++) { $logText .= '-'; }
+		$logText .= "\n{$this->ipn_response}\n";
+
+		// POST vars
+		for ($i=0; $i<90; $i++) { $logText .= '-'; }
+		$logText .= "\n";
+		foreach ($this->ipn_data as $key => $value) {
+			$logText .= str_pad($key, 25) . "{$value}\n";
+		}
+		$logText .= "\n";
+
+		// Write to log
+		file_put_contents(
+			$this->log_file_dir . "/IPN-{$logDate}.log",
+			$logText,
+			FILE_APPEND
+		);
+	}
 }

@@ -40,7 +40,7 @@ class CombateLogger {
 	}
 
 	public function get_relatorio_combate_pvp($combate) {
-		$log_file = @fopen(dirname(dirname(__FILE__)) . "/Logs/combate-pvp-" . $combate . ".log", "r");
+		$log_file = @fopen(dirname(dirname(__FILE__)) . "/Logs/PvP/" . $combate . ".log", "r");
 
 		$logs = array();
 		if ($log_file) {
@@ -89,7 +89,7 @@ class CombateLogger {
 	}
 
 	public function registra_turno_combate_pvp($relatorio) {
-		$log_file = fopen(dirname(dirname(__FILE__)) . "/Logs/combate-pvp-" . $this->userDetails->combate_pvp["combate"] . ".log", "a+");
+		$log_file = fopen(dirname(dirname(__FILE__)) . "/Logs/PvP/" . $this->userDetails->combate_pvp["combate"] . ".log", "a+");
 
 		fwrite($log_file, json_encode($relatorio) . "\n");
 
