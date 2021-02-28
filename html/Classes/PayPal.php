@@ -111,17 +111,10 @@ class PayPal {
 
 		// Build the body of the verification post request, adding the _notify-validate command.
 		$req = 'cmd=_notify-validate';
-		$get_magic_quotes_exists = FALSE;
-		if (function_exists('get_magic_quotes_gpc')) {
-			$get_magic_quotes_exists = TRUE;
-		}
 		foreach ($myPost as $key => $value) {
 			$this->ipn_data[$key] = $value;
-			if ($get_magic_quotes_exists == TRUE && get_magic_quotes_gpc() == 1) {
-				$value = urlencode(stripslashes($value));
-			} else {
-				$value = urlencode($value);
-			}
+
+			$value = urlencode($value);
 			$req .= "&{$key}={$value}";
 		}
 
