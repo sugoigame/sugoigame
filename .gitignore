@@ -8,10 +8,7 @@ html/Logs/*.log
 html/Logs/PayPal/*.log
 html/Logs/PvP/*.log
 
-html/conversor.php
-html/info.php
-html/resetar.php
-html/teste.php
+html/test-*.php
 
 html/Editor
 
