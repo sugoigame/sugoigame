@@ -35,13 +35,10 @@ if('POST' == $method) {
             if ($plano['bonus'] > 0)
                 $golds = $plano['golds'] * (($plano['bonus'] / 100) + 1);
 
-            if ($compra['criacao'] <= '2021-02-19 23:59:59')
-                $golds *= 1.5;
-
             switch ($pagamentoStatus) {
                 case 'PAID':
                 case 'AVAILABLE':
-                    if ($compra['status'] != 'PAID')
+                    if ($compra['status'] != 'PAID' || $compra['status'] != 'AVAILABLE')
                         $connection->run("UPDATE tb_conta SET gold = gold + ? WHERE conta_id = ? LIMIT 1", 'ii', [
                             $golds,
                             $compra['conta_id']

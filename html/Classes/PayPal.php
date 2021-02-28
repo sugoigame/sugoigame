@@ -1,13 +1,13 @@
 <?php
 class PayPal {
-	private	$use_sandbox	= FALSE,
+	private		$use_sandbox	= FALSE,
 				$fields			= [],
 				$ipn_response 	= '',
-				$ipn_log			= TRUE,
+				$ipn_log		= TRUE,
 				$log_file_dir 	= '',
 				$last_error		= '';
 
-	public	$ipn_data		= [];
+	public	$ipn_data			= [];
 
 	const VERIFY_URI            = 'https://ipnpb.paypal.com/cgi-bin/webscr';
 	const SANDBOX_VERIFY_URI    = 'https://ipnpb.sandbox.paypal.com/cgi-bin/webscr';
@@ -15,8 +15,8 @@ class PayPal {
 	const PAYPAL_URI            = 'https://www.paypal.com/cgi-bin/webscr';
 	const SANDBOX_PAYPAL_URI    = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
 
-	const VALID     = 'VERIFIED';
-	const INVALID   = 'INVALID';
+	const VALID     			= 'VERIFIED';
+	const INVALID   			= 'INVALID';
 
 	public function __construct() {
 		$this->log_file_dir = dirname(dirname(__FILE__)) . '/Logs/PayPal';
