@@ -530,10 +530,12 @@ class UserDetails {
 		if ($ilha == 0) {
 			return FALSE;
 		} else if ($ilha == 47) {
-			if ($this->tripulacao["faccao"] == FACCAO_PIRATA && $rdp = get_value_variavel_global(VARIAVEL_RDP)) {
-				return ($rdp["valor_int"] == $this->tripulacao["id"]);
-			} else if ($this->tripulacao["faccao"] == FACCAO_MARINHA && $adf = get_value_variavel_global(VARIAVEL_ADF)) {
-				return ($adf["valor_int"] == $this->tripulacao["id"]);
+			if ($this->tripulacao["faccao"] == FACCAO_PIRATA) {
+				$rdp = get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_ERA_PIRATA);
+				return ($rdp == $this->tripulacao["id"]);
+			} else if ($this->tripulacao["faccao"] == FACCAO_MARINHA) {
+				$adf = get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_ERA_MARINHA);
+				return ($adf == $this->tripulacao["id"]);
 			}
 		} else if ($ilha == 101) {
 			if ($this->can_access_inpel_down()) {
@@ -546,6 +548,7 @@ class UserDetails {
 		} else {
 			return TRUE;
 		}
+
 		return FALSE;
 	}
 
@@ -1125,7 +1128,7 @@ class UserDetails {
 				"finished" => "Estou realmente impressionado! Quero ser igual a você quando crescer.",
 			), FACCAO_PIRATA => array(
 				"title" => "Rumo ao One Piece!",
-				"description" => "Sua aventura alcançou patamares épicos, e poucas pessoas conseguirão passar daqui. Como seu último desafio, chegue até <u>LLaftel</u>! Apenas o Rei dos Piratas consegue por os pés lá...",
+				"description" => "Sua aventura alcançou patamares épicos, e poucas pessoas conseguirão passar daqui. Como seu último desafio, chegue até <u>Laftel</u>! Apenas o Rei dos Piratas consegue por os pés lá...",
 				"finished" => "Estou realmente impressionado! Quero ser igual a você quando crescer."
 			), "next" => 1000),
 			19 => array(FACCAO_MARINHA => array(

@@ -1,7 +1,6 @@
 <?php
-
 class MapLoader {
-	private static $cache = array();
+	private static $cache = [];
 
 	public static function load($data) {
 		if (!isset(MapLoader::$cache[$data])) {
@@ -17,12 +16,12 @@ class MapLoader {
 			$lines .= $line;
 		}
 		fclose($file);
-		return strlen($lines) ? json_decode($lines, true) : array();
+		return strlen($lines) ? json_decode($lines, true) : [];
 	}
 
 	public static function save($map, $data) {
 		$file = fopen(dirname(__FILE__) . "/../Data/" . $data . ".json", "w");
-		fwrite($file, json_encode($map));
+		fwrite($file, json_encode($map, JSON_PRETTY_PRINT));
 		fclose($file);
 	}
 }

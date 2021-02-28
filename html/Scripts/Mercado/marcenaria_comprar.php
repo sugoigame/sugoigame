@@ -5,34 +5,14 @@ include "../../Includes/verifica_login_sem_pers.php";
 include "../../Includes/verifica_missao.php";
 
 if ($inmissao) {
-    mysql_close();
     echo("#Você está ocupado em uma missão neste meomento.");
     exit();
 }
-if (!isset($_GET["item"])) {
-    mysql_close();
-    echo("#Você informou algum caracter inválido.");
-    exit();
-}
-if (!isset($_GET["tipo"])) {
-    mysql_close();
-    echo("#Você informou algum caracter inválido.");
-    exit();
-}
-$item = mysql_real_escape_string($_GET["item"]);
-$tipo = mysql_real_escape_string($_GET["tipo"]);
-if (!preg_match("/^[\d]+$/", $item)) {
-    mysql_close();
-    echo("#Você informou algum caracter inválido.");
-    exit();
-}
-if (!preg_match("/^[\d]+$/", $tipo)) {
-    mysql_close();
-    echo("#Você informou algum caracter inválido.");
-    exit();
-}
+
+$item = $protector->get_number_or_exit('item');
+$tipo = $protector->get_number_or_exit('tipo');
+
 if (!$inilha) {
-    mysql_close();
     echo("#Você precisa estar em uma ilha para comprar itens.");
     exit();
 }
@@ -115,11 +95,15 @@ if ($conect) {
                     mysql_close();
                     echo("@Item Comprado");
                 } else {
-                    $query = "UPDATE tb_usuario_navio SET cod_navio='$item', cod_casco='0', cod_leme='0', cod_velas='0',
+                    $connection->run("UPDATE tb_usuario_navio SET cod_navio = ? WHERE id = ?", 'ii', [
+                        $item,
+                        $usuario['id']
+                    ]);
+                    /*$query = "UPDATE tb_usuario_navio SET cod_navio='$item', cod_casco='0', cod_leme='0', cod_velas='0',
     					hp='100', hp_max='100', lvl='1', xp='0', xp_max='250' WHERE id='" . $usuario["id"] . "'";
                     mysql_query($query) or die("Nao foi possivel substituir o navio");
 
-                    mysql_close();
+                    mysql_close();*/
                     echo("@Item Comprado");
                 }
             } else if ($tipo == 13) {

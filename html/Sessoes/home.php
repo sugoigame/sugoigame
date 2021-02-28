@@ -1,30 +1,28 @@
-<?php function render_maior_do_mundo($tipo) { ?>
-    <?php global $connection; ?>
-    <?php
+<?php
+function render_maior_do_mundo($tipo) {
+    global $connection;
+
     switch ($tipo) {
-        case "espadachim":
-            $cod = 249;
-            break;
-        case "lutador":
-            $cod = 245;
-            break;
-        default:
-            $cod = 534;
-            break;
+        case "espadachim":  $class = 1; break;
+        case "lutador":     $class = 2; break;
+        default:            $class = 3; break;
     }
-    ?>
-    <?php $result = $connection->run(
+
+    $result = $connection->run(
         "SELECT p.*, u.*, IF(p.sexo =0, t.nome, t.nome_f) AS titulo_nome FROM tb_personagens p
             LEFT JOIN tb_titulos t ON p.titulo = t.cod_titulo
             INNER JOIN tb_usuarios u ON p.id = u.id
-            WHERE p.cod= ? LIMIT 1",
-        "i", array($cod)
-    ); ?>
+            WHERE p.classe = ? ORDER BY classe_score DESC LIMIT 1",
+        "i", $class
+    );
+?>
     <div class="col-sm-4 col-md-4">
         <?php if ($result->count()): ?>
             <div class="panel panel-default">
+                <div class="panel-heading">
+                    Melhor <?= ucfirst($tipo); ?>
+                </div>
                 <div class="pane-body">
-                    <h5>Melhor <?= ucfirst($tipo); ?></h5>
                     <?php $famoso = $result->fetch_array(); ?>
                     <div class="div-top">
                         <?php render_top_player($famoso, "O maior $tipo do mundo"); ?>
@@ -99,7 +97,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="text-left">
-                <h3 class="text-center">Mural de noticías</h3>
+                <h3 class="text-center">Mural de Noticías</h3>
             </div>
             <?php $topicos = $connection->run(
                 "SELECT *, (SELECT count(*) FROM tb_noticia_comment c WHERE n.cod_noticia = c.noticia_id) AS comentarios 
@@ -168,15 +166,7 @@
                 <?php render_maior_do_mundo("lutador"); ?>
                 <?php render_maior_do_mundo("atirador"); ?>
             </div>
-            <p>Os primeiros tripulantes a conseguir 15.000 de Score em uma Era são eleitos os melhores do mundo.</p>
-            <div class="panel panel-default">
-                <div class="panel-heading">Incursão Especial à Alubarna</div>
-                <div class="panel-body">
-                    <?php render_campeao_incursao($incursao[0], "Primeiro Colocado"); ?>
-                    <?php render_campeao_incursao($incursao[1], "Segundo Colocado"); ?>
-                    <?php render_campeao_incursao($incursao[2], "Terceiro Colocado"); ?>
-                </div>
-            </div>
+            <!-- <p>Os primeiros tripulantes a conseguir 15.000 de Score em uma Era são eleitos os melhores do mundo.</p> -->
         </div>
     </div>
 
@@ -244,7 +234,7 @@
                 <?php while ($alianca = $result->fetch_array()): ?>
                     <div class="list-group-item col-xs-6 col-sm-4 col-md-3">
                         <h4>
-                            <img src="Imagens/Icones/Bandeira_<?= $alianca["faccao"] ?>.jpg" style="margin-right: 5px; vertical-align: -2px;" />
+                            <img src="Imagens/Icones/Bandeira_<?= $alianca["faccao"] ?>.jpg" style="margin-right: 5px; vertical-align: -2px;" class="hidden-xs" />
                             <?= $alianca["nome"] ?>
                         </h4>
                         <p>Reputação: <?= $alianca["score"] ?><br />
@@ -313,7 +303,7 @@
              LEFT JOIN tb_combate combate ON log.combate=combate.combate
              INNER JOIN tb_usuarios usr_1 ON log.id_1 = usr_1.id
              INNER JOIN tb_usuarios usr_2 ON log.id_2 = usr_2.id
-             ORDER BY log.horario DESC LIMIT 3"
+             ORDER BY log.horario DESC LIMIT 6"
         );
 
         if($result->count() > 0):
@@ -346,15 +336,15 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-5">
-                        <img src="Imagens/Bandeiras/img.php?cod=<?= $combate["bandeira_1"] ?>&f=<?= $combate["faccao_1"] ?>" class="img-responsive" />
+                        <img src="Imagens/Bandeiras/img.php?cod=<?= $combate["bandeira_1"] ?>&f=<?= $combate["faccao_1"] ?>" style="width:100%; max-width: 95px;" />
                     </div>
                     <div class="col-xs-2">
                     </div>
                     <div class="col-xs-5">
-                        <img src="Imagens/Bandeiras/img.php?cod=<?= $combate["bandeira_2"] ?>&f=<?= $combate["faccao_2"] ?>" class="img-responsive" />
+                        <img src="Imagens/Bandeiras/img.php?cod=<?= $combate["bandeira_2"] ?>&f=<?= $combate["faccao_2"] ?>" style="width:100%; max-width: 95px;" />
                     </div>
                 </div>
-                <div><?= nome_tipo_combate($combate["tipo"]) ?></div>
+                <div><?= ucwords(nome_tipo_combate($combate["tipo"])) ?></div>
             </div>
         <?php endwhile; ?>
     </div>

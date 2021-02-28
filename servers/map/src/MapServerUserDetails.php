@@ -263,7 +263,7 @@ class MapServerUserDetails extends UserDetails {
             $chain = $navigation->get_chain($next_position["x"], $next_position["y"]);
             $swirl = $navigation->get_swirl($next_position["x"], $next_position["y"]);
 
-            if ($swirl) {
+            if ($swirl && !$this->tripulacao['adm']) {
                 $swirl_demage = rand(0, 25) / 100;
                 $this->connection->run("UPDATE tb_usuario_navio SET hp_teste = GREATEST(0, hp_teste - (hp_max * {$swirl_demage})) WHERE id = ?",
                     "i", array($this->tripulacao["id"]));
@@ -369,6 +369,10 @@ class MapServerUserDetails extends UserDetails {
             $base_speed /= 2;
         }
 
+        if ($this->tripulacao['adm'] > 0) {
+            $base_speed /= 10;
+        }
+
         return $base_speed;
     }
 
@@ -380,6 +384,9 @@ class MapServerUserDetails extends UserDetails {
         unset($this->navio);
 
         $percent = (rand(5, 10) + $this->lvl_carpinteiro) / 100;
+        if ($this->tripulacao['adm'] > 0) {
+            $percent = 100;
+        }
 
         $cura = round($percent * $this->navio["hp_max"]);
         $this->navio["hp_teste"] = min($this->navio["hp_max"], $this->navio["hp_teste"] + $cura);

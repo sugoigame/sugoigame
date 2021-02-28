@@ -44,18 +44,17 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
                                 <div class="col-md-5 form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></div>
-                                        <input type="email" name="login" class="form-control" placeholder="Email" required>
+                                        <input type="email" name="login" class="form-control" placeholder="E-mail" required />
                                     </div>
                                 </div>
                                 <div class="col-md-5 form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="fa fa-key fa-fw"></i></div>
-                                        <input type="password" name="senha" class="form-control" placeholder="Senha"
-                                            required>
+                                        <input type="password" name="senha" class="form-control" placeholder="Senha" required />
                                     </div>
                                 </div>
                                 <div class="col-md-2 form-group">
-                                    <button class="btn btn-block btn-info" type="submit" style="height: 38px;">Acessar!</button>
+                                    <button class="btn btn-block btn-info" type="submit">Acessar</button>
                                 </div>
                             </div>
                         </form>
@@ -81,7 +80,7 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
                 <?php if (!$protector->is_ful_wide_session($sessao)): ?>
                     <div class="col-sm-3 menu-col">
                         <?php if ($sessao == "oceano"): ?>
-                            <div class="text-left" style="margin-left: 5px">
+                            <div class="text-left" style="margin-left: 5px; margin-top: 38px;">
                                 <button class="btn btn-default" data-toggle="collapse" href="#menu-cover">
                                     <i class="fa fa-bars"></i>
                                 </button>

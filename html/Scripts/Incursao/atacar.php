@@ -1,11 +1,16 @@
 <?php
 require "../../Includes/conectdb.php";
-
+// valida_alvo_valido($alvo_id, $incursao_progresso["progresso"], $incursao_nivel["nivel"])
 function valida_alvo_valido($alvo_id, $progresso, $nivel) {
-    if ($alvo_id <= $progresso) {
+    if ($progresso > $alvo_id/* || $nivel > $alvo_id*/) {
+        // echo $progresso . ' > ' . $alvo_id . ' || ' . $nivel . ' > ' . $alvo_id;
+        // exit ;
+        return false;
+    } elseif ($alvo_id <= $progresso) {
         return true;
     } elseif ($alvo_id <= $nivel) {
-        return true;//(($alvo_id % 10) - 1 == 0 && $alvo_id < $nivel * 10 + 1) || (($alvo_id % 3) - 1 == 0 && $alvo_id < $nivel * 3 + 1);
+        //return (($alvo_id % 10) - 1 == 0 && $alvo_id < $nivel * 10 + 1) || (($alvo_id % 3) - 1 == 0 && $alvo_id < $nivel * 3 + 1);
+        return true;
     } else {
         return false;
     }

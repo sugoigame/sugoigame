@@ -45,8 +45,14 @@
                     <h4><img src="Imagens/Icones/Gold.png"/>
                         <strong><?=mascara_numeros_grandes($golds);?></strong></h4>
                     <h4><strong>R$ <?=number_format($plano['valor'], 2, ',', '.');?></strong></h4>
-
-                    <a href="Scripts/Vip/adquirir.php?plano=<?=base64_encode($plano['id']);?>" target="_blank" class="btn btn-success">Fazer doação</a>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="Scripts/Vip/adquirirPS.php?plano=<?=base64_encode($plano['id']);?>" target="_blank" class="btn btn-block btn-success">Doar com PagSeguro</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="Scripts/Vip/adquirirPP.php?plano=<?=base64_encode($plano['id']);?>" target="_blank" class="btn btn-block btn-success">Doar com PayPal</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         <?php

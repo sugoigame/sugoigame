@@ -21,7 +21,7 @@
     }
 
     if ($possivel) { ?>
-        <button href="./?ses=Especiais/jardim_laftel.php" class="link_send btn btn-success">Colher uma Akuma no Mi
+        <button href="link_Especiais/jardim_laftel.php" class="link_send btn btn-success">Colher uma Akuma no Mi
         </button>
     <? } else { ?>
         <? echo transforma_tempo_min($tempo["tempo"] - atual_segundo()) ?> para colher uma fruta.
