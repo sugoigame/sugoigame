@@ -31,10 +31,10 @@ if (!$userDetails->conta AND
 	<link rel="shortcut icon" type="image/png" href="Imagens/favicon.png" />
 
 	<link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="CSS/theme.css?ver=1.0.3" />
+	<link rel="stylesheet" type="text/css" href="CSS/theme.css?ver=1.0.4" />
 	<link rel="stylesheet" type="text/css" href="CSS/bootstrap-select.min.css" />
 	<link rel="stylesheet" type="text/css" href="CSS/font-awesome.min.css" />
-	<link rel="stylesheet" type="text/css" href="CSS/estrutura.css?ver=2.0.13" />
+	<link rel="stylesheet" type="text/css" href="CSS/estrutura.css?ver=2.0.14" />
 	<script type="text/javascript">
 		var gameTitle = document.title;
 
@@ -204,8 +204,8 @@ if (!$userDetails->conta AND
 <script type="text/javascript" src="JS/cor_bg.js?ver=2.0.1"></script>
 <script type="text/javascript" src="JS/cookie.js"></script>
 <script type="text/javascript" src="JS/removecaracteres.js"></script>
-<script type="text/javascript" src="JS/geral.js?ver=2.0.15"></script>
-<script type="text/javascript" src="JS/header.js?ver=2.0.15"></script>
+<script type="text/javascript" src="JS/geral.js?ver=2.0.16"></script>
+<script type="text/javascript" src="JS/header.js?ver=2.0.16"></script>
 <script type="text/javascript" src="JS/animacoes.js?ver=2.0.0"></script>
 <script type="text/javascript" src="JS/progressbar.min.js"></script>
 <script type="text/javascript" src="JS/reconnecting-websocket.min.js"></script>
@@ -227,6 +227,7 @@ if (!$userDetails->conta AND
 
 	screen.orientation.lock('landscape').catch(function () {
 		// the device not support orientation
+		
 	});
 
 	if (window.outerWidth <= 768) {
