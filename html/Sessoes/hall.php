@@ -39,7 +39,7 @@
 <div class="panel-body">
     <?= ajuda("Hall da Fama", "Conheça os maiores jogadores de eras passadas.") ?>
 
-    <div class="panel panel-default">
+    <!-- <div class="panel panel-default">
         <div class="panel-heading">
             1º Grande Era dos Piratas - 03/09/2017
         </div>
@@ -53,8 +53,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="panel panel-default">
+    </div> -->
+    <!-- <div class="panel panel-default">
         <div class="panel-heading">
             1º Batalha pelos Grandes Poderes - 03/07/2017
         </div>
@@ -68,5 +68,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
