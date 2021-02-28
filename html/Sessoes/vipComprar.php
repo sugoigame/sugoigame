@@ -50,11 +50,7 @@
                             <a href="Scripts/Vip/adquirirPS.php?plano=<?=base64_encode($plano['id']);?>" target="_blank" class="btn btn-block btn-success">Doar com PagSeguro</a>
                         </div>
                         <div class="col-md-6">
-                        	<?php if ($userDetails->tripulacao['adm']): ?>
-	                            <a href="Scripts/Vip/adquirirPP.php?plano=<?=base64_encode($plano['id']);?>" target="_blank" class="btn btn-block btn-success">Doar com PayPal</a>
-                            <?php else: ?>
-                            	<button type="button" disabled class="btn btn-block btn-disabled btn-success">Doar com PayPal</a>
-                        	<?php endif; ?>
+                            <a href="Scripts/Vip/adquirirPP.php?plano=<?=base64_encode($plano['id']);?>" target="_blank" class="btn btn-block btn-success">Doar com PayPal</a>
                         </div>
                     </div>
                 </div>
