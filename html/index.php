@@ -227,6 +227,7 @@ if (!$userDetails->conta AND
 
 	screen.orientation.lock('landscape').catch(function () {
 		// the device not support orientation
+		
 	});
 
 	if (window.outerWidth <= 768) {
