@@ -1,7 +1,22 @@
 .idea
 
 logs/*.log
-html/Logs/
+
+html/Constantes/configs.prod.php
+
+html/Logs/*.log
+html/Logs/PayPal/*.log
+html/Logs/PvP/*.log
+
+html/conversor.php
+html/info.php
+html/resetar.php
+html/teste.php
+
+html/Editor
+
+servers/vendor
+
 sql/
 
 node_modules/
