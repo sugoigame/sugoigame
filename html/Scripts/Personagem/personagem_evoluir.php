@@ -49,7 +49,7 @@ if ($lvls_tripulacao <= $max_lvls_for_reputacao) {
 }
 
 $hasLvl20 = $connection->run("SELECT * FROM tb_personagens WHERE lvl >= 20 LIMIT 1")->count();
-if ($hasLvl20 < 1) {
+if ($hasLvl20 == 0 && $lvl == 20) {
     $connection->run("UPDATE tb_conta SET gold = gold + 100 WHERE conta_id = ?", "i", $userDetails->tripulacao["conta_id"]);
     $connection->run("INSERT INTO tb_personagem_titulo (cod,titulo) VALUES (?,?)", 'ii', [
         $userDetails->tripulacao["id"],
