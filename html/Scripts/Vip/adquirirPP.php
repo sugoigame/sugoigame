@@ -14,7 +14,6 @@ if ($result->count() < 1) {
 
 	require_once('../../Classes/PayPal.php');
 	$p = new PayPal();
-	// $p->useSandbox();
 
 	// Inserir log de compra e definir referencia para pagamento
 	$connection->run("INSERT INTO tb_vip_compras (conta_id,plano_id,gateway) VALUE (?,?,?)", "iis", [
