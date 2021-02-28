@@ -20,6 +20,10 @@ if ($_GET["tipo"] != 16 AND $_GET["tipo"] != 17) {
 }
 $tipo = $_GET["tipo"];
 
+if (1 == 1) {
+    $protector->exit_error("Temporariamente indisponível.");
+}
+
 if ($userDetails->navio["ultimo_disparo_sofrido"] > (atual_segundo() - 30)) {
     $protector->exit_error("Você foi atingido por um canhão a menos de 30 segundos e precisa esperar para usar uma isca.");
 }
