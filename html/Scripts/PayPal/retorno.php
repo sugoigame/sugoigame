@@ -6,7 +6,6 @@ require_once('../../Classes/PayPal.php');
 $method = $_SERVER['REQUEST_METHOD'];
 if('POST' == $method) {
 	$p = new PayPal();
-	// $p->useSandbox();
 	if ($p->verifyIPN()) {
 		$paymentData = $p->ipn_data;
 
