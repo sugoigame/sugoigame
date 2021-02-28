@@ -48,6 +48,32 @@ if ($lvls_tripulacao <= $max_lvls_for_reputacao) {
     $connection->run("UPDATE tb_usuarios SET reputacao = reputacao + 5, reputacao_mensal = reputacao_mensal + 5 WHERE id = ?", "i", $userDetails->tripulacao["id"]);
 }
 
+$hasLvl20 = $connection->run("SELECT * FROM tb_personagens WHERE lvl >= 20 LIMIT 1")->count();
+if ($hasLvl20 < 1) {
+    $connection->run("UPDATE tb_conta SET gold = gold + 100 WHERE conta_id = ?", "i", $userDetails->tripulacao["conta_id"]);
+    $connection->run("INSERT INTO tb_personagem_titulo (cod,titulo) VALUES (?,?)", 'ii', [
+        $userDetails->tripulacao["id"],
+        140
+    ]);
+
+    $assunto    = "Primeiro Nível 20!";
+    $texto      = "Parabéns {$personagem['nome']}!
+        Você foi o primeiro jogador a alcançar o nível 20, e por isso, foi premiado com:
+        - 100 Golds 
+        - Titulo: Rushador(a) Sugoi!
+
+        Boa sorte em sua jornada marujo!";
+    $hora       = "às " . date("H:i", time()) . " do dia " . date("d/m/Y", time());
+
+    $connection->run("INSERT INTO tb_mensagens (remetente,destinatario,assunto,texto,hora) VALUES (?,?,?,?,?)", 'iisss', [
+        $userDetails->tripulacao["id"],
+        $userDetails->tripulacao["id"],
+        $assunto,
+        $texto,
+        $hora
+    ]);
+}
+
 if ($personagem["lvl"] == 1 AND $userDetails->tripulacao["cod_personagem"] == $personagem["cod"]) {
     $assunto    = "Nível 2 Alcançado!";
     $texto      = "Parabéns!
