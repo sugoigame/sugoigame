@@ -96,9 +96,6 @@ $tesouros = $connection->run("SELECT * FROM tb_usuario_itens ui INNER JOIN tb_it
         z-index: 2;
     }
 </style>
-<script type="text/javascript">
-
-</script>
 <div style="height: <?= $mar > 4 ? '800px' : '500px'; ?>; width: 1000px; position: relative;">
     <?php if ($userDetails->tripulacao["x"] >= $xmin
         && $userDetails->tripulacao["x"] <= $xmax
@@ -110,9 +107,11 @@ $tesouros = $connection->run("SELECT * FROM tb_usuario_itens ui INNER JOIN tb_it
     <?php endif; ?>
 
     <?php foreach ($ilhas as $ilha): ?>
+        <?php if (isset($visivel[$ilha["x"]]) && isset($visivel[$ilha["x"]][$ilha["y"]])): ?>
         <img src="Imagens/Mapa/Mapa_Cartografo/mostra_3.png"
              class="map-indicator" data-toggle="tooltip" title="<?= nome_ilha($ilha["ilha"]) ?>"
              style="top: <?= ($ilha["y"] - $ymin - 1) * 5; ?>px; left: <?= ($ilha["x"] - $xmin - 1) * 5; ?>px;"/>
+        <?php endif; ?>
     <?php endforeach; ?>
 
     <?php foreach ($tesouros as $tesouro): ?>

@@ -61,9 +61,8 @@ class Response {
 							</style>
 
 							<ul class=\"share-buttons\">
-									<li><a href=\"https://www.facebook.com/sharer/sharer.php?u=" . urlencode($urlToShare) . "&t=" . urlencode($msg) . "\" title=\"Compartilhe no Facebook\" target=\"_blank\"><img alt=\"Share on Facebook\" src=\"Imagens/social_flat_rounded_rects_svg/Facebook.svg\" /></a></li>
-									<li><a href=\"https://twitter.com/intent/tweet?original_referer=" . urlencode($urlToShare) . "&text=Sugoi Game - " . urlencode($urlToShare) . "\" target=\"_blank\" title=\"Tweet\"><img alt=\"Tweet\" src=\"Imagens/social_flat_rounded_rects_svg/Twitter.svg\" /></a></li>
-									<li><a href=\"https://plus.google.com/share?url=" . urlencode($urlToShare) . "\" target=\"_blank\" title=\"Compartilhe no Google+\"><img alt=\"Share on Google+\" src=\"Imagens/social_flat_rounded_rects_svg/Google+.svg\" /></a></li>
+									<li><a href=\"https://www.facebook.com/sharer/sharer.php?u=" . urlencode($urlToShare) . "&t=" . urlencode($msg) . "\" title=\"Compartilhe no Facebook\" target=\"_blank\"><img alt=\"Share on Facebook\" src=\"Imagens/Social/Facebook.svg\" /></a></li>
+									<li><a href=\"https://twitter.com/intent/tweet?original_referer=" . urlencode($urlToShare) . "&text=Sugoi Game - " . urlencode($urlToShare) . "\" target=\"_blank\" title=\"Tweet\"><img alt=\"Tweet\" src=\"Imagens/Social/Twitter.svg\" /></a></li>
 							</ul>";
 		}
 }

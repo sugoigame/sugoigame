@@ -2,7 +2,7 @@
     <?php global $userDetails; ?>
     <div class="progress">
         <div class="progress-bar progress-bar-success" role="progressbar"
-             style="width: <?= $userDetails->navio["hp"] / $userDetails->navio["hp_max"] * 100 ?>%;">
+             style="width: <?= $userDetails->navio["hp_teste"] / $userDetails->navio["hp_max"] * 100 ?>%;">
             <span>Navio:<?= $userDetails->navio["hp_teste"] . "/" . $userDetails->navio["hp_max"] ?></span>
         </div>
     </div>

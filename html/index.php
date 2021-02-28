@@ -2,7 +2,7 @@
 $valida = "EquipeSugoiGame2012";
 require "Includes/conectdb.php";
 
-/*if (!$userDetails->conta AND
+if (!$userDetails->conta AND
 	!isset($_GET["ses"]) AND
 	!isset($_GET["erro"]) AND
 	!isset($_GET["msg"]) AND
@@ -10,7 +10,7 @@ require "Includes/conectdb.php";
 ) {
 	header("location: ./login.php");
 	exit;
-}*/
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -38,13 +38,15 @@ require "Includes/conectdb.php";
 	<script type="text/javascript">
 		var gameTitle = document.title;
 
-		if (!navigator.serviceWorker.controller) {
-			navigator.serviceWorker.register("/sw.js").then(function(reg) {
-				console.log("Service worker has been registered for scope: " + reg.scope);
-			});
+		if (window.location.hostname == 'sugoigame.com.br') {
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
 		}
 	</script>
+	<?php if ($_SERVER['HTTP_HOST'] == 'sugoigame.com.br') { ?>
 	<script data-ad-client="ca-pub-6665062829379662" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<?php } ?>
 </head>
 <body>
 

@@ -186,8 +186,10 @@ class Protector {
 				$this->need_tripulacao();
 				$this->need_campanha_enies_lobby();
 				break;
-			case "estatisticas":
-			case "combinacaoEditor":
+			case "admin-estatisticas":
+			case "admin-combinacao":
+			case "admin-news":
+			case "admin-mails":
 				$this->must_be_gm();
 				break;
 			case "eventoPirata":

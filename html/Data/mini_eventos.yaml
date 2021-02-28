@@ -66,26 +66,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -155,26 +140,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -244,26 +214,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -336,26 +291,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -363,7 +303,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -433,26 +373,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -460,7 +385,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -530,26 +455,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -557,7 +467,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -630,26 +540,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -657,7 +552,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -727,28 +622,13 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: dobrao
         quant: 5
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -756,7 +636,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -826,26 +706,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -853,7 +718,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -926,26 +791,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -953,7 +803,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: reagent
         cod_item: 154
         quant: 1
@@ -961,7 +811,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    13:
+    11:
       - tipo: reagent
         cod_item: 185
         quant: 1
@@ -969,7 +819,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    14:
+    12:
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -1039,26 +889,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -1066,7 +901,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: reagent
         cod_item: 154
         quant: 1
@@ -1074,7 +909,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    13:
+    11:
       - tipo: reagent
         cod_item: 185
         quant: 1
@@ -1082,7 +917,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    14:
+    12:
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -1152,28 +987,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
       - tipo: xp
-        quant: 500
+        quant: 2000
       - tipo: berries
         quant: 20000
     9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
-      - tipo: dobrao
-        quant: 5
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    11:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -1181,7 +999,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: reagent
         cod_item: 154
         quant: 1
@@ -1189,7 +1007,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    13:
+    11:
       - tipo: reagent
         cod_item: 185
         quant: 1
@@ -1197,7 +1015,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    14:
+    12:
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -1270,26 +1088,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -1297,7 +1100,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: reagent
         cod_item: 154
         quant: 1
@@ -1305,7 +1108,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    13:
+    11:
       - tipo: reagent
         cod_item: 185
         quant: 1
@@ -1313,7 +1116,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    14:
+    12:
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -1383,26 +1186,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    11:
+    10:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -1410,7 +1198,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    11:
       - tipo: reagent
         cod_item: 154
         quant: 1
@@ -1418,7 +1206,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    13:
+    12:
       - tipo: reagent
         cod_item: 185
         quant: 1
@@ -1426,12 +1214,12 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    14:
+    13:
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 10000000
-    15:
+    14:
       - tipo: reagent
         cod_item: 188
         quant: 1
@@ -1504,26 +1292,11 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: haki
-        quant: 50000
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 121
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -1531,7 +1304,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: reagent
         cod_item: 154
         quant: 1
@@ -1539,7 +1312,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    13:
+    11:
       - tipo: reagent
         cod_item: 185
         quant: 1
@@ -1547,12 +1320,12 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    14:
+    12:
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 10000000
-    15:
+    13:
       - tipo: reagent
         cod_item: 188
         quant: 1

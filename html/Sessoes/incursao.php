@@ -63,10 +63,13 @@
                                             <p class="text-success">
                                                 Adversário derrotado <i class="fa fa-check"></i>
                                             </p>
-                                            <button class="btn btn-success link_send"
+                                            <button class="btn btn-danger btn-disabled" disabled>
+                                                Indisponível
+                                            </button>
+                                            <?php /*<button class="btn btn-success link_send"
                                                     href="link_Incursao/atacar.php?alvo=<?= $adversario_id ?>">
                                                 Atacar Novamente
-                                            </button>
+                                            </button>*/ ?>
                                         <?php endif; ?>
                                     </div>
                                 </div>

@@ -65,7 +65,7 @@ class ItemUsavel {
 		}
 
 		$equipamento = $this->connection->run(
-			"SELECT * FROM tb_equipamentos WHERE categoria = 1 AND lvl <= ? ORDER BY ceil(lvl/10) DESC, RAND() LIMIT 1",
+			"SELECT * FROM tb_equipamentos WHERE categoria = 1 AND lvl <= ? ORDER BY ceil(lvl / 10) DESC, RAND() LIMIT 1",
 			"i", array($this->userDetails->lvl_mais_forte)
 		)->fetch_array();
 
@@ -461,18 +461,18 @@ class ItemUsavel {
 			$this->userDetails->add_equipamento($recompensa);
 
 			return "Você recebeu " . $recompensa["nome"];
-		} else if ($rand <= 99) {
-			$recompensa = rand(500000, 2000000);
+		} else/* if ($rand <= 99)*/ {
+			$recompensa = rand(100000, 500000);
 
 			$this->connection->run("UPDATE tb_usuarios SET berries = berries + ? WHERE id = ?",
 				"ii", array($recompensa, $this->userDetails->tripulacao["id"]));
 
 			return "Você recebeu " . mascara_berries($recompensa) . " Berries";
-		} else {
+		}/* else {
 			$this->userDetails->add_item(rand(100, 110), rand(8, 10), 1, true);
 
 			return "Você recebeu uma Akuma no Mi";
-		}
+		}*/
 	}
 
 	public function obter_animacao_skill($item, $params) {
@@ -547,18 +547,19 @@ class ItemUsavel {
 			$this->userDetails->add_equipamento($recompensa);
 
 			return "Você recebeu " . $recompensa["nome"];
-		} else if ($rand <= 99) {
-			$recompensa = rand(5000000, 10000000);
+		} else/* if ($rand <= 99)*/ {
+			// $recompensa = rand(5000000, 10000000);
+			$recompensa = rand(100000, 500000);
 
 			$this->connection->run("UPDATE tb_usuarios SET berries = berries + ? WHERE id = ?",
 				"ii", array($recompensa, $this->userDetails->tripulacao["id"]));
 
 			return "Você recebeu " . mascara_berries($recompensa) . " Berries";
-		} else {
+		}/* else {
 			$this->userDetails->add_item(rand(100, 110), rand(8, 10), 1, true);
 
 			return "Você recebeu uma Akuma no Mi";
-		}
+		}*/
 	}
 
 	public function abre_bau_tesouro_excepcional() {
@@ -946,9 +947,9 @@ class ItemUsavel {
 
 			return "Você recebeu 1 Essência Verde";
 		} else if ($rand <= 125) {
-			$this->userDetails->add_berries(10000000);
+			$this->userDetails->add_berries(5000000);
 
-			return "Você recebeu 10 milhões Berries";
+			return "Você recebeu 5 milhões Berries";
 		} else if ($rand <= 135) {
 			$this->userDetails->xp_for_all(10000);
 
@@ -1095,7 +1096,7 @@ class ItemUsavel {
 		} else if ($rand <= 70) {
 			$this->userDetails->add_berries(5000000);
 
-			return "Você recebeu 5 milhão de Berries";
+			return "Você recebeu 5 milhões de Berries";
 		} else if ($rand <= 100) {
 			$this->userDetails->xp_for_all(5000);
 

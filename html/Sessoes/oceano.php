@@ -28,6 +28,7 @@
         width: 70px;
         height: 80vh;
         overflow: auto;
+        margin-top: 38px;
     }
 
     #tripulantes-bar table,
@@ -1780,13 +1781,13 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body">
-                <h4 class="modal-title">
-                    Por favor utilize seu dispositivo na horizontal para uma melhor experiência!
-                </h4>
+                <p>Por favor utilize seu dispositivo na horizontal para uma melhor experiência!</p>
                 <img src="Imagens/Backgrounds/rotate-device.png" width="100%"/>
             </div>
         </div>
@@ -1799,7 +1800,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                <h4>Profissões</h4>
+                <h4 class="modal-title">Profissões</h4>
             </div>
             <div class="modal-body">
                 <div id="modal-profissoes-oceano-body">

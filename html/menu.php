@@ -224,7 +224,7 @@ function super_menu_can_be_active($menu) {
 									<?= menu_link("amigaveis", "Batalhas Amigáveis", "glyphicon glyphicon-screenshot", "") ?>
 								<?php endif; ?>
 								<?php if (!$userDetails->in_ilha) : ?>
-									<?= menu_link("servicoDenDen", "Vendas por correio", "fa fa-shopping-basket", "") ?>
+									<!-- <?= menu_link("servicoDenDen", "Vendas por correio", "fa fa-shopping-basket", "") ?> -->
 								<?php endif; ?>
 								<?php if (!$userDetails->rotas
 									&& !$userDetails->missao && !$userDetails->tripulacao["recrutando"]
@@ -324,12 +324,24 @@ function super_menu_can_be_active($menu) {
 				</div>
 			<?php endif; ?>
 
+			<?php if ($userDetails->tripulacao['adm'] > 0): ?>
+			<?= super_menu_link("admin", "menu-admin", "Administração", "admin", "admin") ?>
+			<div id="menu-admin" class="collapse <?= super_menu_in_out("admin") ?>">
+				<ul class="vertical-nav nav navbar-nav">
+					<?= menu_link("admin-news", "Gerenciar Noticias", "fa fa-newspaper-o", "") ?>
+					<?= menu_link("admin-mails", "Gerenciar Den Den", "fa fa-envelope-o", "") ?>
+					<?= menu_link("admin-estatisticas", "Estatísticas", "fa fa-envelope-o", "") ?>
+					<?= menu_link("admin-combinacao", "Combinações", "fa fa-envelope-o", "") ?>
+				</ul>
+			</div>
+			<?php endif; ?>
+
 			<?= super_menu_link("faq", "menu-help", "Suporte", "ajuda", "help") ?>
 			<div id="menu-help" class="collapse <?= super_menu_in_out("ajuda") ?>">
 				<ul class="vertical-nav nav navbar-nav">
 					<?= menu_link("faq", "F.A.Q", "fa fa-question-circle", "") ?>
-					<?= menu_link("https://discord.gg/guXVHb9mZt", "Sugoi no Discord", "fa fa-comments-o", "", "", "", "", 'target="_blank"') ?>
-					<?= menu_link("https://fb.com/SugoiGameBrasil", "Sugoi no Facebook", "fa fa-facebook-square", "", "", "", "", 'target="_blank"') ?>
+					<?= menu_link("https://discord.gg/NegrUS6xTV", "Sugoi no Discord", "fa fa-comments-o", "", "", "", "", 'target="_blank"') ?>
+					<?= menu_link("https://fb.com/sugoigamebr", "Sugoi no Facebook", "fa fa-facebook-square", "", "", "", "", 'target="_blank"') ?>
 					<?= menu_link("https://instagram.com/sugoigamebr", "Sugoi no Instagram", "fa fa-instagram", "", "", "", "", 'target="_blank"') ?>
 				</ul>
 			</div>
@@ -342,6 +354,11 @@ function super_menu_can_be_active($menu) {
 			</div>
 		</div>
 	</div>
+</div>
+<div id="installContainer" class="hidden">
+	<button id="butInstall" type="button">
+	Install App
+	</button>
 </div>
 <?php if ($userDetails->conta): ?>
 	<div class="vertical-menu-header clearfix">

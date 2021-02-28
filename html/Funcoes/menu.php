@@ -112,6 +112,11 @@ function get_super_menu($sess = null) {
         case "forumPosts":
         case "forumTopics":
             return "forum";
+        case "admin-news":
+        case "admin-mails":
+        case "admin-estatisticas":
+        case "admin-combinacao":
+            return "admin";
         default:
             return false;
     }

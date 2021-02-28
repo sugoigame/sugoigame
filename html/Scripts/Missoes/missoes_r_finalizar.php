@@ -45,31 +45,31 @@ if ($missao_r["fim"] > atual_segundo()) {
 switch ($missao_r["modif"]) {
     case 1:
         $rec = 30000;
-        $xp = 300;
+        $xp = 450;
         break;
     case 2:
         $rec = 60000;
-        $xp = 600;
+        $xp = 900;
         break;
     case 3:
         $rec = 90000;
-        $xp = 900;
+        $xp = 1350;
         break;
     case 4:
         $rec = 120000;
-        $xp = 1200;
+        $xp = 1800;
         break;
     case 5:
         $rec = 180000;
-        $xp = 1800;
+        $xp = 2700;
         break;
     case 6:
         $rec = 240000;
-        $xp = 2400;
+        $xp = 3600;
         break;
     case 7:
         $rec = 480000;
-        $xp = 4800;
+        $xp = 7200;
         break;
 }
 $berries = $usuario["berries"] + $rec;

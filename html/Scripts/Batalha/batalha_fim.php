@@ -206,9 +206,8 @@ if ($userDetails->combate_pve) {
         }
     }
 } else if ($userDetails->combate_pvp) {
-    $query = "SELECT * FROM tb_combate_personagens WHERE id='" . $usuario["id"] . "' AND hp>'0'";
-    $result = mysql_query($query);
-    if (mysql_num_rows($result) == 0) {
+    $result = $connection->run("SELECT * FROM tb_combate_personagens WHERE id = ? AND hp > 0", 'i', $usuario['id']);
+    if ($result->count() == 0) {
         $perdeu = TRUE;
         $venceu = FALSE;
     } else {
@@ -216,9 +215,8 @@ if ($userDetails->combate_pve) {
         $venceu = TRUE;
     }
 
-    $query = "SELECT * FROM tb_combate_personagens WHERE id='" . $usuario["pvp"]["id_ini"] . "' AND hp>'0'";
-    $result = mysql_query($query);
-    if (mysql_num_rows($result) == 0) {
+    $result = $connection->run("SELECT * FROM tb_combate_personagens WHERE id = ? AND hp > 0", 'i', $usuario["pvp"]["id_ini"]);
+    if ($result->count() == 0) {
         $ini_perdeu = TRUE;
         $ini_venceu = FALSE;
     } else {
@@ -227,29 +225,23 @@ if ($userDetails->combate_pve) {
     }
 
     if (!$perdeu AND !$ini_perdeu) {
-        mysql_close();
         echo "%combate";
         exit();
     }
 
-    $query = "SELECT * FROM tb_usuarios WHERE id='" . $usuario["pvp"]["id_ini"] . "'";
-    $result = mysql_query($query);
-    $inimigo = mysql_fetch_array($result);
+    $inimigo = $connection->run("SELECT * FROM tb_usuarios WHERE id = ?", 'i', $usuario["pvp"]["id_ini"])->fetch_array();
 
-    $query = "SELECT * FROM tb_personagens WHERE id='" . $usuario["pvp"]["id_ini"] . "' AND ativo = 1";
-    $result = mysql_query($query);
-    for ($x = 0; $sql = mysql_fetch_array($result); $x++)
+    $result = $connection->run("SELECT * FROM tb_personagens WHERE id = ? AND ativo = 1", 'i', $usuario["pvp"]["id_ini"]);
+    for ($x = 0; $sql = $result->fetch_array(); $x++)
         $personagem_ini[$x] = $sql;
 
     for ($x = 0; $x < sizeof($personagem); $x++) {
-        $query = "SELECT * FROM tb_combate_personagens WHERE cod='" . $personagem[$x]["cod"] . "'";
-        $result = mysql_query($query);
-        $personagem_info[$x] = mysql_fetch_array($result);
+        $result = $connection->run("SELECT * FROM tb_combate_personagens WHERE cod = ?", 'i', $personagem[$x]["cod"]);
+        $personagem_info[$x] = $result->fetch_array();
     }
     for ($x = 0; $x < sizeof($personagem_ini); $x++) {
-        $query = "SELECT * FROM tb_combate_personagens WHERE cod='" . $personagem_ini[$x]["cod"] . "'";
-        $result = mysql_query($query);
-        $personagem_ini_info[$x] = mysql_fetch_array($result);
+        $result = $connection->run("SELECT * FROM tb_combate_personagens WHERE cod = ?", 'i', $personagem_ini[$x]["cod"]);
+        $personagem_ini_info[$x] = $result->fetch_array();
     }
 
     if ($perdeu) {
@@ -293,7 +285,7 @@ if ($userDetails->combate_pve) {
                     $nmp = $vencedor_pers_info[$x]["mp"];
                 }
 
-                $query = "UPDATE tb_personagens SET xp=xp+600 ";
+                $query = "UPDATE tb_personagens SET xp = xp + 800 ";
 
                 if ($userDetails->combate_pvp["tipo"] != TIPO_COLISEU
                     && $userDetails->combate_pvp["tipo"] != TIPO_TORNEIO) {
@@ -312,7 +304,7 @@ if ($userDetails->combate_pve) {
                 } else {
                     $nmp = $perdedor_pers_info[$x]["mp"];
                 }
-                $query = "UPDATE tb_personagens SET  xp = xp+600 ";
+                $query = "UPDATE tb_personagens SET  xp = xp + 400 ";
 
 
                 $fa_perdida = 1000000;
@@ -355,7 +347,6 @@ if ($userDetails->combate_pve) {
 
         $reputacao = calc_reputacao($vencedor["reputacao"], $perdedor["reputacao"], $lvl_mais_forte_vencedor, $lvl_mais_forte_perdedor);
         $reputacao_mensal = calc_reputacao($vencedor["reputacao_mensal"], $perdedor["reputacao_mensal"], $lvl_mais_forte_vencedor, $lvl_mais_forte_perdedor);
-
 
         if ($usuario["pvp"]["tipo"] == 2) {
             $reputacao["vencedor_rep"] /= 2;
@@ -410,27 +401,27 @@ if ($userDetails->combate_pve) {
         }
 
         //guerra
-        $query = "SELECT * FROM tb_alianca_membros WHERE id='" . $vencedor["id"] . "'";
-        $result = mysql_query($query);
-        if (mysql_num_rows($result) != 0) {
-            $alianca_vencedor = mysql_fetch_array($result);
+        $result = $connection->run("SELECT * FROM tb_alianca_membros WHERE id = ?", 'i', $vencedor["id"]);
+        if ($result->count() != 0) {
+            $alianca_vencedor = $result->fetch_array();
 
-            $query = "SELECT * FROM tb_alianca_membros WHERE id='" . $perdedor["id"] . "'";
-            $result = mysql_query($query);
-            if (mysql_num_rows($result) != 0) {
-                $alianca_perdedor = mysql_fetch_array($result);
+            $result = $connection->run("SELECT * FROM tb_alianca_membros WHERE id = ?", 'i', $perdedor["id"]);
+            if ($result->count() != 0) {
+                $alianca_perdedor = $result->fetch_array();
 
-                $query = "SELECT * FROM tb_alianca_guerra 
-					WHERE cod_alianca='" . $alianca_vencedor["cod_alianca"] . "' AND cod_inimigo='" . $alianca_perdedor["cod_alianca"] . "'";
-                $result = mysql_query($query);
-                $guerra = mysql_fetch_array($result);
-                $cont = mysql_num_rows($result);
+                $result = $connection->run("SELECT * FROM tb_alianca_guerra  WHERE cod_alianca = ? AND cod_inimigo = ?", 'ii', [
+                    $alianca_vencedor["cod_alianca"],
+                    $alianca_perdedor["cod_alianca"]
+                ]);
+                $guerra = $result->fetch_array();
+                $cont   = $result->count();
 
-                $query = "SELECT * FROM tb_alianca_guerra 
-					WHERE cod_inimigo='" . $alianca_vencedor["cod_alianca"] . "' AND cod_alianca='" . $alianca_perdedor["cod_alianca"] . "'";
-                $result = mysql_query($query);
-                $guerra_inimigo = mysql_fetch_array($result);
-                $cont += mysql_num_rows($result);
+                $result = $connection->run("SELECT * FROM tb_alianca_guerra  WHERE cod_inimigo = ? AND cod_alianca = ?", 'ii', [
+                    $alianca_vencedor["cod_alianca"],
+                    $alianca_perdedor["cod_alianca"]
+                ]);
+                $guerra_inimigo = $result->fetch_array();
+                $cont           += $result->count();
 
                 if ($cont > 0) {
                     if ($guerra["pts"] < $guerra["vitoria"] AND $guerra_inimigo["pts"] < $guerra["vitoria"]) {
@@ -438,14 +429,15 @@ if ($userDetails->combate_pve) {
                         $toda_query[sizeof($toda_query)] = "UPDATE tb_alianca_guerra SET pts='$pts' 
 							WHERE cod_alianca='" . $alianca_vencedor["cod_alianca"] . "'";
 
-                        $query = "SELECT * FROM tb_alianca_guerra_ajuda 
-							WHERE id='" . $vencedor["id"] . "' AND cod_alianca='" . $alianca_vencedor["cod_alianca"] . "'";
-                        $result = mysql_query($query);
-                        if (mysql_num_rows($result) == 0) {
+                        $result = $connection->run("SELECT * FROM tb_alianca_guerra_ajuda  WHERE id = ? AND cod_alianca = ?", 'ii', [
+                            $vencedor['id'],
+                            $alianca_vencedor['cod_alianca']
+                        ]);
+                        if ($result->count() == 0) {
                             $toda_query[sizeof($toda_query)] = "INSERT INTO tb_alianca_guerra_ajuda (cod_alianca, id, quant) 
 								VALUES ('" . $alianca_vencedor["cod_alianca"] . "', '" . $vencedor["id"] . "', '1')";
                         } else {
-                            $quant = mysql_fetch_array($result);
+                            $quant = $result->fetch_array();
                             $quant = $quant["quant"] + 1;
                             $toda_query[sizeof($toda_query)] = "UPDATE tb_alianca_guerra_ajuda SET quant='$quant' 
 								WHERE id='" . $vencedor["id"] . "' AND cod_alianca='" . $alianca_vencedor["cod_alianca"] . "'";
@@ -586,7 +578,7 @@ if ($userDetails->combate_pve) {
     );
 
     for ($x = 0; $x < sizeof($toda_query); $x++) {
-        mysql_query($toda_query[$x]);
+        $connection->query($toda_query[$x]);
     }
 
     // apostas
@@ -608,42 +600,21 @@ if ($userDetails->combate_pve) {
     $connection->run("DELETE FROM tb_personagens WHERE temporario = 1 AND id IN (?, ?)",
         "ii", array($vencedor["id"], $perdedor["id"]));
 
-    $query = "DELETE FROM tb_combate WHERE id_1='" . $usuario["pvp"]["id_1"] . "'";
-    mysql_query($query) or die("Nao foi possivel sair do combate");
-    if (mysql_affected_rows() == 0) {
-        mysql_close();
+    $connection->run("DELETE FROM tb_combate WHERE id_1 = ?", 'i', $usuario["pvp"]["id_1"]);
+    if ($connection->affected_rows() == 0) {
         echo "";
         exit();
     }
 
-    $query = "DELETE FROM tb_combate_personagens WHERE id='" . $vencedor["id"] . "'";
-    mysql_query($query) or die("nao foi possivel remover a batalha");
-
-    $query = "DELETE FROM tb_combate_personagens WHERE id='" . $perdedor["id"] . "'";
-    mysql_query($query) or die("nao foi possivel remover a batalha");
-
-    $query = "DELETE FROM tb_combate_skil_espera WHERE id='" . $vencedor["id"] . "'";
-    mysql_query($query) or die("nao foi possivel remover a batalha");
-
-    $query = "DELETE FROM tb_combate_skil_espera WHERE id='" . $perdedor["id"] . "'";
-    mysql_query($query) or die("nao foi possivel remover a batalha");
-
-    $query = "DELETE FROM tb_combate_buff WHERE id='" . $vencedor["id"] . "'";
-    mysql_query($query) or die("nao foi possivel remover a batalha");
-
-    $query = "DELETE FROM tb_combate_buff WHERE id='" . $perdedor["id"] . "'";
-    mysql_query($query) or die("nao foi possivel remover a batalha");
-
-    $query = "DELETE FROM tb_relatorio WHERE combate='" . $usuario["pvp"]["combate"] . "'";
-    mysql_query($query) or die("nao foi possivel remover a batalha");
-
-    $query = "DELETE FROM tb_relatorio_afetados WHERE combate='" . $usuario["pvp"]["combate"] . "'";
-    mysql_query($query) or die("nao foi possivel remover a batalha");
-
-    $query = "DELETE FROM tb_combate_apostas WHERE combate_id='" . $usuario["pvp"]["combate"] . "'";
-    mysql_query($query) or die("nao foi possivel remover a batalha");
-
-
+    $connection->run("DELETE FROM tb_combate_personagens WHERE id = ?", 'i', $vencedor["id"]);
+    $connection->run("DELETE FROM tb_combate_personagens WHERE id = ?", 'i', $perdedor["id"]);
+    $connection->run("DELETE FROM tb_combate_skil_espera WHERE id = ?", 'i', $vencedor["id"]);
+    $connection->run("DELETE FROM tb_combate_skil_espera WHERE id = ?", 'i', $perdedor["id"]);
+    $connection->run("DELETE FROM tb_combate_buff WHERE id = ?", 'i', $vencedor["id"]);
+    $connection->run("DELETE FROM tb_combate_buff WHERE id = ?", 'i', $perdedor["id"]);
+    $connection->run("DELETE FROM tb_relatorio WHERE combate = ?", 'i', $usuario["pvp"]["combate"]);
+    $connection->run("DELETE FROM tb_relatorio_afetados WHERE combate = ?", 'i', $usuario["pvp"]["combate"]);
+    $connection->run("DELETE FROM tb_combate_apostas WHERE combate_id = ?", 'i', $usuario["pvp"]["combate"]);
 } else if ($userDetails->combate_bot) {
     $venceu = FALSE;
     $perdeu = FALSE;
@@ -705,7 +676,7 @@ if ($userDetails->combate_pve) {
             if ($nhp > $pers["real_hp_max"]) {
                 $nhp = $pers["real_hp_max"];
             }
-            $nxp = $pers["real_xp"] + 100;
+            $nxp = $pers["real_xp"] + 150;
             $connection->run(
                 "UPDATE tb_personagens SET 
                   hp = '$nhp', 
@@ -884,10 +855,8 @@ if ($userDetails->combate_pve) {
     $connection->run("DELETE FROM tb_combate_buff_bot WHERE id = ?", "i", $userDetails->combate_bot["id"]);
     $connection->run("DELETE FROM tb_combate_special_effect WHERE combate_id = ?", "i", $userDetails->combate_bot["id"]);
     $connection->run("DELETE FROM tb_combate_special_effect WHERE combate_id = ?", "i", $userDetails->combate_bot["id"]);
-
 }
 
-mysql_close();
 if ($venceu) {
     if ($userDetails->combate_pve && isset($rdm['haki'])) {
         echo("%haki");
@@ -904,4 +873,5 @@ if ($venceu) {
     }
 } else if ($perdeu) {
     echo("%respawn");
-} else echo "A luta ainda não acabou!";
+} else
+    echo "A luta ainda não acabou!";

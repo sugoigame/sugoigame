@@ -4,7 +4,7 @@ function validate_email($str) {
 }
 
 function validate_alphanumeric($str) {
-    return preg_match("/^[\\w]+$/", $str);
+    return preg_match("/^[\\w-]+$/", $str);
 }
 
 function validate_number($str) {

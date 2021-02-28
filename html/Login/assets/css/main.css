@@ -1361,6 +1361,9 @@ button:disabled,
 	font-size: 26px;
 	margin: 30px 0 -15px;
 }
+.modal-login .form-control {
+    color: #fff;
+}
 .modal-login .form-control:focus {
 	border-color: #fb0000;
 }
