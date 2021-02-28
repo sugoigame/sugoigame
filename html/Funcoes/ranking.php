@@ -100,7 +100,7 @@ function get_patente_nome($faccao, $reputacao) {
 <?php function render_top_player($famoso, $titulo) { ?>
     <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "", 'style="max-width: 100%"') ?>
     <div class="texto-top">
-        <p class="texto-top-cargo"><?= $titulo ?></p>
+        <!-- <p class="texto-top-cargo"><?= $titulo ?></p> -->
         <p class="texto-top-nome"><?= $famoso["nome"] ?></p>
         <?php if (isset($famoso["titulo_nome"]) && $titulo != $famoso["titulo_nome"]): ?>
             <p class="texto-top-alcunha"><?= $famoso["titulo_nome"] ?></p>

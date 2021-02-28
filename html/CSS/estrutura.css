@@ -126,12 +126,14 @@ table tr td {
     opacity: 0.7;
 }
 
-#div_icon_inventario .badge, #div_icon_daily_gift .badge, #div_icon_coliseu .badge-alert {
+#div_icon_inventario .badge, #div_icon_daily_gift .badge, #div_icon_coliseu .badge {
     position: absolute;
     bottom: 0;
     right: 0;
     background: #D00;
-    border: 1px solid #fff;
+    /* border: 1px solid #fff; */
+    border-radius: 2px;
+    padding: 3px 4px;
 }
 
 /* */
@@ -152,6 +154,7 @@ table tr td {
 
 .header-navbar li {
     float: left;
+    min-width: 40px;
 }
 
 .header-navbar li a {
@@ -182,10 +185,12 @@ table tr td {
         margin-left: auto;
     }
     .news-coo-text {
-        padding-left: 0;
+        /* padding-left: 0; */
     }
 }
-
+.news-coo-text p {
+    margin: 0;
+}
 @media all and (max-width: 767px) {
     .menu-col, .main-col {
         padding: 0;
@@ -571,11 +576,11 @@ table tr td {
 }
 
 .tripulante_quadro.pirate {
-    background: url("../Imagens/1/cartaz.jpg");
+    background: url("../Imagens/cartaz-pirata.jpg");
 }
 
 .tripulante_quadro.marine {
-    background: url("../Imagens/0/cartaz.jpg");
+    background: url("../Imagens/cartaz-marinha.jpg");
 }
 
 .tripulante_quadro_img {
@@ -1100,4 +1105,9 @@ table tr td {
 }
 .popover{
     max-width:600px;
+}
+
+.form-control {
+    height: auto;
+    border-radius: 4px;
 }

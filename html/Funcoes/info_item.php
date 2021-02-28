@@ -49,7 +49,7 @@ function get_img_item($item) {
 
 function info_item_with_img($item, $item_info, $extra, $acao, $incombate = FALSE, $porcent = 1, $treino = array()) {
     $categoria = isset($item_info["categoria"]) ? $item_info["categoria"] : 0;
-    return "<a href='#' class='noHref' data-toggle='popover' data-html='true' data-placement='bottom' data-trigger='focus' data-content='" . info_item($item, $item_info, $extra, $acao, $incombate, $porcent, $treino) . "'><p class='equipamentos_casse_$categoria'>" . get_img_item($item) . "<br/>" . $item["nome"] . "</p></a>";
+    return "<a href='#' class='noHref' data-toggle='popover' data-html='true' data-placement='bottom' data-trigger='focus' data-content='" . info_item($item, $item_info, $extra, $acao, $incombate, $porcent, $treino) . "'><p class='equipamentos_casse_$categoria'>" . get_img_item($item) . "<br/>" . ucwords($item["nome"]) . "</p></a>";
 }
 
 function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcent = 1, $treino = array()) {

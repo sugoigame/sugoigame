@@ -24,23 +24,22 @@ function has_mapa() {
     <div class="container-fluid">
         <div>
             <ul class="nav navbar-nav">
-                <?php /*<li data-toggle="tooltip" title="Estamos em fase BETA!" data-placement="bottom">
+                <li class="hidden-sm hidden-xs" data-toggle="tooltip" title="Estamos em fase BETA!" data-placement="bottom">
                     <a href="./?ses=beta" class="link_content">
                         BETA
                     </a>
-                </li>*/ ?>
+                </li>
                 <li data-toggle="tooltip" title="A bandeira da sua tripulação" data-placement="bottom">
                     <a class="link_content" href="./?ses=bandeira">
-                        <img height="21px"
-                             src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->tripulacao["bandeira"]; ?>&f=<?= $userDetails->tripulacao["faccao"]; ?>"/>
+                        <img height="21px" src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->tripulacao["bandeira"]; ?>&f=<?= $userDetails->tripulacao["faccao"]; ?>"/>
                     </a>
                 </li>
-                <li id="div_icon_coordenada" data-toggle="tooltip" title="Sua localização atual" data-placement="bottom">
+                <li id="div_icon_coordenada" data-toggle="tooltip" title="Localização atual" data-placement="bottom">
                     <a>
-                        <img src="Imagens/Icones/Pose.png" height="21px"/>
-                        <span id="location"><?= get_current_location() ?></span>,
-                        <span id="destino_mar"><?= get_current_mar() ?></span> -
-                        <span id="destino_ilha"><?= get_current_ilha() ?></span>
+                        <img src="Imagens/Icones/Pose.png" height="21px" />
+                        <span id="location"><?=get_current_location();?></span>,
+                        <span id="destino_mar"><?=get_current_mar();?></span> -
+                        <span id="destino_ilha"><?=get_current_ilha();?></span>
                     </a>
                 </li>
             </ul>
@@ -68,10 +67,9 @@ function has_mapa() {
                                 : " - Você está procurando um adversário"))
                         : (is_coliseu_aberto()
                             ? " - O Coliseu está aberto!"
-                            : ""); ?>"
-                    data-placement="bottom">
+                            : ""); ?>" data-placement="bottom">
                     <a href="./?ses=<?= is_coliseu_aberto() ? "coliseu" : "localizadorCasual"; ?>" class="link_content">
-                        <i class="glyphicon glyphicon-fire"></i>
+                        <i class="glyphicon glyphicon-fire fa-fw"></i>
                         <?php if ($userDetails->fila_coliseu) : ?>
                             <?php if ($userDetails->fila_coliseu["pausado"]) : ?>
                                 <span class="badge badge-alert"><i class="fa fa-pause"></i></span>

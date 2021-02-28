@@ -100,13 +100,13 @@
             <div class="form-inline">
                 <div class="form-group">
                     <select id="duracao_missao_r" class="form-control">
-                        <option value="1">30 minutos - $30.000 + 300pts de EXP</option>
-                        <option value="2">1 hora - $60.000 + 600pts de EXP</option>
-                        <option value="3">1 hora e 30 minutos - $90.000 + 900pts de EXP</option>
-                        <option value="4">2 horas - $120.000 + 1.200pts de EXP</option>
-                        <option value="5">3 horas - $180.000 + 1.800pts de EXP</option>
-                        <option value="6">4 horas - $240.000 + 2.400pts de EXP</option>
-                        <option value="7">8 horas - $480.000 + 4.800pts de EXP</option>
+                        <option value="1">00:30:00 | 30.000 berries + 450 exp</option>
+                        <option value="2">01:00:00 | 60.000 berries + 900 exp</option>
+                        <option value="3">01:30:00 | 90.000 berries + 1.350 exp</option>
+                        <option value="4">02:00:00 | 120.000 berries + 1.800 exp</option>
+                        <option value="5">03:00:00 | 180.000 berries + 2.700 exp</option>
+                        <option value="6">04:00:00 | 240.000 berries + 3.600 exp</option>
+                        <option value="7">08:00:00 | 480.000 berries + 7.200 exp</option>
                     </select>
                     <button id="iniciar_missao_r" class="btn btn-success">
                         Iniciar

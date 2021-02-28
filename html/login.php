@@ -107,13 +107,17 @@ if (!isset($banners[$banner_id])) {
 		<link rel="stylesheet" href="Login/assets/css/ie9.css" />
 	<![endif]-->
 	<script type="text/javascript">
-		if (!navigator.serviceWorker.controller) {
-			navigator.serviceWorker.register("/sw.js").then(function(reg) {
-				console.log("Service worker has been registered for scope: " + reg.scope);
-			});
+		if (window.location.hostname == 'sugoigame.com.br') {
+			if (!navigator.serviceWorker.controller) {
+				navigator.serviceWorker.register("/sw.js").then(function(reg) {
+					console.log("Service worker has been registered for scope: " + reg.scope);
+				});
+			}
 		}
 	</script>
+	<?php if ($_SERVER['HTTP_HOST'] == 'sugoigame.com.br') { ?>
 	<script data-ad-client="ca-pub-6665062829379662" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<?php } ?>
 </head>
 <body>
 <div class="wrapper">

@@ -54,7 +54,7 @@
     </script>
 
     <?php if ($userDetails->navio) : ?>
-        <div>
+        <div style="margin-bottom: 10px;">
             <?php render_navio_icon(); ?>
         </div>
 
@@ -76,6 +76,17 @@
     ), "WHERE ilha = ?", "i", $userDetails->ilha["ilha"]); ?>
 
     <div class="row">
+        <?php 
+        $meuNavio = $connection->run("SELECT * FROM tb_navio WHERE cod_navio = ? LIMIT 1", 'i', $userDetails->navio['cod_navio'])->fetch_array();
+
+        $temCanhao = FALSE;
+        $checkCanhao = $connection->run("SELECT id FROM tb_usuario_itens WHERE tipo_item = 12 AND id = ? LIMIT 1", 'i', [
+            $userDetails->tripulacao['id']
+        ])->count();
+        if ($checkCanhao > 0) {
+            $temCanhao = TRUE;
+        }
+        ?>
         <?php foreach ($items as $item) : ?>
             <div class="col-md-4">
                 <?php $preco = $item["preco"] * $mods["mod"]; ?>
@@ -84,21 +95,37 @@
                     <div>
                         <img src="Imagens/Icones/Berries.png"/> <?= mascara_berries($preco) ?>
                     </div>
-                    <?php if ($userDetails->tripulacao["berries"] >= $preco): ?>
-                        <p>
-                            <?php if ($item["tipo_item"] == 11 AND $item["limite"] >= count($userDetails->personagens)) : ?>
-                                <button href='Mercado/marcenaria_comprar.php?item=<?= $item["cod_item"]; ?>&tipo=<?= $item["tipo_item"]; ?>'
-                                        class="bt_comprar_barco btn btn-success">
-                                    Comprar
-                                </button>
-                            <?php elseif ($item["tipo_item"] != 11): ?>
-                                <button href='link_Mercado/marcenaria_comprar.php?item=<?= $item["cod_item"]; ?>&tipo=<?= $item["tipo_item"]; ?>'
-                                        class="link_send btn btn-success">
-                                    Comprar
+                    <p>
+                        <div class="form-inline">
+                            <?php if ($userDetails->tripulacao["berries"] >= $preco): ?>
+                                <?php if (in_array($item["tipo_item"], [11]) && $item["limite"] > $meuNavio['limite']) : ?>
+                                    <button href='Mercado/marcenaria_comprar.php?item=<?= $item["cod_item"]; ?>&tipo=<?= $item["tipo_item"]; ?>'
+                                            class="bt_comprar_barco btn btn-success">
+                                        Comprar
+                                    </button>
+                                <?php elseif ($item["tipo_item"] != 11): ?>
+                                    <?php if (($item["tipo_item"] == 12 && $userDetails->navio['cod_canhao'] < 1 && !$temCanhao) || $item["tipo_item"] != 12) : ?>
+                                        <button href='link_Mercado/marcenaria_comprar.php?item=<?= $item["cod_item"]; ?>&tipo=<?= $item["tipo_item"]; ?>'
+                                                class="link_send btn btn-success">
+                                            Comprar
+                                        </button>
+                                    <?php else: ?>
+                                        <button class="btn btn-danger btn-disabled" disabled>
+                                            Indisponível
+                                        </button>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <button class="btn btn-danger btn-disabled" disabled>
+                                        Indisponível
+                                    </button>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <button class="btn btn-danger btn-disabled" disabled>
+                                    Indisponível
                                 </button>
                             <?php endif; ?>
-                        </p>
-                    <?php endif; ?>
+                        </div>
+                    </p>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -116,7 +143,7 @@
                     <p>
                     <div class="form-inline">
                         <div class="form-group">
-                            <input class="form-control" size="5" id="13_quant" value="1"><br/>
+                            <input type="number" min="1" max="100" class="form-control" size="5" id="13_quant" value="1" /><br />
                         </div>
                         <button id="13" class="comprar_material btn btn-success">Comprar</button>
                     </div>
