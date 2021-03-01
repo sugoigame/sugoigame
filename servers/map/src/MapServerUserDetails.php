@@ -63,6 +63,7 @@ class MapServerUserDetails extends UserDetails {
             u.x,
             u.y,
             u.mar_visivel,
+            u.adm,
             u.navegacao_destino AS navegando,
             u.coup_de_burst_usado,
             (unix_timestamp(current_timestamp(3)) - u.navegacao_inicio) / (u.navegacao_fim - u.navegacao_inicio) AS navegacao_progresso,
@@ -92,9 +93,12 @@ class MapServerUserDetails extends UserDetails {
             "i", array($id)
         )->fetch_array();
 
-        $me["location"] = get_human_location($me["x"], $me["y"]);
-        $me["destino_mar"] = nome_mar(get_mar($me["x"], $me["y"]));
+        $me['is_adm']       = $me['adm'] > 0;
+        $me["location"]     = get_human_location($me["x"], $me["y"]);
+        $me["destino_mar"]  = nome_mar(get_mar($me["x"], $me["y"]));
         $me["destino_ilha"] = nome_ilha($me["ilha"]);
+
+        unset($me['adm']);
 
         return $me;
     }
@@ -114,6 +118,7 @@ class MapServerUserDetails extends UserDetails {
                 u.reputacao_mensal,
                 u.x,
                 u.y,
+                u.adm,
                 u.navegacao_destino AS navegando,
                 u.coup_de_burst_usado,
                 (unix_timestamp(current_timestamp(3)) - u.navegacao_inicio) / (u.navegacao_fim - u.navegacao_inicio) AS navegacao_progresso,
@@ -150,8 +155,11 @@ class MapServerUserDetails extends UserDetails {
         );
 
         for ($x = 0; $x < count($data["players"]); $x++) {
-            $data["players"][$x]["reputacao_vitoria"] = calc_reputacao($data["me"]["reputacao"], $data["players"][$x]["reputacao"], $data["me"]["lvl_mais_forte"], $data["players"][$x]["lvl_mais_forte"]);
-            $data["players"][$x]["reputacao_mensal_vitoria"] = calc_reputacao($data["me"]["reputacao_mensal"], $data["players"][$x]["reputacao_mensal"], $data["me"]["lvl_mais_forte"], $data["players"][$x]["lvl_mais_forte"]);
+            $data["players"][$x]['is_adm']                      = $data["players"][$x]['adm'] > 0;
+            $data["players"][$x]["reputacao_vitoria"]           = calc_reputacao($data["me"]["reputacao"], $data["players"][$x]["reputacao"], $data["me"]["lvl_mais_forte"], $data["players"][$x]["lvl_mais_forte"]);
+            $data["players"][$x]["reputacao_mensal_vitoria"]    = calc_reputacao($data["me"]["reputacao_mensal"], $data["players"][$x]["reputacao_mensal"], $data["me"]["lvl_mais_forte"], $data["players"][$x]["lvl_mais_forte"]);
+
+            unset($data["players"][$x]['adm']);
         }
 
         return $data;
