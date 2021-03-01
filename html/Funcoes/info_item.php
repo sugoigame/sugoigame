@@ -53,6 +53,8 @@ function info_item_with_img($item, $item_info, $extra, $acao, $incombate = FALSE
 }
 
 function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcent = 1, $treino = array()) {
+    global $userDetails;
+
     $return = '<div class="info-item">';
     $return .= '<div class="info-item-title ' . (isset($item_info["categoria"]) ? 'equipamentos_casse_' . $item_info["categoria"] : '') . '">';
     $return .= "<b>" . $item_info["nome"] . "</b>";
@@ -167,11 +169,17 @@ function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcen
     }
 
     if ($extra) {
-        if ($item["quant"] > 1) {
-            $return .= '<div class="info-item-quantidade">';
-            $return .= "<b>Quantidade:</b> " . $item["quant"];
-            $return .= '</div>';
+        $return .= '<div class="info-item-quantidade">';
+        if (($item["tipo"] == 16 OR $item["tipo"] == 17) AND !$incombate) {
+            $return .= "<b>Limite:</b> {$userDetails->tripulacao['iscas_usadas']} / " . LIMITE_USOS_ISCA_DIA;
+            if ($item["quant"] > 1) {
+                $return .= '<br />';
+            }
         }
+        if ($item["quant"] > 1) {
+            $return .= "<b>Quantidade:</b> " . $item["quant"];
+        }
+        $return .= '</div>';
     }
     $return .= '</div>';
     if ($acao) {
@@ -188,12 +196,15 @@ function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcen
         }
         if (($item["tipo"] == 16 OR $item["tipo"] == 17) AND !$incombate) {
             $return .= '<p>';
-            $return .= '<a title="Usar" data-dismiss="modal" class="link_confirm btn btn-success" data-question="Deseja usar este item?" href="Vip/isca.php?tipo=' . $item["tipo"] . '">Usar</a>';
+            if ($userDetails->tripulacao['iscas_usadas'] < LIMITE_USOS_ISCA_DIA)
+                $return .= '<a title="Usar" data-dismiss="modal" class="link_confirm btn btn-success" data-question="Deseja usar este item?" href="Vip/isca.php?tipo=' . $item["tipo"] . '">Usar</a>';
+            else
+                $return .= '<button type="button" class="btn btn-danger btn-disabled" disabled>Indisponível</button>';
             $return .= '</p>';
         }
 
-        $return .= '<a title="Descartar" data-dismiss="modal"  id="item=' . $item["cod"] . '&tipo=' . $item["tipo_item"] . '" 
-					class="x_descart noHref btn btn-warning" href="#" >Descartar</a>';
+        $return .= '<a title="Descartar" data-dismiss="modal" id="item=' . $item["cod"] . '&tipo=' . $item["tipo_item"] . '" 
+					class="x_descart noHref btn btn-warning" href="#" >Descartar</a> ';
     }
 
     if ($extra) {
