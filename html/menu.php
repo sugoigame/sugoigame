@@ -224,7 +224,7 @@ function super_menu_can_be_active($menu) {
 									<?= menu_link("amigaveis", "Batalhas Amigáveis", "glyphicon glyphicon-screenshot", "") ?>
 								<?php endif; ?>
 								<?php if (!$userDetails->in_ilha) : ?>
-									<!-- <?= menu_link("servicoDenDen", "Vendas por correio", "fa fa-shopping-basket", "") ?> -->
+									<?= menu_link("servicoDenDen", "Vendas por correio", "fa fa-shopping-basket", "") ?>
 								<?php endif; ?>
 								<?php if (!$userDetails->rotas
 									&& !$userDetails->missao && !$userDetails->tripulacao["recrutando"]
