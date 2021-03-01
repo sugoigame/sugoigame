@@ -370,7 +370,7 @@ class MapServerUserDetails extends UserDetails {
         }
 
         if ($this->tripulacao['adm'] > 0) {
-            $base_speed /= 10;
+            $base_speed /= 5;
         }
 
         return $base_speed;
@@ -385,7 +385,7 @@ class MapServerUserDetails extends UserDetails {
 
         $percent = (rand(5, 10) + $this->lvl_carpinteiro) / 100;
         if ($this->tripulacao['adm'] > 0) {
-            $percent = 100;
+            $percent = 1;
         }
 
         $cura = round($percent * $this->navio["hp_max"]);
@@ -581,10 +581,10 @@ class MapServerUserDetails extends UserDetails {
             return FALSE;
         }
 
-        if ($this->navio['ultimo_disparo_sofrido'] + 15 > atual_segundo()) {
+        if ($this->navio['ultimo_disparo_sofrido'] + 30 > atual_segundo()) {
             return FALSE;
         }
-        if ($this->navio['ultimo_disparo'] + 15 > atual_segundo()) {
+        if ($this->navio['ultimo_disparo'] + 30 > atual_segundo()) {
             return FALSE;
         }
 

@@ -126,7 +126,7 @@
 </style>
 
 <div id="mar-game-tooltip">
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="margin: 0;">
         <button type="button" class="close" style="position: absolute; right: 10px">&times;</button>
         <div class="panel-body"></div>
     </div>
