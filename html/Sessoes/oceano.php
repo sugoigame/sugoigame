@@ -567,7 +567,7 @@
                             : ''
                     )
                     .append(
-                        (ship.data.adm > 0)
+                        ship.data.is_adm
                             ? $('<DIV>')
                                 .addClass('col-xs-12')
                                 .append(
