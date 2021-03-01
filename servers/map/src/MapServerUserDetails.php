@@ -93,12 +93,12 @@ class MapServerUserDetails extends UserDetails {
             "i", array($id)
         )->fetch_array();
 
-        $me['is_adm']       = ($me['adm'] > 0 ? TRUE : FALSE);
+        $me['is_adm']       = $me['adm'] > 0;
         $me["location"]     = get_human_location($me["x"], $me["y"]);
         $me["destino_mar"]  = nome_mar(get_mar($me["x"], $me["y"]));
         $me["destino_ilha"] = nome_ilha($me["ilha"]);
 
-        // unset($me['adm']);
+        unset($me['adm']);
 
         return $me;
     }
@@ -155,11 +155,11 @@ class MapServerUserDetails extends UserDetails {
         );
 
         for ($x = 0; $x < count($data["players"]); $x++) {
-            $data["players"][$x]['is_adm']                      = ($data["players"][$x]['adm'] > 0 ? TRUE : FALSE);
+            $data["players"][$x]['is_adm']                      = $data["players"][$x]['adm'] > 0;
             $data["players"][$x]["reputacao_vitoria"]           = calc_reputacao($data["me"]["reputacao"], $data["players"][$x]["reputacao"], $data["me"]["lvl_mais_forte"], $data["players"][$x]["lvl_mais_forte"]);
             $data["players"][$x]["reputacao_mensal_vitoria"]    = calc_reputacao($data["me"]["reputacao_mensal"], $data["players"][$x]["reputacao_mensal"], $data["me"]["lvl_mais_forte"], $data["players"][$x]["lvl_mais_forte"]);
 
-            // unset($data["players"][$x]['adm']);
+            unset($data["players"][$x]['adm']);
         }
 
         return $data;
