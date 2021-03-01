@@ -105,7 +105,7 @@
             "Vip/formacao_comprar.php?tipo=dobrao"
         ); ?>
 
-        <?php /*render_vantagem(
+        <?php render_vantagem(
             "atributos.png",
             "Conhecimento estratégico",
             "Permite ver os atributos, experiência de profissão, categoria de akuma e score dos seus tripulantes durante um combate. Exibe também os atributos dos personagens ao clicar nos respectivos cartazes de procurado no topo da tela.",
@@ -114,7 +114,7 @@
             PRECO_DOBRAO_CONHECIMENTO,
             "Vip/conhecimento_comprar.php?tipo=gold",
             "Vip/conhecimento_comprar.php?tipo=dobrao"
-        );*/ ?>
+        ); ?>
 
         <?php render_vantagem(
             "coup-de-burst.gif",
