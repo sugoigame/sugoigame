@@ -128,7 +128,7 @@
 <div id="mar-game-tooltip">
     <div class="panel panel-default" style="margin: 0;">
         <button type="button" class="close" style="position: absolute; right: 10px">&times;</button>
-        <div class="panel-body"></div>
+        <div class="panel-body" style="padding: 4px 18px;"></div>
     </div>
 </div>
 
@@ -500,6 +500,7 @@
     }
 
     function renderShip(ship) {
+        console.log(ship.data);
         $('#mar-game-tooltip .panel-body')
             .append(
                 $('<DIV>')
@@ -562,6 +563,16 @@
                                 .append(
                                     $('<DIV>')
                                         .append('<small>Vale ' + ship.data.reputacao_mensal_vitoria.vencedor_rep + ' pontos de reputação no Mês.</small>')
+                                )
+                            : ''
+                    )
+                    .append(
+                        ship.data.is_adm
+                            ? $('<DIV>')
+                                .addClass('col-xs-12')
+                                .append(
+                                    $('<DIV>')
+                                        .append('<p class="text-info" style="margin: 0;"><b>Membro do Governo Mundial</b></p>')
                                 )
                             : ''
                     )
