@@ -2,10 +2,10 @@
 $_SERVER["HTTP_HOST"] = isset($argv[1]) ? $argv[1] : "sugoigame.com.br";
 
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/../../html/Includes/database/mywrap.php';
-require __DIR__ . '/../../html/Classes/requires.php';
-require __DIR__ . "/../../html/Funcoes/requires.php";
-require __DIR__ . "/../../html/Constantes/requires.php"; 
+require __DIR__ . '/../../public/Includes/database/mywrap.php';
+require __DIR__ . '/../../public/Classes/requires.php';
+require __DIR__ . "/../../public/Funcoes/requires.php";
+require __DIR__ . "/../../public/Constantes/requires.php"; 
 
 require __DIR__ . '/src/WsServer.php';
 require __DIR__ . '/src/EventBroker.php';
