@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>World Map Editor</title>
+    <link rel="stylesheet" href="assets/libs/jquery-ui.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+<div id="tabs">
+    <div id="tabs-content">
+        <div class="tab-row">
+            <button id="nao-navegavel">Áreas não navegáveis</button>
+            <button id="corrente">Correntes Marítimas</button>
+            <button id="nevoa">Áreas de névoa</button>
+            <button id="redemoinho">Redemoinhos</button>
+            <button id="ilha">Ilhas</button>
+            <button id="mergulho">Zonas de mergulho</button>
+            <button id="exploracao">Zonas de exploração</button>
+            <button id="rdm">Zonas de RdM</button>
+        </div>
+        <div>
+            <div class="tab-item">
+                X:
+                <input class="spinner" id="minX">-
+                <input class="spinner" id="maxX">
+            </div>
+            <div class="tab-item">
+                Y:
+                <input class="spinner" id="minY">-
+                <input class="spinner" id="maxY">
+            </div>
+            <button id="gerar">Gerar Mapa</button>
+        </div>
+    </div>
+</div>
+<div id="body">
+    <div id="tilesPlace"></div>
+</div>
+<div id="rdm-panel" title="Zonas de RdM">
+    <form>
+        <fieldset>
+            <div class="form-control">
+                <label for="zona-rdm-input">Zona: </label>
+                <select name="zona" id="zona-rdm-input">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                    <option>27</option>
+                    <option>28</option>
+                    <option>29</option>
+                    <option>30</option>
+                </select>
+            </div>
+            <div class="form-control" id="rdm-list">
+            </div>
+            <div class="form-control">
+                <button id="add-rdm-a-zona">Adicionar RdM</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div id="select-rdm-panel" title="Selecao de RdM">
+    <form>
+        <fieldset>
+            <div class="form-control" id="select-rdm-list">
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div id="nevoa-panel" title="Configuração de névoa">
+    <form>
+        <fieldset>
+            <div class="form-control">
+                <label for="intensidade-nevoa-input">Intensidade: </label>
+                <input name="intensidade" value="1" id="intensidade-nevoa-input" class="spinner" min="1"
+                       max="10">
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div id="corrente-panel" title="Configuração de corrente">
+    <form>
+        <fieldset>
+            <div class="form-control">
+                <label for="intensidade-corrente-input">Intensidade: </label>
+                <input name="intensidade" value="1" id="intensidade-corrente-input" class="spinner" min="1"
+                       max="30">
+            </div>
+            <div class="form-control">
+                <label for="direcao-corrente-input">Direção: </label>
+                <select name="direcao" id="direcao-corrente-input">
+                    <option value="0">Norte</option>
+                    <option value="1">Nordeste</option>
+                    <option value="2">Leste</option>
+                    <option value="3">Sudeste</option>
+                    <option value="4">Sul</option>
+                    <option value="5">Sudoeste</option>
+                    <option value="6">Oeste</option>
+                    <option value="7">Noroeste</option>
+                </select>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div id="redemoinho-panel" title="Configuração de redemoinho">
+    <form>
+        <fieldset>
+            <div class="form-control">
+                <label for="intensidade-redemoinho-input">Intensidade: </label>
+                <input name="intensidade" value="1" id="intensidade-redemoinho-input" class="spinner"
+                       min="1" max="100">
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div id="mergulho-panel" title="Configuração de zona de mergulho">
+    <form>
+        <fieldset>
+            <div class="form-control">
+                <label for="zona-mergulho-input">Zona: </label>
+                <input name="zona" value="1" id="zona-mergulho-input" class="spinner">
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div id="exploracao-panel" title="Configuração de zona de exploração">
+    <form>
+        <fieldset>
+            <div class="form-control">
+                <label for="zona-exploracao-input">Zona: </label>
+                <input name="zona" value="1" id="zona-exploracao-input" class="spinner">
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div id="dialog-add-ilha" class="dialog" title="Edição de Ilha">
+    <form>
+        <fieldset>
+            <div class="form-control">
+                <label for="add-ilha-input-id">ID: </label>
+                <input name="id" value="novo" id="add-ilha-input-id" class="text ui-widget-content ui-corner-all"
+                       readonly>
+            </div>
+            <div class="form-control">
+                <label for="add-ilha-input-nome">Nome: </label>
+                <input name="nome" id="add-ilha-input-nome" class="text ui-widget-content ui-corner-all">
+            </div>
+            <div class="form-control">
+                <label for="add-ilha-input-x">X: </label>
+                <input name="x" id="add-ilha-input-x" class="text ui-widget-content ui-corner-all">
+            </div>
+            <div class="form-control">
+                <label for="add-ilha-input-y">Y: </label>
+                <input name="y" id="add-ilha-input-y" class="text ui-widget-content ui-corner-all">
+            </div>
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript" src="assets/libs/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="assets/libs/jquery-ui.js"></script>
+<script type="text/javascript" src="assets/js/script.js"></script>
+<script type="text/javascript" src="assets/js/edicao-ilha.js"></script>
+<script type="text/javascript" src="assets/js/edicao-nao-navegavel.js"></script>
+<script type="text/javascript" src="assets/js/edicao-nevoa.js"></script>
+<script type="text/javascript" src="assets/js/edicao-corrente.js"></script>
+<script type="text/javascript" src="assets/js/edicao-redemoinho.js"></script>
+<script type="text/javascript" src="assets/js/edicao-mergulho.js"></script>
+<script type="text/javascript" src="assets/js/edicao-exploracao.js"></script>
+<script type="text/javascript" src="assets/js/edicao-rdm.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../../../Imagens/Backgrounds/conteudo2.jpg) fixed;
+}
+
+#tabs {
+    position: fixed;
+    top: 3px;
+    left: 0;
+    z-index: 4;
+    width: 100%;
+    text-align: center;
+}
+
+#tabs-content {
+    display: inline-block;
+    font-size: 9px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.tab-item {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.tab-item input {
+    width: 30px;
+}
+
+.tab-row {
+    margin-bottom: 3px;
+}
+
+#body {
+    margin: 100px;
+}
+
+#tilesPlace {
+    position: relative;
+}
+
+.tile {
+    position: absolute;
+}
+
+.click-zone {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.quadro {
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center;
+    color: #fff;
+    margin-top: -20px;
+    margin-left: -20px;
+}
+
+.quadro.add-ilha,
+.quadro.add-nao-navegavel,
+.quadro.add-nevoa,
+.quadro.add-corrente,
+.quadro.add-redemoinho,
+.quadro.add-mergulho,
+.quadro.add-exploracao,
+.quadro.add-rdm {
+    cursor: pointer;
+}
+
+.quadro.add-ilha:hover {
+    border: 1px solid #fff;
+    z-index: 3;
+}
+
+.quadro.add-nao-navegavel:hover {
+    border: 1px solid #f00;
+    z-index: 3;
+}
+
+.quadro.add-nevoa:hover {
+    border: 1px solid #00f;
+    z-index: 3;
+}
+
+.quadro.add-corrente:hover {
+    border: 1px solid #ff0;
+    z-index: 3;
+}
+
+.quadro.add-redemoinho:hover {
+    border: 1px solid #f0f;
+    z-index: 3;
+}
+
+.quadro.add-exploracao:hover {
+    border: 1px solid #f50;
+    z-index: 3;
+}
+
+.quadro.add-mergulho:hover {
+    border: 1px solid #0ff;
+    z-index: 3;
+}
+
+.quadro.add-rdm:hover {
+    border: 1px solid #d800ff;
+    z-index: 3;
+}
+
+.quadro.com-ilha,
+.quadro.com-nao-navegavel {
+    cursor: pointer;
+    background: rgba(255, 0, 0, 0.5) !Important;
+}
+
+.quadro.com-nevoa,
+.quadro.com-corrente,
+.quadro.com-redemoinho,
+.quadro.com-mergulho,
+.quadro.com-exploracao,
+.quadro.com-rdm {
+    cursor: pointer;
+}
+
+fieldset {
+    padding: 0;
+    border: 0;
+    margin-top: 25px;
+}
+
+.form-control {
+    width: 100%;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+label {
+    width: 30%;
+    display: inline-block;
+}
+
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
+select {
+    width: 150px;
+    z-index: 2;
+}
+
+.ui-dialog {
+    overflow: visible;
+    z-index: 90 !important;
+    position: fixed !Important;
+}
+
+.ui-selectmenu-open {
+    z-index: 100000001 !important;
+}
