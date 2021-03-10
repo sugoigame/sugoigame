@@ -316,9 +316,64 @@ class UserDetails {
 			return ($this->personagens = false);
 		}
 
+		$personagens = [];
 		$result = $this->connection->run("SELECT * FROM tb_personagens WHERE id = ? AND ativo = 1", "i", array($this->tripulacao["id"]));
+		while ($row = $result->fetch_array()) {
+			$level	= $row['lvl'];
+			$xp		= $row['xp'];
+			$xp_max = $row['xp_max'];
+			if ($xp >= $xp_max && $level < 50) {
+				$runs = 0;
+				while ($xp >= $xp_max) {
+					if ($level < 50) {
+						$xp		-= $xp_max;
+						$xp_max = formulaExp($level++);
 
-		return ($this->personagens = $result->fetch_all_array());
+						++$runs;
+					} else {
+						break;
+					}
+				}
+				$row['lvl']            = $level;
+				$row['xp']             = $xp;
+				$row['xp_max']         = $xp_max;
+				$row['pts']            += PONTOS_POR_NIVEL * $runs;
+				$row['hp_max']         += 100 * $runs;
+				$row['hp']             = $row['hp_max'];
+				$row['mp_max']         += 7 * $runs;
+				$row['mp']             = $row['mp_max'];
+				$row['fama_ameaca']    += 20000 * $runs;
+
+				$this->connection->run("UPDATE tb_personagens 
+					SET lvl         = ?,
+						xp      	= ?,
+						xp_max      = ?,
+						pts         = ?, 
+						hp_max      = ?,
+						hp          = ?,
+						mp_max      = ?,
+						mp          = ?,
+						fama_ameaca = ?
+					WHERE id = ? AND cod = ?", 'iiiiiiiiiii', [
+						$row['lvl'],
+						$row['xp'],
+						$row['xp_max'],
+						$row['pts'],
+						$row['hp_max'],
+						$row['hp'],
+						$row['mp_max'],
+						$row['mp'],
+						$row['fama_ameaca'],
+						$this->tripulacao['id'],
+						$row['cod']
+					]);
+			}
+
+			$personagens[] = $row;
+		}
+
+		// return ($this->personagens = $result->fetch_all_array());
+		return ($this->personagens = $personagens);
 	}
 
 	private function _load_capitao() {
