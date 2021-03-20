@@ -28,36 +28,50 @@
         </div>
     </div>
 
-    <h2>Escolha um plano de doação:</h2>
-
-    <div class="row">
-        <?php
-        $planos = $connection->run("SELECT * FROM tb_vip_planos ORDER BY valor ASC");
-        if ($planos->count() > 0) {
-            while($plano = $planos->fetch_array()) {
-                $golds = $plano['golds'];
-                if ($plano['bonus'] > 0)
-                    $golds = $plano['golds'] * (($plano['bonus'] / 100) + 1);
-        ?>
-            <div class="col-xs-12 col-md-4">
-                <div class="box-item">
-                    <h3><?=$plano['nome'];?></h3>
-                    <h4><img src="Imagens/Icones/Gold.png"/>
-                        <strong><?=mascara_numeros_grandes($golds);?></strong></h4>
-                    <h4><strong>R$ <?=number_format($plano['valor'], 2, ',', '.');?></strong></h4>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a href="Scripts/Vip/adquirirPS.php?plano=<?=base64_encode($plano['id']);?>" target="_blank" class="btn btn-block btn-success">Doar com PagSeguro</a>
-                        </div>
-                        <div class="col-md-6">
-                            <a href="Scripts/Vip/adquirirPP.php?plano=<?=base64_encode($plano['id']);?>" target="_blank" class="btn btn-block btn-success">Doar com PayPal</a>
-                        </div>
+    <ul class="nav nav-pills nav-justified" id="methods-details-tabs">
+        <?php $methods = [
+			'pagseguro'		=> 'R$',
+			'paypal_eur'	=> '€',
+			'paypal_usd'	=> '$',
+			'paypal_brl'	=> 'R$'
+		]; ?>
+        <?php $i = 1; foreach($methods as $method => $currency) { ?>
+        <li class="<?php echo $i == 1 ? 'active' : ''; ?>">
+            <a href="#method-<?php echo $method?>-list" role="tab" data-toggle="tab">
+                <img src="/Imagens/<?php echo $method . ".png"; ?>" width="147"/>
+            </a>
+        </li>
+        <?php $i++; } ?>
+    </ul><br />
+    <div class="tab-content">
+	<?php $i = 1; foreach($methods as $method => $currency) { ?>
+        <div id="method-<?php echo $method?>-list" class="tab-pane <?php echo $i == 1 ? 'active' : ''; ?>">
+            <?php
+            $planos = $connection->run("SELECT * FROM tb_vip_planos ORDER BY valor ASC");
+            if ($planos->count() > 0) {
+                while($plano = $planos->fetch_array()) {
+                    $golds = $plano['golds'];
+                    if ($plano['bonus'] > 0)
+                        $golds = $plano['golds'] * (($plano['bonus'] / 100) + 1);
+            ?>
+                <div class="col-xs-12 col-md-4">
+                    <div class="box-item">
+                        <h3><?=$plano['nome'];?></h3>
+                        <h4><img src="Imagens/Icones/Gold.png"/>
+                            <strong><?=mascara_numeros_grandes($golds);?></strong></h4>
+                        <h4><strong> <?=($currency . ' ' . number_format($plano['valor'], 2, ',', '.'));?></strong></h4>
+                        <?php if ($method == 'pagseguro') { ?>
+                            <a href="Scripts/Vip/adquirirPS.php?plano=<?=base64_encode($plano['id']);?>" target="_blank" class="btn btn-success">Fazer doação</a>
+                        <?php } else { ?>
+                            <a href="Scripts/Vip/adquirirPP.php?plano=<?=base64_encode($plano['id']);?>&method=<?php echo $method?>" target="_blank" class="btn btn-success">Fazer doação</a>
+                        <?php } ?>
                     </div>
                 </div>
-            </div>
-        <?php
+            <?php
+                }
             }
-        }
-        ?>
-    </div>
+            ++$i;
+            ?>
+        </div>
+    <?php  } ?>
 </div>

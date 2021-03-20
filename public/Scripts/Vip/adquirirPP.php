@@ -4,10 +4,21 @@ require "../../Includes/conectdb.php";
 $protector->need_conta();
 
 $idPlano = base64_decode($_GET['plano']);
+$method = $protector->get_alphanumeric_or_exit('method');
+
+$coins	= [
+	'pagseguro'		=> 'BRL',
+	'paypal_eur'	=> 'EUR',
+	'paypal_usd'	=> 'USD',
+	'paypal_brl'	=> 'BRL'
+];
 
 $result = $connection->run("SELECT * FROM tb_vip_planos WHERE id = ?", 'i', [$idPlano]);
 if ($result->count() < 1) {
 	header("Location: ../../?ses=vipComprar&msg=" . urlencode('Escolha um plano válido!') . "&");
+	exit;
+} elseif (!array_key_exists($method, $coins)) {
+	header("Location: ../../?ses=vipComprar&msg=" . urlencode('Escolha um metódo de pagamento válido!') . "&");
 	exit;
 } else {
 	$plano =$result->fetch();
@@ -19,7 +30,7 @@ if ($result->count() < 1) {
 	$connection->run("INSERT INTO tb_vip_compras (conta_id,plano_id,gateway) VALUE (?,?,?)", "iis", [
 		$userDetails->conta['conta_id'],
 		$plano['id'],
-		'PayPal'
+		'PayPal ' . $coins[$method]
 	]);
 	$paymentId = $connection->last_id();
 
@@ -28,7 +39,7 @@ if ($result->count() < 1) {
 	$p->addField('cancel_return',	'https://' . $_SERVER['HTTP_HOST'] . '/?ses=vipComprar&cancel');
 	$p->addField('notify_url',		'https://' . $_SERVER['HTTP_HOST'] . '/Scripts/PayPal/retorno.php');
 	$p->addField('item_name',		$plano['nome']);
-	$p->addField('currency_code',	'BRL');
+	$p->addField('currency_code',	$coins[$method]);
 	$p->addField('amount',			$plano['valor']);
 	$p->addField('custom',			$paymentId);
 
