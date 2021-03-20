@@ -331,7 +331,9 @@ function super_menu_can_be_active($menu) {
 					<?= menu_link("admin-news", "Gerenciar Noticias", "fa fa-newspaper-o", "") ?>
 					<?= menu_link("admin-mails", "Gerenciar Den Den", "fa fa-envelope-o", "") ?>
 					<?= menu_link("admin-estatisticas", "Estatísticas", "fa fa-envelope-o", "") ?>
-					<?= menu_link("admin-combinacao", "Combinações", "fa fa-envelope-o", "") ?>
+					<?= menu_link("admin-combinacaoferreiro", "Combinações do Ferreiro", "fa fa-envelope-o", "") ?>
+					<?= menu_link("admin-combinacaoartesao", "Combinações do artesao", "fa fa-envelope-o", "") ?>
+					<?= menu_link("admin-combinacaocarpinteiro", "Combinações do carpinteiro", "fa fa-envelope-o", "") ?>
 				</ul>
 			</div>
 			<?php endif; ?>
