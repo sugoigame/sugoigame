@@ -187,9 +187,11 @@ class Protector {
 				$this->need_campanha_enies_lobby();
 				break;
 			case "admin-estatisticas":
-			case "admin-combinacao":
+			case "admin-combinacaoferreiro":
+			case "admin-combinacaoartesao":
 			case "admin-news":
 			case "admin-mails":
+			case "admin-combinacaocarpinteiro":
 				$this->must_be_gm();
 				break;
 			case "eventoPirata":
