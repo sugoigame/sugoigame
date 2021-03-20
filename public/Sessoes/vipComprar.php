@@ -33,7 +33,7 @@
 			'pagseguro'		=> 'R$',
 			'paypal_eur'	=> '€',
 			'paypal_usd'	=> '$',
-			'paypal_brl'	=> 'R$'
+			// 'paypal_brl'	=> 'R$'
 		]; ?>
         <?php $i = 1; foreach($methods as $method => $currency) { ?>
         <li class="<?php echo $i == 1 ? 'active' : ''; ?>">
