@@ -334,6 +334,7 @@ function super_menu_can_be_active($menu) {
 					<?= menu_link("admin-combinacaoferreiro", "Combinações do Ferreiro", "fa fa-envelope-o", "") ?>
 					<?= menu_link("admin-combinacaoartesao", "Combinações do artesao", "fa fa-envelope-o", "") ?>
 					<?= menu_link("admin-combinacaocarpinteiro", "Combinações do carpinteiro", "fa fa-envelope-o", "") ?>
+					<?= menu_link("admin-combinacaoequips", "Equipamentos do jogo", "fa fa-envelope-o", "") ?>
 				</ul>
 			</div>
 			<?php endif; ?>

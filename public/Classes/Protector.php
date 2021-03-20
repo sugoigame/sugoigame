@@ -192,6 +192,7 @@ class Protector {
 			case "admin-news":
 			case "admin-mails":
 			case "admin-combinacaocarpinteiro":
+			case "admin-combinacaoequips":
 				$this->must_be_gm();
 				break;
 			case "eventoPirata":
