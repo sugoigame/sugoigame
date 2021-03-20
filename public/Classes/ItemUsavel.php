@@ -385,6 +385,15 @@ class ItemUsavel {
 
 		return "Você recebeu uma Akuma no Mi e 1 milhão de Berries!";
 	}
+	public function abre_pacote_torneio() {
+		if (!$this->userDetails->can_add_item(2)) {
+			$this->protector->exit_error("Você precisa de 2 espaço vazio no seu inventário para receber a recopensa");
+		}
+
+		$this->userDetails->add_item(rand(100, 110), 8, 1, true);
+		$this->userDetails->add_equipamento_by_cod(491);
+		return "Você recebeu uma Akuma no Mi e uma Katana da sonoplastia inadequada!!";
+	}
 
 	public function abre_mensagem_garrafa() {
 		if (!$this->userDetails->can_add_item()) {

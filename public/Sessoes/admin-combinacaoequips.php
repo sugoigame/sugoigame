@@ -20,7 +20,7 @@
         <tbody>
         <?php foreach ( $equipamentos as $equipamento): ?>
            <tr>
-            <td><?php echo $equipamento ['cod_equipamento'] ?></td>
+            <td><?php echo $equipamento ['item'] ?></td>
             <td><img src="Imagens/Itens/<?= $equipamento["img"] ?>.png"/></td>
             <td><span class="equipamentos_casse_<?= $equipamento["categoria"] ?>">
                 <?php echo $equipamento ['nome'] ?></span></td>
