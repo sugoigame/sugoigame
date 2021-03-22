@@ -7,7 +7,7 @@ $personagem = $protector->get_number_or_exit('cod');
 
 $result = $connection->run("SELECT * FROM tb_personagens WHERE cod = ? AND id = ?", 'ii', [
     $personagem,
-    $usuario['id']
+    $userDetails->tripulacao['id']
 ]);
 if ($result->count() == 0) {
     $protector->exit_error("Persoangem nao encontrado");
