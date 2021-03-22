@@ -328,7 +328,7 @@
             $('#skill-shot').addClass('hidden');
         }
 
-        if (data.me.coup_de_burst) {
+        if (data.me.coup_de_burst > 0) {
             $('#skill-coup-de-burst').removeClass('hidden');
             $('#skill-coup-de-burst .badge').html('x' + data.me.coup_de_burst);
         } else {
@@ -1189,7 +1189,7 @@
     };
 
     Game.prototype.useCoupDeBurst = function () {
-        if (this.player.data.coup_de_burst) {
+        if (this.player.data.coup_de_burst > 0) {
             ws.send(JSON.stringify({
                 event: 'coup_de_burst'
             }));

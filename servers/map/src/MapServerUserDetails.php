@@ -93,10 +93,11 @@ class MapServerUserDetails extends UserDetails {
             "i", array($id)
         )->fetch_array();
 
-        $me['is_adm']       = $me['adm'] > 0;
-        $me["location"]     = get_human_location($me["x"], $me["y"]);
-        $me["destino_mar"]  = nome_mar(get_mar($me["x"], $me["y"]));
-        $me["destino_ilha"] = nome_ilha($me["ilha"]);
+        $me['is_adm']           = $me['adm'] > 0;
+        $me["location"]         = get_human_location($me["x"], $me["y"]);
+        $me["destino_mar"]      = nome_mar(get_mar($me["x"], $me["y"]));
+        $me["destino_ilha"]     = nome_ilha($me["ilha"]);
+        $me['coup_de_burst']    = $me['coup_de_burst'] < 0 ? 0 : $me['coup_de_burst'];
 
         unset($me['adm']);
 
@@ -626,7 +627,7 @@ class MapServerUserDetails extends UserDetails {
     }
 
     function ativa_coup_de_burst() {
-        if (!$this->vip["coup_de_burst"]) {
+        if ($this->vip["coup_de_burst"] <= 0) {
             return false;
         }
 
