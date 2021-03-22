@@ -3,7 +3,7 @@ require "../../Includes/conectdb.php";
 
 $protector->need_tripulacao();
 $protector->need_dobroes(PRECO_DOBRAO_RESET_AKUMA);
-$personagem = $protector->get_number_or_exit($_GET["cod"]);
+$personagem = $protector->get_number_or_exit('cod');
 
 $result = $connection->run("SELECT * FROM tb_personagens WHERE cod = ? AND id = ?", 'ii', [
     $personagem,
