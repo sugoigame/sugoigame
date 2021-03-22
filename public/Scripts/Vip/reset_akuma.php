@@ -1,69 +1,35 @@
 <?php
-$valida = "EquipeSugoiGame2012";
 require "../../Includes/conectdb.php";
-include "../../Includes/verifica_login_sem_pers.php";
-if (!$conect) {
-    echo("#Você precisa estar logado!");
-    exit();
-}
 
+$protector->need_tripulacao();
 $protector->need_gold(PRECO_GOLD_RESET_AKUMA);
-
-if (!isset($_GET["cod"])) {
-    echo("#Você informou algum caracter inválido.");
-    exit();
-}
 $personagem = $protector->get_number_or_exit($_GET["cod"]);
 
-if (!preg_match("/^[\d]/", $personagem)) {
-    echo("#Você informou algum caracter inválido.");
-    exit();
-}
-
-$query = "SELECT * FROM tb_personagens WHERE cod='$personagem' AND id='" . $usuario["id"] . "'";
 $result = $connection->run("SELECT * FROM tb_personagens WHERE cod = ? AND id = ?", 'ii', [
     $personagem,
     $usuario['id']
 ]);
 if ($result->count() == 0) {
-    echo("#Persoangem nao encontrado");
-    exit();
+    $protector->exit_error("Persoangem nao encontrado");
 }
 $pers = $result->fetch_array();
 
-$query = "SELECT * FROM tb_akuma WHERE cod = ?'$personagem'";
-$result = mysql_query($query);
-if (mysql_num_rows($result) == 0) {
-    mysql_close();
-    echo("#Esse personagem não comeu nenhuma Akuma no Mi");
-    exit();
+$result = $connection->run("SELECT * FROM tb_akuma WHERE cod = ?", 'i', $personagem);
+if ($result->count() == 0) {
+    $protector->exit_error("Esse personagem não comeu nenhuma Akuma no Mi");
 }
 
-$userDetails->restaura_effects($pers, "(tipo IN (7,8,9))");
+$userDetails->restaura_effects($pers, "(tipo IN (7, 8, 9))");
 
-$akuma = mysql_fetch_array($result);
+$akuma = $result->fetch_array();
 
-$query = "DELETE FROM tb_akuma_skil_atk WHERE cod_akuma='" . $akuma["cod_akuma"] . "'";
-mysql_query($query) or die("Nao foi possivel remover as habilidades.");
-$query = "DELETE FROM tb_akuma_skil_buff WHERE cod_akuma='" . $akuma["cod_akuma"] . "'";
-mysql_query($query) or die("Nao foi possivel remover as habilidades.");
-$query = "DELETE FROM tb_akuma_skil_passiva WHERE cod_akuma='" . $akuma["cod_akuma"] . "'";
-mysql_query($query) or die("Nao foi possivel remover as habilidades.");
-
-$query = "DELETE FROM tb_akuma WHERE cod='$personagem'";
-mysql_query($query) or die("Nao foi possivel remover a akuma.");
-
-
-$query = "DELETE FROM tb_personagens_skil WHERE cod='$personagem' AND 
-	(tipo='7' OR tipo='8' OR tipo='9')";
-mysql_query($query) or die("Nao foi possivel remover as habilidades.");
-
-$query = "UPDATE tb_personagens 
-	SET akuma=NULL, maestria=0
-	WHERE cod='$personagem'";
-mysql_query($query) or die("Nao foi possivel remover a akuma.");
+$connection->run("DELETE FROM tb_akuma_skil_atk WHERE cod_akuma = ?", 'i', $akuma["cod_akuma"]);
+$connection->run("DELETE FROM tb_akuma_skil_buff WHERE cod_akuma = ?", 'i', $akuma["cod_akuma"]);
+$connection->run("DELETE FROM tb_akuma_skil_passiva WHERE cod_akuma = ?", 'i', $akuma["cod_akuma"]);
+$connection->run("DELETE FROM tb_akuma WHERE cod = ?", 'i', $personagem);
+$connection->run("DELETE FROM tb_personagens_skil WHERE cod = ? AND tipo IN (7, 8, 9)", 'i', $personagem);
+$connection->run("UPDATE tb_personagens SET akuma = NULL, maestria = 0 WHERE cod = ?", 'i', $personagem);
 
 $userDetails->reduz_gold(PRECO_GOLD_RESET_AKUMA, "resetar_akuma");
 
-mysql_close();
 echo("-Akuma no Mi Removida");
