@@ -27,7 +27,7 @@
         <?php while ($combate = $result->fetch_array()): ?>
             <div class="list-group-item col-sm-6 col-md-4">
                 <p>
-                    <?php if ($tripulacao['adm'] || $combate["andamento"]): ?>
+                    <?php if ($userDetails->tripulacao["adm"] || $combate["andamento"]): ?>
                         <a href="./?ses=combateAssistirAdm&combate=<?= $combate["combate_id"]; ?>" class="link_content" title="Assista essa partida">
                             Ver Batalha
                         </a>

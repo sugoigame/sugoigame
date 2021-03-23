@@ -19,7 +19,7 @@ $tripulacao["2"] = $connection->run("SELECT * FROM tb_usuarios WHERE id = ?", "i
 
 $id_blue = $tripulacao["1"]["id"];
 
-$pode_assistir = $userDetails->tripulacao["adm"] || ($combate["permite_apostas_1"] && $combate["permite_apostas_2"]);
+$pode_assistir = $userDetails->tripulacao["adm"];
 
 if (!$pode_assistir) {
     echo "<i class=\"fa fa-thumbs-down\"></i> Os jogadores não permitiram que essa batalha seja assistida<br/><a href='ses?=home' class='link_content'>Voltar a página inicial</a>";
@@ -30,10 +30,6 @@ if (!$pode_assistir) {
 <style type="text/css">
     <?php include "CSS/combate.css"; ?>
 </style>
-<script type="text/javascript">
-    <?php //include "JS/combate.js"; ?>
-    <?php //include "JS/combate_assistir.js"; ?>
-</script>
 
 <div class="panel-heading">
     <?php render_combate_pvp_header($combate, $tripulacao, $id_blue); ?>
