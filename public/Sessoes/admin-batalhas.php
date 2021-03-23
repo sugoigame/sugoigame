@@ -27,23 +27,28 @@
         <?php while ($combate = $result->fetch_array()): ?>
             <div class="list-group-item col-sm-6 col-md-4">
                 <p>
-                    <?php if ($userDetails->tripulacao["adm"] || $combate["andamento"]): ?>
-                        <a href="./?ses=combateAssistirAdm&combate=<?= $combate["combate_id"]; ?>" class="link_content" title="Assista essa partida">
-                            Ver Batalha
+                    <?php if ($userDetails->tripulacao["adm"] && $combate["andamento"]): ?>
+                        <a href="./?ses=combateAssistir&combate=<?= $combate["combate_id"]; ?>" class="link_content">
+                            Assistir
+                        </a>
+                    <?php endif; ?>
+                    <?php if ($userDetails->tripulacao["adm"] && !$combate["andamento"]): ?>
+                        <a href="./?ses=combateAssistirAdm&combate=<?= $combate["combate_id"]; ?>" class="link_content">
+                            Log da Batalha
                         </a>
                     <?php endif; ?>
                 </p>
                 <div class="row">
                     <div class="col-xs-5">
                         <?= $combate["tripulacao_1"] ?><br/>
-                        <?= $combate["vencedor"] == $combate["id_1"] ? "<span class='text-warning'>Vencedor</span>" : "-" ?>
+                        <?= $combate["vencedor"] == $combate["id_1"] ? "<span class='text-warning'>Vencedor</span>" : "--" ?>
                     </div>
                     <div class="col-xs-2">
                         VS
                     </div>
                     <div class="col-xs-5">
                         <?= $combate["tripulacao_2"] ?><br/>
-                        <?= $combate["vencedor"] == $combate["id_2"] ? "<span class='text-warning'>Vencedor</span>" : "-" ?>
+                        <?= $combate["vencedor"] == $combate["id_2"] ? "<span class='text-warning'>Vencedor</span>" : "--" ?>
                     </div>
                 </div>
                 <div class="row">
