@@ -119,6 +119,7 @@ function get_super_menu($sess = null) {
         case "admin-combinacaoartesao":
         case "admin-combinacaocarpinteiro":
         case "admin-combinacaoequips":
+        case "admin-batalhas":
             return "admin";
         default:
             return false;
