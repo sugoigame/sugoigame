@@ -29,12 +29,19 @@
     </div>
 
     <ul class="nav nav-pills nav-justified" id="methods-details-tabs">
-        <?php $methods = [
-			'pagseguro'		=> 'R$',
-			'paypal_eur'	=> '€',
-			'paypal_usd'	=> '$',
-			// 'paypal_brl'	=> 'R$'
-		]; ?>
+        <?php
+        $methods = [
+			'pagseguro'		=> 'BRL',
+			'paypal_eur'	=> 'EUR',
+			'paypal_usd'	=> 'USD',
+			// 'paypal_brl'	=> 'BRL'
+		];
+        $symbols = [
+            'BRL'   => 'R$',
+            'EUR'   => '€',
+            'USD'   => '$'
+        ];
+        ?>
         <?php $i = 1; foreach($methods as $method => $currency) { ?>
         <li class="<?php echo $i == 1 ? 'active' : ''; ?>">
             <a href="#method-<?php echo $method?>-list" role="tab" data-toggle="tab">
@@ -59,7 +66,7 @@
                         <h3><?=$plano['nome'];?></h3>
                         <h4><img src="Imagens/Icones/Gold.png"/>
                             <strong><?=mascara_numeros_grandes($golds);?></strong></h4>
-                        <h4><strong> <?=($currency . ' ' . number_format($plano['valor'], 2, ',', '.'));?></strong></h4>
+                        <h4><strong> <?=($symbols[$currency] . ' ' . number_format($plano['valor_' . strtolower($currency)], 2, ',', '.'));?></strong></h4>
                         <?php if ($method == 'pagseguro') { ?>
                             <a href="Scripts/Vip/adquirirPS.php?plano=<?=base64_encode($plano['id']);?>" target="_blank" class="btn btn-success">Fazer doação</a>
                         <?php } else { ?>

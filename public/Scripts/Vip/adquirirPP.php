@@ -3,17 +3,16 @@ require "../../Includes/conectdb.php";
 
 $protector->need_conta();
 
-$idPlano = base64_decode($_GET['plano']);
-$method = $protector->get_alphanumeric_or_exit('method');
-
-$coins	= [
+$idPlano	= base64_decode($_GET['plano']);
+$method		= $protector->get_alphanumeric_or_exit('method');
+$coins		= [
 	'pagseguro'		=> 'BRL',
 	'paypal_eur'	=> 'EUR',
 	'paypal_usd'	=> 'USD',
 	// 'paypal_brl'	=> 'BRL'
 ];
 
-$result = $connection->run("SELECT * FROM tb_vip_planos WHERE id = ?", 'i', [$idPlano]);
+$result = $connection->run("SELECT * FROM tb_vip_planos WHERE id = ?", 'i', $idPlano);
 if ($result->count() < 1) {
 	header("Location: ../../?ses=vipComprar&msg=" . urlencode('Escolha um plano válido!') . "&");
 	exit;
@@ -40,7 +39,7 @@ if ($result->count() < 1) {
 	$p->addField('notify_url',		'https://' . $_SERVER['HTTP_HOST'] . '/Scripts/PayPal/retorno.php');
 	$p->addField('item_name',		$plano['nome']);
 	$p->addField('currency_code',	$coins[$method]);
-	$p->addField('amount',			$plano['valor']);
+	$p->addField('amount',			$plano['valor_' . strtolower($coins[$method])]);
 	$p->addField('custom',			$paymentId);
 
 	$p->submitPayment();	# submit the fields to paypal
