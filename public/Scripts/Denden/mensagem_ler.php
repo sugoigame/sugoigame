@@ -63,8 +63,13 @@ if (substr($_GET["cod"], 0, 6) == "000000") {
     </h4>
 </div>
 <div class="modal-body">
-    <p>
+    <p><?php if (!$msg["global"]): ?>
         <?= htmlspecialchars($msg["texto"], ENT_QUOTES) ?>
+        <?php 
+        else:
+           echo $msg["texto"];
+        endif;
+        ?>
     </p>
 </div>
 <div class="modal-footer clearfix">
