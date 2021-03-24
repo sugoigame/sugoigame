@@ -1219,14 +1219,7 @@
         quant: 500
       - tipo: berries
         quant: 10000000
-    14:
-      - tipo: reagent
-        cod_item: 188
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
+   
 15:
   nome: Catástrofe no Novo Mundo
   duracao: 12:00:00
@@ -1325,11 +1318,3 @@
         quant: 500
       - tipo: berries
         quant: 10000000
-    13:
-      - tipo: reagent
-        cod_item: 188
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
