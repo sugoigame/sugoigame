@@ -55,6 +55,7 @@
                     <img src="Imagens/Ranking/Patentes/<?= $userDetails->tripulacao["faccao"] . "_" . get_patente_id($userDetails->tripulacao["reputacao"]) ?>.png">
                 </p>
                 <h3><?= get_patente_nome($userDetails->tripulacao["faccao"], $userDetails->tripulacao["reputacao"]) ?></h3>
+                <h3> Poder de Batalha: <?= mascara_numeros_grandes($userDetails->tripulacao['poder']) ?></h3>
                 <h3> Reputação nessa Era: <?= mascara_numeros_grandes($userDetails->tripulacao["reputacao"]) ?></h3>
                 <p>A cada 3 meses a reputação é resetada para o início de uma nova Grande Era dos Piratas!</p>
             </div>
