@@ -108,7 +108,7 @@ class MapServerUserDetails extends UserDetails {
 			'haki_cri'	=> 0,
 			'haki_hdr'	=> 0,
 		];
-        $result = $this->connection->run("SELECT * FROM tb_personagens WHERE id = ? AND ativo = 1", "i", $me['id']);
+        /*$result = $this->connection->run("SELECT * FROM tb_personagens WHERE id = ? AND ativo = 1", "i", $me['id']);
 		while ($perso = $result->fetch_array()) {
 			$bonus = calc_bonus($perso);
 			for ($i = 1; $i <= 7; $i++) {
@@ -120,7 +120,7 @@ class MapServerUserDetails extends UserDetails {
 			$attrs['haki_blo']	+= $perso['haki_hdr'];
 			$attrs['haki_cri']	+= $perso['haki_hdr'];
 			$attrs['haki_hdr']	+= $perso['haki_hdr'];
-		}
+		}*/
 
 		$fight_power = 0;
 		$fight_power += ($attrs['vit']) * 200;
@@ -209,7 +209,7 @@ class MapServerUserDetails extends UserDetails {
                 'haki_cri'	=> 0,
                 'haki_hdr'	=> 0,
             ];
-            $result = $this->connection->run("SELECT * FROM tb_personagens WHERE id = ? AND ativo = 1", "i", $data["players"][$x]['id']);
+            /*$result = $this->connection->run("SELECT * FROM tb_personagens WHERE id = ? AND ativo = 1", "i", $data["players"][$x]['id']);
             while ($perso = $result->fetch_array()) {
                 $bonus = calc_bonus($perso);
                 for ($i = 1; $i <= 7; $i++) {
@@ -221,7 +221,7 @@ class MapServerUserDetails extends UserDetails {
                 $attrs['haki_blo']	+= $perso['haki_hdr'];
                 $attrs['haki_cri']	+= $perso['haki_hdr'];
                 $attrs['haki_hdr']	+= $perso['haki_hdr'];
-            }
+            }*/
 
             $fight_power = 0;
             $fight_power += ($attrs['vit']) * 200;
