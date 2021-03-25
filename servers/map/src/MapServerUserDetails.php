@@ -123,11 +123,11 @@ class MapServerUserDetails extends UserDetails {
 		}*/
 
 		$fight_power = 0;
-		$fight_power += ($attrs['vit']) * 200;
-		$fight_power += ($attrs['atk'] + $attrs['con'] + $attrs['def'] + $attrs['res']) * 150;
-		$fight_power += ($attrs['agl'] + $attrs['dex'] + $attrs['pre']) * 100;
-		$fight_power += ($attrs['haki_hdr']) * 500;
-		$fight_power += ($attrs['haki_esq'] + $attrs['haki_blo'] + $attrs['haki_cri']) * 125;
+		// $fight_power += ($attrs['vit']) * 200;
+		// $fight_power += ($attrs['atk'] + $attrs['con'] + $attrs['def'] + $attrs['res']) * 150;
+		// $fight_power += ($attrs['agl'] + $attrs['dex'] + $attrs['pre']) * 100;
+		// $fight_power += ($attrs['haki_hdr']) * 500;
+		// $fight_power += ($attrs['haki_esq'] + $attrs['haki_blo'] + $attrs['haki_cri']) * 125;
         /* /PODER DE BATALHA */
 
         $me['is_adm']           = $me['adm'] > 0;
@@ -135,7 +135,7 @@ class MapServerUserDetails extends UserDetails {
         $me["destino_mar"]      = nome_mar(get_mar($me["x"], $me["y"]));
         $me["destino_ilha"]     = nome_ilha($me["ilha"]);
         $me['coup_de_burst']    = $me['coup_de_burst'] < 0 ? 0 : $me['coup_de_burst'];
-        $me['poder_batalha']    = number_format($fight_power, 0, ',', '.');
+        $me['poder_batalha']    = $fight_power;
 
         unset($me['adm']);
 
@@ -224,17 +224,17 @@ class MapServerUserDetails extends UserDetails {
             }*/
 
             $fight_power = 0;
-            $fight_power += ($attrs['vit']) * 200;
-            $fight_power += ($attrs['atk'] + $attrs['con'] + $attrs['def'] + $attrs['res']) * 150;
-            $fight_power += ($attrs['agl'] + $attrs['dex'] + $attrs['pre']) * 100;
-            $fight_power += ($attrs['haki_hdr']) * 500;
-            $fight_power += ($attrs['haki_esq'] + $attrs['haki_blo'] + $attrs['haki_cri']) * 125;
+            // $fight_power += ($attrs['vit']) * 200;
+            // $fight_power += ($attrs['atk'] + $attrs['con'] + $attrs['def'] + $attrs['res']) * 150;
+            // $fight_power += ($attrs['agl'] + $attrs['dex'] + $attrs['pre']) * 100;
+            // $fight_power += ($attrs['haki_hdr']) * 500;
+            // $fight_power += ($attrs['haki_esq'] + $attrs['haki_blo'] + $attrs['haki_cri']) * 125;
             /* /PODER DE BATALHA */
 
             $data["players"][$x]['is_adm']                      = $data["players"][$x]['adm'] > 0;
             $data["players"][$x]["reputacao_vitoria"]           = calc_reputacao($data["me"]["reputacao"], $data["players"][$x]["reputacao"], $data["me"]["lvl_mais_forte"], $data["players"][$x]["lvl_mais_forte"]);
             $data["players"][$x]["reputacao_mensal_vitoria"]    = calc_reputacao($data["me"]["reputacao_mensal"], $data["players"][$x]["reputacao_mensal"], $data["me"]["lvl_mais_forte"], $data["players"][$x]["lvl_mais_forte"]);
-            $data["players"][$x]['poder_batalha']               = number_format($fight_power, 0, ',', '.');
+            $data["players"][$x]['poder_batalha']               = $fight_power;
 
             unset($data["players"][$x]['adm']);
         }
