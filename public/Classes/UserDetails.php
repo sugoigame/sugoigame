@@ -1370,7 +1370,8 @@ class UserDetails {
 	}
 
 	private function _check_progress_2() {
-		return $this->capitao["xp"] >= $this->capitao["xp_max"];
+		// return $this->capitao["xp"] >= $this->capitao["xp_max"];
+		return $this->capitao["lvl"] >= 1;
 	}
 
 	private function _check_progress_3() {
