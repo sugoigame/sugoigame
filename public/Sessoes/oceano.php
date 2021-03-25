@@ -547,6 +547,16 @@
                             )
                     )
                     .append(
+                        ship.data.poder_batalha
+                            ? $('<DIV>')
+                                .addClass('col-xs-12')
+                                .append(
+                                    $('<DIV>')
+                                        .append('<p class="text-warning" style="margin: 0;"><b>Poder de Batalha: ' + ship.data.poder_batalha + '</b></p>')
+                                )
+                            : ''
+                    )
+                    .append(
                         ship.data.reputacao_vitoria
                             ? $('<DIV>')
                                 .addClass('col-xs-12')
