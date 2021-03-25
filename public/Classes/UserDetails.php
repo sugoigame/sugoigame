@@ -298,43 +298,43 @@ class UserDetails {
 		])->fetch_array();
 		$tripulacao["treinos_haki_disponiveis"] = (int)$global['valor_int'];
 
-		$attrs = [
-			'atk'		=> 0,
-			'def'		=> 0,
-			'agl'		=> 0,
-			'res'		=> 0,
-			'pre'		=> 0,
-			'dex'		=> 0,
-			'con'		=> 0,
-			'vit'		=> 0,
-			'haki_esq'	=> 0,
-			'haki_blo'	=> 0,
-			'haki_cri'	=> 0,
-			'haki_hdr'	=> 0,
-		];
+		// $attrs = [
+		// 	'atk'		=> 0,
+		// 	'def'		=> 0,
+		// 	'agl'		=> 0,
+		// 	'res'		=> 0,
+		// 	'pre'		=> 0,
+		// 	'dex'		=> 0,
+		// 	'con'		=> 0,
+		// 	'vit'		=> 0,
+		// 	'haki_esq'	=> 0,
+		// 	'haki_blo'	=> 0,
+		// 	'haki_cri'	=> 0,
+		// 	'haki_hdr'	=> 0,
+		// ];
 
-		$result = $this->connection->run("SELECT * FROM tb_personagens WHERE id = ? AND ativo = 1", "i", array($tripulacao['id']));
-		while ($perso = $result->fetch_array()) {
-			$bonus = calc_bonus($perso);
-			for ($i = 1; $i <= 7; $i++) {
-				$attrs[nome_atributo_tabela($i)] += $perso[nome_atributo_tabela($i)];
-				$attrs[nome_atributo_tabela($i)] += $bonus[nome_atributo_tabela($i)];
-			}
+		// $result = $this->connection->run("SELECT * FROM tb_personagens WHERE id = ? AND ativo = 1", "i", array($tripulacao['id']));
+		// while ($perso = $result->fetch_array()) {
+		// 	$bonus = calc_bonus($perso);
+		// 	for ($i = 1; $i <= 7; $i++) {
+		// 		$attrs[nome_atributo_tabela($i)] += $perso[nome_atributo_tabela($i)];
+		// 		$attrs[nome_atributo_tabela($i)] += $bonus[nome_atributo_tabela($i)];
+		// 	}
 
-			$attrs['haki_esq']	+= $perso['haki_hdr'];
-			$attrs['haki_blo']	+= $perso['haki_hdr'];
-			$attrs['haki_cri']	+= $perso['haki_hdr'];
-			$attrs['haki_hdr']	+= $perso['haki_hdr'];
-		}
+		// 	$attrs['haki_esq']	+= $perso['haki_hdr'];
+		// 	$attrs['haki_blo']	+= $perso['haki_hdr'];
+		// 	$attrs['haki_cri']	+= $perso['haki_hdr'];
+		// 	$attrs['haki_hdr']	+= $perso['haki_hdr'];
+		// }
 
-		$fight_power = 0;
-		$fight_power += ($attrs['vit']) * 200;
-		$fight_power += ($attrs['atk'] + $attrs['con'] + $attrs['def'] + $attrs['res']) * 150;
-		$fight_power += ($attrs['agl'] + $attrs['dex'] + $attrs['pre']) * 100;
-		$fight_power += ($attrs['haki_hdr']) * 500;
-		$fight_power += ($attrs['haki_esq'] + $attrs['haki_blo'] + $attrs['haki_cri']) * 125;
+		// $fight_power = 0;
+		// $fight_power += ($attrs['vit']) * 200;
+		// $fight_power += ($attrs['atk'] + $attrs['con'] + $attrs['def'] + $attrs['res']) * 150;
+		// $fight_power += ($attrs['agl'] + $attrs['dex'] + $attrs['pre']) * 100;
+		// $fight_power += ($attrs['haki_hdr']) * 500;
+		// $fight_power += ($attrs['haki_esq'] + $attrs['haki_blo'] + $attrs['haki_cri']) * 125;
 
-		$tripulacao["poder"] = $fight_power;
+		$tripulacao["poder"] = 0;
 
 		return ($this->tripulacao = $tripulacao);
 	}
@@ -1370,7 +1370,8 @@ class UserDetails {
 	}
 
 	private function _check_progress_2() {
-		return $this->capitao["xp"] >= $this->capitao["xp_max"];
+		// return $this->capitao["xp"] >= $this->capitao["xp_max"];
+		return $this->capitao["lvl"] >= 1;
 	}
 
 	private function _check_progress_3() {
