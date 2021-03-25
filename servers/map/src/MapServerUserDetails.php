@@ -455,7 +455,7 @@ class MapServerUserDetails extends UserDetails {
         }
 
         if ($this->tripulacao['adm'] > 0) {
-            $base_speed /= 5;
+            $base_speed /= 2;
         }
 
         return $base_speed;
