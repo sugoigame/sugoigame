@@ -188,12 +188,7 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
                                 ); ?>
                             </div>
                             
-                            <?php if ($userDetails->conta["ativacao"]): ?>
-                                <div class="alert alert-danger" style="margin-bottom: 10px;">
-                                    Sua conta ainda não foi ativada. Quando ativar sua conta você receberá <?=mascara_numeros_grandes(BONUS_DOBROES_ATIVACAO);?> Dobrões.
-                                    Clique <a href="./?ses=cadastrosucess" class="link_content">aqui</a> para inserir o código de ativação que foi enviado para o seu E-mail.
-                                </div>
-                            <?php endif; ?>
+
                             <?php if (in_array($userDetails->tripulacao["id"], $rdp) || in_array($userDetails->tripulacao["id"], $adf)): ?>
                                 <?php $recompensa = $connection->run("SELECT * FROM tb_recompensa_recebida_era WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"]))->count(); ?>
                                 <?php if (!$recompensa): ?>
