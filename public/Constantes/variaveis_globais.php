@@ -9,6 +9,7 @@ define('VARIAVEL_YONKOUS',                  'YONKOUS');
 define('VARIAVEL_EVENTO_PERIODICO_ATIVO',   'EVENTO_PERIODICO_ATIVO');
 define('VARIAVEL_VENCEDORES_INCURSAO',      'VENCEDORES_INCURSAO');
 define('VARIAVEL_TOTAL_HAKI_TREINOS',       'TOTAL_HAKI_TREINOS');
+define('VARIAVEL_COLISEU',                  'STATUS_COLISEU');
 
 function get_value_variavel_global($variavel) {
     global $connection;
