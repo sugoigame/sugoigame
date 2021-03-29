@@ -1,7 +1,9 @@
 <?php
 function is_coliseu_aberto() {
-    return (date("D", time()) == "Sun" OR date("D", time()) == "Sat");
-    // return true;
+    $coliseu = get_value_varchar_variavel_global('VARIAVEL_COLISEU');
+
+    return $coliseu == 'aberto';
+    // return (date("D", time()) == "Sun" OR date("D", time()) == "Sat");
 }
 
 function calc_lvl_tolerancia_coliseu($momento_inicio_fila) {
