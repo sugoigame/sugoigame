@@ -282,14 +282,14 @@
 <script type="text/javascript">
 
     var game;
-    var gameState = new Game();
-    var eventEmitter = new EventEmitter();
+    var gameState       = new Game();
+    var eventEmitter    = new EventEmitter();
 
-    var ships = {};
-    var chains = [];
-    var rdms = [];
-    var swirls = [];
-    var nps = [];
+    var ships   = {};
+    var chains  = [];
+    var rdms    = [];
+    var swirls  = [];
+    var nps     = [];
     var islands = [];
 
     var ws;
@@ -300,7 +300,7 @@
     const SQUARE_SIZE = 40;
 
     function syncShip(data) {
-        if (ships[data.id]) {
+       if (ships[data.id]) {
             ships[data.id].sync(data);
         } else {
             var ship = new Ship();
@@ -310,7 +310,6 @@
     }
 
     function initFieldOfView(data) {
-        //console.log(data);
         gameState.player.sync(data.me);
 
         gameState.hiddenArea.visible = !data.me.luneta;
@@ -500,7 +499,6 @@
     }
 
     function renderShip(ship) {
-        console.log(ship.data);
         $('#mar-game-tooltip .panel-body')
             .append(
                 $('<DIV>')
@@ -709,28 +707,59 @@
     }
 
     Wait.prototype.preload = function () {
-        game.load.spritesheet('ship_1_0', 'Imagens/Bandeiras/Navios/1/0/sprite.png', 65, 65);
-        game.load.spritesheet('ship_0_0', 'Imagens/Bandeiras/Navios/0/0/sprite.png', 65, 65);
-        game.load.spritesheet('ship_1_1', 'Imagens/Bandeiras/Navios/1/1/sprite.png', 65, 65);
-        game.load.spritesheet('ship_0_1', 'Imagens/Bandeiras/Navios/0/1/sprite.png', 65, 65);
-        game.load.spritesheet('ship_1_2', 'Imagens/Bandeiras/Navios/1/2/sprite.png', 65, 65);
-        game.load.spritesheet('ship_0_2', 'Imagens/Bandeiras/Navios/0/2/sprite.png', 65, 65);
-        game.load.spritesheet('ship_1_3', 'Imagens/Bandeiras/Navios/1/3/sprite.png', 75, 75);
-        game.load.spritesheet('ship_0_3', 'Imagens/Bandeiras/Navios/0/3/sprite.png', 75, 75);
-        game.load.spritesheet('ship_1_4', 'Imagens/Bandeiras/Navios/1/4/sprite.png', 75, 75);
-        game.load.spritesheet('ship_0_4', 'Imagens/Bandeiras/Navios/0/4/sprite.png', 75, 75);
-        game.load.spritesheet('ship_1_5', 'Imagens/Bandeiras/Navios/1/5/sprite.png', 75, 75);
-        game.load.spritesheet('ship_0_5', 'Imagens/Bandeiras/Navios/0/5/sprite.png', 75, 75);
-        game.load.spritesheet('ship_1_6', 'Imagens/Bandeiras/Navios/1/6/sprite.png', 85, 85);
-        game.load.spritesheet('ship_0_6', 'Imagens/Bandeiras/Navios/0/6/sprite.png', 85, 85);
-        game.load.spritesheet('ship_1_7', 'Imagens/Bandeiras/Navios/1/7/sprite.png', 85, 85);
-        game.load.spritesheet('ship_0_7', 'Imagens/Bandeiras/Navios/0/7/sprite.png', 85, 85);
-        game.load.spritesheet('ship_1_8', 'Imagens/Bandeiras/Navios/1/8/sprite.png', 75, 75);
-        game.load.spritesheet('ship_0_8', 'Imagens/Bandeiras/Navios/0/8/sprite.png', 75, 75);
-        game.load.spritesheet('ship_1_9', 'Imagens/Bandeiras/Navios/1/9/sprite.png', 85, 85);
-        game.load.spritesheet('ship_0_9', 'Imagens/Bandeiras/Navios/0/9/sprite.png', 85, 85);
-        game.load.spritesheet('ship_1_10', 'Imagens/Bandeiras/Navios/1/10/sprite.png', 85, 85);
-        game.load.spritesheet('ship_0_10', 'Imagens/Bandeiras/Navios/0/10/sprite.png', 85, 85);
+        /*game.load.json('sprites', 'Scripts/Oceano/sprites.php');
+        var json = game.cache.getJSON('sprites');
+        console.log(json);
+        $.getJSON('Scripts/Oceano/sprites.php', function(data) {
+            data.forEach(function(sprite) {
+                game.load.spritesheet(sprite.key, 'Imagens/Bandeiras/navio_sprite.php?cod=' + sprite.bandeira + '&f=' + sprite.faccao + '&s=' + sprite.skin, 65, 65);
+            });
+        });*/
+        <?php
+        $skin_sizes = [
+            0   => ['w' => 65, 'h' => 65],
+            1   => ['w' => 65, 'h' => 65],
+            2   => ['w' => 65, 'h' => 65],
+            3   => ['w' => 75, 'h' => 75],
+            4   => ['w' => 75, 'h' => 75],
+            5   => ['w' => 75, 'h' => 75],
+            6   => ['w' => 85, 'h' => 85],
+            7   => ['w' => 85, 'h' => 85],
+            8   => ['w' => 75, 'h' => 75],
+            9   => ['w' => 85, 'h' => 85],
+            10  => ['w' => 85, 'h' => 85],
+        ];
+        $tripulacoes    = $connection->run("SELECT id, bandeira, faccao, skin_navio FROM tb_usuarios")->fetch_all_array();
+        foreach ($tripulacoes as $tripulacao) {
+            $key    = "ship_{$tripulacao['id']}";
+            $image  = "Imagens/Bandeiras/navio_sprite.php?cod={$tripulacao['bandeira']}&f={$tripulacao['faccao']}&s={$tripulacao['skin_navio']}";
+            echo "game.load.spritesheet('{$key}', '{$image}', {$skin_sizes[$tripulacao['skin_navio']]['w']}, {$skin_sizes[$tripulacao['skin_navio']]['h']});";
+        }
+        ?>
+
+        // game.load.spritesheet('ship_0_0', 'Imagens/Bandeiras/Navios/0/0/sprite.png', 65, 65);
+        // game.load.spritesheet('ship_0_1', 'Imagens/Bandeiras/Navios/0/1/sprite.png', 65, 65);
+        // game.load.spritesheet('ship_0_2', 'Imagens/Bandeiras/Navios/0/2/sprite.png', 65, 65);
+        // game.load.spritesheet('ship_0_3', 'Imagens/Bandeiras/Navios/0/3/sprite.png', 75, 75);
+        // game.load.spritesheet('ship_0_4', 'Imagens/Bandeiras/Navios/0/4/sprite.png', 75, 75);
+        // game.load.spritesheet('ship_0_5', 'Imagens/Bandeiras/Navios/0/5/sprite.png', 75, 75);
+        // game.load.spritesheet('ship_0_6', 'Imagens/Bandeiras/Navios/0/6/sprite.png', 85, 85);
+        // game.load.spritesheet('ship_0_7', 'Imagens/Bandeiras/Navios/0/7/sprite.png', 85, 85);
+        // game.load.spritesheet('ship_0_8', 'Imagens/Bandeiras/Navios/0/8/sprite.png', 75, 75);
+        // game.load.spritesheet('ship_0_9', 'Imagens/Bandeiras/Navios/0/9/sprite.png', 85, 85);
+        // game.load.spritesheet('ship_0_10', 'Imagens/Bandeiras/Navios/0/10/sprite.png', 85, 85);
+
+        // game.load.spritesheet('ship_1_0', 'Imagens/Bandeiras/Navios/1/0/sprite.png', 65, 65);
+        // game.load.spritesheet('ship_1_1', 'Imagens/Bandeiras/Navios/1/1/sprite.png', 65, 65);
+        // game.load.spritesheet('ship_1_2', 'Imagens/Bandeiras/Navios/1/2/sprite.png', 65, 65);
+        // game.load.spritesheet('ship_1_3', 'Imagens/Bandeiras/Navios/1/3/sprite.png', 75, 75);
+        // game.load.spritesheet('ship_1_4', 'Imagens/Bandeiras/Navios/1/4/sprite.png', 75, 75);
+        // game.load.spritesheet('ship_1_5', 'Imagens/Bandeiras/Navios/1/5/sprite.png', 75, 75);
+        // game.load.spritesheet('ship_1_6', 'Imagens/Bandeiras/Navios/1/6/sprite.png', 85, 85);
+        // game.load.spritesheet('ship_1_7', 'Imagens/Bandeiras/Navios/1/7/sprite.png', 85, 85);
+        // game.load.spritesheet('ship_1_8', 'Imagens/Bandeiras/Navios/1/8/sprite.png', 75, 75);
+        // game.load.spritesheet('ship_1_9', 'Imagens/Bandeiras/Navios/1/9/sprite.png', 85, 85);
+        // game.load.spritesheet('ship_1_10', 'Imagens/Bandeiras/Navios/1/10/sprite.png', 85, 85);
 
         game.load.image('hover', 'Imagens/Transparent-white.png');
         game.load.image('route', 'Imagens/Oceano/route.png');
@@ -773,7 +802,7 @@
             websockets['mar'].close();
         }
 
-        websockets['mar'] = new ReconnectingWebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + '<?=OCEANO_SERVER;?>' + '/mar');
+        websockets['mar'] = new WebSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + '<?=OCEANO_SERVER;?>' + '/mar');
         ws = websockets['mar'];
         ws.onopen = function () {
             if (game.state.current === 'game') {
@@ -813,7 +842,6 @@
             $('#destino_ilha').html(data.me.destino_ilha);
         });
         eventEmitter.on('muda_status', function (e, data) {
-            //console.log(data);
             if (gameState.player.id === data.id) {
                 gameState.player.sync(data);
             } else {
@@ -821,33 +849,27 @@
             }
         });
         eventEmitter.on('add_user', function (e, data) {
-            //console.log(data);
             syncShip(data);
         });
         eventEmitter.on('cura_hp', function (e, data) {
-            //console.log(data);
             if (gameState.player.id === data.id) {
                 gameState.player.heal(data.hp_navio, data.hp_curada);
             }
         });
         eventEmitter.on('reduz_hp', function (e, data) {
-            //console.log(data);
             if (gameState.player.id === data.id) {
                 gameState.player.damage(data.hp_navio, data.hp_reduzida);
             }
         });
         eventEmitter.on('disparo', function (e, data) {
-            //console.log(data);
             gameState.disparo(data);
         });
         eventEmitter.on('remove_user', function (e, data) {
-            //console.log(data);
             if (ships[data.id]) {
                 ships[data.id].destroy();
             }
         });
         eventEmitter.on('redirect', function (e, data) {
-            //console.log(data);
             ws.close();
             delete websockets['mar'];
             loadPagina(data);
@@ -1465,8 +1487,10 @@
         }
         renderSelectedPlayers();
 
-        if (!this.sprite) {
-            this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, 'ship_' + data.faccao + '_' + data.skin_navio);
+        if (!this.sprite) { 
+            // sprite
+            var ship_name = 'ship_' + data.id;
+            this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, ship_name);
             this.sprite.anchor.set(0.5, 0.8);
 
             this.fire = gameState.characterGroup.create(0, 0, 'fire');
@@ -1592,7 +1616,9 @@
         renderSelectedPlayers();
 
         if (!this.sprite) {
-            this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, 'ship_' + data.faccao + '_' + data.skin_navio);
+            var ship_name = 'ship_' + data.id;
+            this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, ship_name);
+            // this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, 'ship_' + data.faccao + '_' + data.skin_navio);
             this.sprite.anchor.set(0.5, 0.8);
 
             this.healthBg = gameState.characterGroup.create(this.x * SQUARE_SIZE - SQUARE_SIZE / 2, this.y * SQUARE_SIZE, 'health_bar');
