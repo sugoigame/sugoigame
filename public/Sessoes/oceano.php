@@ -280,17 +280,17 @@
 </script>
 
 <script type="text/javascript">
-
     var game;
     var gameState       = new Game();
     var eventEmitter    = new EventEmitter();
 
-    var ships   = {};
-    var chains  = [];
-    var rdms    = [];
-    var swirls  = [];
-    var nps     = [];
-    var islands = [];
+    var ships       = {};
+    var chains      = [];
+    var rdms        = [];
+    var swirls      = [];
+    var nps         = [];
+    var islands     = [];
+    var skin_sizes  = [ 65, 65, 65, 75, 75, 75, 85, 85, 75, 85, 85 ];
 
     var ws;
 
@@ -707,59 +707,15 @@
     }
 
     Wait.prototype.preload = function () {
-        /*game.load.json('sprites', 'Scripts/Oceano/sprites.php');
-        var json = game.cache.getJSON('sprites');
-        console.log(json);
-        $.getJSON('Scripts/Oceano/sprites.php', function(data) {
-            data.forEach(function(sprite) {
-                game.load.spritesheet(sprite.key, 'Imagens/Bandeiras/navio_sprite.php?cod=' + sprite.bandeira + '&f=' + sprite.faccao + '&s=' + sprite.skin, 65, 65);
-            });
-        });*/
         <?php
-        $skin_sizes = [
-            0   => ['w' => 65, 'h' => 65],
-            1   => ['w' => 65, 'h' => 65],
-            2   => ['w' => 65, 'h' => 65],
-            3   => ['w' => 75, 'h' => 75],
-            4   => ['w' => 75, 'h' => 75],
-            5   => ['w' => 75, 'h' => 75],
-            6   => ['w' => 85, 'h' => 85],
-            7   => ['w' => 85, 'h' => 85],
-            8   => ['w' => 75, 'h' => 75],
-            9   => ['w' => 85, 'h' => 85],
-            10  => ['w' => 85, 'h' => 85],
-        ];
+        $skin_sizes = [ 65, 65, 65, 75, 75, 75, 85, 85, 75, 85, 85 ];
         $tripulacoes    = $connection->run("SELECT id, bandeira, faccao, skin_navio FROM tb_usuarios")->fetch_all_array();
         foreach ($tripulacoes as $tripulacao) {
             $key    = "ship_{$tripulacao['id']}";
             $image  = "Imagens/Bandeiras/navio_sprite.php?cod={$tripulacao['bandeira']}&f={$tripulacao['faccao']}&s={$tripulacao['skin_navio']}";
-            echo "game.load.spritesheet('{$key}', '{$image}', {$skin_sizes[$tripulacao['skin_navio']]['w']}, {$skin_sizes[$tripulacao['skin_navio']]['h']});";
+            echo "game.load.spritesheet('{$key}', '{$image}', {$skin_sizes[$tripulacao['skin_navio']]}, {$skin_sizes[$tripulacao['skin_navio']]});";
         }
         ?>
-
-        // game.load.spritesheet('ship_0_0', 'Imagens/Bandeiras/Navios/0/0/sprite.png', 65, 65);
-        // game.load.spritesheet('ship_0_1', 'Imagens/Bandeiras/Navios/0/1/sprite.png', 65, 65);
-        // game.load.spritesheet('ship_0_2', 'Imagens/Bandeiras/Navios/0/2/sprite.png', 65, 65);
-        // game.load.spritesheet('ship_0_3', 'Imagens/Bandeiras/Navios/0/3/sprite.png', 75, 75);
-        // game.load.spritesheet('ship_0_4', 'Imagens/Bandeiras/Navios/0/4/sprite.png', 75, 75);
-        // game.load.spritesheet('ship_0_5', 'Imagens/Bandeiras/Navios/0/5/sprite.png', 75, 75);
-        // game.load.spritesheet('ship_0_6', 'Imagens/Bandeiras/Navios/0/6/sprite.png', 85, 85);
-        // game.load.spritesheet('ship_0_7', 'Imagens/Bandeiras/Navios/0/7/sprite.png', 85, 85);
-        // game.load.spritesheet('ship_0_8', 'Imagens/Bandeiras/Navios/0/8/sprite.png', 75, 75);
-        // game.load.spritesheet('ship_0_9', 'Imagens/Bandeiras/Navios/0/9/sprite.png', 85, 85);
-        // game.load.spritesheet('ship_0_10', 'Imagens/Bandeiras/Navios/0/10/sprite.png', 85, 85);
-
-        // game.load.spritesheet('ship_1_0', 'Imagens/Bandeiras/Navios/1/0/sprite.png', 65, 65);
-        // game.load.spritesheet('ship_1_1', 'Imagens/Bandeiras/Navios/1/1/sprite.png', 65, 65);
-        // game.load.spritesheet('ship_1_2', 'Imagens/Bandeiras/Navios/1/2/sprite.png', 65, 65);
-        // game.load.spritesheet('ship_1_3', 'Imagens/Bandeiras/Navios/1/3/sprite.png', 75, 75);
-        // game.load.spritesheet('ship_1_4', 'Imagens/Bandeiras/Navios/1/4/sprite.png', 75, 75);
-        // game.load.spritesheet('ship_1_5', 'Imagens/Bandeiras/Navios/1/5/sprite.png', 75, 75);
-        // game.load.spritesheet('ship_1_6', 'Imagens/Bandeiras/Navios/1/6/sprite.png', 85, 85);
-        // game.load.spritesheet('ship_1_7', 'Imagens/Bandeiras/Navios/1/7/sprite.png', 85, 85);
-        // game.load.spritesheet('ship_1_8', 'Imagens/Bandeiras/Navios/1/8/sprite.png', 75, 75);
-        // game.load.spritesheet('ship_1_9', 'Imagens/Bandeiras/Navios/1/9/sprite.png', 85, 85);
-        // game.load.spritesheet('ship_1_10', 'Imagens/Bandeiras/Navios/1/10/sprite.png', 85, 85);
 
         game.load.image('hover', 'Imagens/Transparent-white.png');
         game.load.image('route', 'Imagens/Oceano/route.png');
@@ -767,18 +723,21 @@
         game.load.image('target', 'Imagens/Oceano/target.png');
         game.load.image('attack', 'Imagens/Oceano/attack.png');
         game.load.image('cannon_ball', 'Imagens/Oceano/ball.png');
+
         game.load.spritesheet('explosion', 'Imagens/Skils/Animacoes/Explosion1.png', 192, 192);
         game.load.spritesheet('water', 'Imagens/Skils/Animacoes/Water1.png', 192, 192);
         game.load.spritesheet('bubbles_0', 'Imagens/Skils/Animacoes/Bubbles.png', 192, 192);
         game.load.spritesheet('bubbles_1', 'Imagens/Skils/Animacoes/BubblesOrange.png', 192, 192);
         game.load.spritesheet('bubbles_2', 'Imagens/Skils/Animacoes/BubblesRed.png', 192, 192);
         game.load.spritesheet('bubbles_3', 'Imagens/Skils/Animacoes/Pollen.png', 192, 192);
+
         game.load.image('hidden_area', 'Imagens/Oceano/hidden_area.png');
         game.load.image('nevoa', 'Imagens/Oceano/nevoa.png');
         game.load.image('corrente', 'Imagens/Oceano/corrente.png', 40, 40);
         game.load.image('redemoinho', 'Imagens/Oceano/redemoinho.png', 40, 40);
         game.load.image('island', 'Imagens/Oceano/island.png', 200, 200);
         game.load.image('rocket_fire1', 'Imagens/Oceano/rocket-fire1.png', 200, 200);
+
         game.load.spritesheet('wind_indicator', 'Imagens/Oceano/vento-indicador.png', 50, 70);
         game.load.spritesheet('target_ship', 'Imagens/Oceano/target_ship.png', 50, 80);
         game.load.spritesheet('fire', 'Imagens/Oceano/fire.png', 55, 100);
@@ -1488,9 +1447,7 @@
         renderSelectedPlayers();
 
         if (!this.sprite) { 
-            // sprite
-            var ship_name = 'ship_' + data.id;
-            this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, ship_name);
+            this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, 'ship_' + data.id);
             this.sprite.anchor.set(0.5, 0.8);
 
             this.fire = gameState.characterGroup.create(0, 0, 'fire');
@@ -1616,9 +1573,7 @@
         renderSelectedPlayers();
 
         if (!this.sprite) {
-            var ship_name = 'ship_' + data.id;
-            this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, ship_name);
-            // this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, 'ship_' + data.faccao + '_' + data.skin_navio);
+            this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, 'ship_' + data.id);
             this.sprite.anchor.set(0.5, 0.8);
 
             this.healthBg = gameState.characterGroup.create(this.x * SQUARE_SIZE - SQUARE_SIZE / 2, this.y * SQUARE_SIZE, 'health_bar');
