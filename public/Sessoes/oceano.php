@@ -311,13 +311,7 @@
     }
 
     function initFieldOfView(data) {
-        var loader = new Phaser.Loader(game);
-
         gameState.player.sync(data.me);
-        // loader.spritesheet('ship_' + data.me.id, 'Imagens/Bandeiras/navio_sprite.php?cod=' + data.me.bandeira + '&f=' + data.me.faccao + '&s=' + data.me.skin_navio, skin_sizes[data.me.skin_navio], skin_sizes[data.me.skin_navio]);
-        // loader.onLoadComplete.add(function () {
-        //     gameState.player.sync(data.me);
-        // }, this);
 
         gameState.hiddenArea.visible = !data.me.luneta;
 
@@ -347,14 +341,10 @@
 
         var ids = [];
         data.players.forEach(function (player) {
-            // loader.spritesheet('ship_' + player.id, 'Imagens/Bandeiras/navio_sprite.php?cod=' + player.bandeira + '&f=' + player.faccao + '&s=' + player.skin_navio, skin_sizes[player.skin_navio], skin_sizes[player.skin_navio]);
-            // loader.onLoadComplete.add(function () {
-                syncShip(player);
-                ids.push(player.id + '');
-            // }, this);
+            syncShip(player);
+            ids.push(player.id + '');
         });
 
-        loader.start();
         for (var key in ships) {
             if (ships.hasOwnProperty(key)) {
                 if (ids.indexOf(key + '') === -1) {
@@ -1227,7 +1217,6 @@
                     realY = MAX_Y + y + 1;
                 }
 
-                // console.log('mapa_' + x + '_' + y);
                 loader.image('mapa_' + x + '_' + y, 'Imagens/Mapa/Mapa_Mundi/' + realX + '_' + realY + '.jpg');
                 loader.onLoadComplete.add(function () {
                     this.visibleMaps[x + '_' + y] = game.add.sprite(x * 800, y * 800, 'mapa_' + x + '_' + y);
@@ -1461,21 +1450,23 @@
         var loader = new Phaser.Loader(game);
         loader.spritesheet('ship_' + data.id, 'Imagens/Bandeiras/navio_sprite.php?cod=' + data.bandeira + '&f=' + data.faccao + '&s=' + data.skin_navio, skin_sizes[data.skin_navio], skin_sizes[data.skin_navio]);
         loader.onLoadComplete.add(function () {
-            this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, 'ship_' + data.id);
-            this.sprite.anchor.set(0.5, 0.8);
+            if (!this.sprite) {
+                this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, 'ship_' + data.id);
+                this.sprite.anchor.set(0.5, 0.8);
 
-            this.fire = gameState.characterGroup.create(0, 0, 'fire');
-            this.fire.anchor.set(0.5, 0.85);
-            this.fire.animations.add('play', null, 6);
-            this.fire.animations.play('play');
+                this.fire = gameState.characterGroup.create(0, 0, 'fire');
+                this.fire.anchor.set(0.5, 0.85);
+                this.fire.animations.add('play', null, 6);
+                this.fire.animations.play('play');
 
-            this.emitter = game.add.emitter(this.sprite.position.x, this.sprite.position.y, 400);
-            this.emitter.makeParticles(['rocket_fire1']);
-            this.emitter.gravity = 0;
-            this.emitter.setAlpha(1, 0, 2000);
-            this.emitter.setScale(0.3, 0.2, 0.3, 0.2, 2000);
-            this.emitter.minParticleSpeed.set(0, 0);
-            this.emitter.maxParticleSpeed.set(0, 0);
+                this.emitter = game.add.emitter(this.sprite.position.x, this.sprite.position.y, 400);
+                this.emitter.makeParticles(['rocket_fire1']);
+                this.emitter.gravity = 0;
+                this.emitter.setAlpha(1, 0, 2000);
+                this.emitter.setScale(0.3, 0.2, 0.3, 0.2, 2000);
+                this.emitter.minParticleSpeed.set(0, 0);
+                this.emitter.maxParticleSpeed.set(0, 0);
+            }
 
             if (this.emitter) {
                 if (data.coup_de_burst_usado) {
