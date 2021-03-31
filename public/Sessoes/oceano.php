@@ -311,7 +311,13 @@
     }
 
     function initFieldOfView(data) {
+        var loader = new Phaser.Loader(game);
+
         gameState.player.sync(data.me);
+        // loader.spritesheet('ship_' + data.me.id, 'Imagens/Bandeiras/navio_sprite.php?cod=' + data.me.bandeira + '&f=' + data.me.faccao + '&s=' + data.me.skin_navio, skin_sizes[data.me.skin_navio], skin_sizes[data.me.skin_navio]);
+        // loader.onLoadComplete.add(function () {
+        //     gameState.player.sync(data.me);
+        // }, this);
 
         gameState.hiddenArea.visible = !data.me.luneta;
 
@@ -341,9 +347,14 @@
 
         var ids = [];
         data.players.forEach(function (player) {
-            syncShip(player);
-            ids.push(player.id + '');
+            // loader.spritesheet('ship_' + player.id, 'Imagens/Bandeiras/navio_sprite.php?cod=' + player.bandeira + '&f=' + player.faccao + '&s=' + player.skin_navio, skin_sizes[player.skin_navio], skin_sizes[player.skin_navio]);
+            // loader.onLoadComplete.add(function () {
+                syncShip(player);
+                ids.push(player.id + '');
+            // }, this);
         });
+
+        loader.start();
         for (var key in ships) {
             if (ships.hasOwnProperty(key)) {
                 if (ids.indexOf(key + '') === -1) {
@@ -708,15 +719,12 @@
     }
 
     Wait.prototype.preload = function () {
-        <?php
-        $skin_sizes = [ 65, 65, 65, 75, 75, 75, 85, 85, 75, 85, 85 ];
-        $tripulacoes    = $connection->run("SELECT id, bandeira, faccao, skin_navio FROM tb_usuarios")->fetch_all_array();
-        foreach ($tripulacoes as $tripulacao) {
-            $key    = "ship_{$tripulacao['id']}";
-            $image  = "Imagens/Bandeiras/navio_sprite.php?cod={$tripulacao['bandeira']}&f={$tripulacao['faccao']}&s={$tripulacao['skin_navio']}";
-            echo "game.load.spritesheet('{$key}', '{$image}', {$skin_sizes[$tripulacao['skin_navio']]}, {$skin_sizes[$tripulacao['skin_navio']]});\n";
-        }
-        ?>
+        game.load.spritesheet(
+            'ship_<?=$userDetails->tripulacao['id'];?>',
+            'Imagens/Bandeiras/navio_sprite.php?cod=<?=$userDetails->tripulacao['bandeira'];?>&f=<?=$userDetails->tripulacao['faccao'];?>&s=<?=$userDetails->tripulacao['skin_navio'];?>',
+            skin_sizes[<?=$userDetails->tripulacao['skin_navio'];?>],
+            skin_sizes[<?=$userDetails->tripulacao['skin_navio'];?>]
+        );
 
         game.load.image('hover',                'Imagens/Transparent-white.png');
         game.load.image('route',                'Imagens/Oceano/route.png');
@@ -797,6 +805,7 @@
             } else {
                 initFieldOfView(data);
             }
+
             reloadMenu(data);
             $('#location').html(data.me.location);
             $('#destino_mar').html(data.me.destino_mar);
@@ -1218,6 +1227,7 @@
                     realY = MAX_Y + y + 1;
                 }
 
+                // console.log('mapa_' + x + '_' + y);
                 loader.image('mapa_' + x + '_' + y, 'Imagens/Mapa/Mapa_Mundi/' + realX + '_' + realY + '.jpg');
                 loader.onLoadComplete.add(function () {
                     this.visibleMaps[x + '_' + y] = game.add.sprite(x * 800, y * 800, 'mapa_' + x + '_' + y);
@@ -1437,10 +1447,10 @@
     };
 
     Ship.prototype.sync = function (data) {
-        this.id = data.id;
-        this.x = data.x;
-        this.y = data.y;
-        this.data = data;
+        this.id     = data.id;
+        this.x      = data.x;
+        this.y      = data.y;
+        this.data   = data;
 
         if (!this.visible()) {
             this.destroy();
@@ -1448,7 +1458,9 @@
         }
         renderSelectedPlayers();
 
-        if (!this.sprite) { 
+        var loader = new Phaser.Loader(game);
+        loader.spritesheet('ship_' + data.id, 'Imagens/Bandeiras/navio_sprite.php?cod=' + data.bandeira + '&f=' + data.faccao + '&s=' + data.skin_navio, skin_sizes[data.skin_navio], skin_sizes[data.skin_navio]);
+        loader.onLoadComplete.add(function () {
             this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, 'ship_' + data.id);
             this.sprite.anchor.set(0.5, 0.8);
 
@@ -1464,37 +1476,38 @@
             this.emitter.setScale(0.3, 0.2, 0.3, 0.2, 2000);
             this.emitter.minParticleSpeed.set(0, 0);
             this.emitter.maxParticleSpeed.set(0, 0);
-        }
 
-        if (this.emitter) {
-            if (data.coup_de_burst_usado) {
-                this.emitter.start(false, 2000, 100);
-                this.emitter.visible = true;
-            } else {
-                this.emitter.visible = false;
+            if (this.emitter) {
+                if (data.coup_de_burst_usado) {
+                    this.emitter.start(false, 2000, 100);
+                    this.emitter.visible = true;
+                } else {
+                    this.emitter.visible = false;
+                }
             }
-        }
 
-        this.sprite.position.x = this.x * SQUARE_SIZE;
-        this.sprite.position.y = this.y * SQUARE_SIZE;
-        this.direction = data.direcao_navio;
-        this.traveling = data.navegando;
-        this.travelProgress = Math.min(1, data.navegacao_progresso);
-        this.travelRemain = Math.max(0, data.navegacao_restante);
+            this.sprite.position.x = this.x * SQUARE_SIZE;
+            this.sprite.position.y = this.y * SQUARE_SIZE;
+            this.direction = data.direcao_navio;
+            this.traveling = data.navegando;
+            this.travelProgress = Math.min(1, data.navegacao_progresso);
+            this.travelRemain = Math.max(0, data.navegacao_restante);
 
-        if (this.traveling) {
-            if (this.tween) {
-                this.tween.stop();
+            if (this.traveling) {
+                if (this.tween) {
+                    this.tween.stop();
+                }
+                var movement = this.projectMovementIncrement(this.travelProgress);
+                var nextDestination = gameState.convertPointToTile(this.projectDestinationBasedOnDirection());
+
+                this.sprite.position.x += movement.x * SQUARE_SIZE;
+                this.sprite.position.y += movement.y * SQUARE_SIZE;
+                this.tween = game.add.tween(this.sprite.position).to(nextDestination, this.travelRemain * 1000, Phaser.Easing.Linear.None, true);
             }
-            var movement = this.projectMovementIncrement(this.travelProgress);
-            var nextDestination = gameState.convertPointToTile(this.projectDestinationBasedOnDirection());
 
-            this.sprite.position.x += movement.x * SQUARE_SIZE;
-            this.sprite.position.y += movement.y * SQUARE_SIZE;
-            this.tween = game.add.tween(this.sprite.position).to(nextDestination, this.travelRemain * 1000, Phaser.Easing.Linear.None, true);
-        }
-
-        this.sprite.frame = this.direction;
+            this.sprite.frame = this.direction;
+        }, this);
+        loader.start();
     };
 
     Ship.prototype.projectMovementIncrement = function (progress = 1) {
@@ -1567,10 +1580,10 @@
     };
 
     Player.prototype.sync = function (data) {
-        this.id = data.id;
-        this.x = data.x;
-        this.y = data.y;
-        this.data = data;
+        this.id     = data.id;
+        this.x      = data.x;
+        this.y      = data.y;
+        this.data   = data;
 
         renderSelectedPlayers();
 
