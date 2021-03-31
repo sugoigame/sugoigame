@@ -98,6 +98,7 @@ function super_menu_can_be_active($menu) {
 						<?= menu_link("ranking", "Ranking", "fa fa-trophy", "") ?>
 						<?= menu_link("calendario", "Calendário do jogo", "fa fa-calendar", "") ?>
 						<?= menu_link("conta", "Minha Conta", "fa fa-address-card", "") ?>
+						<?= menu_link("forum", "Suporte & Fórum", "fa fa-bars", "") ?>
 						<?= menu_link("calculadoras", "Calculadoras", "fa fa-calculator", "") ?>
 						<?= menu_link("#", "Destravar Tripulação", "fa fa-cogs", "Corrigir bugs que podem ter travado sua conta.", "", "", "unstuck-acc") ?>
 						<?= menu_link("vipLoja", "Gold Shop", "fa fa-shopping-cart", "") ?>
@@ -324,12 +325,12 @@ function super_menu_can_be_active($menu) {
 				</div>
 			<?php endif; ?>
 
-			<?php if ($userDetails->tripulacao): ?>
-				<?= super_menu_link("forum", "menu-forum", "Suporte & Fórum", "forum", "tutoriais") ?>
-				<div id="menu-forum" class="collapse <?= super_menu_in_out("forum") ?>">
-					<ul class="vertical-nav nav navbar-nav">
-						<?= menu_link("forum", "Tópicos recentes", "fa fa-bars", "") ?>
-						<?php $categorias = $connection->run(
+			<?= super_menu_link("forum", "menu-forum", "Suporte & Fórum", "forum", "tutoriais") ?>
+			<div id="menu-forum" class="collapse <?= super_menu_in_out("forum") ?>">
+				<ul class="vertical-nav nav navbar-nav">
+					<?php if ($userDetails->tripulacao): ?>
+						<?= menu_link("forum", "Suporte & Fórum", "fa fa-bars", "") ?>
+						<?php /*$categorias = $connection->run(
 							"SELECT *, 
 							(SELECT count(*) FROM tb_forum_topico p WHERE p.categoria_id = c.id) AS topics,
 							(SELECT count(*) FROM tb_forum_topico p INNER JOIN tb_forum_topico_lido l ON p.id = l.topico_id AND l.tripulacao_id = ? WHERE p.categoria_id = c.id) AS topics_lidos 
@@ -339,10 +340,13 @@ function super_menu_can_be_active($menu) {
 							<?php $nao_lidos = $categoria["topics"] - $categoria["topics_lidos"]; ?>
 							<?php $badge = $nao_lidos ? " (" . ($categoria["topics"] - $categoria["topics_lidos"]) . ")" : ""; ?>
 							<?= menu_link("forumTopics&categoria=" . $categoria["id"], $categoria["nome"] . $badge, $categoria["icon"], "") ?>
-						<?php endwhile; ?>
-					</ul>
-				</div>
-			<?php endif; ?>
+						<?php endwhile;*/ ?>
+					<?php endif; ?>
+					<?= menu_link("faq", "Base de Conhecimento", "fa fa-question-circle", "") ?>
+					<?= menu_link("https://fb.com/sugoigamebr", "Sugoi no Facebook", "fa fa-facebook-square", "", "", "", "", 'target="_blank"') ?>
+					<?= menu_link("https://instagram.com/sugoigame", "Sugoi no Instagram", "fa fa-instagram", "", "", "", "", 'target="_blank"') ?>
+				</ul>
+			</div>
 
 			<?php if ($userDetails->tripulacao['adm'] > 0): ?>
 			<?= super_menu_link("admin", "menu-admin", "Administração", "admin", "admin") ?>
@@ -359,22 +363,6 @@ function super_menu_can_be_active($menu) {
 				</ul>
 			</div>
 			<?php endif; ?>
-
-			<?= super_menu_link("faq", "menu-help", "Suporte", "ajuda", "help") ?>
-			<div id="menu-help" class="collapse <?= super_menu_in_out("ajuda") ?>">
-				<ul class="vertical-nav nav navbar-nav">
-					<?= menu_link("faq", "F.A.Q", "fa fa-question-circle", "") ?>
-					<?= menu_link("https://fb.com/sugoigamebr", "Sugoi no Facebook", "fa fa-facebook-square", "", "", "", "", 'target="_blank"') ?>
-					<?= menu_link("https://instagram.com/sugoigame", "Sugoi no Instagram", "fa fa-instagram", "", "", "", "", 'target="_blank"') ?>
-				</ul>
-			</div>
-
-			<!-- <?= super_menu_link("parceiros", "menu-parceiros", "Parceiros", "parceiros", "alianca") ?>
-			<div id="menu-parceiros" class="collapse <?= super_menu_in_out("parceiros") ?>">
-				<ul class="vertical-nav nav navbar-nav">
-					<?= menu_link("mailto: medeiros.dev@gmail.com", "Seja um Parceiro", "fa fa-envelope", "", "", "", "", '') ?>
-				</ul>
-			</div> -->
 		</div>
 	</div>
 </div>
