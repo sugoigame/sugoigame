@@ -10,8 +10,6 @@ if('POST' == $method) {
     $notificationType = $_POST['notificationType'];
     $notificationCode = $_POST['notificationCode'];
 
-    // $notificationType = 'transaction';
-    // $notificationCode = '5FA9BB0173B473B41B9664D3DF8550AE76A0';
     if($notificationType === 'transaction') {
         $transaction = PagSeguroNotificationService::checkTransaction($credentials, $notificationCode);
 

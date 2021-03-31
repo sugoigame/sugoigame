@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugoi Game - Chat</title>
+
+    <!--<base target="_self">-->
+    <base href="." target="_self">
+    <meta name="description" content="Chat panel">
+    <meta name="google" value="notranslate">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png"/>
+
+    <!-- ARQUIVOS CSS -->
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="sugoi.chat" ng-controller="SugoiChatCtrl">
+<div class="flex-container">
+    <div class="row flex-row">
+        <div class="col-md-12">
+            <div class="panel panel-primary  flex-col">
+                <div class="panel-heading">
+                    <span class="titulo-painel">Chat Sugoi Game</span>
+
+                    <div class="btn-group pull-right " role="group" aria-label="...">
+
+                        <!-- USUÁRION ONLINE -->
+                        <div class="btn-group" role="group" ng-if="user.canal">
+                            <button type="button" class="btn btn-default" ng-click="mudarSala();">
+                                <span class="glyphicon glyphicon-log-out"></span> Sair da sala
+                            </button>
+                        </div>
+
+                        <!-- USUÁRION ONLINE
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                <span class="fa fa-users"></span> Ativos no Chat ({{usersOnline.length}})
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu scrollable-menu">
+                                <li ng-repeat="userOnline in usersOnline">
+                                    <a href=""><span class="status-online"></span> {{userOnline.capitao}}</a>
+                                </li>
+                            </ul>
+                        </div> -->
+
+                        <!-- CANAL ATUAL -->
+                        <div class="btn-group" role="group" ng-if="user.canal">
+                            <div class="btn-group">
+                                <!-- TELA DO CHAT -->
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false" ng-if="user.canal">
+                                    <span class="glyphicon glyphicon-comment"></span>
+                                    {{(user.canal ? user.canal+' ('+usersOnlineNaSala.length+')' : 'Salas')}}
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="userOnline in usersOnlineNaSala">
+                                        <a href="">
+                                            <span class="status-online"></span>
+                                            {{userOnline.capitao}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- CONFIGURAÇÕES -->
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-cog"></span> Configurações
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <!-- SILENCIADOS -->
+                                <li>
+                                    <a href="" ng-click="mudarTela('Silenciados');">
+                                        <span class="glyphicon glyphicon-ban-circle"></span> Silenciados
+                                    </a>
+                                </li>
+
+                                <!-- CONFIGURAÇÕES -->
+                                <li>
+                                    <a href="" ng-click="mudarTela('Preferências');">
+                                        <span class="glyphicon glyphicon-wrench"></span> Preferências
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body flex-grow">
+
+                    <!-- SILENCIADOS -->
+                    <user-silenciados ng-if="tela === 'Silenciados'"></user-silenciados>
+
+                    <!-- PREFERÊNCIAS -->
+                    <preferencias ng-if="tela === 'Preferências'"></preferencias>
+
+                    <!-- LISTAGEM DAS SALAS -->
+                    <listagem-salas rooms="rooms" style="width: 100%"
+                                    ng-if="!user.canal && tela === 'Chat'"></listagem-salas>
+
+
+                    <!-- MENSAGENS -->
+                    <ul class="chat" ng-show="user.canal && messages.length > 0 && tela == 'Chat'">
+                        <li class="left clearfix" ng-repeat="message in messages">
+                            <div class="chat-img pull-left">
+                                <a href="" class="dropdown-toggle" user-popouver user="message" placement="right">
+                                    <img ng-src="{{'https://sugoigame.com.br/Imagens/Personagens/Icons/'+ message.capitaoImg +'('+ message.capitaoSkin_rosto +').jpg'}}"
+                                         alt="User Avatar">
+                                </a>
+                            </div>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+
+                                    <!-- NOME DO CAPITÃO -->
+                                    <strong class="{{isAdministrador(message.capitao) || message.adm === 1 ? 'adm-text' : ''}} primary-font espacamento">
+                                        {{message.capitao + (message.adm === 1 ? ' [GM]' :
+                                        (message.capitaoTitulo==null?'':' - ' +message.capitaoTitulo))}}
+                                    </strong>
+
+                                    <!-- HORA MENSAGGEM -->
+                                    <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span>{{message.time}}
+                                    </small>
+
+                                    <!-- SILENCIAR --><br>
+                                    <div ng-if="user.capitao != message.capitao" class="pull-right text-muted">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default dropdown-toggle"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                <span class="glyphicon glyphicon-cog"></span>
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li>
+                                                    <a href="" class="espacamento" ng-click='silenciarUser(message);'>
+                                                        <span class="glyphicon glyphicon-ban-circle"></span> Silenciar
+                                                    </a>
+                                                </li>
+                                                <li ng-if="isAdministrador(user.capitao) && !isAdministrador(message.capitao)">
+                                                    <a href="" ng-click="tornarAdministrador(message.capitao);">
+                                                        <i class="fa fa-superpowers"></i> Tornar Administrador
+                                                    </a>
+                                                </li>
+                                                <li ng-if="isAdministrador(user.capitao) && isAdministrador(message.capitao)">
+                                                    <a href="" ng-click="removerAdministrador(message.capitao);">
+                                                        <i class="fa fa-times"></i> Remover Administrador
+                                                    </a>
+                                                </li>
+                                                <li ng-if="isAdministrador(user.capitao)">
+                                                    <a href="" ng-click="removerDaSala(message.capitao);">
+                                                        <i class="fa fa-times"></i> Remover da sala
+                                                    </a>
+                                                </li>
+                                                <li ng-if="isAdministrador(user.capitao)">
+                                                    <a href="" ng-click="banirDaSala(message.capitao);">
+                                                        <i class="fa fa-ban"></i> Banir da sala
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!-- NOME DA TRIPULAÇÂO -->
+                                    <b>{{message.tripulacao}}</b>
+                                </div>
+
+                                <!-- MENSAGEM -->
+                                <p style="word-wrap: break-word;"
+                                   class="{{(message.adm === 1 ? 'adm-text' : '')}} mensagem"
+                                   ng-bind-html="message.message"></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- ENVIAR MENSAGEM  ng-if="user.canal && tela === 'Chat'"-->
+                <div class="panel-footer" ng-show="user.canal && tela === 'Chat'">
+                    <form ng-submit="sendMessage();">
+                        <div class="input-group">
+                            <input id="btn-input" type="text" class="form-control input-sm" ng-model="message"
+                                   placeholder="Digite sua mensagem aqui..." ng-disabled="!enviarMensagem" required>
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-warning btn-sm" id="btn-chat"
+                                        ng-disabled="!enviarMensagem">Enviar
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CARREGANDO OS SCRIPTS -->
+<script src="libs/jquery-3.2.1.min.js"></script>
+<script src="libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="libs/angular.min.js"></script>
+<script src="libs/angular-sanitize.min.js"></script>
+<script src="libs/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src='libs/socket.io.js'></script>
+
+<script src="js/chat.js?version=1.0.0"></script>
+<script src="js/controllers/notification.service.js?version=1.0.0"></script>
+<script src="js/controllers/filtroLinguagem.service.js?version=1.0.0"></script>
+<script src="js/service/socketIO.service.js?version=1.0.0"></script>
+
+
+<script src="js/directive/preferencias.directive.js?version=1.0.0"></script>
+<script src="js/directive/silenciados.directive.js?version=1.0.0"></script>
+<script src="js/directive/popouver.directive.js?version=1.0.0"></script>
+<script src="js/directive/listagem-salas/listagemSalas.directive.js?version=1.0.0"></script>
+
+<script src="js/controllers/preferencias.ctrl.js?version=1.0.0"></script>
+<script src="js/controllers/silenciados.ctrl.js?version=1.0.0"></script>
+<script src="js/controllers/listagemSalas.ctrl.js?version=1.0.0"></script>
+<script src="js/details.js"></script>
+
+</body>
+</html>

@@ -242,9 +242,9 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
     </div>
 
 <?php if ($userDetails->tripulacao): ?>
-    <a id="chat-button" href="#" class="btn btn-default" target="_blank">
+    <button id="chat-button" class="btn btn-default">
         <i class="fa fa-comments fa-fw"></i> CHAT SUGOI
-    </a>
+    </button>
     <input type="hidden" id="ilha_atual" value="<?= $userDetails->ilha["ilha"]; ?>">
     <input type="hidden" id="coord_x_navio" value="<?= $userDetails->tripulacao["x"]; ?>">
     <input type="hidden" id="coord_y_navio" value="<?= $userDetails->tripulacao["y"]; ?>">
