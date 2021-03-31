@@ -24,7 +24,4 @@ jobs:
             git pull origin prod
 
             pm2 stop sugoi-map
-            pm2 stop sugoi-chat
-
             pm2 start /var/www/sugoigame/servers/map/server.php --name="sugoi-map"
-            pm2 start /var/www/sugoigame/servers/chat/index.js --name="sugoi-chat"
