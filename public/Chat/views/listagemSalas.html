@@ -1,0 +1,85 @@
+<div>
+    <!-- TELA DE LISTAGEM DAS SALAS -->
+    <div ng-if="tela === 'Salas'">
+
+        <h3>Salas disponíveis</h3>
+
+        <div class="list-group">
+            <a href="" class="list-group-item" ng-repeat="room in rooms track by $index"
+               ng-click="mudarCanal(room);">
+                {{room.name}}
+                <span class="label label-warning" ng-if="room.password"><i class="fa fa-key"></i></span>
+                <span class="badge badge-default badge-pill">{{room.usersOnline}} <i class="fa fa-users"></i></span>
+            </a>
+        </div>
+
+        <button class="btn btn-success botao" ng-click="mudarTela('Criar');">
+            <i class="fa fa-plus"></i> Criar minha sala
+        </button>
+    </div>
+
+    <!-- TELA DE CRIAÇÃO DE UMA NOVA SALA -->
+    <div ng-if="tela === 'Criar'">
+        <h3> Criar nova sala</h3><br>
+
+        <ul>
+            <li>O nome da sala será gerado automaticamente.</li>
+            <li>Qualquer jogador poderá entrar na sua sala, a menos que você defina uma senha, nesse caso, apenas os
+                jogadores que souberem a senha conseguirão entrar na sala.
+            </li>
+            <li>Você recebe privilégios de administrador na sala que criar, assim poderá expulsar ou banir jogadores
+                indesejados.
+            </li>
+            <li>Você poderá nomear outros jogadores para serem administradores da sua sala e te ajudarem a organiza-la.
+            </li>
+        </ul>
+
+        <div class="checkbox">
+            <label for="usePassword">
+                <input id="usePassword" ng-change="newRoom.password=''" type="checkbox" ng-model="usePassword"/>
+                Marque se quiser proteger sua sala com uma senha
+            </label>
+        </div>
+        <div class="form-group" ng-show="usePassword">
+            <label>
+                Digite uma senha para esta sala:
+            </label>
+            <input type="text" class="form-control" ng-model="newRoom.password"/>
+        </div>
+
+        <br>
+        <button class="btn btn-primary botao" ng-click="mudarTela('Salas');">
+            <i class="fa fa-times"></i> Cancelar
+        </button>
+        <button class="btn btn-success botao" ng-click="criarNovaSala();">
+            <i class="fa fa-check"></i> Criar sala
+        </button>
+    </div>
+
+    <!-- TELA PARA INSERIR O PASSWORD DE UMA SALA -->
+    <div ng-if="tela === 'Password'">
+        <h3> Entrar na sala: {{sala.nameChannel}}</h3><br>
+
+        <div class="alert {{(incorrectPassword ? 'alert-danger' : 'alert-info')}}">
+            <strong>
+                {{(incorrectPassword ? 'Senha inválida.' : 'Digite a senha para entrar na sala')}}
+            </strong>
+        </div>
+
+
+        <div class="form-group">
+            <label>
+                Digite a senha da sala:
+                <input type="text" class="form-control" ng-model="confirmPassword"/>
+            </label>
+        </div>
+
+        <br>
+        <button class="btn btn-primary botao" ng-click="mudarTela('Salas');">
+            <i class="fa fa-times"></i> Cancelar
+        </button>
+        <button class="btn btn-success botao" ng-click="conferirSenha(confirmPassword);">
+            <i class="fa fa-sign-in"></i> Entrar
+        </button>
+    </div>
+</div>

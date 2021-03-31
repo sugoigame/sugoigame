@@ -1,0 +1,19 @@
+<div>
+    <h3>Preferências</h3>
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" value="" ng-model="preferencias.alertaSonoro">
+            Habilitar o alerta sonoro ao receber novas mensagens.
+        </label>
+    </div>
+
+    <div class="form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" value="" ng-model="preferencias.filtroLinguagem">
+            Habilitar filro de linguagem ao receber novas mensagens.
+        </label>
+    </div>
+
+    <button type="button" class="btn btn-success salvar-mudancas" ng-click="salvarMudancas();">Salvar mudanças</button>
+</div>
