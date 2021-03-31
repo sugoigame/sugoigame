@@ -325,10 +325,10 @@ function super_menu_can_be_active($menu) {
 				</div>
 			<?php endif; ?>
 
-			<?php if ($userDetails->tripulacao): ?>
-				<?= super_menu_link("forum", "menu-forum", "Suporte & Fórum", "forum", "tutoriais") ?>
-				<div id="menu-forum" class="collapse <?= super_menu_in_out("forum") ?>">
-					<ul class="vertical-nav nav navbar-nav">
+			<?= super_menu_link("forum", "menu-forum", "Suporte & Fórum", "forum", "tutoriais") ?>
+			<div id="menu-forum" class="collapse <?= super_menu_in_out("forum") ?>">
+				<ul class="vertical-nav nav navbar-nav">
+					<?php if ($userDetails->tripulacao): ?>
 						<?= menu_link("forum", "Suporte & Fórum", "fa fa-bars", "") ?>
 						<?php /*$categorias = $connection->run(
 							"SELECT *, 
@@ -341,9 +341,12 @@ function super_menu_can_be_active($menu) {
 							<?php $badge = $nao_lidos ? " (" . ($categoria["topics"] - $categoria["topics_lidos"]) . ")" : ""; ?>
 							<?= menu_link("forumTopics&categoria=" . $categoria["id"], $categoria["nome"] . $badge, $categoria["icon"], "") ?>
 						<?php endwhile;*/ ?>
-					</ul>
-				</div>
-			<?php endif; ?>
+					<?php endif; ?>
+					<?= menu_link("faq", "Base de Conhecimento", "fa fa-question-circle", "") ?>
+					<?= menu_link("https://fb.com/sugoigamebr", "Sugoi no Facebook", "fa fa-facebook-square", "", "", "", "", 'target="_blank"') ?>
+					<?= menu_link("https://instagram.com/sugoigame", "Sugoi no Instagram", "fa fa-instagram", "", "", "", "", 'target="_blank"') ?>
+				</ul>
+			</div>
 
 			<?php if ($userDetails->tripulacao['adm'] > 0): ?>
 			<?= super_menu_link("admin", "menu-admin", "Administração", "admin", "admin") ?>
@@ -360,22 +363,6 @@ function super_menu_can_be_active($menu) {
 				</ul>
 			</div>
 			<?php endif; ?>
-
-			<?= super_menu_link("faq", "menu-help", "Suporte", "ajuda", "help") ?>
-			<div id="menu-help" class="collapse <?= super_menu_in_out("ajuda") ?>">
-				<ul class="vertical-nav nav navbar-nav">
-					<?= menu_link("faq", "F.A.Q", "fa fa-question-circle", "") ?>
-					<?= menu_link("https://fb.com/sugoigamebr", "Sugoi no Facebook", "fa fa-facebook-square", "", "", "", "", 'target="_blank"') ?>
-					<?= menu_link("https://instagram.com/sugoigame", "Sugoi no Instagram", "fa fa-instagram", "", "", "", "", 'target="_blank"') ?>
-				</ul>
-			</div>
-
-			<!-- <?= super_menu_link("parceiros", "menu-parceiros", "Parceiros", "parceiros", "alianca") ?>
-			<div id="menu-parceiros" class="collapse <?= super_menu_in_out("parceiros") ?>">
-				<ul class="vertical-nav nav navbar-nav">
-					<?= menu_link("mailto: medeiros.dev@gmail.com", "Seja um Parceiro", "fa fa-envelope", "", "", "", "", '') ?>
-				</ul>
-			</div> -->
 		</div>
 	</div>
 </div>

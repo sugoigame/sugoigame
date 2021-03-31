@@ -104,9 +104,10 @@ function get_super_menu($sess = null) {
         case "boss":
         case "eventoPirata":
             return "eventos";
-        case "faq":
+        // case "faq":
         case "suporte":
             return "ajuda";
+        case "faq":
         case "forum":
         case "forumNewTopic":
         case "forumPosts":
