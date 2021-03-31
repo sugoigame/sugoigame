@@ -205,7 +205,7 @@ if (!$userDetails->conta AND
 <script type="text/javascript" src="JS/cookie.js"></script>
 <script type="text/javascript" src="JS/removecaracteres.js"></script>
 <script type="text/javascript" src="JS/geral.js?ver=2.0.16"></script>
-<script type="text/javascript" src="JS/header.js?ver=2.0.16"></script>
+<script type="text/javascript" src="JS/header.js?ver=2.0.19"></script>
 <script type="text/javascript" src="JS/animacoes.js?ver=2.0.0"></script>
 <script type="text/javascript" src="JS/progressbar.min.js"></script>
 <script type="text/javascript" src="JS/reconnecting-websocket.min.js"></script>
