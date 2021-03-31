@@ -96,6 +96,7 @@ function super_menu_can_be_active($menu) {
 						<?= menu_link("akumaBook", "Akuma Book", "fa fa-book", "Veja quais foram as Akuma no Mi já encontradas") ?>
 						<?= menu_link("hall", "Hall da fama", "fa fa-trophy", "Veja quais foram os melhores jogadores de eras passadas") ?>
 						<?= menu_link("ranking", "Ranking", "fa fa-trophy", "") ?>
+						<?= menu_link("calendario", "Calendário do jogo", "fa fa-calendar", "") ?>
 						<?= menu_link("conta", "Minha Conta", "fa fa-address-card", "") ?>
 						<?= menu_link("calculadoras", "Calculadoras", "fa fa-calculator", "") ?>
 						<?= menu_link("#", "Destravar Tripulação", "fa fa-cogs", "Corrigir bugs que podem ter travado sua conta.", "", "", "unstuck-acc") ?>
@@ -179,7 +180,6 @@ function super_menu_can_be_active($menu) {
 									<?= menu_link("upgrader", "Aprimoramentos", "fa fa-arrow-up", "") ?>
 									<?= menu_link("estaleiro", "Estaleiro", "fa fa-ship", "") ?>
 									<?= menu_link("hospital", "Hospital", "fa fa-h-square", "") ?>
-									<?= menu_link("pousada", "Pousada", "fa fa-home", "") ?>
 									<?= menu_link("academia", "Academia", "fa fa-star-o", "") ?>
 									<?= menu_link("profissoesAprender", "Escola de Profissões", "fa fa-university", "") ?>
 									<?= menu_link("missoesCaca", "Missões de caça", "glyphicon glyphicon-screenshot", "") ?>
@@ -324,6 +324,26 @@ function super_menu_can_be_active($menu) {
 				</div>
 			<?php endif; ?>
 
+			<?php if ($userDetails->tripulacao): ?>
+				<?= super_menu_link("forum", "menu-forum", "Suporte & Fórum", "forum", "tutoriais") ?>
+				<div id="menu-forum" class="collapse <?= super_menu_in_out("forum") ?>">
+					<ul class="vertical-nav nav navbar-nav">
+						<?= menu_link("forum", "Tópicos recentes", "fa fa-bars", "") ?>
+						<?php $categorias = $connection->run(
+							"SELECT *, 
+							(SELECT count(*) FROM tb_forum_topico p WHERE p.categoria_id = c.id) AS topics,
+							(SELECT count(*) FROM tb_forum_topico p INNER JOIN tb_forum_topico_lido l ON p.id = l.topico_id AND l.tripulacao_id = ? WHERE p.categoria_id = c.id) AS topics_lidos 
+							FROM tb_forum_categoria c ",
+							"i", array($userDetails->tripulacao["id"])); ?>
+						<?php while ($categoria = $categorias->fetch_array()): ?>
+							<?php $nao_lidos = $categoria["topics"] - $categoria["topics_lidos"]; ?>
+							<?php $badge = $nao_lidos ? " (" . ($categoria["topics"] - $categoria["topics_lidos"]) . ")" : ""; ?>
+							<?= menu_link("forumTopics&categoria=" . $categoria["id"], $categoria["nome"] . $badge, $categoria["icon"], "") ?>
+						<?php endwhile; ?>
+					</ul>
+				</div>
+			<?php endif; ?>
+
 			<?php if ($userDetails->tripulacao['adm'] > 0): ?>
 			<?= super_menu_link("admin", "menu-admin", "Administração", "admin", "admin") ?>
 			<div id="menu-admin" class="collapse <?= super_menu_in_out("admin") ?>">
@@ -345,26 +365,28 @@ function super_menu_can_be_active($menu) {
 				<ul class="vertical-nav nav navbar-nav">
 					<?= menu_link("faq", "F.A.Q", "fa fa-question-circle", "") ?>
 					<?= menu_link("https://fb.com/sugoigamebr", "Sugoi no Facebook", "fa fa-facebook-square", "", "", "", "", 'target="_blank"') ?>
-					<?= menu_link("https://instagram.com/sugoigamebr", "Sugoi no Instagram", "fa fa-instagram", "", "", "", "", 'target="_blank"') ?>
+					<?= menu_link("https://instagram.com/sugoigame", "Sugoi no Instagram", "fa fa-instagram", "", "", "", "", 'target="_blank"') ?>
 				</ul>
 			</div>
 
-			<?= super_menu_link("parceiros", "menu-parceiros", "Parceiros", "parceiros", "alianca") ?>
+			<!-- <?= super_menu_link("parceiros", "menu-parceiros", "Parceiros", "parceiros", "alianca") ?>
 			<div id="menu-parceiros" class="collapse <?= super_menu_in_out("parceiros") ?>">
 				<ul class="vertical-nav nav navbar-nav">
 					<?= menu_link("mailto: medeiros.dev@gmail.com", "Seja um Parceiro", "fa fa-envelope", "", "", "", "", '') ?>
 				</ul>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>
 <?php if ($userDetails->conta): ?>
-	<div class="vertical-menu-header clearfix">
-		<p class="navbar-text">
-			<?php $total = $connection->run("SELECT count(id) AS total FROM tb_usuarios WHERE ultimo_logon > ?", "i", atual_segundo() - (15 * 60))->fetch_array()["total"]; ?>
-			Jogadores online: <?=($total);?>
-		</p>
-	</div>
+	<?php if ($userDetails->tripulacao['adm'] > 0): ?>
+		<div class="vertical-menu-header clearfix">
+			<p class="navbar-text">
+				<?php $total = $connection->run("SELECT count(id) AS total FROM tb_usuarios WHERE ultimo_logon > ?", "i", atual_segundo() - (15 * 60))->fetch_array()["total"]; ?>
+				Jogadores online: <?=($total);?>
+			</p>
+		</div>
+	<?php endif; ?>
 	<div style="margin: 10px 0; text-align: left">
 		<button class="btn btn-primary btn-blocks" id="audio-toggle">
 			<i class="glyphicon glyphicon-volume-up"></i> Som Ligado
