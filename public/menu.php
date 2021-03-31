@@ -325,12 +325,12 @@ function super_menu_can_be_active($menu) {
 				</div>
 			<?php endif; ?>
 
-			<?php /*if ($userDetails->tripulacao): ?>
+			<?php if ($userDetails->tripulacao): ?>
 				<?= super_menu_link("forum", "menu-forum", "Suporte & Fórum", "forum", "tutoriais") ?>
 				<div id="menu-forum" class="collapse <?= super_menu_in_out("forum") ?>">
 					<ul class="vertical-nav nav navbar-nav">
-						<?= menu_link("forum", "Tópicos recentes", "fa fa-bars", "") ?>
-						<?php $categorias = $connection->run(
+						<?= menu_link("forum", "Suporte & Fórum", "fa fa-bars", "") ?>
+						<?php /*$categorias = $connection->run(
 							"SELECT *, 
 							(SELECT count(*) FROM tb_forum_topico p WHERE p.categoria_id = c.id) AS topics,
 							(SELECT count(*) FROM tb_forum_topico p INNER JOIN tb_forum_topico_lido l ON p.id = l.topico_id AND l.tripulacao_id = ? WHERE p.categoria_id = c.id) AS topics_lidos 
@@ -340,10 +340,10 @@ function super_menu_can_be_active($menu) {
 							<?php $nao_lidos = $categoria["topics"] - $categoria["topics_lidos"]; ?>
 							<?php $badge = $nao_lidos ? " (" . ($categoria["topics"] - $categoria["topics_lidos"]) . ")" : ""; ?>
 							<?= menu_link("forumTopics&categoria=" . $categoria["id"], $categoria["nome"] . $badge, $categoria["icon"], "") ?>
-						<?php endwhile; ?>
+						<?php endwhile;*/ ?>
 					</ul>
 				</div>
-			<?php endif;*/ ?>
+			<?php endif; ?>
 
 			<?php if ($userDetails->tripulacao['adm'] > 0): ?>
 			<?= super_menu_link("admin", "menu-admin", "Administração", "admin", "admin") ?>
