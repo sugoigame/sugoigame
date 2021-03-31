@@ -344,7 +344,6 @@ function super_menu_can_be_active($menu) {
 			<div id="menu-help" class="collapse <?= super_menu_in_out("ajuda") ?>">
 				<ul class="vertical-nav nav navbar-nav">
 					<?= menu_link("faq", "F.A.Q", "fa fa-question-circle", "") ?>
-					<?= menu_link("https://discord.gg/NegrUS6xTV", "Sugoi no Discord", "fa fa-comments-o", "", "", "", "", 'target="_blank"') ?>
 					<?= menu_link("https://fb.com/sugoigamebr", "Sugoi no Facebook", "fa fa-facebook-square", "", "", "", "", 'target="_blank"') ?>
 					<?= menu_link("https://instagram.com/sugoigamebr", "Sugoi no Instagram", "fa fa-instagram", "", "", "", "", 'target="_blank"') ?>
 				</ul>
