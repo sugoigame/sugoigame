@@ -275,7 +275,7 @@ function super_menu_can_be_active($menu) {
 				<?= super_menu_link("lojaEvento", "menu-events", "Eventos", "eventos", "eventos") ?>
 				<div id="menu-events" class="collapse <?= super_menu_in_out("eventos") ?>">
 					<ul class="vertical-nav nav navbar-nav">
-						<?/*= menu_link("lojaEvento", "Loja de Eventos", "fa fa-certificate", "");*/ ?>
+						<?= menu_link("lojaEvento", "Loja de Eventos", "fa fa-certificate", ""); ?>
 						<?/*= menu_link("eventoAnoNovo", "Evento de Ano Novo", "fa fa-bolt", ""); */?>
 						<?/*= menu_link("eventoNatal", "Evento de Natal", "fa fa-bolt", "");*/?>
 						<?/*= menu_link("eventoHalloween", "Semana do Terror", "fa fa-bolt", ""); */?>
