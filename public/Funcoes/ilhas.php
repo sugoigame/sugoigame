@@ -50,8 +50,8 @@ if (!function_exists('nome_ilha')) {
             case 37:    return "Mock Town";
             case 38:    return "South Grave";
             case 39:    return "Long Ring Long Land";
-            case 40:    return "Water 7";
-            case 41:    return "Thriller Bark";
+            case 41:    return "Water 7";
+            case 40:    return "Thriller Bark";
             case 42:    return "Sabaody";
             case 43:    return "Mariejois";
 
