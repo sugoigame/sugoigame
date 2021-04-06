@@ -343,7 +343,7 @@
   con: 15
   vit: 15
   hp: 2000
-  xp: 2000
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
@@ -371,7 +371,7 @@
   con: 15
   vit: 15
   hp: 2200
-  xp: 2000
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
@@ -399,7 +399,7 @@
   con: 15
   vit: 15
   hp: 2400
-  xp: 2000
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
@@ -431,7 +431,7 @@
   con: 15
   vit: 15
   hp: 2500
-  xp: 2000
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
@@ -465,7 +465,7 @@
   con: 15
   vit: 15
   hp: 2900
-  xp: 2000
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
@@ -499,7 +499,7 @@
   con: 15
   vit: 15
   hp: 2900
-  xp: 2100
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
@@ -535,7 +535,7 @@
   con: 15
   vit: 15
   hp: 2900
-  xp: 2100
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
