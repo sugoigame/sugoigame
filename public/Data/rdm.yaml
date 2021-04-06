@@ -343,7 +343,7 @@
   con: 15
   vit: 15
   hp: 2000
-  xp: 260
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
@@ -371,7 +371,7 @@
   con: 15
   vit: 15
   hp: 2200
-  xp: 300
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
@@ -399,7 +399,7 @@
   con: 15
   vit: 15
   hp: 2400
-  xp: 340
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
@@ -431,7 +431,7 @@
   con: 15
   vit: 15
   hp: 2500
-  xp: 350
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
@@ -465,7 +465,7 @@
   con: 15
   vit: 15
   hp: 2900
-  xp: 400
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
@@ -499,7 +499,7 @@
   con: 15
   vit: 15
   hp: 2900
-  xp: 420
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
@@ -535,7 +535,7 @@
   con: 15
   vit: 15
   hp: 2900
-  xp: 420
+  xp: 600
   loot:
     - cod: 0
       tipo: 16
@@ -561,6 +561,21 @@
       tipo: 15
     - cod: 189
       tipo: 15
+  200:
+  id: 200
+  nome: Carot
+  img: 104
+  atk: 50
+  def: 30
+  agl: 30
+  res: 50
+  pre: 50
+  dex: 50
+  con: 10
+  vit: 100
+  hp: 200000
+  zona: 9
+  xp: 5000
 22:    # Ilha Dawn
   id: 22
   nome: Higuma
