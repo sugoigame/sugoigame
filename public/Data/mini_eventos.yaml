@@ -392,14 +392,6 @@
         quant: 500
       - tipo: berries
         quant: 5000000
-    11:
-      - tipo: reagent
-        cod_item: 188
-        quant: 1
-      - tipo: xp
-        quant: 1000
-      - tipo: berries
-        quant: 90000  
 6:
   nome: Inimigo ameaçador no Novo Mundo
   duracao: 01:00:00
@@ -482,14 +474,6 @@
         quant: 500
       - tipo: berries
         quant: 5000000
-    11:
-      - tipo: reagent
-        cod_item: 188
-        quant: 1
-      - tipo: xp
-        quant: 5000
-      - tipo: berries
-        quant: 200000  
 7:
   nome: Grande ameaça nos Blues
   duracao: 02:00:00
@@ -659,6 +643,14 @@
         quant: 500
       - tipo: berries
         quant: 10000000
+    11:
+      - tipo: reagent
+        cod_item: 188
+        quant: 1
+      - tipo: xp
+        quant: 500
+      - tipo: berries
+        quant: 20000  
 9:
   nome: Grande ameaça no Novo Mundo
   duracao: 02:00:00
@@ -741,6 +733,14 @@
         quant: 500
       - tipo: berries
         quant: 10000000
+    11:
+      - tipo: reagent
+        cod_item: 188
+        quant: 1
+      - tipo: xp
+        quant: 500
+      - tipo: berries
+        quant: 20000  
 10:
   nome: Monstruosidade nos Blues
   duracao: 06:00:00
