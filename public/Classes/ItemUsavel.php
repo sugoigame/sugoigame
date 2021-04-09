@@ -483,6 +483,52 @@ class ItemUsavel {
 			return "Você recebeu uma Akuma no Mi";
 		}*/
 	}
+	public function abre_ovo_carrot() {
+		if (!$this->userDetails->can_add_item()) {
+			$this->protector->exit_error("Você precisa de 1 espaço vazio no seu inventário para receber a recopensa");
+		}
+
+		$this->userDetails->xp_for_all(1000);
+
+		$rand = rand(1, 100);
+
+		if ($rand <= 1) {
+			$recompensa = $this->connection->run("SELECT * FROM tb_item_reagents WHERE mergulho > 0 ORDER BY RAND() LIMIT 1")->fetch_array();
+
+			$reagents_quant_1 = array(170, 171);
+
+			$quant = in_array($recompensa["cod_reagent"], $reagents_quant_1) ? 1 : rand(1, 10);
+			$this->userDetails->add_item($recompensa["cod_reagent"], TIPO_ITEM_REAGENT, $quant);
+			
+			return "Você recebeu " . $recompensa["nome"];
+
+		} 
+		 else if ($rand <= 20) {
+			$recompensa = rand(500000, 1000000);
+
+			$this->connection->run("UPDATE tb_usuarios SET berries = berries + ? WHERE id = ?",
+				"ii", array($recompensa, $this->userDetails->tripulacao["id"]));
+
+			return "Você recebeu " . mascara_berries($recompensa) . " Berries";
+}
+			else if ($rand <= 60) {
+			$recompensa = $this->connection->run("SELECT * FROM tb_equipamentos WHERE categoria = 2 AND lvl >= 50 ORDER BY RAND() LIMIT 1")->fetch_array();
+
+			$this->userDetails->add_equipamento($recompensa);
+
+			return "Você recebeu " . $recompensa["nome"];
+		}
+		else if ($rand >= 61) {
+			$recompensa = $this->connection->run("SELECT * FROM tb_equipamentos WHERE categoria = 3 AND lvl >= 50 ORDER BY RAND() LIMIT 1")->fetch_array();
+
+			$this->userDetails->add_equipamento($recompensa);
+
+			return "Você recebeu " . $recompensa["nome"];}
+		else if ($rand >= 89){
+				$this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
+
+				return "Você recebeu uma Akuma no Mi";	
+			}}
 
 	public function obter_animacao_skill($item, $params) {
 		$effect = $params[1];

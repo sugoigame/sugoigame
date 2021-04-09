@@ -57,10 +57,10 @@
 0057-Silvers Rayleigh
 0058-Monkey D Dragon
 0059-Lucky Roo (Bando do Shanks)
-0060-Zeo (Ilha dos Tritões)
+0060-Zeo (Ilha dos Tritï¿½es)
 0061-Alvida
 0062-Jaguar D Saul (Ohara)
-0063-Madame Shyarly (Ilha dos Tritões)
+0063-Madame Shyarly (Ilha dos Tritï¿½es)
 0064-Caesar Clown
 0065-Montblanc Cricket (Jaya)
 0066-Igaram (Alabasta)
@@ -72,9 +72,9 @@
 0072-Absalon (Thriller Bark)
 0073-Chou-Chou (Romance Dawn)
 0074-Morgan (Romance Dawn)
-0075-Fukaboshi (Ilha dos Tritões)
-0076-Vander Decken (Ilha dos Tritões)
-0077-Calgara (Ilha do Céu)
+0075-Fukaboshi (Ilha dos Tritï¿½es)
+0076-Vander Decken (Ilha dos Tritï¿½es)
+0077-Calgara (Ilha do Cï¿½u)
 0078-Shiliew (Bando do Barba Negra)
 0079-Bellemere (Orange Town)
 0080-Catarina Devon (Bando do Barba Negra)
@@ -98,7 +98,7 @@
 0098-Laffite (Bando do Barba Negra)
 0099-Marco The Phoenix
 0100-hawguerite (Amazon Lily)
-0101-Montblanc Norland (Ilha do Céu)
+0101-Montblanc Norland (Ilha do Cï¿½u)
 0102-Nico Olvia (Ohara)
 0103-Duval (Sabondy)
 0104-Ben Beckman (Bando do Shanks)
@@ -147,7 +147,7 @@
 0147-Shirahoshi
 0148-Olive (Impel Down)
 0149-Oars (Thriller Bark)
-0150-Neptune (Ilha dos Tritões)
+0150-Neptune (Ilha dos Tritï¿½es)
 0151-Sentomaru (Sabaody)
 0152-Baskerville (Enies Lobby)
 0153-Heracles (Mestre de Ussop)
@@ -170,9 +170,9 @@
 0170-Chaka (Alabasta)
 0171-Miss Valentine (Alabasta)
 0172-Kuromarimo (Drum)
-0173-Hyouzou (Ilha dos Tritões)
-0174-Manboshi (Ilha dos Tritões)
-0175-Ryuboshi (Ilha dos Tritões)
+0173-Hyouzou (Ilha dos Tritï¿½es)
+0174-Manboshi (Ilha dos Tritï¿½es)
+0175-Ryuboshi (Ilha dos Tritï¿½es)
 0176-Tonjit (Arco do Foxy)
 0177-Miss Golden Week (Alabasta)
 0178-Minorhinoceros (Impel Down)
@@ -184,8 +184,8 @@
 0184-Minokoala (Impel Down)
 0185-Funkfreed (Water 7)
 0186-Sabo
-0187-Hammond (Ilha dos Tritões)
-0188-Megalo (Ilha dos Tritões)
+0187-Hammond (Ilha dos Tritï¿½es)
+0188-Megalo (Ilha dos Tritï¿½es)
 0189-Masira (Jaya)
 0190-Bepo (Bando do Law)
 0191-Nojiko (Orange Town)
@@ -198,8 +198,8 @@
 0198-Braham (Skypiea)
 0199-Kuina (Amiga do Zoro)
 0200-Kokoro (Water 7)
-0201-Gaimon (Baú)
-0202-Miss Fhater´s Days (Alabasta)
+0201-Gaimon (Baï¿½)
+0202-Miss Fhaterï¿½s Days (Alabasta)
 0203-Kiwi Square (Water 7)
 0204-Kaya (Amiga do Usopp)
 0205-Laskey (Ohara)
@@ -221,7 +221,7 @@
 0221-Cavendish (Dressrosa) 
 0222-Fujitora (Dressrosa)
 0223-Kinemon (Punk Hazard)
-0224-Koala (Revolucionários)
+0224-Koala (Revolucionï¿½rios)
 0225-Monet (Punk Hazard)
 0226-Rebecca(Dressrosa)
 0227-Kyros (Dressrosa)
@@ -366,3 +366,5 @@
 0366-Edward Weevil (Filho do Barba Branca)
 0367-Wiper (Skypie)
 0368-Big Mom
+0369-Oden
+0370-teste
