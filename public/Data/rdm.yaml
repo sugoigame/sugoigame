@@ -561,9 +561,9 @@
       tipo: 15
     - cod: 189
       tipo: 15
-  200:
+200:
   id: 200
-  nome: Carot
+  nome: Carrot
   img: 104
   atk: 50
   def: 30
