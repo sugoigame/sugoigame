@@ -104,7 +104,7 @@ for ($x = 0; $x < 51; $x += 5) {
 
 $userDetails->reduz_item($img_akuma, $tipoakuma, 1, true);
 
-$categoria = mt_rand(1, 100);
+$categoria = rand(1, 100);
 if ($categoria < 15) $categoria = 1;
 else if ($categoria < 30) $categoria = 2;
 else if ($categoria < 45) $categoria = 3;
