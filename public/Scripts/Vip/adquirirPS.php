@@ -14,7 +14,7 @@ if ($result->count() < 1) {
 
     require_once('../../Includes/PagSeguro/PagSeguroLibrary.php');
     $paymentRequest = new PagSeguroPaymentRequest();
-    $paymentRequest->addItem($plano['id'], $plano['nome'], 1, $plano['valor_brl']);
+    $paymentRequest->addItem($plano['id'], 'Sugoi Game - ' . $plano['nome'], 1, $plano['valor_brl']);
     $paymentRequest->setCurrency('BRL');
 
     $paymentRequest->setRedirectURL('https://' . $_SERVER['HTTP_HOST'] . '/?ses=vipComprar&complete');

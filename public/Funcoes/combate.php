@@ -351,7 +351,6 @@ function calc_modificador_reputacao($vencedor, $perdedor) {
 
 function calc_modificador_lvl($vencedor_lvl, $perdedor_lvl) {
     $dif = abs($vencedor_lvl - $perdedor_lvl);
-
     if ($dif <= 0) {
         return 1;
     } else if ($dif >= 10) {
@@ -362,21 +361,20 @@ function calc_modificador_lvl($vencedor_lvl, $perdedor_lvl) {
 }
 
 function calc_reputacao($vencedor_rep, $perdedor_rep, $lvl_mais_forte_vencedor, $lvl_mais_forte_perdedor) {
-    $rep_base = calc_rep_base_no_lvl($lvl_mais_forte_perdedor);
+    $rep_base           = calc_rep_base_no_lvl($lvl_mais_forte_perdedor);
+    $dif_rep            = calc_modificador_reputacao($vencedor_rep, $perdedor_rep);
+    $perdedor_rep       = max(0, $perdedor_rep - 5000);
+    $dif_lvl            = $lvl_mais_forte_vencedor >= $lvl_mais_forte_perdedor ? calc_modificador_lvl($lvl_mais_forte_vencedor, $lvl_mais_forte_perdedor) : 1;
+    $redutor_vencedor   = calc_redutor_rep_vencedor($vencedor_rep);
+    $redutor_perdedor   = calc_redutor_rep_perdedor($perdedor_rep);
 
-    $dif_rep = calc_modificador_reputacao($vencedor_rep, $perdedor_rep);
+    $vencedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_vencedor);
+    $perdedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_perdedor);
 
-    $perdedor_rep = max(0, $perdedor_rep - 5000);
-
-    $dif_lvl = $lvl_mais_forte_vencedor >= $lvl_mais_forte_perdedor ? calc_modificador_lvl($lvl_mais_forte_vencedor, $lvl_mais_forte_perdedor) : 1;
-
-    $redutor_vencedor = calc_redutor_rep_vencedor($vencedor_rep);
-    $redutor_perdedor = calc_redutor_rep_perdedor($perdedor_rep);
-
-    return array(
-        "vencedor_rep" => round($rep_base * $dif_rep * $dif_lvl * $redutor_vencedor),
-        "perdedor_rep" => round($rep_base * $dif_rep * $dif_lvl * $redutor_perdedor)
-    );
+    return [
+        "vencedor_rep" => $vencedor_rep,
+        "perdedor_rep" => $perdedor_rep
+    ];
 }
 
 function reduz_score($pers) {
