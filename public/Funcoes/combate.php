@@ -519,7 +519,7 @@ function calc_dano($pers, $alvo, $dano_hab = 0) {
     $esquiva = chance_esquiva($pers, $alvo);
 
     $retorno["chance_esquiva"] = $esquiva;
-    $retorno["dado_esquivou"] = mt_rand(1, 100);
+    $retorno["dado_esquivou"] = rand(1, 100);
 
     if ($retorno["dado_esquivou"] <= $esquiva) {
         $retorno["esquivou"] = true;
@@ -529,8 +529,8 @@ function calc_dano($pers, $alvo, $dano_hab = 0) {
 
         $chance_crit = chance_crit($pers, $alvo);
 
-        $retorno["chance_critico"] = $chance_crit;
-        $retorno["dado_critou"] = mt_rand(1, 100);
+        $retorno["chance_critico"]  = $chance_crit;
+        $retorno["dado_critou"]     = rand(1, 100);
         if ($retorno["dado_critou"] <= $chance_crit) {
             $retorno["critou"] = true;
 
@@ -540,7 +540,7 @@ function calc_dano($pers, $alvo, $dano_hab = 0) {
         $chance_bloq = chance_bloq($pers, $alvo);
 
         $retorno["chance_bloqueio"] = $chance_bloq;
-        $retorno["dado_bloqueou"] = mt_rand(1, 100);
+        $retorno["dado_bloqueou"]   = rand(1, 100);
         if ($retorno["dado_bloqueou"] <= $chance_bloq) {
             $retorno["bloqueou"] = true;
 
