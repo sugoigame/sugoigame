@@ -519,7 +519,7 @@ function calc_dano($pers, $alvo, $dano_hab = 0) {
     $esquiva = chance_esquiva($pers, $alvo);
 
     $retorno["chance_esquiva"] = $esquiva;
-    $retorno["dado_esquivou"] = mt_rand(1, 100);
+    $retorno["dado_esquivou"] = rand(1, 100);
 
     if ($retorno["dado_esquivou"] <= $esquiva) {
         $retorno["esquivou"] = true;

@@ -206,7 +206,7 @@
 		for($x=0;$sql=mysql_fetch_array($result);$x++){
 			$personagem_alvo[$x]=$sql;
 		}
-		$cod_rand=mt_rand(0,(sizeof($personagem_alvo)-1));
+		$cod_rand=rand(0,(sizeof($personagem_alvo)-1));
 		
 		$query="SELECT nome, lvl FROM tb_personagens WHERE id='".$usuario["id"]."' AND cod='".$personagem_alvo[$cod_rand]["cod"]."'";
 		$result=mysql_query($query);
@@ -229,7 +229,7 @@
 		}
 		$esquiva+=$personagem_alvo[$cod_rand]["haki_esq"];
 		
-		if(mt_rand(1, 100)<=$esquiva){
+		if(rand(1, 100)<=$esquiva){
 			$relatorio.="<b>".$personagem_info["nome"]."</b> se <font style=\"background-color: #00FF00\">Esquivou</font><br><br>";
 			$query="SELECT relatorio FROM tb_combate_npc WHERE id='".$usuario["id"]."'";
 			$result=mysql_query($query);
@@ -247,7 +247,7 @@
 				$critico_c=0;
 			}
 			
-			if(mt_rand(1, 100)<=$critico_c){
+			if(rand(1, 100)<=$critico_c){
 				$critico_d=$usuario["npc"]["dex_npc"]-$personagem_alvo[$cod_rand]["con"];
 				$critico_d+=$personagem["haki_cri"];
 				if($critico_d>90){
@@ -271,7 +271,7 @@
 				$block_c=0;
 			}
 			$block_c+=$personagem_alvo[$cod_rand]["haki_blo"];
-			if(mt_rand(1, 100)<=$block_c){
+			if(rand(1, 100)<=$block_c){
 				$block_d=$personagem_alvo[$cod_rand]["res"]-$usuario["npc"]["pre_npc"];
 				$block_d+=$alvo["haki_blo"];
 				if($block_d>90){
@@ -294,7 +294,7 @@
 				for($x=0;$sql=mysql_fetch_array($result);$x++){
 					$skil_info_npc[$x]=$sql;
 				}
-				$skil_rand=mt_rand(0,(sizeof($skil_info_npc)-1));
+				$skil_rand=rand(0,(sizeof($skil_info_npc)-1));
 				
 				$dano=$usuario["npc"]["atk_npc"]-$personagem_alvo[$cod_rand]["def"];
 				if($dano<0)$dano=0;
