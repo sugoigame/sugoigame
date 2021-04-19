@@ -115,7 +115,7 @@ if ($erro) {
                 $y = 337;
                 $i++;
             } else {
-                $oceano = mt_rand(1, 4);
+                $oceano = rand(1, 4);
             }
         }
 
