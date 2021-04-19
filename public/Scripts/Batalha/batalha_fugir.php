@@ -229,7 +229,7 @@
 		}
 		$esquiva+=$personagem_alvo[$cod_rand]["haki_esq"];
 		
-		if(rand(1, 100)<=$esquiva){
+		if ((rand(1 * 10, 100 * 10) / 10) <= $esquiva){
 			$relatorio.="<b>".$personagem_info["nome"]."</b> se <font style=\"background-color: #00FF00\">Esquivou</font><br><br>";
 			$query="SELECT relatorio FROM tb_combate_npc WHERE id='".$usuario["id"]."'";
 			$result=mysql_query($query);
@@ -247,7 +247,7 @@
 				$critico_c=0;
 			}
 			
-			if(rand(1, 100)<=$critico_c){
+			if ((rand(1 * 10, 100 * 10) / 10) <= $critico_c){
 				$critico_d=$usuario["npc"]["dex_npc"]-$personagem_alvo[$cod_rand]["con"];
 				$critico_d+=$personagem["haki_cri"];
 				if($critico_d>90){
@@ -271,7 +271,7 @@
 				$block_c=0;
 			}
 			$block_c+=$personagem_alvo[$cod_rand]["haki_blo"];
-			if(rand(1, 100)<=$block_c){
+			if ((rand(1 * 10, 100 * 10) / 10) <= $block_c){
 				$block_d=$personagem_alvo[$cod_rand]["res"]-$usuario["npc"]["pre_npc"];
 				$block_d+=$alvo["haki_blo"];
 				if($block_d>90){
