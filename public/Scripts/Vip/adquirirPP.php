@@ -37,7 +37,7 @@ if ($result->count() < 1) {
 	$p->addField('return',			'https://' . $_SERVER['HTTP_HOST'] . '/?ses=vipComprar&success');
 	$p->addField('cancel_return',	'https://' . $_SERVER['HTTP_HOST'] . '/?ses=vipComprar&cancel');
 	$p->addField('notify_url',		'https://' . $_SERVER['HTTP_HOST'] . '/Scripts/PayPal/retorno.php');
-	$p->addField('item_name',		$plano['nome']);
+	$p->addField('item_name',		'Sugoi Game - ' . $plano['nome']);
 	$p->addField('currency_code',	$coins[$method]);
 	$p->addField('amount',			$plano['valor_' . strtolower($coins[$method])]);
 	$p->addField('custom',			$paymentId);
