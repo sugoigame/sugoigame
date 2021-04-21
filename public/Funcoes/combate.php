@@ -368,12 +368,15 @@ function calc_reputacao($vencedor_rep, $perdedor_rep, $lvl_mais_forte_vencedor, 
     $redutor_vencedor   = calc_redutor_rep_vencedor($vencedor_rep);
     $redutor_perdedor   = calc_redutor_rep_perdedor($perdedor_rep);
 
+    $perdedor_rep_novo  = $perdedor_rep;
+
     $vencedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_vencedor);
     $perdedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_perdedor);
 
     return [
-        "vencedor_rep" => $vencedor_rep,
-        "perdedor_rep" => $perdedor_rep
+        "vencedor_rep"      => $vencedor_rep,
+        "perdedor_rep"      => $perdedor_rep,
+        "perdedor_rep.new"  => max(0, $perdedor_rep_novo - $vencedor_rep)
     ];
 }
 
@@ -504,17 +507,17 @@ function dano_por_atributo($pers, $alvo) {
 }
 
 function calc_dano($pers, $alvo, $dano_hab = 0) {
-    $retorno = array(
-        "esquivou" => false,
-        "dado_esquivou" => 0,
-        "critou" => false,
-        "dado_critou" => 0,
-        "critico" => 0,
-        "bloqueou" => false,
-        "dado_bloqueou" => 0,
-        "bloqueio" => 0,
-        "dano" => 0
-    );
+    $retorno = [
+        'esquivou'      => false,
+        'dado_esquivou' => 0,
+        'critou'        => false,
+        'dado_critou'   => 0,
+        'critico'       => 0,
+        'bloqueou'      => false,
+        'dado_bloqueou' => 0,
+        'bloqueio'      => 0,
+        'dano'          => 0
+    ];
 
     $esquiva    = chance_esquiva($pers, $alvo);
     $can_esqu   = rand() % 5 == 0;

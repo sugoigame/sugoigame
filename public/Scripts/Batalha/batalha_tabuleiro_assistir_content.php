@@ -140,11 +140,11 @@ $id_blue = $combate["id_1"];
         </div>
     </div>
 
-    <div id="relatorio_combate" class="panel panel-info">
+    <div id="relatorio_combate" class="panel panel-info" style="display: none;">
         <div class="panel-heading">Relatório</div>
         <div id="relatorio-combate-content" class="panel-body">
-            <?php $combate_logger = new CombateLogger($connection, $userDetails); ?>
-            <?php render_relatorio_data($combate_logger->get_relatorio_combate_pvp($combate["combate"]), $id_blue, $userDetails->tripulacao["adm"]); ?>
+            <?php // $combate_logger = new CombateLogger($connection, $userDetails); ?>
+            <?php // render_relatorio_data($combate_logger->get_relatorio_combate_pvp($combate["combate"]), $id_blue, $userDetails->tripulacao["adm"]); ?>
         </div>
     </div>
 <?php endif; ?>
