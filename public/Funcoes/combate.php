@@ -444,7 +444,7 @@ function chance_esquiva($pers, $alvo) {
 
     $esquiva_haki = max(0, $alvo["haki_esq"] - $pers["haki_esq"]);
 
-    $esquiva = min_max($agl - $pre, 0, 40) + $esquiva_haki;
+    $esquiva = min_max($agl - $pre, 0, 25) + $esquiva_haki;
 
     return round($esquiva);
 }
@@ -459,7 +459,7 @@ function chance_crit($pers, $alvo) {
 
     $crit_haki = max(0, $pers["haki_cri"] - $alvo["haki_cri"]);
 
-    $chance_crit = min_max($dex - $con, 0, 50) + $crit_haki;
+    $chance_crit = min_max($dex - $con, 0, 25) + $crit_haki;
 
     return round($chance_crit);
 }
@@ -472,7 +472,7 @@ function dano_crit($pers, $alvo) {
         $dex += $pers["dex"] * calc_score_mod($pers["classe_score"]);
     }
 
-    return (float)min_max($dex - $con, 25, 90) / 100;
+    return (float)min_max($dex - $con, 25, 45) / 100;
 }
 
 function chance_bloq($pers, $alvo) {
@@ -481,7 +481,7 @@ function chance_bloq($pers, $alvo) {
 
     $bloq_haki = max(0, $alvo["haki_cri"] - $pers["haki_cri"]);
 
-    $chance_bloq = min_max($res - $pre, 0, 50) + $bloq_haki;
+    $chance_bloq = min_max($res - $pre, 0, 25) + $bloq_haki;
 
     return round($chance_bloq);
 }
@@ -490,7 +490,7 @@ function dano_bloq($pers, $alvo) {
     $res = $alvo["res"];
     $pre = $pers["pre"];
 
-    return (float)min_max($res - $pre, 50, 90) / 100;
+    return (float)min_max($res - $pre, 50, 45) / 100;
 }
 
 function dano_por_atributo($pers, $alvo) {
@@ -504,7 +504,7 @@ function dano_por_atributo($pers, $alvo) {
         $def += $alvo["def"] * calc_score_mod($alvo["classe_score"]);
     }
 
-    return max(0, ($atk - $def) * 10);
+    return max(0, ($atk - $def) * 100);
 }
 
 function calc_dano($pers, $alvo, $dano_hab = 0) {
