@@ -55,6 +55,7 @@ function get_player_data_for_combat_check($alvo_id) {
         usr.id AS id,
         usr.x AS x,
         usr.y AS y,
+        usr.adm AS adm,
         usr.cod_personagem AS cod_personagem,
         usr.faccao AS faccao,
         usr.ip AS ip,
@@ -443,7 +444,7 @@ function chance_esquiva($pers, $alvo) {
 
     $esquiva_haki = max(0, $alvo["haki_esq"] - $pers["haki_esq"]);
 
-    $esquiva = min_max($agl - $pre, 0, 50) + $esquiva_haki;
+    $esquiva = min_max($agl - $pre, 0, 40) + $esquiva_haki;
 
     return round($esquiva);
 }
