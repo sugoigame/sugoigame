@@ -19,16 +19,16 @@ function nome_classe($cod) {
 
 function get_bonus_excelencia($classe, $lvl) {
     return array(
-        "atk" => floor(($lvl + 2) / 10) + ($classe == 1 ? floor(($lvl) / 10) : 0),
-        "def" => floor(($lvl + 3) / 10) + ($classe == 2 ? floor(($lvl) / 10) : 0),
-        "agl" => floor(($lvl + 4) / 10),
-        "res" => floor(($lvl + 7) / 10),
-        "pre" => floor(($lvl + 5) / 10) + ($classe == 3 ? floor(($lvl) / 10) : 0),
-        "dex" => floor(($lvl + 6) / 10),
-        "con" => floor(($lvl + 8) / 10),
-        "vit" => 0,
-        "hp_max" => floor(($lvl + 1) / 10) * 100,
-        "mp_max" => floor(($lvl + 9) / 10) * 6
+        "atk" => 10 + floor(($lvl + 2) / 10) + ($classe == 1 ? floor(($lvl) / 10) : 0),
+        "def" => 10 + floor(($lvl + 3) / 10) + ($classe == 2 ? floor(($lvl) / 10) : 0),
+        "agl" => 10 + floor(($lvl + 4) / 10),
+        "res" => 10 + floor(($lvl + 7) / 10),
+        "pre" => 10 + floor(($lvl + 5) / 10) + ($classe == 3 ? floor(($lvl) / 10) : 0),
+        "dex" => 10 + floor(($lvl + 6) / 10),
+        "con" => 10 + floor(($lvl + 8) / 10),
+        "vit" => 10 + 0,
+        "hp_max" => 10 + floor(($lvl + 1) / 10) * 100,
+        "mp_max" => 10 + floor(($lvl + 9) / 10) * 6
     );
 }
 
