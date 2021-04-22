@@ -55,6 +55,7 @@ function get_player_data_for_combat_check($alvo_id) {
         usr.id AS id,
         usr.x AS x,
         usr.y AS y,
+        usr.adm AS adm,
         usr.cod_personagem AS cod_personagem,
         usr.faccao AS faccao,
         usr.ip AS ip,
@@ -368,15 +369,15 @@ function calc_reputacao($vencedor_rep, $perdedor_rep, $lvl_mais_forte_vencedor, 
     $redutor_vencedor   = calc_redutor_rep_vencedor($vencedor_rep);
     $redutor_perdedor   = calc_redutor_rep_perdedor($perdedor_rep);
 
-    $perdedor_rep_novo  = $perdedor_rep;
-
     $vencedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_vencedor);
     $perdedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_perdedor);
 
     return [
         "vencedor_rep"      => $vencedor_rep,
         "perdedor_rep"      => $perdedor_rep,
-        "perdedor_rep.new"  => max(0, $perdedor_rep_novo - $vencedor_rep)
+
+        "vencedor_rep.new"  => max(0, $perdedor_rep),
+        "perdedor_rep.new"  => max(0, $perdedor_rep)
     ];
 }
 

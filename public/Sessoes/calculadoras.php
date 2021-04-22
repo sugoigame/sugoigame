@@ -359,6 +359,8 @@
                 <ul>
                     <li>Reputação ganha pelo vencedor: <?= $reputacao["vencedor_rep"] ?></li>
                     <li>Reputação perdida pelo perdedor: <?= $reputacao["perdedor_rep"] ?></li>
+                    <li>TESTE!!!! Reputação ganha pelo vencedor: <?= $reputacao["vencedor_rep.new"] ?></li>
+                    <li>TESTE!!!! Reputação perdida pelo perdedor: <?= $reputacao["perdedor_rep.new"] ?></li>
                 </ul>
             </div>
         <?php endif; ?>
