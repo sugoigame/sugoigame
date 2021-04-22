@@ -56,12 +56,12 @@ function filter_personagem_pode_finalizar($pers) {
                         Iniciar o tratamento de toda a tripulação
                     </button>
                 <?php endif; ?>
-                <?php $personagens_finalizar = array_filter($personagens, "filter_personagem_pode_finalizar"); ?>
+                <?php /*$personagens_finalizar = array_filter($personagens, "filter_personagem_pode_finalizar"); ?>
                 <?php if (count($personagens_finalizar)): ?>
                     <button class="btn btn-success link_send" href='link_Hospital/hospital_finalizar_recuperacao.php'>
                         Finalizar o tratamento de toda a tripulação
                     </button>
-                <?php endif; ?>
+                <?php endif;*/ ?>
             </p>
             <div>
                 <?php render_personagens_pills($personagens); ?>
