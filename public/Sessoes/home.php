@@ -12,7 +12,7 @@ function render_maior_do_mundo($tipo) {
         "SELECT p.*, u.*, IF(p.sexo =0, t.nome, t.nome_f) AS titulo_nome FROM tb_personagens p
             LEFT JOIN tb_titulos t ON p.titulo = t.cod_titulo
             INNER JOIN tb_usuarios u ON p.id = u.id
-            WHERE p.classe = ? ORDER BY classe_score DESC LIMIT 1",
+            WHERE u.adm = 0 AND p.classe = ? ORDER BY classe_score DESC LIMIT 1",
         "i", $class
     );
 ?>
