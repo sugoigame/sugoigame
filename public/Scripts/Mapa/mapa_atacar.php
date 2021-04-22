@@ -271,7 +271,7 @@ if ($result->count()) {
 }
 
 // cria o registro de combate
-$vez = rand(1, 2);
+$vez = 1;
 $tempo = $tipo == TIPO_COLISEU || $tipo == TIPO_CONTROLE_ILHA ? (atual_segundo() + 120) : (atual_segundo() + 90);
 $battle_back = $tipo == TIPO_COLISEU ? 42 : ($tipo == TIPO_CONTROLE_ILHA ? 54 : NULL);
 $result = $connection->run(
