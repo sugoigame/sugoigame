@@ -25,7 +25,7 @@ if ('POST' == $method) {
 				$golds = $plano['golds'] * (($plano['bonus'] / 100) + 1);
 			}
 
-			$is_dbl = $connection->run("SELECT `id` FROM tb_vip_planos WHERE ? BETWEEN data_inicio AND data_fim LIMIT 1", 's', [
+			$is_dbl = $connection->run("SELECT `id` FROM tb_vip_dobro WHERE ? BETWEEN data_inicio AND data_fim LIMIT 1", 's', [
 				$compra['criacao']
 			])->count();
 			$golds    = !$is_dbl ? $golds : ($golds * 2);
