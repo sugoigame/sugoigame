@@ -78,7 +78,7 @@
                             <span class="amarelo_claro" style="font-size: 16px; margin-left: 5px; top: 2px; position: relative">
                                 <?php if ($is_dbl) { ?>
                                     <span class="vermelho" style="text-decoration: line-through; font-size: 12px"><?=mascara_numeros_grandes($golds);?></span>
-                                    <span class="verde"><?=mascara_numeros_grandes($golds * 2);?></span>
+                                    <b class="verde"><?=mascara_numeros_grandes($golds * 2);?></b>
                                 <?php } else { ?>
                                     <?=mascara_numeros_grandes($golds);?>
                                 <?php } ?>
