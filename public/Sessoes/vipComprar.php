@@ -51,6 +51,7 @@
         <?php $i++; } ?>
     </ul><br />
     <div class="tab-content">
+    <?php $is_dbl   = $connection->run("SELECT `id` FROM tb_vip_dobro WHERE NOW() BETWEEN data_inicio AND data_fim LIMIT 1")->count(); ?>
 	<?php $i = 1; foreach($methods as $method => $currency) { ?>
         <div id="method-<?php echo $method?>-list" class="tab-pane <?php echo $i == 1 ? 'active' : ''; ?>">
             <?php
@@ -60,6 +61,10 @@
                     $golds = $plano['golds'];
                     if ($plano['bonus'] > 0)
                         $golds = $plano['golds'] * (($plano['bonus'] / 100) + 1);
+
+                    if ($is_dbl) {
+                        $golds  *= 2;
+                    }
             ?>
                 <div class="col-xs-12 col-md-4">
                     <div class="box-item">
