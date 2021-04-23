@@ -188,7 +188,7 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
                                 ); ?>
                             </div>
 
-                            <?php $is_dbl = $connection->run("SELECT `id` FROM tb_vip_dobro WHERE NOW() BETWEEN data_inicio AND data_fim LIMIT 1"); ?>
+                            <?php $is_dbl = $connection->run("SELECT `id`,`data_inicio`,`data_fim` FROM tb_vip_dobro WHERE NOW() BETWEEN data_inicio AND data_fim LIMIT 1"); ?>
                             <?php if ($is_dbl->count()) { ?>
                                 <?php $is_dbl = $is_dbl->fetch_array(); ?>
                                 <div class="alert alert-info">
