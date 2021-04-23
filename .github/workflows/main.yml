@@ -25,4 +25,3 @@ jobs:
 
             pm2 stop sugoi-map
             pm2 start /var/www/sugoigame/servers/map/server.php --name="sugoi-map" --interpreter=php5.6
-            sudo pm2 start app.js --interpreter=
