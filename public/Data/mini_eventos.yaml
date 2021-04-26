@@ -1055,7 +1055,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-   8:
+    8:
       - tipo: reagent
         cod_item: 188
         quant: 1
@@ -1063,7 +1063,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-   9:
+    9:
       - tipo: reagent
         cod_item: 144
         quant: 1
@@ -1071,7 +1071,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-   10:
+    10:
       - tipo: reagent
         cod_item: 19
         quant: 1
@@ -1079,7 +1079,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-   11:
+    11:
       - tipo: reagent
         cod_item: 24
         quant: 1
@@ -1148,7 +1148,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-   8:
+    8:
       - tipo: reagent
         cod_item: 188
         quant: 1
@@ -1156,7 +1156,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-   9:
+    9:
       - tipo: reagent
         cod_item: 121
         quant: 1
@@ -1164,7 +1164,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-   10:
+    10:
       - tipo: reagent
         cod_item: 56
         quant: 1
@@ -1172,7 +1172,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-   11:
+    11:
       - tipo: reagent
         cod_item: 67
         quant: 1
@@ -1254,7 +1254,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-   9:
+    9:
       - tipo: reagent
         cod_item: 121
         quant: 1
@@ -1262,7 +1262,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-   10:
+    10:
       - tipo: reagent
         cod_item: 25
         quant: 1
@@ -1270,7 +1270,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-   11:
+    11:
       - tipo: reagent
         cod_item: 26
         quant: 1
@@ -1283,7 +1283,7 @@
         quant: 500
       - tipo: berries
         quant: 20000000
-   13:
+    13:
       - tipo: reagent
         cod_item: 33
         quant: 1
@@ -1291,7 +1291,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-   14:
+    14:
       - tipo: reagent
         cod_item: 34
         quant: 1
