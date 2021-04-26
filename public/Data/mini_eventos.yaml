@@ -94,7 +94,7 @@
         quant: 20000
     2:
       - tipo: wanted
-        quant: 100000
+        quant: 150000
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -149,7 +149,6 @@
         quant: 500
       - tipo: berries
         quant: 5000000
-  
 3:
   nome: Caça instantânea no Novo Mundo
   duracao: 00:30:00
@@ -169,7 +168,7 @@
         quant: 20000
     2:
       - tipo: wanted
-        quant: 100000
+        quant: 200000
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -224,7 +223,6 @@
         quant: 500
       - tipo: berries
         quant: 5000000
-
 4:
   nome: Inimigo ameaçador nos Blues
   duracao: 01:00:00
@@ -329,7 +327,7 @@
         quant: 20000
     2:
       - tipo: wanted
-        quant: 200000
+        quant: 300000
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -392,7 +390,6 @@
         quant: 500
       - tipo: berries
         quant: 5000000
-
 6:
   nome: Inimigo ameaçador no Novo Mundo
   duracao: 01:00:00
@@ -412,7 +409,7 @@
         quant: 20000
     2:
       - tipo: wanted
-        quant: 200000
+        quant: 400000
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -475,7 +472,6 @@
         quant: 500
       - tipo: berries
         quant: 5000000
-
 7:
   nome: Grande ameaça nos Blues
   duracao: 02:00:00
@@ -580,7 +576,7 @@
         quant: 20000
     2:
       - tipo: wanted
-        quant: 400000
+        quant: 500000
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -626,10 +622,8 @@
       - tipo: berries
         quant: 20000
     8:
-      - tipo: dobrao
-        quant: 5
       - tipo: xp
-        quant: 500
+        quant: 2000
       - tipo: berries
         quant: 20000
     9:
@@ -664,7 +658,7 @@
         quant: 20000
     2:
       - tipo: wanted
-        quant: 400000
+        quant: 600000
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -749,20 +743,12 @@
         quant: 20000
     2:
       - tipo: wanted
-        quant: 800000
+        quant: 600000
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 20000
     3:
-      - tipo: reagent
-        cod_item: 152
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    4:
       - tipo: reagent
         cod_item: 180
         quant: 1
@@ -770,7 +756,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    5:
+    4:
       - tipo: reagent
         cod_item: 189
         quant: 1
@@ -778,28 +764,20 @@
         quant: 500
       - tipo: berries
         quant: 20000
+    5:
+      - tipo: reagent
+        cod_item: 70
+        quant: 25
+      - tipo: xp
+        quant: 500
+      - tipo: berries
+        quant: 20000
     6:
-      - tipo: reagent
-        cod_item: 200
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    7:
-      - tipo: reagent
-        cod_item: 51
-        quant: 100
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    8:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    9:
+    7:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -807,7 +785,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    10:
+    8:
       - tipo: reagent
         cod_item: 154
         quant: 1
@@ -815,7 +793,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: reagent
         cod_item: 185
         quant: 1
@@ -823,11 +801,18 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 10000000
+    11:
+      - tipo: dobrao
+        quant: 10
+      - tipo: xp
+        quant: 500
+      - tipo: berries
+        quant: 20000
 11:
   nome: Monstruosidade na Grand Line
   duracao: 06:00:00
@@ -854,7 +839,7 @@
         quant: 20000
     3:
       - tipo: reagent
-        cod_item: 152
+        cod_item: 180
         quant: 1
       - tipo: xp
         quant: 500
@@ -862,7 +847,7 @@
         quant: 20000
     4:
       - tipo: reagent
-        cod_item: 180
+        cod_item: 189
         quant: 1
       - tipo: xp
         quant: 500
@@ -870,34 +855,18 @@
         quant: 20000
     5:
       - tipo: reagent
-        cod_item: 189
-        quant: 1
+        cod_item: 59
+        quant: 25
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 20000
     6:
-      - tipo: reagent
-        cod_item: 200
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    7:
-      - tipo: reagent
-        cod_item: 51
-        quant: 100
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    8:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    9:
+    7:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -905,7 +874,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    10:
+    8:
       - tipo: reagent
         cod_item: 154
         quant: 1
@@ -913,7 +882,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: reagent
         cod_item: 185
         quant: 1
@@ -921,12 +890,18 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 10000000
- 
+    11:
+      - tipo: dobrao
+        quant: 10
+      - tipo: xp
+        quant: 500
+      - tipo: berries
+        quant: 20000
 12:
   nome: Monstruosidade no Novo Mundo
   duracao: 06:00:00
@@ -946,20 +921,12 @@
         quant: 20000
     2:
       - tipo: wanted
-        quant: 800000
+        quant: 1000000
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 20000
     3:
-      - tipo: reagent
-        cod_item: 152
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    4:
       - tipo: reagent
         cod_item: 180
         quant: 1
@@ -967,7 +934,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    5:
+    4:
       - tipo: reagent
         cod_item: 189
         quant: 1
@@ -975,28 +942,20 @@
         quant: 500
       - tipo: berries
         quant: 20000
+    5:
+      - tipo: reagent
+        cod_item: 62
+        quant: 25
+      - tipo: xp
+        quant: 500
+      - tipo: berries
+        quant: 20000
     6:
-      - tipo: reagent
-        cod_item: 200
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    7:
-      - tipo: reagent
-        cod_item: 51
-        quant: 100
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    8:
       - tipo: xp
         quant: 2000
       - tipo: berries
         quant: 20000
-    9:
+    7:
       - tipo: reagent
         cod_item: 159
         quant: 1
@@ -1004,7 +963,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    10:
+    8:
       - tipo: reagent
         cod_item: 154
         quant: 1
@@ -1012,7 +971,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    11:
+    9:
       - tipo: reagent
         cod_item: 185
         quant: 1
@@ -1020,12 +979,18 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    10:
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 10000000
-    
+    11:
+      - tipo: dobrao
+        quant: 10
+      - tipo: xp
+        quant: 500
+      - tipo: berries
+        quant: 20000
 13:
   nome: Catástrofe nos Blues
   duracao: 12:00:00
@@ -1048,20 +1013,12 @@
         quant: 20000
     2:
       - tipo: wanted
-        quant: 2000000
+        quant: 1000000
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 20000
     3:
-      - tipo: reagent
-        cod_item: 152
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    4:
       - tipo: reagent
         cod_item: 180
         quant: 1
@@ -1069,44 +1026,20 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    5:
+    4:
       - tipo: reagent
-        cod_item: 189
-        quant: 1
+        cod_item: 13
+        quant: 3
       - tipo: xp
         quant: 500
+      - tipo: berries
+        quant: 20000
+    5:
+      - tipo: xp
+        quant: 3000
       - tipo: berries
         quant: 20000
     6:
-      - tipo: reagent
-        cod_item: 200
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    7:
-      - tipo: reagent
-        cod_item: 51
-        quant: 100
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    8:
-      - tipo: xp
-        quant: 2000
-      - tipo: berries
-        quant: 20000
-    9:
-      - tipo: reagent
-        cod_item: 159
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    10:
       - tipo: reagent
         cod_item: 154
         quant: 1
@@ -1114,7 +1047,7 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    11:
+    7:
       - tipo: reagent
         cod_item: 185
         quant: 1
@@ -1122,11 +1055,38 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    12:
+    8:
+      - tipo: reagent
+        cod_item: 188
+        quant: 1
       - tipo: xp
         quant: 500
       - tipo: berries
-        quant: 10000000
+        quant: 20000
+    9:
+      - tipo: reagent
+        cod_item: 144
+        quant: 1
+      - tipo: xp
+        quant: 500
+      - tipo: berries
+        quant: 20000
+    10:
+      - tipo: reagent
+        cod_item: 19
+        quant: 1
+      - tipo: xp
+        quant: 500
+      - tipo: berries
+        quant: 20000
+    11:
+      - tipo: reagent
+        cod_item: 24
+        quant: 1
+      - tipo: xp
+        quant: 500
+      - tipo: berries
+        quant: 20000
 14:
   nome: Catástrofe na Grand Line
   duracao: 12:00:00
@@ -1153,7 +1113,7 @@
         quant: 20000
     3:
       - tipo: reagent
-        cod_item: 152
+        cod_item: 180
         quant: 1
       - tipo: xp
         quant: 500
@@ -1161,23 +1121,20 @@
         quant: 20000
     4:
       - tipo: reagent
-        cod_item: 180
-        quant: 1
+        cod_item: 5
+        quant: 3
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 20000
     5:
-      - tipo: reagent
-        cod_item: 189
-        quant: 1
       - tipo: xp
-        quant: 500
+        quant: 4000
       - tipo: berries
         quant: 20000
     6:
       - tipo: reagent
-        cod_item: 200
+        cod_item: 155
         quant: 1
       - tipo: xp
         quant: 500
@@ -1185,20 +1142,31 @@
         quant: 20000
     7:
       - tipo: reagent
-        cod_item: 51
-        quant: 100
+        cod_item: 185
+        quant: 1
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 20000
     8:
+      - tipo: reagent
+        cod_item: 188
+        quant: 1
       - tipo: xp
-        quant: 2000
+        quant: 500
+      - tipo: berries
+        quant: 20000
+    9:
+      - tipo: reagent
+        cod_item: 121
+        quant: 1
+      - tipo: xp
+        quant: 500
       - tipo: berries
         quant: 20000
     10:
       - tipo: reagent
-        cod_item: 159
+        cod_item: 56
         quant: 1
       - tipo: xp
         quant: 500
@@ -1206,34 +1174,17 @@
         quant: 20000
     11:
       - tipo: reagent
-        cod_item: 154
+        cod_item: 67
         quant: 1
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 20000
     12:
-      - tipo: reagent
-        cod_item: 185
-        quant: 1
       - tipo: xp
         quant: 500
       - tipo: berries
-        quant: 20000
-    13:
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 10000000
-   14:
-      - tipo: reagent
-        cod_item: 188
-        quant: 1
-      - tipo: xp
-        quant: 1000
-      - tipo: berries
-        quant: 90000 
-   
+        quant: 15000000
 15:
   nome: Catástrofe no Novo Mundo
   duracao: 12:00:00
@@ -1253,20 +1204,12 @@
         quant: 20000
     2:
       - tipo: wanted
-        quant: 2000000
+        quant: 3000000
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 20000
     3:
-      - tipo: reagent
-        cod_item: 152
-        quant: 1
-      - tipo: xp
-        quant: 500
-      - tipo: berries
-        quant: 20000
-    4:
       - tipo: reagent
         cod_item: 180
         quant: 1
@@ -1274,17 +1217,22 @@
         quant: 500
       - tipo: berries
         quant: 20000
-    5:
+    4:
       - tipo: reagent
-        cod_item: 189
-        quant: 1
+        cod_item: 1
+        quant: 3
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 20000
+    5:
+      - tipo: xp
+        quant: 5000
+      - tipo: berries
+        quant: 20000
     6:
       - tipo: reagent
-        cod_item: 200
+        cod_item: 156
         quant: 1
       - tipo: xp
         quant: 500
@@ -1292,20 +1240,23 @@
         quant: 20000
     7:
       - tipo: reagent
-        cod_item: 51
-        quant: 100
+        cod_item: 185
+        quant: 1
       - tipo: xp
         quant: 500
       - tipo: berries
         quant: 20000
     8:
+      - tipo: reagent
+        cod_item: 188
+        quant: 1
       - tipo: xp
-        quant: 2000
+        quant: 500
       - tipo: berries
         quant: 20000
     9:
       - tipo: reagent
-        cod_item: 159
+        cod_item: 121
         quant: 1
       - tipo: xp
         quant: 500
@@ -1313,7 +1264,7 @@
         quant: 20000
     10:
       - tipo: reagent
-        cod_item: 154
+        cod_item: 25
         quant: 1
       - tipo: xp
         quant: 500
@@ -1321,7 +1272,7 @@
         quant: 20000
     11:
       - tipo: reagent
-        cod_item: 185
+        cod_item: 26
         quant: 1
       - tipo: xp
         quant: 500
@@ -1331,12 +1282,20 @@
       - tipo: xp
         quant: 500
       - tipo: berries
-        quant: 10000000
+        quant: 20000000
     13:
       - tipo: reagent
-        cod_item: 188
+        cod_item: 33
         quant: 1
       - tipo: xp
-        quant: 1000
+        quant: 500
       - tipo: berries
-        quant: 90000 
+        quant: 20000
+    14:
+      - tipo: reagent
+        cod_item: 34
+        quant: 1
+      - tipo: xp
+        quant: 500
+      - tipo: berries
+        quant: 20000
