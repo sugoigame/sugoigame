@@ -13,11 +13,11 @@ if (isset($_GET["cod"])) {
     $pers = $userDetails->get_pers_by_cod($cod);
     $personagens[] = $pers;
 } else {
-    // foreach ($userDetails->personagens as $pers) {
-    //     if ($pers["respawn_tipo"] != RECUPERACAO_TIPO_QUARTOS && $pers["respawn"] < atual_segundo()) {
-    //         $personagens[] = $pers;
-    //     }
-    // }
+    foreach ($userDetails->personagens as $pers) {
+        if ($pers["respawn_tipo"] == RECUPERACAO_TIPO_HOSPITAL && $pers["respawn"] < atual_segundo()) {
+            $personagens[] = $pers;
+        }
+    }
 }
 
 foreach ($personagens as $personagem) {
