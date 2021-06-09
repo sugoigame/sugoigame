@@ -8,7 +8,7 @@ function filter_personagem_pode_iniciar($pers) {
 }
 
 function filter_personagem_pode_finalizar($pers) {
-    return $pers["respawn_tipo"] != RECUPERACAO_TIPO_QUARTOS && $pers["respawn"] < atual_segundo();
+    return $pers["respawn_tipo"] == RECUPERACAO_TIPO_HOSPITAL && $pers["respawn"] < atual_segundo();
 }
 
 ?>
