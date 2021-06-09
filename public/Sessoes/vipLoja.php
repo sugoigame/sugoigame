@@ -127,7 +127,7 @@
             "Vip/coup_de_burst_comprar.php?tipo=dobrao"
         ); ?>
 
-        <?php render_vantagem(
+        <?php/* render_vantagem(
             "ocultar.jpg",
             "Camuflagem",
             "Esconda seu navio no oceano ficando invisível para os outros jogadores. Você só estará invisível enquanto estiver parado, quando navegar voltará a ser visível.",
@@ -136,7 +136,7 @@
             PRECO_DOBRAO_CAMUFLAGEM,
             "Vip/ocultar.php",
             "VipDobroes/ocultar.php"
-        ); ?>
+        ); */?>
         <li class="list-group-item">
             <div class="row">
                 <div class="col-xs-2 col-md-2">

@@ -561,21 +561,6 @@
       tipo: 15
     - cod: 189
       tipo: 15
-200:
-  id: 200
-  nome: Carrot
-  img: 104
-  atk: 50
-  def: 30
-  agl: 30
-  res: 50
-  pre: 50
-  dex: 50
-  con: 10
-  vit: 100
-  hp: 200000
-  zona: 9
-  xp: 5000
 22:    # Ilha Dawn
   id: 22
   nome: Higuma

@@ -6,7 +6,7 @@ if ($userDetails->conta) {
 	exit();
 }
 
-$facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612&redirect_uri=https://sugoigame.com.br/Scripts/Geral/login_facebook.php&scope=email";
+$facebook_url = "https://www.facebook.com/dialog/oauth?client_id=4195656893810914&redirect_uri=https://sugoigame.com.br/Scripts/Geral/login_facebook.php&scope=email";
 
 $banners = array(
 	"1" => array(
@@ -131,10 +131,10 @@ if (!isset($banners[$banner_id])) {
 	<!-- Signup Form -->
 	<div id="signup-form">
 		<a class="button" id="jogar-button" data-toggle="modal" href="#modal-login">Comece a jogar!</a>
-		<a class="button bt-facebook" href="<?= $facebook_url ?>">
+		<!--<a class="button bt-facebook" href="<?= $facebook_url ?>">
 			<i class="fa fa-facebook-square fa-fw"></i>
 			Entrar com Facebook
-		</a>
+		</a>-->
 	</div>
 </div>
 
