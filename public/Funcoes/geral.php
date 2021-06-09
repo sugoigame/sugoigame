@@ -9,5 +9,5 @@ function get_chance() {
 }
 
 function formulaExp($nivel = 1) {
-	return (480 + (($nivel / 5) * 100)) * $nivel;
+	return (500 * $nivel);
 }

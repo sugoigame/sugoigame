@@ -12,4 +12,4 @@ define('OCEANO_SERVER',         'localhost:9000');
 define('PS_ENV',                'sandbox');    // production, sandbox
 define('PS_EMAIL',              'felipe.fmedeiros95@gmail.com');
 define('PS_TOKEN_SANDBOX',      'C43E8E781D194CAE9E6523999B98DCDE');
-define('PS_TOKEN_PRODUCTION',   NULL);
+define('PS_TOKEN_PRODUCTION',   null);
