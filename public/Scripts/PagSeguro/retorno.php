@@ -21,14 +21,14 @@ if ('POST' == $method) {
         $pagamentoMetodo    = $transaction->getPaymentMethod()->getType()->getTypeFromValue();
         $pagamentoReff      = $transaction->getCode();
 
-        $result = $connection->run("SELECT `id`,`plano_id`,`status`,`conta_id`,`criacao` FROM tb_vip_compras WHERE id = ? LIMIT 1", 'i', [
+        $result = $connection->run("SELECT * FROM tb_vip_compras WHERE id = ? LIMIT 1", 'i', [
             $pagamentoItem
         ]);
         if ($result->count() < 1) {
             exit('Invalid buy!');
         } else {
             $compra = $result->fetch();
-            $plano  = $connection->run("SELECT `golds` FROM tb_vip_planos WHERE id = ? LIMIT 1", 'i', [
+            $plano  = $connection->run("SELECT * FROM tb_vip_planos WHERE id = ? LIMIT 1", 'i', [
                 $compra['plano_id']
             ])->fetch();
 
@@ -37,7 +37,7 @@ if ('POST' == $method) {
                 $golds = $plano['golds'] * (($plano['bonus'] / 100) + 1);
             }
 
-            $is_dbl = $connection->run("SELECT `id` FROM tb_vip_planos WHERE ? BETWEEN data_inicio AND data_fim LIMIT 1", 's', [
+            $is_dbl = $connection->run("SELECT `id` FROM tb_vip_dobro WHERE ? BETWEEN data_inicio AND data_fim LIMIT 1", 's', [
                 $compra['criacao']
             ])->count();
             $golds    = !$is_dbl ? $golds : ($golds * 2);

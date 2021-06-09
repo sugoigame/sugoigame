@@ -55,6 +55,7 @@ function get_player_data_for_combat_check($alvo_id) {
         usr.id AS id,
         usr.x AS x,
         usr.y AS y,
+        usr.adm AS adm,
         usr.cod_personagem AS cod_personagem,
         usr.faccao AS faccao,
         usr.ip AS ip,
@@ -372,8 +373,11 @@ function calc_reputacao($vencedor_rep, $perdedor_rep, $lvl_mais_forte_vencedor, 
     $perdedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_perdedor);
 
     return [
-        "vencedor_rep" => $vencedor_rep,
-        "perdedor_rep" => $perdedor_rep
+        "vencedor_rep"      => $vencedor_rep,
+        "perdedor_rep"      => $perdedor_rep,
+
+        "vencedor_rep.new"  => max(0, $perdedor_rep),
+        "perdedor_rep.new"  => max(0, $perdedor_rep)
     ];
 }
 
@@ -504,47 +508,44 @@ function dano_por_atributo($pers, $alvo) {
 }
 
 function calc_dano($pers, $alvo, $dano_hab = 0) {
-    $retorno = array(
-        "esquivou" => false,
-        "dado_esquivou" => 0,
-        "critou" => false,
-        "dado_critou" => 0,
-        "critico" => 0,
-        "bloqueou" => false,
-        "dado_bloqueou" => 0,
-        "bloqueio" => 0,
-        "dano" => 0
-    );
+    $retorno = [
+        'esquivou'      => false,
+        'dado_esquivou' => 0,
+        'critou'        => false,
+        'dado_critou'   => 0,
+        'critico'       => 0,
+        'bloqueou'      => false,
+        'dado_bloqueou' => 0,
+        'bloqueio'      => 0,
+        'dano'          => 0
+    ];
 
     $esquiva    = chance_esquiva($pers, $alvo);
-    $can_esqu   = rand() % 5 == 0;
 
     $retorno["chance_esquiva"] = $esquiva;
-    $retorno["dado_esquivou"] = rand(1 * 10, 100 * 10) / 10;
+    $retorno["dado_esquivou"] = rand(1, 1000) / 10;
 
-    if ($retorno["dado_esquivou"] <= $esquiva && $can_esqu) {
+    if ($retorno["dado_esquivou"] <= $esquiva) {
         $retorno["esquivou"] = true;
     } else {
 
         $dano = dano_por_atributo($pers, $alvo) + $dano_hab;
 
         $chance_crit    = chance_crit($pers, $alvo);
-        $can_crit       = rand() % 5 == 0;
 
         $retorno["chance_critico"]  = $chance_crit;
-        $retorno["dado_critou"]     = rand(1 * 10, 100 * 10) / 10;
-        if ($retorno["dado_critou"] <= $chance_crit && $can_crit) {
+        $retorno["dado_critou"]     = rand(1, 1000) / 10;
+        if ($retorno["dado_critou"] <= $chance_crit) {
             $retorno["critou"] = true;
 
             $retorno["critico"] = dano_crit($pers, $alvo);
         }
 
         $chance_bloq = chance_bloq($pers, $alvo);
-        $can_bloq       = rand() % 5 == 0;
 
         $retorno["chance_bloqueio"] = $chance_bloq;
-        $retorno["dado_bloqueou"]   = rand(1 * 10, 100 * 10) / 10;
-        if ($retorno["dado_bloqueou"] <= $chance_bloq && $can_bloq) {
+        $retorno["dado_bloqueou"]   = rand(1, 1000) / 10;
+        if ($retorno["dado_bloqueou"] <= $chance_bloq) {
             $retorno["bloqueou"] = true;
 
             $retorno["bloqueio"] = dano_bloq($pers, $alvo);

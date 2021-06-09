@@ -1,3 +1,4 @@
+<?php if ($userDetails->tripulacao['adm']) { ?>
 <div class="panel-heading">Faça uma doação</div>
 <div class="panel-body">
     <div class="panel text-left">
@@ -51,6 +52,15 @@
         <?php $i++; } ?>
     </ul><br />
     <div class="tab-content">
+    <style>
+        .vermelho {
+            color: #f43b3b !important;
+        }
+        .verde {
+            color: #76e698 !important;
+        }
+    </style>
+    <?php $is_dbl   = $connection->run("SELECT `id` FROM tb_vip_dobro WHERE NOW() BETWEEN data_inicio AND data_fim LIMIT 1")->count(); ?>
 	<?php $i = 1; foreach($methods as $method => $currency) { ?>
         <div id="method-<?php echo $method?>-list" class="tab-pane <?php echo $i == 1 ? 'active' : ''; ?>">
             <?php
@@ -64,8 +74,17 @@
                 <div class="col-xs-12 col-md-4">
                     <div class="box-item">
                         <h3><?=$plano['nome'];?></h3>
-                        <h4><img src="Imagens/Icones/Gold.png"/>
-                            <strong><?=mascara_numeros_grandes($golds);?></strong></h4>
+                        <h4>
+                            <img src="Imagens/Icones/Gold.png" />
+                            <span class="amarelo_claro" style="font-size: 16px; margin-left: 5px; top: 2px; position: relative">
+                                <?php if ($is_dbl) { ?>
+                                    <span class="vermelho" style="text-decoration: line-through; font-size: 12px"><?=mascara_numeros_grandes($golds);?></span>
+                                    <b class="verde"><?=mascara_numeros_grandes($golds * 2);?></b>
+                                <?php } else { ?>
+                                    <?=mascara_numeros_grandes($golds);?>
+                                <?php } ?>
+                            </span>
+                        </h4>
                         <h4><strong> <?=($symbols[$currency] . ' ' . number_format($plano['valor_' . strtolower($currency)], 2, ',', '.'));?></strong></h4>
                         <?php if ($method == 'pagseguro') { ?>
                             <a href="Scripts/Vip/adquirirPS.php?plano=<?=base64_encode($plano['id']);?>" target="_blank" class="btn btn-success">Fazer doação</a>
@@ -80,5 +99,6 @@
             ++$i;
             ?>
         </div>
-    <?php  } ?>
+    <?php } ?>
 </div>
+<?php } ?>

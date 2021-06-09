@@ -46,14 +46,13 @@ if (!$pers) {
             AND $pers["classe"] == $skill["requisito_classe"]
             AND $pers["maestria"] >= $skill["requisito_maestria"];
     }; ?>
+<div class="row">
     <?php foreach ($skills_classe as $skill): ?>
         <?php $aprendida = $connection->run("SELECT cod FROM tb_personagens_skil WHERE cod = ? AND cod_skil = ? AND tipo = ?",
             "iii", array($pers["cod"], $skill["cod_skil"], $skill["tiponum"]))->count(); ?>
 
         <?php if ($aprendida) continue; ?>
-
-        <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <?= $skill["tipo"] ?> <img src="Imagens/Skils/Tipo/<?= $skill["tipo"] ?>.png">
@@ -83,7 +82,7 @@ if (!$pers) {
                     </div>
                 </div>
             </div>
-        </div>
     <?php endforeach; ?>
+    </div>
 <?php endif; ?>
 <?php render_personagem_panel_bottom(); ?>

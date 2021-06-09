@@ -187,7 +187,16 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
                                     "missoes"
                                 ); ?>
                             </div>
-                            
+
+                            <?php $is_dbl = $connection->run("SELECT `id`,`data_inicio`,`data_fim` FROM tb_vip_dobro WHERE NOW() BETWEEN data_inicio AND data_fim LIMIT 1"); ?>
+                            <?php if ($is_dbl->count()) { ?>
+                                <?php $is_dbl = $is_dbl->fetch_array(); ?>
+                                <div class="alert alert-info">
+                                    <b>!!! PROMOÇÃO !!!</b><br />
+                                    Estamos com uma promoção de Gold em DOBRO ativa de <b><?=date('d/m/Y à\s H:i:s', strtotime($is_dbl['data_inicio']));?></b> até <b><?=date('d/m/Y à\s H:i:s', strtotime($is_dbl['data_fim']));?></b>.<br />
+                                    Clique <a href="./?ses=vipComprar" class="link_content">aqui</a> e aproveite essa oportunidade.
+                                </div>
+                            <?php } ?>
 
                             <?php if (in_array($userDetails->tripulacao["id"], $rdp) || in_array($userDetails->tripulacao["id"], $adf)): ?>
                                 <?php $recompensa = $connection->run("SELECT * FROM tb_recompensa_recebida_era WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"]))->count(); ?>
