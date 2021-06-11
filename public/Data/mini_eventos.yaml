@@ -1167,7 +1167,7 @@
     10:
       - tipo: reagent
         cod_item: 56
-        quant: 1
+        quant: 5
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -1175,7 +1175,7 @@
     11:
       - tipo: reagent
         cod_item: 67
-        quant: 1
+        quant: 5
       - tipo: xp
         quant: 500
       - tipo: berries
