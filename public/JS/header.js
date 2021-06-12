@@ -349,11 +349,11 @@ function headerAppendFunctions() {
 		iniciaNav();
 	});
 
-    $(document).on('click', "#chat-button", function () {
-        window.localStorage.setItem('sg_c', $('#sg_c').val());
-        window.localStorage.setItem('sg_k', $('#sg_k').val());
-        window.open('Chat/index.html', 'Sugoi Game - Chat', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=430');
-    });
+//    $(document).on('click', "#chat-button", function () {
+//        window.localStorage.setItem('sg_c', $('#sg_c').val());
+//        window.localStorage.setItem('sg_k', $('#sg_k').val());
+//        window.open('Chat/index.html', 'Sugoi Game - Chat', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=430');
+//    });
 }
 
 function loadMapaCartografo(marId, mapId) {
