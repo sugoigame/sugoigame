@@ -369,7 +369,7 @@ function calc_reputacao($vencedor_rep, $perdedor_rep, $lvl_mais_forte_vencedor, 
     $redutor_vencedor   = calc_redutor_rep_vencedor($vencedor_rep);
     $redutor_perdedor   = calc_redutor_rep_perdedor($perdedor_rep);
 
-    $vencedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_vencedor);
+    $vencedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_vencedor + 50);
     $perdedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_perdedor);
 
     return [
