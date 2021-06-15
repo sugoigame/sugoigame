@@ -165,7 +165,7 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
 					<?php $dias_restantes = $tempo_restante->format('%a'); ?>
 					<h4>
 						<a href="./?ses=era" data-dismiss="modal" class="link_content">
-							Era do Caos
+							Era do Caos 
 						</a>
 					</h4>
 					<h5>Duração: --</h5>
