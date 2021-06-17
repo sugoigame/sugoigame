@@ -6,57 +6,147 @@
     - 2
     - 3
     - 4
-  quant: 15
-  berries: 10000
+  quant: 5
+  berries: 1000000
+  recompensas:
+    - tipo: reagent
+      cod_item: 27
+      quant: 1
+    - tipo: reagent
+      cod_item: 30
+      quant: 1
+    - tipo: reagent
+      cod_item: 15
+      quant: 1
+    - tipo: reagent
+      cod_item: 20
+      quant: 1
 2:
-  nome: Caça as Baleias
+  nome: Caça às Baleias
   objetivo: 2
   mares:
     - 1
     - 2
     - 3
     - 4
-  quant: 15
-  berries: 50000
+  quant: 5
+  berries: 1000000
+  recompensas:
+    - tipo: reagent
+      cod_item: 27
+      quant: 1
+    - tipo: reagent
+      cod_item: 30
+      quant: 1
+    - tipo: reagent
+      cod_item: 15
+      quant: 1
+    - tipo: reagent
+      cod_item: 21
+      quant: 1
 3:
-  nome: Caça Tubarões
+  nome: Caça aos Tubarões
   objetivo: 3
   mares:
     - 1
     - 2
     - 3
     - 4
-    - 5
-  quant: 15
-  berries: 100000
+  quant: 5
+  berries: 1000000
+  recompensas:
+    - tipo: reagent
+      cod_item: 28
+      quant: 1
+    - tipo: reagent
+      cod_item: 31
+      quant: 1
+    - tipo: reagent
+      cod_item: 16
+      quant: 1
+    - tipo: reagent
+      cod_item: 22
+      quant: 1
 4:
-  nome: Caça aos Filhotes de Reis dos Mares
+  nome: Caça aos Filhotes de Rei do Mar
   objetivo: 4
   mares:
     - 5
-  quant: 15
-  berries: 300000
+  quant: 5
+  berries: 1000000
+  recompensas:
+    - tipo: reagent
+      cod_item: 29
+      quant: 1
+    - tipo: reagent
+      cod_item: 32
+      quant: 1
+    - tipo: reagent
+      cod_item: 17
+      quant: 1
+    - tipo: reagent
+      cod_item: 23
+      quant: 1
 5:
-  nome: Caça aos Reis dos Mares
+  nome: Caça aos Reis do Mar
   objetivo: 5
   mares:
     - 5
-  quant: 15
-  berries: 400000
+  quant: 5
+  berries: 1000000
+  recompensas:
+    - tipo: reagent
+      cod_item: 29
+      quant: 1
+    - tipo: reagent
+      cod_item: 32
+      quant: 1
+    - tipo: reagent
+      cod_item: 18
+      quant: 1
+    - tipo: reagent
+      cod_item: 23
+      quant: 1
 6:
-  nome: Caça aos Reis dos Mares Gigante
+  nome: Caça aos Reis do Mar Gigantes
   objetivo: 6
   mares:
     - 5
-  quant: 15
-  berries: 500000
+  quant: 5
+  berries: 1000000
+  recompensas:
+    - tipo: reagent
+      cod_item: 29
+      quant: 1
+    - tipo: reagent
+      cod_item: 32
+      quant: 1
+    - tipo: reagent
+      cod_item: 18
+      quant: 1
+    - tipo: reagent
+      cod_item: 23
+      quant: 1
 7:
   nome: Caça aos Filhotes de Dragão Marítimo
   objetivo: 7
   mares:
     - 6
-  quant: 15
-  berries: 600000
+  quant: 5
+  berries: 1000000
+  recompensas:
+    - tipo: reagent
+      cod_item: 25
+      quant: 1
+    - tipo: reagent
+      cod_item: 33
+      quant: 1
+    - tipo: reagent
+      cod_item: 19
+      quant: 1
+    - tipo: reagent
+      cod_item: 24
+      quant: 1
 8:
   nome: Caça aos Dragões Marítimos
   objetivo: 8
