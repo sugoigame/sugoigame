@@ -51,7 +51,7 @@
   quant: 15
   berries: 500000
 7:
-  nome: Caça aos Filhotes de Dragão Marítimos
+  nome: Caça aos Filhotes de Dragão Marítimo
   objetivo: 7
   mares:
     - 6
@@ -62,8 +62,21 @@
   objetivo: 8
   mares:
     - 6
-  quant: 15
-  berries: 650000
+  quant: 5
+  berries: 1000000
+  recompensas:
+    - tipo: reagent
+      cod_item: 26
+      quant: 1
+    - tipo: reagent
+      cod_item: 34
+      quant: 1
+    - tipo: reagent
+      cod_item: 19
+      quant: 1
+    - tipo: reagent
+      cod_item: 24
+      quant: 1
 9:
   nome: Derrote Mohmoo
   objetivo: 9
