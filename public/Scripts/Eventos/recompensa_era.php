@@ -28,6 +28,7 @@ if ($rdp[0] == $userDetails->tripulacao["id"] || $adf[0] == $userDetails->tripul
 
     $userDetails->add_item(183, TIPO_ITEM_REAGENT, 2);
     $userDetails->add_item(161, TIPO_ITEM_REAGENT, 1);
+    $userDetails->add_item(208, TIPO_ITEM_REAGENT, 1);
 } else if ($rdp[1] == $userDetails->tripulacao["id"] || $adf[1] == $userDetails->tripulacao["id"]) {
     $connection->run("UPDATE tb_conta SET gold = gold + ? WHERE conta_id = ?",
         "ii", array(440, $userDetails->conta["conta_id"]));

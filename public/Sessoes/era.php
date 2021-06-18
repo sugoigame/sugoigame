@@ -100,8 +100,7 @@
                 energia da sua tripulação.
             </p>
             <p>
-                Ao fim de cada Grande Era, todos os pontos de Haki treinados são resetados, e os jogadores que
-                conseguirem alcançar o nível máximo de Haki durante a Grande Era são recompensados com prêmios
+                Ao fim de cada Grande Era, os jogadores que conseguiram alcançar o nível máximo de Haki durante a Grande Era são recompensados com prêmios
                 exclusivos.
             </p>
             <p>
