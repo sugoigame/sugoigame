@@ -187,7 +187,7 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
 					</a>
 				</div>
 				<div class="list-group-item col-md-4">
-					<?php $end = new DateTime("2021-07-03 00:00:00"); ?>
+					<?php $end = new DateTime("2021-08-03 00:00:00"); ?>
 					<?php $tempo_restante = $now->diff($end); ?>
 					<?php $dias_restantes = $tempo_restante->format('%a'); ?>
 					<h4>
