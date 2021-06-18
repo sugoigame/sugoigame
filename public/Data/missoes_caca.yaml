@@ -62,7 +62,6 @@
   mares:
     - 6
   quant: 15
-  diario: 1
   berries: 600000
 8:
   nome: Caça aos Dragões Marítimos
@@ -70,7 +69,6 @@
   mares:
     - 6
   quant: 15
-  diario: 1
   berries: 650000
 9:
   nome: Derrote Mohmoo
