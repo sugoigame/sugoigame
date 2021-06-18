@@ -1123,6 +1123,76 @@ class ItemUsavel {
 
 		return "Você recebeu uma Borda de Personagem!";
 	}
+	public function abre_fim_era() {
+		$bordas = array("1" => array());
+
+		$minhas_bordas = $this->connection->run("SELECT * FROM tb_tripulacao_bordas WHERE tripulacao_id = ?",
+			"i", array($this->userDetails->tripulacao["id"]))->fetch_all_array();
+
+		$bordas_validas = array();
+		foreach ($bordas as $id => $borda) {
+			
+				$found = FALSE;
+				foreach ($minhas_bordas as $minha_borda) {
+					if ($minha_borda["borda"] == $id) {
+						$found = TRUE;
+						break;
+					}
+				}
+
+				if (!$found) {
+					$bordas_validas[] = $id;
+				}
+			
+		}
+
+		if (!count($bordas_validas)) {
+			$this->protector->exit_error("Você já recebeu todas as bordas. Aguarde até novas sejam adicionadas para tentar novamente.");
+		}
+		$borda = $bordas_validas[array_rand($bordas_validas)];
+
+		$this->connection->run("INSERT INTO tb_tripulacao_bordas (tripulacao_id, borda) VALUE (?,?)",
+			"ii", array($this->userDetails->tripulacao["id"], $borda));
+
+		echo "<img src=\"Imagens/Personagens/Bordas/$borda.png\" />";
+
+		return "Você recebeu uma Borda de Personagem!";
+	}
+	public function abre_fim_poderes() {
+		$bordas = array("3" => array());
+
+		$minhas_bordas = $this->connection->run("SELECT * FROM tb_tripulacao_bordas WHERE tripulacao_id = ?",
+			"i", array($this->userDetails->tripulacao["id"]))->fetch_all_array();
+
+		$bordas_validas = array();
+		foreach ($bordas as $id => $borda) {
+			
+				$found = FALSE;
+				foreach ($minhas_bordas as $minha_borda) {
+					if ($minha_borda["borda"] == $id) {
+						$found = TRUE;
+						break;
+					}
+				}
+
+				if (!$found) {
+					$bordas_validas[] = $id;
+				}
+			
+		}
+
+		if (!count($bordas_validas)) {
+			$this->protector->exit_error("Você já recebeu todas as bordas. Aguarde até novas sejam adicionadas para tentar novamente.");
+		}
+		$borda = $bordas_validas[array_rand($bordas_validas)];
+
+		$this->connection->run("INSERT INTO tb_tripulacao_bordas (tripulacao_id, borda) VALUE (?,?)",
+			"ii", array($this->userDetails->tripulacao["id"], $borda));
+
+		echo "<img src=\"Imagens/Personagens/Bordas/$borda.png\" />";
+
+		return "Você recebeu uma Borda de Personagem!";
+	}
 
 	public function abre_bau_pvp_ouro() {
 		if (!$this->userDetails->can_add_item()) {
