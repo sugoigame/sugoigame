@@ -38,10 +38,10 @@ define('PRECO_DOBRAO_RESET_AKUMA',                      240);
 define('PRECO_GOLD_REDEFINE_AKUMA',                     50); // 10
 define('PRECO_DOBRAO_REDEFINE_AKUMA',                   100);
 
-define('PRECO_GOLD_RESET_ATRIBUTOS',                   0); // 5
+define('PRECO_GOLD_RESET_ATRIBUTOS',                   20); // 5
 define('PRECO_DOBRAO_RESET_ATRIBUTOS',                  50);
 
-define('PRECO_GOLD_RESET_CLASSE',                       0); // 15
+define('PRECO_GOLD_RESET_CLASSE',                       20); // 15
 define('PRECO_DOBRAO_RESET_CLASSE',                     100);
 
 define('PRECO_GOLD_RESET_DISPOSICAO',                   100);
