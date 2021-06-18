@@ -8,7 +8,7 @@ function filter_personagem_pode_iniciar($pers) {
 }
 
 function filter_personagem_pode_finalizar($pers) {
-    return $pers["respawn_tipo"] != RECUPERACAO_TIPO_QUARTOS && $pers["respawn"] < atual_segundo();
+    return $pers["respawn_tipo"] == RECUPERACAO_TIPO_HOSPITAL && $pers["respawn"] < atual_segundo();
 }
 
 ?>
@@ -56,12 +56,12 @@ function filter_personagem_pode_finalizar($pers) {
                         Iniciar o tratamento de toda a tripulação
                     </button>
                 <?php endif; ?>
-                <?php /*$personagens_finalizar = array_filter($personagens, "filter_personagem_pode_finalizar"); ?>
+                <?php $personagens_finalizar = array_filter($personagens, "filter_personagem_pode_finalizar"); ?>
                 <?php if (count($personagens_finalizar)): ?>
                     <button class="btn btn-success link_send" href='link_Hospital/hospital_finalizar_recuperacao.php'>
                         Finalizar o tratamento de toda a tripulação
                     </button>
-                <?php endif;*/ ?>
+                <?php endif; ?>
             </p>
             <div>
                 <?php render_personagens_pills($personagens); ?>
@@ -76,7 +76,7 @@ function filter_personagem_pode_finalizar($pers) {
             <?php render_personagem_sub_panel_with_img_top($pers); ?>
             <div class="panel-body">
                 <?php if (!$pers["respawn"]) : ?>
-                    <?php $tempo = max(0, 10 * ($pers["lvl"])); ?>
+                    <?php $tempo = max(0, 6 * ($pers["lvl"])); ?>
                     <p>
                         <strong>Tempo de espera:</strong>
                         <?= transforma_tempo_min($tempo) ?>

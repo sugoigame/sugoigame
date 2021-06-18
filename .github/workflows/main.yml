@@ -22,6 +22,3 @@ jobs:
 
             git status
             git pull origin prod
-
-            pm2 stop sugoi-map
-            pm2 start /var/www/sugoigame/servers/map/server.php --name="sugoi-map" --interpreter=php5.6

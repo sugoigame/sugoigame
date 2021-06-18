@@ -210,8 +210,6 @@
       tipo: 15
     - cod: 25
       tipo: 15
-    - cod: 189
-      tipo: 15
 8:
   id: 8
   nome: Dragão Marítmo
@@ -235,8 +233,6 @@
     - cod: 34
       tipo: 15
     - cod: 26
-      tipo: 15
-    - cod: 189
       tipo: 15
 9:
   id: 9
