@@ -159,16 +159,16 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
 			<h4>Eventos ativos neste momento:</h4>
 			<div class="row">
 				<div class="list-group-item col-md-4">
-					<?php $end = new DateTime("2021-06-17 00:00:00"); ?>
+					<?php $end = new DateTime("2021-09-17 00:00:00"); ?>
 					<?php $now = new DateTime(date("Y-m-d H:i:s")); ?>
 					<?php $tempo_restante = $now->diff($end); ?>
 					<?php $dias_restantes = $tempo_restante->format('%a'); ?>
 					<h4>
 						<a href="./?ses=era" data-dismiss="modal" class="link_content">
-							Era do Caos 
+							2º Grande Era dos Piratas 
 						</a>
 					</h4>
-					<h5>Duração: --</h5>
+					<h5>Duração: 90 dias</h5>
 					<div class="progress">
 						<div class="progress-bar progress-bar-<?= dias_restantes_color($dias_restantes) ?>"
 							 style="width: <?= (90 - $dias_restantes) / 90 * 100 ?>%">
@@ -187,7 +187,7 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
 					</a>
 				</div>
 				<div class="list-group-item col-md-4">
-					<?php $end = new DateTime("2021-06-03 00:00:00"); ?>
+					<?php $end = new DateTime("2021-07-03 00:00:00"); ?>
 					<?php $tempo_restante = $now->diff($end); ?>
 					<?php $dias_restantes = $tempo_restante->format('%a'); ?>
 					<h4>

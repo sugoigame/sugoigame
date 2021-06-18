@@ -24,6 +24,7 @@ if ($rdp[0] == $userDetails->tripulacao["id"] || $adf[0] == $userDetails->tripul
     $userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
     $userDetails->add_item(122, TIPO_ITEM_REAGENT, 1);
     $userDetails->add_item(162, TIPO_ITEM_REAGENT, 1);
+    $userDetails->add_item(209, TIPO_ITEM_REAGENT, 1);
 } else if ($rdp[1] == $userDetails->tripulacao["id"] || $adf[1] == $userDetails->tripulacao["id"]) {
     $connection->run("INSERT INTO tb_personagem_titulo (cod, titulo) VALUE (?, ?)",
         "ii", array($userDetails->capitao["cod"], $userDetails->tripulacao["faccao"] == FACCAO_PIRATA ? 93 : 94));;
@@ -31,18 +32,21 @@ if ($rdp[0] == $userDetails->tripulacao["id"] || $adf[0] == $userDetails->tripul
     $userDetails->add_item(188, TIPO_ITEM_REAGENT, 2);
     $userDetails->add_item(122, TIPO_ITEM_REAGENT, 1);
     $userDetails->add_item(162, TIPO_ITEM_REAGENT, 1);
+    $userDetails->add_item(209, TIPO_ITEM_REAGENT, 1);
 } else if ($rdp[2] == $userDetails->tripulacao["id"] || $adf[2] == $userDetails->tripulacao["id"]) {
     $connection->run("INSERT INTO tb_personagem_titulo (cod, titulo) VALUE (?, ?)",
         "ii", array($userDetails->capitao["cod"], $userDetails->tripulacao["faccao"] == FACCAO_PIRATA ? 93 : 94));
 
     $userDetails->add_item(188, TIPO_ITEM_REAGENT, 2);
     $userDetails->add_item(162, TIPO_ITEM_REAGENT, 1);
+    $userDetails->add_item(209, TIPO_ITEM_REAGENT, 1);
 } else if ($rdp[3] == $userDetails->tripulacao["id"] || $adf[3] == $userDetails->tripulacao["id"]) {
     $connection->run("INSERT INTO tb_personagem_titulo (cod, titulo) VALUE (?, ?)",
         "ii", array($userDetails->capitao["cod"], $userDetails->tripulacao["faccao"] == FACCAO_PIRATA ? 93 : 94));
 
     $userDetails->add_item(188, TIPO_ITEM_REAGENT, 2);
     $userDetails->add_item(162, TIPO_ITEM_REAGENT, 1);
+    $userDetails->add_item(209, TIPO_ITEM_REAGENT, 1);
 }
 
 
