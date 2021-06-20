@@ -6,11 +6,6 @@
     - 2
     - 3
     - 4
-<<<<<<< HEAD
-  quant: 15
-  diario: 1
-  berries: 10000
-=======
   quant: 5
   berries: 1000000
   diario: 1
@@ -27,7 +22,6 @@
     - tipo: reagent
       cod_item: 20
       quant: 1
->>>>>>> 9ba6dde2327eb0a9e21500c4af0e7fc96ae9a85f
 2:
   nome: Caça às Baleias
   objetivo: 2
@@ -36,11 +30,6 @@
     - 2
     - 3
     - 4
-<<<<<<< HEAD
-  quant: 15
-  diario: 1
-  berries: 50000
-=======
   quant: 5
   berries: 1000000
   diario: 1
@@ -57,7 +46,6 @@
     - tipo: reagent
       cod_item: 21
       quant: 1
->>>>>>> 9ba6dde2327eb0a9e21500c4af0e7fc96ae9a85f
 3:
   nome: Caça aos Tubarões
   objetivo: 3
@@ -66,12 +54,6 @@
     - 2
     - 3
     - 4
-<<<<<<< HEAD
-    - 5
-  quant: 15
-  diario: 1
-  berries: 100000
-=======
   quant: 5
   berries: 1000000
   diario: 1
@@ -88,17 +70,11 @@
     - tipo: reagent
       cod_item: 22
       quant: 1
->>>>>>> 9ba6dde2327eb0a9e21500c4af0e7fc96ae9a85f
 4:
   nome: Caça aos Filhotes de Rei do Mar
   objetivo: 4
   mares:
     - 5
-<<<<<<< HEAD
-  quant: 15
-  diario: 1
-  berries: 300000
-=======
   quant: 5
   berries: 1000000
   diario: 1
@@ -115,17 +91,11 @@
     - tipo: reagent
       cod_item: 23
       quant: 1
->>>>>>> 9ba6dde2327eb0a9e21500c4af0e7fc96ae9a85f
 5:
   nome: Caça aos Reis do Mar
   objetivo: 5
   mares:
     - 5
-<<<<<<< HEAD
-  quant: 15
-  diario: 1
-  berries: 400000
-=======
   quant: 5
   berries: 1000000
   diario: 1
@@ -142,17 +112,11 @@
     - tipo: reagent
       cod_item: 23
       quant: 1
->>>>>>> 9ba6dde2327eb0a9e21500c4af0e7fc96ae9a85f
 6:
   nome: Caça aos Reis do Mar Gigantes
   objetivo: 6
   mares:
     - 5
-<<<<<<< HEAD
-  quant: 15
-  diario: 1
-  berries: 500000
-=======
   quant: 5
   berries: 1000000
   diario: 1
@@ -169,7 +133,6 @@
     - tipo: reagent
       cod_item: 23
       quant: 1
->>>>>>> 9ba6dde2327eb0a9e21500c4af0e7fc96ae9a85f
 7:
   nome: Caça aos Filhotes de Dragão Marítimo
   objetivo: 7
