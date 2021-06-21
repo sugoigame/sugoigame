@@ -18,7 +18,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /var/www/html
+            cd /var/www/sugoigame
 
             git status
             git pull origin prod
