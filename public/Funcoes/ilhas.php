@@ -60,6 +60,8 @@ if (!function_exists('nome_ilha')) {
             case 45:    return "Yukiryu";
             case 46:    return "Raijin";
             case 47:    return "Laftel";
+            case 48:    return "Dressrosa";
+            case 49:    return "Green Bit";
 
             // outras
             case 101:   return "Impel Down";
