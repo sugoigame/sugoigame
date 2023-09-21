@@ -912,6 +912,25 @@
     "zona_especial": null
   },
   {
+    "x": 55,
+    "y": 140,
+    "navegavel": 1,
+    "ilha": 48,
+    "tipo_vento": 0,
+    "dir_vento": 0,
+    "tipo_corrente": 0,
+    "dir_corrente": 0,
+    "mar": 6,
+    "nevoa": 0,
+    "damage": 0,
+    "tele": 0,
+    "tele_x": 0,
+    "tele_y": 0,
+    "zona": 3,
+    "ilha_dono": null,
+    "zona_especial": null
+  },
+  {
     "x": 430,
     "y": 258,
     "navegavel": 0,
