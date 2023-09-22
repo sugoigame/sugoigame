@@ -893,10 +893,10 @@
     "zona_especial": null
   },
   {
-    "x": 48,
-    "y": 146,
+    "x": 55,
+    "y": 140,
     "navegavel": 1,
-    "ilha": 49,
+    "ilha": 48,
     "tipo_vento": 0,
     "dir_vento": 0,
     "tipo_corrente": 0,
@@ -912,10 +912,10 @@
     "zona_especial": null
   },
   {
-    "x": 55,
-    "y": 140,
+    "x": 48,
+    "y": 146,
     "navegavel": 1,
-    "ilha": 48,
+    "ilha": 49,
     "tipo_vento": 0,
     "dir_vento": 0,
     "tipo_corrente": 0,
