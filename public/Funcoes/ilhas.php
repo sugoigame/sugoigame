@@ -62,6 +62,8 @@ if (!function_exists('nome_ilha')) {
             case 47:    return "Laftel";
             case 48:    return "Dressrosa";
             case 49:    return "Green Bit";
+            case 50:    return "Wano";
+            case 51:    return "Whole Cake";
 
             // outras
             case 101:   return "Impel Down";
