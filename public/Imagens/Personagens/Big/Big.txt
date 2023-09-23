@@ -367,4 +367,5 @@
 0367-Wiper (Skypie)
 0368-Big Mom
 0369-Oden
-0370-teste
+0379-Kanjuro
+0371-teste
