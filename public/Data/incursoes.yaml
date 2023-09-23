@@ -1065,8 +1065,10 @@
   niveis:
     1:
       recompenasas:
-      - quant: 1
-        tipo: akuma
+      - tipo item: 15
+        cod_item: 155
+        quant: 1
+        tipo: reagent
     1:
       tripulacao: 37
       xp: 1300
