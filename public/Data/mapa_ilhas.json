@@ -912,8 +912,8 @@
     "zona_especial": null
   },
   {
-    "x": 48,
-    "y": 146,
+    "x": 100,
+    "y": 200,
     "navegavel": 1,
     "ilha": 49,
     "tipo_vento": 0,
