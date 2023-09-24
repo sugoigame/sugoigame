@@ -2245,6 +2245,23 @@
   hp: 50000
   xp: 100
 
+  124:   # Ilha Whole Cake => lvl 50 => (200 + 65) => 265 * 15 => 3975 pontos
+  id: 126
+  nome: Charlotte Perospero
+  img: 126
+  atk: 180
+  def: 50
+  agl: 50
+  res: 50
+  pre: 100
+  dex: 100
+  con: 15
+  vit: 150
+  hp: 220000
+  zona: 9001
+  xp: 5000
+  battle_back: 16
+
 9998:
   id: 9998
   nome: Jogador Chefe da Ilha
