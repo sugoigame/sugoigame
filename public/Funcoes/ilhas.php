@@ -59,10 +59,10 @@ if (!function_exists('nome_ilha')) {
             case 44:    return "Punk Hazard";
             case 45:    return "Yukiryu";
             case 46:    return "Raijin";
-            case 47:    return "Green Bit";
             case 48:    return "Dressrosa";           
             case 49:    return "Whole Cake";
             case 50:    return "Wano";
+            case 51:    return "Green Bit";
            
             // outras
             case 100:   return "Laugh Tale";
