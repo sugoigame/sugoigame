@@ -1,0 +1,1 @@
+insert into tb_mapa (x, y, ilha, navegavel, tipo_vento, dir_vento, tipo_corrente, dir_corrente, mar, zona) values (35, 126, 49, 1, 6, 3, 2, 1, 6, 3)
