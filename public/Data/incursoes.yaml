@@ -1040,27 +1040,7 @@
         xp: 900
         berries: 260000
         battle_back: 16
-47:
-  niveis:
-    1:
-      recompensas:
-        - quant: 1
-          tipo: akuma
-      1:
-        tripulacao: 37
-        xp: 880
-        berries: 240000
-        battle_back: 38
-      2:
-        tripulacao: 37
-        xp: 890
-        berries: 250000
-        battle_back: 38
-      3:
-        tripulacao: 37
-        xp: 900
-        berries: 260000
-        battle_back: 38
+
 50:
   niveis:
     1:
@@ -1084,6 +1064,27 @@
       xp: 2000
       berries: 300000
       batle_back: 38
+100:
+  niveis:
+    1:
+      recompensas:
+        - quant: 1
+          tipo: akuma
+      1:
+        tripulacao: 37
+        xp: 880
+        berries: 240000
+        battle_back: 38
+      2:
+        tripulacao: 37
+        xp: 890
+        berries: 250000
+        battle_back: 38
+      3:
+        tripulacao: 37
+        xp: 900
+        berries: 260000
+        battle_back: 38
 101:
   niveis:
     1:
