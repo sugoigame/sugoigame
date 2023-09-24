@@ -1044,7 +1044,7 @@
 50:
   niveis:
     1:
-      recompenasas:
+      recompensas:
       - tipo item: 15
         cod_item: 155
         quant: 1
