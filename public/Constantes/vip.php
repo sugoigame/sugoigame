@@ -29,8 +29,8 @@ define('PRECO_DOBRAO_FINALIZAR_TRATAMENTO_HOSPITAL',    100);
 define('PRECO_GOLD_ISCA_10',                            20);
 define('PRECO_DOBRAO_ISCA_10',                          40);
 
-define('PRECO_GOLD_ISCA_50',                            80);
-define('PRECO_DOBRAO_ISCA_50',                          160);
+define('PRECO_GOLD_ISCA_130',                           80);
+define('PRECO_DOBRAO_ISCA_130',                         160);
 
 define('PRECO_GOLD_RESET_AKUMA',                        100); // 100
 define('PRECO_DOBRAO_RESET_AKUMA',                      240);
