@@ -63,9 +63,9 @@ if (!function_exists('nome_ilha')) {
             case 48:    return "Dressrosa";           
             case 49:    return "Whole Cake";
             case 50:    return "Wano";
-            case 100:    return "Laugh Tale";
-
+           
             // outras
+            case 100:   return "Laugh Tale";
             case 101:   return "Impel Down";
             case 102:   return "Enies Lobby";
             default:    return "";
