@@ -1049,21 +1049,21 @@
         cod_item: 155
         quant: 1
         tipo: reagent
-    1:
-      tripulacao: 37
-      xp: 1300
-      berries: 240000
-      batle_back: 38
-    2:
-      tripualcao: 37
-      xp: 1500
-      berries: 260000
-      batle_back: 37
-    3:
-      tripulacao: 37
-      xp: 2000
-      berries: 300000
-      batle_back: 38
+      1:
+        tripulacao: 37
+        xp: 1300
+        berries: 240000
+        batle_back: 38
+      2:
+        tripualcao: 37
+        xp: 1500
+        berries: 260000
+        batle_back: 37
+      3:
+        tripulacao: 37
+        xp: 2000
+        berries: 300000
+        batle_back: 38
 100:
   niveis:
     1:
