@@ -1044,10 +1044,10 @@
   niveis:
     1:
       recompensas:
-      - tipo_item: 15
-        cod_item: 155
-        quant: 1
-        tipo: reagent
+        - tipo_item: 15
+          cod_item: 155
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 37
         xp: 1000
