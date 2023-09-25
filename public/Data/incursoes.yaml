@@ -1053,17 +1053,17 @@
         tripulacao: 37
         xp: 880
         berries: 240000
-        batle_back: 38
+        batle_back: 3
       2:
         tripualcao: 37
         xp: 890
         berries: 250000
-        batle_back: 37
+        batle_back: 3
       3:
         tripulacao: 37
         xp: 900
         berries: 260000
-        batle_back: 38
+        batle_back: 3
 100:
   niveis:
     1:
