@@ -1050,17 +1050,17 @@
           tipo: reagent
       1:
         tripulacao: 37
-        xp: 1000
+        xp: 880
         berries: 240000
         batle_back: 16
       2:
         tripualcao: 37
-        xp: 1500
+        xp: 890
         berries: 250000
         batle_back: 16
       3:
         tripulacao: 37
-        xp: 2000
+        xp: 900
         berries: 260000
         batle_back: 16
 100:
