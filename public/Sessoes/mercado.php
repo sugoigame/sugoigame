@@ -82,7 +82,7 @@
     while ($item = $result->fetch_array()) {
         $items[] = array_merge($item, array(
             "nome" => "Akuma no Mi Paramecia",
-            "descricao" => "Permite que o personagem aprenda 4 novas habilidades passivas, 4 novos buffs e 3 novos ataques.",
+            "descricao" => "Permite que o personagem aprenda 5 novas habilidades passivas, 2 novos buffs e 4 novos ataques.",
             "tipo" => "Paramecia",
             "categoria" => 6,
             "preco" => 6500000,
