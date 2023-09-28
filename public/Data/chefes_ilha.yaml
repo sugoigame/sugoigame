@@ -435,10 +435,10 @@
   rdm: 125
   recompensas:
     - tipo: reagent
-    cod_item: 146
-    quant: 1
+      cod_item: 146
+      quant: 1
     - tipo: alcunha
-    cod_titulo: 81
+      cod_titulo: 81
 
 100:   # Laugh Tale => lvl 50 => (100 + 65) => 164 * 9 => 1476 pontos
   rdm: 68
