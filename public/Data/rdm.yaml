@@ -2245,7 +2245,7 @@
   hp: 50000
   xp: 100
 
-  124:   # Ilha Whole Cake => lvl 50 => (200 + 65) => 265 * 15 => 3975 pontos
+124:   # Ilha Whole Cake => lvl 50 => (200 + 65) => 265 * 15 => 3975 pontos
   id: 124
   nome: Charlotte Perospero
   img: 126
