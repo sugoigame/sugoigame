@@ -423,7 +423,7 @@
       cod_titulo: 80
 
 49:   # Ilha Whole Cake => lvl 50 => (200 + 65) => 265 * 15 => 3975 pontos
-  rdm: 126
+  rdm: 124
   recompensas:
     - tipo: reagent
       cod_item: 146
