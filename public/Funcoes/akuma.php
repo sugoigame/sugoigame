@@ -97,12 +97,12 @@ function render_status_akuma($pers, $img_akuma, $tipoakuma) {
         <div class="col-md-6 text-left">
             <img src="Imagens/Itens/<?= $img_akuma ?>.png">
             <?= nome_tipo_akuma($tipoakuma) ?>
-            <ul>
-                <li><span id="quantidade_ataques"><?= ($tipoakuma == 10) ? "2" : "3" ?></span> Ataques</li>
-                <li><span id="quantidade_buffs"><?= ($tipoakuma == 10) ? "5" : ($tipoakuma == 9 ? "4" : "3") ?></span>
+           <ul>
+                <li><span id="quantidade_ataques"><?= ($tipoakuma == 10) ? "2" : "4" ?></span> Ataques</li>
+                <li><span id="quantidade_buffs"><?= ($tipoakuma == 10) ? "5" : ($tipoakuma == 9 ? "2" : "3") ?></span> 
                     Buffs
                 </li>
-                <li><span id="quantidade_passivas"><?= ($tipoakuma == 8) ? "5" : "4" ?></span> Passivas</li>
+                <li><span id="quantidade_passivas"><?= ($tipoakuma == 8) ? "5" : "5" ?></span> Passivas</li>
             </ul>
         </div>
     </div>
