@@ -1,6 +1,6 @@
 <?php
-define('PRECO_GOLD_LUNETA',                             150);
-define('PRECO_DOBRAO_LUNETA',                           360);
+define('PRECO_GOLD_LUNETA',                             650);
+define('PRECO_DOBRAO_LUNETA',                           1560);
 
 define('PRECO_GOLD_CONHECIMENTO',                       750);
 define('PRECO_DOBRAO_CONHECIMENTO',                     1800);
@@ -8,20 +8,19 @@ define('PRECO_DOBRAO_CONHECIMENTO',                     1800);
 define('PRECO_GOLD_COUP_DE_BURST',                      250);
 define('PRECO_DOBRAO_COUP_DE_BURST',                    600);
 
-define('PRECO_GOLD_COUP_DE_BURST_INSTANTANEO',          20);
-define('PRECO_DOBRAO_COUP_DE_BURST_INSTANTANEO',        30);
+define('PRECO_GOLD_COUP_DE_BURST_INSTANTANEO',          450);
+define('PRECO_DOBRAO_COUP_DE_BURST_INSTANTANEO',        100);
 
-define('PRECO_GOLD_TATICAS',                            250);
-define('PRECO_DOBRAO_TATICAS',                          500);
+define('PRECO_GOLD_TATICAS',                            750);
 
 define('PRECO_GOLD_CAMUFLAGEM',                         500);
 define('PRECO_DOBRAO_CAMUFLAGEM',                       1200);
 
-define('PRECO_GOLD_RENOMEAR_TRIPULACAO',                500);
-define('PRECO_DOBRAO_RENOMEAR_TRIPULACAO',              1200);
+define('PRECO_GOLD_RENOMEAR_TRIPULACAO',                1000);
+define('PRECO_DOBRAO_RENOMEAR_TRIPULACAO',              2400);
 
-define('PRECO_GOLD_TROCAR_FACCAO',                      500);
-define('PRECO_DOBRAO_TROCAR_FACCAO',                    1200);
+define('PRECO_GOLD_TROCAR_FACCAO',                      1000);
+define('PRECO_DOBRAO_TROCAR_FACCAO',                    2400);
 
 define('PRECO_GOLD_FINALIZAR_TRATAMENTO_HOSPITAL',      50);
 define('PRECO_DOBRAO_FINALIZAR_TRATAMENTO_HOSPITAL',    100);
