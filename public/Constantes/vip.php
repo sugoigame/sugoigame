@@ -12,6 +12,7 @@ define('PRECO_GOLD_COUP_DE_BURST_INSTANTANEO',          450);
 define('PRECO_DOBRAO_COUP_DE_BURST_INSTANTANEO',        100);
 
 define('PRECO_GOLD_TATICAS',                            750);
+define('PRECO_DOBRAO_TATICAS',                         1800);
 
 define('PRECO_GOLD_CAMUFLAGEM',                         500);
 define('PRECO_DOBRAO_CAMUFLAGEM',                       1200);
