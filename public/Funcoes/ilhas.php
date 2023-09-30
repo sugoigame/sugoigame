@@ -63,6 +63,7 @@ if (!function_exists('nome_ilha')) {
             case 49:    return "Whole Cake";
             case 50:    return "Wano";
             case 51:    return "Green Bit";
+            case 52:    return "New Marineford";
            
             // outras
             case 100:   return "Laugh Tale";
