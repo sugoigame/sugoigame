@@ -2287,7 +2287,7 @@
   def: 40
   agl: 40
   res: 40
-  prec: 70
+  prec: 40
   dex: 70
   con: 5
   vit: 80
