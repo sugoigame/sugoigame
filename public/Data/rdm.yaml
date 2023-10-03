@@ -2279,23 +2279,6 @@
   xp: 10000
   batle_back: 16
 
-126: # Dresrossa => lvl 50 => (200 + 65) => 265 * 15 => 3975 pontos
-  id: 126
-  nome: Donquixote Doflamingo
-  img: 128
-  atk: 150
-  def: 40
-  agl: 40
-  res: 40
-  prec: 40
-  dex: 70
-  con: 5
-  vit: 80
-  hp: 220000
-  zona: 9001
-  xp: 7000
-  batle_back: 16
-
 9998:
   id: 9998
   nome: Jogador Chefe da Ilha
