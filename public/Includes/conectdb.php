@@ -48,7 +48,7 @@ define('COD_CASCO_KAIROUSEKI',		2);
 
 define('SKILLS_ICONS_MAX',			512);
 
-define('PERSONAGENS_MAX',			500);
+define('PERSONAGENS_MAX',			370);
 
 define('MAX_POINTS_MANTRA',			20);
 define('MAX_POINTS_ARMAMENTO',		20);
