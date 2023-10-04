@@ -2270,7 +2270,7 @@
   def: 70
   agl: 70
   res: 40
-  prec: 90
+  pre: 90
   dex: 100
   con: 15
   vit: 100
@@ -2287,7 +2287,7 @@
   def: 70
   agl: 70
   res: 40
-  prec: 90
+  pre: 90
   dex: 100
   con: 15
   vit: 100
