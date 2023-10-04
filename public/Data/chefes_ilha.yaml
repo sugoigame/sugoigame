@@ -458,7 +458,7 @@
     - tipo: alcunha
       cod_titulo: 81
 
-51: # New Marineford => lvl 50 => (200 + 65) => 265 * 15 => 3975 pontos
+52: # New Marineford => lvl 50 => (200 + 65) => 265 * 15 => 3975 pontos
   rdm: 128
   recompensas:
     - tipo: reagent
