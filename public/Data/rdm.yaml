@@ -2249,15 +2249,15 @@
   id: 124
   nome: Charlotte LinLin
   img: 126
-  atk: 180
-  def: 50
-  agl: 50
-  res: 50
-  pre: 100
+  atk: 200
+  def: 70
+  agl: 70
+  res: 40
+  pre: 90
   dex: 100
   con: 15
-  vit: 150
-  hp: 220000
+  vit: 100
+  hp: 250000
   zona: 9001
   xp: 5000
   battle_back: 16
