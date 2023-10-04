@@ -440,6 +440,15 @@
     - tipo: alcunha
       cod_titulo: 81
 
+51: # Green Bit => lvl 50 => (200 + 65) => 265 * 15 => 3975 pontos
+  rdm: 126
+  recompensas:
+    - tipo: reagent
+      cod_item: 146
+      quant: 1
+    - tipo: alcunha
+      cod_titulo: 81
+
 100:   # Laugh Tale => lvl 50 => (100 + 65) => 164 * 9 => 1476 pontos
   rdm: 68
   recompensas:
