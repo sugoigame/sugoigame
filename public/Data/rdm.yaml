@@ -2316,7 +2316,7 @@
 128: # New Marineford => lvl 50 => (200 + 65) => 265 * 15 => 3975 pontos
   id: 128
   nome: Os 3 Almirantes
-  img: 128
+  img: 130
   atk: 200
   def: 70
   agl: 70
