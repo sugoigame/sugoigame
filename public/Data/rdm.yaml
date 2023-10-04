@@ -2313,6 +2313,23 @@
   xp: 10000
   batle_back: 16
 
+128: # New Marineford => lvl 50 => (200 + 65) => 265 * 15 => 3975 pontos
+  id: 128
+  nome: Os 3 Almirantes
+  img: 128
+  atk: 200
+  def: 70
+  agl: 70
+  res: 40
+  pre: 90
+  dex: 100
+  con: 15
+  vit: 100
+  hp: 250000
+  zona: 9001
+  xp: 10000
+  batle_back: 16
+
 9998:
   id: 9998
   nome: Jogador Chefe da Ilha
