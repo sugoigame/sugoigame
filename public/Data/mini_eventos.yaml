@@ -993,7 +993,7 @@
         quant: 20000
 13:
   nome: Catástrofe nos Blues
-  duracao: 12:00:00
+  duracao: 08:00:00
   mares:
     - 1
     - 2
@@ -1089,7 +1089,7 @@
         quant: 20000
 14:
   nome: Catástrofe na Grand Line
-  duracao: 12:00:00
+  duracao: 08:00:00
   mares:
     - 5
   zonas:
@@ -1187,7 +1187,7 @@
         quant: 15000000
 15:
   nome: Catástrofe no Novo Mundo
-  duracao: 12:00:00
+  duracao: 08:00:00
   mares:
     - 6
   zonas:
