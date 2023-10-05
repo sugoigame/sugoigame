@@ -1070,7 +1070,7 @@
         - tipo_item: 14
           cod_item: 170
           quant: 1
-          tipo: reagent
+          tipo: equipamento
       1: 
         tripulacao: 37
         xp: 1300
@@ -1093,7 +1093,7 @@
         - tipo_item: 14
           cod_item: 168
           quant: 1
-          tipo: reagent
+          tipo: equipamento
       1:
         tripulacao: 37
         xp: 1500
