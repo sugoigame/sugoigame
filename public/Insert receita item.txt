@@ -1,0 +1,1 @@
+insert into tb_item_reagents (cod_reagent, img, nome, descricao, mergulho, zona, mining, madeira, preco, method, img_format) values ()
