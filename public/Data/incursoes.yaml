@@ -1068,7 +1068,7 @@
     1:
       recompensas:
         - tipo_item: 14
-          cod_item: 170
+          cod_item: 43
           quant: 1
           tipo: equipamento
       1: 
