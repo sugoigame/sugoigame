@@ -1045,7 +1045,7 @@
     1:
       recompensas:
         - tipo_item: 14
-          cod_item: 291
+          cod_item: 351
           quant: 1
           tipo: reagent
       1:
