@@ -1021,8 +1021,8 @@
   niveis:
     1:
       recompensas:
-        - tipo_item: 15
-          cod_item: 155
+        - tipo_item: 14
+          cod_item: 166
           quant: 1
           tipo: reagent
       1:
@@ -1045,7 +1045,7 @@
     1:
       recompensas:
         - tipo_item: 14
-          cod_item: 281
+          cod_item: 167
           quant: 1
           tipo: reagent
       1:
@@ -1091,7 +1091,7 @@
     1:
       recompensas:
         - tipo_item: 14
-          cod_item: 170
+          cod_item: 168
           quant: 1
           tipo: reagent
       1:
