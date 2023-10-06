@@ -958,7 +958,7 @@ class ItemUsavel {
 			return "Erro ao consultar o banco de dados.";
 		}
 		$row = $result->fetch();
-		$maior_okok = $row["max_okok"];
+		$maior_okok = $row["MAX(okok)"];
 
 		/*$maior_okok = $this->connection->run("SELECT MAX(okok) FROM tb_usuario_itens")->fetch_assoc()["MAX(okok)"];
 		$okok = ($maior_okok !== null) ? $maior_okok + 1 : 1;*/
