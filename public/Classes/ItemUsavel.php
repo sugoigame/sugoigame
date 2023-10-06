@@ -953,6 +953,10 @@ class ItemUsavel {
 
 		// obtém o mario valor atual de "okok" na tabela 'tb_usuario_itens' e adiciona 1
 		$result = $this-> connection->run("SELECT MAX(okok) FROM tb_usuario_itens");
+		if (!result){
+			// tratar erro na consulta
+			return "Erro ao consultar o banco de dados.";
+		}
 		$row = $result->fetch();
 		$maior_okok = $row["max_okok"];
 
@@ -991,7 +995,7 @@ class ItemUsavel {
 			}
 
 			// escolher aleatoriamente um código de item entro os que ainda estão disponíveis 
-			$codigo_item == array_rand($todos_itens);
+			$codigo_item = array_rand($todos_itens);
 		};
 
 		// inicia o processo de obtenção de um código aleatório
