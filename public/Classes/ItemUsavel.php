@@ -951,8 +951,8 @@ class ItemUsavel {
 			$this->protector->exit_error("Você precisa de 1 espaço vazio no seu inventário para receber a recopensa");
 		}
 
-		// obtém o mario valor atual de "okok" na tabela 'tb_usuarios_itens' e adiciona 1
-		$maior_okok = $this->connection->run("SELECT MAX(okok) FROM tb_usuarios_itens")->fetch_assoc()["MAX(okok)"];
+		// obtém o mario valor atual de "okok" na tabela 'tb_usuario_itens' e adiciona 1
+		$maior_okok = $this->connection->run("SELECT MAX(okok) FROM tb_usuario_itens")->fetch_assoc()["MAX(okok)"];
 		$okok = ($maior_okok !== null) ? $maior_okok + 1 : 1;
 
 		// função para escolher aleatóriamente um código dentre 208 e 223 da tabela 'tb_itens_reagents'
