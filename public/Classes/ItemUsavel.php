@@ -953,7 +953,7 @@ class ItemUsavel {
 
 		// obtém o mario valor atual de "okok" na tabela 'tb_usuario_itens' e adiciona 1
 		$result = $this-> connection->run("SELECT MAX(okok) FROM tb_usuario_itens");
-		if (!result){
+		if (!$result){
 			// tratar erro na consulta
 			return "Erro ao consultar o banco de dados.";
 		}
