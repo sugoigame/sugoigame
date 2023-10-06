@@ -986,8 +986,8 @@ class ItemUsavel {
 		$codigo_item = $obter_codigo_item_aleatorio_no_intervalo();
 
 		if ($codigo_item == null) {
-			return "Você já tem todas as receitas no seu inventário."
-		};
+			return "Você já tem todas as receitas no seu inventário.";
+		}
 
 		// insere a receita no banco de dados 
 
