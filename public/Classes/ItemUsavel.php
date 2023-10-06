@@ -987,7 +987,7 @@ class ItemUsavel {
 
 		if ($codigo_item == null) {
 			return "Você já tem todas as receitas no seu inventário."
-		}
+		};
 
 		// insere a receita no banco de dados 
 
