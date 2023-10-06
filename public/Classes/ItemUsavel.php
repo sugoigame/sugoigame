@@ -958,7 +958,7 @@ class ItemUsavel {
 			return "Erro ao consultar o banco de dados.";
 		}
 		$row = $result->fetch();
-		$maior_okok = $row["MAX(okok)"];
+		$maior_okok = ($row["MAX(okok)"] !== null) ? $row["MAX(okok)"] + 1 : 1;
 
 		/*$maior_okok = $this->connection->run("SELECT MAX(okok) FROM tb_usuario_itens")->fetch_assoc()["MAX(okok)"];
 		$okok = ($maior_okok !== null) ? $maior_okok + 1 : 1;*/
@@ -970,7 +970,7 @@ class ItemUsavel {
 			$todos_itens = range(208,223);
 
 			// Obtém a lista de códigos de item que já foram adquiridos no intervalo de 208 a 223
-			$itens_adquiridos = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item BETWEEN 208 and 203",
+			$result = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item BETWEEN 208 and 203",
 			"ii", array($this->userDetails->tripulacao["id"], 15));
 
 			$itens_adquiridos = array();
