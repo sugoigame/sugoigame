@@ -953,7 +953,7 @@ class ItemUsavel {
 
 		// obtém o mario valor atual de "okok" na tabela 'tb_usuario_itens' e adiciona 1
 		$result = $this-> connection->run("SELECT MAX(okok) FROM tb_usuario_itens");
-		$row = $result->fetch_assoc();
+		$row = $result->fetch();
 		$maior_okok = $row["max_okok"];
 
 		/*$maior_okok = $this->connection->run("SELECT MAX(okok) FROM tb_usuario_itens")->fetch_assoc()["MAX(okok)"];
