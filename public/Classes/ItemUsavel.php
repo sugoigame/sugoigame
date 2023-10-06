@@ -967,7 +967,13 @@ class ItemUsavel {
 
 			// Obtém a lista de códigos de item que já foram adquiridos no intervalo de 208 a 223
 			$itens_adquiridos = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item BETWEEN 208 and 203",
-			"ii", array($this->userDetails->tripulacao["id"], 15))->fetch_all();
+			"ii", array($this->userDetails->tripulacao["id"], 15));
+
+			$itens_adquiridos = array();
+
+			while ($row = $result->fetch()) {
+				$itens_adquiridos[] = $row["cod_item"];
+			}
 
 			// remove os códigos de item que já foram adquiridos 
 			foreach ($itens_adquiridos as $item_aquirido) {
