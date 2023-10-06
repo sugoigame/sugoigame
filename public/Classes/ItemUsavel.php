@@ -989,10 +989,9 @@ class ItemUsavel {
 			return "Você já tem todas as receitas no seu inventário.";
 		}
 
-		// insere a receita no banco de dados 
-
+		// insere a receita no banco de dados
 		$this->connection->run("INSERT INTO tb_usuario_itens (id, cod_item, tipo_item, quant, novo, okok) VALUES (?, ?, ?, ?, ?, ?)",
-			"iiiiii", array($this->userDetails->triupulacao_id, $codigo_item, 15, 1 ,0, $okok))
+			"iiiiii", array($this->userDetails->triupulacao_id, $codigo_item, 15, 1 ,0, $okok));
 
 		return "Você recebeu uma receita da";
 	}
