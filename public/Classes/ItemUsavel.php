@@ -971,10 +971,12 @@ class ItemUsavel {
 
 			$itens_adquiridos = array();
 
-			while ($row = $result->fetch()) {
-				$itens_adquiridos[] = $row["cod_item"];
+			if ($result !== null) { 	
+				while ($row = $result->fetch()) {
+					$itens_adquiridos[] = $row["cod_item"];
+				}
 			}
-
+			
 			// remove os códigos de item que já foram adquiridos 
 			foreach ($itens_adquiridos as $item_aquirido) {
 				$index = array_search($item_adquirido[0], $todos_itens);
