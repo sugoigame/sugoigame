@@ -952,8 +952,12 @@ class ItemUsavel {
 		}
 
 		// obtém o mario valor atual de "okok" na tabela 'tb_usuario_itens' e adiciona 1
-		$maior_okok = $this->connection->run("SELECT MAX(okok) FROM tb_usuario_itens")->fetch_assoc()["MAX(okok)"];
-		$okok = ($maior_okok !== null) ? $maior_okok + 1 : 1;
+		$result = $this-> connection->run("SELECT MAX(okok) FROM tb_usuario_itens");
+		$row = $result->fetch_assoc();
+		$maior_okok = $row["max_okok"];
+
+		/*$maior_okok = $this->connection->run("SELECT MAX(okok) FROM tb_usuario_itens")->fetch_assoc()["MAX(okok)"];
+		$okok = ($maior_okok !== null) ? $maior_okok + 1 : 1;*/
 
 		// função para escolher aleatóriamente um código dentre 208 e 223 da tabela 'tb_itens_reagents'
 		$obter_codigo_item_aleatorio_no_intervalo = function () {
