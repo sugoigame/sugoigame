@@ -1007,7 +1007,7 @@ class ItemUsavel {
 
 		// insere a receita no banco de dados
 		$this->connection->run("INSERT INTO tb_usuario_itens (id, cod_item, tipo_item, quant, novo, okok) VALUES (?, ?, ?, ?, ?, ?)",
-			"iiiiii", array($this->userDetails->triupulacao_id, $codigo_item, 15, 1 ,0, $maior_okok + 1));
+			"iiiiii", array($this->userDetails->tripulacao_id, $codigo_item, 15, 1 ,0, $maior_okok + 1));
 
 		return "Você recebeu uma receita da forja";
 	}
