@@ -946,6 +946,57 @@ class ItemUsavel {
 		return "Você recebeu uma Aparência de Personagem!";
 	}
 
+	public function abre_bau_receitas_forja() {
+		if (!$this->userDetails->can_add_item()) {
+			$this->protector->exit_error("Você precisa de 1 espaço vazio no seu inventário para receber a recopensa");
+		}
+
+		// obtém o mario valor atual de "okok" na tabela 'tb_usuarios_itens' e adiciona 1
+		$maior_okok = $this->connection->run("SELECT MAX(okok) FROM tb_usuarios_itens")->fetch_assoc()["MAX(okok)"];
+		$okok = ($maior_okok !== null) ? $maior_okok + 1 : 1;
+
+		// função para escolher aleatóriamente um código dentre 208 e 223 da tabela 'tb_itens_reagents'
+		$obter_codigo_item_aleatorio_no_intervalo = function () {
+
+			// Cria um array com todos os códigos de item no intverlado de 208 a 223
+			$todo_intes = range(208,223);
+
+			// Obtém a lista de códigos de item que já foram adquiridos no intervalo de 208 a 223
+			$itens_adquiridos = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE tripulacao_id = ? AND tipo_item = ? AND cod_item BETWEEN 208 and 203",
+			"ii", array($this->userDetails->tripulacao["id"], 15))->fetch_all();
+
+			// remove os códigos de item que já foram adquiridos 
+			foreach ($itens_adquiridos as $item_aquirido) {
+				$index = array_search($item_adquirido[0], $todos_itens);
+				if (index !== false) {
+					unset($todos_itens[$index]);
+				}
+			}
+			
+			// se não houver mais intens a receber, retorna null
+			if (empty($todos_itens)) {
+				return null;
+			}
+
+			// escolher aleatoriamente um código de item entro os que ainda estão disponíveis 
+			$codigo_item == array_rand($todos_itens);
+		};
+
+		// inicia o processo de obtenção de um código aleatório
+		$codigo_item = $obter_codigo_item_aleatorio_no_intervalo();
+
+		if ($codigo_item == null) {
+			return "Você já tem todas as receitas no seu inventário."
+		}
+
+		// insere a receita no banco de dados 
+
+		$this->connection->run("INSERT INTO tb_usuario_itens (id, cod_item, tipo_item, quant, novo, okok) VALUES (?, ?, ?, ?, ?, ?)",
+			"iiiiii", array($this->userDetails->triupulacao_id, $codigo_item, 15, 1 ,0, $okok))
+
+		return "Você recebeu uma receita da forja"
+	}
+	
 	public function abre_bau_alcunha() {
 		$alcunhas = array(141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 96, 97, 98, 104, 105, 106, 111, 112,
 			113, 114, 115, 130, 131, 133, 134, 132, 135, 138);
