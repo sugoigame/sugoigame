@@ -963,7 +963,7 @@ class ItemUsavel {
 		$obter_codigo_item_aleatorio_no_intervalo = function () {
 
 			// Cria um array com todos os códigos de item no intverlado de 208 a 223
-			$todo_intes = range(208,223);
+			$todos_itens = range(208,223);
 
 			// Obtém a lista de códigos de item que já foram adquiridos no intervalo de 208 a 223
 			$itens_adquiridos = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item BETWEEN 208 and 203",
@@ -976,7 +976,7 @@ class ItemUsavel {
 					$itens_adquiridos[] = $row["cod_item"];
 				}
 			}
-			
+
 			// remove os códigos de item que já foram adquiridos 
 			foreach ($itens_adquiridos as $item_aquirido) {
 				$index = array_search($item_adquirido[0], $todos_itens);
@@ -997,13 +997,13 @@ class ItemUsavel {
 		// inicia o processo de obtenção de um código aleatório
 		$codigo_item = $obter_codigo_item_aleatorio_no_intervalo();
 
-		if ($codigo_item == null) {
+		if ($codigo_item === null) {
 			return "Você já tem todas as receitas no seu inventário.";
 		}
 
 		// insere a receita no banco de dados
 		$this->connection->run("INSERT INTO tb_usuario_itens (id, cod_item, tipo_item, quant, novo, okok) VALUES (?, ?, ?, ?, ?, ?)",
-			"iiiiii", array($this->userDetails->triupulacao_id, $codigo_item, 15, 1 ,0, $okok));
+			"iiiiii", array($this->userDetails->triupulacao_id, $codigo_item, 15, 1 ,0, $maior_okok + 1));
 
 		return "Você recebeu uma receita da forja";
 	}
