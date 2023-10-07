@@ -1008,7 +1008,7 @@ class ItemUsavel {
 			// escolher aleatoriamente um código de item entro os que ainda estão disponíveis 
 			$codigo_item = $itens_disponiveis[array_rand($itens_disponiveis)];
 
-			return $codigo_item
+			return $codigo_item;
 		};
 
 		// inicia o processo de obtenção de um código aleatório
