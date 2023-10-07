@@ -961,8 +961,8 @@ class ItemUsavel {
 		// Adiciona a receita ao inventário usando o método userDetails->add_item
 		$this->userDetails->add_item($codigo_item, TIPO_ITEM_REAGENT, 1);
 	
-		// Mensagem de sucesso
-		echo "Receita inserida com sucesso"; // Adicione esta linha para depuração
+		/* Mensagem de sucesso
+		echo "Receita inserida com sucesso"; // Adicione esta linha para depuração*/
 	
 		return "Você recebeu uma receita da forja";
 	}
@@ -989,10 +989,8 @@ class ItemUsavel {
 			while ($row = $result_adquiridos->fetch()) {
 				$itens_adquiridos_array[] = $row["cod_item"];
 			}
-		} else {
-			echo "Erro ao buscar itens adquiridos: " . $this->connection->error; // Adicione esta linha para depuração
 		}
-	
+		
 		$itens_disponíveis = array_diff($itens_disponíveis, $itens_adquiridos_array);
 	
 		// Se não houver mais itens a receber, retorna null
