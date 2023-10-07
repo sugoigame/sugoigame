@@ -951,7 +951,8 @@ class ItemUsavel {
 			$this->protector->exit_error("Você precisa de 1 espaço vazio no seu inventário para receber a recopensa");
 		}
 
-		// obtém o mario valor atual de "okok" na tabela 'tb_usuario_itens' e adiciona 1
+		/*
+		// obtém o mairo valor atual de "okok" na tabela 'tb_usuario_itens' e adiciona 1
 		$result = $this-> connection->run("SELECT MAX(okok) FROM tb_usuario_itens");
 		if (!$result){
 			// tratar erro na consulta
@@ -960,7 +961,7 @@ class ItemUsavel {
 		$row = $result->fetch();
 		$maior_okok = ($row["MAX(okok)"] !== null) ? $row["MAX(okok)"] + 1 : 1;
 
-		/*$maior_okok = $this->connection->run("SELECT MAX(okok) FROM tb_usuario_itens")->fetch_assoc()["MAX(okok)"];
+		$maior_okok = $this->connection->run("SELECT MAX(okok) FROM tb_usuario_itens")->fetch_assoc()["MAX(okok)"];
 		$okok = ($maior_okok !== null) ? $maior_okok + 1 : 1;*/
 
 		// função para escolher aleatóriamente um código dentre 208 e 223 da tabela 'tb_itens_reagents'
@@ -1007,7 +1008,7 @@ class ItemUsavel {
 
 		// insere a receita no banco de dados
 		$this->connection->run("INSERT INTO tb_usuario_itens (id, cod_item, tipo_item, quant, novo, okok) VALUES (?, ?, ?, ?, ?, ?)",
-			"iiiiii", array($this->userDetails->tripulacao_id, $codigo_item, 15, 1 ,0, $maior_okok + 1));
+			"iiiiii", array($this->userDetails->tripulacao_id, $codigo_item, 15, 1 ,0,));
 
 		return "Você recebeu uma receita da forja";
 	}
