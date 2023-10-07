@@ -988,6 +988,8 @@ class ItemUsavel {
 				while ($row = $itens_adquiridos->fetch()) {
 					$itens_adquiridos_array[] = $row["cod_item"];
 				}
+			} else {
+				echo "Erro ao buscar itens adquiridos: " . $this->connection->error; // Adicione esta linha para depuração
 			}
 
 			$itens_disponiveis = array_diff($itens_disponiveis, $itens_adquiridos_array);
@@ -1022,7 +1024,9 @@ class ItemUsavel {
 		$this->connection->run("INSERT INTO tb_usuario_itens (id, cod_item, tipo_item, quant, novo, okok) VALUES (?, ?, ?, ?, ?, ?)",
 			"iiiiii", array($this->userDetails->tripulacao_id, $codigo_item, 15, 1 ,0,));
 
-		return "Você recebeu uma receita da forja";
+			echo "Receita inserida com sucesso"; // Adicione esta linha para depuração
+		
+			return "Você recebeu uma receita da forja";
 	}
 	
 	public function abre_bau_alcunha() {
