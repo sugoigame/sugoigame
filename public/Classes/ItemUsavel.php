@@ -980,7 +980,7 @@ class ItemUsavel {
 
 			// Obtém a lista de códigos de item que já foram adquiridos no intervalo de 208 a 223
 			$itens_adquiridos = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item BETWEEN 208 and 223",
-			"ii", array($this->userDetails->tripulacao["id"], 15));
+			"ii", array($this->userDetails->tripulacao_id, 15));
 
 			$itens_adquiridos_array = array();
 
@@ -1022,7 +1022,7 @@ class ItemUsavel {
 
 		// insere a receita no banco de dados
 		$this->connection->run("INSERT INTO tb_usuario_itens (id, cod_item, tipo_item, quant, novo) VALUES (?, ?, ?, ?, ?)",
-			"iiiii", array($this->userDetails->tripulacao["id"], $codigo_item, 15, 1 , 1));
+			"iiiii", array($this->userDetails->tripulacao_id, $codigo_item, 15, 1 , 1));
 
 			echo "Receita inserida com sucesso"; // Adicione esta linha para depuração
 		
