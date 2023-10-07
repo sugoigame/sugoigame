@@ -990,7 +990,7 @@ class ItemUsavel {
 				}
 			}
 
-			$itens_disponiveis = array_diff($itens_disponiveis, $itens_adquiridos);
+			$itens_disponiveis = array_diff($itens_disponiveis, $itens_adquiridos_array);
 			
 			/*// remove os códigos de item que já foram adquiridos 
 			foreach ($itens_adquiridos as $item_aquirido) {
