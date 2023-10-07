@@ -963,40 +963,52 @@ class ItemUsavel {
 
 		$maior_okok = $this->connection->run("SELECT MAX(okok) FROM tb_usuario_itens")->fetch_assoc()["MAX(okok)"];
 		$okok = ($maior_okok !== null) ? $maior_okok + 1 : 1;*/
-
 		// função para escolher aleatóriamente um código dentre 208 e 223 da tabela 'tb_itens_reagents'
+
 		$obter_codigo_item_aleatorio_no_intervalo = function () {
 
-			// Cria um array com todos os códigos de item no intverlado de 208 a 223
-			$todos_itens = range(208,223);
+			// obtém a lista de códigos de item do intervalo de 208 a 223 da tabela 'tb_itens_reagents'
+			$result = $this->connection->run("SELECT cod_reagent FROM tb_item_reagents WHERE cod_reagent BETWEEN 208 AND 223");
+
+			$itens_disponiveis = array();
+
+			if ($result !== null) {
+				while ($row = $result->fetch()){
+					$itens_disponiveis[] = $row["cod_reagent"];
+				}
+			}
 
 			// Obtém a lista de códigos de item que já foram adquiridos no intervalo de 208 a 223
-			$result = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item BETWEEN 208 and 203",
+			$itens_adquiridos = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item BETWEEN 208 and 203",
 			"ii", array($this->userDetails->tripulacao["id"], 15));
 
 			$itens_adquiridos = array();
 
 			if ($result !== null) { 	
-				while ($row = $result->fetch()) {
+				while ($row = $itens_adquiridos->fetch()) {
 					$itens_adquiridos[] = $row["cod_item"];
 				}
 			}
 
-			// remove os códigos de item que já foram adquiridos 
+			$itens_disponiveis = array_diff($itens_disponiveis, $itens_adquiridos);
+			
+			/*// remove os códigos de item que já foram adquiridos 
 			foreach ($itens_adquiridos as $item_aquirido) {
 				$index = array_search($item_adquirido[0], $todos_itens);
 				if (index !== false) {
 					unset($todos_itens[$index]);
 				}
-			}
+			}*/
 			
 			// se não houver mais intens a receber, retorna null
-			if (empty($todos_itens)) {
+			if (empty($itens_dispniveis)) {
 				return null;
 			}
 
 			// escolher aleatoriamente um código de item entro os que ainda estão disponíveis 
-			$codigo_item = $todos_itens[array_rand($todos_itens)];
+			$codigo_item = $itens_disponiveis[array_rand($itens_disponiveis)];
+
+			return $codigo_item
 		};
 
 		// inicia o processo de obtenção de um código aleatório
