@@ -982,11 +982,11 @@ class ItemUsavel {
 			$itens_adquiridos = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item BETWEEN 208 and 203",
 			"ii", array($this->userDetails->tripulacao["id"], 15));
 
-			$itens_adquiridos = array();
+			$itens_adquiridos_array = array();
 
 			if ($result !== null) { 	
 				while ($row = $itens_adquiridos->fetch()) {
-					$itens_adquiridos[] = $row["cod_item"];
+					$itens_adquiridos_array[] = $row["cod_item"];
 				}
 			}
 
