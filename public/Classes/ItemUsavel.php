@@ -1009,8 +1009,6 @@ class ItemUsavel {
 		}
 	
 		$cod_item = $this->connection->run("SELECT cod_reagent FROM tb_item_reagents WHERE cod_reagent='238'");
-
-		$cod_item();
 		
 		/* Obtém um código de item aleatório entre 208 e 223 da tabela 'tb_itens_reagents'
 		$codigo_item = $this->obter_codigo_item_aleatorio_no_intervalo();
