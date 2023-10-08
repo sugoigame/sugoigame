@@ -959,7 +959,7 @@ class ItemUsavel {
 		}
 
 		// adiciona o item no seu inventário usando o método userDetails->add_item
-		$this->userDetails->add-item($codigo_item2, TIPO_ITEM_REAGENT, 1);
+		$this->userDetails->add_item($codigo_item2, TIPO_ITEM_REAGENT, 1);
 
 		return "Você recebeu uma receita da oficina";
 	}
