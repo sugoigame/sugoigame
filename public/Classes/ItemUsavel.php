@@ -946,6 +946,63 @@ class ItemUsavel {
 		return "Você recebeu uma Aparência de Personagem!";
 	}
 
+	public function abre_bau_receita_oficina() {
+		if (!this->userDetails->can_add_item()) {
+			$this->protector->exit_error("Voc~e precisa de 1 espaço vazio no seu invetário para receber a recompensa");
+		}
+
+		// obtém um código de item aleaório entre 225 a 236
+		$codigo_item2 - $this->obter_codigo_item_aletorio_no_intervalo_2();
+
+		if ($codigo_item2 === null) {
+			return "Você já tem todas as receitas no seu inventário.";
+		}
+
+		// adiciona o item no seu inventário usando o método userDetails->add_item
+		$this->userDetails->add-item($codigo_item2, TIPO_ITEM_REAGENT, 1);
+
+		return "Vocçe recebeu uma receita da oficina"
+	}
+
+	private function obter_codigo_item_aleatrio_no_intervalo_2() {
+		// obtém código do item no intervalo de 225 a 236 na tabela tb_item_reagents
+		$result2 = $this->connection->run("SELECT cod_reagent FROM tb_item_reagents WHERE cod_reagent BETWEEN 225 and 236");
+
+		$itens_disponiveis2 = array();
+
+		if ($result2 !== null) {
+			while ($row = $result2->fetch()) {
+				$itens_disponiveis2[] = $row["cod_reagent"];
+			}
+		}
+
+		// obttém a lista de cdigos de item que já foram adquiridos no intervalo de 225 a 236
+
+		$result_adquiridos2 = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item BETWEEN 224 and 236",
+		"ii", array($this->userDetails->tipulacao-id, 15));
+
+		$itens_adquiridos_array2 = array();
+
+		if ($result_adquiridos2 !== null) {
+			while ($row = $result2->fetch()) {
+				$itens_disponiveis2[] = $row["cod_item"]
+			}
+		}
+	
+
+		$itens_disponiveis2 array_diff($itens_disponiveis2, $itens_adquiridos_array2);
+
+		// se não houver retorna null
+		if (empty($itens_disponiveis2)) {
+			return null;
+		}
+
+		// escolhe aletatórioamente um codigo do item dentre os que estão disponíveis
+		$codigo_item2 = $itens_disponiveis2[array_rand($itens_disponiveis2)];
+
+		return $codigo_item2
+	}
+
 	public function abre_bau_receitas_forja() {
 		if (!$this->userDetails->can_add_item()) {
 			$this->protector->exit_error("Você precisa de 1 espaço vazio no seu inventário para receber a recompensa");
@@ -971,11 +1028,11 @@ class ItemUsavel {
 		// Obtém a lista de códigos de item do intervalo de 208 a 223 da tabela 'tb_itens_reagents'
 		$result = $this->connection->run("SELECT cod_reagent FROM tb_item_reagents WHERE cod_reagent BETWEEN 208 AND 223");
 	
-		$itens_disponíveis = array();
+		$itens_disponiveis = array();
 	
 		if ($result !== null) {
 			while ($row = $result->fetch()) {
-				$itens_disponíveis[] = $row["cod_reagent"];
+				$itens_disponiveis[] = $row["cod_reagent"];
 			}
 		}
 	
@@ -991,15 +1048,15 @@ class ItemUsavel {
 			}
 		}
 		
-		$itens_disponíveis = array_diff($itens_disponíveis, $itens_adquiridos_array);
+		$itens_disponiveis = array_diff($itens_disponiveis, $itens_adquiridos_array);
 	
 		// Se não houver mais itens a receber, retorna null
-		if (empty($itens_disponíveis)) {
+		if (empty($itens_disponiveis)) {
 			return null;
 		}
 	
 		// Escolher aleatoriamente um código de item entre os que ainda estão disponíveis
-		$codigo_item = $itens_disponíveis[array_rand($itens_disponíveis)];
+		$codigo_item = $itens_disponiveis[array_rand($itens_disponiveis)];
 	
 		return $codigo_item;
 	}
