@@ -1030,7 +1030,7 @@ class ItemUsavel {
 	
 		if ($result !== null) {
 			$row = $result->fetch();
-			$cod_item[] = $row["cod_reagent"];
+			$codigo_item[] = $row["cod_reagent"];
 			
 			// Verifica se o item já foi adquirido
 			$result_adquiridos = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item='238'",
