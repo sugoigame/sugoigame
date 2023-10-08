@@ -952,7 +952,7 @@ class ItemUsavel {
 		}
 
 		// obtém um código de item aleaório entre 225 a 236
-		$codigo_item2 = $this->obter_codigo_item_aleatorio_no_intervalo_2();
+		$codigo_item2 = $this->obter_codigo2();
 
 		if ($codigo_item2 === null) {
 			return "Você já tem todas as receitas no seu inventário.";
@@ -964,44 +964,31 @@ class ItemUsavel {
 		return "Você recebeu uma receita da oficina";
 	}
 
-	private function obter_codigo_item_aleatorio_no_intervalo_2() {
+	private function obter_codigo_item2() {
 		// obtém código do item no intervalo de 225 a 236 na tabela tb_item_reagents
-		$result2 = $this->connection->run("SELECT cod_reagent FROM tb_item_reagents WHERE cod_reagent BETWEEN 225 and 236");
-
-		$itens_disponiveis2 = array();
+		$result2 = $this->connection->run("SELECT cod_reagent FROM tb_item_reagents WHERE cod_reagent='239'");
 
 		if ($result2 !== null) {
-			while ($row = $result2->fetch()) {
-				$itens_disponiveis2[] = $row["cod_reagent"];
+			$row = $result2->fetch();
+			$codigo_item2 = $row["cod_reagent"];
+			
+		
+
+			$result_adquiridos2 = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item='239'",
+				"ii", array($this->userDetails->tipulacao-id, 15));
+
+			if ($result_adquiridos2 !== null && $result_adquiridos2->num_rows > 0) {
+				
+				return null;
+
 			}
-		}
-
-		// obttém a lista de cdigos de item que já foram adquiridos no intervalo de 225 a 236
-
-		$result_adquiridos2 = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item BETWEEN 224 and 236",
-		"ii", array($this->userDetails->tipulacao-id, 15));
-
-		$itens_adquiridos_array2 = array();
-
-		if ($result_adquiridos2 !== null) {
-			while ($row = $result2->fetch()) {
-				$itens_disponiveis2[] = $row["cod_item"];
-			}
+			
+			return $codigo_item2;
 		}
 	
-
-		$itens_disponiveis2 = array_diff($itens_disponiveis2, $itens_adquiridos_array2);
-
-		// se não houver retorna null
-		if (empty($itens_disponiveis2)) {
-			return null;
-		}
-
-		// escolhe aletatórioamente um codigo do item dentre os que estão disponíveis
-		$codigo_item2 = $itens_disponiveis2[array_rand($itens_disponiveis2)];
-
-		return $codigo_item2;
+		return null;
 	}
+
 
 	public function abre_bau_receitas_forja() {
 		if (!$this->userDetails->can_add_item()) {
