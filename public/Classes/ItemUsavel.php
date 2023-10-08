@@ -1000,7 +1000,7 @@ class ItemUsavel {
 		// escolhe aletatórioamente um codigo do item dentre os que estão disponíveis
 		$codigo_item2 = $itens_disponiveis2[array_rand($itens_disponiveis2)];
 
-		return $codigo_item2
+		return $codigo_item2;
 	}
 
 	public function abre_bau_receitas_forja() {
