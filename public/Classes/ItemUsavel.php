@@ -1018,9 +1018,6 @@ class ItemUsavel {
 		// Adiciona a receita ao inventário usando o método userDetails->add_item
 		$this->userDetails->add_item($codigo_item, TIPO_ITEM_REAGENT, 1);
 	
-		/* Mensagem de sucesso
-		echo "Receita inserida com sucesso"; // Adicione esta linha para depuração*/
-	
 		return "Você recebeu uma receita da forja";
 	}
 	
@@ -1030,7 +1027,7 @@ class ItemUsavel {
 	
 		if ($result !== null) {
 			$row = $result->fetch();
-			$codigo_item[] = $row["cod_reagent"];
+			$codigo_item = $row["cod_reagent"];
 			
 			// Verifica se o item já foi adquirido
 			$result_adquiridos = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = '15' AND cod_item='238'",
