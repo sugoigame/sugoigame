@@ -947,8 +947,8 @@ class ItemUsavel {
 	}
 
 	public function abre_bau_receita_oficina() {
-		if (!this->userDetails->can_add_item()) {
-			$this->protector->exit_error("Voc~e precisa de 1 espaço vazio no seu invetário para receber a recompensa");
+		if (!$this->userDetails->can_add_item()) {
+			$this->protector->exit_error("Você precisa de 1 espaço vazio no seu invetário para receber a recompensa");
 		}
 
 		// obtém um código de item aleaório entre 225 a 236
@@ -961,7 +961,7 @@ class ItemUsavel {
 		// adiciona o item no seu inventário usando o método userDetails->add_item
 		$this->userDetails->add-item($codigo_item2, TIPO_ITEM_REAGENT, 1);
 
-		return "Vocçe recebeu uma receita da oficina"
+		return "Você recebeu uma receita da oficina";
 	}
 
 	private function obter_codigo_item_aleatrio_no_intervalo_2() {
@@ -985,12 +985,12 @@ class ItemUsavel {
 
 		if ($result_adquiridos2 !== null) {
 			while ($row = $result2->fetch()) {
-				$itens_disponiveis2[] = $row["cod_item"]
+				$itens_disponiveis2[] = $row["cod_item"];
 			}
 		}
 	
 
-		$itens_disponiveis2 array_diff($itens_disponiveis2, $itens_adquiridos_array2);
+		$itens_disponiveis2 = array_diff($itens_disponiveis2, $itens_adquiridos_array2);
 
 		// se não houver retorna null
 		if (empty($itens_disponiveis2)) {
