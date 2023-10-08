@@ -964,7 +964,7 @@ class ItemUsavel {
 		return "Você recebeu uma receita da oficina";
 	}
 
-	private function obter_codigo_item_aleatrio_no_intervalo_2() {
+	private function obter_codigo_item_aleatorio_no_intervalo_2() {
 		// obtém código do item no intervalo de 225 a 236 na tabela tb_item_reagents
 		$result2 = $this->connection->run("SELECT cod_reagent FROM tb_item_reagents WHERE cod_reagent BETWEEN 225 and 236");
 
