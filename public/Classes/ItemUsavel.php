@@ -1008,14 +1008,12 @@ class ItemUsavel {
 			$this->protector->exit_error("Você precisa de 1 espaço vazio no seu inventário para receber a recompensa");
 		}
 	
-		$cod_item = $this->connection->run("SELECT * FROM tb_item_reagents WHERE cod_reagent='238'");
-		
-		/* Obtém um código de item aleatório entre 208 e 223 da tabela 'tb_itens_reagents'
-		$codigo_item = $this->obter_codigo_item_aleatorio_no_intervalo();
+		// Obtém um código de item aleatório entre 208 e 223 da tabela 'tb_itens_reagents'
+		$codigo_item = $this->obter_codigo_item();
 	
 		if ($codigo_item === null) {
 			return "Você já tem todas as receitas no seu inventário.";
-		}*/
+		}
 	
 		// Adiciona a receita ao inventário usando o método userDetails->add_item
 		$this->userDetails->add_item($codigo_item, TIPO_ITEM_REAGENT, 1);
@@ -1026,42 +1024,28 @@ class ItemUsavel {
 		return "Você recebeu uma receita da forja";
 	}
 	
-	/*private function obter_codigo_item_aleatorio_no_intervalo() {
+	private function obter_codigo_item() {
 		// Obtém a lista de códigos de item do intervalo de 208 a 223 da tabela 'tb_itens_reagents'
-		$result = $this->connection->run("SELECT cod_reagent FROM tb_item_reagents WHERE cod_reagent BETWEEN 208 AND 223");
-	
-		$itens_disponiveis = array();
+		$result = $this->connection->run("SELECT cod_reagent FROM tb_item_reagents WHERE cod_reagent='238'");
 	
 		if ($result !== null) {
-			while ($row = $result->fetch()) {
-				$itens_disponiveis[] = $row["cod_reagent"];
-			}
-		}
-	
-		// Obtém a lista de códigos de item que já foram adquiridos no intervalo de 208 a 223
-		$result_adquiridos = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item BETWEEN 208 and 223",
+			$row = $result->fetch();
+			$cod_item[] = $row["cod_reagent"];
+			
+			// Verifica se o item já foi adquirido
+			$result_adquiridos = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item='238'",
 			"ii", array($this->userDetails->tripulacao_id, 15));
 	
-		$itens_adquiridos_array = array();
-	
-		if ($result_adquiridos !== null) {
-			while ($row = $result_adquiridos->fetch()) {
-				$itens_adquiridos_array[] = $row["cod_item"];
+			if ($result_adquiridos !== null && $result_adquiridos->num_rows > 0) {
+			
+				return null;
 			}
-		}
+			
+			return $codigo_item;
+		}	
 		
-		$itens_disponiveis = array_diff($itens_disponiveis, $itens_adquiridos_array);
-	
-		// Se não houver mais itens a receber, retorna null
-		if (empty($itens_disponiveis)) {
-			return null;
-		}
-	
-		// Escolher aleatoriamente um código de item entre os que ainda estão disponíveis
-		$codigo_item = $itens_disponiveis[array_rand($itens_disponiveis)];
-	
-		return $codigo_item;
-	}*/
+		return null;
+	}
 	
 	public function abre_bau_alcunha() {
 		$alcunhas = array(141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 96, 97, 98, 104, 105, 106, 111, 112,
