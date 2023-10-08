@@ -952,7 +952,7 @@ class ItemUsavel {
 		}
 
 		// obtém um código de item aleaório entre 225 a 236
-		$codigo_item2 = $this->obter_codigo_item_aletorio_no_intervalo_2();
+		$codigo_item2 = $this->obter_codigo_item_aleatorio_no_intervalo_2();
 
 		if ($codigo_item2 === null) {
 			return "Você já tem todas as receitas no seu inventário.";
