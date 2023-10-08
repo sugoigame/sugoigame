@@ -1033,8 +1033,8 @@ class ItemUsavel {
 			$codigo_item[] = $row["cod_reagent"];
 			
 			// Verifica se o item já foi adquirido
-			$result_adquiridos = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = ? AND cod_item='238'",
-			"ii", array($this->userDetails->tripulacao_id, 15));
+			$result_adquiridos = $this->connection->run("SELECT cod_item FROM tb_usuario_itens WHERE id = ? AND tipo_item = '15' AND cod_item='238'",
+			"i", array($this->userDetails->tripulacao_id));
 	
 			if ($result_adquiridos !== null && $result_adquiridos->num_rows > 0) {
 			
