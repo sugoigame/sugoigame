@@ -1008,12 +1008,14 @@ class ItemUsavel {
 			$this->protector->exit_error("Você precisa de 1 espaço vazio no seu inventário para receber a recompensa");
 		}
 	
-		// Obtém um código de item aleatório entre 208 e 223 da tabela 'tb_itens_reagents'
+		$cod_item = 238;
+		
+		/* Obtém um código de item aleatório entre 208 e 223 da tabela 'tb_itens_reagents'
 		$codigo_item = $this->obter_codigo_item_aleatorio_no_intervalo();
 	
 		if ($codigo_item === null) {
 			return "Você já tem todas as receitas no seu inventário.";
-		}
+		}*/
 	
 		// Adiciona a receita ao inventário usando o método userDetails->add_item
 		$this->userDetails->add_item($codigo_item, TIPO_ITEM_REAGENT, 1);
@@ -1024,7 +1026,7 @@ class ItemUsavel {
 		return "Você recebeu uma receita da forja";
 	}
 	
-	private function obter_codigo_item_aleatorio_no_intervalo() {
+	/*private function obter_codigo_item_aleatorio_no_intervalo() {
 		// Obtém a lista de códigos de item do intervalo de 208 a 223 da tabela 'tb_itens_reagents'
 		$result = $this->connection->run("SELECT cod_reagent FROM tb_item_reagents WHERE cod_reagent BETWEEN 208 AND 223");
 	
@@ -1059,7 +1061,7 @@ class ItemUsavel {
 		$codigo_item = $itens_disponiveis[array_rand($itens_disponiveis)];
 	
 		return $codigo_item;
-	}
+	}*/
 	
 	public function abre_bau_alcunha() {
 		$alcunhas = array(141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 96, 97, 98, 104, 105, 106, 111, 112,
