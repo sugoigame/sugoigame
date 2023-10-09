@@ -2,7 +2,7 @@
 define('PRECO_GOLD_LUNETA',                             650);
 define('PRECO_DOBRAO_LUNETA',                           1560);
 
-defiine('PRECO_GOLD_PACOTE',                            1500);
+# defiine('PRECO_GOLD_PACOTE',                            1500);
 
 define('PRECO_GOLD_CONHECIMENTO',                       750);
 define('PRECO_DOBRAO_CONHECIMENTO',                     1800);
