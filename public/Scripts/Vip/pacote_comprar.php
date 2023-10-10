@@ -79,19 +79,24 @@ if (!$conect) {
         $tempo_pacote = $tempo_base + 30 * 24 * 60 * 60;
     
         // Atualize a vantagem "Táticas" com a nova duração
-        $tempo_taticas = $tempo_base + 30 * 24 * 60 * 60;
-        $connection->run("UPDATE tb_vip SET tatic_duracao = ? WHERE id = ?",
-            "ii", array($tempo_taticas, $userDetails->tripulacao["id"]));
+        $tempo_base = $userDetails->vip["tatic"] ? $userDetails->vip["tatic_duracao"] : atual_segundo();
+        $tempo = $tempo_base + 2592000;
+        $query = "UPDATE tb_vip SET tatic='1', tatic_duracao='$tempo' WHERE id='" . $usuario["id"] . "'";
+        mysql_query($query) or die("Nao foi possivel cadastrar o item");
     
         // Atualize a vantagem "Coup de Burst" com a nova duração
-        $tempo_coup = $tempo_base + 30 * 24 * 60 * 60;
-        $connection->run("UPDATE tb_vip SET coup_de_burst_duracao = ? WHERE id = ?",
-            "ii", array($tempo_coup, $userDetails->tripulacao["id"]));
+        $tempo_base = $userDetails->vip["coup_de_burst_duracao"] > atual_segundo() ? $userDetails->vip["coup_de_burst_duracao"] : atual_segundo();
+        $tempo = $tempo_base + 30 * 24 * 60 * 60;
+        $connection->run("UPDATE tb_vip SET coup_de_burst = 5, coup_de_burst_duracao = ? WHERE id = ?",
+            "ii", array($tempo, $userDetails->tripulacao["id"]));
     
         // Atualize a vantagem "Luneta" com a nova duração
-        $tempo_luneta = $tempo_base + 30 * 24 * 60 * 60;
-        $connection->run("UPDATE tb_vip SET luneta_duracao = ? WHERE id = ?",
-            "ii", array($tempo_luneta, $userDetails->tripulacao["id"]));
+        $tempoBase  = $userDetails->vip["luneta"] ? $userDetails->vip["luneta_duracao"] : atual_segundo();
+        $tempo      = $tempoBase + (30 * 86400); // 86400 = 1 dia
+        $connection->run("UPDATE tb_vip SET luneta = '1', luneta_duracao = ? WHERE id = ?", 'ii', [
+            $tempo,
+            $usuario['id']
+        ]);
     
         // Reduzir o valor do pacote vip
         $userDetails->reduz_gold(PRECO_GOLD_PACOTE, "pacote_vip");
