@@ -34,12 +34,10 @@ if (!$conect) {
             "ii", array($tempo, $userDetails->tripulacao["id"]));
     
         // Atualize a vantagem "Luneta" com a nova duração
-        $tempoBase  = $userDetails->vip["luneta"] ? $userDetails->vip["luneta_duracao"] : atual_segundo();
+        $tempoBase  = $userDetails->vip["luneta"] > atual_segundo() ? $userDetails->vip["luneta_duracao"] : atual_segundo();
         $tempo      = $tempoBase + 30 * 24 * 60 * 60; //(30 * 86400); // 86400 = 1 dia
-        $connection->run("UPDATE tb_vip SET luneta = '1', luneta_duracao = ? WHERE id = ?", 'ii', [
-            $tempo,
-            $usuario['id']
-        ]);
+        $connection->run("UPDATE tb_vip SET luneta = '1', luneta_duracao = ? WHERE id = ?", 'ii',
+            "ii", array($tempo, $userDetails->tripulacao["id"]));
     
         // Reduzir o valor do pacote vip
         $userDetails->reduz_gold(PRECO_GOLD_PACOTE, "pacote_vip");
