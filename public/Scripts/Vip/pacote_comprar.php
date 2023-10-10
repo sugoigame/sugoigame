@@ -23,7 +23,7 @@ if (!$conect) {
     
         // Atualize a vantagem "Táticas" com a nova duração
         $tempo_base = $userDetails->vip["tatic"] > atual_segundo() ? $userDetails->vip["tatic_duracao"] : atual_segundo();
-        $tempo = $tempo_base + 2592000;
+        $tempo = $tempo_base + 30 * 24 * 60 * 60;;
         $connection->run("UPDATE tb_vip SET tatic = 1, tatic_duracao = ? WHERE id = ?",
             "ii", array($tempo, $userDetails->tripulacao["id"]));
     
