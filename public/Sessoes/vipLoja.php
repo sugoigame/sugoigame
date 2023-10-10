@@ -1,3 +1,11 @@
+<?php
+$vips = [
+    "coup_de_burst_duracao" => $userDetails->vip["coup_de_burst_duracao"],
+    "luneta_duracao" => $userDetails->vip["luneta_duracao"],
+    "tatic_duracao" => $userDetails->vip["tatic_duracao"],
+];
+?>
+
 <?php function render_vantagem($img, $titulo, $descricao, $duracao, $preco_gold, $preco_dobrao, $link_gold, $link_dobrao) { ?>
     <?php global $userDetails; ?>
     <li class="list-group-item">
@@ -126,6 +134,16 @@
             "Vip/coup_de_burst_comprar.php?tipo=gold",
             "Vip/coup_de_burst_comprar.php?tipo=dobrao"
         ); ?>
+
+        <?php render_vantagem(
+            "pacote.png",
+            "Pacote de Coup de Burst, Luneta e Táticas",
+            "Concede os beníficios do Coup de Burst, Luneta e das Táticas",
+            $vips,
+            PRECO_GOLD_PACOTE,
+            "Vip/pacote_comprar.php?tipo=gold"
+        );
+        ?>
 
         <?php/* render_vantagem(
             "ocultar.jpg",
