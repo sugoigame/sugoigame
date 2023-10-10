@@ -69,10 +69,10 @@ if (!$conect) {
         // Verifique apenas o preço do gol de cada vantagem
         $protector->need_gold(PRECO_GOLD_PACOTE);
     
-        // Obtenha a duração atual de cada vantagem
+        /* Obtenha a duração atual de cada vantagem
         $tempo_taticas = $userDetails->vip["tatic_duracao"];
         $tempo_coup = $userDetails->vip["coup_de_burst_duracao"];
-        $tempo_luneta = $userDetails->vip["luneta_duracao"];
+        $tempo_luneta = $userDetails->vip["luneta_duracao"];*/
     
         // Defina o tempo base para o "PACOTE VIP"
         $tempo_base = max($tempo_taticas, $tempo_coup, $tempo_luneta);
