@@ -23,7 +23,7 @@ if (!$conect) {
     
         // Atualize a vantagem "Táticas" com a nova duração
         $tempo_base = $userDetails->vip["tatic"] > atual_segundo() ? $userDetails->vip["tatic_duracao"] : atual_segundo();
-        $tempo = $tempo_base + 30 * 24 * 60 * 60;;
+        $tempo = $tempo_base + 30 * 24 * 60 * 60;
         $connection->run("UPDATE tb_vip SET tatic = 1, tatic_duracao = ? WHERE id = ?",
             "ii", array($tempo, $userDetails->tripulacao["id"]));
     
@@ -34,8 +34,8 @@ if (!$conect) {
             "ii", array($tempo, $userDetails->tripulacao["id"]));
     
         // Atualize a vantagem "Luneta" com a nova duração
-        $tempoBase  = $userDetails->vip["luneta"] > atual_segundo() ? $userDetails->vip["luneta_duracao"] : atual_segundo();
-        $tempo      = $tempoBase + 30 * 24 * 60 * 60; //(30 * 86400); // 86400 = 1 dia
+        $tempoBase = $userDetails->vip["luneta"] > atual_segundo() ? $userDetails->vip["luneta_duracao"] : atual_segundo();
+        $tempo = $tempoBase + 30 * 24 * 60 * 60;
         $connection->run("UPDATE tb_vip SET luneta = '1', luneta_duracao = ? WHERE id = ?",
             "ii", array($tempo, $userDetails->tripulacao["id"]));
     
