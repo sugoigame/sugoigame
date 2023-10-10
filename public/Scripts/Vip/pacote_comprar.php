@@ -24,8 +24,8 @@ if (!$conect) {
         // Atualize a vantagem "Táticas" com a nova duração
         $tempo_base = $userDetails->vip["tatic"] ? $userDetails->vip["tatic_duracao"] : atual_segundo();
         $tempo = $tempo_base + 2592000;
-        $query = "UPDATE tb_vip SET tatic='1', tatic_duracao='$tempo' WHERE id='" . $usuario["id"] . "'";
-        mysql_query($query) or die("Nao foi possivel cadastrar o item");
+        $connection->run("UPDATE tb_vip SET tatic = 1, tatic_duracao = ? WHERE id = ?",
+            "ii", array($tempo, $userDetails->tripulacao["id"]));
     
         // Atualize a vantagem "Coup de Burst" com a nova duração
         $tempo_base = $userDetails->vip["coup_de_burst_duracao"] > atual_segundo() ? $userDetails->vip["coup_de_burst_duracao"] : atual_segundo();
