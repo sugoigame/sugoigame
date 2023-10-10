@@ -131,7 +131,7 @@
             "pacote.png",
             "Pacote de Coup de Burst, Luneta e Táticas",
             "Concede os beníficios do Coup de Burst, Luneta e das Táticas",
-            $vips,
+            $userDetails->vip["pacote_duracao"],
             PRECO_GOLD_PACOTE,
             0,
             "Vip/pacote_comprar.php?tipo=gold",
