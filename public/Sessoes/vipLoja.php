@@ -1,11 +1,3 @@
-<?php
-$vips = [
-    "coup_de_burst_duracao" => $userDetails->vip["coup_de_burst_duracao"],
-    "luneta_duracao" => $userDetails->vip["luneta_duracao"],
-    "tatic_duracao" => $userDetails->vip["tatic_duracao"],
-];
-?>
-
 <?php function render_vantagem($img, $titulo, $descricao, $duracao, $preco_gold, $preco_dobrao, $link_gold, $link_dobrao) { ?>
     <?php global $userDetails; ?>
     <li class="list-group-item">
