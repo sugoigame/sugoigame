@@ -142,8 +142,7 @@ $vips = [
             $vips,
             PRECO_GOLD_PACOTE,
             "Vip/pacote_comprar.php?tipo=gold"
-        );
-        ?>
+        ); ?>        
 
         <?php/* render_vantagem(
             "ocultar.jpg",
