@@ -141,7 +141,9 @@ $vips = [
             "Concede os beníficios do Coup de Burst, Luneta e das Táticas",
             $vips,
             PRECO_GOLD_PACOTE,
-            "Vip/pacote_comprar.php?tipo=gold"
+            0,
+            "Vip/pacote_comprar.php?tipo=gold",
+            ""
         ); ?>        
 
         <?php/* render_vantagem(
