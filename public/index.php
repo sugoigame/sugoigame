@@ -36,15 +36,7 @@ if (! $userDetails->conta &&
 	<link rel="stylesheet" type="text/css" href="CSS/bootstrap-select.min.css" />
 	<link rel="stylesheet" type="text/css" href="CSS/font-awesome.min.css" />
 	<link rel="stylesheet" type="text/css" href="CSS/estrutura.css?ver=2.0.14" />
-	<script type="text/javascript">
-		var gameTitle = document.title;
 
-		if (window.location.hostname == 'sugoigame.com.br') {
-			if ('serviceWorker' in navigator) {
-				navigator.serviceWorker.register('/service-worker.js');
-			}
-		}
-	</script>
 	<?php if ($_SERVER['HTTP_HOST'] == 'sugoigame.com.br') { ?>
 		<script data-ad-client="ca-pub-6665062829379662" async
 			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -52,6 +44,7 @@ if (! $userDetails->conta &&
 </head>
 
 <body>
+	<div id="world-map-background"></div>
 
 	<audio id="toque_nova_msg">
 		<source src="Sons/nova_msg.ogg" type="audio/ogg" />
@@ -71,111 +64,22 @@ if (! $userDetails->conta &&
 		<i class="glyphicon glyphicon-chevron-up"></i>
 	</button>
 
-	<div class="modal fade" id="modal-user-progress">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="user-progress-title"></h4>
-				</div>
-				<div class="modal-body">
-					<p id="user-progress-description"></p>
-					<p id="user-progress-rewards"></p>
-				</div>
-				<div class="modal-footer">
-					<button id="user-progress-finish" href="link_Missoes/finaliza_user_progress.php"
-						class="link_send btn btn-success" data-dismiss="modal">Concluir</button>
-					<button id="user-progress-back" class="btn btn-primary" data-dismiss="modal">Ok</button>
-				</div>
-			</div>
-		</div>
-	</div>
+	<!-- Modais globais que precisam permanecer abertas mesmo caso haja mudança de sessao.
+		Como a mudanca de sessao desencadeia uma atualizacao do html da pagina, essas
+		modals seriam fechadas se ficassem dentro do header.php, por isso elas ficam no contexto global. -->
+	<?php include "Includes/Components/Header/modal_user_progress.php"; ?>
 
-	<div class="modal fade" id="modal-mensagens">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div id="mensagens">
-				</div>
-			</div>
-		</div>
-	</div>
+	<?php include "Includes/Components/Header/modal_mensagens.php"; ?>
 
-	<div class="modal fade" id="modal-inventario">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">Inventário</h4>
-				</div>
-				<div id="inventario"></div>
-			</div>
-		</div>
-	</div>
+	<?php include "Includes/Components/Header/modal_inventario.php"; ?>
 
-	<div class="modal fade" id="modal-dar-comida">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">Escolha um personagem pra dar o item</h4>
-				</div>
-				<div id="dar_comida" class="modal-body"></div>
-			</div>
-		</div>
-	</div>
+	<?php include "Includes/Components/Header/modal_dar_comida.php"; ?>
 
-	<div class="modal fade" id="modal-cartografo">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">Mapa Mundi</h4>
-				</div>
-				<div id="mapa_cartografo"></div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="modal-no-cartografo">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">Mapa Mundi</h4>
-				</div>
-				<div class="modal-body">
-					Você precisa de um cartógrafo na sua tripulação para poder comprar um mapa na escola de profissões.
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-primary" data-dismiss="modal">OK</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="modal-daily-gift">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">Calendário e Eventos</h4>
-				</div>
-				<div id="modal-daily-gift-content">
+	<?php include "Includes/Components/Header/modal_cartografo.php"; ?>
 
-				</div>
-			</div>
-		</div>
-	</div>
+	<?php include "Includes/Components/Header/modal_daily_gift.php"; ?>
+
+	<?php include "Includes/Components/Header/modal_send_message.php"; ?>
 
 	<div id="icon_carregando">
 		<div class="progress">
@@ -185,32 +89,17 @@ if (! $userDetails->conta &&
 		</div>
 	</div>
 
-	<div class="modal fade" id="modal-send-message">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="fb-page" data-href="https://www.facebook.com/sugoigamebr/" data-tabs="messages"
-						data-width="360" data-height="400" data-small-header="true" data-hide-cover="true"
-						data-show-facepile="false">
-						<blockquote cite="https://www.facebook.com/sugoigamebr/" class="fb-xfbml-parse-ignore">
-						</blockquote>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<script type="text/javascript" src="JS/jquery-2.2.2.min.js"></script>
 	<script type="text/javascript" src="JS/bootstrap.min.js"></script>
 	<script type="text/javascript" src="JS/bootbox.min.js"></script>
 	<script type="text/javascript" src="JS/bootstrap-select.min.js"></script>
-	<script type="text/javascript" src="JS/library.js?ver=1.0.0"></script>
-	<script type="text/javascript" src="JS/main.js?ver=1.0.0"></script>
 	<script type="text/javascript" src="JS/animacoes.js?ver=2.0.0"></script>
 	<script type="text/javascript" src="JS/progressbar.min.js"></script>
 	<script type="text/javascript" src="JS/reconnecting-websocket.min.js"></script>
 	<script type="text/javascript" src="JS/ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="JS/phaser.min.js"></script>
+	<script type="text/javascript" src="JS/library.js?ver=1.0.0"></script>
+	<script type="text/javascript" src="JS/main.js?ver=1.0.0"></script>
 
 	<script src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.9"></script>
 </body>

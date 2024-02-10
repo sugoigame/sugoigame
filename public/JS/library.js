@@ -866,6 +866,7 @@ function iniciaNav() {
   }
 }
 
+var gameTitle = document.title;
 function navTimeoutFunc() {
   var tmp = parseInt($("#destino_sec").html(), 10);
   tmp -= 1;
@@ -1045,7 +1046,6 @@ function remover_rota() {
 }
 
 popupAmigavel = false;
-
 function verifica_nova_msg() {
   setTimeout("verifica_nova_msg()", 10000);
   $.ajax({

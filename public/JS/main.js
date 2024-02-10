@@ -6,6 +6,12 @@
  */
 
 $(function () {
+  if (window.location.hostname == "sugoigame.com.br") {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/service-worker.js");
+    }
+  }
+
   var queryParams = getQueryParams();
   if (queryParams["erro"] === "1") {
     bootbox.alert({
