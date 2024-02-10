@@ -169,8 +169,6 @@ function appendLinks() {
     locale = locale.substr(5, locale.length - 5);
     locale = locale + ".php";
     clearAllTimeouts();
-    closeWebsockets();
-    destroyGames();
     location.href = locale;
   });
   $(document).on("click", ".link_send", function (e) {

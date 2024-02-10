@@ -1,3 +1,6 @@
+<?php
+require_once "Includes/conectdb.php";
+?>
 <style type="text/css">
     #mar-game {
         position: fixed;
@@ -6,63 +9,6 @@
         width: 100%;
         height: 100%;
         background-color: #000;
-    }
-
-    .menu-col {
-        z-index: 1;
-        position: absolute;
-        left: 0;
-        padding: 0;
-    }
-
-    .menu-content {
-        margin-left: 0;
-        margin-right: 0;
-        padding-bottom: 80px;
-        overflow: auto;
-        max-width: 250px;
-    }
-
-    #tripulantes-bar {
-        position: fixed;
-        right: 15px;
-        width: 70px;
-        height: 80vh;
-        overflow: auto;
-        margin-top: 38px;
-    }
-
-    #tripulantes-bar table,
-    #tripulantes-bar tr,
-    #tripulantes-bar td {
-        display: block;
-    }
-
-    #tripulantes-bar .tripulante_quadro {
-        background: transparent;
-        width: 40px;
-        height: auto;
-    }
-
-    #tripulantes-bar .tripulante_quadro .recompensa_text {
-        display: none;
-    }
-
-    #tripulantes-bar .tripulante_quadro_img {
-        top: 0;
-        width: 100%;
-        margin-bottom: -7px;
-    }
-
-    .tripulante-lvl-up img {
-        height: 30px;
-        margin-bottom: -25px;
-    }
-
-    @media (max-width: 767px) {
-        #header {
-            display: none;
-        }
     }
 
     #mar-game-tooltip {

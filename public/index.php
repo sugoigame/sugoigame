@@ -93,7 +93,6 @@ if (! $userDetails->conta &&
 	<script type="text/javascript" src="JS/bootstrap.min.js"></script>
 	<script type="text/javascript" src="JS/bootbox.min.js"></script>
 	<script type="text/javascript" src="JS/bootstrap-select.min.js"></script>
-	<script type="text/javascript" src="JS/animacoes.js?ver=2.0.0"></script>
 	<script type="text/javascript" src="JS/progressbar.min.js"></script>
 	<script type="text/javascript" src="JS/reconnecting-websocket.min.js"></script>
 	<script type="text/javascript" src="JS/ckeditor/ckeditor.js"></script>
