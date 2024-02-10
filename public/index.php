@@ -17,7 +17,7 @@ if (! $userDetails->conta &&
 <head>
 	<title>Sugoi Game - One Piece MMORPG</title>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=.5, initial-scale=1" />
 	<meta name="description" content="Um RPG estratégico cheio de PvP feito por fãs de One Piece." />
 
 	<meta property="og:url" content="https://sugoigame.com.br/" />
@@ -67,19 +67,19 @@ if (! $userDetails->conta &&
 	<!-- Modais globais que precisam permanecer abertas mesmo caso haja mudança de sessao.
 		Como a mudanca de sessao desencadeia uma atualizacao do html da pagina, essas
 		modals seriam fechadas se ficassem dentro do header.php, por isso elas ficam no contexto global. -->
-	<?php include "Includes/Components/Header/modal_user_progress.php"; ?>
+	<?php include "Includes/Components/Modals/modal_user_progress.php"; ?>
 
-	<?php include "Includes/Components/Header/modal_mensagens.php"; ?>
+	<?php include "Includes/Components/Modals/modal_mensagens.php"; ?>
 
-	<?php include "Includes/Components/Header/modal_inventario.php"; ?>
+	<?php include "Includes/Components/Modals/modal_inventario.php"; ?>
 
-	<?php include "Includes/Components/Header/modal_dar_comida.php"; ?>
+	<?php include "Includes/Components/Modals/modal_dar_comida.php"; ?>
 
-	<?php include "Includes/Components/Header/modal_cartografo.php"; ?>
+	<?php include "Includes/Components/Modals/modal_cartografo.php"; ?>
 
-	<?php include "Includes/Components/Header/modal_daily_gift.php"; ?>
+	<?php include "Includes/Components/Modals/modal_daily_gift.php"; ?>
 
-	<?php include "Includes/Components/Header/modal_send_message.php"; ?>
+	<?php include "Includes/Components/Modals/modal_send_message.php"; ?>
 
 	<div id="icon_carregando">
 		<div class="progress">
