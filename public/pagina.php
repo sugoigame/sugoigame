@@ -78,14 +78,7 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
         <div class="row main-container-row">
             <?php if (! $protector->is_ful_wide_session($sessao)) : ?>
                 <div class="col-sm-3 menu-col">
-                    <?php if ($sessao == "oceano") : ?>
-                        <div class="text-left" style="margin-left: 5px; margin-top: 38px;">
-                            <button class="btn btn-default" data-toggle="collapse" href="#menu-cover">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                        </div>
-                    <?php endif; ?>
-                    <div id="menu-cover" class="<?= ($sessao == 'oceano' ? 'collapse' : 'collapse in') ?>">
+                    <div id="menu-cover" class="collapse in">
                         <div class="menu-content">
                             <?php include "menu.php"; ?>
                         </div>

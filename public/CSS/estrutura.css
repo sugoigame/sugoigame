@@ -181,11 +181,12 @@ table tr td {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 .header-navbar li a > i {
-    font-size: 1.5vw;
+    font-size: min(1.5vw, 12px);
     margin: 0.5vw;
 }
 .header-navbar li a > img {
     height: 3vw;
+    max-height: 24px;
 }
 
 .header-navbar li a:hover,
@@ -540,42 +541,55 @@ body {
 }
 
 #tripulantes-bar {
-    text-align: center;
-    overflow: auto;
     z-index: 2;
+    text-align: left;
+    position: fixed;
+    left: 1vw;
+    top: 50vh;
+    margin-top: -30vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #tripulantes-bar table {
     background: transparent;
 }
+#tripulantes-bar table,
+#tripulantes-bar td {
+    display: inline-block;
+}
 
-#tripulantes-bar {
-    text-align: left;
+.tripulante-lvl-up img {
+    height: 30px;
+    margin-bottom: -25px;
 }
 
 .tripulante_quadro_td {
-    padding: 2px 2px 5px 2px;
+    padding: 1px;
 }
 
 .tripulante_quadro_td .tripulante_quadro_td_status .progress {
-    height: 5px;
+    height: 1vh;
     margin-bottom: 0;
+}
+.tripulante_quadro_td .tripulante_quadro_td_status .progress.mp-bar {
+    display: none;
 }
 
 .tripulante_quadro {
-    width: 85px;
-    height: 120px;
     display: inline-block;
     cursor: pointer;
     position: relative;
+    background: transparent;
+    width: 5vw;
+    max-width: 50px;
+    height: auto;
 }
 
 .tripulante_quadro:hover {
     text-decoration: none;
-}
-
-.tripulante_quadro_img {
-    display: block;
 }
 
 .tripulante_quadro_info {
@@ -610,9 +624,11 @@ body {
 
 .tripulante_quadro_img {
     position: relative;
-    top: 27px;
     margin: auto;
-    width: 68px;
+    top: 0;
+    width: 100%;
+    margin-bottom: -7px;
+    display: block;
 }
 
 .recompensa_text {
@@ -620,6 +636,7 @@ body {
     position: relative;
     top: 35px;
     line-height: 13px;
+    display: none;
 }
 
 .recompensa_text.pirate {

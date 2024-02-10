@@ -23,22 +23,22 @@ require_once "Includes/conectdb.php";
     #skills-area {
         position: fixed;
         z-index: 1;
-        bottom: 15px;
+        top: 50vh;
+        right: 0;
         margin: auto;
         text-align: center;
-        left: 50%;
-    }
-
-    #skills-area .skills-container {
-        margin-left: -50%;
+        margin-top: -20vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     #skills-area .skill {
-        width: 55px;
+        width: 6vw;
         margin: auto;
         position: relative;
         border-radius: 5px;
-        display: inline-block;
+        display: block;
     }
 
     #skills-area .skill.skill-allowed {
@@ -80,35 +80,32 @@ require_once "Includes/conectdb.php";
 </div>
 
 <div id="skills-area">
-    <div class="skills-container">
-        <div class="skill" id="skill-heal" data-toggle="tooltip" title="Restaurar o navio" data-placement="top">
-            <span class="badge">1</span>
-            <img src="Imagens/Skils/513.jpg" />
-        </div>
-        <div class="skill need-target" id="skill-shot" data-toggle="tooltip" title="Disparar uma bala de canhão"
-            data-placement="top">
-            <span class="badge">2</span>
-            <img src="Imagens/Skils/514.jpg" />
-        </div>
-        <div class="skill need-target" id="skill-attack" data-toggle="tooltip" title="Atacar um navio inimigo"
-            data-placement="top">
-            <span class="badge">3</span>
-            <img src="Imagens/Skils/33.jpg" />
-        </div>
-        <div class="skill hidden" id="skill-coup-de-burst" data-toggle="tooltip" title="Coup De Burst"
-            data-placement="top">
-            <span class="badge"></span>
-            <img src="Imagens/Skils/159.jpg" />
-        </div>
-        <div class="skill hidden" id="skill-kairouseki" data-toggle="tooltip" title="Ativar/Desativar Kairouseki"
-            data-placement="top">
-            <span class="badge"></span>
-            <img src="Imagens/Itens/165.png" />
-        </div>
-        <div class="skill skill-allowed" id="skill-profissoes" data-toggle="tooltip"
-            title="Abrir o painel de profissões" data-placement="top">
-            <i class="fa fa-gavel"></i>
-        </div>
+    <div class="skill" id="skill-heal" data-toggle="tooltip" title="Restaurar o navio" data-placement="top">
+        <span class="badge">1</span>
+        <img src="Imagens/Skils/513.jpg" />
+    </div>
+    <div class="skill need-target" id="skill-shot" data-toggle="tooltip" title="Disparar uma bala de canhão"
+        data-placement="top">
+        <span class="badge">2</span>
+        <img src="Imagens/Skils/514.jpg" />
+    </div>
+    <div class="skill need-target" id="skill-attack" data-toggle="tooltip" title="Atacar um navio inimigo"
+        data-placement="top">
+        <span class="badge">3</span>
+        <img src="Imagens/Skils/33.jpg" />
+    </div>
+    <div class="skill hidden" id="skill-coup-de-burst" data-toggle="tooltip" title="Coup De Burst" data-placement="top">
+        <span class="badge"></span>
+        <img src="Imagens/Skils/159.jpg" />
+    </div>
+    <div class="skill hidden" id="skill-kairouseki" data-toggle="tooltip" title="Ativar/Desativar Kairouseki"
+        data-placement="top">
+        <span class="badge"></span>
+        <img src="Imagens/Itens/165.png" />
+    </div>
+    <div class="skill skill-allowed" id="skill-profissoes" data-toggle="tooltip" title="Abrir o painel de profissões"
+        data-placement="top">
+        <i class="fa fa-gavel"></i>
     </div>
 </div>
 
