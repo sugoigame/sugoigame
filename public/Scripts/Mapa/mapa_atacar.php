@@ -13,9 +13,9 @@ $tipo = $protector->get_enum_or_exit("tipo", array(TIPO_ATAQUE, TIPO_SAQUE, TIPO
 if ($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) {
     $protector->must_be_out_of_ilha();
 
-    if ($userDetails->capitao["lvl"] < 10) {
-        $protector->exit_error("É necessário ter o capitão no nível 10 para iniciar um combate PvP");
-    }
+    // if ($userDetails->capitao["lvl"] < 10) {
+    //     $protector->exit_error("É necessário ter o capitão no nível 10 para iniciar um combate PvP");
+    // }
 }
 
 // remove desafio
@@ -114,10 +114,10 @@ if ($tipo == TIPO_TORNEIO) {
 }
 
 // valida lvl do capitao alvo
-$capitao_alvo = $connection->run("SELECT * FROM tb_personagens WHERE cod = ? ", "i", $usuario_alvo["cod_personagem"])->fetch_array();
-if (($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) && $capitao_alvo["lvl"] < 10) {
-    $protector->exit_error("É necessário que seu alvo tenha o capitão no nível 10 para iniciar um combate PvP");
-}
+// $capitao_alvo = $connection->run("SELECT * FROM tb_personagens WHERE cod = ? ", "i", $usuario_alvo["cod_personagem"])->fetch_array();
+// if (($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) /*&& $capitao_alvo["lvl"] < 10*/) {
+//     $protector->exit_error("É necessário que seu alvo tenha o capitão no nível 10 para iniciar um combate PvP");
+// }
 
 // valida alvo em combate
 $result = $connection->run("SELECT * FROM tb_combate WHERE id_1 = ? OR id_2 = ?", "ii", array($alvo, $alvo));
@@ -133,9 +133,9 @@ if ($result->count()) {
     $protector->exit_error("Seu alvo já está em combate contra bots");
 }
 
-if ($usuario_alvo["adm"]) {
-    $protector->exit_error("Um dos requisitos para atacar esse alvo não está cumprido.");
-}
+// if ($usuario_alvo["adm"]) {
+//     $protector->exit_error("Um dos requisitos para atacar esse alvo não está cumprido.");
+// }
 
 // valida requisitos de ataque
 if ($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) {
@@ -149,8 +149,15 @@ if ($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) {
         $protector->exit_error("Um dos requisitos para atacar esse alvo não está cumprido.");
     }
 }
-
-
+$verifica = $connection->run("SELECT unix_timestamp(TIMEDIFF(current_timestamp, horario)) AS duracao 
+                              FROM tb_combate_log 
+                              WHERE (id_1 = ? OR id_2 = ?)
+                              ORDER BY horario DESC
+                              LIMIT 1",
+                            "ii", array($userDetails->combate_pvp["combatente_a"], $userDetails->combate_pvp["combatente_b"]))->fetch_array()["duracao"];
+if($verifica > 0){
+    $protector->exit_error("Voce ja atacou ele hoje");
+}
 // carega personagens do alvo
 if ($tipo == TIPO_COLISEU) {
     $personagens_alvo = $connection->run("SELECT * FROM tb_personagens WHERE id = ? AND time_coliseu= 1", "i", array($alvo))->fetch_all_array();
@@ -282,6 +289,7 @@ $result = $connection->run(
 $combate_id = $result->last_id();
 
 // cria o log
+
 $pos_1 = $userDetails->tripulacao["x"] . "_" . $userDetails->tripulacao["y"];
 $pos_2 = $usuario_alvo["x"] . "_" . $usuario_alvo["y"];
 $connection->run(
@@ -289,6 +297,7 @@ $connection->run(
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
     "iiiissss", array($combate_id, $id_1, $id_2, $tipo, $pos_1, $pos_2, $userDetails->tripulacao["ip"], $usuario_alvo["ip"])
 );
+
 
 if ($tipo == TIPO_TORNEIO) {
     $connection->run("UPDATE tb_combate SET permite_apostas_1 = 1, permite_apostas_2 = 1, premio_apostas = 5000000, preco_apostas= 5000000 WHERE combate = ?",

@@ -84,7 +84,7 @@ function can_attack($content) {
     }
 
     return !both_marine($content)
-        && diff_mais_forte_equilibrada($content)
+       // && diff_mais_forte_equilibrada($content)
         && $userDetails->is_visivel
         && !has_ilha_envolta_target($content)
         && !$userDetails->has_ilha_envolta_me
@@ -118,22 +118,22 @@ function can_attack_nps($content) {
     return ao_lado(array("x" => $content["x"], "y" => $content["y"]));
 }
 
-function diff_mais_forte_equilibrada($alvo) {
-    global $userDetails;
-    $diff = abs($userDetails->lvl_mais_forte - $alvo["nivel_mais_forte"]);
+// function diff_mais_forte_equilibrada($alvo) {
+//     global $userDetails;
+//     $diff = abs($userDetails->lvl_mais_forte - $alvo["nivel_mais_forte"]);
 
-    if ($userDetails->ilha["mar"] <= 5) { // blue e GL
-        return $diff <= 5;
-    } else { // calm belt e novo mundo
-        return true;
-    }
-}
+//     if ($userDetails->ilha["mar"] <= 5) { // blue e GL
+//         return $diff <= 5;
+//     } else { // calm belt e novo mundo
+//         return true;
+//     }
+// }
 
 function can_dispair_cannon($content) {
     global $userDetails;
 
     return !same_id($content)
-        && diff_mais_forte_equilibrada($content)
+        //&& diff_mais_forte_equilibrada($content)
         && !both_marine($content)
         && $userDetails->is_visivel
         && !has_ilha_envolta_target($content)
@@ -350,11 +350,21 @@ function calc_modificador_reputacao($vencedor, $perdedor) {
     return $dif < 1.5 ? $dif : 1.5;
 }
 
-function calc_modificador_lvl($vencedor_lvl, $perdedor_lvl) {
-    $dif = abs($vencedor_lvl - $perdedor_lvl);
+// function calc_modificador_lvl($vencedor_lvl, $perdedor_lvl) {
+//     $dif = abs($vencedor_lvl - $perdedor_lvl);
+//     if ($dif <= 0) {
+//         return 1;
+//     } else if ($dif >= 10) {
+//         return 0;
+//     } else {
+//         return 1 - ($dif * 10) / 100;
+//     }
+// }
+function calc_modificador_lvl($vencedor_rep, $perdedor_rep) {
+    $dif = abs($vencedor_rep - $perdedor_rep);
     if ($dif <= 0) {
         return 1;
-    } else if ($dif >= 10) {
+    } else if ($dif >= 5) {
         return 0;
     } else {
         return 1 - ($dif * 10) / 100;
@@ -369,9 +379,11 @@ function calc_reputacao($vencedor_rep, $perdedor_rep, $lvl_mais_forte_vencedor, 
     $redutor_vencedor   = calc_redutor_rep_vencedor($vencedor_rep);
     $redutor_perdedor   = calc_redutor_rep_perdedor($perdedor_rep);
 
-    $vencedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_vencedor + 50);
-    $perdedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_perdedor);
-
+    // $vencedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_vencedor + 50);
+    // $perdedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_perdedor);
+    $vencedor_rep = round($rep_base +1);
+    $perdedor_rep = round($rep_base -1);
+    
     return [
         "vencedor_rep"      => $vencedor_rep,
         "perdedor_rep"      => $perdedor_rep,
