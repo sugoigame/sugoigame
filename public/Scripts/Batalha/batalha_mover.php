@@ -9,7 +9,7 @@ $quadro = $protector->get_test_pass_or_exit("quadro", "/^[0-9a-zA-Z;_]+$/");
 
 $personagem = $userDetails->get_pers_by_cod($pers_cod, true);
 
-if (!$personagem) {
+if (! $personagem) {
     $protector->exit_error("Personagem invalido");
 }
 
@@ -23,19 +23,19 @@ if ($machucado_joelho->count()) {
 $result = $connection->run("SELECT * FROM tb_combate_personagens WHERE cod = ?",
     "i", array($pers_cod));
 
-if (!$result->count()) {
+if (! $result->count()) {
     $protector->exit_error("Personagem fora de combate");
 }
 
 $personagem_combate = $result->fetch_array();
 
-if (!$personagem_combate["hp"]) {
+if (! $personagem_combate["hp"]) {
     $protector->exit_error("Este personagem foi derrotado e não pode se mover");
 }
 
 $quadro = explode("_", $quadro);
-$quadro_x = (int)$quadro[0];
-$quadro_y = (int)$quadro[1];
+$quadro_x = (int) $quadro[0];
+$quadro_y = (int) $quadro[1];
 
 $custo_movimento = max(abs($quadro_x - $personagem_combate["quadro_x"]), abs($quadro_y - $personagem_combate["quadro_y"]));
 
@@ -87,7 +87,7 @@ if ($userDetails->combate_bot) {
 }
 
 if ($userDetails->combate_pve) {
-    if ($quadro_x < 5 AND $quadro_x >= 0 AND $quadro_y < 20 AND $quadro_y >= 0) {
+    if ($quadro_x < 5 and $quadro_x >= 0 and $quadro_y < 20 and $quadro_y >= 0) {
         $connection->run("UPDATE tb_combate_personagens SET quadro_x = ?, quadro_y = ? WHERE cod =?",
             "iii", array($quadro_x, $quadro_y, $pers_cod));
 
@@ -95,7 +95,7 @@ if ($userDetails->combate_pve) {
             "i", array($userDetails->tripulacao["id"]));
     }
 } else if ($userDetails->combate_pvp) {
-    if ($quadro_x < 10 AND $quadro_x >= 0 AND $quadro_y < 20 AND $quadro_y >= 0) {
+    if ($quadro_x < 10 and $quadro_x >= 0 and $quadro_y < 20 and $quadro_y >= 0) {
         $connection->run("UPDATE tb_combate_personagens SET quadro_x = ?, quadro_y = ? WHERE cod =?",
             "iii", array($quadro_x, $quadro_y, $pers_cod));
 
@@ -123,10 +123,10 @@ if ($userDetails->combate_pve) {
 				('" . $relatorio["combate"] . "', '" . $relatorio["relatorio"] . "', '" . $relatorio["id"] . "', '" . $relatorio["cod"] . "',
 				'" . $relatorio["img"] . "', '" . $relatorio["nome"] . "', '" . $relatorio["tipo"] . "', '" . $relatorio["nome_skil"] . "',
 				'" . $relatorio["img_skil"] . "', '" . $relatorio["descricao_skil"] . "')";
-        mysql_query($query) or die("nao foi possivel inserir o relatorio");
+        $connection->run($query) or die("nao foi possivel inserir o relatorio");
     }
 } else if ($userDetails->combate_bot) {
-    if ($quadro_x < 10 AND $quadro_x >= 0 AND $quadro_y < 20 AND $quadro_y >= 0) {
+    if ($quadro_x < 10 and $quadro_x >= 0 and $quadro_y < 20 and $quadro_y >= 0) {
         $connection->run("UPDATE tb_combate_personagens SET quadro_x = ?, quadro_y = ? WHERE cod =?",
             "iii", array($quadro_x, $quadro_y, $pers_cod));
 

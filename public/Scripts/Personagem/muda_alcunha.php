@@ -3,25 +3,25 @@ $valida = "EquipeSugoiGame2012";
 require "../../Includes/conectdb.php";
 include "../../Includes/verifica_login_sem_pers.php";
 
-if (!isset($_GET["cod"]) OR !isset($_GET["alc"])) {
-    mysql_close();
-    echo("#Você informou algum caracter inválido.");
+if (! isset($_GET["cod"]) or ! isset($_GET["alc"])) {
+
+    echo ("#Você informou algum caracter inválido.");
     exit();
 }
-$cod = mysql_real_escape_string($_GET["cod"]);
-$atr = mysql_real_escape_string($_GET["alc"]);
+$cod = $protector->get_number_or_exit("cod");
+$atr = $protector->get_number_or_exit("alc");
 
-if (!preg_match("/^[\d]+$/", $atr) OR !preg_match("/^[\d]+$/", $cod)) {
-    mysql_close();
-    echo("#Você informou algo inválido.");
+if (! preg_match("/^[\d]+$/", $atr) or ! preg_match("/^[\d]+$/", $cod)) {
+
+    echo ("#Você informou algo inválido.");
     exit();
 }
 
 $query = "SELECT * FROM tb_personagens WHERE cod='$cod' AND id='" . $usuario["id"] . "'";
-$result = mysql_query($query);
-if (mysql_num_rows($result) == 0) {
-    mysql_close();
-    echo("#Personagem não encontrado.");
+$result = $connection->run($query);
+if ($result->count() == 0) {
+
+    echo ("#Personagem não encontrado.");
     exit();
 }
 
@@ -34,12 +34,12 @@ if ($atr != 0) {
         "ii", array($userDetails->tripulacao["id"], $atr)
     );
 
-    if (!$titulos_compartilhados->count()) {
+    if (! $titulos_compartilhados->count()) {
         $query = "SELECT * FROM tb_personagem_titulo WHERE cod='$cod' AND titulo='$atr'";
-        $result = mysql_query($query);
-        if (mysql_num_rows($result) == 0) {
-            mysql_close();
-            echo("#Alcunha inválida.");
+        $result = $connection->run($query);
+        if ($result->count() == 0) {
+
+            echo ("#Alcunha inválida.");
             exit();
         }
     }
@@ -51,8 +51,9 @@ if ($atr == 0) {
 }
 
 $query = "UPDATE tb_personagens SET titulo= $atr  WHERE cod='$cod'";
-mysql_query($query) or die("não foi possivel alterar o titulo");
+$connection->run($query) or die("não foi possivel alterar o titulo");
 
 echo "Alcunha alterada";
-mysql_close();
+
 ?>
+

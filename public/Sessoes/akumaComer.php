@@ -16,19 +16,19 @@
 
 <div class="panel-body">
     <?php
-    if (!isset($_GET["cod"]) OR
-        !isset($_GET["akuma"]) OR
-        !isset($_GET["img"])
+    if (! isset($_GET["cod"]) or
+        ! isset($_GET["akuma"]) or
+        ! isset($_GET["img"])
     ) {
-        mysql_close();
+
         echo "Caracter Inválido";
         exit();
     }
-    if (!validate_number($_GET["cod"])
-        OR !validate_number($_GET["akuma"])
-        OR !validate_number($_GET["img"])
+    if (! validate_number($_GET["cod"])
+        or ! validate_number($_GET["akuma"])
+        or ! validate_number($_GET["img"])
     ) {
-        mysql_close();
+
         echo "Caracter Inválido";
         exit();
     }
@@ -42,7 +42,7 @@
         }
     }
 
-    if (!$pers) {
+    if (! $pers) {
         echo "Caracter Inválido";
         exit();
     }
@@ -53,7 +53,7 @@
     $result = $connection->run("SELECT * FROM tb_usuario_itens WHERE tipo_item = ? AND id = ?",
         "ii", array($tipoakuma, $userDetails->tripulacao["id"]));
 
-    if (!$result->count()) {
+    if (! $result->count()) {
         echo "Caracter Inválido";
         exit();
     }
@@ -63,13 +63,13 @@
     habilidades exclusiva do seu personagem, escolha com sabedoria as habilidades que você irá aprender!") ?>
 
     <script type="text/javascript">
-        <?php include "JS/akumaComer.js";?>
+        <?php include "JS/akumaComer.js"; ?>
     </script>
 
     <?php render_status_akuma($pers, $img_akuma, $tipoakuma); ?>
 
-    <form action="Akuma/criar_akuma" method="POST"
-          id="formulario_comer_akuma" name="formulario_comer_akuma" class="text-left">
+    <form action="Akuma/criar_akuma" method="POST" id="formulario_comer_akuma" name="formulario_comer_akuma"
+        class="text-left">
         <?php render_criador_akuma($pers, $img_akuma, $tipoakuma); ?>
         <button class="btn btn-success" type="submit">Comer</button>
     </form>

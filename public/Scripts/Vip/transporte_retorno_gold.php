@@ -12,9 +12,9 @@ $protector->need_gold(PRECO_GOLD_VIAJA_RETORNO);
 
 $query = "UPDATE tb_usuarios SET x='" . $usuario["res_x"] . "', y='" . $usuario["res_y"] . "', mar_visivel=0
 	WHERE id='" . $usuario["id"] . "'";
-mysql_query($query) or die("Nao foi possivel iniciar navegação");
+$connection->run($query) or die("Nao foi possivel iniciar navegação");
 
 $userDetails->reduz_gold(PRECO_GOLD_VIAJA_RETORNO, "transporte_gold");
 
-mysql_close();
-echo("%oceano");
+
+echo ("%oceano");
