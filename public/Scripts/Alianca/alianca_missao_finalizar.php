@@ -3,44 +3,44 @@ $valida = "EquipeSugoiGame2012";
 require "../../Includes/conectdb.php";
 include "../../Includes/verifica_login.php";
 
-if (!$conect) {
-    mysql_close();
-    echo("#Você precisa estar logado.");
+if (! $conect) {
+
+    echo ("#Você precisa estar logado.");
     exit();
 }
-if (!$inally) {
-    mysql_close();
-    echo("#Você não faz parte de uma alianca");
+if (! $inally) {
+
+    echo ("#Você não faz parte de uma alianca");
     exit();
 }
 $query = "SELECT * FROM tb_alianca_membros WHERE id='" . $usuario["id"] . "'";
-$result = mysql_query($query);
-$permicao = mysql_fetch_array($result);
+$result = $connection->run($query);
+$permicao = $result->fetch_array();
 
 if (substr($usuario["alianca"][$permicao["autoridade"]], 7, 1) == 0) {
-    mysql_close();
-    echo("#Você não tem permissão para iniciar missões.");
+
+    echo ("#Você não tem permissão para iniciar missões.");
     exit();
 }
 
 $query = "SELECT * FROM tb_alianca_missoes WHERE cod_alianca='" . $usuario["alianca"]["cod_alianca"] . "'";
-$result = mysql_query($query);
-if (mysql_num_rows($result) == 0) {
-    mysql_close();
-    echo("#Você nao esta em missao.");
+$result = $connection->run($query);
+if ($result->count() == 0) {
+
+    echo ("#Você nao esta em missao.");
     exit();
 }
 
-$missao = mysql_fetch_array($result);
+$missao = $result->fetch_array();
 
 if ($missao["quant"] < $missao["fim"]) {
-    mysql_close();
-    echo("#Você nao concluiu a missao.");
+
+    echo ("#Você nao concluiu a missao.");
     exit();
 }
 
 $query = "DELETE FROM tb_alianca_missoes WHERE cod_alianca='" . $usuario["alianca"]["cod_alianca"] . "'";
-mysql_query($query) or die("Nao foi possivel assinar");
+$connection->run($query) or die("Nao foi possivel assinar");
 
 switch ($missao["fim"]) {
     case 50:
@@ -65,12 +65,12 @@ switch ($missao["fim"]) {
 
 $query = "UPDATE tb_alianca SET xp='$xp', score='$score'
 	WHERE cod_alianca='" . $usuario["alianca"]["cod_alianca"] . "'";
-mysql_query($query) or die("Nao foi possivel assinar");
+$connection->run($query) or die("Nao foi possivel assinar");
 
 if ($missao["boss_id"]) {
     $connection->run("UPDATE tb_alianca SET banco = banco + ? WHERE cod_alianca = ?",
         "ii", array(30000000, $userDetails->ally["cod_alianca"]));
 }
 
-mysql_close();
-echo("Missão concluida!");
+
+echo ("Missão concluida!");

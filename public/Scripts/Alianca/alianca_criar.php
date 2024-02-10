@@ -3,44 +3,44 @@ $valida = "EquipeSugoiGame2012";
 require "../../Includes/conectdb.php";
 include "../../Includes/verifica_login.php";
 
-if (!$conect) {
-    mysql_close();
+if (! $conect) {
+
     header("location:../../?msg=Você precisa estar logado.");
     exit();
 }
 if ($inally) {
-    mysql_close();
+
     header("location:../../?msg=Você ja faz parte de uma aliança/frota");
     exit();
 }
-if (!isset($_POST["pagamento"]) OR !isset($_POST["nome"])) {
-    mysql_close();
+if (! isset($_POST["pagamento"]) or ! isset($_POST["nome"])) {
+
     header("location:../../?msg=Você informou algum caracter inválido.");
     exit();
 }
 
-$forma = mysql_real_escape_string($_POST["pagamento"]);
-$nome = mysql_real_escape_string($_POST["nome"]);
+$forma = $protector->post_number_or_exit("pagamento");
+$nome = $protector->post_alphanumeric_or_exit("nome");
 
-if (!preg_match("/^[\d]+$/", $forma)) {
-    mysql_close();
+if (! preg_match("/^[\d]+$/", $forma)) {
+
     header("location:../../?msg=Você informou algum caracter inválido.");
     exit();
 }
-if (!preg_match("/^[\w]+$/", $nome)) {
-    mysql_close();
+if (! preg_match("/^[\w]+$/", $nome)) {
+
     header("location:../../?msg=Você informou algum caracter inválido.");
     exit();
 }
 if (strlen($nome) < 5) {
-    mysql_close();
+
     header("location:../../?msg=Esse nome é muito curto.");
     exit();
 }
 $query = "SELECT * FROM tb_alianca WHERE nome='$nome'";
-$result = mysql_query($query);
-if (mysql_num_rows($result) != 0) {
-    mysql_close();
+$result = $connection->run($query);
+if ($result->count() != 0) {
+
     header("location:../../?msg=Esse nome não está disponivel.");
     exit();
 }
@@ -73,16 +73,17 @@ switch ($forma) {
 
 $query = "INSERT INTO tb_alianca (nome)
 	VALUES ('$nome')";
-mysql_query($query) or die("Erro ao efetuar criacao");
+$connection->run($query) or die("Erro ao efetuar criacao");
 
 $query = "SELECT * FROM tb_alianca WHERE nome='$nome'";
-$result = mysql_query($query);
-$alianca = mysql_fetch_array($result);
+$result = $connection->run($query);
+$alianca = $result->fetch_array();
 
 $query = "INSERT INTO tb_alianca_membros (cod_alianca, id, autoridade)
 	VALUES ('" . $alianca["cod_alianca"] . "', '" . $usuario["id"] . "', '0')";
-mysql_query($query) or die("Erro ao efetuar criacao");
+$connection->run($query) or die("Erro ao efetuar criacao");
 
-mysql_close();
+
 header("location:../../?ses=alianca");
 ?>
+

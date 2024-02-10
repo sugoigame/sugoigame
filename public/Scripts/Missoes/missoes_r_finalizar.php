@@ -5,40 +5,40 @@ include "../../Includes/verifica_login.php";
 include "../../Includes/verifica_missao.php";
 include "../../Includes/verifica_combate.php";
 
-if (!$conect) {
-    mysql_close();
-    echo("#Você precisa estar logado!");
+if (! $conect) {
+
+    echo ("#Você precisa estar logado!");
     exit();
 }
 if ($incombate) {
-    mysql_close();
-    echo("#Você está em combate!");
+
+    echo ("#Você está em combate!");
     exit();
 }
-if (!$inilha) {
-    mysql_close();
-    echo("#Você precisa estar em uma ilha!");
+if (! $inilha) {
+
+    echo ("#Você precisa estar em uma ilha!");
     exit();
 }
 if ($inrecrute) {
-    mysql_close();
-    echo("#Você está ocupado recrutando neste momento.");
+
+    echo ("#Você está ocupado recrutando neste momento.");
     exit();
 }
 
 $query = "SELECT * FROM tb_missoes_r 
 	WHERE id='" . $usuario["id"] . "'";
-$result = mysql_query($query);
-if (mysql_num_rows($result) == 1) {
-    $missao_r = mysql_fetch_array($result);
+$result = $connection->run($query);
+if ($result->count() == 1) {
+    $missao_r = $result->fetch_array();
 } else {
-    mysql_close();
-    echo("#Você não iniciou uma missão!");
+
+    echo ("#Você não iniciou uma missão!");
     exit();
 }
 if ($missao_r["fim"] > atual_segundo()) {
-    mysql_close();
-    echo("#Você não concluiu a missão");
+
+    echo ("#Você não concluiu a missão");
     exit();
 }
 
@@ -75,15 +75,16 @@ switch ($missao_r["modif"]) {
 $berries = $usuario["berries"] + $rec;
 
 $query = "UPDATE tb_usuarios SET berries='$berries' WHERE id='" . $usuario["id"] . "'";
-mysql_query($query) or die("Nao foi possivel receber a recompensa");
+$connection->run($query) or die("Nao foi possivel receber a recompensa");
 
 $userDetails->xp_for_all($xp);
 
 $query = "DELETE FROM tb_missoes_r
 	WHERE id='" . $usuario["id"] . "'";
-mysql_query($query) or die("Nao foi possivel concluir a missao");
+$connection->run($query) or die("Nao foi possivel concluir a missao");
 
-mysql_close();
-echo("-Missão concluida!");
+
+echo ("-Missão concluida!");
 exit();
 ?>
+

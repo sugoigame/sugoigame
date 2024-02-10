@@ -24,57 +24,57 @@
 
     <?php
     $query = "SELECT * FROM tb_alianca_membros WHERE id='" . $usuario["id"] . "'";
-    $result = mysql_query($query);
-    $permicao = mysql_fetch_array($result);
+    $result = $connection->run($query);
+    $permicao = $result->fetch_array();
 
     $query = "SELECT * FROM tb_alianca_guerra WHERE cod_alianca='" . $usuario["alianca"]["cod_alianca"] . "'";
-    $result = mysql_query($query);
-    if (mysql_num_rows($result) == 0) {
+    $result = $connection->run($query);
+    if ($result->count() == 0) {
         ?>
         Você não está em guerra com nenhuma aliança ou frota.<br>
         É necessário, no mínimo, ter a Aliança/Frota no nível 5 e 15 membros para poder entrar em guerra.<br>
         <?php
         $query = "SELECT * FROM tb_alianca_membros WHERE cod_alianca='" . $usuario["alianca"]["cod_alianca"] . "'";
-        $result = mysql_query($query);
-        $quant_membros = mysql_num_rows($result);
-        if (substr($usuario["alianca"][$permicao["autoridade"]], 4, 1) == 1 AND $usuario["alianca"]["lvl"] > 4 && $quant_membros >= 15) {
+        $result = $connection->run($query);
+        $quant_membros = $result->count();
+        if (substr($usuario["alianca"][$permicao["autoridade"]], 4, 1) == 1 and $usuario["alianca"]["lvl"] > 4 && $quant_membros >= 15) {
             $query = "SELECT * FROM tb_alianca_guerra_pedidos WHERE convidado='" . $usuario["alianca"]["cod_alianca"] . "'";
-            $result = mysql_query($query);
-            if (mysql_num_rows($result) != 0) {
+            $result = $connection->run($query);
+            if ($result->count() != 0) {
                 ?>
                 <h4>Desafios de guerra:</h4><br>
                 <?php
             }
-            while ($pedido = mysql_fetch_array($result)) {
+            while ($pedido = $result->fetch_array()) {
                 $query2 = "SELECT * FROM tb_alianca WHERE cod_alianca='" . $pedido["cod_alianca"] . "'";
-                $result2 = mysql_query($query2);
-                $pedido2 = mysql_fetch_array($result2);
+                $result2 = $connection->run($query2);
+                $pedido2 = $result2->fetch_array();
                 echo $pedido2["nome"] . " - " . $pedido["tipo"] . " vitórias";
                 ?>
                 <button href='link_Alianca/alianca_guerra_recusar.php?cod=<?php echo $pedido["cod_alianca"] ?>'
-                        class="link_send btn btn-danger">
+                    class="link_send btn btn-danger">
                     Recusar
                 </button>
                 <button href='link_Alianca/alianca_guerra_confirmar.php?cod=<?php echo $pedido["cod_alianca"] ?>'
-                        class="link_send btn btn-success">
+                    class="link_send btn btn-success">
                     Aceitar
                 </button>
             <? } ?>
             <?php
             $query = "SELECT * FROM tb_alianca_guerra_pedidos WHERE cod_alianca='" . $usuario["alianca"]["cod_alianca"] . "'";
-            $result = mysql_query($query);
-            if (mysql_num_rows($result) != 0) { ?>
+            $result = $connection->run($query);
+            if ($result->count() != 0) { ?>
                 <br><br>
                 <h4>Desafios enviados:</h4><br>
             <? }
-            while ($pedido = mysql_fetch_array($result)) {
+            while ($pedido = $result->fetch_array()) {
                 $query2 = "SELECT * FROM tb_alianca WHERE cod_alianca='" . $pedido["convidado"] . "'";
-                $result2 = mysql_query($query2);
-                $pedido2 = mysql_fetch_array($result2);
+                $result2 = $connection->run($query2);
+                $pedido2 = $result2->fetch_array();
                 echo $pedido2["nome"] . " - " . $pedido["tipo"] . " vitórias";
                 ?>
                 <button href='link_Alianca/alianca_guerra_cancelar.php?cod=<?php echo $pedido2["cod_alianca"] ?>'
-                        class="link_send btn btn-danger">
+                    class="link_send btn btn-danger">
                     Cancelar
                 </button>
                 <?php
@@ -83,17 +83,16 @@
             $query = "SELECT * FROM tb_alianca_guerra_pedidos 
 		WHERE cod_alianca='" . $usuario["alianca"]["cod_alianca"] . "' 
 		OR convidado='" . $usuario["alianca"]["cod_alianca"] . "'";
-            $result = mysql_query($query);
-            if (mysql_num_rows($result) == 0) {
+            $result = $connection->run($query);
+            if ($result->count() == 0) {
                 ?>
                 <br><br>
                 <h4>Enviar declaração de guerra:</h4>
                 <form method="post" class="form-inline" action="Scripts/Alianca/alianca_guerra_convidar.php">
                     <div class="form-group">
                         <input type="text" name="nome" class="form-control" size="50"
-                               placeholder="Digite o nome da aliança ou frota que deseja enfrentar."
-                               onkeyup="this.value=removeCaracteres(this.value)"
-                               onblur="this.value=removeCaracteres(this.value)"/>
+                            placeholder="Digite o nome da aliança ou frota que deseja enfrentar."
+                            onkeyup="this.value=removeCaracteres(this.value)" onblur="this.value=removeCaracteres(this.value)" />
                     </div>
                     <div class="form-group">
                         <select name="tipo" class="form-control">
@@ -110,35 +109,42 @@
             }
         }
     } else {
-        $inimigo = mysql_fetch_array($result);
+        $inimigo = $result->fetch_array();
         $query = "SELECT * FROM tb_alianca WHERE cod_alianca='" . $inimigo["cod_inimigo"] . "'";
-        $result = mysql_query($query);
-        $inimigo_info = mysql_fetch_array($result);
+        $result = $connection->run($query);
+        $inimigo_info = $result->fetch_array();
 
         $query = "SELECT * FROM tb_alianca_guerra WHERE cod_alianca='" . $inimigo["cod_inimigo"] . "'";
-        $result = mysql_query($query);
-        $inimigo_info2 = mysql_fetch_array($result);
+        $result = $connection->run($query);
+        $inimigo_info2 = $result->fetch_array();
 
         ?>
-        <font style="font-size: 20px"><b>Sua <?php if ($usuario["faccao"] == 0) echo "frota"; else echo "aliança" ?>
-                está em guerra!</b></font><br><br>
-        <font style="font-size: 25px"><b><?php echo $usuario["alianca"]["nome"] . "</b> : " . $inimigo["pts"] . " vitórias" ?>
+        <font style="font-size: 20px"><b>Sua
+                <?php if ($usuario["faccao"] == 0)
+                    echo "frota";
+                else
+                    echo "aliança" ?>
+                    está em guerra!
+                </b></font><br><br>
+            <font style="font-size: 25px"><b>
+                <?php echo $usuario["alianca"]["nome"] . "</b> : " . $inimigo["pts"] . " vitórias" ?>
         </font><br>
-        <font style="font-size: 25px"><b><?php echo $inimigo_info["nome"] . "</b> : " . $inimigo_info2["pts"] . " vitórias" ?>
+        <font style="font-size: 25px"><b>
+                <?php echo $inimigo_info["nome"] . "</b> : " . $inimigo_info2["pts"] . " vitórias" ?>
         </font><br>
         <br>
         <b>Tempo restante:</b><br>
         <? if ($inimigo["fim"] >= atual_segundo()) { ?>
             <span id="guerra_tempo_min">
-	<? echo transforma_tempo_min($inimigo["fim"] - atual_segundo()); ?>
-	</span>
+                <? echo transforma_tempo_min($inimigo["fim"] - atual_segundo()); ?>
+            </span>
             <span id="guerra_tempo_sec" style="display: none;">
-	<? echo $inimigo["fim"] - atual_segundo(); ?>
-	</span>
+                <? echo $inimigo["fim"] - atual_segundo(); ?>
+            </span>
         <? } else if (substr($usuario["alianca"][$permicao["autoridade"]], 5, 1) == 1) { ?>
-            <button href='link_Alianca/alianca_guerra_finalizar.php' class="link_send btn btn-primary">
-                Finalizar
-            </button>
+                <button href='link_Alianca/alianca_guerra_finalizar.php' class="link_send btn btn-primary">
+                    Finalizar
+                </button>
         <? } ?>
         <br><br>
         <b>Condições de vitória:</b><br>
@@ -146,15 +152,16 @@
         <b>Sua cooperação:</b><br>
         <?php
         $query = "SELECT * FROM tb_alianca_guerra_ajuda WHERE id='" . $usuario["id"] . "'";
-        $result = mysql_query($query);
-        if (mysql_num_rows($result) == 0) echo "0";
+        $result = $connection->run($query);
+        if ($result->count() == 0)
+            echo "0";
         else {
-            $ajuda = mysql_fetch_array($result);
+            $ajuda = $result->fetch_array();
             echo $ajuda["quant"];
         }
         ?> vitórias<br><br>
         <br>
-        <? if ($inimigo["pts"] >= $inimigo["vitoria"] AND substr($usuario["alianca"][$permicao["autoridade"]], 5, 1) == 1) { ?>
+        <? if ($inimigo["pts"] >= $inimigo["vitoria"] and substr($usuario["alianca"][$permicao["autoridade"]], 5, 1) == 1) { ?>
             Você ganhou essa Guerra!<br><br>
             <? if (substr($usuario["alianca"][$permicao["autoridade"]], 5, 1) == 1) { ?>
                 <button href='link_Alianca/alianca_guerra_finalizar.php' class="link_send btn btn-success">
@@ -162,18 +169,26 @@
                 </button>
             <? } ?>
         <? } else if ($inimigo_info2["pts"] >= $inimigo["vitoria"]) { ?>
-            Você perdeu essa Guerra!<br><br>
+                Você perdeu essa Guerra!<br><br>
             <? if (substr($usuario["alianca"][$permicao["autoridade"]], 5, 1) == 1) { ?>
-                <button href='link_Alianca/alianca_guerra_finalizar.php' class="link_send btn btn-primary">
-                    Finalizar
-                </button>
+                    <button href='link_Alianca/alianca_guerra_finalizar.php' class="link_send btn btn-primary">
+                        Finalizar
+                    </button>
             <? } ?>
         <? } else { ?>
-            <b>Recompensas:</b><br>
-            <?php echo ($inimigo["vitoria"] / 5) * 50 ?> pts de Reputação para <?php if ($usuario["faccao"] == 0) echo "frota"; else echo "aliança" ?>.
-            <br>
-            <?php echo ($inimigo["vitoria"] / 5) * 10 ?> pts de Experiência para <?php if ($usuario["faccao"] == 0) echo "frota"; else echo "aliança" ?>.
-            <br>
+                <b>Recompensas:</b><br>
+            <?php echo ($inimigo["vitoria"] / 5) * 50 ?> pts de Reputação para
+            <?php if ($usuario["faccao"] == 0)
+                echo "frota";
+            else
+                echo "aliança" ?>.
+                    <br>
+            <?php echo ($inimigo["vitoria"] / 5) * 10 ?> pts de Experiência para
+            <?php if ($usuario["faccao"] == 0)
+                echo "frota";
+            else
+                echo "aliança" ?>.
+                    <br>
             <?php echo $inimigo["vitoria"] * 5 ?> pts de Cooperação para cada jogador que participar.<br><br>
         <? } ?>
     <? } ?>

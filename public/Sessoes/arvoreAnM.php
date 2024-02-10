@@ -9,21 +9,22 @@
     <h3>Árvore de Akuma no Mi</h3>
     <?
     $query = "SELECT * FROM tb_jardim_laftel WHERE id='" . $usuario["id"] . "'";
-    $result = mysql_query($query);
+    $result = $connection->run($query);
 
     $possivel = FALSE;
-    if (mysql_num_rows($result) == 0)
+    if ($result->count() == 0)
         $possivel = TRUE;
     else {
-        $tempo = mysql_fetch_array($result);
+        $tempo = $result->fetch_array();
 
-        if ($tempo["tempo"] < atual_segundo()) $possivel = TRUE;
+        if ($tempo["tempo"] < atual_segundo())
+            $possivel = TRUE;
     }
 
     if ($possivel) { ?>
-        <button href="link_Especiais/jardim_laftel.php" class="link_send btn btn-success">Colher uma Akuma no Mi
-        </button>
+                <button href="link_Especiais/jardim_laftel.php" class="link_send btn btn-success">Colher uma Akuma no Mi
+                </button>
     <? } else { ?>
-        <? echo transforma_tempo_min($tempo["tempo"] - atual_segundo()) ?> para colher uma fruta.
+                <? echo transforma_tempo_min($tempo["tempo"] - atual_segundo()) ?> para colher uma fruta.
     <? } ?>
 </div>

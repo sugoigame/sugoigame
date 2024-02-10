@@ -3,51 +3,51 @@ $valida = "EquipeSugoiGame2012";
 require "../../Includes/conectdb.php";
 include "../../Includes/verifica_login_sem_pers.php";
 
-if (!$conect) {
-    mysql_close();
-    echo("#Você precisa estar logado!");
+if (! $conect) {
+
+    echo ("#Você precisa estar logado!");
     exit();
 }
-if (!isset($_GET["cod"]) OR !isset($_GET["pos"])) {
-    mysql_close();
-    echo("#Informações insuficientes");
+if (! isset($_GET["cod"]) or ! isset($_GET["pos"])) {
+
+    echo ("#Informações insuficientes");
     exit();
 }
 
 $cod = $_GET["cod"];
 $pos = explode("_", $_GET["pos"]);
 
-if (!preg_match("/^[\d]+$/", $cod) OR !preg_match("/^[\d]+$/", $pos[0]) OR !preg_match("/^[\d]+$/", $pos[1])) {
-    mysql_close();
-    echo("#Informações inválidas");
+if (! preg_match("/^[\d]+$/", $cod) or ! preg_match("/^[\d]+$/", $pos[0]) or ! preg_match("/^[\d]+$/", $pos[1])) {
+
+    echo ("#Informações inválidas");
     exit();
 }
 
 $query = "SELECT * FROM tb_personagens WHERE id='" . $usuario["id"] . "' AND cod='$cod'";
-$result = mysql_query($query);
-if (mysql_num_rows($result) == 0) {
-    mysql_close();
-    echo("#Personagem não encontrado");
+$result = $connection->run($query);
+if ($result->count() == 0) {
+
+    echo ("#Personagem não encontrado");
     exit();
 }
 
-if ($pos[0] < 5 OR $pos[0] > 19 OR $pos[1] > 19 OR $pos[1] < 0) {
-    mysql_close();
-    echo("#Informações inválidas");
+if ($pos[0] < 5 or $pos[0] > 19 or $pos[1] > 19 or $pos[1] < 0) {
+
+    echo ("#Informações inválidas");
     exit();
 }
 $coord = $pos[0] . ";" . $pos[1];
 
 $query = "SELECT * FROM tb_personagens WHERE tatic_a='$coord' AND ativo=1 AND id='" . $usuario["id"] . "'";
-$result = mysql_query($query);
-if (mysql_num_rows($result) != 0) {
-    mysql_close();
-    echo("#Este quadrado já está ocupado");
+$result = $connection->run($query);
+if ($result->count() != 0) {
+
+    echo ("#Este quadrado já está ocupado");
     exit();
 }
 
 $query = "UPDATE tb_personagens SET tatic_a='$coord' WHERE cod='$cod'";
-mysql_query($query) or die("Nao foi possivel atualizar a posição");
+$connection->run($query) or die("Nao foi possivel atualizar a posição");
 
 echo "Posição fixa definida!";
-mysql_close();
+
