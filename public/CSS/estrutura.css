@@ -9,7 +9,7 @@ body {
     padding: 0px;
     margin: 0px;
     text-align: center;
-    font-size: 1.1vw;
+    font-size: min(1.1vw, 12px);
 }
 
 a {
@@ -299,6 +299,16 @@ table tr td {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
+    min-width: 40vw;
+    text-align: center;
+}
+
+#vertical-menu > .panel {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    margin: 0;
 }
 
 #vertical-menu .navbar a {

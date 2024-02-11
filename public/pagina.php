@@ -22,7 +22,7 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
 <div id="header">
     <div id="header_barra">
         <?php if (! $userDetails->conta) : ?>
-            <nav class="header-navbar navbar navbar-default">
+            <nav class="header-navbar navbar navbar-default w-100">
                 <div class="container-fluid">
                     <ul class="nav navbar-nav">
                         <li>
@@ -85,7 +85,7 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
     </div>
 <?php endif; ?>
 
-<?php if ($sessao != "home" && $sessao != "oceano") : ?>
+<?php if ($sessao != "oceano") : ?>
     <div id="fundo">
         <div class="container-fluid fundo-container">
             <div class="row main-container-row">
