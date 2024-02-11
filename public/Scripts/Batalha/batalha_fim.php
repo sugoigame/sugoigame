@@ -322,7 +322,8 @@ if ($userDetails->combate_pve) {
                 $toda_query[sizeof($toda_query)] = $query;
             }
         }
-
+       // $Combate_log = $connection->run("SELECT * FROM tb.combate_log WHERE id_1 == $vencedor["id"] &&  ORDER BY DESC");
+      
         if ($usuario["pvp"]["id_1"] == $vencedor["id"])
             $recop = "recop_1";
         else
@@ -344,47 +345,83 @@ if ($userDetails->combate_pve) {
                 $lvl_mais_forte_vencedor = $pers["lvl"];
             }
         }
+        $verificaLutaAnterior = $connection->run("SELECT COUNT(*) AS total 
+    FROM tb_combate_log 
+    WHERE (id_1 = ? AND id_2 = ?) OR (id_1 = ? AND id_2 = ?)",
+  "iiii", array(
+    $vencedor["id"], 
+    $perdedor["id"], 
+    $perdedor["id"], 
+    $vencedor["id"]
+  ))->fetch_array()["total"];
 
-        $reputacao = calc_reputacao($vencedor["reputacao"], $perdedor["reputacao"], $lvl_mais_forte_vencedor, $lvl_mais_forte_perdedor);
-        $reputacao_mensal = calc_reputacao($vencedor["reputacao_mensal"], $perdedor["reputacao_mensal"], $lvl_mais_forte_vencedor, $lvl_mais_forte_perdedor);
+    
+    if ($verificaLutaAnterior > 0) {
+        // Os participantes já lutaram antes
+        // Obtenha os detalhes da última luta para calcular a reputação
+        $ultimaLuta = $connection->run("SELECT * 
+   FROM tb_combate_log 
+   WHERE (id_1 = ? AND id_2 = ?) OR (id_1 = ? AND id_2 = ?)
+   ORDER BY horario DESC
+   LIMIT 1",
+ "iiii", array(
+    $vencedor["id"], 
+    $perdedor["id"], 
+    $perdedor["id"], 
+    $vencedor["id"]
+ ))->fetch_array();
 
-        if ($usuario["pvp"]["tipo"] == 2) {
-            $reputacao["vencedor_rep"] /= 2;
-            $reputacao["perdedor_rep"] /= 2;
-
-            $reputacao_mensal["vencedor_rep"] /= 2;
-            $reputacao_mensal["perdedor_rep"] /= 2;
-
-            $porcentagem = 0.1;
-            if ($aumento = $userDetails->buffs->get_efeito_from_tripulacao("aumento_berries_saque", $vencedor["id"])) {
-                $porcentagem += $aumento;
+    
+        // Verifica se o vencedor é o mesmo que ganhou a última luta
+        if ($vencedor['id'] == $vencedor['id']) {
+            // Se o vencedor for o mesmo que o vencedor da última luta, ele não ganha reputação novamente
+            $vencedor_rep = 0;
+            $vencedor_rep_mensal = 0;
+            
+            // Verifica se o perdedor foi o mesmo da última luta
+            if ($vencedor['id'] != $perdedor['id']) {
+                // Se o perdedor for diferente do vencedor da última luta, ele perde reputação apenas na primeira derrota
+                $perdedor_rep = 1;
+                $perdedor_rep_mensal = 1;
+            } else {
+                // Caso contrário, o perdedor mantém sua reputação
+                $perdedor_rep = 0;
+                $perdedor_rep_mensal = 0;
             }
-
-            $saque = (int)($perdedor["berries"] * $porcentagem);
-            $vencedor_berries += $saque;
-            $perdedor_berries -= $saque;
-        } else if ($userDetails->combate_pvp["tipo"] == TIPO_LOCALIZADOR_COMPETITIVO) {
-            $reputacao["vencedor_rep"] /= 3;
-            $reputacao["perdedor_rep"] /= 3;
-
-            $reputacao_mensal["vencedor_rep"] /= 3;
-            $reputacao_mensal["perdedor_rep"] /= 3;
+        } else if ($vencedor['id'] == $perdedor['id']) {
+            // Caso o vencedor seja o outro participante da última luta
+            $vencedor_rep = 0;
+            $vencedor_rep_mensal = 0;
+    
+            // Verifica se o perdedor foi o mesmo da última luta
+            if ($vencedor['id'] != $vencedor['id']) {
+                // Se o perdedor for diferente do vencedor da última luta, ele perde reputação apenas na primeira derrota
+                $perdedor_rep = 1;
+                $perdedor_rep_mensal = 1;
+            } else {
+                // Caso contrário, o perdedor mantém sua reputação
+                $perdedor_rep = 0;
+                $perdedor_rep_mensal = 0;
+            }
         }
+    } else {
+        // Não houve luta anterior entre os participantes
+        // Define os valores de reputação como 0 para ambos
+        $vencedor_rep = 1;
+        $vencedor_rep_mensal = 1;
+        $perdedor_rep = -1;
+        $perdedor_rep_mensal = -1;
+        
+        
+    }
+    
 
-        $vencedor_rep = $reputacao["vencedor_rep"];
-        $perdedor_rep = $perdedor["reputacao"] - $reputacao["perdedor_rep"];
 
-        $vencedor_rep_mensal = $reputacao_mensal["vencedor_rep"];
-        $perdedor_rep_mensal = $perdedor["reputacao_mensal"] - $reputacao_mensal["perdedor_rep"];
 
-        if ($perdedor_rep < 0) {
-            $perdedor_rep = 0;
-        }
 
-        if ($perdedor_rep_mensal < 0) {
-            $perdedor_rep_mensal = 0;
-        }
 
+
+    
         $vencedor_vit = $vencedor["vitorias"] + 1;
 
         if ($userDetails->combate_pvp["tipo"] != TIPO_COLISEU
