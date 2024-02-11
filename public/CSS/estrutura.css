@@ -9,7 +9,7 @@ body {
     padding: 0px;
     margin: 0px;
     text-align: center;
-    font-size: 1.1vw;
+    font-size: min(1.1vw, 12px);
 }
 
 a {
@@ -159,16 +159,34 @@ table tr td {
 #fundo {
     z-index: 2;
     position: fixed;
+    top: 0vh;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+}
+
+#fundo.fundo-window {
     top: 10vh;
     height: 75vh;
-    overflow: auto;
-    width: 78vw;
+    width: 75vw;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .fundo-container {
     padding: 0;
+}
+
+#fundo > .close-session {
+    position: sticky;
+    right: 0;
+    top: 0;
+    font-size: min(4vw, 32px);
+    z-index: 500;
+}
+#fundo.fundo-full-wide > .close-session {
+    top: 7vh;
+    right: 2vw;
 }
 
 /* header navbar */
@@ -215,14 +233,6 @@ table tr td {
     color: #ffffff;
 }
 
-.main-container-row {
-    margin: 0;
-}
-
-.main-panel {
-    width: 99%;
-    max-width: 1200px;
-}
 .menu-content {
     max-width: 280px;
     margin-left: auto;
@@ -299,6 +309,16 @@ table tr td {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
+    min-width: 40vw;
+    text-align: center;
+}
+
+#vertical-menu > .panel {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    margin: 0;
 }
 
 #vertical-menu .navbar a {
@@ -452,7 +472,7 @@ table tr td {
 }
 
 #tripulantes-bar {
-    z-index: 2;
+    z-index: 4;
     text-align: left;
     position: fixed;
     left: 1vw;
@@ -1013,6 +1033,13 @@ table tr td {
         display: none !important;
     }
 }
+.modal {
+    background: rgba(0, 0, 0, 0.35);
+}
+.modal-backdrop {
+    display: none;
+}
+
 .modal-open {
     overflow: auto !important;
     padding-right: 0 !important;

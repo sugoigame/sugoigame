@@ -78,15 +78,13 @@ function super_menu_can_be_active($menu)
         </a>
     </div>
 <?php endif; ?> -->
-<div id="vertical-menu"
-    style="background-image: url('Imagens/<?= $userDetails->tripulacao ? $userDetails->tripulacao["faccao"] : "0" ?>/menu.png')">
+<div id="vertical-menu" style="background-image: url('Imagens/1/menu.png')">
     <div class="panel border-none">
         <?= super_menu_link("home", "menu-principal", "Principal", "principal", "principal") ?>
         <?php if ($userDetails->tripulacao && ($userDetails->in_ilha || $userDetails->tripulacao_alive)) : ?>
             <div id="menu-principal" class="collapse <?= super_menu_in_out("principal") ?>">
                 <ul class="vertical-nav nav navbar-nav ">
                     <?= menu_link("home", "Home", "fa fa-home", "Mantenha-se informado! Nunca se sabe a hora em que algo importante poderá acontecer.") ?>
-                    <?= menu_link("noticias", "Notícias", "fa fa-newspaper-o", "") ?>
                     <?= menu_link("recrutamento", "Recrute um Amigo", "fa fa-user-plus", "") ?>
                     <?= menu_link("akumaBook", "Akuma Book", "fa fa-book", "Veja quais foram as Akuma no Mi já encontradas") ?>
                     <?= menu_link("hall", "Hall da fama", "fa fa-trophy", "Veja quais foram os melhores jogadores de eras passadas") ?>
@@ -214,6 +212,7 @@ function super_menu_can_be_active($menu)
                     <div id="menu-oceano" class="collapse <?= super_menu_in_out("oceano") ?>">
                         <ul class="vertical-nav nav navbar-nav">
                             <?php if (! $userDetails->missao && ! $userDetails->tripulacao["recrutando"] && $userDetails->navio) : ?>
+                                <?= menu_link("oceano", "Ir para o oceano", "glyphicon glyphicon-tint", "") ?>
                                 <?= menu_link("amigaveis", "Batalhas Amigáveis", "glyphicon glyphicon-screenshot", "") ?>
                             <?php endif; ?>
                             <?php if (! $userDetails->in_ilha) : ?>
@@ -299,7 +298,6 @@ function super_menu_can_be_active($menu)
             <div id="menu-principal" class="collapse <?= super_menu_in_out("principal") ?>">
                 <ul class="vertical-nav nav navbar-nav">
                     <?= menu_link("home", "Home", "fa fa-home", "Mantenha-se informado! Nunca se sabe a hora em que algo importante poderá acontecer.") ?>
-                    <?= menu_link("noticias", "Notícias", "fa fa-newspaper-o", "") ?>
                     <?= menu_link("seltrip", "Minhas Tripulações", "fa fa-users", "") ?>
                     <?= menu_link("#", "Logout", "fa fa-sign-out", "É hora de dar tchau!", "", "link_redirect", "link_Scripts/Geral/deslogar") ?>
                 </ul>
@@ -308,7 +306,6 @@ function super_menu_can_be_active($menu)
             <div id="menu-principal" class="collapse <?= super_menu_in_out("principal") ?>">
                 <ul class="vertical-nav nav navbar-nav">
                     <?= menu_link("home", "Home", "fa fa-home", "Mantenha-se informado! Nunca se sabe a hora em que algo importante poderá acontecer.") ?>
-                    <?= menu_link("noticias", "Notícias", "fa fa-newspaper-o", "") ?>
                     <?= menu_link("cadastro", "Cadastrar", "fa fa-user-plus", "") ?>
                     <?= menu_link("recuperarSenha", "Recuperar Senha", "fa fa-envelope-o", "") ?>
                     <?= menu_link("regras", "Regras e Punições", "fa fa-ban", "") ?>
@@ -323,15 +320,15 @@ function super_menu_can_be_active($menu)
                 <?php if ($userDetails->tripulacao) : ?>
                     <?= menu_link("forum", "Suporte & Fórum", "fa fa-bars", "") ?>
                     <?php /*$categorias = $connection->run(
- "SELECT *,
- (SELECT count(*) FROM tb_forum_topico p WHERE p.categoria_id = c.id) AS topics,
- (SELECT count(*) FROM tb_forum_topico p INNER JOIN tb_forum_topico_lido l ON p.id = l.topico_id AND l.tripulacao_id = ? WHERE p.categoria_id = c.id) AS topics_lidos
- FROM tb_forum_categoria c ",
- "i", array($userDetails->tripulacao["id"])); ?>
+"SELECT *,
+(SELECT count(*) FROM tb_forum_topico p WHERE p.categoria_id = c.id) AS topics,
+(SELECT count(*) FROM tb_forum_topico p INNER JOIN tb_forum_topico_lido l ON p.id = l.topico_id AND l.tripulacao_id = ? WHERE p.categoria_id = c.id) AS topics_lidos
+FROM tb_forum_categoria c ",
+"i", array($userDetails->tripulacao["id"])); ?>
 <?php while ($categoria = $categorias->fetch_array()): ?>
- <?php $nao_lidos = $categoria["topics"] - $categoria["topics_lidos"]; ?>
- <?php $badge = $nao_lidos ? " (" . ($categoria["topics"] - $categoria["topics_lidos"]) . ")" : ""; ?>
- <?= menu_link("forumTopics&categoria=" . $categoria["id"], $categoria["nome"] . $badge, $categoria["icon"], "") ?>
+<?php $nao_lidos = $categoria["topics"] - $categoria["topics_lidos"]; ?>
+<?php $badge = $nao_lidos ? " (" . ($categoria["topics"] - $categoria["topics_lidos"]) . ")" : ""; ?>
+<?= menu_link("forumTopics&categoria=" . $categoria["id"], $categoria["nome"] . $badge, $categoria["icon"], "") ?>
 <?php endwhile;*/ ?>
                 <?php endif; ?>
                 <?= menu_link("faq", "Base de Conhecimento", "fa fa-question-circle", "") ?>

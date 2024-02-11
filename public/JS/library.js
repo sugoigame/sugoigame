@@ -355,19 +355,19 @@ function proccessResponseAlert(retorno) {
         responseAlert(retorno.substr(1, retorno.length));
         return false;
     } else if (retorno.substr(0, 1) == "|") {
-        //reloadPagina();
+        reloadPagina();
         responseAlert(retorno.substr(1, retorno.length));
         return false;
     } else if (retorno.substr(0, 1) == "?") {
-        //reloadPagina();
+        reloadPagina();
         responseAlert(retorno.substr(1, retorno.length));
         return false;
     } else if (retorno.substr(0, 1) == "-") {
         responseAlert(retorno.substr(1, retorno.length));
-        //reloadPagina();
+        reloadPagina();
         return false;
     } else if (retorno.substr(0, 1) == ":") {
-        //reloadPagina();
+        reloadPagina();
         return false;
     } else {
         return true;
@@ -498,7 +498,9 @@ function sendForm(pagina, obj, callback) {
             retorno = retorno.trim();
             $("#icon_carregando").fadeOut();
 
-            if (proccessResponseAlert(retorno) && retorno.length) {
+            let success = proccessResponseAlert(retorno);
+
+            if (success && retorno.length) {
                 responseAlert(retorno, function () {
                     if (callback) {
                         callback(retorno);
@@ -507,7 +509,9 @@ function sendForm(pagina, obj, callback) {
             } else if (callback) {
                 callback(retorno);
             }
-            reloadPagina();
+            if (success) {
+                reloadPagina();
+            }
         },
     });
 }
@@ -561,8 +565,9 @@ function sendGet(locale, callback) {
                 retorno = retorno.trim();
                 $("#icon_carregando").fadeOut();
                 getDisponivel = true;
+                const success = proccessResponseAlert(retorno);
 
-                if (retorno.length && proccessResponseAlert(retorno)) {
+                if (retorno.length && success) {
                     responseAlert(retorno, function () {
                         if (callback) {
                             callback(retorno);
@@ -571,7 +576,9 @@ function sendGet(locale, callback) {
                 } else if (callback) {
                     callback(retorno);
                 }
-                reloadPagina();
+                if (success) {
+                    reloadPagina();
+                }
             },
         });
     }
@@ -709,7 +716,7 @@ function loadingOut() {
             },
             100,
             function () {
-                $("#icon_carregando").fadeOut(100);
+                $("#icon_carregando").stop().fadeOut();
                 loading = false;
             }
         );
@@ -1213,6 +1220,7 @@ function n_puru(hidePopover) {
 
         this.$conteiner = $("<DIV>")
             .css("position", options.fixed ? "fixed" : "absolute")
+            .css("z-index", 5000)
             .css("top", this.top - (192 / 2) * this.scale)
             .css("left", this.left - (192 / 2) * this.scale)
             .css("-moz-transform", "scale(" + this.scale + ")")
@@ -1354,17 +1362,19 @@ function n_puru(hidePopover) {
                     cache: false,
                     error: ajaxError,
                     success: function (retorno) {
-                        retorno = retorno.trim();
-                        window.WorldMap.destroyOceanGame();
-                        window.WorldMap.destroyOceanWS();
+                        if (worldMapVisible) {
+                            retorno = retorno.trim();
+                            window.WorldMap.destroyOceanGame();
+                            window.WorldMap.destroyOceanWS();
 
-                        $("#world-map-background").html(retorno);
+                            $("#world-map-background").html(retorno);
 
-                        $('[data-toggle="tooltip"]').tooltip();
-                        $('[data-toggle="popover"]').popover({});
-                        $(".selectpicker").selectpicker({
-                            noneSelectedText: "Selecione...",
-                        });
+                            $('[data-toggle="tooltip"]').tooltip();
+                            $('[data-toggle="popover"]').popover({});
+                            $(".selectpicker").selectpicker({
+                                noneSelectedText: "Selecione...",
+                            });
+                        }
                     },
                 });
             }
