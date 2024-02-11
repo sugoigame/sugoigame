@@ -414,7 +414,6 @@ function setQueryParam(param, value) {
 var paginas_visualizadas = 0;
 var pagina_atual = "home";
 function loadPagina(pagina, callback, preventPushState) {
-    console.trace();
     pagina_atual = pagina;
     paginas_visualizadas++;
     $.ajax({
@@ -717,7 +716,7 @@ function loadingOut() {
             },
             100,
             function () {
-                $("#icon_carregando").fadeOut(100);
+                $("#icon_carregando").stop().fadeOut();
                 loading = false;
             }
         );
@@ -1221,6 +1220,7 @@ function n_puru(hidePopover) {
 
         this.$conteiner = $("<DIV>")
             .css("position", options.fixed ? "fixed" : "absolute")
+            .css("z-index", 5000)
             .css("top", this.top - (192 / 2) * this.scale)
             .css("left", this.left - (192 / 2) * this.scale)
             .css("-moz-transform", "scale(" + this.scale + ")")
@@ -1362,17 +1362,19 @@ function n_puru(hidePopover) {
                     cache: false,
                     error: ajaxError,
                     success: function (retorno) {
-                        retorno = retorno.trim();
-                        window.WorldMap.destroyOceanGame();
-                        window.WorldMap.destroyOceanWS();
+                        if (worldMapVisible) {
+                            retorno = retorno.trim();
+                            window.WorldMap.destroyOceanGame();
+                            window.WorldMap.destroyOceanWS();
 
-                        $("#world-map-background").html(retorno);
+                            $("#world-map-background").html(retorno);
 
-                        $('[data-toggle="tooltip"]').tooltip();
-                        $('[data-toggle="popover"]').popover({});
-                        $(".selectpicker").selectpicker({
-                            noneSelectedText: "Selecione...",
-                        });
+                            $('[data-toggle="tooltip"]').tooltip();
+                            $('[data-toggle="popover"]').popover({});
+                            $(".selectpicker").selectpicker({
+                                noneSelectedText: "Selecione...",
+                            });
+                        }
                     },
                 });
             }

@@ -1023,6 +1023,13 @@ table tr td {
         display: none !important;
     }
 }
+.modal {
+    background: rgba(0, 0, 0, 0.35);
+}
+.modal-backdrop {
+    display: none;
+}
+
 .modal-open {
     overflow: auto !important;
     padding-right: 0 !important;
