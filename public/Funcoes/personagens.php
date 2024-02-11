@@ -1,4 +1,5 @@
-<?php function calc_bonus($pers, $nivelamento = false) {
+<?php function calc_bonus($pers, $nivelamento = false)
+{
     global $connection;
 
     $equipamentos = load_equipamentos($pers);
@@ -14,8 +15,8 @@
     }
 
     $result = $connection->run(
-        "SELECT * FROM tb_skil_passiva 
-			INNER JOIN tb_personagens_skil ON tb_personagens_skil.cod_skil=tb_skil_passiva.cod_skil 
+        "SELECT * FROM tb_skil_passiva
+			INNER JOIN tb_personagens_skil ON tb_personagens_skil.cod_skil=tb_skil_passiva.cod_skil
 			WHERE tb_personagens_skil.cod= ?
 			AND (tb_personagens_skil.tipo='3' OR tb_personagens_skil.tipo='6')", "i", $pers["cod"]
     );
@@ -25,8 +26,8 @@
     }
 
     $result = $connection->run(
-        "SELECT * FROM tb_akuma_skil_passiva 
-			INNER JOIN tb_personagens_skil ON tb_personagens_skil.cod_skil=tb_akuma_skil_passiva.cod_skil 
+        "SELECT * FROM tb_akuma_skil_passiva
+			INNER JOIN tb_personagens_skil ON tb_personagens_skil.cod_skil=tb_akuma_skil_passiva.cod_skil
 			WHERE tb_personagens_skil.cod=?
 			AND tb_personagens_skil.tipo='9'", "i", $pers["cod"]
     );
@@ -36,7 +37,7 @@
     }
 
     $result = $connection->run(
-        "SELECT * FROM tb_personagem_titulo pertit 
+        "SELECT * FROM tb_personagem_titulo pertit
 			INNER JOIN tb_titulos titulos ON pertit.titulo = titulos.cod_titulo
 			WHERE pertit.cod = ?", "i", $pers["cod"]
     );
@@ -62,7 +63,8 @@
     return $bonus;
 }
 
-function ajusta_hp($pers, $bonus) {
+function ajusta_hp($pers, $bonus)
+{
     if ($bonus["vit"]) {
         $proporcao_hp = $pers["hp"] / $pers["hp_max"];
         $pers["hp_max"] += $bonus["vit"] * 30;
@@ -75,7 +77,8 @@ function ajusta_hp($pers, $bonus) {
     return $pers;
 }
 
-function aplica_bonus($pers, $nivelamento = false) {
+function aplica_bonus($pers, $nivelamento = false)
+{
     $bonus = calc_bonus($pers, $nivelamento);
     $pers = ajusta_hp($pers, $bonus);
 
@@ -86,9 +89,10 @@ function aplica_bonus($pers, $nivelamento = false) {
     return $pers;
 }
 
-function sorteia_posicoes($all_pers, $vip, $tatic_type, $x1, $x2, &$personagens, &$tabuleiro) {
+function sorteia_posicoes($all_pers, $vip, $tatic_type, $x1, $x2, &$personagens, &$tabuleiro)
+{
     foreach ($all_pers as $pers) {
-        if (!$vip["tatic"] || !$pers[$tatic_type] || $pers[$tatic_type] == "0") {
+        if (! $vip["tatic"] || ! $pers[$tatic_type] || $pers[$tatic_type] == "0") {
             do {
                 $x = rand($x1, $x2);
                 $y = rand(0, 19);
@@ -101,14 +105,15 @@ function sorteia_posicoes($all_pers, $vip, $tatic_type, $x1, $x2, &$personagens,
     }
 }
 
-function insert_personagens_combate($id, $all_pers, $vip, $tatic_type, $x1, $x2, $obstaculos = array(), $nivelamento = false, $details = null, $conn = null) {
-    if (!$conn) {
+function insert_personagens_combate($id, $all_pers, $vip, $tatic_type, $x1, $x2, $obstaculos = array(), $nivelamento = false, $details = null, $conn = null)
+{
+    if (! $conn) {
         global $connection;
     } else {
         $connection = $conn;
     }
 
-    if (!$details) {
+    if (! $details) {
         global $userDetails;
     } else {
         $userDetails = $details;
@@ -152,14 +157,14 @@ function insert_personagens_combate($id, $all_pers, $vip, $tatic_type, $x1, $x2,
         $pers = aplica_bonus($pers, $nivelamento);
 
         $connection->run(
-            "INSERT INTO tb_combate_personagens 
-             (id, 
-             cod, 
-             hp, hp_max, 
-             mp, mp_max, 
-             atk, def, agl, res, pre, dex, con, vit, 
-             quadro_x, quadro_y, 
-             haki_esq, haki_cri, img, skin_r, skin_c) 
+            "INSERT INTO tb_combate_personagens
+             (id,
+             cod,
+             hp, hp_max,
+             mp, mp_max,
+             atk, def, agl, res, pre, dex, con, vit,
+             quadro_x, quadro_y,
+             haki_esq, haki_cri, img, skin_r, skin_c)
              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             "iiiiiiiiiiiiiiiiiiiii", array(
                 $id,
@@ -185,26 +190,28 @@ function insert_personagens_combate($id, $all_pers, $vip, $tatic_type, $x1, $x2,
 
     $connection->run("UPDATE tb_coliseu_fila SET pausado = 1 WHERE id = ?", "i", array($id));
 
-    $connection->run("UPDATE tb_torneio_inscricao 
-        SET tempo_na_fila = IFNULL((unix_timestamp() - unix_timestamp(fila_entrada)) + IFNULL(tempo_na_fila, 0), tempo_na_fila), na_fila = 0, fila_entrada = NULL 
+    $connection->run("UPDATE tb_torneio_inscricao
+        SET tempo_na_fila = IFNULL((unix_timestamp() - unix_timestamp(fila_entrada)) + IFNULL(tempo_na_fila, 0), tempo_na_fila), na_fila = 0, fila_entrada = NULL
         WHERE tripulacao_id = ?",
         "i", array($id));
 }
 
-function preco_selo_exp($pers) {
+function preco_selo_exp($pers)
+{
     return round($pers["lvl"] < 50 ? max($pers["xp_max"] / 2, $pers["xp"] / 4) : $pers["xp_max"] / 2 * 10);
 }
 ?>
-<?php function render_personagens_pills($personagens = NULL, $on_click = null, $alert_func = '0') { ?>
+<?php function render_personagens_pills($personagens = NULL, $on_click = null, $alert_func = '0')
+{ ?>
     <?php global $userDetails ?>
-    <?php $cod = isset($_GET["cod"]) && !empty($_GET["cod"]) ? $_GET["cod"] : NULL; ?>
+    <?php $cod = isset($_GET["cod"]) && ! empty($_GET["cod"]) ? $_GET["cod"] : NULL; ?>
     <?php $personagens = $personagens ? $personagens : $userDetails->personagens; ?>
     <ul class="nav nav-pills nav-justified">
-        <?php foreach ($personagens as $index => $pers): ?>
+        <?php foreach ($personagens as $index => $pers) : ?>
             <li class="personagem-pill <?= $cod ? ($pers["cod"] == $cod ? "active" : "") : ($index == 0 ? "active" : "") ?>"
                 onclick="setQueryParam('cod','<?= $pers["cod"]; ?>');" data-cod="<?= $pers["cod"]; ?>">
                 <a href="#personagem-<?= $pers["cod"] ?>" data-toggle="tab">
-                    <?php if ($alert_func): ?>
+                    <?php if ($alert_func) : ?>
                         <div style="position: absolute; right: 0;top: 0;">
                             <?php $alert_func($pers); ?>
                         </div>
@@ -215,115 +222,138 @@ function preco_selo_exp($pers) {
         <?php endforeach; ?>
     </ul>
 <?php } ?>
-<?php function render_personagem_panel_top($pers, $index) { ?>
-    <?php $cod = isset($_GET["cod"]) && !empty($_GET["cod"]) ? $_GET["cod"] : NULL; ?>
+<?php function render_personagem_panel_top($pers, $index)
+{ ?>
+    <?php $cod = isset($_GET["cod"]) && ! empty($_GET["cod"]) ? $_GET["cod"] : NULL; ?>
     <div id="personagem-<?= $pers["cod"] ?>"
-    class="tab-pane <?= $cod ? ($pers["cod"] == $cod ? "active" : "") : ($index == 0 ? "active" : "") ?>">
-<?php } ?>
-<?php function render_personagem_panel_bottom() { ?>
+        class="tab-pane <?= $cod ? ($pers["cod"] == $cod ? "active" : "") : ($index == 0 ? "active" : "") ?>">
+    <?php } ?>
+    <?php function render_personagem_panel_bottom()
+    { ?>
     </div>
 <?php } ?>
-<?php function render_personagem_sub_panel_with_img_top($pers) { ?>
+<?php function render_personagem_sub_panel_with_img_top($pers)
+{ ?>
     <div class="row">
-    <div class="col-md-3 hidden-sm hidden-xs">
-        <img src="Imagens/Personagens/Big/<?= getImg($pers, "c") ?>.jpg">
+        <div class="col-md-3 hidden-sm hidden-xs">
+            <img src="Imagens/Personagens/Big/<?= getImg($pers, "c") ?>.jpg">
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default">
+            <?php } ?>
+            <?php function render_personagem_sub_panel_with_img_bottom()
+            { ?>
+            </div>
+        </div>
     </div>
-    <div class="col-md-9">
-    <div class="panel panel-default">
 <?php } ?>
-<?php function render_personagem_sub_panel_with_img_bottom() { ?>
-    </div>
-    </div>
-    </div>
-<?php } ?>
-<?php function render_personagem_status_bars($pers, $text = true) { ?>
+<?php function render_personagem_status_bars($pers, $text = true)
+{ ?>
     <div class="clearfix">
         <?php render_personagem_hp_bar($pers, $text); ?>
         <?php render_personagem_mp_bar($pers, $text); ?>
         <?php render_personagem_xp_bar($pers, $text); ?>
     </div>
 <?php } ?>
-<?php function render_personagem_hp_bar($pers, $text = true) { ?>
+<?php function render_personagem_hp_bar($pers, $text = true)
+{ ?>
     <?php global $userDetails; ?>
-    <div class="progress">
+    <div class="progress hp-bar">
         <div class="progress-bar progress-bar-success" role="progressbar"
-             style="width: <?= $pers["hp"] / $pers["hp_max"] * 100 ?>%;">
+            style="width: <?= $pers["hp"] / $pers["hp_max"] * 100 ?>%;">
             <?php if ($pers["id"] == $userDetails->tripulacao["id"] && $text) : ?>
-                <span>HP:<?= $pers["hp"] . "/" . $pers["hp_max"] ?></span>
+                <span>HP:
+                    <?= $pers["hp"] . "/" . $pers["hp_max"] ?>
+                </span>
             <?php endif; ?>
         </div>
     </div>
 <?php } ?>
-<?php function render_personagem_mp_bar($pers, $text = true) { ?>
+<?php function render_personagem_mp_bar($pers, $text = true)
+{ ?>
     <?php global $userDetails; ?>
-    <div class="progress">
+    <div class="progress mp-bar">
         <div class="progress-bar progress-bar-warning" role="progressbar"
-             style="width: <?= $pers["mp"] / $pers["mp_max"] * 100 ?>%;">
+            style="width: <?= $pers["mp"] / $pers["mp_max"] * 100 ?>%;">
             <?php if ($pers["id"] == $userDetails->tripulacao["id"] && $text) : ?>
-                <span>Energia:<?= $pers["mp"] . "/" . $pers["mp_max"] ?></span>
+                <span>Energia:
+                    <?= $pers["mp"] . "/" . $pers["mp_max"] ?>
+                </span>
             <?php endif; ?>
         </div>
     </div>
 <?php } ?>
-<?php function render_personagem_xp_bar($pers, $text = true) { ?>
+<?php function render_personagem_xp_bar($pers, $text = true)
+{ ?>
     <div class="progress">
         <div class="progress-bar progress-bar-default" role="progressbar"
-             style="width: <?= $pers["xp"] / ($pers["lvl"] >= 50 ? $pers["excelencia_xp_max"] : $pers["xp_max"]) * 100 ?>%;">
+            style="width: <?= $pers["xp"] / ($pers["lvl"] >= 50 ? $pers["excelencia_xp_max"] : $pers["xp_max"]) * 100 ?>%;">
             <?php if ($text) : ?>
-                <span>EXP:<?= $pers["xp"] . "/" . ($pers["lvl"] >= 50 ? $pers["excelencia_xp_max"] : $pers["xp_max"]) ?></span>
+                <span>EXP:
+                    <?= $pers["xp"] . "/" . ($pers["lvl"] >= 50 ? $pers["excelencia_xp_max"] : $pers["xp_max"]) ?>
+                </span>
             <?php endif; ?>
         </div>
     </div>
 <?php } ?>
-<?php function render_personagem_haki_bars($pers) { ?>
+<?php function render_personagem_haki_bars($pers)
+{ ?>
     <div class="clearfix">
         <?php render_personagem_mantra_bar($pers); ?>
         <?php render_personagem_armamento_bar($pers); ?>
-        <?php if (isset($pers["haki_hdr"])): ?>
+        <?php if (isset($pers["haki_hdr"])) : ?>
             <?php render_personagem_hdr_bar($pers); ?>
         <?php endif; ?>
     </div>
 <?php } ?>
-<?php function render_personagem_mantra_bar($pers, $text = true) { ?>
+<?php function render_personagem_mantra_bar($pers, $text = true)
+{ ?>
     <div class="progress">
         <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
-             style="width: <?= $pers["haki_esq"] / MAX_POINTS_MANTRA * 100 ?>%;">
-            <?php if ($text): ?>
-                Mantra:<?= $pers["haki_esq"] . "/" . MAX_POINTS_MANTRA; ?>
+            style="width: <?= $pers["haki_esq"] / MAX_POINTS_MANTRA * 100 ?>%;">
+            <?php if ($text) : ?>
+                Observação:
+                <?= $pers["haki_esq"] . "/" . MAX_POINTS_MANTRA; ?>
             <?php endif; ?>
         </div>
     </div>
 <?php } ?>
-<?php function render_personagem_armamento_bar($pers, $text = true) { ?>
+<?php function render_personagem_armamento_bar($pers, $text = true)
+{ ?>
     <div class="progress">
         <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
-             style="width: <?= $pers["haki_cri"] / MAX_POINTS_ARMAMENTO * 100 ?>%;">
-            <?php if ($text): ?>
-                Armamento:<?= $pers["haki_cri"] . "/" . MAX_POINTS_ARMAMENTO; ?>
+            style="width: <?= $pers["haki_cri"] / MAX_POINTS_ARMAMENTO * 100 ?>%;">
+            <?php if ($text) : ?>
+                Armamento:
+                <?= $pers["haki_cri"] . "/" . MAX_POINTS_ARMAMENTO; ?>
             <?php endif; ?>
         </div>
     </div>
 <?php } ?>
-<?php function render_personagem_hdr_bar($pers, $text = true) { ?>
+<?php function render_personagem_hdr_bar($pers, $text = true)
+{ ?>
     <div class="progress">
         <div class="progress-bar progress-bar-default progress-bar-striped" role="progressbar"
-             style="width: <?= $pers["haki_hdr"] / MAX_POINTS_HDR * 100 ?>%;">
-            <?php if ($text): ?>
-                Haoshoku:<?= $pers["haki_hdr"] . "/" . MAX_POINTS_HDR; ?>
+            style="width: <?= $pers["haki_hdr"] / MAX_POINTS_HDR * 100 ?>%;">
+            <?php if ($text) : ?>
+                Haoshoku:
+                <?= $pers["haki_hdr"] . "/" . MAX_POINTS_HDR; ?>
             <?php endif; ?>
         </div>
     </div>
 <?php } ?>
-<?php function render_cartaz_procurado($famoso, $faccao) { ?>
+<?php function render_cartaz_procurado($famoso, $faccao)
+{ ?>
     <div class="tripulante_quadro <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>" style="margin: 2px;;">
         <img class="tripulante_quadro_img  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>"
-             src="Imagens/Personagens/Icons/<?= getImg($famoso, "r"); ?>.jpg">
+            src="Imagens/Personagens/Icons/<?= getImg($famoso, "r"); ?>.jpg">
         <div class="recompensa_text  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>">
             <?= $famoso["nome"] . "<br>" . mascara_berries(calc_recompensa($famoso["fama_ameaca"])); ?>
         </div>
     </div>
 <?php } ?>
-<?php function render_progress($id, $progress, $inner_text, $text, $color, $link) { ?>
+<?php function render_progress($id, $progress, $inner_text, $text, $color, $link)
+{ ?>
     <div class="col-xs-6 col-md-3" style="margin-bottom: 10px">
         <div class="list-group-item" style="height: 100%;">
 
@@ -358,3 +388,4 @@ function preco_selo_exp($pers) {
         </div>
     </div>
 <?php } ?>
+
