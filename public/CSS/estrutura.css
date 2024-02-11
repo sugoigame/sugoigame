@@ -159,7 +159,7 @@ table tr td {
 #fundo {
     z-index: 2;
     position: fixed;
-    top: 10vh;
+    top: 9vh;
     height: 75vh;
     overflow: auto;
     width: 78vw;

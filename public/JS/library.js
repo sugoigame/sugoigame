@@ -355,19 +355,19 @@ function proccessResponseAlert(retorno) {
         responseAlert(retorno.substr(1, retorno.length));
         return false;
     } else if (retorno.substr(0, 1) == "|") {
-        //reloadPagina();
+        reloadPagina();
         responseAlert(retorno.substr(1, retorno.length));
         return false;
     } else if (retorno.substr(0, 1) == "?") {
-        //reloadPagina();
+        reloadPagina();
         responseAlert(retorno.substr(1, retorno.length));
         return false;
     } else if (retorno.substr(0, 1) == "-") {
         responseAlert(retorno.substr(1, retorno.length));
-        //reloadPagina();
+        reloadPagina();
         return false;
     } else if (retorno.substr(0, 1) == ":") {
-        //reloadPagina();
+        reloadPagina();
         return false;
     } else {
         return true;
@@ -414,6 +414,7 @@ function setQueryParam(param, value) {
 var paginas_visualizadas = 0;
 var pagina_atual = "home";
 function loadPagina(pagina, callback, preventPushState) {
+    console.trace();
     pagina_atual = pagina;
     paginas_visualizadas++;
     $.ajax({
@@ -498,7 +499,9 @@ function sendForm(pagina, obj, callback) {
             retorno = retorno.trim();
             $("#icon_carregando").fadeOut();
 
-            if (proccessResponseAlert(retorno) && retorno.length) {
+            let success = proccessResponseAlert(retorno);
+
+            if (success && retorno.length) {
                 responseAlert(retorno, function () {
                     if (callback) {
                         callback(retorno);
@@ -507,7 +510,9 @@ function sendForm(pagina, obj, callback) {
             } else if (callback) {
                 callback(retorno);
             }
-            reloadPagina();
+            if (success) {
+                reloadPagina();
+            }
         },
     });
 }
@@ -561,8 +566,9 @@ function sendGet(locale, callback) {
                 retorno = retorno.trim();
                 $("#icon_carregando").fadeOut();
                 getDisponivel = true;
+                const success = proccessResponseAlert(retorno);
 
-                if (retorno.length && proccessResponseAlert(retorno)) {
+                if (retorno.length && success) {
                     responseAlert(retorno, function () {
                         if (callback) {
                             callback(retorno);
@@ -571,7 +577,9 @@ function sendGet(locale, callback) {
                 } else if (callback) {
                     callback(retorno);
                 }
-                reloadPagina();
+                if (success) {
+                    reloadPagina();
+                }
             },
         });
     }
