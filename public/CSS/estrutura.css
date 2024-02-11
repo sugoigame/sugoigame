@@ -525,9 +525,11 @@ table tr td {
 
 .tripulante_quadro_info {
     display: none;
-    position: absolute;
-    bottom: 0;
-    max-width: 280px;
+    position: fixed;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+    max-width: 370px;
     width: 100%;
     z-index: 200;
 }
@@ -568,6 +570,8 @@ table tr td {
     top: 35px;
     line-height: 13px;
     display: none;
+    text-align: center;
+    width: 100%;
 }
 
 .recompensa_text.pirate {
@@ -578,9 +582,36 @@ table tr td {
     color: #414141;
 }
 
-.recompensa_text {
-    text-align: center;
-    width: 100%;
+.cartaz_procurado.tripulante_quadro {
+    width: 85px;
+    max-width: 85px;
+    height: 120px;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 26px 2px;
+}
+
+.cartaz_procurado.tripulante_quadro .tripulante_quadro_img {
+    width: 70px;
+    margin-bottom: -27px;
+}
+
+.cartaz_procurado.tripulante_quadro:hover {
+    text-decoration: none;
+}
+
+.cartaz_procurado .tripulante_quadro_img {
+    display: block;
+}
+
+.cartaz_procurado .recompensa_text {
+    display: block;
+}
+.cartaz_procurado .recompensa_text .recompensa_name {
+    font-weight: bold;
 }
 
 .tripulante-lvl-up {
