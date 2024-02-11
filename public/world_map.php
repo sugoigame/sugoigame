@@ -23,11 +23,11 @@ require_once "Includes/conectdb.php";
     #skills-area {
         position: fixed;
         z-index: 1;
-        top: 50vh;
+        top: 50%;
+        transform: translateY(-50%);
         right: 0;
         margin: auto;
         text-align: center;
-        margin-top: -20vh;
         display: flex;
         flex-direction: column;
         justify-content: center;

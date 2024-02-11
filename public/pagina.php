@@ -73,19 +73,15 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
         <?php endif; ?>
     </div>
 </div>
+
+<?php if (! $protector->is_ful_wide_session($sessao)) : ?>
+    <?php include "menu.php"; ?>
+<?php endif; ?>
+
 <div id="fundo">
     <div class="container-fluid fundo-container">
         <div class="row main-container-row">
-            <?php if (! $protector->is_ful_wide_session($sessao)) : ?>
-                <div class="col-sm-3 menu-col">
-                    <div id="menu-cover" class="collapse in">
-                        <div class="menu-content">
-                            <?php include "menu.php"; ?>
-                        </div>
-                    </div>
-                </div>
-            <?php endif; ?>
-            <div class="col-sm-<?= $protector->is_ful_wide_session($sessao) ? "12" : "9" ?> main-col">
+            <div class="col-sm-12 main-col">
                 <div class="main-panel">
                     <?php $rdp = explode(",", get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_ERA_PIRATA)); ?>
                     <?php $adf = explode(",", get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_ERA_MARINHA)); ?>

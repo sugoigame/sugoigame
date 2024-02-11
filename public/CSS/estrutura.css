@@ -42,6 +42,14 @@ select {
     content: "";
 }
 
+.border-none {
+    border: none !important;
+}
+
+.w-100 {
+    width: 100%;
+}
+
 .hidden {
     display: none;
 }
@@ -204,43 +212,12 @@ table tr td {
     width: 99%;
     max-width: 1200px;
 }
-body {
-    padding-top: 70px;
-}
 .menu-content {
     max-width: 280px;
     margin-left: auto;
 }
 .news-coo-text p {
     margin: 0;
-}
-@media all and (max-width: 767px) {
-    .menu-col,
-    .main-col {
-        padding: 0;
-    }
-}
-
-@media all and (max-width: 767px) and (orientation: landscape) {
-    .menu-col {
-        width: 25%;
-        float: left;
-    }
-    .main-col:not(.col-sm-12) {
-        width: 75%;
-        float: left;
-        padding-left: 5px;
-    }
-    .menu-toggler {
-        display: none;
-    }
-    .super-menu-text {
-        display: block;
-        font-size: 0.8em;
-    }
-    .menu-navbar-collapse {
-        display: block;
-    }
 }
 
 /* make sidebar nav vertical */
@@ -302,12 +279,24 @@ body {
     color: #ffffff;
 }
 
-#vertical-menu .navbar {
-    background: rgba(0, 0, 0, 0.95);
+#vertical-menu {
+    z-index: 100;
+    position: fixed;
+    bottom: 1vw;
+    left: 50%;
+    transform: translateX(-50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
 }
 
 #vertical-menu .navbar a {
     color: rgba(255, 255, 255, 0.35);
+}
+
+#vertical-menu .navbar-nav {
+    float: left;
+    margin: 0;
 }
 
 #vertical-menu .navbar a:hover {
@@ -325,21 +314,23 @@ body {
     -ms-transition: color 0.2s ease;
     transition: color 0.2s ease;
     border: 0;
-    color: rgba(255, 255, 255, 0.35);
+    color: #030303;
     display: block;
-    font-size: 1em;
+    font-size: 0.5vw;
     font-weight: bold;
-    letter-spacing: 0.25em;
     line-height: 1.75;
     outline: 0;
-    padding: 1.35em 2em;
+    padding: 0 2em 1em;
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
+    text-align: center;
 }
 
 #vertical-menu div.navbar-nav a img {
     opacity: 0.7;
+    height: 4vw;
+    max-height: 50px;
 }
 
 #vertical-menu div.navbar-nav a:hover img {
@@ -350,60 +341,19 @@ body {
     opacity: 1;
 }
 
-#vertical-menu div.navbar-nav a:before,
-#vertical-menu div.navbar-nav a:after {
-    border-radius: 0.2em;
-    bottom: 0;
-    content: "";
-    height: 0.2em;
-    position: absolute;
-    right: 0;
-    width: 100%;
-}
-
-#vertical-menu div.navbar-nav a:before {
-    background: #352c1a;
-}
-
-#vertical-menu div.navbar-nav a:after {
-    background-image: -moz-linear-gradient(to right, #675534, #bb9e65);
-    background-image: -webkit-linear-gradient(to right, #675534, #bb9e65);
-    background-image: -ms-linear-gradient(to right, #675534, #bb9e65);
-    background-image: linear-gradient(to right, #675534, #bb9e65);
-    -moz-transition: max-width 0.2s ease;
-    -webkit-transition: max-width 0.2s ease;
-    -ms-transition: max-width 0.2s ease;
-    transition: max-width 0.2s ease;
-    max-width: 0;
-}
-
-#vertical-menu div.navbar-nav:hover a:after {
+#vertical-menu div.navbar-nav img {
+    margin: auto;
     max-width: 100%;
-}
-
-#vertical-menu div.navbar-nav a.active:after {
-    background-image: -moz-linear-gradient(to right, #907452, #e0be7a);
-    background-image: -webkit-linear-gradient(to right, #907452, #e0be7a);
-    background-image: -ms-linear-gradient(to right, #907452, #e0be7a);
-    background-image: linear-gradient(to right, #907452, #e0be7a);
-    -moz-transition: max-width 0.2s ease;
-    -webkit-transition: max-width 0.2s ease;
-    -ms-transition: max-width 0.2s ease;
-    transition: max-width 0.2s ease;
-    max-width: 100%;
-}
-
-.sidebar-nav .navbar ul.vertical-nav {
-    margin-top: 5px;
-}
-
-.sidebar-nav div.navbar-nav img {
-    margin: 5px auto;
-    max-width: 100%;
-}
-
-.sidebar-nav div.navbar-nav a {
     display: block;
+}
+
+#vertical-menu .submenu {
+    position: absolute;
+    bottom: 7vh;
+}
+
+#vertical-menu .navbar-nav > li {
+    float: left;
 }
 
 .nav.nav-pills.nav-justified li.active a {
@@ -411,54 +361,6 @@ body {
     background-image: -webkit-linear-gradient(to top, #0049b8, #00a5df);
     background-image: -ms-linear-gradient(to top, #0049b8, #00a5df);
     background-image: linear-gradient(to top, #0049b8, #00a5df);
-}
-
-.sidebar-nav .navbar .vertical-nav li.active a {
-    background-image: -moz-linear-gradient(to right, #907452, #b09560);
-    background-image: -webkit-linear-gradient(to right, #907452, #b09560);
-    background-image: -ms-linear-gradient(to right, #907452, #b09560);
-    background-image: linear-gradient(to right, #907452, #b09560);
-}
-
-.sidebar-nav .navbar .vertical-nav li a {
-    text-align: left;
-    padding-left: 20%;
-    border: none;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.sidebar-nav .navbar .vertical-nav li a i {
-    margin-right: 10px;
-}
-
-.sidebar-nav li:hover {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.sidebar-nav div.navbar-nav:hover {
-    background: rgba(0, 0, 0, 0.3);
-}
-
-@media (min-width: 768px) {
-    .sidebar-nav .navbar-nav {
-        float: none;
-    }
-    .sidebar-nav .navbar .navbar-collapse {
-        padding: 0;
-        max-height: none;
-    }
-    .sidebar-nav .navbar ul {
-        float: none;
-    }
-    .sidebar-nav .navbar li {
-        float: none;
-        display: block;
-    }
-    .sidebar-nav .navbar li a {
-        padding-top: 3px;
-        padding-bottom: 3px;
-    }
 }
 
 /* footer */
@@ -529,8 +431,6 @@ body {
     display: none;
 }
 
-/**/
-
 .big-pers-skin {
     position: relative;
 }
@@ -545,8 +445,8 @@ body {
     text-align: left;
     position: fixed;
     left: 1vw;
-    top: 50vh;
-    margin-top: -30vh;
+    top: 50%;
+    transform: translateY(-50%);
     overflow: auto;
     display: flex;
     flex-direction: column;
