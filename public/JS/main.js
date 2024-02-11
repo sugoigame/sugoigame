@@ -253,7 +253,7 @@ $(function () {
                     ".personagem-info:not(#personagem-info-" + cod + ")"
                 ).addClass("hidden");
                 $("#personagem-info-" + cod)
-                    .css("top", 0)
+                    .css("top", "15vh")
                     .css("left", 0)
                     .toggleClass("hidden");
             }

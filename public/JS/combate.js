@@ -547,3 +547,11 @@ function desistir() {
         }
     );
 }
+
+function relatorioCombate() {
+    $("#modal-relatorio-combate-content").html(
+        $("#relatorio-combate-content").html()
+    );
+
+    $("#modal-relatorio-combate").modal();
+}
