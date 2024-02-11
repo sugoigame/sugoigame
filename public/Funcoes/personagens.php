@@ -344,11 +344,16 @@ function preco_selo_exp($pers)
 <?php } ?>
 <?php function render_cartaz_procurado($famoso, $faccao)
 { ?>
-    <div class="tripulante_quadro <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>" style="margin: 2px;;">
+    <div class="cartaz_procurado tripulante_quadro <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>">
         <img class="tripulante_quadro_img  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>"
             src="Imagens/Personagens/Icons/<?= getImg($famoso, "r"); ?>.jpg">
         <div class="recompensa_text  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>">
-            <?= $famoso["nome"] . "<br>" . mascara_berries(calc_recompensa($famoso["fama_ameaca"])); ?>
+            <div class="recompensa_name">
+                <?= $famoso["nome"] ?>
+            </div>
+            <div class="recompensa_value">
+                <?= mascara_berries(calc_recompensa($famoso["fama_ameaca"])); ?>
+            </div>
         </div>
     </div>
 <?php } ?>

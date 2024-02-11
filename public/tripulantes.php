@@ -8,7 +8,7 @@
             <td class="tripulante_quadro_td">
                 <div id="tripulante_quadro_<? echo $pers["cod"] ?>"
                     class="tripulante_quadro <?= $userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? "marine" : "pirate" ?>"
-                    data-content="-" data-container="#tudo" <?= $sessao != "mar" ? 'data-toggle="popover"' : "" ?>
+                    data-content="-" data-container="body" <?= $sessao != "mar" ? 'data-toggle="popover"' : "" ?>
                     data-placement="bottom" data-html="true" data-trigger="focus" tabindex="0" data-template='
                     <div class="container tripulante_quadro_info">
                         <div class="row">
@@ -16,9 +16,7 @@
                                 <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "tripulante_big_img", 'width="100%"') ?>
                             </div>
                             <div class="col-xs-6">
-                                <div>
-                                    <strong><?= $pers["nome"]; ?></strong>
-                                </div>
+                                <?= render_cartaz_procurado($pers, $userDetails->tripulacao["faccao"]) ?>
                                 <div>
                                     Nível <?= $pers["lvl"]; ?>
                                 </div>
