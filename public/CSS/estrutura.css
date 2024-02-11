@@ -70,6 +70,22 @@ select {
     margin-bottom: 4em;
 }
 
+.mr {
+    margin-right: 1em;
+}
+
+.mr2 {
+    margin-right: 2em;
+}
+
+.mr3 {
+    margin-right: 3em;
+}
+
+.mr4 {
+    margin-right: 4em;
+}
+
 @media (min-width: 768px) {
     .row {
         display: -webkit-box;
