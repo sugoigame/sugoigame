@@ -346,9 +346,11 @@ function proccessResponseAlert(retorno) {
         location.href = "./?ses=" + retorno.substr(1, retorno.length - 1);
         return false;
     } else if (retorno.substr(0, 1) == "%") {
+        window.WorldMap.reload();
         loadPagina(retorno.substr(1, retorno.length - 1));
         return false;
     } else if (retorno.substr(0, 1) == "@") {
+        window.WorldMap.reload();
         reloadPagina();
         responseAlert(retorno.substr(1, retorno.length));
         return false;
@@ -1339,6 +1341,10 @@ function n_puru(hidePopover) {
                 oceanWS = null;
             }
         },
+        reload() {
+            window.WorldMap.unload();
+            window.WorldMap.load();
+        },
         load() {
             if (!worldMapVisible) {
                 worldMapVisible = true;
@@ -1365,6 +1371,7 @@ function n_puru(hidePopover) {
         },
         unload() {
             if (worldMapVisible) {
+                worldMapVisible = false;
                 $("#world-map-background").html("");
             }
         },

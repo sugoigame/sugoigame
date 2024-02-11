@@ -214,7 +214,6 @@ function super_menu_can_be_active($menu)
                     <div id="menu-oceano" class="collapse <?= super_menu_in_out("oceano") ?>">
                         <ul class="vertical-nav nav navbar-nav">
                             <?php if (! $userDetails->missao && ! $userDetails->tripulacao["recrutando"] && $userDetails->navio) : ?>
-                                <?= menu_link("oceano", "Ir para o oceano", "glyphicon glyphicon-tint", "") ?>
                                 <?= menu_link("amigaveis", "Batalhas Amigáveis", "glyphicon glyphicon-screenshot", "") ?>
                             <?php endif; ?>
                             <?php if (! $userDetails->in_ilha) : ?>
@@ -324,15 +323,15 @@ function super_menu_can_be_active($menu)
                 <?php if ($userDetails->tripulacao) : ?>
                     <?= menu_link("forum", "Suporte & Fórum", "fa fa-bars", "") ?>
                     <?php /*$categorias = $connection->run(
-  "SELECT *,
-  (SELECT count(*) FROM tb_forum_topico p WHERE p.categoria_id = c.id) AS topics,
-  (SELECT count(*) FROM tb_forum_topico p INNER JOIN tb_forum_topico_lido l ON p.id = l.topico_id AND l.tripulacao_id = ? WHERE p.categoria_id = c.id) AS topics_lidos
-  FROM tb_forum_categoria c ",
-  "i", array($userDetails->tripulacao["id"])); ?>
+ "SELECT *,
+ (SELECT count(*) FROM tb_forum_topico p WHERE p.categoria_id = c.id) AS topics,
+ (SELECT count(*) FROM tb_forum_topico p INNER JOIN tb_forum_topico_lido l ON p.id = l.topico_id AND l.tripulacao_id = ? WHERE p.categoria_id = c.id) AS topics_lidos
+ FROM tb_forum_categoria c ",
+ "i", array($userDetails->tripulacao["id"])); ?>
 <?php while ($categoria = $categorias->fetch_array()): ?>
-  <?php $nao_lidos = $categoria["topics"] - $categoria["topics_lidos"]; ?>
-  <?php $badge = $nao_lidos ? " (" . ($categoria["topics"] - $categoria["topics_lidos"]) . ")" : ""; ?>
-  <?= menu_link("forumTopics&categoria=" . $categoria["id"], $categoria["nome"] . $badge, $categoria["icon"], "") ?>
+ <?php $nao_lidos = $categoria["topics"] - $categoria["topics_lidos"]; ?>
+ <?php $badge = $nao_lidos ? " (" . ($categoria["topics"] - $categoria["topics_lidos"]) . ")" : ""; ?>
+ <?= menu_link("forumTopics&categoria=" . $categoria["id"], $categoria["nome"] . $badge, $categoria["icon"], "") ?>
 <?php endwhile;*/ ?>
                 <?php endif; ?>
                 <?= menu_link("faq", "Base de Conhecimento", "fa fa-question-circle", "") ?>

@@ -158,6 +158,13 @@ table tr td {
 
 #fundo {
     z-index: 2;
+    position: fixed;
+    top: 10vh;
+    height: 75vh;
+    overflow: auto;
+    width: 78vw;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .fundo-container {
@@ -171,6 +178,10 @@ table tr td {
     top: 0px;
     z-index: 1030;
     margin-top: 1vh;
+}
+.header-navbar .navbar-nav {
+    float: left;
+    margin: 0;
 }
 .header-navbar.header-navbar-left {
     left: 0px;

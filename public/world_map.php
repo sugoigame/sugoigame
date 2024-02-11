@@ -628,7 +628,7 @@ require_once "Includes/conectdb.php";
                 url: 'menu_for_oceano.php',
                 success: function (response) {
                     inIlha = data.me.ilha;
-                    $('#menu-cover .menu-content').html(response);
+                    $('#menu-wrapper').html(response);
                 }
             });
         }
