@@ -159,16 +159,34 @@ table tr td {
 #fundo {
     z-index: 2;
     position: fixed;
-    top: 9vh;
-    height: 75vh;
+    top: 0vh;
+    height: 100vh;
+    width: 100vw;
     overflow: auto;
-    width: 78vw;
+}
+
+#fundo.fundo-window {
+    top: 10vh;
+    height: 75vh;
+    width: 75vw;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .fundo-container {
     padding: 0;
+}
+
+#fundo > .close-session {
+    position: sticky;
+    right: 0;
+    top: 0;
+    font-size: min(4vw, 32px);
+    z-index: 500;
+}
+#fundo.fundo-full-wide > .close-session {
+    top: 7vh;
+    right: 2vw;
 }
 
 /* header navbar */
@@ -215,14 +233,6 @@ table tr td {
     color: #ffffff;
 }
 
-.main-container-row {
-    margin: 0;
-}
-
-.main-panel {
-    width: 99%;
-    max-width: 1200px;
-}
 .menu-content {
     max-width: 280px;
     margin-left: auto;
@@ -462,7 +472,7 @@ table tr td {
 }
 
 #tripulantes-bar {
-    z-index: 2;
+    z-index: 4;
     text-align: left;
     position: fixed;
     left: 1vw;

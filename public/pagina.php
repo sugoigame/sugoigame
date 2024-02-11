@@ -79,25 +79,27 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
         <?php include "menu.php"; ?>
     </div>
 <?php endif; ?>
-<?php if ($userDetails->tripulacao) : ?>
+<?php if ($userDetails->tripulacao && ! $protector->is_ful_wide_session($sessao)) : ?>
     <div id="tripulantes-bar">
         <?php include "tripulantes.php"; ?>
     </div>
 <?php endif; ?>
 
 <?php if ($sessao != "oceano") : ?>
-    <div id="fundo">
+    <div id="fundo" class="<?= $protector->is_ful_wide_session($sessao) ? "fundo-full-wide" : "fundo-window" ?>">
+        <button type="button" class="close close-session link_content" href="./?ses=oceano">
+            <span>&times;</span>
+        </button>
         <div class="container-fluid fundo-container">
-            <div class="row main-container-row">
-                <div class="col-sm-12 main-col">
-                    <div class="main-panel">
-                        <?php $rdp = explode(",", get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_ERA_PIRATA)); ?>
-                        <?php $adf = explode(",", get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_ERA_MARINHA)); ?>
-                        <?php $yonkou = explode(",", get_value_varchar_variavel_global(VARIAVEL_YONKOUS)); ?>
-                        <?php $almirante = explode(",", get_value_varchar_variavel_global(VARIAVEL_ALMIRANTES)); ?>
-                        <?php $incursao = explode(",", get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_INCURSAO)); ?>
-                        <?php if ($userDetails->tripulacao) : ?>
-                            <!-- <div class="row">
+            <div class="main-container">
+                <div class="main-panel">
+                    <?php $rdp = explode(",", get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_ERA_PIRATA)); ?>
+                    <?php $adf = explode(",", get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_ERA_MARINHA)); ?>
+                    <?php $yonkou = explode(",", get_value_varchar_variavel_global(VARIAVEL_YONKOUS)); ?>
+                    <?php $almirante = explode(",", get_value_varchar_variavel_global(VARIAVEL_ALMIRANTES)); ?>
+                    <?php $incursao = explode(",", get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_INCURSAO)); ?>
+                    <?php if ($userDetails->tripulacao) : ?>
+                        <!-- <div class="row">
                             <?php if (count($userDetails->personagens) < 15) : ?>
                                 <?php render_progress(
                                     "progress-tripulantes",
@@ -181,62 +183,61 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
                             ); ?>
                         </div> -->
 
-                            <?php $is_dbl = $connection->run("SELECT `id`,`data_inicio`,`data_fim` FROM tb_vip_dobro WHERE NOW() BETWEEN data_inicio AND data_fim LIMIT 1"); ?>
-                            <?php if ($is_dbl->count()) { ?>
-                                <?php $is_dbl = $is_dbl->fetch_array(); ?>
-                                <div class="alert alert-info">
-                                    <b>!!! PROMOÇÃO !!!</b><br />
-                                    Estamos com uma promoção de Gold em DOBRO ativa de <b>
-                                        <?= date('d/m/Y à\s H:i:s', strtotime($is_dbl['data_inicio'])); ?>
-                                    </b> até <b>
-                                        <?= date('d/m/Y à\s H:i:s', strtotime($is_dbl['data_fim'])); ?>
-                                    </b>.<br />
-                                    Clique <a href="./?ses=vipComprar" class="link_content">aqui</a> e aproveite essa oportunidade.
-                                </div>
-                            <?php } ?>
+                        <?php $is_dbl = $connection->run("SELECT `id`,`data_inicio`,`data_fim` FROM tb_vip_dobro WHERE NOW() BETWEEN data_inicio AND data_fim LIMIT 1"); ?>
+                        <?php if ($is_dbl->count()) { ?>
+                            <?php $is_dbl = $is_dbl->fetch_array(); ?>
+                            <div class="alert alert-info">
+                                <b>!!! PROMOÇÃO !!!</b><br />
+                                Estamos com uma promoção de Gold em DOBRO ativa de <b>
+                                    <?= date('d/m/Y à\s H:i:s', strtotime($is_dbl['data_inicio'])); ?>
+                                </b> até <b>
+                                    <?= date('d/m/Y à\s H:i:s', strtotime($is_dbl['data_fim'])); ?>
+                                </b>.<br />
+                                Clique <a href="./?ses=vipComprar" class="link_content">aqui</a> e aproveite essa oportunidade.
+                            </div>
+                        <?php } ?>
 
-                            <?php if (in_array($userDetails->tripulacao["id"], $rdp) || in_array($userDetails->tripulacao["id"], $adf)) : ?>
-                                <?php $recompensa = $connection->run("SELECT * FROM tb_recompensa_recebida_era WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"]))->count(); ?>
-                                <?php if (! $recompensa) : ?>
-                                    <div class="alert alert-info" style="margin-bottom: 10px;;">
-                                        <b>Parabéns!</b> Você foi um dos melhores na Grande Era dos Piratas! Clique <a
-                                            href="link_Eventos/recompensa_era.php" class="alert-link link_send">aqui</a> para receber
-                                        sua recompensa.
-                                    </div>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                            <?php if (in_array($userDetails->tripulacao["id"], $yonkou) || in_array($userDetails->tripulacao["id"], $almirante)) : ?>
-                                <?php $recompensa = $connection->run("SELECT * FROM tb_recompensa_recebida_grandes_poderes WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"]))->count(); ?>
-                                <?php if (! $recompensa) : ?>
-                                    <div class="alert alert-info" style="margin-bottom: 10px;;">
-                                        <b>Parabéns!</b> Você foi um dos melhores na Batalha dos Grandes Poderes! Clique <a
-                                            href="link_Eventos/recompensa_grandes_poderes.php" class="alert-link link_send">aqui</a>
-                                        para receber sua recompensa.
-                                    </div>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                            <?php if (in_array($userDetails->tripulacao["id"], $incursao)) : ?>
-                                <?php $recompensa = $connection->run("SELECT * FROM tb_recompensa_recebida_incursao WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"]))->count(); ?>
-                                <?php if (! $recompensa) : ?>
-                                    <div class="alert alert-info" style="margin-bottom: 10px;;">
-                                        <b>Parabéns!</b> Você foi um dos ganhadores da Incursão Especial! Clique <a
-                                            href="link_Eventos/recompensa_incursao.php" class="alert-link link_send">aqui</a> para
-                                        receber sua recompensa.
-                                    </div>
-                                <?php endif; ?>
-                            <?php endif; ?>
-
-                            <?php $convocacao_torneio = $connection->run("SELECT * FROM tb_torneio_inscricao WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"])); ?>
-                            <?php if ($convocacao_torneio->count()) : ?>
-                                <div class="alert alert-warning" style="margin-bottom: 10px;;">
-                                    <b>Atenção!</b> Você está sendo convocado para o Torneio dos Melhores Sugoi Game! Clique <a
-                                        href="./?ses=torneio" class="alert-link link_content">aqui</a> para apresentar-se.
+                        <?php if (in_array($userDetails->tripulacao["id"], $rdp) || in_array($userDetails->tripulacao["id"], $adf)) : ?>
+                            <?php $recompensa = $connection->run("SELECT * FROM tb_recompensa_recebida_era WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"]))->count(); ?>
+                            <?php if (! $recompensa) : ?>
+                                <div class="alert alert-info" style="margin-bottom: 10px;;">
+                                    <b>Parabéns!</b> Você foi um dos melhores na Grande Era dos Piratas! Clique <a
+                                        href="link_Eventos/recompensa_era.php" class="alert-link link_send">aqui</a> para receber
+                                    sua recompensa.
                                 </div>
                             <?php endif; ?>
                         <?php endif; ?>
-                        <div class="panel panel-default">
-                            <?php include "Sessoes/$sessao.php"; ?>
-                        </div>
+                        <?php if (in_array($userDetails->tripulacao["id"], $yonkou) || in_array($userDetails->tripulacao["id"], $almirante)) : ?>
+                            <?php $recompensa = $connection->run("SELECT * FROM tb_recompensa_recebida_grandes_poderes WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"]))->count(); ?>
+                            <?php if (! $recompensa) : ?>
+                                <div class="alert alert-info" style="margin-bottom: 10px;;">
+                                    <b>Parabéns!</b> Você foi um dos melhores na Batalha dos Grandes Poderes! Clique <a
+                                        href="link_Eventos/recompensa_grandes_poderes.php" class="alert-link link_send">aqui</a>
+                                    para receber sua recompensa.
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php if (in_array($userDetails->tripulacao["id"], $incursao)) : ?>
+                            <?php $recompensa = $connection->run("SELECT * FROM tb_recompensa_recebida_incursao WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"]))->count(); ?>
+                            <?php if (! $recompensa) : ?>
+                                <div class="alert alert-info" style="margin-bottom: 10px;;">
+                                    <b>Parabéns!</b> Você foi um dos ganhadores da Incursão Especial! Clique <a
+                                        href="link_Eventos/recompensa_incursao.php" class="alert-link link_send">aqui</a> para
+                                    receber sua recompensa.
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <?php $convocacao_torneio = $connection->run("SELECT * FROM tb_torneio_inscricao WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"])); ?>
+                        <?php if ($convocacao_torneio->count()) : ?>
+                            <div class="alert alert-warning" style="margin-bottom: 10px;;">
+                                <b>Atenção!</b> Você está sendo convocado para o Torneio dos Melhores Sugoi Game! Clique <a
+                                    href="./?ses=torneio" class="alert-link link_content">aqui</a> para apresentar-se.
+                            </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <div class="panel panel-default">
+                        <?php include "Sessoes/$sessao.php"; ?>
                     </div>
                 </div>
             </div>
