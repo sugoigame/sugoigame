@@ -6,7 +6,8 @@
  * Date: 20/10/2017
  * Time: 08:22
  */
-class MapServerUserDetails extends UserDetails {
+class MapServerUserDetails extends UserDetails
+{
     /**
      * @var mywrap_con
      */
@@ -26,7 +27,8 @@ class MapServerUserDetails extends UserDetails {
      * @param $sg_c
      * @param $sg_k
      */
-    public function __construct($connection, $sg_c, $sg_k) {
+    public function __construct($connection, $sg_c, $sg_k)
+    {
         $this->connection = $connection;
         $this->sg_c = $sg_c;
         $this->sg_k = $sg_k;
@@ -34,24 +36,27 @@ class MapServerUserDetails extends UserDetails {
         parent::__construct($connection);
     }
 
-    protected function _get_token() {
+    protected function _get_token()
+    {
         return array(
             "id_encrypted" => $this->sg_c,
             "token" => $this->sg_k
         );
     }
 
-    protected function _update_last_logon() {
+    protected function _update_last_logon()
+    {
         //np
     }
 
-    public function get_public_data($id = null) {
-        if (!$id) {
+    public function get_public_data($id = null)
+    {
+        if (! $id) {
             $id = $this->tripulacao["id"];
         }
 
         $me = $this->connection->run(
-            "SELECT 
+            "SELECT
             u.id,
             u.tripulacao,
             u.bandeira,
@@ -67,7 +72,7 @@ class MapServerUserDetails extends UserDetails {
             u.navegacao_destino AS navegando,
             u.coup_de_burst_usado,
             (unix_timestamp(current_timestamp(3)) - u.navegacao_inicio) / (u.navegacao_fim - u.navegacao_inicio) AS navegacao_progresso,
-            u.navegacao_fim - unix_timestamp(current_timestamp(3)) AS navegacao_restante, 
+            u.navegacao_fim - unix_timestamp(current_timestamp(3)) AS navegacao_restante,
             p.nome AS capitao_nome,
             p.img AS capitao_img,
             p.skin_r AS capitao_skin_r,
@@ -85,7 +90,7 @@ class MapServerUserDetails extends UserDetails {
             FROM tb_usuarios u
             INNER JOIN tb_personagens p ON u.cod_personagem = p.cod
             LEFT JOIN tb_titulos t ON p.titulo=t.cod_titulo
-            INNER JOIN tb_usuario_navio n ON n.id = u.id
+            LEFT JOIN tb_usuario_navio n ON n.id = u.id
             INNER JOIN tb_vip v ON u.id = v.id
             LEFT JOIN tb_item_navio_casco c ON n.cod_casco = c.cod_casco
             LEFT JOIN tb_mapa m ON u.x = m.x AND u.y = m.y
@@ -93,23 +98,24 @@ class MapServerUserDetails extends UserDetails {
             "i", array($id)
         )->fetch_array();
 
-        $me['is_adm']           = $me['adm'] > 0;
-        $me["location"]         = get_human_location($me["x"], $me["y"]);
-        $me["destino_mar"]      = nome_mar(get_mar($me["x"], $me["y"]));
-        $me["destino_ilha"]     = nome_ilha($me["ilha"]);
-        $me['coup_de_burst']    = $me['coup_de_burst'] < 0 ? 0 : $me['coup_de_burst'];
-        $me['poder_batalha']    = 0;
+        $me['is_adm'] = $me['adm'] > 0;
+        $me["location"] = get_human_location($me["x"], $me["y"]);
+        $me["destino_mar"] = nome_mar(get_mar($me["x"], $me["y"]));
+        $me["destino_ilha"] = nome_ilha($me["ilha"]);
+        $me['coup_de_burst'] = $me['coup_de_burst'] < 0 ? 0 : $me['coup_de_burst'];
+        $me['poder_batalha'] = 0;
 
         unset($me['adm']);
 
         return $me;
     }
 
-    public function get_field_of_view(Navigation $navigation) {
+    public function get_field_of_view(Navigation $navigation)
+    {
         $data = array(
             "me" => $this->get_public_data(),
             "players" => $this->connection->run(
-                "SELECT 
+                "SELECT
                 u.id,
                 u.tripulacao,
                 u.bandeira,
@@ -124,7 +130,7 @@ class MapServerUserDetails extends UserDetails {
                 u.navegacao_destino AS navegando,
                 u.coup_de_burst_usado,
                 (unix_timestamp(current_timestamp(3)) - u.navegacao_inicio) / (u.navegacao_fim - u.navegacao_inicio) AS navegacao_progresso,
-                u.navegacao_fim - unix_timestamp(current_timestamp(3)) AS navegacao_restante, 
+                u.navegacao_fim - unix_timestamp(current_timestamp(3)) AS navegacao_restante,
                 p.nome AS capitao_nome,
                 p.img AS capitao_img,
                 p.skin_r AS capitao_skin_r,
@@ -157,8 +163,8 @@ class MapServerUserDetails extends UserDetails {
         );
 
         for ($x = 0; $x < count($data["players"]); $x++) {
-            $data["players"][$x]['is_adm']                      = $data["players"][$x]['adm'] > 0;
-            
+            $data["players"][$x]['is_adm'] = $data["players"][$x]['adm'] > 0;
+
 
             unset($data["players"][$x]['adm']);
         }
@@ -166,7 +172,8 @@ class MapServerUserDetails extends UserDetails {
         return $data;
     }
 
-    public function travel($destino, Navigation $navigation) {
+    public function travel($destino, Navigation $navigation)
+    {
         unset($this->combate_pvp);
         unset($this->combate_bot);
         unset($this->combate_pve);
@@ -178,8 +185,8 @@ class MapServerUserDetails extends UserDetails {
             return false;
         }
 
-        $ja_navegando = !!$this->tripulacao["navegacao_destino"];
-        $tempo_calculado = !!$this->tripulacao["navegacao_fim"];
+        $ja_navegando = ! ! $this->tripulacao["navegacao_destino"];
+        $tempo_calculado = ! ! $this->tripulacao["navegacao_fim"];
 
         if ($ja_navegando && $tempo_calculado) {
             $this->connection->run("UPDATE tb_usuarios SET navegacao_destino = ? WHERE id = ?",
@@ -201,10 +208,11 @@ class MapServerUserDetails extends UserDetails {
             }
         }
         unset($this->tripulacao);
-        return !$ja_navegando;
+        return ! $ja_navegando;
     }
 
-    public function update_coup_de_burst() {
+    public function update_coup_de_burst()
+    {
         if ($this->tripulacao["coup_de_burst_usado"]) {
             $this->connection->run("UPDATE tb_usuarios SET coup_de_burst_usado = coup_de_burst_usado - 1 WHERE id = ?",
                 "i", array($this->tripulacao["id"]));
@@ -212,12 +220,14 @@ class MapServerUserDetails extends UserDetails {
         }
     }
 
-    public function in_field_of_view($tripulacao) {
+    public function in_field_of_view($tripulacao)
+    {
         return abs($tripulacao["x"] - $this->tripulacao["x"] < $this->distancia_visao["x"])
             && abs($tripulacao["y"] - $this->tripulacao["y"] < $this->distancia_visao["y"]);
     }
 
-    private function get_direction($ship, $destination) {
+    private function get_direction($ship, $destination)
+    {
         if ($destination["x"] < $ship["x"] && $destination["y"] < $ship["y"]) {
             return 7;
         } else if ($destination["x"] < $ship["x"] && $destination["y"] == $ship["y"]) {
@@ -238,7 +248,8 @@ class MapServerUserDetails extends UserDetails {
         return 0;
     }
 
-    public function update_position(Navigation $navigation) {
+    public function update_position(Navigation $navigation)
+    {
         unset($this->combate_pvp);
         unset($this->combate_bot);
         unset($this->combate_pve);
@@ -262,7 +273,7 @@ class MapServerUserDetails extends UserDetails {
         }
         $rdm = $navigation->get_rdm($next_position["x"], $next_position["y"]);
 
-        if (!$this->tripulacao["kai"] && $rdm && rand(1, 100) < $rdm["chance"]) {
+        if (! $this->tripulacao["kai"] && $rdm && rand(1, 100) < $rdm["chance"]) {
             $this->connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = NULL, navegacao_inicio = NULL, navegacao_fim = NULL WHERE id = ?",
                 "i", array($this->tripulacao["id"]));
 
@@ -272,7 +283,7 @@ class MapServerUserDetails extends UserDetails {
             $chain = $navigation->get_chain($next_position["x"], $next_position["y"]);
             $swirl = $navigation->get_swirl($next_position["x"], $next_position["y"]);
 
-            if ($swirl && !$this->tripulacao['adm']) {
+            if ($swirl && ! $this->tripulacao['adm']) {
                 $swirl_demage = rand(0, 25) / 100;
                 $this->connection->run("UPDATE tb_usuario_navio SET hp_teste = GREATEST(0, hp_teste - (hp_max * {$swirl_demage})) WHERE id = ?",
                     "i", array($this->tripulacao["id"]));
@@ -315,7 +326,8 @@ class MapServerUserDetails extends UserDetails {
         unset($this->combate_pve);
     }
 
-    public function add_xp_navegacao() {
+    public function add_xp_navegacao()
+    {
         unset($this->navio);
         if ($this->navio["lvl"] < 10) {
             $this->navio["xp"] += 1;
@@ -334,7 +346,8 @@ class MapServerUserDetails extends UserDetails {
         $this->xp_for_profissao(1, PROFISSAO_NAVEGADOR);
     }
 
-    public function project_next_position($direction = null, $base_point = null) {
+    public function project_next_position($direction = null, $base_point = null)
+    {
         $direction = $direction ? $direction : $this->tripulacao["direcao_navio"];
         $base_point = $base_point ? $base_point : $this->tripulacao;
 
@@ -344,7 +357,8 @@ class MapServerUserDetails extends UserDetails {
         );
     }
 
-    public function calc_travel_speed($direction, Navigation $navigation) {
+    public function calc_travel_speed($direction, Navigation $navigation)
+    {
         $base_speed = $direction % 2 == 0 ? 1.5 : 2.25;
 
         $most_slow_possible = 3;
@@ -385,7 +399,8 @@ class MapServerUserDetails extends UserDetails {
         return $base_speed;
     }
 
-    public function heal_ship() {
+    public function heal_ship()
+    {
         if (atual_segundo() < $this->navio["ultima_cura"] + 5) {
             return 0;
         }
@@ -408,13 +423,14 @@ class MapServerUserDetails extends UserDetails {
         return $cura;
     }
 
-    public function dispara($target, Navigation $navigation) {
+    public function dispara($target, Navigation $navigation)
+    {
         unset($this->has_ilha_envolta_me);
         if (atual_segundo() < $this->navio["ultimo_disparo"] + 5 || $this->has_ilha_envolta_me) {
             return NULL;
         }
 
-        if (!$this->navio['cod_canhao'])
+        if (! $this->navio['cod_canhao'])
             return NULL;
 
         if (abs($target->x - $this->tripulacao["x"] > $this->distancia_visao) ||
@@ -424,7 +440,7 @@ class MapServerUserDetails extends UserDetails {
         }
 
         $alvos = $this->connection->run(
-            "SELECT u.x, u.y, n.* 
+            "SELECT u.x, u.y, n.*
              FROM tb_usuarios u
              INNER JOIN tb_usuario_navio n ON u.id = n.id
              WHERE u.x = ? AND u.y = ? AND u.id <> ? AND u.mar_visivel = 1",
@@ -448,21 +464,25 @@ class MapServerUserDetails extends UserDetails {
         return $damages;
     }
 
-    public function dispara_target($target_id, Navigation $navigation) {
+    public function dispara_target($target_id, Navigation $navigation)
+    {
         unset($this->has_ilha_envolta_me);
-        if (atual_segundo() < $this->navio["ultimo_disparo"] + 5)   return NULL;
-        if ($this->has_ilha_envolta_me)                             return NULL;
-        if ($target_id == $this->tripulacao["id"])                  return NULL;
+        if (atual_segundo() < $this->navio["ultimo_disparo"] + 5)
+            return NULL;
+        if ($this->has_ilha_envolta_me)
+            return NULL;
+        if ($target_id == $this->tripulacao["id"])
+            return NULL;
 
         $alvo = $this->connection->run(
-            "SELECT u.x, u.y, n.* 
+            "SELECT u.x, u.y, n.*
              FROM tb_usuarios u
              INNER JOIN tb_usuario_navio n ON u.id = n.id
              WHERE u.id = ? AND u.mar_visivel = 1",
             "i", array($target_id)
         );
 
-        if (!$alvo->count()) {
+        if (! $alvo->count()) {
             return NULL;
         }
 
@@ -488,7 +508,8 @@ class MapServerUserDetails extends UserDetails {
         ));
     }
 
-    private function _update_ultimo_disparo() {
+    private function _update_ultimo_disparo()
+    {
         $this->connection->run("UPDATE tb_usuarios SET mar_visivel = '1' WHERE id = ?", "i", [
             $this->tripulacao["id"]
         ]);
@@ -516,9 +537,10 @@ class MapServerUserDetails extends UserDetails {
         unset($this->tripulacao);
     }
 
-    private function _apply_damage_canhao($alvo, Navigation $navigation) {
+    private function _apply_damage_canhao($alvo, Navigation $navigation)
+    {
         $damages = null;
-        if (!count($navigation->get_islands($alvo["x"], $alvo["y"], 2, 2, $this->connection)) && rand(1, 100) > 30) {
+        if (! count($navigation->get_islands($alvo["x"], $alvo["y"], 2, 2, $this->connection)) && rand(1, 100) > 30) {
             $damage = rand(15, 35);
             $new_hp = max(0, $alvo["hp_teste"] - $damage);
 
@@ -535,9 +557,10 @@ class MapServerUserDetails extends UserDetails {
         return $damages;
     }
 
-    function attack_target($target_id, $type, Navigation $navigation) {
+    function attack_target($target_id, $type, Navigation $navigation)
+    {
         $result = $this->connection->run("SELECT * FROM tb_usuarios WHERE id = ? AND mar_visivel = 1", "i", $target_id);
-        if (!$result->count()) {
+        if (! $result->count()) {
             return NULL;
         }
 
@@ -573,10 +596,10 @@ class MapServerUserDetails extends UserDetails {
         if ($target["adm"]) {
             return FALSE;
         }
-        if (!$target["mar_visivel"]) {
+        if (! $target["mar_visivel"]) {
             return FALSE;
         }
-        if (!can_attack($target)) {
+        if (! can_attack($target)) {
             return FALSE;
         }
 
@@ -585,7 +608,8 @@ class MapServerUserDetails extends UserDetails {
         return TRUE;
     }
 
-    function atacar_nps($target, Navigation $navigation) {
+    function atacar_nps($target, Navigation $navigation)
+    {
         if (distancia($this->tripulacao, array("x" => $target->x, "y" => $target->y)) > 2) {
             return FALSE;
         }
@@ -599,7 +623,7 @@ class MapServerUserDetails extends UserDetails {
 
         $nps = $navigation->get_nps($target->x, $target->y);
 
-        if (!$nps) {
+        if (! $nps) {
             return FALSE;
         }
 
@@ -614,10 +638,11 @@ class MapServerUserDetails extends UserDetails {
         return true;
     }
 
-    function toggle_kairouseki() {
+    function toggle_kairouseki()
+    {
         $data = $this->get_public_data();
 
-        if (!$data["has_kairouseki"]) {
+        if (! $data["has_kairouseki"]) {
             return;
         }
 
@@ -626,7 +651,8 @@ class MapServerUserDetails extends UserDetails {
         unset($this->tripulacao);
     }
 
-    function ativa_coup_de_burst() {
+    function ativa_coup_de_burst()
+    {
         if ($this->vip["coup_de_burst"] <= 0) {
             return false;
         }
@@ -638,8 +664,9 @@ class MapServerUserDetails extends UserDetails {
             "i", array($this->tripulacao["id"]));
         return true;
     }
-    
-    function destroy() {
+
+    function destroy()
+    {
         $this->buffs->destroy();
         $this->alerts->destroy();
         $this->equipamentos->destroy();

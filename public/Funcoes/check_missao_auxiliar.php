@@ -54,13 +54,13 @@ function check_progress_personagem_com_habilidade($pers_cod)
 {
     global $connection;
     $missoes_concluidas = $connection->run(
-        "SELECT count(ps.cod) AS total
+        "SELECT count(ps.cod_skil) AS total
         FROM tb_personagens_skil ps
         WHERE ps.cod = ?",
         "i", array($pers_cod)
     )->fetch_array()["total"];
 
-    return $missoes_concluidas > 0;
+    return $missoes_concluidas > 1;
 }
 
 function check_progress_barco_comprado()
@@ -101,8 +101,11 @@ function check_progress_pesquisa_iniciada()
 {
     global $connection;
     global $userDetails;
-    return $connection->run("SELECT * FROM tb_missoes_r WHERE id = ?",
-        "i", array($userDetails->tripulacao["id"]))->count() > 0;
+    $count = $connection->run("SELECT * FROM tb_missoes_r mr WHERE mr.id = ?",
+        "i", array($userDetails->tripulacao["id"]))->count() +
+        $connection->run("SELECT * FROM tb_missoes_r_dia mr WHERE mr.id = ?",
+            "i", array($userDetails->tripulacao["id"]))->count();
+    return $count > 0;
 }
 
 function check_progress_personagem_com_profissao($pers)

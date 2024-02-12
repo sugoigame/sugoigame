@@ -6,7 +6,8 @@
  * Date: 18/10/2017
  * Time: 17:42
  */
-class EventBroker {
+class EventBroker
+{
     /**
      * @var SplObjectStorage
      */
@@ -22,17 +23,19 @@ class EventBroker {
      */
     private $navigation;
 
-    public function __construct(\SplObjectStorage &$clients, Navigation $navigation, mywrap_con $connection) {
+    public function __construct(\SplObjectStorage &$clients, Navigation $navigation, mywrap_con $connection)
+    {
         $this->connection = $connection;
         $this->clients = $clients;
         $this->navigation = $navigation;
     }
 
-    private function broadcast($event, $data, $validate_field_of_view = NULL, $except_sender = NULL) {
+    private function broadcast($event, $data, $validate_field_of_view = NULL, $except_sender = NULL)
+    {
         $message = $this->encode($event, $data);
         foreach ($this->clients as $client) {
-            if (!$except_sender || $client->resourceId != $except_sender) {
-                if (!$validate_field_of_view
+            if (! $except_sender || $client->resourceId != $except_sender) {
+                if (! $validate_field_of_view
                     || (isset($client->details)
                         && isset($client->details->tripulacao)
                         && $validate_field_of_view->in_field_of_view($client->details->tripulacao))
@@ -43,7 +46,8 @@ class EventBroker {
         }
     }
 
-    private function send_to($id, $event, $data) {
+    private function send_to($id, $event, $data)
+    {
         $message = $this->encode($event, $data);
         foreach ($this->clients as $client) {
             if (isset($client->details)
@@ -54,7 +58,8 @@ class EventBroker {
         }
     }
 
-    public function auth($from, $data) {
+    public function auth($from, $data)
+    {
         if (isset($data->sg_c) && isset($data->sg_k)) {
             $from->details = new MapServerUserDetails($this->connection, $data->sg_c, $data->sg_k);
 
@@ -74,14 +79,16 @@ class EventBroker {
         }
     }
 
-    public function get_field_of_view($from) {
+    public function get_field_of_view($from)
+    {
         if ($from->details && $from->details->tripulacao) {
             $from->send($this->encode("field_of_view", $from->details->get_field_of_view($this->navigation)));
         }
     }
 
-    public function set_destination($from, $data) {
-        if ($from->details && $from->details->tripulacao
+    public function set_destination($from, $data)
+    {
+        if ($from->details && $from->details->tripulacao && $from->details->navio
             && isset($data->destination)
             && isset($data->destination->x)
             && isset($data->destination->y)
@@ -95,7 +102,8 @@ class EventBroker {
         }
     }
 
-    public function update_position($from) {
+    public function update_position($from)
+    {
         if ($from->details && $from->details->tripulacao && $from->details->tripulacao["navegacao_destino"]) {
             $from->details->update_position($this->navigation);
             if ($from->details->tripulacao["mar_visivel"]) {
@@ -111,7 +119,8 @@ class EventBroker {
         }
     }
 
-    public function disparar($from, $data) {
+    public function disparar($from, $data)
+    {
         if ($from->details && $from->details->tripulacao && isset($data->destination) && isset($data->destination->x) && isset($data->destination->y)) {
             $damages = $from->details->dispara($data->destination, $this->navigation);
             if ($damages) {
@@ -129,7 +138,8 @@ class EventBroker {
         }
     }
 
-    public function disparar_alvo($from, $data) {
+    public function disparar_alvo($from, $data)
+    {
         if ($from->details && $from->details->tripulacao && isset($data->alvo)) {
             $result = $from->details->dispara_target($data->alvo, $this->navigation);
             if ($result) {
@@ -149,7 +159,8 @@ class EventBroker {
         }
     }
 
-    public function curar($from) {
+    public function curar($from)
+    {
         if ($from->details && $from->details->tripulacao) {
             $amount = $from->details->heal_ship();
             if ($amount) {
@@ -160,7 +171,8 @@ class EventBroker {
         }
     }
 
-    public function coup_de_burst($from) {
+    public function coup_de_burst($from)
+    {
         if ($from->details && $from->details->tripulacao) {
             if ($from->details->ativa_coup_de_burst()) {
                 $this->get_field_of_view($from);
@@ -171,17 +183,19 @@ class EventBroker {
         }
     }
 
-   public function atacar($from, $data) {
-       if ($from->details && $from->details->tripulacao && isset($data->alvo) && isset($data->type)) {
-           $result = $from->details->attack_target($data->alvo, $data->type, $this->navigation);
-           if ($result) {
-               $from->send($this->encode("redirect", "combate"));
-               $this->send_to($data->alvo, "redirect", "combate");
-           }
-       }
-   }
+    public function atacar($from, $data)
+    {
+        if ($from->details && $from->details->tripulacao && isset($data->alvo) && isset($data->type)) {
+            $result = $from->details->attack_target($data->alvo, $data->type, $this->navigation);
+            if ($result) {
+                $from->send($this->encode("redirect", "combate"));
+                $this->send_to($data->alvo, "redirect", "combate");
+            }
+        }
+    }
 
-    public function atacar_nps($from, $data) {
+    public function atacar_nps($from, $data)
+    {
         if ($from->details && $from->details->tripulacao && isset($data->destination) && isset($data->destination->x) && isset($data->destination->y)) {
             if ($from->details->atacar_nps($data->destination, $this->navigation)) {
                 $from->send($this->encode("redirect", "combate"));
@@ -191,14 +205,16 @@ class EventBroker {
         }
     }
 
-    public function toggle_kairouseki($from) {
+    public function toggle_kairouseki($from)
+    {
         if ($from->details && $from->details->tripulacao) {
             $from->details->toggle_kairouseki();
             $this->get_field_of_view($from);
         }
     }
 
-    private function encode($event, $data) {
+    private function encode($event, $data)
+    {
         return json_encode(array(
             "event" => $event,
             "data" => $data

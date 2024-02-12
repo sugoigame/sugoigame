@@ -23,4 +23,4 @@ if ($rewards["dobroes"]) {
 $connection->run("UPDATE tb_usuarios SET progress = ? WHERE id = ?",
     "ii", array($userDetails->get_next_progress(), $userDetails->tripulacao["id"]));
 
-echo "-Objetivo concluído";
+echo ":";

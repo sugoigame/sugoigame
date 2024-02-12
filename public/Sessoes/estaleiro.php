@@ -61,8 +61,8 @@
         <div>
             <?php render_navio_hp_bar() ?>
         </div>
-        <br/>
-        <br/>
+        <br />
+        <br />
     <?php endif; ?>
 
     <?php $mods = $connection->run("SELECT * FROM tb_ilha_mod WHERE ilha = ?", "i", $userDetails->ilha["ilha"])->fetch_array(); ?>
@@ -76,8 +76,10 @@
     ), "WHERE ilha = ?", "i", $userDetails->ilha["ilha"]); ?>
 
     <div class="row">
-        <?php 
-        $meuNavio = $connection->run("SELECT * FROM tb_navio WHERE cod_navio = ? LIMIT 1", 'i', $userDetails->navio['cod_navio'])->fetch_array();
+        <?php
+        $meuNavio = $userDetails->navio
+            ? $connection->run("SELECT * FROM tb_navio WHERE cod_navio = ? LIMIT 1", 'i', $userDetails->navio['cod_navio'])->fetch_array()
+            : array("limite" => 1);
 
         $temCanhao = FALSE;
         $checkCanhao = $connection->run("SELECT id FROM tb_usuario_itens WHERE tipo_item = 12 AND id = ? LIMIT 1", 'i', [
@@ -93,38 +95,41 @@
                 <div class="list-group-item">
                     <?= info_item_with_img($item, $item, FALSE, FALSE, FALSE) ?>
                     <div>
-                        <img src="Imagens/Icones/Berries.png"/> <?= mascara_berries($preco) ?>
+                        <img src="Imagens/Icones/Berries.png" />
+                        <?= mascara_berries($preco) ?>
                     </div>
                     <p>
-                        <div class="form-inline">
-                            <?php if ($userDetails->tripulacao["berries"] >= $preco): ?>
-                                <?php if (in_array($item["tipo_item"], [11]) && $item["limite"] > $meuNavio['limite']) : ?>
-                                    <button href='Mercado/marcenaria_comprar.php?item=<?= $item["cod_item"]; ?>&tipo=<?= $item["tipo_item"]; ?>'
-                                            class="bt_comprar_barco btn btn-success">
+                    <div class="form-inline">
+                        <?php if ($userDetails->tripulacao["berries"] >= $preco) : ?>
+                            <?php if (in_array($item["tipo_item"], [11]) && $item["limite"] > $meuNavio['limite']) : ?>
+                                <button
+                                    href='Mercado/marcenaria_comprar.php?item=<?= $item["cod_item"]; ?>&tipo=<?= $item["tipo_item"]; ?>'
+                                    class="bt_comprar_barco btn btn-success">
+                                    Comprar
+                                </button>
+                            <?php elseif ($item["tipo_item"] != 11) : ?>
+                                <?php if (($item["tipo_item"] == 12 && $userDetails->navio['cod_canhao'] < 1 && ! $temCanhao) || $item["tipo_item"] != 12) : ?>
+                                    <button
+                                        href='link_Mercado/marcenaria_comprar.php?item=<?= $item["cod_item"]; ?>&tipo=<?= $item["tipo_item"]; ?>'
+                                        class="link_send btn btn-success">
                                         Comprar
                                     </button>
-                                <?php elseif ($item["tipo_item"] != 11): ?>
-                                    <?php if (($item["tipo_item"] == 12 && $userDetails->navio['cod_canhao'] < 1 && !$temCanhao) || $item["tipo_item"] != 12) : ?>
-                                        <button href='link_Mercado/marcenaria_comprar.php?item=<?= $item["cod_item"]; ?>&tipo=<?= $item["tipo_item"]; ?>'
-                                                class="link_send btn btn-success">
-                                            Comprar
-                                        </button>
-                                    <?php else: ?>
-                                        <button class="btn btn-danger btn-disabled" disabled>
-                                            Indisponível
-                                        </button>
-                                    <?php endif; ?>
-                                <?php else: ?>
+                                <?php else : ?>
                                     <button class="btn btn-danger btn-disabled" disabled>
                                         Indisponível
                                     </button>
                                 <?php endif; ?>
-                            <?php else: ?>
+                            <?php else : ?>
                                 <button class="btn btn-danger btn-disabled" disabled>
                                     Indisponível
                                 </button>
                             <?php endif; ?>
-                        </div>
+                        <?php else : ?>
+                            <button class="btn btn-danger btn-disabled" disabled>
+                                Indisponível
+                            </button>
+                        <?php endif; ?>
+                    </div>
                     </p>
                 </div>
             </div>
@@ -137,13 +142,15 @@
                 </p>
                 <div>
                     <?php $preco = 10000 * $mods["mod"]; ?>
-                    <img src="Imagens/Icones/Berries.png"/> <?= mascara_berries($preco) ?>
+                    <img src="Imagens/Icones/Berries.png" />
+                    <?= mascara_berries($preco) ?>
                 </div>
-                <?php if ($userDetails->tripulacao["berries"] >= $preco): ?>
+                <?php if ($userDetails->tripulacao["berries"] >= $preco) : ?>
                     <p>
                     <div class="form-inline">
                         <div class="form-group">
-                            <input type="number" min="1" max="100" class="form-control" size="5" id="13_quant" value="1" /><br />
+                            <input type="number" min="1" max="100" class="form-control" size="5" id="13_quant"
+                                value="1" /><br />
                         </div>
                         <button id="13" class="comprar_material btn btn-success">Comprar</button>
                     </div>

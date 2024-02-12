@@ -19,4 +19,36 @@ define('SISTEMA_ALIANCAS', 'SISTEMA_ALIANCAS');
 define('SISTEMA_EVENTOS', 'SISTEMA_EVENTOS');
 define('SISTEMA_TRIPULANTES_FORA_BARCO', 'SISTEMA_TRIPULANTES_FORA_BARCO');
 define('SISTEMA_HAKI', 'SISTEMA_HAKI');
+define('SISTEMA_EQUIPAMENTOS', 'SISTEMA_EQUIPAMENTOS');
+define('SISTEMA_COLISEU', 'SISTEMA_COLISEU');
+define('SISTEMA_MAESTRIA', 'SISTEMA_MAESTRIA');
 
+$sessoes_por_sistema = array(
+    SISTEMA_ACADEMIA => ["academia"],
+    SISTEMA_EQUIPAMENTOS => ["equipShop", "mercado", "materiais", "upgrader", "forja", "oficina", "equipamentos"],
+    SISTEMA_ESTALEIRO => ["estaleiro"],
+    SISTEMA_RESTAURANTE => ["restaurante"],
+    SISTEMA_HOSPITAL => ["hospital"],
+    SISTEMA_PROFISSOES => ["profissoesAprender"],
+    SISTEMA_TRIPULANTES_FORA_BARCO => ["tripulantesInativos"],
+    SISTEMA_DOMINIO_ILHA => ["politicaIlha"],
+    SISTEMA_COLISEU => ["coliseu", "localizadorCasual", "localizadorCompetitivo"],
+    SISTEMA_INCURSOES => ["incursao"],
+    SISTEMA_PESQUISAS => ["missoesR"],
+    SISTEMA_RECRUTAR_TRIPULANTE => ["recrutar", "expulsar"],
+    SISTEMA_VISAO_GERAL_TRIPULACAO => ["status"],
+    SISTEMA_HAKI => ["haki"],
+    SISTEMA_EVENTOS => ["lojaEvento"],
+    SISTEMA_CACA => ["missoesCaca"],
+    SISTEMA_ALIANCAS => ["aliancaLista", "aliancaCriar", "aliancaBanco", "alianca", "aliancaDiplomacia", "aliancaCooperacao", "aliancaMissoes"],
+    SISTEMA_BANDEIRA => ["bandeira"],
+    SISTEMA_SERVICO_TRANSPORTE => ["transporte"],
+    SISTEMA_OCEANO => ["amigaveis", "servicoDenDen"]
+);
+
+$sistemas_por_sessao = [];
+foreach ($sessoes_por_sistema as $sistema => $sessoes) {
+    foreach ($sessoes as $sessao) {
+        $sistemas_por_sessao[$sessao] = $sistema;
+    }
+}

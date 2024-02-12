@@ -1009,9 +1009,13 @@ table tr td {
     border-radius: 5px;
 }
 #missao-auxiliar a {
-    color: #ee0;
+    color: #f0f0f0;
     text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000,
         -1px -1px #000, 1px -1px #000, -1px 1px #000;
+}
+
+#missao-auxiliar a.user-progress-finished {
+    color: #ee0;
 }
 
 .user-progress-0 img,

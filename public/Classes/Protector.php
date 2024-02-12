@@ -26,6 +26,11 @@ class Protector
 
     public function protect($session)
     {
+        global $sistemas_por_sessao;
+        if (isset($sistemas_por_sessao[$session])) {
+            $this->need_sistema($sistemas_por_sessao[$session]);
+        }
+
         switch ($session) {
             case "academia":
             case "equipShop":
@@ -34,7 +39,6 @@ class Protector
             case "materiais":
             case "restaurante":
             case "hospital":
-            case "pousada":
             case "profissoesAprender":
             case "upgrader":
             case "tripulantesInativos":
@@ -51,7 +55,6 @@ class Protector
             case "coliseu":
             case "localizadorCasual":
             case "localizadorCompetitivo":
-            case "respawn":
                 $this->need_tripulacao();
                 $this->must_be_out_of_any_kind_of_combat();
                 break;
@@ -80,8 +83,6 @@ class Protector
             case "quartos":
             case "forja":
             case "oficina":
-            case "profissoes":
-            case "maestria":
                 $this->need_tripulacao();
                 $this->must_be_out_of_any_kind_of_combat();
                 $this->must_be_out_of_missao_and_recrute();
@@ -93,7 +94,6 @@ class Protector
                 $this->must_be_out_of_any_kind_of_combat();
                 break;
             case "equipamentos":
-            case "habilidades":
             case "status":
             case "haki":
             case "listaNegra":
@@ -108,6 +108,7 @@ class Protector
             case "forumNewTopic":
             case "forumPosts":
             case "forumTopics":
+            case "oceano":
                 $this->need_tripulacao();
                 $this->must_be_out_of_any_kind_of_combat();
                 break;
@@ -162,7 +163,6 @@ class Protector
                 $this->must_be_out_of_rota();
                 $this->must_be_out_of_missao_and_recrute();
                 break;
-            case "oceano":
             case "amigaveis":
                 $this->need_tripulacao();
                 $this->must_be_out_of_missao_and_recrute();
@@ -243,6 +243,13 @@ class Protector
     {
         if (! $this->userDetails->tripulacao["adm"]) {
             $this->exit_error("Você não pode acessar isso.");
+        }
+    }
+
+    public function need_sistema($sistema)
+    {
+        if (! $this->userDetails->is_sistema_desbloqueado($sistema)) {
+            $this->exit_error("Você ainda não desbloqueou este recurso.");
         }
     }
 

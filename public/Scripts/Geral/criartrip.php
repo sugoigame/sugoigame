@@ -2,51 +2,51 @@
 include "../../Includes/conectdb.php";
 include "../../Includes/verifica_login_sem_pers.php";
 
-if (!$contaOk) {
+if (! $contaOk) {
     header("location:../../?msg=Vocce precisa estar logado.");
     exit();
 }
 
-if (!isset($_POST["faccao"])
-    OR !isset($_POST["capitao"])
-    OR !isset($_POST["icon_capitao"])
-    OR !isset($_POST["oceano"])
-    OR !isset($_POST["apelido"])
+if (! isset($_POST["faccao"])
+    or ! isset($_POST["capitao"])
+    or ! isset($_POST["icon_capitao"])
+    or ! isset($_POST["oceano"])
+    or ! isset($_POST["apelido"])
 ) {
     header("location:../../?ses=seltrip&msg=Formulário incompleto.");
     exit();
 }
 
-$faccao     = strip_tags($_POST["faccao"]);
-$capitao    = trim($_POST["capitao"]);
-$icon       = strip_tags($_POST["icon_capitao"]);
-$oceano     = strip_tags($_POST["oceano"]);
-$apelido    = trim($_POST["apelido"]);
+$faccao = strip_tags($_POST["faccao"]);
+$capitao = trim($_POST["capitao"]);
+$icon = strip_tags($_POST["icon_capitao"]);
+$oceano = strip_tags($_POST["oceano"]);
+$apelido = trim($_POST["apelido"]);
 
-if (!preg_match("/^[\d]+$/", $faccao)) {
+if (! preg_match("/^[\d]+$/", $faccao)) {
     header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido4.");
     exit();
 }
-if (!preg_match("/^[\w ]+$/", $capitao)) {
+if (! preg_match("/^[\w ]+$/", $capitao)) {
     header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido5.");
     exit();
 }
-if (!preg_match("/^[\d]+$/", $icon)) {
+if (! preg_match("/^[\d]+$/", $icon)) {
     header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido6.");
     exit();
 }
-if (!preg_match("/^[\d]+$/", $oceano)) {
+if (! preg_match("/^[\d]+$/", $oceano)) {
     header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido7.");
     exit();
 }
-if (!preg_match("/^[\w ]+$/", $apelido)) {
+if (! preg_match("/^[\w ]+$/", $apelido)) {
     header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido8.");
     exit();
 }
 $capitao = stripslashes($capitao);
 
 $erro = false;
-if ($faccao != 0 AND $faccao != 1) {
+if ($faccao != 0 and $faccao != 1) {
     $erro = true;
 }
 if (strlen($capitao) < 3) {
@@ -89,12 +89,7 @@ if ($erro) {
             $apelido
         ]);
 
-        $id     = $connection->last_id();
-        $navio = $connection->run("SELECT cod_navio FROM tb_navio ORDER BY limite ASC LIMIT 1")->fetch_array();
-        $connection->run("INSERT INTO tb_usuario_navio (id,cod_navio,cod_casco,cod_leme,cod_velas,hp,hp_max,lvl) VALUES (?,?,'0','0','0','100','100','1')", 'ii', [
-            $id,
-            $navio['cod_navio']
-        ]);
+        $id = $connection->last_id();
 
         $i = 0;
         while ($i == 0) {

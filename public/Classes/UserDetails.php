@@ -1189,7 +1189,7 @@ class UserDetails
                 "unlock" => [],
                 "next" => 6,
                 "check_progress" => function () {
-                    return check_progress_personagem_com_habilidade($this->capitao);
+                    return check_progress_personagem_com_habilidade($this->capitao["cod"]);
                 }
             ),
             6 => array(
@@ -1224,7 +1224,7 @@ class UserDetails
             ),
             9 => array(
                 "goal" => "Recrute um tripulante",
-                "link" => "recrutamento",
+                "link" => "recrutar",
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [],
                 "next" => 11,
@@ -1259,12 +1259,12 @@ class UserDetails
                 "unlock" => [],
                 "next" => 14,
                 "check_progress" => function () {
-                    return check_progress_personagem_com_habilidade($this->personagens[1]);
+                    return check_progress_personagem_com_habilidade($this->personagens[1]["cod"]);
                 }
             ),
             14 => array(
                 "goal" => "Recrute mais um tripulante",
-                "link" => "recrutamento",
+                "link" => "recrutar",
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [],
                 "next" => 15,
@@ -1299,7 +1299,7 @@ class UserDetails
                 "unlock" => [],
                 "next" => 18,
                 "check_progress" => function () {
-                    return check_progress_personagem_com_habilidade($this->personagens[3]);
+                    return check_progress_personagem_com_habilidade($this->personagens[2]["cod"]);
                 }
             ),
             18 => array(
@@ -1326,7 +1326,7 @@ class UserDetails
                 "goal" => "Complete a incursão da ilha",
                 "link" => "incursao",
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
-                "unlock" => [SISTEMA_TESOUROS],
+                "unlock" => [SISTEMA_PESQUISAS],
                 "next" => 21,
                 "check_progress" => function () use ($primeira_ilha) {
                     return check_progress_incursao_realizada($primeira_ilha);
@@ -1346,7 +1346,7 @@ class UserDetails
                 "goal" => "Escolha a profissão do capitão",
                 "link" => "profissoesAprender",
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
-                "unlock" => null,
+                "unlock" => [],
                 "next" => 23,
                 "check_progress" => function () {
                     return check_progress_personagem_com_profissao($this->capitao);
@@ -1631,7 +1631,7 @@ class UserDetails
             ),
             50 => array(
                 "goal" => "Consiga 5 tripulantes",
-                "link" => "recrutamento",
+                "link" => "recrutar",
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [],
                 "next" => 51,
@@ -1809,7 +1809,7 @@ class UserDetails
             foreach ($progresses_info[$progress]["unlock"] as $sistema) {
                 $sistemas[] = $sistema;
             }
-            $progress = $progresses_info["next"];
+            $progress = $progresses_info[$progress]["next"];
         }
 
         return $sistemas;

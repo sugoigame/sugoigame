@@ -3,6 +3,10 @@ function menu_link($ses, $text, $img, $title, $href_prefix = "./?ses=", $class =
 {
     $sess = $_GET["sessao"];
     global $userDetails;
+    global $sistemas_por_sessao;
+    if (isset($sistemas_por_sessao[$ses]) && ! $userDetails->is_sistema_desbloqueado($sistemas_por_sessao[$ses])) {
+        return "";
+    }
 
     if ($class != 'link_content')
         $href_prefix = '';
@@ -14,16 +18,26 @@ function menu_link($ses, $text, $img, $title, $href_prefix = "./?ses=", $class =
 		</li>";
 }
 
-function super_menu_link($href, $href_toggle, $text, $super_menu, $icon)
+function super_menu_link($href, $href_toggle, $text, $super_menu, $icon, $sistemas = [])
 {
     global $userDetails;
-    return "<div class=\"nav navbar-nav text-left\">
+
+    $ativo = count($sistemas) ? false : true;
+
+    foreach ($sistemas as $sistema) {
+        if ($userDetails->is_sistema_desbloqueado($sistema)) {
+            $ativo = true;
+            break;
+        }
+    }
+
+    return $ativo ? "<div class=\"nav navbar-nav text-left\">
 				<a href=\"#$href_toggle\" class=\"" . super_menu_active($super_menu) . "\" data-toggle=\"collapse\" data-parent=\"#vertical-menu\">
 					<img src=\"Imagens/Icones/Sessoes/$icon.png\"/>
 					<span class='super-menu-text'>$text</span>
 					" . ($userDetails->has_super_alert($super_menu) ? get_alert("pull-right") : "") . "
 				</a>
-			</div>";
+			</div>" : "";
 }
 
 function super_menu_in_out($menu)
@@ -115,7 +129,10 @@ function super_menu_can_be_active($menu)
                     </div>
                 <?php endif; ?>
 
-                <?= super_menu_link("status", "menu-tripulacao", "Tripulação", "tripulacao", "tripulacao") ?>
+                <?= super_menu_link("status", "menu-tripulacao", "Tripulação", "tripulacao", "tripulacao", [
+                    SISTEMA_VISAO_GERAL_TRIPULACAO,
+                    SISTEMA_HAKI
+                ]) ?>
 
                 <div id="menu-tripulacao" class="collapse <?= super_menu_in_out("tripulacao") ?>">
                     <ul class="vertical-nav nav navbar-nav">
@@ -208,7 +225,7 @@ function super_menu_can_be_active($menu)
                     </div>
                 <?php endif; ?>
                 <?php if ($userDetails->navio) : ?>
-                    <?= super_menu_link("oceano", "menu-oceano", "Oceano", "oceano", "oceano") ?>
+                    <?= super_menu_link("oceano", "menu-oceano", "Oceano", "oceano", "oceano", [SISTEMA_OCEANO]) ?>
                     <div id="menu-oceano" class="collapse <?= super_menu_in_out("oceano") ?>">
                         <ul class="vertical-nav nav navbar-nav">
                             <?php if (! $userDetails->missao && ! $userDetails->tripulacao["recrutando"] && $userDetails->navio) : ?>
@@ -244,7 +261,7 @@ function super_menu_can_be_active($menu)
                 "alianca",
                 $userDetails->tripulacao["faccao"] == FACCAO_PIRATA
                 ? "alianca"
-                : "frota") ?>
+                : "frota", [SISTEMA_ALIANCAS]) ?>
 
             <div id="menu-alianca" class="collapse <?= super_menu_in_out("alianca") ?>">
                 <ul class="vertical-nav nav navbar-nav">
@@ -264,7 +281,7 @@ function super_menu_can_be_active($menu)
                 </ul>
             </div>
 
-            <?= super_menu_link("lojaEvento", "menu-events", "Eventos", "eventos", "eventos") ?>
+            <?= super_menu_link("lojaEvento", "menu-events", "Eventos", "eventos", "eventos", [SISTEMA_EVENTOS]) ?>
             <div id="menu-events" class="collapse <?= super_menu_in_out("eventos") ?>">
                 <ul class="vertical-nav nav navbar-nav">
                     <?= menu_link("lojaEvento", "Loja de Eventos", "fa fa-certificate", ""); ?>
@@ -288,7 +305,7 @@ function super_menu_can_be_active($menu)
                 </ul>
             </div>
         <?php elseif ($userDetails->tripulacao && ! $userDetails->in_ilha) : ?>
-            <?= super_menu_link("oceano", "menu-oceano", "Oceano", "oceano", "oceano") ?>
+            <?= super_menu_link("oceano", "menu-oceano", "Oceano", "oceano", "oceano", [SISTEMA_OCEANO]) ?>
             <div id="menu-oceano" class="collapse <?= super_menu_in_out("oceano") ?>">
                 <ul class="vertical-nav nav navbar-nav">
                     <?= menu_link("respawn", "Tripulação Derrotada", "fa fa-times", "") ?>
