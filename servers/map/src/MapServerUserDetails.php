@@ -158,9 +158,7 @@ class MapServerUserDetails extends UserDetails {
 
         for ($x = 0; $x < count($data["players"]); $x++) {
             $data["players"][$x]['is_adm']                      = $data["players"][$x]['adm'] > 0;
-            $data["players"][$x]["reputacao_vitoria"]           = calc_reputacao($data["me"]["reputacao"], $data["players"][$x]["reputacao"], $data["me"]["lvl_mais_forte"], $data["players"][$x]["lvl_mais_forte"]);
-            $data["players"][$x]["reputacao_mensal_vitoria"]    = calc_reputacao($data["me"]["reputacao_mensal"], $data["players"][$x]["reputacao_mensal"], $data["me"]["lvl_mais_forte"], $data["players"][$x]["lvl_mais_forte"]);
-            $data["players"][$x]["poder_batalha"]               = 0;
+            
 
             unset($data["players"][$x]['adm']);
         }
@@ -640,7 +638,7 @@ class MapServerUserDetails extends UserDetails {
             "i", array($this->tripulacao["id"]));
         return true;
     }
-
+    
     function destroy() {
         $this->buffs->destroy();
         $this->alerts->destroy();

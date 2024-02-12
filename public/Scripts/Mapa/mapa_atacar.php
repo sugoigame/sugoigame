@@ -152,15 +152,26 @@ if ($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) {
         $protector->exit_error("Um dos requisitos para atacar esse alvo não está cumprido.");
     }
 }
-$verifica = $connection->run("SELECT unix_timestamp(TIMEDIFF(current_timestamp, horario)) AS duracao 
+// Executar a consulta SQL para obter a duração do último combate
+$resultado = $connection->run("SELECT unix_timestamp(TIMEDIFF(current_timestamp, fim)) AS duracao 
                               FROM tb_combate_log 
-                              WHERE (id_1 = ? OR id_2 = ?)
+                              WHERE (id_1 = ? AND id_2 = ?) OR (id_1 = ? AND id_2 = ?)
                               ORDER BY horario DESC
                               LIMIT 1",
-                            "ii", array($userDetails->$tripulacao["id"], $userDetails->$tripulacao["id"]))->fetch_array()["duracao"];
-if($verifica > 600){
-    $protector->exit_error("Voce ja atacou, epsere 10 minutos para atacar novamente");
+                            "iiii", 
+                            array(
+                            $userDetails->combate_pvp["combatente_a"],
+                            $userDetails->combate_pvp["combatente_b"],
+                            $userDetails->combate_pvp["combatente_b"], 
+                            $userDetails->combate_pvp["combatente_a"]));
+$duracao_combate = $resultado->fetch_array(MYSQLI_ASSOC)["duracao"];
+
+if ($duracao_combate <= 10) {
+    // Não permitir o novo ataque
+    $protector->exit_error("Você só pode atacar novamente após 10 minutos do último ataque");
 }
+
+
 // carega personagens do alvo
 if ($tipo == TIPO_COLISEU) {
     $personagens_alvo = $connection->run("SELECT * FROM tb_personagens WHERE id = ? AND time_coliseu= 1", "i", array($alvo))->fetch_all_array();

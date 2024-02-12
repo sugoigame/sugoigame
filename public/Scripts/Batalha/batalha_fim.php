@@ -57,7 +57,7 @@ if ($userDetails->combate_pve) {
             if ($nmp > $pers["real_mp_max"]) {
                 $nmp = $pers["real_mp_max"];
             }
-            $connection->run("UPDATE tb_personagens SET hp = 0, mp = '$nmp' WHERE cod = ?", "i", $pers["cod"]);
+            $connection->run("UPDATE tb_personagens SET hp = hp_max, mp = '$nmp' WHERE cod = ?", "i", $pers["cod"]);
         }
     } else if ($venceu) {
         $rdms = DataLoader::load("rdm");
@@ -346,7 +346,12 @@ if ($userDetails->combate_pve) {
             }
         }
        
-        calc_rep($vencedor_rep,$vencedor_rep_mensal,$perdedor_rep,$perdedor_rep_mensal);
+        $resultado = calc_rep($vencedor,$perdedor);
+        
+        $vencedor_rep = $resultado['vencedor_rep'];
+        $F_mensal = $resultado['vencedor_rep_mensal'];
+        $perdedor_rep = $resultado['perdedor_rep'];
+        $perdedor_rep_mensal = $resultado['perdedor_rep_mensal'];
 
         $vencedor_vit = $vencedor["vitorias"] + 1;
 
@@ -359,7 +364,7 @@ if ($userDetails->combate_pve) {
 
             //add reputacao ao vencedor
             $toda_query[sizeof($toda_query)] = "UPDATE tb_usuarios SET " .
-                "reputacao= reputacao +'$vencedor_rep', vitorias = '$vencedor_vit', reputacao_mensal = reputacao_mensal + '$vencedor_rep_mensal', berries='$vencedor_berries'  " .
+                "reputacao= reputacao +'$vencedor_rep', vitorias = '$vencedor_vit', reputacao_mensal = reputacao_mensal + '$F_mensal', berries='$vencedor_berries'  " .
                 "WHERE id='" . $vencedor["id"] . "'";
         }
 
@@ -842,4 +847,3 @@ if ($venceu) {
 } else
     echo "A luta ainda não acabou!";
 
-    $protector->exit_error($vencedor['id']);
