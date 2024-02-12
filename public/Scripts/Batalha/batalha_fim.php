@@ -5,8 +5,8 @@ include "../../Includes/verifica_combate.php";
 
 $protector->need_tripulacao();
 
-if (!$userDetails->combate_pve && !$userDetails->combate_pvp && !$userDetails->combate_bot) {
-    echo("%oceano");
+if (! $userDetails->combate_pve && ! $userDetails->combate_pvp && ! $userDetails->combate_bot) {
+    echo ("%oceano");
     exit();
 }
 
@@ -22,18 +22,18 @@ if ($userDetails->combate_pve) {
 
     $alive = $connection->run("SELECT count(cod) AS total FROM tb_combate_personagens WHERE id = ? AND hp > 0", "i", $userDetails->tripulacao["id"])->fetch_array();
 
-    if (!$alive["total"]) {
+    if (! $alive["total"]) {
         $perdeu = TRUE;
-        
+
     }
 
-    if (!$perdeu && !$venceu) {
+    if (! $perdeu && ! $venceu) {
         $protector->exit_error("Sua batalha ainda não acabou");
     }
 
     $personagens_in_combate = $connection->run(
-        "SELECT 
-          cbtpers.*, 
+        "SELECT
+          cbtpers.*,
           pers.mp_max AS real_mp_max,
           pers.hp_max AS real_hp_max,
           pers.xp AS real_xp,
@@ -58,6 +58,7 @@ if ($userDetails->combate_pve) {
             if ($nmp > $pers["real_mp_max"]) {
                 $nmp = $pers["real_mp_max"];
             }
+            $connection->run("UPDATE tb_personagens SET hp = 0, mp = '$nmp' WHERE cod = ?", "i", $pers["cod"]);
         }
     } else if ($venceu) {
         $rdms = DataLoader::load("rdm");
@@ -66,7 +67,7 @@ if ($userDetails->combate_pve) {
 
         $xp = $rdm["xp"];
 
-        if (!$userDetails->combate_pve["boss_id"]) {
+        if (! $userDetails->combate_pve["boss_id"]) {
             if (isset($rdm["loot"])) {
                 $drop = $rdm["loot"][rand(0, count($rdm["loot"]) - 1)];
 
@@ -141,7 +142,7 @@ if ($userDetails->combate_pve) {
                 foreach ($eventos as $id => $evento) {
                     if (in_array($rdm["zona"], $evento["zonas"])) {
                         $pode_receber = $connection->run(
-                            "SELECT * FROM tb_mini_eventos m 
+                            "SELECT * FROM tb_mini_eventos m
                             LEFT JOIN tb_mini_eventos_concluidos c ON m.id = c.mini_evento_id AND c.tripulacao_id = ?
                             WHERE m.id = ? AND c.momento IS NULL",
                             "ii", array($userDetails->tripulacao["id"], $id)
@@ -174,8 +175,8 @@ if ($userDetails->combate_pve) {
                 $nhp = $pers["real_hp_max"];
             }
             $connection->run(
-                "UPDATE tb_personagens SET 
-                  hp = '$nhp', 
+                "UPDATE tb_personagens SET
+                  hp = '$nhp',
                   mp = '$nmp'
                 WHERE cod = ?",
                 "i", $pers["cod"]
@@ -224,7 +225,7 @@ if ($userDetails->combate_pve) {
         $ini_venceu = TRUE;
     }
 
-    if (!$perdeu AND !$ini_perdeu) {
+    if (! $perdeu and ! $ini_perdeu) {
         echo "%combate";
         exit();
     }
@@ -322,8 +323,8 @@ if ($userDetails->combate_pve) {
                 $toda_query[sizeof($toda_query)] = $query;
             }
         }
-       
-      
+
+
         if ($usuario["pvp"]["id_1"] == $vencedor["id"])
             $recop = "recop_1";
         else
@@ -345,9 +346,9 @@ if ($userDetails->combate_pve) {
                 $lvl_mais_forte_vencedor = $pers["lvl"];
             }
         }
-       
-        $resultado = calc_rep($vencedor,$perdedor);
-        
+
+        $resultado = calc_rep($vencedor, $perdedor);
+
         $vencedor_rep = $resultado['vencedor_rep'];
         $vencedor_rep_mensal = $resultado['vencedor_rep_mensal'];
         $perdedor_rep = $resultado['perdedor_rep'];
@@ -382,19 +383,19 @@ if ($userDetails->combate_pve) {
                     $alianca_perdedor["cod_alianca"]
                 ]);
                 $guerra = $result->fetch_array();
-                $cont   = $result->count();
+                $cont = $result->count();
 
                 $result = $connection->run("SELECT * FROM tb_alianca_guerra  WHERE cod_inimigo = ? AND cod_alianca = ?", 'ii', [
                     $alianca_vencedor["cod_alianca"],
                     $alianca_perdedor["cod_alianca"]
                 ]);
                 $guerra_inimigo = $result->fetch_array();
-                $cont           += $result->count();
+                $cont += $result->count();
 
                 if ($cont > 0) {
-                    if ($guerra["pts"] < $guerra["vitoria"] AND $guerra_inimigo["pts"] < $guerra["vitoria"]) {
+                    if ($guerra["pts"] < $guerra["vitoria"] and $guerra_inimigo["pts"] < $guerra["vitoria"]) {
                         $pts = $guerra["pts"] + 1;
-                        $toda_query[sizeof($toda_query)] = "UPDATE tb_alianca_guerra SET pts='$pts' 
+                        $toda_query[sizeof($toda_query)] = "UPDATE tb_alianca_guerra SET pts='$pts'
 							WHERE cod_alianca='" . $alianca_vencedor["cod_alianca"] . "'";
 
                         $result = $connection->run("SELECT * FROM tb_alianca_guerra_ajuda  WHERE id = ? AND cod_alianca = ?", 'ii', [
@@ -402,12 +403,12 @@ if ($userDetails->combate_pve) {
                             $alianca_vencedor['cod_alianca']
                         ]);
                         if ($result->count() == 0) {
-                            $toda_query[sizeof($toda_query)] = "INSERT INTO tb_alianca_guerra_ajuda (cod_alianca, id, quant) 
+                            $toda_query[sizeof($toda_query)] = "INSERT INTO tb_alianca_guerra_ajuda (cod_alianca, id, quant)
 								VALUES ('" . $alianca_vencedor["cod_alianca"] . "', '" . $vencedor["id"] . "', '1')";
                         } else {
                             $quant = $result->fetch_array();
                             $quant = $quant["quant"] + 1;
-                            $toda_query[sizeof($toda_query)] = "UPDATE tb_alianca_guerra_ajuda SET quant='$quant' 
+                            $toda_query[sizeof($toda_query)] = "UPDATE tb_alianca_guerra_ajuda SET quant='$quant'
 								WHERE id='" . $vencedor["id"] . "' AND cod_alianca='" . $alianca_vencedor["cod_alianca"] . "'";
                         }
                     }
@@ -454,7 +455,7 @@ if ($userDetails->combate_pve) {
             }
         }
 
-       
+
 
         if ($userDetails->combate_pvp["tipo"] == TIPO_CONTROLE_ILHA) {
             $connection->run("UPDATE tb_mapa SET ilha_dono = ? WHERE ilha = ?",
@@ -514,7 +515,7 @@ if ($userDetails->combate_pve) {
     $dif_berries_perdedor = $perdedor["berries"] - $perdedor_berries;
 
     $connection->run(
-        "UPDATE tb_combate_log SET 
+        "UPDATE tb_combate_log SET
         vencedor = ?,
         reputacao_ganha = ?,
         reputacao_perdida = ?,
@@ -589,24 +590,24 @@ if ($userDetails->combate_pve) {
     $alive = $connection->run("SELECT count(id) AS total FROM tb_combate_personagens_bot WHERE combate_bot_id = ? AND hp > 0",
         "i", array($userDetails->combate_bot["id"]))->fetch_array();
 
-    if (!$alive["total"]) {
+    if (! $alive["total"]) {
         $venceu = TRUE;
     }
 
     $alive = $connection->run("SELECT count(cod) AS total FROM tb_combate_personagens WHERE id = ? AND hp > 0",
         "i", array($userDetails->tripulacao["id"]))->fetch_array();
 
-    if (!$alive["total"]) {
+    if (! $alive["total"]) {
         $perdeu = TRUE;
     }
 
-    if (!$perdeu && !$venceu) {
+    if (! $perdeu && ! $venceu) {
         $protector->exit_error("Sua batalha ainda não acabou");
     }
 
     $personagens_in_combate = $connection->run(
-        "SELECT 
-          cbtpers.*, 
+        "SELECT
+          cbtpers.*,
           pers.mp_max AS real_mp_max,
           pers.hp_max AS real_hp_max,
           pers.xp AS real_xp,
@@ -631,7 +632,7 @@ if ($userDetails->combate_pve) {
             if ($nmp > $pers["real_mp_max"]) {
                 $nmp = $pers["real_mp_max"];
             }
-            
+            $connection->run("UPDATE tb_personagens SET hp = 0 WHERE id = ? AND ativo = 1", "i", array($userDetails->tripulacao["id"]));
         }
     } else if ($venceu) {
         foreach ($personagens_in_combate as $pers) {
@@ -645,8 +646,8 @@ if ($userDetails->combate_pve) {
             }
             $nxp = $pers["real_xp"] + 150;
             $connection->run(
-                "UPDATE tb_personagens SET 
-                  hp = '$nhp', 
+                "UPDATE tb_personagens SET
+                  hp = '$nhp',
                   mp = '$nmp',
                   xp = '$nxp'
                 WHERE cod = ?",
@@ -680,7 +681,7 @@ if ($userDetails->combate_pve) {
 
                 if ($result->count()) {
                     $progresso = $result->fetch_array();
-                    if ($progresso["progresso"] == 2 && !$disputa["vencedor_id"]) {
+                    if ($progresso["progresso"] == 2 && ! $disputa["vencedor_id"]) {
                         if ($userDetails->ilha["ilha_dono"]) {
                             $connection->run("UPDATE tb_ilha_disputa SET vencedor_id = ? WHERE ilha = ?",
                                 "ii", array($userDetails->tripulacao["id"], $userDetails->ilha["ilha"]));
@@ -788,7 +789,7 @@ if ($userDetails->combate_pve) {
 
             $concluida = $connection->run("SELECT count(*) AS total FROM tb_missoes_concluidas WHERE id = ? AND cod_missao = ?",
                 "ii", array($userDetails->tripulacao["id"], $userDetails->missao["cod_missao"]))->fetch_array()["total"];
-            if (!$concluida) {
+            if (! $concluida) {
                 $connection->run("INSERT INTO tb_missoes_concluidas (id, cod_missao) VALUES (?, ?)",
                     "ii", array($userDetails->tripulacao["id"], $userDetails->missao["cod_missao"]));
 
@@ -826,20 +827,20 @@ if ($userDetails->combate_pve) {
 
 if ($venceu) {
     if ($userDetails->combate_pve && isset($rdm['haki'])) {
-        echo("%haki");
+        echo ("%haki");
     } else if ($userDetails->combate_bot && $userDetails->combate_bot["incursao"]) {
-        echo("%incursao");
+        echo ("%incursao");
     } else if ($userDetails->combate_bot && $userDetails->combate_bot["disputa_ilha"]) {
-        echo("%politicaIlha");
+        echo ("%politicaIlha");
     } else if ($userDetails->combate_pve && $userDetails->combate_pve["chefe_especial"]) {
-        echo("%eventoChefesIlhas");
+        echo ("%eventoChefesIlhas");
     } else if ($userDetails->missao) {
         echo "%missoes";
     } else {
-        echo("%oceano");
+        echo ("%oceano");
     }
 } else if ($perdeu) {
-    echo("%oceano");
+    echo ("%oceano");
 } else
     echo "A luta ainda não acabou!";
 
