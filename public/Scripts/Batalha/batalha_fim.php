@@ -24,6 +24,7 @@ if ($userDetails->combate_pve) {
 
     if (!$alive["total"]) {
         $perdeu = TRUE;
+        
     }
 
     if (!$perdeu && !$venceu) {
@@ -57,7 +58,6 @@ if ($userDetails->combate_pve) {
             if ($nmp > $pers["real_mp_max"]) {
                 $nmp = $pers["real_mp_max"];
             }
-            $connection->run("UPDATE tb_personagens SET hp = hp_max, mp = '$nmp' WHERE cod = ?", "i", $pers["cod"]);
         }
     } else if ($venceu) {
         $rdms = DataLoader::load("rdm");
@@ -349,7 +349,7 @@ if ($userDetails->combate_pve) {
         $resultado = calc_rep($vencedor,$perdedor);
         
         $vencedor_rep = $resultado['vencedor_rep'];
-        $F_mensal = $resultado['vencedor_rep_mensal'];
+        $vencedor_rep_mensal = $resultado['vencedor_rep_mensal'];
         $perdedor_rep = $resultado['perdedor_rep'];
         $perdedor_rep_mensal = $resultado['perdedor_rep_mensal'];
 
@@ -364,7 +364,7 @@ if ($userDetails->combate_pve) {
 
             //add reputacao ao vencedor
             $toda_query[sizeof($toda_query)] = "UPDATE tb_usuarios SET " .
-                "reputacao= reputacao +'$vencedor_rep', vitorias = '$vencedor_vit', reputacao_mensal = reputacao_mensal + '$F_mensal', berries='$vencedor_berries'  " .
+                "reputacao= reputacao +'$vencedor_rep', vitorias = '$vencedor_vit', reputacao_mensal = reputacao_mensal + '$vencedor_rep_mensal', berries='$vencedor_berries'  " .
                 "WHERE id='" . $vencedor["id"] . "'";
         }
 
@@ -633,8 +633,6 @@ if ($userDetails->combate_pve) {
             }
             
         }
-        $connection->run("UPDATE tb_personagens SET hp = hp_max WHERE id = ? AND ativo = 1",
-    "i", array($userDetails->tripulacao["id"]));
     } else if ($venceu) {
         foreach ($personagens_in_combate as $pers) {
             $nmp = $pers["mp"];
@@ -841,8 +839,6 @@ if ($venceu) {
         echo("%oceano");
     }
 } else if ($perdeu) {
-    $connection->run("UPDATE tb_personagens SET hp = hp_max WHERE id = ? AND ativo = 1",
-    "i", array($userDetails->tripulacao["id"]));
     echo("%oceano");
 } else
     echo "A luta ainda não acabou!";

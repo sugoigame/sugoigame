@@ -305,7 +305,7 @@ class Protector
     public function need_tripulacao_alive()
     {
         if (! $this->userDetails->tripulacao_alive) {
-            echo "!respawn";
+            echo "!hospital";
             exit();
         }
     }

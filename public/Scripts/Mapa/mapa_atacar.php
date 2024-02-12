@@ -113,11 +113,7 @@ if ($tipo == TIPO_TORNEIO) {
         "ii", array($userDetails->tripulacao["id"], $alvo));
 }
 
-// valida lvl do capitao alvo
-// $capitao_alvo = $connection->run("SELECT * FROM tb_personagens WHERE cod = ? ", "i", $usuario_alvo["cod_personagem"])->fetch_array();
-// if (($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) /*&& $capitao_alvo["lvl"] < 10*/) {
-//     $protector->exit_error("É necessário que seu alvo tenha o capitão no nível 10 para iniciar um combate PvP");
-// }
+
 
 // valida alvo em combate
 $result = $connection->run("SELECT * FROM tb_combate WHERE id_1 = ? OR id_2 = ?", "ii", array($alvo, $alvo));
@@ -164,9 +160,9 @@ $resultado = $connection->run("SELECT unix_timestamp(TIMEDIFF(current_timestamp,
                             $userDetails->combate_pvp["combatente_b"],
                             $userDetails->combate_pvp["combatente_b"], 
                             $userDetails->combate_pvp["combatente_a"]));
-$duracao_combate = $resultado->fetch_array(MYSQLI_ASSOC)["duracao"];
+$duracao_combate = $resultado->fetch_array()["duracao"];
 
-if ($duracao_combate <= 10) {
+if ($duracao_combate <= 600000) {
     // Não permitir o novo ataque
     $protector->exit_error("Você só pode atacar novamente após 10 minutos do último ataque");
 }

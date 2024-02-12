@@ -92,7 +92,7 @@ function can_attack($content)
     }
 
     return ! both_marine($content)
-        && diff_mais_forte_equilibrada($content)
+       
         && $userDetails->is_visivel
         && ! has_ilha_envolta_target($content)
         && ! $userDetails->has_ilha_envolta_me
@@ -128,16 +128,6 @@ function can_attack_nps($content)
     return ao_lado(array("x" => $content["x"], "y" => $content["y"]));
 }
 
-// function diff_mais_forte_equilibrada($alvo) {
-//     global $userDetails;
-//     $diff = abs($userDetails->lvl_mais_forte - $alvo["nivel_mais_forte"]);
-
-//     if ($userDetails->ilha["mar"] <= 5) { // blue e GL
-//         return $diff <= 5;
-//     } else { // calm belt e novo mundo
-//         return true;
-//     }
-// }
 
 function can_dispair_cannon($content)
 {
