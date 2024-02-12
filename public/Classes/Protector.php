@@ -108,9 +108,13 @@ class Protector
             case "forumNewTopic":
             case "forumPosts":
             case "forumTopics":
+                $this->need_tripulacao();
+                $this->must_be_out_of_any_kind_of_combat();
+                break;
             case "oceano":
                 $this->need_tripulacao();
                 $this->must_be_out_of_any_kind_of_combat();
+                $this->need_tripulacao_alive();
                 break;
             case "expulsar":
             case "missoesCaca":
@@ -312,7 +316,7 @@ class Protector
     public function need_tripulacao_alive()
     {
         if (! $this->userDetails->tripulacao_alive) {
-            echo "!hospital";
+            echo $this->userDetails->in_ilha ? "!hospital" : "!respawn";
             exit();
         }
     }
