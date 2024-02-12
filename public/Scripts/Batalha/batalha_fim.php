@@ -24,6 +24,7 @@ if ($userDetails->combate_pve) {
 
     if (!$alive["total"]) {
         $perdeu = TRUE;
+        
     }
 
     if (!$perdeu && !$venceu) {
@@ -57,7 +58,6 @@ if ($userDetails->combate_pve) {
             if ($nmp > $pers["real_mp_max"]) {
                 $nmp = $pers["real_mp_max"];
             }
-            $connection->run("UPDATE tb_personagens SET hp = 0, mp = '$nmp' WHERE cod = ?", "i", $pers["cod"]);
         }
     } else if ($venceu) {
         $rdms = DataLoader::load("rdm");
@@ -322,7 +322,8 @@ if ($userDetails->combate_pve) {
                 $toda_query[sizeof($toda_query)] = $query;
             }
         }
-
+       
+      
         if ($usuario["pvp"]["id_1"] == $vencedor["id"])
             $recop = "recop_1";
         else
@@ -344,46 +345,13 @@ if ($userDetails->combate_pve) {
                 $lvl_mais_forte_vencedor = $pers["lvl"];
             }
         }
-
-        $reputacao = calc_reputacao($vencedor["reputacao"], $perdedor["reputacao"], $lvl_mais_forte_vencedor, $lvl_mais_forte_perdedor);
-        $reputacao_mensal = calc_reputacao($vencedor["reputacao_mensal"], $perdedor["reputacao_mensal"], $lvl_mais_forte_vencedor, $lvl_mais_forte_perdedor);
-
-        if ($usuario["pvp"]["tipo"] == 2) {
-            $reputacao["vencedor_rep"] /= 2;
-            $reputacao["perdedor_rep"] /= 2;
-
-            $reputacao_mensal["vencedor_rep"] /= 2;
-            $reputacao_mensal["perdedor_rep"] /= 2;
-
-            $porcentagem = 0.1;
-            if ($aumento = $userDetails->buffs->get_efeito_from_tripulacao("aumento_berries_saque", $vencedor["id"])) {
-                $porcentagem += $aumento;
-            }
-
-            $saque = (int)($perdedor["berries"] * $porcentagem);
-            $vencedor_berries += $saque;
-            $perdedor_berries -= $saque;
-        } else if ($userDetails->combate_pvp["tipo"] == TIPO_LOCALIZADOR_COMPETITIVO) {
-            $reputacao["vencedor_rep"] /= 3;
-            $reputacao["perdedor_rep"] /= 3;
-
-            $reputacao_mensal["vencedor_rep"] /= 3;
-            $reputacao_mensal["perdedor_rep"] /= 3;
-        }
-
-        $vencedor_rep = $reputacao["vencedor_rep"];
-        $perdedor_rep = $perdedor["reputacao"] - $reputacao["perdedor_rep"];
-
-        $vencedor_rep_mensal = $reputacao_mensal["vencedor_rep"];
-        $perdedor_rep_mensal = $perdedor["reputacao_mensal"] - $reputacao_mensal["perdedor_rep"];
-
-        if ($perdedor_rep < 0) {
-            $perdedor_rep = 0;
-        }
-
-        if ($perdedor_rep_mensal < 0) {
-            $perdedor_rep_mensal = 0;
-        }
+       
+        $resultado = calc_rep($vencedor,$perdedor);
+        
+        $vencedor_rep = $resultado['vencedor_rep'];
+        $vencedor_rep_mensal = $resultado['vencedor_rep_mensal'];
+        $perdedor_rep = $resultado['perdedor_rep'];
+        $perdedor_rep_mensal = $resultado['perdedor_rep_mensal'];
 
         $vencedor_vit = $vencedor["vitorias"] + 1;
 
@@ -486,8 +454,7 @@ if ($userDetails->combate_pve) {
             }
         }
 
-        $userDetails->add_item(134, TIPO_ITEM_REAGENT, 1, false, $vencedor["id"]);
-        $userDetails->add_item(134, TIPO_ITEM_REAGENT, 1, false, $perdedor["id"]);
+       
 
         if ($userDetails->combate_pvp["tipo"] == TIPO_CONTROLE_ILHA) {
             $connection->run("UPDATE tb_mapa SET ilha_dono = ? WHERE ilha = ?",
@@ -664,7 +631,7 @@ if ($userDetails->combate_pve) {
             if ($nmp > $pers["real_mp_max"]) {
                 $nmp = $pers["real_mp_max"];
             }
-            $connection->run("UPDATE tb_personagens SET hp = 0, mp = '$nmp' WHERE cod = ?", "i", $pers["cod"]);
+            
         }
     } else if ($venceu) {
         foreach ($personagens_in_combate as $pers) {
@@ -872,6 +839,7 @@ if ($venceu) {
         echo("%oceano");
     }
 } else if ($perdeu) {
-    echo("%respawn");
+    echo("%oceano");
 } else
     echo "A luta ainda não acabou!";
+
