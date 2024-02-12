@@ -21,7 +21,7 @@ if ($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) {
 // remove desafio
 if ($tipo == TIPO_AMIGAVEL) {
     $result = $connection->run("SELECT * FROM tb_combate_desafio WHERE desafiado = ?", "i", $userDetails->tripulacao["id"]);
-    if (!$result->count()) {
+    if (! $result->count()) {
         $protector->exit_error("Você não foi desafiado por esse jogador.");
     }
 
@@ -36,7 +36,7 @@ if ($tipo == TIPO_CONTROLE_ILHA) {
     $disputa = $connection->run("SELECT * FROM tb_ilha_disputa d LEFT JOIN tb_usuarios u ON d.vencedor_id = u.id WHERE d.ilha = ?",
         "i", array($userDetails->ilha["ilha"]));
 
-    if (!$disputa->count()) {
+    if (! $disputa->count()) {
         $protector->exit_error("Essa ilha não está sob disputa");
     }
 
@@ -49,10 +49,10 @@ if ($tipo == TIPO_CONTROLE_ILHA) {
 
 // valida o coliseu
 if ($tipo == TIPO_COLISEU || $tipo == TIPO_LOCALIZADOR_CASUAL || $tipo == TIPO_LOCALIZADOR_COMPETITIVO) {
-    if (!$userDetails->fila_coliseu
-        || !$userDetails->fila_coliseu["desafio"]
+    if (! $userDetails->fila_coliseu
+        || ! $userDetails->fila_coliseu["desafio"]
         || $alvo != $userDetails->fila_coliseu["desafio"]
-        || !$userDetails->fila_coliseu["desafio_aceito"]
+        || ! $userDetails->fila_coliseu["desafio_aceito"]
         || $userDetails->fila_coliseu["desafio_tipo"] != $tipo
     ) {
         $protector->exit_error("Você não foi desafiado.");
@@ -61,12 +61,12 @@ if ($tipo == TIPO_COLISEU || $tipo == TIPO_LOCALIZADOR_CASUAL || $tipo == TIPO_L
     $adversario_fila = $connection->run("SELECT * FROM tb_coliseu_fila WHERE desafio = ?",
         "i", array($userDetails->tripulacao["id"]));
 
-    if (!$adversario_fila->count()) {
+    if (! $adversario_fila->count()) {
         $protector->exit_error("Seu adversário não recebeu o desafio");
     }
     $adversario_fila = $adversario_fila->fetch_array();
 
-    if (!$adversario_fila["desafio_aceito"]) {
+    if (! $adversario_fila["desafio_aceito"]) {
         $protector->exit_error("Seu adversário ainda não aceitou o desafio");
     }
 
@@ -76,7 +76,7 @@ if ($tipo == TIPO_COLISEU || $tipo == TIPO_LOCALIZADOR_CASUAL || $tipo == TIPO_L
 
 // carrega usuario alvo
 $result = get_player_data_for_combat_check($alvo);
-if (!$result->count()) {
+if (! $result->count()) {
     $protector->exit_error("Alvo não encontrado");
 }
 $usuario_alvo = $result->fetch_array();
@@ -87,11 +87,11 @@ if ($tipo == TIPO_TORNEIO) {
         "SELECT * FROM tb_torneio_inscricao WHERE tripulacao_id = ? AND confirmacao = 1",
         "i", array($userDetails->tripulacao["id"])
     );
-    if (!$participante->count()) {
+    if (! $participante->count()) {
         $protector->exit_error("Você não está participando do torneio");
     }
     $participante = $participante->fetch_array();
-    if (!$participante["na_fila"]) {
+    if (! $participante["na_fila"]) {
         $protector->exit_error("Você não está na fila.");
     }
 
@@ -99,16 +99,16 @@ if ($tipo == TIPO_TORNEIO) {
         "SELECT * FROM tb_torneio_inscricao WHERE tripulacao_id = ? AND confirmacao = 1",
         "i", array($alvo)
     );
-    if (!$participante->count()) {
+    if (! $participante->count()) {
         $protector->exit_error("Seu alvo não está participando do torneio");
     }
     $participante = $participante->fetch_array();
-    if (!$participante["na_fila"]) {
+    if (! $participante["na_fila"]) {
         $protector->exit_error("Seu alvo não está na fila.");
     }
 
-    $connection->run("UPDATE tb_torneio_inscricao 
-        SET tempo_na_fila = IFNULL((unix_timestamp() - unix_timestamp(fila_entrada)) + IFNULL(tempo_na_fila, 0), tempo_na_fila), na_fila = 0, fila_entrada = NULL 
+    $connection->run("UPDATE tb_torneio_inscricao
+        SET tempo_na_fila = IFNULL((unix_timestamp() - unix_timestamp(fila_entrada)) + IFNULL(tempo_na_fila, 0), tempo_na_fila), na_fila = 0, fila_entrada = NULL
         WHERE tripulacao_id = ? OR tripulacao_id = ?",
         "ii", array($userDetails->tripulacao["id"], $alvo));
 }
@@ -140,26 +140,26 @@ if ($usuario_alvo["imune"]) {
 if ($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) {
     $protector->must_be_visivel();
 
-    if (!$usuario_alvo["mar_visivel"]) {
+    if (! $usuario_alvo["mar_visivel"]) {
         $protector->exit_error("O seu alvo precisa estar visível");
     }
 
-    if (!can_attack($usuario_alvo)) {
+    if (! can_attack($usuario_alvo)) {
         $protector->exit_error("Um dos requisitos para atacar esse alvo não está cumprido.");
     }
 }
 // Executar a consulta SQL para obter a duração do último combate
-$resultado = $connection->run("SELECT unix_timestamp(TIMEDIFF(current_timestamp, fim)) AS duracao 
-                              FROM tb_combate_log 
+$resultado = $connection->run("SELECT unix_timestamp(current_timestamp) - unix_timestamp(fim) AS duracao
+                              FROM tb_combate_log
                               WHERE (id_1 = ? AND id_2 = ?) OR (id_1 = ? AND id_2 = ?)
                               ORDER BY horario DESC
                               LIMIT 1",
-                            "iiii", 
-                            array(
-                            $userDetails->combate_pvp["combatente_a"],
-                            $userDetails->combate_pvp["combatente_b"],
-                            $userDetails->combate_pvp["combatente_b"], 
-                            $userDetails->combate_pvp["combatente_a"]));
+    "iiii",
+    array(
+        $userDetails->combate_pvp["combatente_a"],
+        $userDetails->combate_pvp["combatente_b"],
+        $userDetails->combate_pvp["combatente_b"],
+        $userDetails->combate_pvp["combatente_a"]));
 $duracao_combate = $resultado->fetch_array()["duracao"];
 
 if ($duracao_combate <= 600000) {
@@ -221,7 +221,8 @@ $obstaculos = array_merge($obstaculos, $connection->run("SELECT * FROM tb_obstac
     "i", array($id_2))->fetch_all_array());
 
 
-function cria_crianca($id) {
+function cria_crianca($id)
+{
     global $connection;
     $imgs = array(
         array("img" => 2, "skin" => 9),
@@ -292,7 +293,7 @@ $vez = 1;
 $tempo = $tipo == TIPO_COLISEU || $tipo == TIPO_CONTROLE_ILHA ? (atual_segundo() + 120) : (atual_segundo() + 90);
 $battle_back = $tipo == TIPO_COLISEU ? 42 : ($tipo == TIPO_CONTROLE_ILHA ? 54 : NULL);
 $result = $connection->run(
-    "INSERT INTO tb_combate (id_1, id_2, vez, vez_tempo, move_1, move_2, tipo, battle_back) 
+    "INSERT INTO tb_combate (id_1, id_2, vez, vez_tempo, move_1, move_2, tipo, battle_back)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
     "iiiiiiii", array($id_1, $id_2, $vez, $tempo, '5', '5', $tipo, $battle_back)
 );
@@ -303,7 +304,7 @@ $combate_id = $result->last_id();
 $pos_1 = $userDetails->tripulacao["x"] . "_" . $userDetails->tripulacao["y"];
 $pos_2 = $usuario_alvo["x"] . "_" . $usuario_alvo["y"];
 $connection->run(
-    "INSERT INTO tb_combate_log (combate, id_1, id_2, tipo, pos_1, pos_2, ip_1, ip_2) 
+    "INSERT INTO tb_combate_log (combate, id_1, id_2, tipo, pos_1, pos_2, ip_1, ip_2)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
     "iiiissss", array($combate_id, $id_1, $id_2, $tipo, $pos_1, $pos_2, $userDetails->tripulacao["ip"], $usuario_alvo["ip"])
 );
@@ -338,12 +339,12 @@ if ($tipo != TIPO_AMIGAVEL && $userDetails->ilha["mar"] > 4) {
     );
 }
 
-$connection->run("UPDATE tb_torneio_inscricao 
-        SET tempo_na_fila = IFNULL((unix_timestamp() - unix_timestamp(fila_entrada)) + IFNULL(tempo_na_fila, 0), tempo_na_fila), na_fila = 0, fila_entrada = NULL 
+$connection->run("UPDATE tb_torneio_inscricao
+        SET tempo_na_fila = IFNULL((unix_timestamp() - unix_timestamp(fila_entrada)) + IFNULL(tempo_na_fila, 0), tempo_na_fila), na_fila = 0, fila_entrada = NULL
         WHERE tripulacao_id = ?",
     "i", array($userDetails->tripulacao["id"]));
 
 // fim
 $connection->link()->commit();
 
-echo("%combate");
+echo ("%combate");
