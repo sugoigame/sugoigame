@@ -133,9 +133,12 @@ if ($result->count()) {
     $protector->exit_error("Seu alvo já está em combate contra bots");
 }
 
-// if ($usuario_alvo["adm"]) {
-//     $protector->exit_error("Um dos requisitos para atacar esse alvo não está cumprido.");
-// }
+if ($usuario_alvo["adm"]) {
+    $protector->exit_error("Um dos requisitos para atacar esse alvo não está cumprido.");
+}
+if ($usuario_alvo["imune"]) {
+    $protector->exit_error("O alvo esta imune a batalhas pvp");
+}
 
 // valida requisitos de ataque
 if ($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) {
@@ -154,9 +157,9 @@ $verifica = $connection->run("SELECT unix_timestamp(TIMEDIFF(current_timestamp, 
                               WHERE (id_1 = ? OR id_2 = ?)
                               ORDER BY horario DESC
                               LIMIT 1",
-                            "ii", array($userDetails->combate_pvp["combatente_a"], $userDetails->combate_pvp["combatente_b"]))->fetch_array()["duracao"];
-if($verifica > 0){
-    $protector->exit_error("Voce ja atacou ele hoje");
+                            "ii", array($userDetails->$tripulacao["id"], $userDetails->$tripulacao["id"]))->fetch_array()["duracao"];
+if($verifica > 600){
+    $protector->exit_error("Voce ja atacou, epsere 10 minutos para atacar novamente");
 }
 // carega personagens do alvo
 if ($tipo == TIPO_COLISEU) {

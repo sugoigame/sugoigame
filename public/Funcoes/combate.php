@@ -56,6 +56,7 @@ function get_player_data_for_combat_check($alvo_id) {
         usr.x AS x,
         usr.y AS y,
         usr.adm AS adm,
+        usr.imune AS imune,
         usr.cod_personagem AS cod_personagem,
         usr.faccao AS faccao,
         usr.ip AS ip,
@@ -74,6 +75,9 @@ function get_player_data_for_combat_check($alvo_id) {
 
 function can_attack($content) {
     global $userDetails;
+    if ($userDetails->$tripulacao["imune"] > 0) {
+        $protector->exit_error("O alvo tem proteção contra pvp");
+    }
 
     if (same_id($content)) {
         return false;
@@ -371,26 +375,62 @@ function calc_modificador_lvl($vencedor_rep, $perdedor_rep) {
     }
 }
 
-function calc_reputacao($vencedor_rep, $perdedor_rep, $lvl_mais_forte_vencedor, $lvl_mais_forte_perdedor) {
-    $rep_base           = calc_rep_base_no_lvl($lvl_mais_forte_perdedor);
-    $dif_rep            = calc_modificador_reputacao($vencedor_rep, $perdedor_rep);
-    $perdedor_rep       = max(0, $perdedor_rep - 5000);
-    $dif_lvl            = $lvl_mais_forte_vencedor >= $lvl_mais_forte_perdedor ? calc_modificador_lvl($lvl_mais_forte_vencedor, $lvl_mais_forte_perdedor) : 1;
-    $redutor_vencedor   = calc_redutor_rep_vencedor($vencedor_rep);
-    $redutor_perdedor   = calc_redutor_rep_perdedor($perdedor_rep);
+function calc_rep($vencedor_rep,$vencedor_rep_mensal,$perdedor_rep,$perdedor_rep_mensal) {
+    global $connection;
 
-    // $vencedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_vencedor + 50);
-    // $perdedor_rep = round($rep_base * $dif_rep * $dif_lvl * $redutor_perdedor);
-    $vencedor_rep = round($rep_base +1);
-    $perdedor_rep = round($rep_base -1);
-    
-    return [
-        "vencedor_rep"      => $vencedor_rep,
-        "perdedor_rep"      => $perdedor_rep,
+   $dataAtual = new DateTime();
+   $dataAtual->modify('-7 days');
+   $dataAtual->setTime(0, 0, 0);
+   $horarioResetReputacao = $dataAtual->format('Y-m-d H:i:s');
 
-        "vencedor_rep.new"  => max(0, $perdedor_rep),
-        "perdedor_rep.new"  => max(0, $perdedor_rep)
-    ];
+   $result = $connection->run("SELECT * FROM tb_combate_log WHERE ((id_1 = ? AND id_2 = ?) OR (id_1 = ? AND id_2 = ?)AND horario > ?)",
+                              "iiiis",
+                              array($vencedor["id"], $perdedor["id"], $perdedor["id"], $vencedor["id"],$horarioResetReputacao));
+
+   if ($result->count() > 0) {
+       // Os participantes já lutaram antes
+       // Obtenha os detalhes da última luta para calcular a reputação
+       $ultimaLuta = $result->fetch_array();
+
+       // Verifica se o vencedor é o mesmo que ganhou a última luta
+       if ($vencedor['id'] == $ultimaLuta['vencedor']) {
+           // Se o vencedor for o mesmo que o vencedor da última luta, ele não ganha reputação novamente
+           $vencedor_rep = 0;
+           $vencedor_rep_mensal = 0;
+
+           // Verifica se o perdedor foi o mesmo da última luta
+           if ($vencedor['id'] != $perdedor['id']) {
+               // Se o perdedor for diferente do vencedor da última luta, ele perde reputação apenas na primeira derrota
+               $perdedor_rep = 1;
+               $perdedor_rep_mensal = 1;
+           } else {
+               // Caso contrário, o perdedor mantém sua reputação
+               $perdedor_rep = 0;
+               $perdedor_rep_mensal = 0;
+           }
+       } else {
+           $vencedor_rep = 1;
+           $vencedor_rep_mensal = 1;
+           $perdedor_rep = 0;
+           $perdedor_rep_mensal =0;
+       }
+   } else {
+       // Não há registros de lutas anteriores entre os participantes
+       // Atribui valores padrão de reputação
+       $vencedor_rep = 1;
+       $vencedor_rep = 1;
+       $perdedor_rep = 0;
+       $perdedor_rep_mensal = 0;
+   }
+
+   return array(
+    "vencedor_rep" => $vencedor_rep,
+    "vencedor_rep_mensal" => $vencedor_rep_mensal,
+    "perdedor_rep" => $perdedor_rep,
+    "perdedor_rep_mensal" => $perdedor_rep_mensal
+ );
+ 
+
 }
 
 function reduz_score($pers) {

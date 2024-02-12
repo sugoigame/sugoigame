@@ -322,7 +322,7 @@ if ($userDetails->combate_pve) {
                 $toda_query[sizeof($toda_query)] = $query;
             }
         }
-       // $Combate_log = $connection->run("SELECT * FROM tb.combate_log WHERE id_1 == $vencedor["id"] &&  ORDER BY DESC");
+       
       
         if ($usuario["pvp"]["id_1"] == $vencedor["id"])
             $recop = "recop_1";
@@ -345,83 +345,9 @@ if ($userDetails->combate_pve) {
                 $lvl_mais_forte_vencedor = $pers["lvl"];
             }
         }
-        $verificaLutaAnterior = $connection->run("SELECT COUNT(*) AS total 
-    FROM tb_combate_log 
-    WHERE (id_1 = ? AND id_2 = ?) OR (id_1 = ? AND id_2 = ?)",
-  "iiii", array(
-    $vencedor["id"], 
-    $perdedor["id"], 
-    $perdedor["id"], 
-    $vencedor["id"]
-  ))->fetch_array()["total"];
+       
+        calc_rep($vencedor_rep,$vencedor_rep_mensal,$perdedor_rep,$perdedor_rep_mensal);
 
-    
-    if ($verificaLutaAnterior > 0) {
-        // Os participantes já lutaram antes
-        // Obtenha os detalhes da última luta para calcular a reputação
-        $ultimaLuta = $connection->run("SELECT * 
-   FROM tb_combate_log 
-   WHERE (id_1 = ? AND id_2 = ?) OR (id_1 = ? AND id_2 = ?)
-   ORDER BY horario DESC
-   LIMIT 1",
- "iiii", array(
-    $vencedor["id"], 
-    $perdedor["id"], 
-    $perdedor["id"], 
-    $vencedor["id"]
- ))->fetch_array();
-
-    
-        // Verifica se o vencedor é o mesmo que ganhou a última luta
-        if ($vencedor['id'] == $vencedor['id']) {
-            // Se o vencedor for o mesmo que o vencedor da última luta, ele não ganha reputação novamente
-            $vencedor_rep = 0;
-            $vencedor_rep_mensal = 0;
-            
-            // Verifica se o perdedor foi o mesmo da última luta
-            if ($vencedor['id'] != $perdedor['id']) {
-                // Se o perdedor for diferente do vencedor da última luta, ele perde reputação apenas na primeira derrota
-                $perdedor_rep = 1;
-                $perdedor_rep_mensal = 1;
-            } else {
-                // Caso contrário, o perdedor mantém sua reputação
-                $perdedor_rep = 0;
-                $perdedor_rep_mensal = 0;
-            }
-        } else if ($vencedor['id'] == $perdedor['id']) {
-            // Caso o vencedor seja o outro participante da última luta
-            $vencedor_rep = 0;
-            $vencedor_rep_mensal = 0;
-    
-            // Verifica se o perdedor foi o mesmo da última luta
-            if ($vencedor['id'] != $vencedor['id']) {
-                // Se o perdedor for diferente do vencedor da última luta, ele perde reputação apenas na primeira derrota
-                $perdedor_rep = 1;
-                $perdedor_rep_mensal = 1;
-            } else {
-                // Caso contrário, o perdedor mantém sua reputação
-                $perdedor_rep = 0;
-                $perdedor_rep_mensal = 0;
-            }
-        }
-    } else {
-        // Não houve luta anterior entre os participantes
-        // Define os valores de reputação como 0 para ambos
-        $vencedor_rep = 1;
-        $vencedor_rep_mensal = 1;
-        $perdedor_rep = -1;
-        $perdedor_rep_mensal = -1;
-        
-        
-    }
-    
-
-
-
-
-
-
-    
         $vencedor_vit = $vencedor["vitorias"] + 1;
 
         if ($userDetails->combate_pvp["tipo"] != TIPO_COLISEU
@@ -523,8 +449,7 @@ if ($userDetails->combate_pve) {
             }
         }
 
-        $userDetails->add_item(134, TIPO_ITEM_REAGENT, 1, false, $vencedor["id"]);
-        $userDetails->add_item(134, TIPO_ITEM_REAGENT, 1, false, $perdedor["id"]);
+       
 
         if ($userDetails->combate_pvp["tipo"] == TIPO_CONTROLE_ILHA) {
             $connection->run("UPDATE tb_mapa SET ilha_dono = ? WHERE ilha = ?",
@@ -701,8 +626,10 @@ if ($userDetails->combate_pve) {
             if ($nmp > $pers["real_mp_max"]) {
                 $nmp = $pers["real_mp_max"];
             }
-            $connection->run("UPDATE tb_personagens SET hp = 0, mp = '$nmp' WHERE cod = ?", "i", $pers["cod"]);
+            
         }
+        $connection->run("UPDATE tb_personagens SET hp = hp_max WHERE id = ? AND ativo = 1",
+    "i", array($userDetails->tripulacao["id"]));
     } else if ($venceu) {
         foreach ($personagens_in_combate as $pers) {
             $nmp = $pers["mp"];
@@ -909,6 +836,10 @@ if ($venceu) {
         echo("%oceano");
     }
 } else if ($perdeu) {
-    echo("%respawn");
+    $connection->run("UPDATE tb_personagens SET hp = hp_max WHERE id = ? AND ativo = 1",
+    "i", array($userDetails->tripulacao["id"]));
+    echo("%oceano");
 } else
     echo "A luta ainda não acabou!";
+
+    $protector->exit_error($vencedor['id']);
