@@ -79,8 +79,8 @@ function get_player_data_for_combat_check($alvo_id)
 function can_attack($content)
 {
     global $userDetails;
-    if ($userDetails->$tripulacao["imune"] > 0) {
-        $protector->exit_error("O alvo tem proteção contra pvp");
+    if ($userDetails->tripulacao["imune"]) {
+        return false;
     }
 
     if (same_id($content)) {
@@ -92,7 +92,7 @@ function can_attack($content)
     }
 
     return ! both_marine($content)
-       
+
         && $userDetails->is_visivel
         && ! has_ilha_envolta_target($content)
         && ! $userDetails->has_ilha_envolta_me
@@ -377,7 +377,8 @@ function calc_modificador_reputacao($vencedor, $perdedor)
 //         return 1 - ($dif * 10) / 100;
 //     }
 // }
-function calc_modificador_lvl($vencedor_rep, $perdedor_rep) {
+function calc_modificador_lvl($vencedor_rep, $perdedor_rep)
+{
     $dif = abs($vencedor_rep - $perdedor_rep);
     if ($dif <= 0) {
         return 1;
@@ -388,29 +389,30 @@ function calc_modificador_lvl($vencedor_rep, $perdedor_rep) {
     }
 }
 
-function calc_rep($vencedor,$perdedor) {
+function calc_rep($vencedor, $perdedor)
+{
     global $connection;
 
     $dataAtual = new DateTime();
     $dataAtual->modify('-7 days');
     $dataAtual->setTime(0, 0, 0);
     $horarioResetReputacao = $dataAtual->format('Y-m-d H:i:s');
-    
+
     $result = $connection->run("SELECT * FROM tb_combate_log WHERE ((id_1 = ? AND id_2 = ?) OR (id_1 = ? AND id_2 = ?)) AND horario > ?",
-                               "iiiis",
-                               array($vencedor["id"], $perdedor["id"], $perdedor["id"], $vencedor["id"], $horarioResetReputacao));
-    
+        "iiiis",
+        array($vencedor["id"], $perdedor["id"], $perdedor["id"], $vencedor["id"], $horarioResetReputacao));
+
     if ($result->count() > 0) {
         // Os participantes já lutaram antes
         // Obtenha os detalhes da última luta para calcular a reputação
         $ultimaLuta = $result->fetch_array();
-    
+
         // Verifica se o vencedor é o mesmo que ganhou a última luta
         if ($vencedor['id'] == $ultimaLuta['vencedor']) {
             // Se o vencedor for o mesmo que o vencedor da última luta, ele não ganha reputação novamente
             $vencedor_rep = 0;
             $vencedor_rep_mensal = 0;
-            
+
             // Perdedor não perde reputação
             $perdedor_rep = 0;
             $perdedor_rep_mensal = 0;
@@ -418,7 +420,7 @@ function calc_rep($vencedor,$perdedor) {
             // Se o perdedor for diferente do vencedor da última luta, ele perde reputação apenas na primeira derrota
             $perdedor_rep = -1;
             $perdedor_rep_mensal = -1;
-            
+
             // Vencedor ganha reputação
             $vencedor_rep = 1;
             $vencedor_rep_mensal = 1;
@@ -431,15 +433,15 @@ function calc_rep($vencedor,$perdedor) {
         $perdedor_rep = 0;
         $perdedor_rep_mensal = 0;
     }
-    
+
     return [
         "vencedor_rep" => $vencedor_rep,
         "vencedor_rep_mensal" => $vencedor_rep_mensal,
         "perdedor_rep" => $perdedor_rep,
         "perdedor_rep_mensal" => $perdedor_rep_mensal
     ];
-    
- 
+
+
 
 }
 
