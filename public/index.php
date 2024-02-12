@@ -67,8 +67,6 @@ if (! $userDetails->conta &&
     <!-- Modais globais que precisam permanecer abertas mesmo caso haja mudança de sessao.
         Como a mudanca de sessao desencadeia uma atualizacao do html da pagina, essas
         modals seriam fechadas se ficassem dentro do header.php, por isso elas ficam no contexto global. -->
-    <?php include "Includes/Components/Modals/modal_user_progress.php"; ?>
-
     <?php include "Includes/Components/Modals/modal_mensagens.php"; ?>
 
     <?php include "Includes/Components/Modals/modal_inventario.php"; ?>

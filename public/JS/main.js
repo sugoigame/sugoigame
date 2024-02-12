@@ -262,45 +262,6 @@ $(function () {
 });
 
 function headerAppendFunctions() {
-    $(document).on("click", "#div_icon_progress > a", function () {
-        $("#div_icon_progress img")
-            .css("animation", "none")
-            .css("-webkit-animation", "none");
-
-        var title = $(this).data("title");
-        var description = $(this).data("description");
-        var xpReward = $(this).data("xp");
-        var berriesReward = $(this).data("berries");
-        var finished = $(this).data("finished");
-
-        $("#user-progress-title").html(title);
-        $("#user-progress-description").html(description);
-        $("#user-progress-rewards").html(
-            (xpReward || berriesReward
-                ? 'Recompensas: <ul class="text-left">'
-                : "") +
-                (xpReward
-                    ? "<li>" + xpReward + " pontos de experiência</li>"
-                    : "") +
-                (berriesReward
-                    ? '<li><img src="Imagens/Icones/Berries.png" /> ' +
-                      berriesReward +
-                      "</li>"
-                    : "") +
-                "</ul>"
-        );
-
-        if (finished) {
-            $("#user-progress-finish").css("display", "inline-block");
-            $("#user-progress-back").css("display", "none");
-        } else {
-            $("#user-progress-finish").css("display", "none");
-            $("#user-progress-back").css("display", "inline-block");
-        }
-
-        $("#modal-user-progress").modal();
-    });
-
     // DenDen
     $(document).on("click", "#div_icon_denden", function () {
         $("#denden_mushi")

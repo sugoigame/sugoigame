@@ -18,3 +18,4 @@ require_once(dirname(__FILE__) . "/profissoes.php");
 require_once(dirname(__FILE__) . "/skills.php");
 require_once(dirname(__FILE__) . "/variaveis_globais.php");
 require_once(dirname(__FILE__) . "/vip.php");
+require_once(dirname(__FILE__) . "/sistemas_desbloqueaveis.php");
