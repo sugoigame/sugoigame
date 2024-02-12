@@ -36,19 +36,26 @@ $special_effects = get_special_effects($combate["id_1"], $combate["id_2"]);
 
 $id_blue = $combate["id_1"];
 ?>
-<?php if ($venceu_1) : ?>
-    <div id="fim_batalha">
-        <h2><?= $tripulacao["1"]["tripulacao"] ?> venceu a partida!</h2>
-    </div>
-<?php elseif ($venceu_2) : ?>
-    <div id="fim_batalha">
-        <h2><?= $tripulacao["2"]["tripulacao"] ?> venceu a partida!</h2>
-    </div>
-<?php endif; ?>
-<div id="relatorio_combate" class="panel panel-info">
-    <div class="panel-heading">Relatório</div>
-    <div id="relatorio-combate-content" class="panel-body">
-        <?php $combate_logger = new CombateLogger($connection, $userDetails); ?>
-        <?php render_relatorio_data($combate_logger->get_relatorio_combate_pvp($combate["combate"]), $id_blue, $userDetails->tripulacao["adm"]); ?>
+<?php render_battle_heading(); ?>
+<div id="navio_batalha">
+    <?php if ($venceu_1) : ?>
+        <div id="fim_batalha">
+            <h2>
+                <?= $tripulacao["1"]["tripulacao"] ?> venceu a partida!
+            </h2>
+        </div>
+    <?php elseif ($venceu_2) : ?>
+        <div id="fim_batalha">
+            <h2>
+                <?= $tripulacao["2"]["tripulacao"] ?> venceu a partida!
+            </h2>
+        </div>
+    <?php endif; ?>
+    <div id="relatorio_combate" class="panel panel-info">
+        <div class="panel-heading">Relatório</div>
+        <div id="relatorio-combate-content" class="panel-body">
+            <?php $combate_logger = new CombateLogger($connection, $userDetails); ?>
+            <?php render_relatorio_data($combate_logger->get_relatorio_combate_pvp($combate["combate"]), $id_blue, $userDetails->tripulacao["adm"]); ?>
+        </div>
     </div>
 </div>

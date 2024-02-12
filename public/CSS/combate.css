@@ -1,15 +1,51 @@
+.battle-heading {
+    position: fixed;
+    width: 100%;
+    z-index: 4;
+    top: 0px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding-top: 0.5vw;
+}
+.battle-heading-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.battle-heading img {
+    height: min(10vh, 40px);
+}
+
+.battle-heading .placar {
+    font-size: 5vh;
+    width: 10vw;
+}
+
+.battle-heading .battle-player {
+    width: 30vw;
+}
+
 #batalha_background,
 .batalha_background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
     background: url("Imagens/Batalha/Background.jpg");
-    position: relative;
 }
 
 .fight-zone {
-    overflow: auto;
+    padding-top: min(10vh, 40px);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .fight-zone .navio {
-    width: 1000px;
+    width: 100%;
     position: relative;
 }
 
@@ -28,10 +64,11 @@
 }
 
 .fight-zone .navio-player {
-    height: 280px;
+    height: 35vh;
     margin: auto;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    box-sizing: content-box;
+    padding: 5vh 0;
+    background-size: contain !important;
 }
 
 .table_batalha {
@@ -46,16 +83,12 @@
 }
 
 .table_batalha .progress {
-    height: 5px;
+    height: 10%;
     margin-bottom: 0;
 }
 
 .table_batalha .progress-red {
     background-color: red;
-}
-
-.td-mira {
-    position: relative;
 }
 
 .table_batalha .tabuleiro-mira {
@@ -68,13 +101,26 @@
 }
 
 .table_batalha_selecao {
-    margin: -200px auto;
+    transform: translateY(-100%);
+    margin: auto;
     z-index: 5;
     background: transparent;
 }
 
 .table_batalha_selecao tr td {
     display: inline-block;
+}
+
+.table_batalha_selecao tr td,
+.table_batalha_selecao tr td img,
+.table_batalha tr td {
+    text-align: center;
+    height: 7vh;
+    width: 4vw;
+}
+.table_batalha tr td img {
+    height: 80%;
+    width: 100%;
 }
 
 #relatorio-combate-content {
@@ -84,17 +130,17 @@
 
 .personagem-aliado {
     border: 2px solid #0000ff !important;
+    background-color: #0000ff;
 }
 
 .personagem-inimigo {
     border: 2px solid #ff0000 !important;
-}
-
-.personagem-inimigo {
+    background-color: #ff0000;
 }
 
 .personagem-info {
     position: absolute;
+    top: 15vh;
     max-width: 350px;
     z-index: 10;
 }
@@ -138,10 +184,45 @@
     padding: 20px;
 }
 
+#menu_batalha {
+    position: fixed;
+    right: 1vw;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#menu_batalha button,
+#botao_relatorio {
+    width: 50px;
+    margin-bottom: 5px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#botao_relatorio {
+    position: fixed;
+    bottom: 1vh;
+    right: 1vw;
+}
+
 #skills-area {
     display: none;
 }
 
 #fundo .close-session {
+    display: none;
+}
+
+#fim_batalha {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.tempo-combate {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#relatorio-combate-content {
     display: none;
 }
