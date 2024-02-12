@@ -26,16 +26,9 @@ if (! isset($_GET["cod"])) {
 }
 $cod = $protector->get_number_or_exit("cod");
 
-if (! ereg("([0-9])", $cod)) {
-
-    echo ("#Você informou algum caracter inválido.");
-    exit();
-}
-
 $query = "SELECT * FROM tb_personagens WHERE id='" . $usuario["id"] . "' AND cod='$cod'";
 $result = $connection->run($query);
 if ($result->count() == 0) {
-
     echo ("#Personagem não encotrado.");
     exit();
 }
