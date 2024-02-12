@@ -15,7 +15,7 @@ require_once "Includes/conectdb.php";
         display: none;
         position: fixed;
         width: 250px;
-        z-index: 5;
+        z-index: 2;
         max-height: 300px;
         overflow: auto;
     }
