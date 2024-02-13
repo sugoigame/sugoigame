@@ -144,6 +144,11 @@ function toggleTurn(vez) {
                                             .css("font-weight", "800")
                                             .css("padding", "1px 3px")
                                             .css("border-radius", "3px")
+                                            .css("z-index", "1000")
+                                            .css(
+                                                "text-shadow",
+                                                "1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000,  -1px -1px #000, 1px -1px #000, -1px 1px #000"
+                                            )
                                             .html(log.efeito)
                                             .animate(
                                                 {

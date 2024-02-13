@@ -4,7 +4,7 @@
 { ?>
 
     <?php global $userDetails; ?>
-    <div class="panel panel-default m0" style="height: 100%">
+    <div class="panel panel-default m0 h-100">
         <div class="panel-body">
             <p>
                 Missão
@@ -148,7 +148,7 @@
                     </div>
                 <?php endforeach; ?>
                 <div class="col col-xs-2 p1px">
-                    <div class="panel panel-default m0">
+                    <div class="panel panel-default m0 h-100">
                         <?php $chefe_derrotado_data = $connection->run(
                             "SELECT * FROM tb_missoes_chefe_ilha WHERE tripulacao_id = ? AND ilha_derrotado = ?",
                             "ii", array($userDetails->tripulacao["id"], $userDetails->ilha["ilha"])
@@ -193,7 +193,7 @@
                                         </p>
                                     <?php else : ?>
                                         <p class="text-success">
-                                            Chefe Derrotado!
+                                            Chefe Derrotado <i class="fa fa-check"></i>
                                         </p>
                                     <?php endif; ?>
                                 <?php endif; ?>

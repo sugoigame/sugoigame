@@ -698,28 +698,12 @@ function loadingIn() {
     if (!loading) {
         loading = true;
         $("#icon_carregando").fadeIn();
-        $("#icon_carregando .progress-bar").width(0).animate(
-            {
-                width: "100%",
-            },
-            5000
-        );
     }
 }
 
 function loadingOut() {
-    $("#icon_carregando .progress-bar")
-        .stop()
-        .animate(
-            {
-                width: "100%",
-            },
-            100,
-            function () {
-                $("#icon_carregando").stop().fadeOut();
-                loading = false;
-            }
-        );
+    $("#icon_carregando").stop().fadeOut();
+    loading = false;
 }
 
 var audioEnable = true;
