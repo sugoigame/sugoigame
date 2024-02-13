@@ -169,12 +169,7 @@ function super_menu_can_be_active($menu)
 
                     <div id="menu-ilha" class="collapse <?= super_menu_in_out("ilha") ?>">
                         <ul class="vertical-nav nav navbar-nav">
-                            <?= menu_link(
-                                "missoes",
-                                ($userDetails->tripulacao["faccao"] == FACCAO_MARINHA) ? "Base da Marinha" : "Subúrbio",
-                                "fa " . ($userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? 'fa-ship' : 'fa-road'),
-                                ($userDetails->tripulacao["faccao"] == FACCAO_MARINHA) ? "Apresente-se soldado! Temos tarefas para você!" : "Aventure-se! Essa ilha tem muito a ser explorado!"
-                            ) ?>
+                            <?= menu_link("missoes", "Missões", "fa fa-road", "Aventure-se! Essa ilha tem muito a ser explorado!") ?>
                             <?= menu_link("incursao", "Incursão", "fa fa-fort-awesome", "") ?>
                             <?= menu_link("recrutar", "Recrutar", "fa fa-street-view", "") ?>
                             <?php if (! $userDetails->tripulacao["recrutando"]) : ?>
@@ -193,12 +188,7 @@ function super_menu_can_be_active($menu)
                                 <?= menu_link("academia", "Academia", "fa fa-star-o", "") ?>
                                 <?= menu_link("profissoesAprender", "Escola de Profissões", "fa fa-university", "") ?>
                                 <?= menu_link("missoesCaca", "Missões de caça", "glyphicon glyphicon-screenshot", "") ?>
-                                <?= menu_link(
-                                    "missoesR",
-                                    ($userDetails->tripulacao["faccao"] == FACCAO_MARINHA) ? "Serviços comunitários" : "Procurar tesouros",
-                                    "fa " . ($userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? 'fa-users' : 'fa-times'),
-                                    ($userDetails->tripulacao["faccao"] == FACCAO_MARINHA) ? "Ganhe dinheiro ajudando os moradores da ilha." : "Vamos atrás do dinheiro por daqui!"
-                                ) ?>
+                                <?= menu_link("missoesR", "Pesquisas", "fa fa-search", "Pesquise para evoluir continuamente.") ?>
                             <?php endif; ?>
                             <?php if ($userDetails->ilha["ilha"] == 47) : ?>
                                 <?= menu_link("arvoreAnM", "Jardim de Laftel", "fa fa-circle", "") ?>
