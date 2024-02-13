@@ -1198,7 +1198,7 @@ class UserDetails
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [SISTEMA_ESTALEIRO],
                 "next" => 7,
-                "check_progress" => function () use ($primeira_ilha) : bool {
+                "check_progress" => function () use ($primeira_ilha) {
                     return check_progress_missoes_realizadas($primeira_ilha, 3);
                 }
             ),
@@ -1208,7 +1208,7 @@ class UserDetails
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [SISTEMA_BANDEIRA],
                 "next" => 8,
-                "check_progress" => function () : bool {
+                "check_progress" => function () {
                     return check_progress_barco_comprado();
                 }
             ),
@@ -1218,7 +1218,7 @@ class UserDetails
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [SISTEMA_RECRUTAR_TRIPULANTE],
                 "next" => 9,
-                "check_progress" => function () : bool {
+                "check_progress" => function () {
                     return check_progress_bandeira_trocada();
                 }
             ),
@@ -1228,7 +1228,7 @@ class UserDetails
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [],
                 "next" => 11,
-                "check_progress" => function () : bool {
+                "check_progress" => function () {
                     return check_progress_tripulantes_recrutados(2);
                 }
             ),
@@ -1238,7 +1238,7 @@ class UserDetails
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [],
                 "next" => 12,
-                "check_progress" => function () : bool {
+                "check_progress" => function () {
                     return check_progress_personagem_com_classe($this->personagens[1]);
                 }
             ),
@@ -1268,7 +1268,7 @@ class UserDetails
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [],
                 "next" => 15,
-                "check_progress" => function () : bool {
+                "check_progress" => function () {
                     return check_progress_tripulantes_recrutados(3);
                 }
             ),
@@ -1278,7 +1278,7 @@ class UserDetails
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [],
                 "next" => 16,
-                "check_progress" => function () : bool {
+                "check_progress" => function () {
                     return check_progress_personagem_com_classe($this->personagens[2]);
                 }
             ),
