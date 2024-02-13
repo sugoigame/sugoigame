@@ -543,10 +543,14 @@ table tr td {
     width: 100%;
     z-index: 200;
 }
-
 .tripulante_quadro_info > div {
-    background: rgba(0, 0, 0, 0.8);
-    border: 1px solid #000;
+    padding: 10px;
+}
+
+.tripulante_quadro_info .tripulante_quadro_skin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .tripulante_quadro_info .progress {
@@ -925,6 +929,7 @@ table tr td {
 
 .list-group-item,
 .info-item,
+.tripulante_quadro_info > div,
 .box-item {
     background-image: url(../Imagens/1/content-top.png),
         url(../Imagens/1/content-bottom.png),
@@ -1019,6 +1024,11 @@ a.list-group-item .list-group-item-text {
 
 .progress-bar {
     max-width: 100% !important;
+}
+.progress-bar span {
+    position: absolute;
+    width: 100% !important;
+    left: 0;
 }
 
 .progress a {

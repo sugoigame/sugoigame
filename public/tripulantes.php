@@ -12,8 +12,14 @@
                     data-placement="bottom" data-html="true" data-trigger="focus" tabindex="0" data-template='
                     <div class="container tripulante_quadro_info">
                         <div class="row">
-                            <div class="col-xs-6">
+                            <div class="col-xs-6 tripulante_quadro_skin">
                                 <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "tripulante_big_img", 'width="100%"') ?>
+
+                                <div class="tripulante_score">
+                                    Score: <?php echo ((int) $pers["classe_score"]) ?>
+                                </div>
+
+                                <?php render_personagem_haki_bars($pers); ?>
                             </div>
                             <div class="col-xs-6">
                                 <?= render_cartaz_procurado($pers, $userDetails->tripulacao["faccao"]) ?>
@@ -22,12 +28,6 @@
                                 </div>
 
                                 <?php render_personagem_status_bars($pers); ?>
-
-                                <div class="tripulante_score">
-                                    Score: <?php echo ((int) $pers["classe_score"]) ?>
-                                </div>
-
-                                <?php render_personagem_haki_bars($pers); ?>
                                 <?php if ($userDetails->vip["conhecimento_duracao"]) : ?>
                                     <?php render_row_atributo("atk", "Ataque", $pers); ?>
                                     <?php render_row_atributo("def", "Defesa", $pers); ?>
