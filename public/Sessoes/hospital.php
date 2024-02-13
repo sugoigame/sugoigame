@@ -14,6 +14,7 @@ function filter_personagem_pode_finalizar($pers) {
 ?>
 <div class="panel-heading">
     Hospital
+    <?= ajuda("Hospital", "Aqui você pode curar seus personagens que perderam no combate.") ?>
 </div>
 <script type="text/javascript">
     $(function () {
@@ -44,7 +45,6 @@ function filter_personagem_pode_finalizar($pers) {
     }
 </script>
 <div class="panel-body">
-    <?= ajuda("Hospital", "Aqui você pode curar seus personagens que perderam no combate.") ?>
 
     <?php $personagens = array_filter($userDetails->personagens, "filter_personagem_derrotado"); ?>
     <div>

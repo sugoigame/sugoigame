@@ -103,6 +103,9 @@
     }
 </script>
 
+<div class="panel-heading">
+    Missões
+</div>
 <div class="panel-body">
     <?php if (! $userDetails->missao) : ?>
 
