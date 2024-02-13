@@ -92,7 +92,7 @@ function super_menu_can_be_active($menu)
         </a>
     </div>
 <?php endif; ?> -->
-<div id="vertical-menu" style="background-image: url('Imagens/1/menu.png')">
+<div id="vertical-menu">
     <div class="panel border-none">
         <?= super_menu_link("home", "menu-principal", "Principal", "principal", "principal") ?>
         <?php if ($userDetails->tripulacao && ($userDetails->in_ilha || $userDetails->tripulacao_alive)) : ?>

@@ -330,6 +330,7 @@ table tr td {
     background-position: bottom;
     min-width: 40vw;
     text-align: center;
+    background-image: url(../Imagens/1/menu.png);
 }
 
 #vertical-menu > .panel {
@@ -686,7 +687,7 @@ table tr td {
 .inventario-item-info {
     position: absolute;
     z-index: 100;
-    width: 300px;
+    max-width: 350px;
     background: rgba(0, 0, 0, 0.2);
     padding: 10px;
     text-align: center;
@@ -774,7 +775,7 @@ table tr td {
 #chat-button {
     position: fixed;
     bottom: 25px;
-    left: 10px;
+    right: 10px;
     z-index: 10;
 }
 
@@ -1149,4 +1150,20 @@ a.list-group-item .list-group-item-text {
 }
 .text-muted {
     color: #7e5e3c;
+}
+
+#mastro-bandeira {
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+}
+#mastro-bandeira .mastro {
+    width: 5vw;
+}
+#mastro-bandeira .bandeira {
+    position: absolute;
+    top: 1.5vw;
+    left: 2.8vw;
+    width: 4.8vw;
 }
