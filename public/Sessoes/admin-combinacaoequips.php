@@ -1,3 +1,6 @@
+<?php
+include '/Funcoes/getimage.php'
+?>
 <style type="text/css">
     .equipamentos_casse_1 {
         color: white;
@@ -22,7 +25,7 @@
         <?php foreach ( $equipamentos as $equipamento): ?>
             <tr>
                 <td style="vertical-align: middle;" class="text-center"><?php echo $equipamento['item'] ?></td>
-                <td><img src="Imagens/Itens/<?= $equipamento["img"] ?>.png"/></td>
+                <td><?php get_image($equipamento); ?></td>
                 <td style="vertical-align: middle;">
                     <span class="equipamentos_casse_<?= $equipamento["categoria"] ?>">
                         <?php echo $equipamento['nome'] ?>

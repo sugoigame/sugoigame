@@ -366,6 +366,7 @@ FROM tb_forum_categoria c ",
                     <?= menu_link("admin-combinacaocarpinteiro", "Combinações do carpinteiro", "fa fa-envelope-o", "") ?>
                     <?= menu_link("admin-combinacaoequips", "Equipamentos do jogo", "fa fa-envelope-o", "") ?>
                     <?= menu_link("admin-batalhas", "Log de Batalhas PvP", "fa fa-envelope-o", "") ?>
+                    <?= menu_link("admin-reagents", "Reagents do jogo", "fa fa-envelope-o", "") ?>
                 </ul>
             </div>
         <?php endif; ?>
