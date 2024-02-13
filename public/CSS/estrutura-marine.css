@@ -1,0 +1,62 @@
+#vertical-menu {
+    background-image: url(Imagens/0/menu.png);
+}
+
+#vertical-menu .submenu {
+    background: url(Imagens/0/back.jpg) center repeat;
+}
+
+.panel {
+    background-image: url(Imagens/0/Conteudo/top.png),
+        url(Imagens/0/Conteudo/bot.png), url(Imagens/0/Conteudo/mid.jpg);
+    border: 3px solid #2c6a2c;
+}
+
+.modal-content {
+    background-image: url(Imagens/0/Conteudo/top.png),
+        url(Imagens/0/Conteudo/bot.png), url(Imagens/0/Conteudo/mid.jpg);
+    border: 3px solid #2c6a2c;
+}
+
+.panel-heading {
+    border-bottom: 3px solid #2c6a2c !important;
+    background: url(Imagens/0/back.jpg) center repeat;
+}
+
+.list-group-item,
+.info-item,
+.tripulante_quadro_info > div,
+.box-item {
+    background-image: url(Imagens/0/content-top.png),
+        url(Imagens/0/content-bottom.png), url(Imagens/0/content-center.png),
+        url(Imagens/0/back.jpg);
+    color: #333;
+}
+
+.modal-header {
+    border-bottom: 3px solid #2c6a2c !important;
+    background: url(Imagens/0/back.jpg) center repeat;
+}
+.modal-header .close {
+    color: #2c6a2c;
+}
+
+.nav-pills > li > a {
+    background-color: #85bb85;
+}
+.nav-pills > li > a:hover {
+    background-color: rgb(174, 226, 174);
+}
+.nav.nav-pills.nav-justified li.active a {
+    background-color: #2c6a2c;
+}
+.popover {
+    background: url(Imagens/0/back1.jpg) center repeat;
+}
+*::-webkit-scrollbar-track {
+    background-color: #6dcc6d;
+}
+
+*::-webkit-scrollbar {
+    background-color: #6dcc6d;
+}

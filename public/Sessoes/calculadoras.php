@@ -38,56 +38,56 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Ataque do atacante:</label>
-                            <input min="1" class="form-control" type="number" name="atk_1"
-                                   required value="<?= $atk_1 ? $atk_1 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="atk_1" required
+                                value="<?= $atk_1 ? $atk_1 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Defesa do atacante:</label>
-                            <input min="1" class="form-control" type="number" name="def_1"
-                                   required value="<?= $def_1 ? $def_1 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="def_1" required
+                                value="<?= $def_1 ? $def_1 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Agilidade do atacante:</label>
-                            <input min="1" class="form-control" type="number" name="agl_1"
-                                   required value="<?= $agl_1 ? $agl_1 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="agl_1" required
+                                value="<?= $agl_1 ? $agl_1 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Resistência do atacante:</label>
-                            <input min="1" class="form-control" type="number" name="res_1"
-                                   required value="<?= $res_1 ? $res_1 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="res_1" required
+                                value="<?= $res_1 ? $res_1 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Precisão do atacante:</label>
-                            <input min="1" class="form-control" type="number" name="pre_1"
-                                   required value="<?= $pre_1 ? $pre_1 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="pre_1" required
+                                value="<?= $pre_1 ? $pre_1 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Destreza do atacante:</label>
-                            <input min="1" class="form-control" type="number" name="dex_1"
-                                   required value="<?= $dex_1 ? $dex_1 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="dex_1" required
+                                value="<?= $dex_1 ? $dex_1 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Percepção do atacante:</label>
-                            <input min="1" class="form-control" type="number" name="per_1"
-                                   required value="<?= $per_1 ? $per_1 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="per_1" required
+                                value="<?= $per_1 ? $per_1 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Mantra do atacante:</label>
-                            <input min="0" max="20" class="form-control" type="number" name="mantra_1"
-                                   required value="<?= $mantra_1 ? $mantra_1 : 0 ?>">
+                            <input min="0" max="20" class="form-control" type="number" name="mantra_1" required
+                                value="<?= $mantra_1 ? $mantra_1 : 0 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Armamento do atacante:</label>
-                            <input min="0" max="20" class="form-control" type="number" name="armamento_1"
-                                   required value="<?= $armamento_1 ? $armamento_1 : 0 ?>">
+                            <input min="0" max="20" class="form-control" type="number" name="armamento_1" required
+                                value="<?= $armamento_1 ? $armamento_1 : 0 ?>">
                         </div>
 
                         <div class="form-group">
@@ -101,8 +101,8 @@
 
                         <div class="form-group">
                             <label>Score do atacante:</label>
-                            <input min="1" class="form-control" type="number" name="score_1"
-                                   required value="<?= $score_1 ? $score_1 : 1000 ?>">
+                            <input min="1" class="form-control" type="number" name="score_1" required
+                                value="<?= $score_1 ? $score_1 : 1000 ?>">
                         </div>
 
                         <div class="form-group">
@@ -123,63 +123,63 @@
 
                         <div class="form-group">
                             <label>Dano da Habilidade:</label>
-                            <input min="1" class="form-control" type="number" name="habilidade"
-                                   required value="<?= $habilidade ?>">
+                            <input min="1" class="form-control" type="number" name="habilidade" required
+                                value="<?= $habilidade ?>">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Ataque do defensor:</label>
-                            <input min="1" class="form-control" type="number" name="atk_2"
-                                   required value="<?= $atk_2 ? $atk_2 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="atk_2" required
+                                value="<?= $atk_2 ? $atk_2 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Defesa do defensor:</label>
-                            <input min="1" class="form-control" type="number" name="def_2"
-                                   required value="<?= $def_2 ? $def_2 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="def_2" required
+                                value="<?= $def_2 ? $def_2 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Agilidade do defensor:</label>
-                            <input min="1" class="form-control" type="number" name="agl_2"
-                                   required value="<?= $agl_2 ? $agl_2 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="agl_2" required
+                                value="<?= $agl_2 ? $agl_2 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Resistência do defensor:</label>
-                            <input min="1" class="form-control" type="number" name="res_2"
-                                   required value="<?= $res_2 ? $res_2 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="res_2" required
+                                value="<?= $res_2 ? $res_2 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Precisão do defensor:</label>
-                            <input min="1" class="form-control" type="number" name="pre_2"
-                                   required value="<?= $pre_2 ? $pre_2 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="pre_2" required
+                                value="<?= $pre_2 ? $pre_2 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Destreza do defensor:</label>
-                            <input min="1" class="form-control" type="number" name="dex_2"
-                                   required value="<?= $dex_2 ? $dex_2 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="dex_2" required
+                                value="<?= $dex_2 ? $dex_2 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Percepção do defensor:</label>
-                            <input min="1" class="form-control" type="number" name="per_2"
-                                   required value="<?= $per_2 ? $per_2 : 1 ?>">
+                            <input min="1" class="form-control" type="number" name="per_2" required
+                                value="<?= $per_2 ? $per_2 : 1 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Mantra do defensor:</label>
-                            <input min="0" max="20" class="form-control" type="number" name="mantra_2"
-                                   required value="<?= $mantra_2 ? $mantra_2 : 0 ?>">
+                            <input min="0" max="20" class="form-control" type="number" name="mantra_2" required
+                                value="<?= $mantra_2 ? $mantra_2 : 0 ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Armamento do defensor:</label>
-                            <input min="0" max="20" class="form-control" type="number" name="armamento_2"
-                                   required value="<?= $armamento_2 ? $armamento_2 : 0 ?>">
+                            <input min="0" max="20" class="form-control" type="number" name="armamento_2" required
+                                value="<?= $armamento_2 ? $armamento_2 : 0 ?>">
                         </div>
 
                         <div class="form-group">
@@ -193,8 +193,8 @@
 
                         <div class="form-group">
                             <label>Score do defensor:</label>
-                            <input min="1" class="form-control" type="number" name="score_2"
-                                   required value="<?= $score_2 ? $score_2 : 1000 ?>">
+                            <input min="1" class="form-control" type="number" name="score_2" required
+                                value="<?= $score_2 ? $score_2 : 1000 ?>">
                         </div>
 
                         <div class="form-group">
@@ -232,7 +232,7 @@
             && $classe_1 && $classe_2
             && $score_1 && $score_2
             && $habilidade
-        ): ?>
+        ) : ?>
             <?php $pers = array(
                 "atk" => $atk_1,
                 "def" => $def_1,
@@ -264,104 +264,62 @@
                 <h4>Porcentagens:</h4>
                 <ul>
                     <li>
-                        Chance de Esquiva: <?= chance_esquiva($pers, $alvo) ?>%
+                        Chance de Esquiva:
+                        <?= chance_esquiva($pers, $alvo) ?>%
                     </li>
                     <li>
-                        Chance de Acerto Crítico: <?= chance_crit($pers, $alvo) ?>%
+                        Chance de Acerto Crítico:
+                        <?= chance_crit($pers, $alvo) ?>%
                     </li>
                     <li>
-                        Aumento de dano por Acerto Crítico: <?= dano_crit($pers, $alvo) * 100 ?>%
+                        Aumento de dano por Acerto Crítico:
+                        <?= dano_crit($pers, $alvo) * 100 ?>%
                     </li>
                     <li>
-                        Chance de Bloqueio: <?= chance_bloq($pers, $alvo) ?>%
+                        Chance de Bloqueio:
+                        <?= chance_bloq($pers, $alvo) ?>%
                     </li>
                     <li>
-                        Redução de dano por Bloqueio: <?= dano_bloq($pers, $alvo) * 100 ?>%
+                        Redução de dano por Bloqueio:
+                        <?= dano_bloq($pers, $alvo) * 100 ?>%
                     </li>
                     <li>
-                        Alteração no dano pela vantagem da Akuma no Mi: <?= ($mod_akuma - 1) * 100 ?>%
+                        Alteração no dano pela vantagem da Akuma no Mi:
+                        <?= ($mod_akuma - 1) * 100 ?>%
                     </li>
                 </ul>
-                <h4>Simulação de Habilidade com <?= $habilidade ?> pontos de dano:</h4>
+                <h4>Simulação de Habilidade com
+                    <?= $habilidade ?> pontos de dano:
+                </h4>
                 <?php $resultado = calc_dano($pers, $alvo, $habilidade); ?>
-                <p>Atacante usou Habilidade de <?= $habilidade ?> pontos de dano </p>
+                <p>Atacante usou Habilidade de
+                    <?= $habilidade ?> pontos de dano
+                </p>
                 <p>
-                    Defensor rolou <?= $resultado["dado_esquivou"] ?>/100 e
+                    Defensor rolou
+                    <?= $resultado["dado_esquivou"] ?>/100 e
                     <?= $resultado["esquivou"] ? "" : "não" ?> Esquivou
                 </p>
-                <?php if (!$resultado["esquivou"]) : ?>
+                <?php if (! $resultado["esquivou"]) : ?>
                     <p>
-                        Atacante rolou <?= $resultado["dado_critou"] ?>/100 e
+                        Atacante rolou
+                        <?= $resultado["dado_critou"] ?>/100 e
                         <?= $resultado["critou"] ? "" : "não" ?> acertou um Golpe Crítico
                     </p>
                     <p>
-                        Defensor rolou <?= $resultado["dado_bloqueou"] ?>/100 e
+                        Defensor rolou
+                        <?= $resultado["dado_bloqueou"] ?>/100 e
                         <?= $resultado["bloqueou"] ? "" : "não" ?> Bloqueou
                     </p>
                     <p>
-                        Defensor <?= $resultado["bloqueou"] ? "Bloqueou" : "" ?> e
-                        perdeu <?= $resultado["dano"] * $mod_akuma ?> pontos de
-                        vida <?= $resultado["critou"] ? "Ataque Crítico" : "" ?>
+                        Defensor
+                        <?= $resultado["bloqueou"] ? "Bloqueou" : "" ?> e
+                        perdeu
+                        <?= $resultado["dano"] * $mod_akuma ?> pontos de
+                        vida
+                        <?= $resultado["critou"] ? "Ataque Crítico" : "" ?>
                     </p>
                 <?php endif; ?>
-            </div>
-        <?php endif; ?>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">Calculadora de reputação</div>
-        <div class="panel-body">
-            <?php $lvl_mais_forte_vencedor = isset($_GET["lvl_mais_forte_vencedor"]) && validate_number($_GET["lvl_mais_forte_vencedor"]) ? $_GET["lvl_mais_forte_vencedor"] : NULL ?>
-            <?php $rep_vencedor = isset($_GET["rep_vencedor"]) && validate_number($_GET["rep_vencedor"]) ? $_GET["rep_vencedor"] : NULL ?>
-            <?php $lvl_mais_forte_perdedor = isset($_GET["lvl_mais_forte_perdedor"]) && validate_number($_GET["lvl_mais_forte_perdedor"]) ? $_GET["lvl_mais_forte_perdedor"] : NULL ?>
-            <?php $rep_perdedor = isset($_GET["rep_perdedor"]) && validate_number($_GET["rep_perdedor"]) ? $_GET["rep_perdedor"] : NULL ?>
-            <form method="get">
-                <input type="hidden" name="ses" value="calculadoras">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Nível do mais forte do vencedor:</label>
-                            <input min="1" max="50" class="form-control" type="number" name="lvl_mais_forte_vencedor"
-                                   required value="<?= $lvl_mais_forte_vencedor ?>">
-                        </div>
-                        <div class="form-group">
-                            <label>Reputação do vencedor:</label>
-                            <input min="0" class="form-control" type="number" name="rep_vencedor" required
-                                   value="<?= $rep_vencedor ?>">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Nível do mais forte do perdedor:</label>
-                            <input min="1" max="50" class="form-control" type="number" name="lvl_mais_forte_perdedor"
-                                   required value="<?= $lvl_mais_forte_perdedor ?>">
-                        </div>
-                        <div class="form-group">
-                            <label>Reputação do perdedor:</label>
-                            <input min="0" class="form-control" type="number" name="rep_perdedor" required
-                                   value="<?= $rep_perdedor ?>">
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-success">Calcular</button>
-                </div>
-            </form>
-        </div>
-
-        <?php if ($lvl_mais_forte_vencedor
-            && $rep_vencedor
-            && $lvl_mais_forte_perdedor
-            && $rep_perdedor
-        ): ?>
-            <div class="panel-footer text-left">
-                <?php $reputacao = calc_reputacao($rep_vencedor, $rep_perdedor, $lvl_mais_forte_vencedor, $lvl_mais_forte_perdedor); ?>
-                <ul>
-                    <li>Reputação ganha pelo vencedor: <?= $reputacao["vencedor_rep"] ?></li>
-                    <li>Reputação perdida pelo perdedor: <?= $reputacao["perdedor_rep"] ?></li>
-                    <li>TESTE!!!! Reputação ganha pelo vencedor: <?= $reputacao["vencedor_rep.new"] ?></li>
-                    <li>TESTE!!!! Reputação perdida pelo perdedor: <?= $reputacao["perdedor_rep.new"] ?></li>
-                </ul>
             </div>
         <?php endif; ?>
     </div>

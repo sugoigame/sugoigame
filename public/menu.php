@@ -92,7 +92,7 @@ function super_menu_can_be_active($menu)
         </a>
     </div>
 <?php endif; ?> -->
-<div id="vertical-menu" style="background-image: url('Imagens/1/menu.png')">
+<div id="vertical-menu">
     <div class="panel border-none">
         <?= super_menu_link("home", "menu-principal", "Principal", "principal", "principal") ?>
         <?php if ($userDetails->tripulacao && ($userDetails->in_ilha || $userDetails->tripulacao_alive)) : ?>
@@ -105,7 +105,6 @@ function super_menu_can_be_active($menu)
                     <?= menu_link("ranking", "Ranking", "fa fa-trophy", "") ?>
                     <?= menu_link("calendario", "Calendário do jogo", "fa fa-calendar", "") ?>
                     <?= menu_link("conta", "Minha Conta", "fa fa-address-card", "") ?>
-                    <?= menu_link("forum", "Suporte & Fórum", "fa fa-bars", "") ?>
                     <?= menu_link("calculadoras", "Calculadoras", "fa fa-calculator", "") ?>
                     <?= menu_link("#", "Destravar Tripulação", "fa fa-cogs", "Corrigir bugs que podem ter travado sua conta.", "", "", "unstuck-acc") ?>
                     <?= menu_link("vipLoja", "Gold Shop", "fa fa-shopping-cart", "") ?>
@@ -170,12 +169,7 @@ function super_menu_can_be_active($menu)
 
                     <div id="menu-ilha" class="collapse <?= super_menu_in_out("ilha") ?>">
                         <ul class="vertical-nav nav navbar-nav">
-                            <?= menu_link(
-                                "missoes",
-                                ($userDetails->tripulacao["faccao"] == FACCAO_MARINHA) ? "Base da Marinha" : "Subúrbio",
-                                "fa " . ($userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? 'fa-ship' : 'fa-road'),
-                                ($userDetails->tripulacao["faccao"] == FACCAO_MARINHA) ? "Apresente-se soldado! Temos tarefas para você!" : "Aventure-se! Essa ilha tem muito a ser explorado!"
-                            ) ?>
+                            <?= menu_link("missoes", "Missões", "fa fa-road", "Aventure-se! Essa ilha tem muito a ser explorado!") ?>
                             <?= menu_link("incursao", "Incursão", "fa fa-fort-awesome", "") ?>
                             <?= menu_link("recrutar", "Recrutar", "fa fa-street-view", "") ?>
                             <?php if (! $userDetails->tripulacao["recrutando"]) : ?>
@@ -194,12 +188,7 @@ function super_menu_can_be_active($menu)
                                 <?= menu_link("academia", "Academia", "fa fa-star-o", "") ?>
                                 <?= menu_link("profissoesAprender", "Escola de Profissões", "fa fa-university", "") ?>
                                 <?= menu_link("missoesCaca", "Missões de caça", "glyphicon glyphicon-screenshot", "") ?>
-                                <?= menu_link(
-                                    "missoesR",
-                                    ($userDetails->tripulacao["faccao"] == FACCAO_MARINHA) ? "Serviços comunitários" : "Procurar tesouros",
-                                    "fa " . ($userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? 'fa-users' : 'fa-times'),
-                                    ($userDetails->tripulacao["faccao"] == FACCAO_MARINHA) ? "Ganhe dinheiro ajudando os moradores da ilha." : "Vamos atrás do dinheiro por daqui!"
-                                ) ?>
+                                <?= menu_link("missoesR", "Pesquisas", "fa fa-search", "Pesquise para evoluir continuamente.") ?>
                             <?php endif; ?>
                             <?php if ($userDetails->ilha["ilha"] == 47) : ?>
                                 <?= menu_link("arvoreAnM", "Jardim de Laftel", "fa fa-circle", "") ?>
@@ -353,6 +342,14 @@ FROM tb_forum_categoria c ",
                 <?= menu_link("https://instagram.com/sugoigame", "Sugoi no Instagram", "fa fa-instagram", "", "", "", "", 'target="_blank"') ?>
             </ul>
         </div>
+        <?php if ($userDetails->tripulacao) : ?>
+            <div class="nav navbar-nav text-left">
+                <a href="https://discord.com/invite/evMNazcMN9" target="_blank">
+                    <img src="Imagens/Icones/Sessoes/chat.png" />
+                    <span class='super-menu-text'>CHAT</span>
+                </a>
+            </div>
+        <?php endif; ?>
 
         <?php if ($userDetails->tripulacao['adm'] > 0) : ?>
             <?= super_menu_link("admin", "menu-admin", "Administração", "admin", "admin") ?>
