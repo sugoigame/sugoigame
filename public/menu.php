@@ -352,6 +352,14 @@ FROM tb_forum_categoria c ",
                 <?= menu_link("https://instagram.com/sugoigame", "Sugoi no Instagram", "fa fa-instagram", "", "", "", "", 'target="_blank"') ?>
             </ul>
         </div>
+        <?php if ($userDetails->tripulacao) : ?>
+            <div class="nav navbar-nav text-left">
+                <a href="https://discord.com/invite/evMNazcMN9" target="_blank">
+                    <img src="Imagens/Icones/Sessoes/chat.png" />
+                    <span class='super-menu-text'>CHAT</span>
+                </a>
+            </div>
+        <?php endif; ?>
 
         <?php if ($userDetails->tripulacao['adm'] > 0) : ?>
             <?= super_menu_link("admin", "menu-admin", "Administração", "admin", "admin") ?>

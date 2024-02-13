@@ -105,11 +105,6 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
 <?php endif; ?>
 
 <?php if ($userDetails->tripulacao) : ?>
-    <?php if (! $protector->is_ful_wide_session($sessao)) : ?>
-        <a id="chat-button" href="https://discord.com/invite/evMNazcMN9" class="btn btn-default" target="_blank">
-            <i class="fa fa-comments fa-fw"></i> CHAT
-        </a>
-    <?php endif; ?>
     <input type="hidden" id="ilha_atual" value="<?= $userDetails->ilha["ilha"]; ?>">
     <input type="hidden" id="should_show_world_map" value="<?= $protector->should_show_world_map($sessao); ?>">
     <input type="hidden" id="coord_x_navio" value="<?= $userDetails->tripulacao["x"]; ?>">
