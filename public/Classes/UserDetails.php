@@ -1439,7 +1439,7 @@ class UserDetails
                 "link" => "incursao",
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [SISTEMA_CALENDARIO, SISTEMA_EVENTOS],
-                "next" => 31,
+                "next" => 32,
                 "check_progress" => function () use ($segunda_ilha) {
                     return check_progress_incursao_realizada($segunda_ilha);
                 }

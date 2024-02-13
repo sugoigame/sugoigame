@@ -49,6 +49,9 @@ select {
 .w-100 {
     width: 100%;
 }
+.h-100 {
+    height: 100%;
+}
 
 .hidden {
     display: none;
@@ -454,26 +457,18 @@ table tr td {
     display: none;
     position: fixed;
     top: 0;
+    right: 0;
     z-index: 1040;
     margin: auto;
-    padding: 50px 0;
-    background: rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    text-align: right;
     width: 100%;
     height: 100%;
+    background: rgba(0, 0, 0, 0.1);
 }
 
-#icon_carregando .progress {
-    height: 40px;
-}
-
-#icon_carregando .progress-bar {
-    -webkit-transition: none !important;
-    transition: none !important;
-    padding-right: 15px;
-}
-
-#icon_carregando .progress-bar img {
-    float: right;
+#icon_carregando > div {
+    display: inline-block;
 }
 
 /* denden*/

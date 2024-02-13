@@ -82,9 +82,10 @@ if (! $userDetails->conta &&
     <?php include "Includes/Components/Modals/modal_relatorio_combate.php"; ?>
 
     <div id="icon_carregando">
-        <div class="progress">
-            <div class="progress-bar progress-bar-info progress-bar-striped active">
-                <img src="Imagens/carregando.gif" />
+        <div class="text-center">
+            <img src="Imagens/carregando.gif" />
+            <div>
+                Carregando...
             </div>
         </div>
     </div>
