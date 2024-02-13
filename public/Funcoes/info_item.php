@@ -1,23 +1,28 @@
 <?php
-function preco_compra_acessorio($item) {
+function preco_compra_acessorio($item)
+{
     return pow($item["bonus_atr_qnt"], 2) * 1000;
 }
 
-function preco_venda_acessorio($item) {
+function preco_venda_acessorio($item)
+{
     return pow($item["bonus_atr_qnt"], 2) * 1000 * 0.5;
 }
 
-function preco_compra_equipamento($item) {
+function preco_compra_equipamento($item)
+{
     $lvl = isset($item["lvl"]) ? $item["lvl"] : 50;
     return round(pow($lvl, 1 / 2) * 50000);
 }
 
-function preco_venda_equipamento($item) {
+function preco_venda_equipamento($item)
+{
     $lvl = isset($item["lvl"]) ? $item["lvl"] : 50;
     return round((pow($lvl, 1 / 2) * 50000) / 2);
 }
 
-function get_many_results_joined_mapped_by_type($tabela_origem, $tabela_origem_column, $tipo_column, $tabelas_info, $where = "", $bind_type = NULL, $bind_value = NULL) {
+function get_many_results_joined_mapped_by_type($tabela_origem, $tabela_origem_column, $tipo_column, $tabelas_info, $where = "", $bind_type = NULL, $bind_value = NULL)
+{
     $many_items = [];
 
     foreach ($tabelas_info as $tabela_info) {
@@ -29,30 +34,35 @@ function get_many_results_joined_mapped_by_type($tabela_origem, $tabela_origem_c
     return $many_items;
 }
 
-function get_result_joined_mapped_by_type($tabela_origem, $tabela_origem_column, $tipo_column, $tabela_info, $tabela_info_column, $tipo, $where = "", $bind_type = NULL, $bind_value = NULL) {
+function get_result_joined_mapped_by_type($tabela_origem, $tabela_origem_column, $tipo_column, $tabela_info, $tabela_info_column, $tipo, $where = "", $bind_type = NULL, $bind_value = NULL)
+{
     global $connection;
     return $connection->run(
-        "SELECT * FROM $tabela_origem origem 
-        INNER JOIN $tabela_info info ON info.$tabela_info_column = origem.$tabela_origem_column AND origem.$tipo_column=$tipo 
+        "SELECT * FROM $tabela_origem origem
+        INNER JOIN $tabela_info info ON info.$tabela_info_column = origem.$tabela_origem_column AND origem.$tipo_column=$tipo
         $where", $bind_type, $bind_value
     )->fetch_all_array();
 }
 
-function get_img_item_src($item) {
+function get_img_item_src($item)
+{
     $format = isset($item["img_format"]) && $item["img_format"] ? $item["img_format"] : "png";
     return "Imagens/Itens/" . $item["img"] . ".$format";
 }
 
-function get_img_item($item) {
+function get_img_item($item)
+{
     return "<img src=\"" . get_img_item_src($item) . "\"/>";
 }
 
-function info_item_with_img($item, $item_info, $extra, $acao, $incombate = FALSE, $porcent = 1, $treino = array()) {
+function info_item_with_img($item, $item_info, $extra, $acao, $incombate = FALSE, $porcent = 1, $treino = array())
+{
     $categoria = isset($item_info["categoria"]) ? $item_info["categoria"] : 0;
-    return "<a href='#' class='noHref' data-toggle='popover' data-html='true' data-placement='bottom' data-trigger='focus' data-content='" . info_item($item, $item_info, $extra, $acao, $incombate, $porcent, $treino) . "'><p class='equipamentos_casse_$categoria'>" . get_img_item($item) . "<br/>" . ucwords($item["nome"]) . "</p></a>";
+    return "<a href='#' class='noHref' data-toggle='popover' data-html='true' data-placement='bottom' data-container='#tudo' data-trigger='focus' data-content='" . info_item($item, $item_info, $extra, $acao, $incombate, $porcent, $treino) . "'><p class='equipamentos_casse_$categoria'>" . get_img_item($item) . "<br/>" . ucwords($item["nome"]) . "</p></a>";
 }
 
-function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcent = 1, $treino = array()) {
+function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcent = 1, $treino = array())
+{
     global $userDetails;
 
     $return = '<div class="info-item">';
@@ -170,7 +180,7 @@ function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcen
 
     if ($extra) {
         $return .= '<div class="info-item-quantidade">';
-        if (($item["tipo"] == 16 OR $item["tipo"] == 17) AND !$incombate) {
+        if (($item["tipo"] == 16 or $item["tipo"] == 17) and ! $incombate) {
             $return .= "<b>Limite:</b> {$userDetails->tripulacao['iscas_usadas']} / " . LIMITE_USOS_ISCA_DIA;
             if ($item["quant"] > 1) {
                 $return .= '<br />';
@@ -183,18 +193,18 @@ function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcen
     }
     $return .= '</div>';
     if ($acao) {
-        if ((isset($item_info["hp_recuperado"]) OR isset($item_info["mp_recuperado"])) AND !$incombate) {
+        if ((isset($item_info["hp_recuperado"]) or isset($item_info["mp_recuperado"])) and ! $incombate) {
             $return .= '<p>';
-            $return .= '<a title="Usar" data-dismiss="modal"  id="comida=' . $item["cod"] . '&tipo=' . $item["tipo"] . '" 
+            $return .= '<a title="Usar" data-dismiss="modal"  id="comida=' . $item["cod"] . '&tipo=' . $item["tipo"] . '"
 				class="link_dar_comida noHref btn btn-success" href="#">Usar</a>';
             $return .= '</p>';
         }
-        if (isset($item_info["method"]) AND !$incombate) {
+        if (isset($item_info["method"]) and ! $incombate) {
             $return .= '<p>';
             $return .= '<a title="Usar" data-dismiss="modal" class="link_confirm btn btn-success" data-question="Deseja usar este item?" href="Inventario/usar_item.php?cod=' . $item["cod"] . '&tipo=' . $item["tipo"] . '">Usar</a>';
             $return .= '</p>';
         }
-        if (($item["tipo"] == 16 OR $item["tipo"] == 17) AND !$incombate) {
+        if (($item["tipo"] == 16 or $item["tipo"] == 17) and ! $incombate) {
             $return .= '<p>';
             if ($userDetails->tripulacao['iscas_usadas'] < LIMITE_USOS_ISCA_DIA)
                 $return .= '<a title="Usar" data-dismiss="modal" class="link_confirm btn btn-success" data-question="Deseja usar este item?" href="Vip/isca.php?tipo=' . $item["tipo"] . '">Usar</a>';
@@ -203,13 +213,13 @@ function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcen
             $return .= '</p>';
         }
 
-        $return .= '<a title="Descartar" data-dismiss="modal" id="item=' . $item["cod"] . '&tipo=' . $item["tipo_item"] . '" 
+        $return .= '<a title="Descartar" data-dismiss="modal" id="item=' . $item["cod"] . '&tipo=' . $item["tipo_item"] . '"
 					class="x_descart noHref btn btn-warning" href="#" >Descartar</a> ';
     }
 
     if ($extra) {
         if ($item["quant"] > 1) {
-            $return .= '<a title="Descartar Tudo" id="item=' . $item["cod"] . '&tipo=' . $item["tipo"] . '&tudo=1" 
+            $return .= '<a title="Descartar Tudo" id="item=' . $item["cod"] . '&tipo=' . $item["tipo"] . '&tudo=1"
 					class="x_descart_tudo btn btn-danger" href="#" class="noHref">Descartar Tudo</a>';
         }
     }

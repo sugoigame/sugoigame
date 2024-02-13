@@ -237,7 +237,7 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
                             </div>
                         <?php endif; ?>
                     <?php endif; ?>
-                    <div class="panel panel-default">
+                    <div class="panel panel-default panel-<?= $sessao ?>">
                         <?php include "Sessoes/$sessao.php"; ?>
                     </div>
                 </div>
