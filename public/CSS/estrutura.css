@@ -406,8 +406,8 @@ table tr td {
 #vertical-menu .navbar-nav > li {
     float: left;
 }
-.nav > li > a:hover,
-.nav > li > a:focus {
+#vertical-menu .nav > li > a:hover,
+#vertical-menu .nav > li > a:focus {
     background-color: #f3c189;
 }
 .nav-pills > li > a {
