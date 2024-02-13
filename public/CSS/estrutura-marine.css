@@ -23,6 +23,11 @@
     background: url(Imagens/0/back.jpg) center repeat;
 }
 
+.modal-footer,
+.panel-footer {
+    border-top: 1px solid #2c6a2c;
+}
+
 .list-group-item,
 .info-item,
 .tripulante_quadro_info > div,

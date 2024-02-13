@@ -54,6 +54,10 @@ select {
     display: none;
 }
 
+.m0 {
+    margin: 0;
+}
+
 .mb {
     margin-bottom: 1em;
 }
@@ -84,6 +88,22 @@ select {
 
 .mr4 {
     margin-right: 4em;
+}
+
+.p1px {
+    padding: 1px;
+}
+
+.p0 {
+    padding: 0;
+}
+.p1 {
+    padding: 1em;
+}
+
+.py0 {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 @media (min-width: 768px) {
@@ -178,7 +198,8 @@ table tr td {
     top: 0vh;
     height: 100vh;
     width: 100vw;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #fundo.fundo-window {
@@ -192,6 +213,7 @@ table tr td {
 
 .fundo-container {
     padding: 0;
+    height: 100%;
 }
 
 #fundo > .close-session {
@@ -1166,4 +1188,10 @@ a.list-group-item .list-group-item-text {
     top: 1.5vw;
     left: 2.8vw;
     width: 4.8vw;
+}
+.help-box {
+    position: absolute;
+    z-index: 50;
+    left: 50%;
+    transform: translateX(-50%);
 }
