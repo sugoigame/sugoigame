@@ -35,10 +35,6 @@ if ($tipo != TIPO_KARMA_BOM && $tipo != TIPO_KARMA_MAU) {
     $protector->exit_error("Um dado inválido foi informado.");
 }
 
-if ($userDetails->tripulacao["tempo_missao"] > atual_segundo()) {
-    $protector->exit_error("Você ainda não pode iniciar a missão");
-}
-
 $result = $connection->run("SELECT * FROM tb_ilha_missoes WHERE ilha = ? AND cod_missao = ?",
     "ii", array($userDetails->ilha["ilha"], $cod));
 
@@ -68,7 +64,7 @@ if ($userDetails->capitao['lvl'] < $missao["requisito_lvl"]) {
 }
 
 $connection->run(
-    "INSERT INTO tb_missoes_iniciadas (id, cod_missao, fim, log, venceu, hp_final, mp_final, tipo_karma) 
+    "INSERT INTO tb_missoes_iniciadas (id, cod_missao, fim, log, venceu, hp_final, mp_final, tipo_karma)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
     "iiisisss", array(
         $userDetails->tripulacao["id"],
@@ -133,8 +129,8 @@ if (!$userDetails->tripulacao["missoes_automaticas"]) {
 
     foreach ($bots as $pers) {
         $connection->run(
-            "INSERT INTO tb_combate_personagens_bot 
-          (combate_bot_id, nome, lvl, img, skin_r, skin_c, hp, hp_max, mp, mp_max, atk, def, agl, res, pre, dex, con, vit, quadro_x, quadro_y, haki_esq, haki_cri, titulo, classe, classe_score, pack_habilidade_id) VALUE 
+            "INSERT INTO tb_combate_personagens_bot
+          (combate_bot_id, nome, lvl, img, skin_r, skin_c, hp, hp_max, mp, mp_max, atk, def, agl, res, pre, dex, con, vit, quadro_x, quadro_y, haki_esq, haki_cri, titulo, classe, classe_score, pack_habilidade_id) VALUE
           (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             "isiiiiiiiiiiiiiiiiiiiisiii", array(
                 $id, $pers["nome"], $pers["lvl"], $pers["img"], $pers["skin"], $pers["skin"], $pers["hp"], $pers["hp_max"],

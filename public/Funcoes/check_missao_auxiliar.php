@@ -94,8 +94,8 @@ function check_progress_incursao_realizada($ilha)
 {
     global $connection;
     global $userDetails;
-    return $connection->run("SELECT * FROM tb_incursao_progresso WHERE tripulacao_id = ?",
-        "i", array($userDetails->tripulacao["id"]))->count() > 0;
+    return $connection->run("SELECT * FROM tb_incursao_progresso WHERE tripulacao_id = ? AND ilha = ?",
+        "ii", array($userDetails->tripulacao["id"], $ilha))->count() > 0;
 }
 function check_progress_pesquisa_iniciada()
 {
