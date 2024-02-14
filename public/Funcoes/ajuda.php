@@ -5,12 +5,20 @@ function ajuda($title, $content, $collapse = true, $id = "help-box")
                 <i class=\"fa fa-question\"></i>
             </a>" .
         "<div id=\"$id\" class=\"help-box collapse " . ($collapse ? "out" : "in") . " panel panel-info\">
-            <div class=\"panel-heading\">
+            " . ($title ? "<div class=\"panel-heading\">
             <button type=\"button\" data-toggle=\"collapse\" href=\"#$id\" class=\"close\"><span>&times;</span></button>
             $title
-            </div>
-            <div class=\"panel-body\">
+            </div>" : "") .
+        "<div class=\"panel-body\">
                 $content
             </div>
         </div>";
+}
+
+function ajuda_tooltip($text)
+{
+    return '<a href="#" class="noHref" data-toggle="tooltip" data-placement="bottom"
+        title="' . $text . '">
+        <i class="fa fa-question"></i>
+    </a>';
 }

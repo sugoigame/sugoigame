@@ -1022,7 +1022,7 @@ class UserDetails
                 $alerts["sem_equipamento." . $pers["cod"]] = true;
             }
             if ($this->tripulacao["battle_points"] > PONTOS_POR_NIVEL_BATALHA) {
-                $alerts["status"] = true;
+                $alerts["tripulacao"] = true;
             }
         }
 
