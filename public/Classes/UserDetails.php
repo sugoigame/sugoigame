@@ -1710,51 +1710,91 @@ class UserDetails
                 }
             ),
             58 => array(
-                "goal" => "Chegue até o arquipélago de Sabaody em " . get_human_location($coord_sabaody["x"], $coord_sabaody["y"]),
-                "link" => "oceano",
+                "goal" => "Evolua o capitão até o nível 20",
+                "link" => "status",
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [],
                 "next" => 59,
                 "check_progress" => function () {
-                    return check_progress_in_ilha(42);
+                    return $this->capitao["lvl"] >= 20;
                 }
             ),
             59 => array(
-                "goal" => "Evolua o capitão até o nível 45",
+                "goal" => "Evolua o capitão até o nível 25",
                 "link" => "status",
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [],
                 "next" => 60,
                 "check_progress" => function () {
-                    return $this->capitao["lvl"] >= 45;
+                    return $this->capitao["lvl"] >= 25;
                 }
             ),
             60 => array(
-                "goal" => "Entre no Novo Mundo",
-                "link" => "oceano",
+                "goal" => "Evolua o capitão até o nível 30",
+                "link" => "status",
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
-                "unlock" => [SISTEMA_HAKI],
+                "unlock" => [],
                 "next" => 61,
                 "check_progress" => function () {
-                    return check_progress_in_ilha(44);
+                    return $this->capitao["lvl"] >= 30;
                 }
             ),
             61 => array(
-                "goal" => "Evolua o capitão até o nível 50",
+                "goal" => "Evolua o capitão até o nível 35",
                 "link" => "status",
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [],
                 "next" => 62,
                 "check_progress" => function () {
-                    return $this->capitao["lvl"] >= 50;
+                    return $this->capitao["lvl"] >= 35;
                 }
             ),
             62 => array(
-                "goal" => "Chegue em Laftel",
-                "link" => "ranking",
+                "goal" => "Evolua o capitão até o nível 40",
+                "link" => "status",
                 "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
                 "unlock" => [],
-                "next" => 62,
+                "next" => 63,
+                "check_progress" => function () {
+                    return $this->capitao["lvl"] >= 40;
+                }
+            ),
+            63 => array(
+                "goal" => "Evolua o capitão até o nível 45",
+                "link" => "status",
+                "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
+                "unlock" => [],
+                "next" => 64,
+                "check_progress" => function () {
+                    return $this->capitao["lvl"] >= 45;
+                }
+            ),
+            64 => array(
+                "goal" => "Entre no Novo Mundo",
+                "link" => "oceano",
+                "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
+                "unlock" => [SISTEMA_HAKI],
+                "next" => 65,
+                "check_progress" => function () {
+                    return check_progress_in_ilha(44);
+                }
+            ),
+            65 => array(
+                "goal" => "Evolua o capitão até o nível 50",
+                "link" => "status",
+                "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 5),
+                "unlock" => [],
+                "next" => 66,
+                "check_progress" => function () {
+                    return $this->capitao["lvl"] >= 50;
+                }
+            ),
+            66 => array(
+                "goal" => "Chegue em Laftel",
+                "link" => "ranking",
+                "rewards" => array("xp" => 0, "berries" => 0, "dobroes" => 0),
+                "unlock" => [],
+                "next" => 66,
                 "check_progress" => function () {
                     return check_progress_in_ilha(47);
                 }
