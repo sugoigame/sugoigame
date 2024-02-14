@@ -13,7 +13,7 @@
             $bonus[nome_atributo_tabela($acessorio["bonus_atr"])] += $acessorio["bonus_atr_qnt"];
         }
     }
-
+    //todo remover
     $result = $connection->run(
         "SELECT * FROM tb_skil_passiva
 			INNER JOIN tb_personagens_skil ON tb_personagens_skil.cod_skil=tb_skil_passiva.cod_skil

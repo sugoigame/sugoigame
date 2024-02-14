@@ -121,7 +121,7 @@ function nome_special_effect_apply_type($target) {
 function get_basic_skills($filter_column, $filter_value, $tipo_base = 0, $maestria = 0) {
     global $connection;
     $skills = [];
-
+    
     $result = $connection->run("SELECT * FROM tb_skil_atk WHERE $filter_column = ? AND maestria = ? ORDER BY requisito_lvl, categoria",
         "ii", array($filter_value, $maestria));
 
