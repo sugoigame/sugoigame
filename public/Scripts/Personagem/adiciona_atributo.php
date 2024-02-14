@@ -27,8 +27,8 @@ if ($quant > 0 and $pers["pts"] >= $quant and $conect) {
     $pers["pts"] -= $quant;
     $query = "UPDATE tb_personagens SET " . $atr . "='" . $pers[$atr] . "', pts='" . $pers["pts"] . "'";
     if ($atr == "vit") {
-        $pers["hp"] += (30 * $quant);
-        $pers["hp_max"] += (30 * $quant);
+        $pers["hp"] += (HP_POR_VITALIDADE * $quant);
+        $pers["hp_max"] += (HP_POR_VITALIDADE * $quant);
         $pers["mp"] += (7 * $quant);
         $pers["mp_max"] += (7 * $quant);
         $query .= ", vit='" . $pers[$atr] . "', hp_max='" . $pers["hp_max"] . "' ,hp='" . $pers["hp"] . "', mp_max='"

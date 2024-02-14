@@ -14,7 +14,7 @@ if (! $pers) {
     $max = 1;
     for ($x = 1; $x <= 8; $x++) {
         $abr = nome_atributo_tabela($x);
-        $total = round($pers[$abr] + $bonus[$abr]);
+        $total = round($pers[$abr]);
         if ($total > $max) {
             $max = $total;
         }
@@ -25,53 +25,26 @@ if (! $pers) {
 
 <?php function row_atributo($abr, $nome, $img, $desc, $pers, $bonus)
 { ?>
-    <?php $total = round($pers[$abr] + $bonus[$abr]); ?>
+    <?php $total = $pers[$abr]; ?>
     <?php $max = get_atributo_max($pers, $bonus); ?>
-    <div class="block-atributo-col col-md-3 col-xs-6" data-toggle="tooltip" data-html="true" data-placement="bottom"
-        title="<strong><?= $nome ?></strong><br/> <?= $desc ?>">
-        <div id="<?= $abr ?>_block_<?= $pers["cod"]; ?>"
-            class="block-atributo btn btn-default <?= $pers["pts"] <= 0 ? "disabled" : "" ?>" <?= $pers["pts"] > 0 ? "onclick=\"add_atributo('" . $abr . "', '" . $pers["cod"] . "', '" . $nome . "')\"" : "" ?>>
-            <div class="bg-atributo" style="height: <?= $total / $max * 100 ?>%;">
+    <div class="col-xs-3 mb attribute-box" data-toggle="tooltip" data-html="true" data-placement="bottom"
+        data-container="body" title="<strong><?= $nome ?></strong><br/> <?= $desc ?>">
+        <div class="attribute-progress-bar-bg" style="height: 100%"> </div>
+        <div class="attribute-progress-bar" id="atribute-progress-<?= $abr ?>-<?= $pers["cod"] ?>"
+            style="height: <?= $total / $max * 100 ?>%"></div>
+        <div class="pt1">
+            <div id="<?= $abr . '_' . $pers["cod"]; ?>">
+                <?= $pers[$abr]; ?>
+            </div>
+            <div class="text-center">
+                <small>
+                    <?= "+" . ($bonus[$abr] ? $bonus[$abr] : "0"); ?>
+                </small>
+            </div>
+        </div>
 
-            </div>
-            <div class="block-atributo-text">
-                <h3 id="<?= $abr ?>_total_<?= $pers["cod"]; ?>">
-                    <?= $total; ?>
-                </h3>
-                <p>
-                    <span id="<?= $abr . '_' . $pers["cod"]; ?>">
-                        <?= $pers[$abr]; ?>
-                    </span>
-                    <span class="text-center">
-                        <?= "+" . $bonus[$abr]; ?>
-                    </span>
-                </p>
-                <div>
-                    <img width="45px" src="Imagens/Icones/<?= $img ?>.png">
-                </div>
-                <div class="visible-xs visible-sm">
-                    <?= $nome ?>
-                </div>
-            </div>
-        </div>
+        <img src="Imagens/Icones/<?= $img ?>.png" width="30px" style="max-width: 100%" class="atributo-icon" />
     </div>
-<?php } ?>
-<?php function render_bonus_excelencia($bonus)
-{ ?>
-    <?php foreach ($bonus as $atr => $quant) : ?>
-        <div class="<?= $quant ? "text-success" : "" ?>">
-            <?php if ($atr == "hp_max") : ?>
-                Vida máxima
-            <?php elseif ($atr == "mp_max") : ?>
-                Energia máxima
-            <?php else : ?>
-                <img src="Imagens/Icones/<?= nome_atributo_img(cod_atributo_tabela($atr)) ?>.png" width="25px" data-toggle="tooltip"
-                    data-placement="bottom" title="<?= nome_atributo(cod_atributo_tabela($atr)) ?>">
-            <?php endif; ?>
-            +
-            <?= $quant ?>
-        </div>
-    <?php endforeach; ?>
 <?php } ?>
 
 <style type="text/css">
@@ -142,144 +115,187 @@ if (! $pers) {
     }
 </script>
 
-<div class="row">
-    <div class="col-sm-2 hidden-xs">
-        <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "", 'width="100%"') ?>
-    </div>
-    <div class="col-sm-10">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <?php render_personagem_status_bars($pers); ?>
+<div class="list-group-item">
+    <?= $pers["nome"]; ?>
+    <?= ($pers_titulo) ? " - " . $pers_titulo : "" ?>, Nível
+    <?= $pers["lvl"]; ?>
+</div>
 
-                <?php if ($pers["xp"] >= $pers["xp_max"] and $pers["lvl"] < 50) : ?>
-                    <p>
-                        <button id="status_evoluir" href="link_Personagem/personagem_evoluir.php?cod=<?= $pers["cod"] ?>"
-                            class="link_send btn btn-info">
-                            Evoluir <i class="fa fa-arrow-up"></i>
-                        </button>
-                    </p>
-                <?php endif; ?>
-
-                <?php if ($pers["lvl"] < $userDetails->capitao["lvl"] && $pers["xp"] < $pers["xp_max"]) : ?>
-                    <p>
-                        <button href="Vip/personagem_xp_para_evoluir.php?cod=<?= $pers["cod"] ?>&tipo=gold"
-                            data-question="Deseja adquirir a experiência restante para que este tripulante evolua um nível?"
-                            class="link_confirm btn btn-info" <?= $userDetails->conta["gold"] < PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO ? "disabled" : "" ?>>
-                            <?= PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO ?>
-                            <img src="Imagens/Icones/Gold.png"> <br />
-                            Adquirir XP para evoluir um nível
-                        </button>
-                        <button href="Vip/personagem_xp_para_evoluir.php?cod=<?= $pers["cod"] ?>&tipo=dobrao"
-                            data-question="Deseja adquirir a experiência restante para que este tripulante evolua um nível?"
-                            class="link_confirm btn btn-info" <?= $userDetails->conta["dobroes"] < ceil(PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO) ? "disabled" : "" ?>>
-                            <?= ceil(PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO) ?>
-                            <img src="Imagens/Icones/Dobrao.png"> <br />
-                            Adquirir XP para evoluir um nível
-                        </button>
-                    </p>
-                <?php endif; ?>
-            </div>
+<div class="row pt1">
+    <div class="col-xs-3">
+        <div>
+            <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "", 'width="100%"') ?>
+            <?php if ($pers["xp"] >= $pers["xp_max"] and $pers["lvl"] < 50) : ?>
+                <button id="status_evoluir" href="link_Personagem/personagem_evoluir.php?cod=<?= $pers["cod"] ?>"
+                    class="link_send btn btn-info">
+                    Evoluir <i class="fa fa-arrow-up"></i>
+                </button>
+            <?php endif; ?>
+            <br />
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Atributtos
+
+    <div class="col-xs-3">
+        <div class="row">
+            <?php for ($i = 1; $i <= 8; $i++) : ?>
+                <?php row_atributo(
+                    nome_atributo_tabela($i),
+                    nome_atributo($i),
+                    nome_atributo_img($i),
+                    descricao_atributo($i),
+                    $pers, $bonus); ?>
+            <?php endfor; ?>
+        </div>
+        <?php render_personagem_status_bars($pers); ?>
+    </div>
+    <div class="col-xs-6">
+
+        <!--- Menu de modo de criacao de atributos -->
+        <ul class="nav nav-pills nav-justified mb">
+            <li class="<?= ! isset($_GET["buildtype"]) || $_GET["buildtype"] == "simples" ? "active" : "" ?>">
+                <a data-toggle="tab" onclick="setQueryParam('buildtype','simples');"
+                    href="#atributos-simples-<?= $pers["cod"] ?>">Simples</a>
+            </li>
+            <li class="<?= $_GET["buildtype"] == "intermediaria" ? "active" : "" ?>">
+                <a data-toggle="tab" onclick="setQueryParam('buildtype','intermediaria');"
+                    href="#atributos-intermediarios-<?= $pers["cod"] ?>">Intermediário</a>
+            </li>
+            <li class="<?= $_GET["buildtype"] == "avancada" ? "active" : "" ?>">
+                <a data-toggle="tab" onclick="setQueryParam('buildtype','avancada');"
+                    href="#atributos-avancados-<?= $pers["cod"] ?>">Avançado</a>
+            </li>
+        </ul>
+        <?php $bonus = calc_bonus($pers); ?>
+        <?php if ($pers["pts"]) : ?>
+            <div>
+                Pontos a distribuir:
+                <b id="pts_<?= $pers["cod"] ?>">
+                    <?= $pers["pts"] ?>
+                </b>
+                <?php $userDetails->render_alert("trip_sem_distribuir_atributo." . $pers["cod"]) ?>
             </div>
-            <div class="panel-body">
-                <?php $bonus = calc_bonus($pers); ?>
-                <?php if ($pers["pts"]) : ?>
-                    <h4>
-                        Pontos a distribuir:
-                        <b id="pts_<?= $pers["cod"] ?>">
-                            <?= $pers["pts"] ?>
-                        </b>
-                        <?php $userDetails->render_alert("trip_sem_distribuir_atributo." . $pers["cod"]) ?>
-                    </h4>
-                <?php endif; ?>
-                <div class="row">
-                    <?php row_atributo(
-                        "atk",
-                        "Ataque",
-                        "Ataque",
-                        "Cada ponto aumenta o dano causado pelo personagem em 10.",
-                        $pers, $bonus); ?>
-                    <?php row_atributo(
-                        "def",
-                        "Defesa",
-                        "Defesa",
-                        "Cada ponto diminui o dano sofrido pelo personagem em 10.<br><b>obs: A defesa só absorve dano causado por pontos de ataque, dano de habilidade passam despercebidos pela defesa</b>",
-                        $pers, $bonus); ?>
-                    <?php row_atributo(
-                        "pre",
-                        "Precisão",
-                        "Precisao",
-                        "Cada ponto reduz a chance do inimigo se esquivar ou bloquear seu ataque em 1%",
-                        $pers, $bonus); ?>
-                    <?php row_atributo(
-                        "agl",
-                        "Agilidade",
-                        "Agilidade",
-                        "Cada ponto aumenta sua chance de se esquivar do ataque inimigo em 1%.<br><b>obs: A porcentagem de chance máxima de se esquivar é de 50%;</b>",
-                        $pers, $bonus); ?>
-                    <?php row_atributo(
-                        "res",
-                        "Resistência",
-                        "Resistencia",
-                        "Cada ponto aumenta sua chance de bloquear o ataque inimgo em 1% e a quantidade de dano absorvido em 1%.<br><b>obs:A porcentagem de chance máxima de bloqueio é de 50%, e a porcentagem máxima de dano absorvido é de 90%.</b>",
-                        $pers, $bonus); ?>
-                    <?php row_atributo(
-                        "con",
-                        "Percepção",
-                        "Conviccao",
-                        "Cada ponto reduz a chance do inimigo te acertar um ataque crítico em 1% e o dano causado por ataques críticos em 1%.",
-                        $pers, $bonus); ?>
-                    <?php row_atributo(
-                        "dex",
-                        "Destreza",
-                        "Dextreza",
-                        "Cada ponto aumenta sua chance de acertar um ataque crítico em 1% e o dano causado por ataques críticos em 1%.<br><b>obs: A porcentagem de chance máxima de acertar um ataque crítico é de 50%, e o dano máximo causado por ataque crítico é de 90%.</b>",
-                        $pers, $bonus); ?>
-                    <?php row_atributo(
-                        "vit",
-                        "Vitalidade",
-                        "Vitalidade",
-                        "Cada ponto aumenta seu HP em 30 pontos e sua Energia em 7 pontos.<br><b>obs: O bonus de HP e Energia ganho por acréximo de vitalidade por meio de itens ou habilidades só é calculado durante combates.</b>",
-                        $pers, $bonus); ?>
+        <?php endif; ?>
+
+        <div class="overflow-auto h-42vh">
+            <div class="tab-content">
+                <!--- Simples -->
+                <div class="tab-pane <?= ! isset($_GET["buildtype"]) || $_GET["buildtype"] == "simples" ? "active" : "" ?>"
+                    id="atributos-simples-<?= $pers["cod"] ?>">
+                    <p class="text-left">
+                        No modo simples você pode escolher uma das seguintes builds:
+                    </p>
+                    <?php for ($i = 1; $i <= 8; $i++) : ?>
+                        <div class="text-left">
+                            <a class="link_send"
+                                href="link_Personagem/atributo_build_simples?cod=<?= $pers["cod"] ?>&atr=<?= $i ?>"
+                                v-on:click="buildAutomatica(atrKey)">
+                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="30px"
+                                    style="max-width: 100%;" class="atributo-icon" />
+                                Usar build baseada em
+                                <?= nome_atributo($i) ?>
+                            </a>
+                        </div>
+                    <?php endfor; ?>
                 </div>
-                <br />
-                <p>
-                    <button class="btn btn-info link_confirm"
-                        data-question="Resetar os atributos desse personagem?<br>obs: Todas habilidades de classe (exceto soco) serão removidas"
-                        href="Vip/reset_atributos.php?cod=<?= $pers["cod"]; ?>&tipo=gold" <?= $userDetails->conta["gold"] < PRECO_GOLD_RESET_ATRIBUTOS ? "disabled" : "" ?>>
-                        <?= PRECO_GOLD_RESET_ATRIBUTOS ?> <img src="Imagens/Icones/Gold.png"> <br />
-                        Resetar Atributos
+
+                <!--- Intermediário -->
+                <div class="tab-pane <?= ! isset($_GET["buildtype"]) || $_GET["buildtype"] == "intermediaria" ? "active" : "" ?>"
+                    id="atributos-intermediarios-<?= $pers["cod"] ?>">
+                    <p class="text-left">
+                        No modo intermediário você pode escolher seus três atributos
+                        preferidos e a build será criada automaticamente:
+                    </p>
+                    <p class="text-left">
+                        Selecione o atributo primário:
+                    </p>
+                    <div class="mb">
+                        <?php for ($i = 1; $i <= 8; $i++) : ?>
+                            <div class="build-intermediaria-atr atr-1" data-atr="<?= $i ?>"
+                                onclick="$('.build-intermediaria-atr.atr-1').removeClass('active');$(this).addClass('active');">
+                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="25vw"
+                                    class="atributo-icon" />
+                            </div>
+                        <?php endfor; ?>
+                    </div>
+                    <p class="text-left">
+                        Selecione o atributo secundário:
+                    </p>
+                    <div class="mb">
+                        <?php for ($i = 1; $i <= 8; $i++) : ?>
+                            <div class="build-intermediaria-atr atr-2" data-atr="<?= $i ?>"
+                                onclick="$('.build-intermediaria-atr.atr-2').removeClass('active');$(this).addClass('active');">
+                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="25vw"
+                                    class="atributo-icon" />
+                            </div>
+                        <?php endfor; ?>
+                    </div>
+                    <p class="text-left">
+                        Selecione o atributo terciário:
+                    </p>
+                    <div class="mb">
+                        <?php for ($i = 1; $i <= 8; $i++) : ?>
+                            <div class="build-intermediaria-atr atr-3" data-atr="<?= $i ?>"
+                                onclick="$('.build-intermediaria-atr.atr-3').removeClass('active');$(this).addClass('active');">
+                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="25vw"
+                                    class="atributo-icon" />
+                            </div>
+                        <?php endfor; ?>
+                    </div>
+
+                    <button class="btn btn-success" data-cod="<?= $pers["cod"] ?>"
+                        onclick="gerarBuildIntermediaria(this)">
+                        Gerar Build
                     </button>
-                    <button class="btn btn-info link_confirm"
-                        data-question="Resetar os atributos desse personagem?<br>obs: Todas habilidades de classe (exceto soco) serão removidas"
-                        href="Vip/reset_atributos.php?cod=<?= $pers["cod"]; ?>&tipo=dobrao"
-                        <?= $userDetails->conta["dobroes"] < PRECO_DOBRAO_RESET_ATRIBUTOS ? "disabled" : "" ?>>
-                        <?= PRECO_DOBRAO_RESET_ATRIBUTOS ?> <img src="Imagens/Icones/Dobrao.png">
-                        <br />
-                        Resetar Atributos
+                </div>
+
+                <!--- Avançado -->
+                <div class="tab-pane <?= ! isset($_GET["buildtype"]) || $_GET["buildtype"] == "avancada" ? "active" : "" ?>"
+                    id="atributos-avancados-<?= $pers["cod"] ?>">
+                    <p class="text-left">
+                        No modo avançado você tem liberdade total para escolher seus
+                        atributos:
+                    </p>
+
+                    <input id="atributos-total-<?= $pers["cod"] ?>" type="hidden"
+                        value="<?= get_total_atributos($pers) ?>" />
+                    <?php for ($i = 1; $i <= 8; $i++) : ?>
+                        <div class="text-left">
+                            <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="30px" class="atributo-icon" />
+                            <input data-atr="<?= $i ?>" data-cod="<?= $pers["cod"] ?>" class="atr-input atributo"
+                                type="range" step="1" min="1" value="<?= $pers[nome_atributo_tabela($i)] ?>"
+                                oninput="$(this.nextElementSibling).html($(this).val())"
+                                max="<?= $pers[nome_atributo_tabela($i)] + $pers["pts"] ?>">
+                            <span>
+                                <?= $pers[nome_atributo_tabela($i)] ?>
+                            </span>
+                        </div>
+                    <?php endfor; ?>
+                </div>
+            </div>
+        </div>
+        <div>
+            <?php if ($pers["lvl"] < $userDetails->capitao["lvl"] && $pers["xp"] < $pers["xp_max"]) : ?>
+                <p>
+                    <button href="Vip/personagem_xp_para_evoluir.php?cod=<?= $pers["cod"] ?>&tipo=gold"
+                        data-question="Deseja adquirir a experiência restante para que este tripulante evolua um nível?"
+                        class="link_confirm btn btn-info" <?= $userDetails->conta["gold"] < PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO ? "disabled" : "" ?>>
+                        <?= PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO ?>
+                        <img src="Imagens/Icones/Gold.png"> <br />
+                        Evoluir um nível
+                    </button>
+                    <button href="Vip/personagem_xp_para_evoluir.php?cod=<?= $pers["cod"] ?>&tipo=dobrao"
+                        data-question="Deseja adquirir a experiência restante para que este tripulante evolua um nível?"
+                        class="link_confirm btn btn-info" <?= $userDetails->conta["dobroes"] < ceil(PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO) ? "disabled" : "" ?>>
+                        <?= ceil(PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO) ?>
+                        <img src="Imagens/Icones/Dobrao.png"> <br />
+                        Evoluir um nível
                     </button>
                 </p>
-                <?php if ($userDetails->tripulacao["free_reset_atributos"]) : ?>
-                    <p>
-                        <?= $userDetails->tripulacao["free_reset_atributos"] ?> Reset(s) Gratuito(s)<br />
-                        <button class="btn btn-info link_confirm"
-                            data-question="Resetar os atributos desse personagem?<br>obs: Todas habilidades de classe (exceto soco) serão removidas"
-                            href="Vip/reset_atributos.php?cod=<?= $pers["cod"]; ?>&tipo=free">
-                            Resetar Atributos
-                        </button>
-                    </p>
-                <?php endif; ?>
-            </div>
+            <?php endif; ?>
         </div>
     </div>
-    <div class="col-xs-12 col-md-6">
+    <div>
+        <!-- <div class="col col-xs-4">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Haki
@@ -375,234 +391,30 @@ if (! $pers) {
                     </div>
                 <?php endif; ?>
 
-                <p>
-                    <button href="Vip/reset_haki.php?cod=<?= $pers["cod"]; ?>&tipo=gold" <?= $userDetails->conta["gold"] >= PRECO_GOLD_RESET_HAKI ? "" : "disabled" ?>
-                        data-question="Resetar pontos de haki desse personagem?"
-                        class="bt_reset_haki link_confirm btn btn-info">
-                        <?= PRECO_GOLD_RESET_HAKI ?>
-                        <img src="Imagens/Icones/Gold.png" height="15px" />
-                        Redistribuir os Pontos
-                    </button>
-                    <button href="Vip/reset_haki.php?cod=<?= $pers["cod"]; ?>&tipo=dobrao"
-                        <?= $userDetails->conta["dobroes"] >= PRECO_DOBRAO_RESET_HAKI ? "" : "disabled" ?>
-                        data-question="Resetar pontos de haki desse personagem?"
-                        class="bt_reset_haki link_confirm btn btn-info">
-                        <?= PRECO_DOBRAO_RESET_HAKI ?>
-                        <img src="Imagens/Icones/Dobrao.png" height="15px" />
-                        Redistribuir os Pontos
-                    </button>
-                </p>
-
                 <a class="link_content" href="./?ses=haki&cod=<?= $pers["cod"] ?>">
                     Ver todos os detalhes sobre o Haki
                 </a>
             </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Classe
-            </div>
-            <div class="panel-body">
-                <?php if (! $pers["classe"]) : ?>
-                    <p>
-                        Este tripulante ainda não tem uma Classe de Combate
-                    </p>
-                    <div>
-                        <h4>Espadachim</h4>
-                        <p>Atributo principal: Ataque</p>
-                        <button href='Academia/academia_aprender.php?cod=<?= $pers["cod"]; ?>&class=1'
-                            class="btn btn-success link_confirm" data-question="Deseja mesmo se tornar um Espadachim?">
-                            Se tornar um Espadachim
-                        </button>
-                    </div>
-                    <div>
-                        <h4>Lutador</h4>
-                        <p>Atributo principal: Defesa</p>
-                        <button href='Academia/academia_aprender.php?cod=<?= $pers["cod"]; ?>&class=2'
-                            class="btn btn-success link_confirm" data-question="Deseja mesmo se tornar um Lutador?">
-                            Se tornar um Lutador
-                        </button>
-                    </div>
-                    <div>
-                        <h4>Atirador</h4>
-                        <p>Atributo principal: Precisão</p>
-                        <button href='Academia/academia_aprender.php?cod=<?= $pers["cod"]; ?>&class=3'
-                            class="btn btn-success link_confirm" data-question="Deseja mesmo se tornar um Atirador?">
-                            Se tornar um Atirador
-                        </button>
-                    </div>
-                <?php else : ?>
-                    <h4>
-                        <?= nome_classe($pers["classe"]) ?>
-                    </h4>
-                    <h3>
-                        <b>Score:</b>
-                        <?= $pers["classe_score"]; ?>
-                    </h3>
-                    <p>
-                        <button class="link_confirm btn btn-info" <?= $userDetails->conta["gold"] >= PRECO_GOLD_RESET_CLASSE ? "" : "disabled" ?>
-                            data-question="Resetar a classe desse personagem permitirá que ele aprenda uma nova. Deseja continuar?"
-                            href="Vip/reset_classe.php?cod=<?= $pers["cod"] ?>&tipo=gold">
-                            <?= PRECO_GOLD_RESET_CLASSE ?> <img src="Imagens/Icones/Gold.png" />
-                            Resetar Classe
-                        </button>
-                        <button class="link_confirm btn btn-info" <?= $userDetails->conta["dobroes"] >= PRECO_DOBRAO_RESET_CLASSE ? "" : "disabled" ?>
-                            data-question="Resetar a classe desse personagem permitirá que ele aprenda uma nova. Deseja continuar?"
-                            href="Vip/reset_classe.php?cod=<?= $pers["cod"] ?>&tipo=dobrao">
-                            <?= PRECO_DOBRAO_RESET_CLASSE ?> <img src="Imagens/Icones/Dobrao.png" />
-                            Resetar Classe
-                        </button>
-                    </p>
-                <?php endif; ?>
-                <?php if ($userDetails->in_ilha) : ?>
-                    <a class="link_content" href="./?ses=academia&cod=<?= $pers["cod"] ?>">
-                        Ir para a Academia
-                    </a>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Profissão
-            </div>
-            <div class="panel-body">
-                <?php $userDetails->render_alert("trip_sem_profissao." . $pers["cod"]) ?>
-                <?php render_painel_profissao($pers); ?>
-                <?php if ($pers["profissao"]) : ?>
-                    <a class="link_content" href="./?ses=status&nav=profissao&cod=<?= $pers["cod"] ?>">
-                        Ver o painel completo da profissão
-                    </a>
-                <?php endif; ?>
-            </div>
-        </div>
+    </div> -->
     </div>
 </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h4>Selos de experiência:
-            <?= $pers["selos_xp"] ?> <img src="Imagens/Icones/seloexp.png" />
-        </h4>
-    </div>
-    <div class="panel-body">
-        <p>
-            Os Selos de Experiência permitem que você modifique algumas características do tripulante, como as
-            habilidades de classe escolhidas sem precisar gastar Ouro.
-        </p>
-        <h4>
-            Você pode trocar
-            <?= mascara_numeros_grandes(preco_selo_exp($pers)) ?> Pontos de Experiência por 1
-            Selo de Experiência.
-        </h4>
+<script type="text/javascript">
+    function gerarBuildIntermediaria(btn) {
+        const atr1 = $('.build-intermediaria-atr.atr-1.active').data('atr');
+        const atr2 = $('.build-intermediaria-atr.atr-2.active').data('atr');
+        const atr3 = $('.build-intermediaria-atr.atr-3.active').data('atr');
+        const cod = $(btn).data('cod');
 
-        <p>
-            <button class="btn btn-success link_confirm" <?= $pers["xp"] < preco_selo_exp($pers) ? "disabled" : "" ?>
-                href="Personagem/selo_xp_comprar.php?cod=<?= $pers["cod"] ?>"
-                data-question="Você deseja trocar <?= mascara_numeros_grandes(preco_selo_exp($pers)) ?> Pontos de Experiência por 1 Selo de Experiência?">
-                Trocar
-                <?= mascara_numeros_grandes(preco_selo_exp($pers)) ?> Pontos de Experiência por 1
-                <img src="Imagens/Icones/seloexp.png" />
-            </button>
+        sendGet('Personagem/atributo_build_intermediaria.php?cod=' + cod + '&atr1=' + atr1 + '&atr2=' + atr2 + '&atr3=' + atr3);
+    }
 
-            <button class="btn btn-info link_confirm" href="Vip/comprar_selo_xp.php?cod=<?= $pers["cod"] ?>"
-                <?= $userDetails->conta["gold"] < PRECO_GOLD_SELO_EXP ? "disabled" : ""; ?>
-                data-question="Deseja comprar Selos de Experiência usando suas Moedas de Ouro?">
-                Comprar 1 <img src="Imagens/Icones/seloexp.png" /> por
-                <?= PRECO_GOLD_SELO_EXP ?>
-                <img src="Imagens/Icones/Gold.png" />
-            </button>
-        </p>
-        <p class="text-warning">
-            Atenção: Os selos de experiência são individuais por tripulante.
-        </p>
-    </div>
-</div>
+    $('.atr-input.atributo').on('change', function () {
+        const atr = $(this).data('atr');
+        const cod = $(this).data('cod');
+        const quant = $(this).val();
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        Excelência de Classe
-    </div>
-    <div class="panel-body">
-        <?php if ($pers["lvl"] < 50) : ?>
-            <p>Este recurso será desbloqueado quando este tripulante alcançar o nível 50.</p>
-        <?php elseif (! $pers["classe"]) : ?>
-            <p>Este tripulante precisa de uma classe de combate para treinar a Excelência</p>
-        <?php else : ?>
-            <div>
-                <p>
-                    Seus tripulantes podem usar os pontos de experiência que adquirem no nível 50
-                    para evoluir sua e excelência de classe e ficarem mais fortes a cada nível.
-                </p>
-                <p>Nível atual:</p>
-                <h1 class="<?=
-                    $pers["excelencia_lvl"] < 10 ? "" :
-                    ($pers["excelencia_lvl"] < 25 ? "text-info" :
-                        ($pers["excelencia_lvl"] < 40 ? "text-success" :
-                            ($pers["excelencia_lvl"] < 50 ? "text-warning" :
-                                "text-danger")))
-                    ?>">
-                    <?= $pers["excelencia_lvl"] ?>
-                </h1>
-                <div class="row">
-                    <div class="col-md-<?= ($pers["excelencia_lvl"] < EXCELENCIA_LVL_MAX) ? 6 : 12 ?>">
-                        <h4>Bônus recebidos:</h4>
-                        <?php render_bonus_excelencia(get_bonus_excelencia($pers["classe"], $pers["excelencia_lvl"])); ?>
-                    </div>
-                    <?php if ($pers["excelencia_lvl"] < EXCELENCIA_LVL_MAX) : ?>
-                        <div class="col-xs-12 col-md-6">
-                            <h4>Bônus no próximo nível:</h4>
-                            <?php render_bonus_excelencia(get_next_bonus_excelencia($pers["classe"], $pers["excelencia_lvl"])); ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-                <br />
-
-                <?php if ($pers["excelencia_lvl"] < EXCELENCIA_LVL_MAX) : ?>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-primary"
-                            style="width: <?= $pers["excelencia_xp"] / $pers["excelencia_xp_max"] * 100 ?>%">
-                            <a>
-                                XP:
-                                <?= $pers["excelencia_xp"] . "/" . $pers["excelencia_xp_max"] ?>
-                            </a>
-                        </div>
-                    </div>
-                    <?php $xp_necessaria_up = $pers["excelencia_xp_max"] - $pers["excelencia_xp"]; ?>
-                    <?php if ($pers["xp"] && $xp_necessaria_up) : ?>
-                        <form class="ajax_form form-inline" method="post" action="Personagem/excelencia_aplicar_xp"
-                            data-question="Deseja aplicar estes pontos de experiência para evoluir a Excelência desse tripulante?">
-                            <input type="hidden" name="pers" value="<?= $pers["cod"] ?>">
-                            <div class="form-group">
-                                <label>Experiência para aplicar: </label>
-                                <?php $maximo = $xp_necessaria_up < $pers["xp"] ? $xp_necessaria_up : $pers["xp"]; ?>
-                                <input class="form-control" type="number" min="1" value="<?= $maximo ?>" max="<?= $maximo ?>"
-                                    name="quant">
-                            </div>
-                            <button class="btn btn-success">
-                                Aplicar
-                            </button>
-                        </form>
-                    <?php endif; ?>
-                    <?php if (! $xp_necessaria_up) : ?>
-                        <p>
-                            <button class="btn btn-success link_confirm"
-                                data-question="Deseja evoluir a excelência deste tripulante?"
-                                href="Personagem/excelencia_evoluir.php?pers=<?= $pers["cod"] ?>"
-                                <?= $userDetails->tripulacao["berries"] < PRECO_BERRIES_EVOLUIR_EXCELENCIA ? "disabled" : ""; ?>>
-                                Evoluir
-                                <img src="Imagens/Icones/Berries.png" />
-                                <?= mascara_berries(PRECO_BERRIES_EVOLUIR_EXCELENCIA); ?>
-                            </button>
-                        </p>
-                    <?php endif; ?>
-                <?php endif; ?>
-            </div>
-        <?php endif; ?>
-    </div>
-</div>
+        sendGet('Personagem/atributo_build_avancada.php?cod=' + cod + '&atr=' + atr + '&quant=' + quant);
+    });
+</script>

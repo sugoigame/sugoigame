@@ -11,8 +11,8 @@ $connection->run("SET CHARACTER SET utf8");
 
 $result = $connection->run("SELECT * FROM tb_ban WHERE ip = ?", "s", $_SERVER['REMOTE_ADDR']);
 if ($result->count()) {
-	echo "Você não tem permissão para acessar esse site!";
-	exit;
+    echo "Você não tem permissão para acessar esse site!";
+    exit;
 }
 
 define('ALL_FORMAT', "//");
@@ -27,7 +27,11 @@ define('IS_BETA', FALSE);
 
 define('BONUS_DOBROES_ATIVACAO', 600);
 
-define('PONTOS_POR_NIVEL', 4);		// Pontos para distribuir em atributos
+define('PONTOS_INICIAIS', 69);
+define('PONTOS_POR_NIVEL', 4);
+define('HP_INICIAL', 2500);
+define('HP_POR_NIVEL', 100);
+define('HP_POR_VITALIDADE', 30);
 
 define('FACCAO_MARINHA', 0);
 define('FACCAO_PIRATA', 1);
@@ -46,18 +50,18 @@ define('HAKI_LVL_MAX', 25);
 define('PONTOS_POR_NIVEL_BATALHA', 500);
 
 $COD_HAOSHOKU_LVL = [
-	1 => 3,
-	2 => 4,
-	3 => 5,
-	4 => 6,
-	5 => 7,
-	6 => 8,
-	7 => 9,
-	8 => 10,
-	9 => 11,
-	10 => 12,
-	11 => 13,
-	12 => 14
+    1 => 3,
+    2 => 4,
+    3 => 5,
+    4 => 6,
+    5 => 7,
+    6 => 8,
+    7 => 9,
+    8 => 10,
+    9 => 11,
+    10 => 12,
+    11 => 13,
+    12 => 14
 ];
 
 define('ILHA_COLISEU', 42);

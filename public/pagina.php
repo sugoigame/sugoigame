@@ -95,7 +95,7 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
         <div class="container-fluid fundo-container">
             <div class="main-container">
                 <div class="main-panel">
-                    <div class="panel panel-default panel-<?= $sessao ?>">
+                    <div class="panel panel-default m0 panel-<?= $sessao ?>">
                         <?php include "Sessoes/$sessao.php"; ?>
                     </div>
                 </div>

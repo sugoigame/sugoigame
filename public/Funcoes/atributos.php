@@ -1,5 +1,19 @@
 <?php
-function nome_atributo($att) {
+function get_total_atributos($pers)
+{
+    $max = 1;
+    for ($x = 1; $x <= 8; $x++) {
+        $abr = nome_atributo_tabela($x);
+        $total = round($pers[$abr]);
+        if ($total > $max) {
+            $max = $total;
+        }
+    }
+
+    return $max + $pers["pts"];
+}
+function nome_atributo($att)
+{
     switch ($att) {
         case 1:
             return "Ataque";
@@ -22,7 +36,8 @@ function nome_atributo($att) {
     }
 }
 
-function nome_atributo_img($att) {
+function nome_atributo_img($att)
+{
     switch ($att) {
         case 1:
             return "atk";
@@ -45,7 +60,8 @@ function nome_atributo_img($att) {
     }
 }
 
-function nome_atributo_tabela($att) {
+function nome_atributo_tabela($att)
+{
     switch ($att) {
         case 1:
             return "atk";
@@ -68,7 +84,32 @@ function nome_atributo_tabela($att) {
     }
 }
 
-function cod_atributo_tabela($att) {
+function descricao_atributo($att)
+{
+    switch ($att) {
+        case 1:
+            return "Cada ponto aumenta o dano causado pelo personagem em 10.";
+        case 2:
+            return "Cada ponto diminui o dano sofrido pelo personagem em 10.";
+        case 3:
+            return "Cada ponto aumenta sua chance de se esquivar do ataque inimigo em 1%.<br><b>obs: A porcentagem de chance máxima de se esquivar é de 50%;</b>";
+        case 4:
+            return "Cada ponto aumenta sua chance de bloquear o ataque inimgo em 1% e a quantidade de dano absorvido em 1%.<br><b>obs:A porcentagem de chance máxima de bloqueio é de 50%, e a porcentagem máxima de dano absorvido é de 90%.</b>";
+        case 5:
+            return "Cada ponto reduz a chance do inimigo se esquivar ou bloquear seu ataque em 1%.";
+        case 6:
+            return "Cada ponto aumenta sua chance de acertar um ataque crítico em 1% e o dano causado por ataques críticos em 1%.<br><b>obs: A porcentagem de chance máxima de acertar um ataque crítico é de 50%, e o dano máximo causado por ataque crítico é de 90%.</b>";
+        case 7:
+            return "Cada ponto reduz a chance do inimigo te acertar um ataque crítico em 1% e o dano causado por ataques críticos em 1%.";
+        case 8:
+            return "Cada ponto aumenta seu HP em 30 pontos e sua Energia em 7 pontos.<br><b>obs: O bonus de HP e Energia ganho por acréximo de vitalidade por meio de itens ou habilidades só é calculado durante combates.</b>";
+        default:
+            return "";
+    }
+}
+
+function cod_atributo_tabela($att)
+{
     switch ($att) {
         case "atk":
             return 1;
