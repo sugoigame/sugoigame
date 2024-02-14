@@ -1919,6 +1919,22 @@ class UserDetails
         $this->connection->run("UPDATE tb_personagens SET xp = xp + ? WHERE id = ? AND lvl >= 50 AND ativo = 1",
             "ii", array($quant_lvl_max, $this->tripulacao["id"]));
     }
+    public function remove_xp_personagem($quant,$pers)
+    {
+        global $connection;
+        $this->connection->run("UPDATE tb_personagens SET xp = xp - ? WHERE cod = ? AND ativo = 1",
+            "is", array($quant, $pers));
+
+       
+    }
+    
+
+    
+    
+    
+    
+
+    
 
     public function xp_for_profissao($quant, $prof)
     {
