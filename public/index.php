@@ -69,6 +69,8 @@ if (! $userDetails->conta &&
         modals seriam fechadas se ficassem dentro do header.php, por isso elas ficam no contexto global. -->
     <?php include "Includes/Components/Modals/modal_mensagens.php"; ?>
 
+    <?php include "Includes/Components/Modals/modal_chat.php"; ?>
+
     <?php include "Includes/Components/Modals/modal_inventario.php"; ?>
 
     <?php include "Includes/Components/Modals/modal_dar_comida.php"; ?>

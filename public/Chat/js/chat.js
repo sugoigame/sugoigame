@@ -32,7 +32,7 @@
                 $scope.directivepopouver = '<user-popouver></user-popouver>';
                 $scope.imagemBandeira = function () {
                     $('[data-toggle="popover"]').popover({});
-                    return "https://sugoigame.com.br/Imagens/Bandeiras/img.php?cod=010113046758010128123542010115204020&f=0";
+                    return "../Imagens/Bandeiras/img.php?cod=010113046758010128123542010115204020&f=0";
                 };
 
                 $scope.user.conta_id = window.localStorage.getItem('sg_c');

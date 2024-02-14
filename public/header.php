@@ -48,6 +48,8 @@ function has_mapa()
 
     <ul class="nav navbar-nav navbar-right">
         <?php if ($protector->is_ful_wide_session($sessao)) : ?>
+            <?php include "Includes/Components/Header/chat.php"; ?>
+
             <?php include "Includes/Components/Header/denden_mushi.php"; ?>
         <?php else : ?>
             <?php include "Includes/Components/Header/icon_torneio.php"; ?>
@@ -59,6 +61,8 @@ function has_mapa()
             <?php include "Includes/Components/Header/buffs_ativos.php"; ?>
 
             <?php include "Includes/Components/Header/mapa_cartografo.php"; ?>
+
+            <?php include "Includes/Components/Header/chat.php"; ?>
 
             <?php include "Includes/Components/Header/denden_mushi.php"; ?>
 
