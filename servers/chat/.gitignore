@@ -2,5 +2,3 @@ node_modules
 bower_components
 npm-debug.log
 .idea
-models/chatDBConection.js
-models/sugoiDBConnection.js

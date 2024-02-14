@@ -581,7 +581,7 @@ function headerAppendFunctions() {
         iniciaNav();
     });
 
-    $(document).on("click", "#chat-button", function () {
+    $(document).on("click", "#open-chat", function () {
         window.localStorage.setItem("sg_c", $("#sg_c").val());
         window.localStorage.setItem("sg_k", $("#sg_k").val());
         window.open(
@@ -589,5 +589,16 @@ function headerAppendFunctions() {
             "Sugoi Game - Chat",
             "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=430"
         );
+    });
+
+    $("#modal-chat").on("shown.bs.modal", function () {
+        window.localStorage.setItem("sg_c", $("#sg_c").val());
+        window.localStorage.setItem("sg_k", $("#sg_k").val());
+        $("#modal-chat .modal-body").html(
+            '<iframe title="chat" src="./Chat/index.html"></iframe>'
+        );
+    });
+    $("#modal-chat").on("hide.bs.modal", function () {
+        $("#modal-chat .modal-body").html("");
     });
 }
