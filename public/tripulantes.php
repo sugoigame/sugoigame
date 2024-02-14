@@ -43,13 +43,7 @@
                     </div>'>
                     <img class="tripulante_quadro_img <?= $userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? "marine" : "pirate" ?>"
                         src="Imagens/Personagens/Icons/<?= getImg($pers, "r"); ?>.jpg">
-                    <div
-                        class="recompensa_text <?= $userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? "marine" : "pirate" ?>">
-                        <?php echo $pers["nome"] . "<br>";
-                        $rec = calc_recompensa($pers["fama_ameaca"]);
-                        echo mascara_berries($rec);
-                        ?>
-                    </div>
+
                     <?php if ($pers["xp"] >= $pers["xp_max"] && $pers["lvl"] < 50) : ?>
                         <div class="tripulante-lvl-up" data-toggle="tooltip" data-placement="bottom" data-container="#tudo"
                             title="Este tripulante já pode evoluir. Acesse a visão geral da tripulação!">
@@ -57,17 +51,15 @@
                                 <img src="Imagens/Icones/quest-1.png">
                             </a>
                         </div>
-                    <?php elseif ($pers["xp"] >= $pers["excelencia_xp_max"] && $pers["lvl"] <= 50) : ?>
-                        <div class="tripulante-lvl-up" data-toggle="tooltip" data-placement="bottom" data-container="#tudo"
-                            title="Este tripulante já pode evoluir um nível de Excelência. Acesse a visão geral da tripulação!">
-                            <a href="./?ses=status&cod=<?= $pers["cod"] ?>" class="link_content">
-                                <img src="Imagens/Icones/quest-1.png">
-                            </a>
-                        </div>
                     <?php endif; ?>
                 </div>
-                <div class="tripulante_quadro_td_status">
-                    <?php render_personagem_status_bars($pers, false); ?>
+                <div>
+                    <div class="tripulante_level">
+                        <?= $pers["lvl"] ?>
+                    </div>
+                    <div class="tripulante_quadro_td_status">
+                        <?php render_personagem_status_bars($pers, false); ?>
+                    </div>
                 </div>
             </td>
         <?php endforeach; ?>

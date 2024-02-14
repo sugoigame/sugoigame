@@ -135,7 +135,8 @@ function super_menu_can_be_active($menu)
 
                 <div id="menu-tripulacao" class="collapse <?= super_menu_in_out("tripulacao") ?>">
                     <ul class="vertical-nav nav navbar-nav">
-                        <?= menu_link("status", "Visão Geral", "fa fa-file-text", "") ?>
+                        <?= menu_link("tripulacao", "Visão geral", "fa fa-file-text", "") ?>
+                        <?= menu_link("status", "Tripulantes", "fa fa-users", "") ?>
                         <?= menu_link("haki", "Haki", "fa fa-certificate", "") ?>
                         <?= menu_link("karma", "Karma", "glyphicon glyphicon-adjust", "") ?>
                         <?= menu_link("realizacoes", "Conquistas", "glyphicon glyphicon-star-empty", "") ?>

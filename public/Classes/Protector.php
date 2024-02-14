@@ -95,6 +95,7 @@ class Protector
                 break;
             case "equipamentos":
             case "status":
+            case "tripulacao":
             case "haki":
             case "listaNegra":
             case "realizacoes":

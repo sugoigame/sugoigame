@@ -109,6 +109,10 @@ select {
     padding-bottom: 0;
 }
 
+.d-inline-block {
+    display: inline-block;
+}
+
 @media (min-width: 768px) {
     .row {
         display: -webkit-box;
@@ -546,6 +550,18 @@ table tr td {
     max-width: 50px;
     height: auto;
 }
+.tripulante_quadro_td .tripulante_level {
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    background: #000;
+    float: left;
+    padding: 0px 3px;
+    position: relative;
+    z-index: 3;
+    margin-top: -2px;
+    font-size: 2vh;
+}
 
 .tripulante_quadro:hover {
     text-decoration: none;
@@ -912,7 +928,7 @@ table tr td {
     border: 3px solid #c07617;
 }
 .panel-combate {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3) !important;
     border: none;
     color: #f0f0f0;
 }
