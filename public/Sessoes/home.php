@@ -81,6 +81,7 @@ function render_maior_do_mundo($tipo)
         width: 100%;
         margin-bottom: 10px;
         text-shadow: #000 1px -1px 2px, #000 -1px 1px 2px, #000 1px 1px 2px, #000 -1px -1px 2px;
+        color: #fff;
     }
 
     .texto-top p {
