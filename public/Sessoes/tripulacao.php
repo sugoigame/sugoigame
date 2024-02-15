@@ -2,7 +2,7 @@
     .bar-step {
         position: absolute;
         z-index: 1;
-        font-size: 12px;
+        font-size: .8rem;
     }
 
     .label-line {
@@ -79,11 +79,11 @@
                 <div class="progress">
                     <div class="progress-bar progress-bar-warning"
                         style="width: <?= $userDetails->tripulacao["battle_points"] / PONTOS_POR_NIVEL_BATALHA * 100 ?>%">
+                        <span>
+                            Experiência de Batalha:
+                            <?= $userDetails->tripulacao["battle_points"] . " / " . PONTOS_POR_NIVEL_BATALHA ?>
+                        </span>
                     </div>
-                    <a>
-                        Experiência de Batalha:
-                        <?= $userDetails->tripulacao["battle_points"] . " / " . PONTOS_POR_NIVEL_BATALHA ?>
-                    </a>
                 </div>
                 <?php if ($userDetails->tripulacao["battle_points"] >= PONTOS_POR_NIVEL_BATALHA) : ?>
                     <button class="btn btn-success link_send" href="link_Geral/nivel_batalha.php">
@@ -101,7 +101,7 @@
                     <?= ajuda_tooltip("Sua patente é determinada de acordo com seu nível de batlha."); ?>
                 </h4>
             </div>
-            <div class="row hidden-xs"><br>
+            <div class="row"><br>
                 <?php $max_patente_level = get_max_patente_level(); ?>
                 <?php $marks = get_patente_marks(); ?>
                 <div class="col-xs-12">

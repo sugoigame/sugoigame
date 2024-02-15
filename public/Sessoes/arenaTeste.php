@@ -69,7 +69,7 @@
             step: STEPS.IMG,
             lastStep: STEPS.IMG,
             skillHover: false,
-            level: 1,
+            level: 20,
             levelXP: 0,
             levelXPMax: 100,
             chars: [],
@@ -625,14 +625,14 @@
             getDefaultSkills: function () {
                 return this.char.classe
                     ? this.classeChoiceParams.skills[this.char.classe].slice(0, 5)
-                    : [{empty: true}, {empty: true}, {empty: true}, {empty: true}, {empty: true}];
+                    : [{ empty: true }, { empty: true }, { empty: true }, { empty: true }, { empty: true }];
             },
             handleDropSkill: function (index, data) {
                 if (!data) {
                     return;
                 }
                 this.char.skills = this.char.skills.map(function (skill, i) {
-                    return (skill.id === data.id) ? {empty: true} : skill;
+                    return (skill.id === data.id) ? { empty: true } : skill;
                 });
 
                 this.char.skills[index] = data;
@@ -805,8 +805,7 @@
                     {{level}}º Nível
                 </h4>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-success"
-                         v-bind:style="{width: (levelXP/levelXPMax*100)+'%'}">
+                    <div class="progress-bar progress-bar-success" v-bind:style="{width: (levelXP/levelXPMax*100)+'%'}">
                         {{levelXP}}/{{levelXPMax}}
                     </div>
                 </div>
@@ -824,12 +823,12 @@
                 <li v-for="index in 6" v-bind:class="{active: char && index === char.index}" class="personagem-pill"
                     v-on:click="selectChar(index)">
                     <a href="#" class="noHref">
-                        <img v-if="chars[index] && chars[index].img" v-bind:src="getIconSkinUrl(chars[index].img)"/>
-                        <img v-else src="Imagens/Icones/no-avatar.jpg" class="disabled" style="max-width: 100%"/>
+                        <img v-if="chars[index] && chars[index].img" v-bind:src="getIconSkinUrl(chars[index].img)" />
+                        <img v-else src="Imagens/Icones/no-avatar.jpg" class="disabled" style="max-width: 100%" />
                         <img v-if="chars[index] && chars[index].classe"
-                             v-bind:src="getClasseIconUrl(chars[index].classe)" width="30px"/>
+                            v-bind:src="getClasseIconUrl(chars[index].classe)" width="30px" />
                         <img v-if="chars[index] && chars[index].profissao"
-                             v-bind:src="getProfIconUrl(chars[index].profissao)" width="30px"/>
+                            v-bind:src="getProfIconUrl(chars[index].profissao)" width="30px" />
                     </a>
                 </li>
             </ul>
@@ -843,12 +842,11 @@
                     </div>
                     <div class="panel-body">
                         <div class="img-list">
-                            <img v-for="number in charChoiceParams.charactersCount"
-                                 class="icon-img" width="70px"
-                                 v-bind:title="!isImgAvailable(number) ? 'Você precisa desbloquear este personagem' : ''"
-                                 v-on:click="selectImg(number)"
-                                 v-bind:class="{active: number === char.img, disabled: !isImgAvailable(number)}"
-                                 v-bind:src="getIconSkinUrl(number)"/>
+                            <img v-for="number in charChoiceParams.charactersCount" class="icon-img" width="70px"
+                                v-bind:title="!isImgAvailable(number) ? 'Você precisa desbloquear este personagem' : ''"
+                                v-on:click="selectImg(number)"
+                                v-bind:class="{active: number === char.img, disabled: !isImgAvailable(number)}"
+                                v-bind:src="getIconSkinUrl(number)" />
                         </div>
                     </div>
                 </div>
@@ -862,22 +860,18 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="status col-xs-3">
-                                <img class="big-img mb"
-                                     v-bind:src="getBigSkinUrl(char.img)"/>
+                                <img class="big-img mb" v-bind:src="getBigSkinUrl(char.img)" />
                                 <button class="btn btn-primary btn-sm" v-on:click="backTo('IMG')">
                                     Trocar personagem
                                 </button>
                             </div>
                             <div class="creation col-xs-9">
-                                <input type="text" minlength="4" maxlength="15"
-                                       class="form-control mb"
-                                       v-model="char.nome"
-                                       placeholder="Digite um nome para o tripulante aqui!">
+                                <input type="text" minlength="4" maxlength="15" class="form-control mb"
+                                    v-model="char.nome" placeholder="Digite um nome para o tripulante aqui!">
                                 <span class="text-danger" v-if="!nameChoiceParams.nameValid"
-                                      v-html="nameChoiceParams.nameErrorMessage"></span>
-                                <button class="btn btn-success"
-                                        v-on:click="selectName()"
-                                        v-bind:disabled="!nameChoiceParams.nameValid">
+                                    v-html="nameChoiceParams.nameErrorMessage"></span>
+                                <button class="btn btn-success" v-on:click="selectName()"
+                                    v-bind:disabled="!nameChoiceParams.nameValid">
                                     Avançar
                                 </button>
                             </div>
@@ -900,20 +894,19 @@
                             <div class="status col-xs-3">
                                 <!--- imagem de corpo -->
                                 <div class="mb">
-                                    <img class="big-img mb"
-                                         v-bind:src="getBigSkinUrl(char.img)"/>
+                                    <img class="big-img mb" v-bind:src="getBigSkinUrl(char.img)" />
                                     <button class="btn btn-primary btn-sm" v-on:click="backTo('IMG')">
                                         Trocar personagem
                                     </button>
                                 </div>
                                 <!--- Classe -->
                                 <div v-if="char.classe" class="mb text-left">
-                                    <img v-bind:src="getClasseIconUrl(char.classe)" width="30px"/>
+                                    <img v-bind:src="getClasseIconUrl(char.classe)" width="30px" />
                                     {{getClasseName(char.classe)}}
                                 </div>
                                 <!--- Profissão -->
                                 <div v-if="char.profissao" class="mb text-left">
-                                    <img v-bind:src="getProfIconUrl(char.profissao)" width="30px"/>
+                                    <img v-bind:src="getProfIconUrl(char.profissao)" width="30px" />
                                     {{getProfName(char.profissao)}}
                                 </div>
                                 <!--- Habilidades -->
@@ -933,15 +926,15 @@
                                     <div>Haki:</div>
                                     <div class="progress">
                                         <div class="progress-bar progress-bar-primary"
-                                             v-bind:style="{width: (100*char.hdr/char.hakiPoints)+'%'}">
+                                            v-bind:style="{width: (100*char.hdr/char.hakiPoints)+'%'}">
                                             <span>{{char.hdr}}</span>
                                         </div>
                                         <div class="progress-bar progress-bar-success"
-                                             v-bind:style="{width: (100*char.mantra/char.hakiPoints)+'%'}">
+                                            v-bind:style="{width: (100*char.mantra/char.hakiPoints)+'%'}">
                                             <span>{{char.mantra}}</span>
                                         </div>
                                         <div class="progress-bar progress-bar-danger"
-                                             v-bind:style="{width: (100*char.armamento/char.hakiPoints)+'%'}">
+                                            v-bind:style="{width: (100*char.armamento/char.hakiPoints)+'%'}">
                                             <span>{{char.armamento}}</span>
                                         </div>
                                     </div>
@@ -950,13 +943,13 @@
                                 <div>
                                     <div class="row">
                                         <div v-for="atrKey in Object.keys(char.attributes)"
-                                             class="col-xs-3 mb attribute-box">
+                                            class="col-xs-3 mb attribute-box">
                                             <div class="attribute-progress-bar"
-                                                 v-bind:style="{height: (100*char.attributes[atrKey]/getMaxAttribute()) + '%' }">
+                                                v-bind:style="{height: (100*char.attributes[atrKey]/getMaxAttribute()) + '%' }">
                                             </div>
                                             <h4>{{char.attributes[atrKey]}}</h4>
                                             <img v-bind:src="'Imagens/Icones/'+atrKey+'.png'" width="30px"
-                                                 style="max-width: 100%"/>
+                                                style="max-width: 100%" />
                                         </div>
                                     </div>
                                 </div>
@@ -979,15 +972,15 @@
                                                 <h4 class="text-left">
                                                     Escolha uma classe:
                                                     <button class="btn btn-primary btn-sm"
-                                                            v-on:click="classeChoiceParams.showDetails = !classeChoiceParams.showDetails">
+                                                        v-on:click="classeChoiceParams.showDetails = !classeChoiceParams.showDetails">
                                                         Detalhes
                                                     </button>
                                                 </h4>
                                                 <div class="row">
                                                     <div v-for="classe in 3" class="col-xs-4 choice"
-                                                         v-bind:class="{choiced: char.classe === classe}">
+                                                        v-bind:class="{choiced: char.classe === classe}">
                                                         <a class="noHref mb" href="#" v-on:click="selectClass(classe)">
-                                                            <img v-bind:src="getClasseIconUrl(classe)"/><br/>
+                                                            <img v-bind:src="getClasseIconUrl(classe)" /><br />
                                                             {{getClasseName(classe)}}
                                                         </a>
                                                         <p v-if="classeChoiceParams.showDetails">
@@ -1003,14 +996,14 @@
                                                     </h5>
                                                     <div class="text-left">
                                                         <drop class="drop skill"
-                                                              @drop="handleDropSkill(i, ...arguments)"
-                                                              v-for="(element, i) in char.skills">
+                                                            @drop="handleDropSkill(i, ...arguments)"
+                                                            v-for="(element, i) in char.skills">
                                                             <template scope="props">
                                                                 <div v-if="skillHover" class="hover-here">
                                                                     Arraste Aqui
                                                                 </div>
                                                                 <div v-if="element.empty">
-                                                                    <img src="Imagens/Skils/add.jpg"/>
+                                                                    <img src="Imagens/Skils/add.jpg" />
                                                                 </div>
                                                                 <div v-else>
                                                                     <skill-icon v-bind:skill="element"></skill-icon>
@@ -1023,10 +1016,10 @@
                                                     </h5>
                                                     <div class="text-left mb">
                                                         <drag class="skill drag"
-                                                              v-for="(element, index) in classeChoiceParams.skills[char.classe]"
-                                                              :key="index" :transfer-data="element">
+                                                            v-for="(element, index) in classeChoiceParams.skills[char.classe]"
+                                                            :key="index" :transfer-data="element">
                                                             <div v-on:mouseenter="skillHover = true"
-                                                                 v-on:mouseleave="skillHover = false">
+                                                                v-on:mouseleave="skillHover = false">
                                                                 <skill-icon v-bind:skill="element"></skill-icon>
                                                             </div>
                                                         </drag>
@@ -1034,11 +1027,11 @@
                                                 </div>
 
                                                 <button v-if="char.classe && level >= 2" class="btn btn-success"
-                                                        v-on:click="selectSkills()">
+                                                    v-on:click="selectSkills()">
                                                     Avançar
                                                 </button>
                                                 <button v-else-if="char.classe" class="btn btn-success"
-                                                        v-on:click="winBattle()">
+                                                    v-on:click="winBattle()">
                                                     Jogar Partida
                                                 </button>
                                             </div>
@@ -1046,7 +1039,7 @@
                                     </div>
                                     <!--- Profissão -->
                                     <div class="panel panel-default"
-                                         v-bind:class="{disabled: !isStepActive('PROFISSAO')}">
+                                        v-bind:class="{disabled: !isStepActive('PROFISSAO')}">
                                         <div class="panel-heading" v-on:click="backTo('PROFISSAO')">
                                             <h4 class="panel-title text-left">
                                                 <a class="noHref" href="#">
@@ -1059,16 +1052,15 @@
                                                 <h4 class="text-left">
                                                     Escolha uma profissão:
                                                     <button class="btn btn-primary btn-sm"
-                                                            v-on:click="profChoiceParams.showDetails = !profChoiceParams.showDetails">
+                                                        v-on:click="profChoiceParams.showDetails = !profChoiceParams.showDetails">
                                                         Detalhes
                                                     </button>
                                                 </h4>
                                                 <div class="row">
                                                     <div v-for="prof in 3" class="col-xs-4 choice"
-                                                         v-bind:class="{choiced: char.profissao === prof}">
-                                                        <a class="noHref" href="#"
-                                                           v-on:click="selectProf(prof)">
-                                                            <img v-bind:src="getProfIconUrl(prof)"/><br/>
+                                                        v-bind:class="{choiced: char.profissao === prof}">
+                                                        <a class="noHref" href="#" v-on:click="selectProf(prof)">
+                                                            <img v-bind:src="getProfIconUrl(prof)" /><br />
                                                             {{getProfName(prof)}}
                                                         </a>
                                                         <p v-if="profChoiceParams.showDetails">
@@ -1084,8 +1076,8 @@
                                                     </h5>
                                                     <div class="text-left">
                                                         <drop class="drop skill"
-                                                              @drop="handleDropModifier(i, ...arguments)"
-                                                              v-for="(element, i) in char.skills">
+                                                            @drop="handleDropModifier(i, ...arguments)"
+                                                            v-for="(element, i) in char.skills">
                                                             <template scope="props">
                                                                 <div v-if="!element.empty">
                                                                     <div v-if="skillHover" class="hover-here">
@@ -1094,7 +1086,7 @@
                                                                     <div v-if="element.modifier">
                                                                         <skill-icon v-bind:skill="element"></skill-icon>
                                                                         <modifier-icon
-                                                                                v-bind:modifier="element.modifier">
+                                                                            v-bind:modifier="element.modifier">
                                                                         </modifier-icon>
                                                                     </div>
                                                                     <div v-else>
@@ -1109,10 +1101,10 @@
                                                     </h5>
                                                     <div class="text-left mb">
                                                         <drag class="skill-modifier drag"
-                                                              v-for="(element, index) in profChoiceParams.modifiers[char.profissao]"
-                                                              :key="index" :transfer-data="element">
+                                                            v-for="(element, index) in profChoiceParams.modifiers[char.profissao]"
+                                                            :key="index" :transfer-data="element">
                                                             <div v-on:mouseenter="skillHover = true"
-                                                                 v-on:mouseleave="skillHover = false">
+                                                                v-on:mouseleave="skillHover = false">
                                                                 <modifier-icon v-bind:modifier="element" width="40px">
                                                                 </modifier-icon>
                                                             </div>
@@ -1120,19 +1112,18 @@
                                                     </div>
                                                 </div>
                                                 <button v-if="char.profissao && level >= 8" class="btn btn-success"
-                                                        v-on:click="selectModificadores()">
+                                                    v-on:click="selectModificadores()">
                                                     Avançar
                                                 </button>
                                                 <button v-else-if="char.profissao" class="btn btn-success"
-                                                        v-on:click="winBattle()">
+                                                    v-on:click="winBattle()">
                                                     Jogar Partida
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                     <!--- Haki -->
-                                    <div class="panel panel-default"
-                                         v-bind:class="{disabled: !isStepActive('HAKI')}">
+                                    <div class="panel panel-default" v-bind:class="{disabled: !isStepActive('HAKI')}">
                                         <div class="panel-heading" v-on:click="backTo('HAKI')">
                                             <h4 class="panel-title text-left">
                                                 <a class="noHref" href="#">
@@ -1146,7 +1137,7 @@
                                                     Você possui {{getHakiPointsAvailable()}} pontos de Haki para
                                                     distribuir:
                                                     <button class="btn btn-primary btn-sm"
-                                                            v-on:click="hakiChoiceParams.showDetails = !hakiChoiceParams.showDetails">
+                                                        v-on:click="hakiChoiceParams.showDetails = !hakiChoiceParams.showDetails">
                                                         Detalhes
                                                     </button>
                                                 </h4>
@@ -1155,9 +1146,8 @@
                                                         <h5>Haki do Rei: {{char.hdr}}</h5>
                                                         <div class="mb">
                                                             0
-                                                            <input v-model="char.hdr" class="haki-input"
-                                                                   type="range" step="1" min="0"
-                                                                   v-bind:max="getHdrPointsAvailable()">
+                                                            <input v-model="char.hdr" class="haki-input" type="range"
+                                                                step="1" min="0" v-bind:max="getHdrPointsAvailable()">
                                                             {{getHdrPointsAvailable()}}
                                                         </div>
                                                         <p v-if="hakiChoiceParams.showDetails">
@@ -1172,9 +1162,8 @@
                                                         <div class="mb">
                                                             0
                                                             <input v-model="char.mantra"
-                                                                   class="haki-input input-success"
-                                                                   type="range" step="1" min="0"
-                                                                   v-bind:max="getMantraPointsAvailable()">
+                                                                class="haki-input input-success" type="range" step="1"
+                                                                min="0" v-bind:max="getMantraPointsAvailable()">
                                                             {{getMantraPointsAvailable()}}
                                                         </div>
                                                         <p v-if="hakiChoiceParams.showDetails">
@@ -1189,9 +1178,8 @@
                                                         <div class="mb">
                                                             0
                                                             <input v-model="char.armamento"
-                                                                   class="haki-input input-danger"
-                                                                   type="range" step="1" min="0"
-                                                                   v-bind:max="getArmamentoPointsAvailable()">
+                                                                class="haki-input input-danger" type="range" step="1"
+                                                                min="0" v-bind:max="getArmamentoPointsAvailable()">
                                                             {{getArmamentoPointsAvailable()}}
                                                         </div>
                                                         <p v-if="hakiChoiceParams.showDetails">
@@ -1204,7 +1192,7 @@
                                                     </div>
                                                 </div>
                                                 <button v-if="level >= 10" class="btn btn-success"
-                                                        v-on:click="selectHaki()">
+                                                    v-on:click="selectHaki()">
                                                     Avançar
                                                 </button>
                                                 <button v-else class="btn btn-success" v-on:click="winBattle()">
@@ -1215,7 +1203,7 @@
                                     </div>
                                     <!--- Atributos -->
                                     <div class="panel panel-default"
-                                         v-bind:class="{disabled: !isStepActive('ATRIBUTOS')}">
+                                        v-bind:class="{disabled: !isStepActive('ATRIBUTOS')}">
                                         <div class="panel-heading" v-on:click="backTo('ATRIBUTOS')">
                                             <h4 class="panel-title text-left">
                                                 <a class="noHref" href="#">
@@ -1228,7 +1216,7 @@
                                                 <h4 class="text-left">
                                                     Escolha os atributos do seu tripulante:
                                                     <button class="btn btn-primary btn-sm"
-                                                            v-on:click="atrChoiceParams.showDetails = !atrChoiceParams.showDetails">
+                                                        v-on:click="atrChoiceParams.showDetails = !atrChoiceParams.showDetails">
                                                         Detalhes
                                                     </button>
                                                 </h4>
@@ -1236,7 +1224,7 @@
                                                     <ul class="text-left">
                                                         <li v-for="atrKey in Object.keys(char.attributes)">
                                                             <img v-bind:src="'Imagens/Icones/'+atrKey+'.png'"
-                                                                 width="30px"/>
+                                                                width="30px" />
                                                             <strong>{{getNomeAtributo(atrKey)}}:</strong>
                                                             {{getDescricaoAtributo(atrKey)}}
                                                         </li>
@@ -1245,20 +1233,23 @@
 
                                                 <!--- Menu de modo de criacao de atributos -->
                                                 <ul class="nav nav-pills nav-justified mb">
-                                                    <li v-bind:class="{active: atrChoiceParams.selectedMode==='SIMPLES'}">
+                                                    <li
+                                                        v-bind:class="{active: atrChoiceParams.selectedMode==='SIMPLES'}">
                                                         <a v-on:click="atrChoiceParams.selectedMode='SIMPLES'"
-                                                           class="noHref" href="#">Simples</a>
+                                                            class="noHref" href="#">Simples</a>
                                                     </li>
-                                                    <li v-bind:class="{active: atrChoiceParams.selectedMode==='INTERMEDIARIO'}">
+                                                    <li
+                                                        v-bind:class="{active: atrChoiceParams.selectedMode==='INTERMEDIARIO'}">
                                                         <a v-if="level >= 12"
-                                                           v-on:click="atrChoiceParams.selectedMode='INTERMEDIARIO'"
-                                                           class="noHref" href="#">Intermediário</a>
+                                                            v-on:click="atrChoiceParams.selectedMode='INTERMEDIARIO'"
+                                                            class="noHref" href="#">Intermediário</a>
                                                         <a v-else class="noHref">Intermediário</a>
                                                     </li>
-                                                    <li v-bind:class="{active: atrChoiceParams.selectedMode==='AVANCADO'}">
+                                                    <li
+                                                        v-bind:class="{active: atrChoiceParams.selectedMode==='AVANCADO'}">
                                                         <a v-if="level >= 15"
-                                                           v-on:click=" atrChoiceParams.selectedMode='AVANCADO'"
-                                                           class="noHref" href="#">Avançado</a>
+                                                            v-on:click=" atrChoiceParams.selectedMode='AVANCADO'"
+                                                            class="noHref" href="#">Avançado</a>
                                                         <a v-else class="noHref">Avançado</a>
                                                     </li>
                                                 </ul>
@@ -1271,16 +1262,15 @@
                                                     <div class="text-left">
                                                         <a class="noHref" href="#" v-on:click="buildPadraoClasse()">
                                                             <img v-bind:src="getClasseIconUrl(char.classe)"
-                                                                 width="30px"/>
+                                                                width="30px" />
                                                             Usar build padrão da classe
                                                         </a>
                                                     </div>
                                                     <div class="text-left"
-                                                         v-for="atrKey in Object.keys(char.attributes)">
+                                                        v-for="atrKey in Object.keys(char.attributes)">
                                                         <a class="noHref" href="#" v-on:click="buildAutomatica(atrKey)">
                                                             <img v-bind:src="'Imagens/Icones/'+atrKey+'.png'"
-                                                                 width="30px"
-                                                                 style="max-width: 100%"/>
+                                                                width="30px" style="max-width: 100%" />
                                                             Usar build baseada em {{getNomeAtributo(atrKey)}}
                                                         </a>
                                                     </div>
@@ -1297,11 +1287,11 @@
                                                     </h5>
                                                     <div class="mb">
                                                         <div class="build-intermediaria-atr"
-                                                             v-for="atrKey in Object.keys(char.attributes)"
-                                                             v-on:click="atrChoiceParams.choices.primario = atrKey"
-                                                             v-bind:class="{active: atrChoiceParams.choices.primario === atrKey }">
+                                                            v-for="atrKey in Object.keys(char.attributes)"
+                                                            v-on:click="atrChoiceParams.choices.primario = atrKey"
+                                                            v-bind:class="{active: atrChoiceParams.choices.primario === atrKey }">
                                                             <img v-bind:src="'Imagens/Icones/'+atrKey+'.png'"
-                                                                 width="30px"/>
+                                                                width="30px" />
                                                         </div>
                                                     </div>
                                                     <h5 class="text-left">
@@ -1309,11 +1299,11 @@
                                                     </h5>
                                                     <div class="mb">
                                                         <div class="build-intermediaria-atr"
-                                                             v-for="atrKey in Object.keys(char.attributes)"
-                                                             v-on:click="atrChoiceParams.choices.secundario = atrKey"
-                                                             v-bind:class="{active: atrChoiceParams.choices.secundario === atrKey }">
+                                                            v-for="atrKey in Object.keys(char.attributes)"
+                                                            v-on:click="atrChoiceParams.choices.secundario = atrKey"
+                                                            v-bind:class="{active: atrChoiceParams.choices.secundario === atrKey }">
                                                             <img v-bind:src="'Imagens/Icones/'+atrKey+'.png'"
-                                                                 width="30px"/>
+                                                                width="30px" />
                                                         </div>
                                                     </div>
                                                     <h5 class="text-left">
@@ -1321,16 +1311,16 @@
                                                     </h5>
                                                     <div class="mb">
                                                         <div class="build-intermediaria-atr"
-                                                             v-for="atrKey in Object.keys(char.attributes)"
-                                                             v-on:click="atrChoiceParams.choices.terciario = atrKey"
-                                                             v-bind:class="{active: atrChoiceParams.choices.terciario === atrKey }">
+                                                            v-for="atrKey in Object.keys(char.attributes)"
+                                                            v-on:click="atrChoiceParams.choices.terciario = atrKey"
+                                                            v-bind:class="{active: atrChoiceParams.choices.terciario === atrKey }">
                                                             <img v-bind:src="'Imagens/Icones/'+atrKey+'.png'"
-                                                                 width="30px"/>
+                                                                width="30px" />
                                                         </div>
                                                     </div>
 
                                                     <button class="btn btn-success"
-                                                            v-on:click="gerarBuildIntermediaria()">
+                                                        v-on:click="gerarBuildIntermediaria()">
                                                         Gerar Build
                                                     </button>
                                                 </div>
@@ -1347,16 +1337,16 @@
                                                         para distribuir:
                                                     </h5>
                                                     <div v-for="atrKey in Object.keys(char.attributes)">
-                                                        <img v-bind:src="'Imagens/Icones/'+atrKey+'.png'" width="30px"/>
+                                                        <img v-bind:src="'Imagens/Icones/'+atrKey+'.png'"
+                                                            width="30px" />
                                                         <input v-model="char.attributes[atrKey]" class="atr-input"
-                                                               type="range" step="1" min="1"
-                                                               v-bind:max="char.atrPoints - getSumAttributes() + parseInt(char.attributes[atrKey], 10)">
+                                                            type="range" step="1" min="1"
+                                                            v-bind:max="char.atrPoints - getSumAttributes() + parseInt(char.attributes[atrKey], 10)">
                                                     </div>
                                                 </div>
 
 
-                                                <button class="btn btn-success"
-                                                        v-on:click="winBattle()">
+                                                <button class="btn btn-success" v-on:click="winBattle()">
                                                     Jogar Partida
                                                 </button>
                                             </div>

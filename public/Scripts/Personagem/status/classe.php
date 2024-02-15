@@ -5,7 +5,7 @@ $pers_cod = $protector->get_number_or_exit("cod");
 
 $pers = $userDetails->get_pers_by_cod($pers_cod);
 
-if (!$pers) {
+if (! $pers) {
     $protector->exit_error("Personagem inválido");
 }
 ?>
@@ -30,7 +30,7 @@ for ($classe = 1; $classe <= 3; $classe++) {
 }
 ?>
 <?php render_personagem_panel_top($pers, 0) ?>
-<?php if (!$pers["classe"]): ?>
+<?php if (! $pers["classe"]) : ?>
     <?php render_personagem_sub_panel_with_img_top($pers); ?>
     <div class="panel-body">
         <h4>
@@ -41,14 +41,14 @@ for ($classe = 1; $classe <= 3; $classe++) {
             <div class="media-body">
                 <h4 class="media-heading">Espadachim</h4>
                 <p>
-                    Mestre em espadas. Atacar é a única lei. <br/>
+                    Mestre em espadas. Atacar é a única lei. <br />
                     Não precisa de distância para atacar, vai à linha de frente e fatia
                     seus inimigos.
                 </p>
             </div>
             <div class="media-right">
                 <button href='Academia/academia_aprender.php?cod=<?= $pers["cod"]; ?>&class=1'
-                        class="btn btn-success link_confirm" data-question="Deseja se tornar um Espadachim?">
+                    class="btn btn-success link_confirm" data-question="Deseja se tornar um Espadachim?">
                     Se tornar um Espadachim
                 </button>
             </div>
@@ -64,7 +64,7 @@ for ($classe = 1; $classe <= 3; $classe++) {
             </div>
             <div class="media-right">
                 <button href='Academia/academia_aprender.php?cod=<?= $pers["cod"]; ?>&class=2'
-                        class="btn btn-success link_confirm" data-question="Deseja se tornar um Lutador?">
+                    class="btn btn-success link_confirm" data-question="Deseja se tornar um Lutador?">
                     Se tornar um Lutador
                 </button>
             </div>
@@ -81,7 +81,7 @@ for ($classe = 1; $classe <= 3; $classe++) {
             </div>
             <div class="media-right">
                 <button href='Academia/academia_aprender.php?cod=<?= $pers["cod"]; ?>&class=3'
-                        class="btn btn-success link_confirm" data-question="Deseja se tornar um Atirador?">
+                    class="btn btn-success link_confirm" data-question="Deseja se tornar um Atirador?">
                     Se tornar um Atirador
                 </button>
             </div>
@@ -92,12 +92,31 @@ for ($classe = 1; $classe <= 3; $classe++) {
     <?php $pode_aprender_func = function ($pers, $skill) {
         global $userDetails;
         return $pers["lvl"] >= $skill["requisito_lvl"]
-            AND $pers[nome_atributo_tabela($skill["requisito_atr_1"])] >= $skill["requisito_atr_1_qnt"]
-            AND $userDetails->tripulacao["berries"] >= $skill["requisito_berries"]
-            AND $pers["classe"] == $skill["requisito_classe"];
+            and $pers[nome_atributo_tabela($skill["requisito_atr_1"])] >= $skill["requisito_atr_1_qnt"]
+            and $userDetails->tripulacao["berries"] >= $skill["requisito_berries"]
+            and $pers["classe"] == $skill["requisito_classe"];
     }; ?>
+
+    <h3>
+        <b>Score:</b>
+        <?= $pers["classe_score"]; ?>
+    </h3>
+    <p>
+        <button class="link_confirm btn btn-info" <?= ($userDetails->conta["gold"] >= PRECO_GOLD_RESET_CLASSE ? "" : "disabled") ?>
+            data-question="Resetar a classe desse personagem permitirá que ele aprenda uma nova. Deseja continuar?"
+            href="Vip/reset_classe.php?cod=<?= $pers["cod"] ?>&tipo=gold">
+            <?= PRECO_GOLD_RESET_CLASSE ?> <img src="Imagens/Icones/Gold.png" />
+            Resetar Classe
+        </button>
+        <button class="link_confirm btn btn-info" <?= $userDetails->conta["dobroes"] >= PRECO_DOBRAO_RESET_CLASSE ? "" : "disabled" ?>
+            data-question="Resetar a classe desse personagem permitirá que ele aprenda uma nova. Deseja continuar?"
+            href="Vip/reset_classe.php?cod=<?= $pers["cod"] ?>&tipo=dobrao">
+            <?= PRECO_DOBRAO_RESET_CLASSE ?> <img src="Imagens/Icones/Dobrao.png" />
+            Resetar Classe
+        </button>
+    </p>
     <h4>Atenção! Você só pode escolher uma habilidade por linha.</h4>
-    <h4>Selos de experiência: <?= $pers["selos_xp"] ?> <img src="Imagens/Icones/seloexp.png"/></h4>
     <?php render_habilidades_classe_tab($skills_classe[$pers["classe"]], $pers, "Academia/aprender_skil.php", $pode_aprender_func) ?>
 <?php endif; ?>
 <?php render_personagem_panel_bottom() ?>
+

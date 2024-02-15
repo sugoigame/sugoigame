@@ -6,10 +6,11 @@
             <tr>
             <?php endif; ?>
             <td class="tripulante_quadro_td">
-                <div id="tripulante_quadro_<? echo $pers["cod"] ?>"
+                <div id="tripulante_quadro_<? echo $pers["cod"] ?>" onclick="setQueryParam('cod','<?= $pers["cod"]; ?>');"
+                    data-cod="<?= $pers["cod"]; ?>"
                     class="tripulante_quadro <?= $userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? "marine" : "pirate" ?>"
-                    data-content="-" data-container="body" <?= $sessao != "mar" ? 'data-toggle="popover"' : "" ?>
-                    data-placement="bottom" data-html="true" data-trigger="focus" tabindex="0" data-template='
+                    data-content="-" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true"
+                    data-trigger="focus" tabindex="0" data-template='
                     <div class="container tripulante_quadro_info">
                         <div class="row">
                             <div class="col-xs-6 tripulante_quadro_skin">
