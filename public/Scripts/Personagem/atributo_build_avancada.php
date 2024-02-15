@@ -13,16 +13,7 @@ if ($atr < 1 || $atr > 8) {
     $protector->exit_error("Atributo inválido");
 }
 $atr = nome_atributo_tabela($atr);
-
-if ($quant < 1 || ($quant - $pers[$atr]) > $pers["pts"]) {
-    $protector->exit_error("Quantidade inválida");
-}
-
-$hp_razao = $pers["hp"] / $pers["hp_max"];
-
-$dif = $quant - $pers[$atr];
-$pers[$atr] = $quant;
-$pers["pts"] -= $dif;
+c
 
 $hp_max = calc_pers_hp_max($pers);
 
