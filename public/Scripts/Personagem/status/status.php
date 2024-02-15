@@ -175,7 +175,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                     <?php for ($i = 1; $i <= 8; $i++) : ?>
                         <div class="text-left">
                             <a class="link_send"
-                                href="link_Personagem/atributo_build_simples?cod=<?= $pers["cod"] ?>&atr=<?= $i ?>"
+                                href="link_Personagem/atributo_build_simples.php?cod=<?= $pers["cod"] ?>&atr=<?= $i ?>"
                                 v-on:click="buildAutomatica(atrKey)">
                                 <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="20vw"
                                     style="max-width: 100%;" class="atributo-icon" />
