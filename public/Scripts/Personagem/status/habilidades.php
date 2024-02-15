@@ -32,9 +32,6 @@ if (!$pers) {
     "i", array($pers["cod"]))->count() ?>
 <?php $ataques_com_efeitos = $connection->run("SELECT * FROM tb_personagens_skil WHERE special_effect IS NOT NULL AND cod = ? AND tipo = ?",
     "ii", array($pers["cod"], TIPO_SKILL_ATAQUE_AKUMA))->count() ?>
-<p>
-    Efeitos especiais disponíveis: <?= $max_ataques_com_efeitos - $ataques_com_efeitos ?>
-</p>
 
 <?php if (count($animacoes)): ?>
     <h3>Animações disponíveis:</h3>

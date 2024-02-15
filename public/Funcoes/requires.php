@@ -37,3 +37,4 @@ include_once(dirname(__FILE__) . "/tb_item.php");
 include_once(dirname(__FILE__) . "/Time.php");
 include_once(dirname(__FILE__) . "/torneio.php");
 include_once(dirname(__FILE__) . "/check_missao_auxiliar.php");
+include_once(dirname(__FILE__) . "/batalha_fim.php");

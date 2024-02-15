@@ -13,9 +13,6 @@
             <li>
                 <a href="./?ses=coliseu" class="link_content">Coliseu</a>
             </li>
-            <li>
-                <a href="./?ses=localizadorCompetitivo" class="link_content">Competitivo</a>
-            </li>
         </ul>
     </div>
     <br/>
