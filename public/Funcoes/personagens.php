@@ -63,6 +63,11 @@
     return $bonus;
 }
 
+function calc_pers_hp_max($pers)
+{
+    return (($pers["lvl"] - 1) * HP_POR_NIVEL) + HP_INICIAL + (($pers["vit"] - 1) * HP_POR_VITALIDADE);
+}
+
 function ajusta_hp($pers, $bonus)
 {
     if ($bonus["vit"]) {
