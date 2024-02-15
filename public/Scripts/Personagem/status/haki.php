@@ -4,8 +4,7 @@ $protector->need_tripulacao();
 
 $pers = $protector->get_tripulante_or_exit("cod");
 ?>
-<?php render_personagem_xp_bar($pers) ?>
-<div class="row">
+<div class="row pt1">
     <div class="col-xs-4">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -16,13 +15,15 @@ $pers = $protector->get_tripulante_or_exit("cod");
             </div>
             <div class="panel-body">
                 <div class="progress">
-                    <div class="progress-bar" style="width: <?= $pers["haki_xp"] / $pers["haki_xp_max"] * 100 ?>%">
+                    <div class="progress-bar progress-bar-info"
+                        style="width: <?= $pers["haki_xp"] / $pers["haki_xp_max"] * 100 ?>%">
                         <span>
-                            Pontos:
+                            Treino de Haki:
                             <?= mascara_numeros_grandes($pers["haki_xp"]) . "/" . mascara_numeros_grandes($pers["haki_xp_max"]) ?>
                         </span>
                     </div>
                 </div>
+                <?php render_personagem_xp_bar($pers) ?>
                 <?php if ($pers['xp'] > 0 && $pers["haki_lvl"] < HAKI_LVL_MAX) : ?>
                     <?php $max = min($pers['xp'], $pers["haki_xp_max"] - $pers["haki_xp"]); ?>
                     <form class="ajax_form form-inline" action="Haki/trocar_xp" method="post"
