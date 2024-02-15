@@ -126,7 +126,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
     </div>
 
     <div class="col-xs-3">
-        <div class="row">
+        <div class="row mx0">
             <?php for ($i = 1; $i <= 8; $i++) : ?>
                 <?php row_atributo(
                     nome_atributo_tabela($i),
@@ -139,7 +139,6 @@ $pers = $protector->get_tripulante_or_exit("cod");
         <?php render_personagem_status_bars($pers); ?>
     </div>
     <div class="col-xs-6">
-
         <!--- Menu de modo de criacao de atributos -->
         <ul class="nav nav-pills nav-justified mb">
             <li class="<?= ! isset($_GET["buildtype"]) || $_GET["buildtype"] == "simples" ? "active" : "" ?>">
@@ -178,7 +177,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                             <a class="link_send"
                                 href="link_Personagem/atributo_build_simples?cod=<?= $pers["cod"] ?>&atr=<?= $i ?>"
                                 v-on:click="buildAutomatica(atrKey)">
-                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="30px"
+                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="20vw"
                                     style="max-width: 100%;" class="atributo-icon" />
                                 Usar build baseada em
                                 <?= nome_atributo($i) ?>
@@ -201,7 +200,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                         <?php for ($i = 1; $i <= 8; $i++) : ?>
                             <div class="build-intermediaria-atr atr-1" data-atr="<?= $i ?>"
                                 onclick="$('.build-intermediaria-atr.atr-1').removeClass('active');$(this).addClass('active');">
-                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="25vw"
+                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="20vw"
                                     class="atributo-icon" />
                             </div>
                         <?php endfor; ?>
@@ -213,7 +212,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                         <?php for ($i = 1; $i <= 8; $i++) : ?>
                             <div class="build-intermediaria-atr atr-2" data-atr="<?= $i ?>"
                                 onclick="$('.build-intermediaria-atr.atr-2').removeClass('active');$(this).addClass('active');">
-                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="25vw"
+                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="20vw"
                                     class="atributo-icon" />
                             </div>
                         <?php endfor; ?>
@@ -225,7 +224,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                         <?php for ($i = 1; $i <= 8; $i++) : ?>
                             <div class="build-intermediaria-atr atr-3" data-atr="<?= $i ?>"
                                 onclick="$('.build-intermediaria-atr.atr-3').removeClass('active');$(this).addClass('active');">
-                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="25vw"
+                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="20vw"
                                     class="atributo-icon" />
                             </div>
                         <?php endfor; ?>
@@ -249,7 +248,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                         value="<?= get_total_atributos($pers) ?>" />
                     <?php for ($i = 1; $i <= 8; $i++) : ?>
                         <div class="text-left">
-                            <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="30px" class="atributo-icon" />
+                            <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="20vw" class="atributo-icon" />
                             <input data-atr="<?= $i ?>" data-cod="<?= $pers["cod"] ?>" class="atr-input atributo"
                                 type="range" step="1" min="1" value="<?= $pers[nome_atributo_tabela($i)] ?>"
                                 oninput="$(this.nextElementSibling).html($(this).val())"

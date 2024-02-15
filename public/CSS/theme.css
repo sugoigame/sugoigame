@@ -1472,7 +1472,7 @@ abbr[data-original-title] {
 blockquote {
     padding: 0.8rem 1rem;
     margin: 0 0 1rem;
-    font-size: 15px;
+    font-size: 1rem;
     border-left: 5px solid #7a8288;
 }
 blockquote p:last-child,
@@ -1495,7 +1495,7 @@ blockquote .small:before {
 }
 .blockquote-reverse,
 blockquote.pull-right {
-    padding-right: 15px;
+    padding-right: 1rem;
     padding-left: 0;
     border-right: 5px solid #7a8288;
     border-left: 0;
@@ -1577,8 +1577,8 @@ pre code {
 .container {
     margin-right: auto;
     margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 @media (min-width: 768px) {
     .container {
@@ -1598,12 +1598,12 @@ pre code {
 .container-fluid {
     margin-right: auto;
     margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 .row {
-    margin-left: -15px;
-    margin-right: -15px;
+    margin-left: -1rem;
+    margin-right: -1rem;
 }
 .col-xs-1,
 .col-sm-1,
@@ -1655,8 +1655,8 @@ pre code {
 .col-lg-12 {
     position: relative;
     min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 .col-xs-1,
 .col-xs-2,
@@ -2530,7 +2530,7 @@ table th[class*="col-"] {
 @media screen and (max-width: 767px) {
     .table-responsive {
         width: 100%;
-        margin-bottom: 15px;
+        margin-bottom: 1rem;
         overflow-y: hidden;
         -ms-overflow-style: -ms-autohiding-scrollbar;
         border: 1px solid #1c1e22;
@@ -2716,7 +2716,7 @@ input[type="search"] {
     }
 }
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 .radio,
 .checkbox {
@@ -2861,7 +2861,7 @@ select[multiple].input-lg {
 .form-group-lg .form-control-static {
     height: 54px;
     min-height: 38px;
-    padding: 15px 16px;
+    padding: 1rem 16px;
     font-size: 16px;
     line-height: 1.33;
 }
@@ -3062,8 +3062,8 @@ select[multiple].input-lg {
     min-height: 29px;
 }
 .form-horizontal .form-group {
-    margin-left: -15px;
-    margin-right: -15px;
+    margin-left: -1rem;
+    margin-right: -1rem;
 }
 @media (min-width: 768px) {
     .form-horizontal .control-label {
@@ -3073,11 +3073,11 @@ select[multiple].input-lg {
     }
 }
 .form-horizontal .has-feedback .form-control-feedback {
-    right: 15px;
+    right: 1rem;
 }
 @media (min-width: 768px) {
     .form-horizontal .form-group-lg .control-label {
-        padding-top: 15px;
+        padding-top: 1rem;
         font-size: 16px;
     }
 }
@@ -4069,7 +4069,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a {
     position: relative;
     display: block;
-    padding: 0.8rem 15px;
+    padding: 0.8rem 1rem;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -4267,8 +4267,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-collapse {
     overflow-x: visible;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 1rem;
+    padding-left: 1rem;
     border-top: 1px solid transparent;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     -webkit-overflow-scrolling: touch;
@@ -4312,8 +4312,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .container-fluid > .navbar-header,
 .container > .navbar-collapse,
 .container-fluid > .navbar-collapse {
-    margin-right: -15px;
-    margin-left: -15px;
+    margin-right: -1rem;
+    margin-left: -1rem;
 }
 @media (min-width: 768px) {
     .container > .navbar-header,
@@ -4357,7 +4357,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
     float: left;
-    padding: 15px 15px;
+    padding: 1rem 1rem;
     font-size: 16px;
     line-height: 1rem;
     height: 50px;
@@ -4372,13 +4372,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
     .navbar > .container .navbar-brand,
     .navbar > .container-fluid .navbar-brand {
-        margin-left: -15px;
+        margin-left: -1rem;
     }
 }
 .navbar-toggle {
     position: relative;
     float: right;
-    margin-right: 15px;
+    margin-right: 1rem;
     padding: 9px 0.8rem;
     margin-top: 8px;
     margin-bottom: 8px;
@@ -4405,7 +4405,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     }
 }
 .navbar-nav {
-    margin: 7.5px -15px;
+    margin: 7.5px -1rem;
 }
 .navbar-nav > li > a {
     padding-top: 0.8rem;
@@ -4424,7 +4424,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     }
     .navbar-nav .open .dropdown-menu > li > a,
     .navbar-nav .open .dropdown-menu .dropdown-header {
-        padding: 5px 15px 5px 25px;
+        padding: 5px 1rem 5px 25px;
     }
     .navbar-nav .open .dropdown-menu > li > a {
         line-height: 1rem;
@@ -4443,14 +4443,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
         float: left;
     }
     .navbar-nav > li > a {
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     }
 }
 .navbar-form {
-    margin-left: -15px;
-    margin-right: -15px;
-    padding: 0.8rem 15px;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding: 0.8rem 1rem;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
@@ -4555,14 +4555,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-bottom: 14px;
 }
 .navbar-text {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
     .navbar-text {
         float: left;
-        margin-left: 15px;
-        margin-right: 15px;
+        margin-left: 1rem;
+        margin-right: 1rem;
     }
 }
 @media (min-width: 768px) {
@@ -4571,7 +4571,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     }
     .navbar-right {
         float: right !important;
-        /* margin-right: -15px; */
+        /* margin-right: -1rem; */
     }
     .navbar-right ~ .navbar-right {
         margin-right: 0;
@@ -4775,7 +4775,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     color: #cccccc;
 }
 .breadcrumb {
-    padding: 8px 15px;
+    padding: 8px 1rem;
     margin-bottom: 1rem;
     list-style: none;
     background-color: transparent;
@@ -4903,7 +4903,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     padding: 5px 14px;
     background-color: rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(0, 0, 0, 0.6);
-    border-radius: 15px;
+    border-radius: 1rem;
 }
 .pager li > a:hover,
 .pager li > a:focus {
@@ -5051,7 +5051,7 @@ a.badge:focus {
     color: inherit;
 }
 .jumbotron p {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
     font-size: 21px;
     font-weight: 200;
 }
@@ -5061,8 +5061,8 @@ a.badge:focus {
 .container .jumbotron,
 .container-fluid .jumbotron {
     border-radius: 0px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 .jumbotron .container {
     max-width: 100%;
@@ -5109,7 +5109,7 @@ a.thumbnail.active {
     color: #f0f0f0;
 }
 .alert {
-    padding: 15px;
+    padding: 1rem;
     margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: 0px;
@@ -5404,7 +5404,7 @@ a.thumbnail.active {
     );
 }
 .media {
-    margin-top: 15px;
+    margin-top: 1rem;
 }
 .media:first-child {
     margin-top: 0;
@@ -5458,7 +5458,7 @@ a.thumbnail.active {
 .list-group-item {
     position: relative;
     display: block;
-    padding: 0.8rem 15px;
+    padding: 0.8rem 1rem;
     margin-bottom: -1px;
     background-color: #32383e;
     border: 1px solid rgba(0, 0, 0, 0.6);
@@ -5666,10 +5666,10 @@ button.list-group-item-danger.active:focus {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .panel-body {
-    padding: 15px;
+    padding: 1rem;
 }
 .panel-heading {
-    padding: 0.8rem 15px;
+    padding: 0.8rem 1rem;
     border-bottom: 1px solid transparent;
     border-top-right-radius: -1px;
     border-top-left-radius: -1px;
@@ -5691,7 +5691,7 @@ button.list-group-item-danger.active:focus {
     color: inherit;
 }
 .panel-footer {
-    padding: 0.8rem 15px;
+    padding: 0.8rem 1rem;
     background-color: rgba(0, 0, 0, 0.4);
     border-top: 1px solid rgba(0, 0, 0, 0.6);
     border-bottom-right-radius: -1px;
@@ -5743,8 +5743,8 @@ button.list-group-item-danger.active:focus {
 .panel > .table caption,
 .panel > .table-responsive > .table caption,
 .panel > .panel-collapse > .table caption {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 .panel > .table:first-child,
 .panel > .table-responsive:first-child > .table:first-child {
@@ -6245,7 +6245,7 @@ button.close {
     filter: alpha(opacity=50);
 }
 .modal-header {
-    padding: 15px;
+    padding: 1rem;
     border-bottom: 1px solid #1c1e22;
 }
 .modal-header .close {
@@ -6287,8 +6287,8 @@ button.close {
         margin: 30px auto;
     }
     .modal-content {
-        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 0 5px 1rem rgba(0, 0, 0, 0.5);
+        box-shadow: 0 5px 1rem rgba(0, 0, 0, 0.5);
     }
     .modal-sm {
         width: 300px;

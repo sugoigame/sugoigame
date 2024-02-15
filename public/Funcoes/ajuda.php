@@ -17,7 +17,7 @@ function ajuda($title, $content, $collapse = true, $id = "help-box")
 
 function ajuda_tooltip($text)
 {
-    return '<a href="#" class="noHref" data-toggle="tooltip" data-placement="bottom"
+    return '<a href="#" class="noHref" data-toggle="tooltip" data-placement="bottom" data-container="body"
         title="' . $text . '">
         <i class="fa fa-question"></i>
     </a>';

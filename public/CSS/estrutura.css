@@ -91,7 +91,18 @@ hr {
 .mr4 {
     margin-right: 4em;
 }
-
+.mx0 {
+    margin-right: 0em;
+    margin-left: 0em;
+}
+.mx {
+    margin-right: 1em;
+    margin-left: 1em;
+}
+.mx2 {
+    margin-right: 2em;
+    margin-left: 2em;
+}
 .p1px {
     padding: 1px;
 }
@@ -105,10 +116,17 @@ hr {
 .pt1 {
     padding-top: 1em;
 }
+.pb0 {
+    padding-bottom: 0;
+}
 
 .py0 {
     padding-top: 0;
     padding-bottom: 0;
+}
+.py1 {
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 .px0 {
     padding-left: 0;
@@ -128,6 +146,18 @@ hr {
 }
 .d-inline-block {
     display: inline-block;
+}
+.d-flex {
+    display: flex;
+}
+.flex-colum {
+    flex-direction: column;
+}
+.align-items-center {
+    align-items: center;
+}
+.justify-content-center {
+    justify-content: center;
 }
 
 @media (min-width: 768px) {

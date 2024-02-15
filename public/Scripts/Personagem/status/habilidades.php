@@ -32,9 +32,9 @@ if (!$pers) {
     "i", array($pers["cod"]))->count() ?>
 <?php $ataques_com_efeitos = $connection->run("SELECT * FROM tb_personagens_skil WHERE special_effect IS NOT NULL AND cod = ? AND tipo = ?",
     "ii", array($pers["cod"], TIPO_SKILL_ATAQUE_AKUMA))->count() ?>
-<h3>
+<p>
     Efeitos especiais disponíveis: <?= $max_ataques_com_efeitos - $ataques_com_efeitos ?>
-</h3>
+</p>
 
 <?php if (count($animacoes)): ?>
     <h3>Animações disponíveis:</h3>
@@ -55,14 +55,14 @@ if (!$pers) {
     <?php foreach ($skills as $skill): ?>
         <?php if ($skill["tipo"] != $ultimo_tipo): ?>
             <div class="col-xs-12">
-                <h3>
+                <div class="list-group-item">
                     <?= nome_tipo_skill($skill) ?> de <?= nome_origem_skill($skill) ?>
-                    <img src="Imagens/Skils/Tipo/<?= nome_tipo_skill($skill) ?>.png"/>
-                </h3>
+                    <img src="Imagens/Skils/Tipo/<?= nome_tipo_skill($skill) ?>.png" width="15vw"/>
+                </div>
                 <?php $ultimo_tipo = $skill["tipo"]; ?>
             </div>
         <?php endif; ?>
-        <div class="list-group-item col-sm-2">
+        <div class="panel panel-default col-sm-3 pt1">
             <a href="#" class="noHref" data-toggle="popover" data-html="true" data-placement="bottom"
                data-trigger="focus"
                data-content="<div style='min-width:250px;'><p><?= str_replace(array('"', "'"), array("&quot;", "&lsquo;"), htmlspecialchars($skill["descricao"])) ?></p><?php render_skill_efeitos($skill) ?></div>">
@@ -71,9 +71,6 @@ if (!$pers) {
                     <?= $skill["nome"] ?>
                 </h4>
             </a>
-            <?php if (isset($skill["maestria"]) && $skill["maestria"]): ?>
-                <small>Maestria</small>
-            <?php endif; ?>
             <p>
                 <?php render_skill_efeitos_resumidos($skill); ?>
             </p>

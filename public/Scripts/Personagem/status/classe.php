@@ -92,31 +92,34 @@ for ($classe = 1; $classe <= 3; $classe++) {
     <?php $pode_aprender_func = function ($pers, $skill) {
         global $userDetails;
         return $pers["lvl"] >= $skill["requisito_lvl"]
-            and $pers[nome_atributo_tabela($skill["requisito_atr_1"])] >= $skill["requisito_atr_1_qnt"]
-            and $userDetails->tripulacao["berries"] >= $skill["requisito_berries"]
-            and $pers["classe"] == $skill["requisito_classe"];
+            && $pers[nome_atributo_tabela($skill["requisito_atr_1"])] >= $skill["requisito_atr_1_qnt"]
+            && $userDetails->tripulacao["berries"] >= $skill["requisito_berries"]
+            && $pers["classe"] == $skill["requisito_classe"];
     }; ?>
+    <?php render_habilidades_classe_tab($skills_classe[$pers["classe"]], $pers, "Academia/aprender_skil.php", $pode_aprender_func) ?>
 
     <h3>
         <b>Score:</b>
         <?= $pers["classe_score"]; ?>
+        <?= ajuda_tooltip("O Score aumenta quando o tripulante atacar em combate e diminui quando ele for atacado.
+    Espadachins ganham 1% de bônus de Ataque para cada 10 mil pontos de Score.
+    Lutadores ganham 1% de bônus de Defesa para cada 10 mil pontos de Score.
+    Atiradores ganham 1% de bônus de Precisão e 1% de bônus de Destreza para cada 10 mil pontos de Score.") ?>
     </h3>
     <p>
         <button class="link_confirm btn btn-info" <?= ($userDetails->conta["gold"] >= PRECO_GOLD_RESET_CLASSE ? "" : "disabled") ?>
             data-question="Resetar a classe desse personagem permitirá que ele aprenda uma nova. Deseja continuar?"
             href="Vip/reset_classe.php?cod=<?= $pers["cod"] ?>&tipo=gold">
             <?= PRECO_GOLD_RESET_CLASSE ?> <img src="Imagens/Icones/Gold.png" />
-            Resetar Classe
+            Trocar de Classe
         </button>
         <button class="link_confirm btn btn-info" <?= $userDetails->conta["dobroes"] >= PRECO_DOBRAO_RESET_CLASSE ? "" : "disabled" ?>
             data-question="Resetar a classe desse personagem permitirá que ele aprenda uma nova. Deseja continuar?"
             href="Vip/reset_classe.php?cod=<?= $pers["cod"] ?>&tipo=dobrao">
             <?= PRECO_DOBRAO_RESET_CLASSE ?> <img src="Imagens/Icones/Dobrao.png" />
-            Resetar Classe
+            Trocar de Classe
         </button>
     </p>
-    <h4>Atenção! Você só pode escolher uma habilidade por linha.</h4>
-    <?php render_habilidades_classe_tab($skills_classe[$pers["classe"]], $pers, "Academia/aprender_skil.php", $pode_aprender_func) ?>
 <?php endif; ?>
 <?php render_personagem_panel_bottom() ?>
 

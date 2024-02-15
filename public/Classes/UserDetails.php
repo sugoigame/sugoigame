@@ -1097,11 +1097,6 @@ class UserDetails
         $this->connection->run("DELETE FROM tb_personagens_skil WHERE cod = ? AND tipo = ? AND cod_skil IN (" . implode(',', $COD_HAOSHOKU_LVL) . ")",
             "ii", array($pers["cod"], TIPO_SKILL_ATAQUE_CLASSE));
     }
-    public function remove_skill($pers, $skill)
-    {
-        $this->connection->run("DELETE FROM tb_personagens_skil WHERE cod = ? AND cod_skil = ?",
-            "ii", array($pers["cod"], $skill));
-    }
 
     public function remove_skills_profissao($pers)
     {

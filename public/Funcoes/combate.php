@@ -489,7 +489,7 @@ function calc_recompensa($fa)
 
 function calc_score_mod($classe_score)
 {
-    return ($classe_score / 5000) * 0.01;
+    return ($classe_score / 10000) * 0.01;
 }
 
 function min_max($value, $min, $max)
