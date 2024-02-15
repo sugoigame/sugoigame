@@ -251,7 +251,6 @@ function preco_selo_exp($pers)
 { ?>
     <div class="clearfix">
         <?php render_personagem_hp_bar($pers, $text); ?>
-        <?php render_personagem_mp_bar($pers, $text); ?>
         <?php render_personagem_xp_bar($pers, $text); ?>
     </div>
 <?php } ?>
@@ -264,20 +263,6 @@ function preco_selo_exp($pers)
             <?php if ($pers["id"] == $userDetails->tripulacao["id"] && $text) : ?>
                 <span>HP:
                     <?= $pers["hp"] . "/" . $pers["hp_max"] ?>
-                </span>
-            <?php endif; ?>
-        </div>
-    </div>
-<?php } ?>
-<?php function render_personagem_mp_bar($pers, $text = true)
-{ ?>
-    <?php global $userDetails; ?>
-    <div class="progress mp-bar">
-        <div class="progress-bar progress-bar-warning" role="progressbar"
-            style="width: <?= $pers["mp"] / $pers["mp_max"] * 100 ?>%;">
-            <?php if ($pers["id"] == $userDetails->tripulacao["id"] && $text) : ?>
-                <span>Energia:
-                    <?= $pers["mp"] . "/" . $pers["mp_max"] ?>
                 </span>
             <?php endif; ?>
         </div>
