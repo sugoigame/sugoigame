@@ -21,7 +21,7 @@ if ($userDetails->tripulacao["tempo_missao"] > atual_segundo()) {
 $result = $connection->run("SELECT * FROM tb_ilha_missoes WHERE ilha = ? AND cod_missao = ?",
     "ii", array($userDetails->ilha["ilha"], $cod));
 
-if (!$result->count()) {
+if (! $result->count()) {
     $protector->exit_error("Missao nao encontrada");
 }
 
@@ -52,7 +52,8 @@ if ($userDetails->capitao['lvl'] < $missao["requisito_lvl"]) {
 $espera = array();
 $buffs = array();
 
-function set_espera($equipe, $pers, $habilidade) {
+function set_espera($equipe, $pers, $habilidade)
+{
     global $espera;
     if ($habilidade["espera"]) {
         $espera[] = array(
@@ -65,7 +66,8 @@ function set_espera($equipe, $pers, $habilidade) {
     }
 }
 
-function set_buff($equipe, &$pers, $habilidade) {
+function set_buff($equipe, &$pers, $habilidade)
+{
     global $buffs;
     if ($habilidade["espera"]) {
         $buffs[] = array(
@@ -78,7 +80,8 @@ function set_buff($equipe, &$pers, $habilidade) {
     }
 }
 
-function in_espera($equipe, $pers, $habilidade) {
+function in_espera($equipe, $pers, $habilidade)
+{
     global $espera;
 
     foreach ($espera as $skill) {
@@ -93,7 +96,8 @@ function in_espera($equipe, $pers, $habilidade) {
     return false;
 }
 
-function clear_esperas() {
+function clear_esperas()
+{
     global $espera;
 
     $espera_copy = $espera;
@@ -108,7 +112,8 @@ function clear_esperas() {
     }
 }
 
-function clear_buffs() {
+function clear_buffs()
+{
     global $buffs;
 
     $buffs_copy = $buffs;
@@ -125,14 +130,16 @@ function clear_buffs() {
     }
 }
 
-function nome_faccao($item) {
+function nome_faccao($item)
+{
     global $userDetails;
     global $tipo;
     $faccao = $userDetails->tripulacao["faccao"];
     return isset($item["nome_" . $tipo . "_" . $faccao]) ? $item["nome_" . $tipo . "_" . $faccao] : $item["nome"];
 }
 
-function attack($atacante, & $alvo, $habilidade) {
+function attack($atacante, &$alvo, $habilidade)
+{
     $golpe = calc_dano($atacante, $alvo, $habilidade["dano"] * 10);
 
     $alvo["hp"] = max(0, $alvo["hp"] - $golpe["dano"]);
@@ -153,7 +160,8 @@ function attack($atacante, & $alvo, $habilidade) {
     return $golpe;
 }
 
-function apply_buff(&$alvo_pers, $habilidade) {
+function apply_buff(&$alvo_pers, $habilidade)
+{
     $alvo_pers[nome_atributo_tabela($habilidade["bonus_atr"])] += $habilidade["bonus_atr_qnt"];
 
     $golpe = array();
@@ -171,7 +179,8 @@ function apply_buff(&$alvo_pers, $habilidade) {
     return $golpe;
 }
 
-function is_all_defeated($personagens) {
+function is_all_defeated($personagens)
+{
     foreach ($personagens as $pers) {
         if ($pers["hp"] > 0) {
             return false;
@@ -180,7 +189,8 @@ function is_all_defeated($personagens) {
     return true;
 }
 
-function processa_golpe($equipe, &$atacante, &$inimigos, $habilidade, $alvos_buff, &$personagens_buff) {
+function processa_golpe($equipe, &$atacante, &$inimigos, $habilidade, $alvos_buff, &$personagens_buff)
+{
     $golpe = array();
 
     if ($atacante["mp"] < $habilidade["consumo"]) {
@@ -192,7 +202,7 @@ function processa_golpe($equipe, &$atacante, &$inimigos, $habilidade, $alvos_buf
         set_espera($equipe, $atacante, $habilidade);
         if (nome_tipo_skill($habilidade) == "Ataque") {
             for ($area = 0; $area < $habilidade["area"]; $area++) {
-                if (!is_all_defeated($inimigos)) {
+                if (! is_all_defeated($inimigos)) {
                     do {
                         $alvo = &$inimigos[array_rand($inimigos)];
                     } while ($alvo["hp"] <= 0);
@@ -252,20 +262,14 @@ $habilidades = array();
 
 foreach ($userDetails->personagens as $pers) {
     $personagens[$pers["cod"]] = aplica_bonus($pers);
-    $habs = get_many_results_joined_mapped_by_type("tb_personagens_skil", "cod_skil", "tipo", array(
-        array("nome" => "tb_skil_atk", "coluna" => "cod_skil", "tipo" => TIPO_SKILL_ATAQUE_CLASSE),
-        array("nome" => "tb_skil_atk", "coluna" => "cod_skil", "tipo" => TIPO_SKILL_ATAQUE_PROFISSAO),
-        array("nome" => "tb_akuma_skil_atk", "coluna" => "cod_skil", "tipo" => TIPO_SKILL_ATAQUE_AKUMA),
-        array("nome" => "tb_skil_buff", "coluna" => "cod_skil", "tipo" => TIPO_SKILL_BUFF_CLASSE),
-        array("nome" => "tb_skil_buff", "coluna" => "cod_skil", "tipo" => TIPO_SKILL_BUFF_PROFISSAO),
-        array("nome" => "tb_akuma_skil_buff", "coluna" => "cod_skil", "tipo" => TIPO_SKILL_BUFF_AKUMA)
-    ), "WHERE origem.cod = ?", "i", $pers["cod"]);
+    $habs = get_all_skills($pers);
 
     foreach ($habs as $hab) {
         $habilidades[$pers["cod"]][$hab["tipo"]][$hab["cod_skil"]] = $hab;
     }
 }
-function shuffle_assoc(&$array) {
+function shuffle_assoc(&$array)
+{
     $keys = array_keys($array);
 
     shuffle($keys);
@@ -283,13 +287,13 @@ function shuffle_assoc(&$array) {
 shuffle_assoc($personagens);
 
 $log = array();
-for ($i = 0, $j = 0, $turno = 0; $turno < $missao["turnos"] && !is_all_defeated($personagens) && !is_all_defeated($missao["inimigos"]); $i++, $j++) {
+for ($i = 0, $j = 0, $turno = 0; $turno < $missao["turnos"] && ! is_all_defeated($personagens) && ! is_all_defeated($missao["inimigos"]); $i++, $j++) {
     if ($i >= count($rotacao)) {
         $i = -1;
         $j -= 1;
         continue;
     }
-    if (!isset($rotacao[$i])) {
+    if (! isset($rotacao[$i])) {
         $j -= 1;
         continue;
     }
@@ -352,7 +356,7 @@ foreach ($personagens as $pers) {
 $venceu = is_all_defeated($missao["inimigos"]) ? 1 : 0;
 
 $connection->run(
-    "INSERT INTO tb_missoes_iniciadas (id, cod_missao, fim, log, venceu, hp_final, mp_final, tipo_karma) 
+    "INSERT INTO tb_missoes_iniciadas (id, cod_missao, fim, log, venceu, hp_final, mp_final, tipo_karma)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
     "iiisisss", array(
         $userDetails->tripulacao["id"],
@@ -369,4 +373,4 @@ $fim = atual_segundo() + $missao["duracao"];
 $connection->run("UPDATE tb_usuarios SET tempo_missao = ? WHERE id = ?",
     "ii", array($fim, $userDetails->tripulacao["id"]));
 
-echo("-Missão iniciada");
+echo ("-Missão iniciada");

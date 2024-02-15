@@ -16,17 +16,7 @@ if (!$pers) {
 )->fetch_all_array() ?>
 
 <?php render_personagem_panel_top($pers, 0) ?>
-<?php $skills = get_many_results_joined_mapped_by_type("tb_personagens_skil", "cod_skil", "tipo", array(
-    array("nome" => "tb_skil_atk", "coluna" => "cod_skil", "tipo" => 1),
-    array("nome" => "tb_skil_buff", "coluna" => "cod_skil", "tipo" => 2),
-    array("nome" => "tb_skil_passiva", "coluna" => "cod_skil", "tipo" => 3),
-    array("nome" => "tb_skil_atk", "coluna" => "cod_skil", "tipo" => 4),
-    array("nome" => "tb_skil_buff", "coluna" => "cod_skil", "tipo" => 5),
-    array("nome" => "tb_skil_passiva", "coluna" => "cod_skil", "tipo" => 6),
-    array("nome" => "tb_akuma_skil_atk", "coluna" => "cod_skil", "tipo" => 7),
-    array("nome" => "tb_akuma_skil_buff", "coluna" => "cod_skil", "tipo" => 8),
-    array("nome" => "tb_akuma_skil_passiva", "coluna" => "cod_skil", "tipo" => 9)
-), "WHERE cod = ? ORDER BY tipo", "i", $pers["cod"]) ?>
+<?php $skills = get_all_skills($pers) ?>
 <?php $max_ataques_com_efeitos = 1; ?>
 <?php $skills_com_efeitos = $connection->run("SELECT * FROM tb_personagens_skil WHERE special_effect IS NOT NULL AND cod = ?",
     "i", array($pers["cod"]))->count() ?>

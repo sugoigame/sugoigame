@@ -1,27 +1,57 @@
 <?php
-class MapLoader {
-	private static $cache = [];
+class MapLoader
+{
+    private static $cache = [];
 
-	public static function load($data) {
-		if (!isset(MapLoader::$cache[$data])) {
-			MapLoader::$cache[$data] = MapLoader::load_file(dirname(__FILE__) . "/../Data/" . $data . ".json");
-		}
-		return MapLoader::$cache[$data];
-	}
+    public static function load($data)
+    {
+        if (! isset(MapLoader::$cache[$data])) {
+            MapLoader::$cache[$data] = MapLoader::load_file(dirname(__FILE__) . "/../Data/" . $data . ".json");
+        }
+        return MapLoader::$cache[$data];
+    }
 
-	private static function load_file($file_name) {
-		$file = fopen($file_name, "r");
-		$lines = "";
-		while ($line = fgets($file)) {
-			$lines .= $line;
-		}
-		fclose($file);
-		return strlen($lines) ? json_decode($lines, true) : [];
-	}
+    private static function load_file($file_name)
+    {
+        $file = fopen($file_name, "r");
+        $lines = "";
+        while ($line = fgets($file)) {
+            $lines .= $line;
+        }
+        fclose($file);
+        return strlen($lines) ? json_decode($lines, true) : [];
+    }
 
-	public static function save($map, $data) {
-		$file = fopen(dirname(__FILE__) . "/../Data/" . $data . ".json", "w");
-		fwrite($file, json_encode($map, JSON_PRETTY_PRINT));
-		fclose($file);
-	}
+    public static function save($map, $data)
+    {
+        $file = fopen(dirname(__FILE__) . "/../Data/" . $data . ".json", "w");
+        fwrite($file, json_encode($map, JSON_PRETTY_PRINT));
+        fclose($file);
+    }
+    public static function filter($map, $func)
+    {
+        $data = MapLoader::load($map);
+        return array_filter($data, $func);
+    }
+
+    public static function find($map, $search)
+    {
+        $data = MapLoader::load($map);
+        foreach ($data as $item) {
+            if (MapLoader::_keys_are_equal($item, $search)) {
+                return $item;
+            }
+        }
+        return null;
+    }
+
+    private static function _keys_are_equal($item, $search)
+    {
+        foreach ($search as $key => $value) {
+            if ($search[$key] != $item[$key]) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

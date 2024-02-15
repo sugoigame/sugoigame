@@ -24,16 +24,8 @@ if (! $result->count()) {
     exit();
 }
 $pers = $result->fetch_array();
-//todo ivan
-$skills = get_many_results_joined_mapped_by_type("tb_personagens_skil", "cod_skil", "tipo", array(
-    array("nome" => "tb_skil_atk", "coluna" => "cod_skil", "tipo" => 1),
-    array("nome" => "tb_skil_buff", "coluna" => "cod_skil", "tipo" => 2),
-    array("nome" => "tb_skil_atk", "coluna" => "cod_skil", "tipo" => 4),
-    array("nome" => "tb_skil_buff", "coluna" => "cod_skil", "tipo" => 5),
-    array("nome" => "tb_akuma_skil_atk", "coluna" => "cod_skil", "tipo" => 7),
-    array("nome" => "tb_akuma_skil_buff", "coluna" => "cod_skil", "tipo" => 8)
-), "WHERE origem.cod = ? ORDER BY origem.tipo", "i", $pers["cod"]);
 
+$skills = get_all_skills($pers);
 
 ?>
 <div class="clearfix">

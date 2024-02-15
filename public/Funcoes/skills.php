@@ -1,4 +1,53 @@
 <?php
+
+function get_skill_table($tipo)
+{
+    switch ($tipo) {
+        case TIPO_SKILL_ATAQUE_CLASSE:
+        case TIPO_SKILL_ATAQUE_PROFISSAO:
+            return "skil_atk";
+        case TIPO_SKILL_BUFF_CLASSE:
+        case TIPO_SKILL_BUFF_PROFISSAO:
+            return "skil_buff";
+        case TIPO_SKILL_ATAQUE_AKUMA:
+            return "tb_akuma_skil_atk";
+        case TIPO_SKILL_BUFF_AKUMA:
+            return "tb_akuma_skil_buff";
+        default:
+            return null;
+    }
+}
+
+function get_random_skill_with_level($lvl)
+{
+    $habilidades_validas = MapLoader::filter("skil_atk", function ($habilidade) use ($lvl) {
+        return $habilidade['requisito_lvl'] <= $lvl;
+    });
+    return $habilidades_validas[rand(0, (sizeof($habilidades_validas) - 1))];
+}
+
+function get_all_skills($pers)
+{
+    global $connection;
+    $skills = $connection->run(
+        "SELECT * FROM tb_personagens_skil WHERE cod = ? and tipo IN (1, 2, 4, 5) ORDER BY tipo",
+        "i", $pers["cod"]
+    )->fetch_all_array();
+
+    foreach ($skills as $key => $skill) {
+        $tb = get_skill_table($skill["tipo"]);
+        $details = MapLoader::find($tb, ["cod_skil" => $skill["cod_skil"]]);
+        $skills[$key] = array_merge($skill, $details);
+    }
+
+    $skills_akuma = get_many_results_joined_mapped_by_type("tb_personagens_skil", "cod_skil", "tipo", array(
+        array("nome" => "tb_akuma_skil_atk", "coluna" => "cod_skil", "tipo" => 7),
+        array("nome" => "tb_akuma_skil_buff", "coluna" => "cod_skil", "tipo" => 8)
+    ), "WHERE origem.cod = ? ORDER BY origem.tipo", "i", $pers["cod"]);
+
+    return array_merge($skills, $skills_akuma);
+}
+
 function has_animacao($skill)
 {
     return $skill["tipo"] != TIPO_SKILL_PASSIVA_AKUMA

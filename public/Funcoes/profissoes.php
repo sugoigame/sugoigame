@@ -1,5 +1,6 @@
 <?php
-function nome_prof($cod) {
+function nome_prof($cod)
+{
     switch ($cod) {
         case PROFISSAO_CARTOGRAFO:
             return "Cartógrafo";
@@ -26,11 +27,12 @@ function nome_prof($cod) {
         case PROFISSAO_ARTESAO:
             return "Artesão";
         default:
-            return "Nenhuma";
+            return "Sem profissão";
     }
 }
 
-function desc_prof($cod) {
+function desc_prof($cod)
+{
     switch ($cod) {
         case PROFISSAO_CARTOGRAFO:
             return "Possui a habilidade de desenhar mapas enquanto você navega para poder traçar rotas maiores.";
@@ -61,7 +63,8 @@ function desc_prof($cod) {
     }
 }
 
-function calc_preco_tratamento_quartos($personagens) {
+function calc_preco_tratamento_quartos($personagens)
+{
     $preco = 0;
 
     foreach ($personagens as $pers) {
@@ -70,35 +73,42 @@ function calc_preco_tratamento_quartos($personagens) {
     return $preco;
 }
 
-function calc_tempo_tratament_quartos($pers) {
+function calc_tempo_tratament_quartos($pers)
+{
     global $userDetails;
     return (10 * max(0, $pers["lvl"] - 20)) * (1 - ($userDetails->lvl_medico * 0.05));
 }
 
-function render_painel_profissao($pers) { ?>
+function render_painel_profissao($pers)
+{ ?>
     <?php global $userDetails; ?>
-    <?php if (!$pers["profissao"]): ?>
+    <?php if (! $pers["profissao"]) : ?>
         <p>
             Este personagem ainda não tem função no navio, visite a escola de profissões de alguma ilha para aprender
             uma profissão.
         </p>
-        <?php if ($userDetails->in_ilha): ?>
+        <?php if ($userDetails->in_ilha) : ?>
             <p>
                 <a class="link_content" href="./?ses=profissoesAprender&cod=<?= $pers["cod"] ?>">
                     Ir para a Escola de Profissões
                 </a>
             </p>
         <?php endif; ?>
-    <?php else: ?>
-        <h3><?= nome_prof($pers["profissao"]) ?></h3>
-        <h4>Nível: <?= $pers["profissao_lvl"]; ?></h4>
+    <?php else : ?>
+        <h3>
+            <?= nome_prof($pers["profissao"]) ?>
+        </h3>
+        <h4>Nível:
+            <?= $pers["profissao_lvl"]; ?>
+        </h4>
         <div class="progress">
-            <div class="progress-bar"
-                 style="width: <?= $pers["profissao_xp"] / $pers["profissao_xp_max"] * 100 ?>%;">
-                <span>EXP:<?= $pers["profissao_xp"] . "/" . $pers["profissao_xp_max"] ?></span>
+            <div class="progress-bar" style="width: <?= $pers["profissao_xp"] / $pers["profissao_xp_max"] * 100 ?>%;">
+                <span>EXP:
+                    <?= $pers["profissao_xp"] . "/" . $pers["profissao_xp_max"] ?>
+                </span>
             </div>
         </div>
-        <?php if ($pers["profissao"] == PROFISSAO_CARTOGRAFO): ?>
+        <?php if ($pers["profissao"] == PROFISSAO_CARTOGRAFO) : ?>
             <p>
                 O cartógrafo ganha experiência desenhando o campo de visão do jogador em um mapa.
             </p>
@@ -113,17 +123,23 @@ function render_painel_profissao($pers) { ?>
             <p>
                 Correntes Identificadas:
                 <?php
-                if ($pers["profissao_lvl"] <= 3) echo "Rank A";
-                else if ($pers["profissao_lvl"] <= 8) echo "Rank B";
-                else echo "Rank A";
+                if ($pers["profissao_lvl"] <= 3)
+                    echo "Rank A";
+                else if ($pers["profissao_lvl"] <= 8)
+                    echo "Rank B";
+                else
+                    echo "Rank A";
                 ?>
             </p>
             <p>
                 Ventos Identificados:
                 <?php
-                if ($pers["profissao_lvl"] <= 2) echo "Rank A";
-                else if ($pers["profissao_lvl"] <= 9) echo "Rank B";
-                else echo "Rank A";
+                if ($pers["profissao_lvl"] <= 2)
+                    echo "Rank A";
+                else if ($pers["profissao_lvl"] <= 9)
+                    echo "Rank B";
+                else
+                    echo "Rank A";
                 ?>
             </p>
         <?php elseif ($pers["profissao"] == PROFISSAO_CARPINTEIRO) : ?>
@@ -184,17 +200,18 @@ function render_painel_profissao($pers) { ?>
 
         <p>
             <button class="link_confirm btn btn-info" <?= $userDetails->conta["gold"] >= PRECO_GOLD_RESET_PROFISSAO ? "" : "disabled" ?>
-                    data-question="Resetar a profissão desse personagem permitirá que ele aprenda uma nova. Porém toda a experiência e níveis adquiridos serão perdidos. Deseja continuar?"
-                    href="Vip/reset_profissao.php?cod=<?= $pers["cod"] ?>&tipo=gold">
-                <?= PRECO_GOLD_RESET_PROFISSAO ?> <img src="Imagens/Icones/Gold.png"/>
+                data-question="Resetar a profissão desse personagem permitirá que ele aprenda uma nova. Porém toda a experiência e níveis adquiridos serão perdidos. Deseja continuar?"
+                href="Vip/reset_profissao.php?cod=<?= $pers["cod"] ?>&tipo=gold">
+                <?= PRECO_GOLD_RESET_PROFISSAO ?> <img src="Imagens/Icones/Gold.png" />
                 Resetar Profissão
             </button>
             <button class="link_confirm btn btn-info" <?= $userDetails->conta["dobroes"] >= PRECO_DOBRAO_RESET_PROFISSAO ? "" : "disabled" ?>
-                    data-question="Resetar a profissão desse personagem permitirá que ele aprenda uma nova. Porém toda a experiência e níveis adquiridos serão perdidos. Deseja continuar?"
-                    href="Vip/reset_profissao.php?cod=<?= $pers["cod"] ?>&tipo=dobrao">
-                <?= PRECO_DOBRAO_RESET_PROFISSAO ?> <img src="Imagens/Icones/Dobrao.png"/>
+                data-question="Resetar a profissão desse personagem permitirá que ele aprenda uma nova. Porém toda a experiência e níveis adquiridos serão perdidos. Deseja continuar?"
+                href="Vip/reset_profissao.php?cod=<?= $pers["cod"] ?>&tipo=dobrao">
+                <?= PRECO_DOBRAO_RESET_PROFISSAO ?> <img src="Imagens/Icones/Dobrao.png" />
                 Resetar Profissão
             </button>
         </p>
     <?php endif; ?>
 <?php } ?>
+

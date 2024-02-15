@@ -11,7 +11,7 @@ $tipo_skill = $protector->post_enum_or_exit("tiposkill", array(TIPO_SKILL_ATAQUE
 $skill = $connection->run("SELECT * FROM tb_personagens_skil WHERE cod = ? AND cod_skil = ? AND tipo = ?",
     "iii", array($pers["cod"], $cod_skill, $tipo_skill));
 
-if (!$skill->count()) {
+if (! $skill->count()) {
     $protector->exit_error("Habilidade inválida");
 }
 
@@ -34,7 +34,7 @@ if ($tipo_skill == TIPO_SKILL_ATAQUE_AKUMA) {
 
     $connection->run("UPDATE tb_akuma_skil_atk SET dano = ?, alcance = ?, area = ? WHERE cod_skil = ?",
         "iiii", array($dano, $alcance, $area, $cod_skill));
-} else if ($tipo_skill == TIPO_SKILL_BUFF_AKUMA) {
+} elseif ($tipo_skill == TIPO_SKILL_BUFF_AKUMA) {
     $atributo = $protector->post_number_or_exit("atributo");
     $efeito_negativo = $protector->post_number_or_exit("negativo");
     $area = $protector->post_number_or_exit("area");

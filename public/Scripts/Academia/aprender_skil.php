@@ -22,23 +22,15 @@ if ($exists->count()) {
     $protector->exit_error("Você já possui essa habilidade");
 }
 
-if ($tipo_skill == TIPO_SKILL_ATAQUE_CLASSE) {
-    $tb = "tb_skil_atk";
-} else if ($tipo_skill == TIPO_SKILL_BUFF_CLASSE) {
-    $tb = "tb_skil_buff";
-} else {
-    $tb = "tb_skil_passiva";
-}
+$tb = get_skill_table($tipo_skill);
 
-$result = $connection->run("SELECT * FROM $tb WHERE cod_skil = ? AND maestria = 0", "i", $cod_skill);
-if (! $result->count()) {
+$skill = MapLoader::find($tb, ["cod_skil" => $cod_skill]);
+if (! $skill) {
     $protector->exit_error("Habilidade inválida");
 }
 
-$skill = $result->fetch_array();
 $rec_1 = nome_atributo_tabela($skill["requisito_atr_1"]);
 $rec_2 = nome_atributo_tabela($skill["requisito_atr_2"]);
-
 if ($pers["lvl"] < $skill["requisito_lvl"]
     || $pers["classe"] != $skill["requisito_classe"]
 ) {
@@ -49,28 +41,18 @@ if ($pers["lvl"] < $skill["requisito_lvl"]
 $habilidade = habilidade_random();
 $icon = $cod_skill;
 
-$skills_personagem = $connection->run("SELECT * FROM tb_personagens_skil WHERE cod = ? AND (tipo = 1 OR tipo = 2 OR tipo = 3)", "i", $pers["cod"])->fetch_all_array();
+$skills_personagem = $connection->run(
+    "SELECT * FROM tb_personagens_skil WHERE cod = ? AND (tipo = 1 OR tipo = 2 OR tipo = 3)",
+    "i", $pers["cod"]
+)->fetch_all_array();
 foreach ($skills_personagem as $x => $outra_skill) {
-    switch ($outra_skill["tipo"]) {
-        case TIPO_SKILL_ATAQUE_CLASSE:
-            $table = "tb_skil_atk";
-            break;
-        case TIPO_SKILL_BUFF_CLASSE:
-            $table = "tb_skil_buff";
-            break;
-        default:
-            $table = "tb_skil_passiva";
-            break;
-    }
+    $outra_tb = get_skill_table($outra_skill["tipo"]);
+    $outra_skill_details = MapLoader::find($outra_tb, ["cod_skil" => $outra_skill["cod_skil"]]);
 
-    $result = $connection->run("SELECT * FROM `tb_personagens_skil` `ps` INNER JOIN `{$table}` `info` ON `ps`.`cod_skil` = `info`.`cod_skil` WHERE `ps`.`cod` = ? AND `ps`.`tipo` = ? AND `info`.`requisito_lvl` = ? AND `requisito_classe` <> 0 AND `maestria` = 0", "iii", [
-        $pers["cod"],
-        $outra_skill["tipo"],
-        $skill["requisito_lvl"]
-    ]);
+    if ($outra_skill_details["requisito_lvl"] == $skill["requisito_lvl"]
+        && $outra_skill_details["requisito_classe"] != 0
+        && $outra_skill_details["maestria"] == 0) {
 
-    if ($result->count()) {
-        $outra_skill = $result->fetch_array();
         $icon = $outra_skill["icon"];
         $connection->run("DELETE FROM tb_personagens_skil WHERE cod = ? AND cod_skil = ? AND tipo = ?", "iii", [
             $pers["cod"],
@@ -80,13 +62,14 @@ foreach ($skills_personagem as $x => $outra_skill) {
     }
 }
 
-$connection->run("INSERT INTO tb_personagens_skil (cod, cod_skil, tipo, nome, descricao, icon) VALUE (?,?,?,?,?,?)", "iiissi", [
-    $pers["cod"],
-    $cod_skill,
-    $tipo_skill,
-    $habilidade["nome"],
-    $habilidade["descricao"],
-    $icon
-]);
+$connection->run(
+    "INSERT INTO tb_personagens_skil (cod, cod_skil, tipo, nome, descricao, icon) VALUE (?,?,?,?,?,?)", "iiissi", [
+        $pers["cod"],
+        $cod_skill,
+        $tipo_skill,
+        $habilidade["nome"],
+        $habilidade["descricao"],
+        $icon
+    ]);
 
 $response->send($pers["nome"] . " aprendeu uma nova habilidade. Visite o menu de Habilidades para customiza-la!");

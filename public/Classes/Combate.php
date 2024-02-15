@@ -741,16 +741,7 @@ class Combate
         $alvo = $alvo_mira["alvo"];
 
         //sorteia uma skil
-        $habilidade = $this->connection->run("SELECT * FROM tb_skil_atk WHERE requisito_lvl <= ? ORDER BY RAND() LIMIT 1",
-            "i", $alvo["lvl"])->fetch_array();
-        // $habilidades = $result = MapLoader::load("skil_atk");
-        // $habilidades_validas =[];
-        // foreach ($habilidades as $habilidade) {
-        // 	if($habilidade['requisito_lvl']<=$alvo["lvl"]){
-        // 		$habilidades_validas[] = $habilidade;
-        // 	}
-        // }
-        // $habilidade = $habilidades_validas[rand(0, (sizeof($habilidades_validas)-1))];
+        $habilidade = get_random_skill_with_level($alvo);
 
         $x = 0;
         $relatorio_afetado[$x] = $this->recebe_dano_npc($npc_stats, $habilidade, $alvo);
@@ -915,26 +906,8 @@ class Combate
 
     public function load_habilidade($personagem, $cod_skil, $tipo_skil)
     {
-        if ($tipo_skil != 10) {
-            switch ($tipo_skil) {
-                case 1:
-                case 4:
-                    $table = "tb_skil_atk";
-                    break;
-                case 2:
-                case 5:
-                    $table = "tb_skil_buff";
-                    break;
-                case 7:
-                    $table = "tb_akuma_skil_atk";
-                    break;
-                case 8:
-                    $table = "tb_akuma_skil_buff";
-                    break;
-                default:
-                    $this->protector->exit_error("Tipo de habilidade inválida");
-            }
-            //todo importar tabela do json
+        if ($tipo_skil == TIPO_SKILL_ATAQUE_AKUMA || $tipo_skil == TIPO_SKILL_BUFF_AKUMA) {
+            $table = get_skill_table($tipo_skil);
             $result = $this->connection->run(
                 "SELECT * FROM tb_personagens_skil skil
 				INNER JOIN $table info ON skil.cod_skil = info.cod_skil AND skil.tipo = ?
@@ -947,7 +920,7 @@ class Combate
             }
 
             return $result->fetch_array();
-        } else {
+        } elseif ($tipo_skil == TIPO_SKILL_MEDICAMENTO) {
             if ($personagem["profissao"] != PROFISSAO_MEDICO) {
                 $this->protector->exit_error("este personagem nao possui profissao adequada");
             }
@@ -971,6 +944,23 @@ class Combate
             } else {
                 $this->protector->exit_error("Habilidade inválida");
             }
+        } else {
+            $table = get_skill_table($tipo_skil);
+
+            $result = $this->connection->run(
+                "SELECT * FROM tb_personagens_skil skil
+				WHERE skil.cod_skil = ? AND skil.cod = ? AND skil.tipo = ?",
+                "iii", array($cod_skil, $personagem["cod"], $tipo_skil)
+            );
+
+            if (! $result->count()) {
+                $this->protector->exit_error("Habilidade inválida");
+            }
+
+            return array_merge(
+                $result->fetch_array(),
+                MapLoader::find($table, ["cod_skil" => $cod_skil])
+            );
         }
     }
 

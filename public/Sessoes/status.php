@@ -179,7 +179,9 @@
                         <div class="list-group-item">
                             <?= icon_pers_skin($pers["img"], $pers["skin_r"], "header-skin") ?>
                             <?= $pers["nome"]; ?>
-                            <?= ($pers_titulo) ? " - " . $pers_titulo : "" ?>, Nível
+                            <?= ($pers_titulo) ? " - " . $pers_titulo : "" ?>,
+                            <?= nome_classe($pers["classe"]) ?>
+                            <?= nome_prof($pers["profissao"]) ?> Nível
                             <?= $pers["lvl"]; ?>
                         </div>
                         <div class="tab-content">

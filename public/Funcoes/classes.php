@@ -2,7 +2,7 @@
 function nome_classe($cod) {
     switch ($cod) {
         case 0:
-            $classe = "Nenhuma";
+            $classe = "Sem classe";
             break;
         case 1:
             $classe = "Espadachim";

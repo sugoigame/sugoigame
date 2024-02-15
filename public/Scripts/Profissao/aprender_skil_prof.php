@@ -15,17 +15,10 @@ if ($exists->count()) {
     $protector->exit_error("Você já possui essa habilidade");
 }
 
-if ($tipo_skill == TIPO_SKILL_ATAQUE_PROFISSAO) {
-    $tb = "tb_skil_atk";
-} else if ($tipo_skill == TIPO_SKILL_BUFF_PROFISSAO) {
-    $tb = "tb_skil_buff";
-} else {
-    $tb = "tb_skil_passiva";
-}
+$tb = get_skill_table($tipo_skill);
+$skill = MapLoader::find($tb, ["cod_skil" => $cod_skill]);
 
-$skill = $connection->run("SELECT * FROM $tb WHERE cod_skil = ?", "i", array($cod_skill));
-
-if (!$skill->count()) {
+if (! $skill) {
     $protector->exit_error("Habilidade inválida");
 }
 
