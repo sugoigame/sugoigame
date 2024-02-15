@@ -874,7 +874,6 @@ function fadiga_batalha_ativa($personagens)
                                 <?php endif; ?>
 
                                 <?php render_personagem_hp_bar($pers); ?>
-                                <?php render_personagem_mp_bar($pers); ?>
 
                                 <?php if (($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]) : ?>
                                     <?php render_personagem_haki_bars($pers); ?>

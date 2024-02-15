@@ -24,20 +24,17 @@ if ($quant < 1 || ($quant - $pers[$atr]) > $pers["pts"]) {
 }
 
 $hp_razao = $pers["hp"] / $pers["hp_max"];
-$mp_razao = $pers["mp"] / $pers["mp_max"];
 
 $dif = $quant - $pers[$atr];
 $pers[$atr] = $quant;
 $pers["pts"] -= $dif;
 
-$hp_max = (($pers["lvl"] - 1) * HP_POR_NIVEL) + HP_INICIAL + (($pers["vit"] - 1) * HP_POR_VITALIDADE);
-$mp_max = (($pers["lvl"] - 1) * 7) + 100 + (($pers["vit"] - 1) * 7);
+$hp_max = calc_pers_hp_max($pers);
 
 $hp = floor($hp_max * $hp_razao);
-$mp = floor($mp_max * $mp_razao);
 
-$connection->run("UPDATE tb_personagens SET hp=?, hp_max=?, mp=?, mp_max=?, atk=?, def=?, agl=?, res=?, pre=?, dex=?, con=?, vit=?, pts=? WHERE cod=?",
-    "iiiiiiiiiiiiii", array($hp, $hp_max, $mp, $mp_max,
+$connection->run("UPDATE tb_personagens SET hp=?, hp_max=?, atk=?, def=?, agl=?, res=?, pre=?, dex=?, con=?, vit=?, pts=? WHERE cod=?",
+    "iiiiiiiiiiii", array($hp, $hp_max,
         $pers["atk"], $pers["def"], $pers["agl"], $pers["res"], $pers["pre"], $pers["dex"],
         $pers["con"], $pers["vit"], $pers["pts"], $pers["cod"]));
 
