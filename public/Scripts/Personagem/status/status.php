@@ -187,7 +187,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                 </div>
 
                 <!--- Intermediário -->
-                <div class="tab-pane <?= ! isset($_GET["buildtype"]) || $_GET["buildtype"] == "intermediaria" ? "active" : "" ?>"
+                <div class="tab-pane <?= $_GET["buildtype"] == "intermediaria" ? "active" : "" ?>"
                     id="atributos-intermediarios-<?= $pers["cod"] ?>">
                     <p class="text-left">
                         No modo intermediário você pode escolher seus três atributos
@@ -237,7 +237,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                 </div>
 
                 <!--- Avançado -->
-                <div class="tab-pane <?= ! isset($_GET["buildtype"]) || $_GET["buildtype"] == "avancada" ? "active" : "" ?>"
+                <div class="tab-pane <?= $_GET["buildtype"] == "avancada" ? "active" : "" ?>"
                     id="atributos-avancados-<?= $pers["cod"] ?>">
                     <p class="text-left">
                         No modo avançado você tem liberdade total para escolher seus
