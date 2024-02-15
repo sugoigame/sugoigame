@@ -25,60 +25,27 @@
     <?php endif; ?>
 
     <p>Toda vez que você treina com o mestre, você adquire pontos de Haki que podem ser aplicados á sua tripulação.<br />
-        Um novo treino é liberado a cada 12 horas, e eles são acumulativos.</p>
+        </p>
 
-    <?php
-    $treinosRealizados = $connection->run("SELECT * FROM tb_haki_treino WHERE tripulacao_id = ?", "i", [
-        $userDetails->tripulacao["id"]
-    ])->count();
 
-    $treinosLimite = $userDetails->tripulacao['treinos_haki_disponiveis'] - $treinosRealizados;
-    ?>
-
+<!-- 
     <div class="panel panel-default">
         <div class="panel-heading">Treinar Haki com o Mestre</div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-9">
-                    <h3>Treinos realizados: <?=$treinosRealizados;?> / <?=$userDetails->tripulacao['treinos_haki_disponiveis'];?></h3>
-                    <?php if ($treinosLimite < 1): ?>
-                        <p>Os treinos de haki são liberados sempre as 0h, 6h, 12h e 18h.</p>
-                    <?php else: ?>
-                        <form class="ajax_form form-inline" action="Haki/atacar_mestre" method="post" data-question="Deseja enfrentar o mestre?">
-                            <h4>Treinos restantes: <?=$treinosLimite;?></h4>
-                            <div class="form-group">
-                                <label>Informe quantos treinos simultâneos deseja fazer (Máximo 6):</label>
-                                <input id="select-quant-treino" class="form-control" name="quant" type="number" max="<?=min(6, $treinosLimite);?>" min="1" value="1" require />
-                            </div>
-
-                            <script type="text/javascript">
-                                $(function () {
-                                    $('#select-quant-treino').on('change', function () {
-                                        var quant           = parseInt($(this).val(), 10),
-                                            precoUnitario   = <?=PRECO_TREINO_HAKI;?>;
-                                        if (!quant || quant < 1)
-                                            quant = 1;
-                                        $('#berries-treinar-mestre').html(
-                                            mascaraBerries(quant * precoUnitario)
-                                        );
-                                    });
-                                });
-                            </script>
-                            <div>
-                                <p><b>Custo:</b>
-                                    <img src="Imagens/Icones/Berries.png" /> <span id="berries-treinar-mestre"><?=mascara_numeros_grandes(PRECO_TREINO_HAKI);?></span>
-                                </p>
-                            </div>
-                            <button class="btn btn-success">Realizar Treino</button>
-                        </form>
-                    <?php endif; ?>
+                    <h3>Troque sua XP por XP de haki</h3>
+                
+                    <?php  ?>
+                        
+                    
                 </div>
                 <div class="col-md-3">
                     <img src="Imagens/Batalha/npc3.png" width="100%">
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="panel panel-default">
         <div class="panel-body">
@@ -100,6 +67,16 @@
                         Toda vez que um tripulante adquire pontos suficientes para completar sua barra de Haki ele
                         evolui um nível de Haki e recebe um ponto para distribuir entre Mantra ou Armamento.
                     </p>
+                    <form class="ajax_form form-inline" action="Haki/trocar_xp" method="post" data-question="Deseja Trocar XP?">
+                        <input type="hidden" name="cod" value="<?= $pers['cod'] ?>">
+                        <div class="form-group">
+                            <label>Informe quantos de XP você quer trocar</label>
+                            <input id="select-quant-treino" class="form-control" name="quant" type="number" max="<?= $pers['xp']; ?>" min="1" value="1" required />
+
+                        </div>
+                        <button class="btn btn-success">Realizar Treino</button>
+                    </form>
+
                     <h4>Nível de Haki <?= $pers["haki_lvl"] ?>/<?= HAKI_LVL_MAX ?></h4>
 
                     <div class="progress">

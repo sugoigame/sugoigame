@@ -24,7 +24,7 @@ if (! $result->count()) {
     exit();
 }
 $pers = $result->fetch_array();
-
+//todo ivan
 $skills = get_many_results_joined_mapped_by_type("tb_personagens_skil", "cod_skil", "tipo", array(
     array("nome" => "tb_skil_atk", "coluna" => "cod_skil", "tipo" => 1),
     array("nome" => "tb_skil_buff", "coluna" => "cod_skil", "tipo" => 2),

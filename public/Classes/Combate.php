@@ -693,6 +693,14 @@ class Combate {
 		//sorteia uma skil
 		$habilidade = $this->connection->run("SELECT * FROM tb_skil_atk WHERE requisito_lvl <= ? ORDER BY RAND() LIMIT 1",
 			"i", $alvo["lvl"])->fetch_array();
+		// $habilidades = $result = MapLoader::load("skil_atk"); 
+		// $habilidades_validas =[];
+		// foreach ($habilidades as $habilidade) {
+		// 	if($habilidade['requisito_lvl']<=$alvo["lvl"]){
+		// 		$habilidades_validas[] = $habilidade;
+		// 	}
+		// }
+		// $habilidade = $habilidades_validas[rand(0, (sizeof($habilidades_validas)-1))];
 
 		$x = 0;
 		$relatorio_afetado[$x] = $this->recebe_dano_npc($npc_stats, $habilidade, $alvo);
@@ -869,7 +877,7 @@ class Combate {
 				default:
 					$this->protector->exit_error("Tipo de habilidade inválida");
 			}
-
+			//todo importar tabela do json
 			$result = $this->connection->run(
 				"SELECT * FROM tb_personagens_skil skil 
 				INNER JOIN $table info ON skil.cod_skil = info.cod_skil AND skil.tipo = ?
