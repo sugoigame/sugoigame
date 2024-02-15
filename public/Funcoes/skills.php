@@ -182,30 +182,25 @@ function get_basic_skills($filter_column, $filter_value, $tipo_base = 0, $maestr
     global $connection;
     $skills = [];
 
-    $result = $connection->run("SELECT * FROM tb_skil_atk WHERE $filter_column = ? AND maestria = ? ORDER BY requisito_lvl, categoria",
-        "ii", array($filter_value, $maestria));
+    $result = MapLoader::filter("skil_atk",
+        function ($item) use ($filter_column, $filter_value, $maestria) {
+            return $item[$filter_column] == $filter_value && $item["maestria"] == $maestria;
+        });
 
-    while ($skill = $result->fetch_array()) {
+    foreach ($result as $skill) {
         $skill["tipo"] = "Ataque";
         $skill["tiponum"] = $tipo_base + 1;
         $skills[] = $skill;
     }
 
-    $result = $connection->run("SELECT * FROM tb_skil_buff WHERE $filter_column = ? AND maestria = ? ORDER BY requisito_lvl, categoria",
-        "ii", array($filter_value, $maestria));
+    $result = MapLoader::filter("skil_buff",
+        function ($item) use ($filter_column, $filter_value, $maestria) {
+            return $item[$filter_column] == $filter_value && $item["maestria"] == $maestria;
+        });
 
-    while ($skill = $result->fetch_array()) {
+    foreach ($result as $skill) {
         $skill["tipo"] = "Buff";
         $skill["tiponum"] = $tipo_base + 2;
-        $skills[] = $skill;
-    }
-
-    $result = $connection->run("SELECT * FROM tb_skil_passiva WHERE $filter_column = ? AND maestria = ? ORDER BY requisito_lvl, categoria",
-        "ii", array($filter_value, $maestria));
-
-    while ($skill = $result->fetch_array()) {
-        $skill["tipo"] = "Passiva";
-        $skill["tiponum"] = $tipo_base + 3;
         $skills[] = $skill;
     }
 

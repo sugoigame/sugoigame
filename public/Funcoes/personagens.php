@@ -13,17 +13,6 @@
             $bonus[nome_atributo_tabela($acessorio["bonus_atr"])] += $acessorio["bonus_atr_qnt"];
         }
     }
-    //todo remover
-    $result = $connection->run(
-        "SELECT * FROM tb_skil_passiva
-			INNER JOIN tb_personagens_skil ON tb_personagens_skil.cod_skil=tb_skil_passiva.cod_skil
-			WHERE tb_personagens_skil.cod= ?
-			AND (tb_personagens_skil.tipo='3' OR tb_personagens_skil.tipo='6')", "i", $pers["cod"]
-    );
-
-    while ($passiva = $result->fetch_array()) {
-        $bonus[nome_atributo_tabela($passiva["bonus_atr"])] += $passiva["bonus_atr_qnt"];
-    }
 
     $result = $connection->run(
         "SELECT * FROM tb_akuma_skil_passiva
