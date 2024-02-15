@@ -1139,8 +1139,8 @@ img {
     border-radius: 50%;
 }
 hr {
-    margin-top: 0.9rem;
-    margin-bottom: 0.9rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     border: 0;
     border-top: 1px solid #1c1e22;
 }
@@ -1217,7 +1217,7 @@ h2,
 .h2,
 h3,
 .h3 {
-    margin-top: 0.9rem;
+    margin-top: 1rem;
     margin-bottom: 0.8rem;
 }
 h1 small,
@@ -1285,7 +1285,7 @@ p {
     margin: 0 0 0.8rem;
 }
 .lead {
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
     font-size: 14px;
     font-weight: 300;
     line-height: 1.4;
@@ -1404,7 +1404,7 @@ a.bg-danger:focus {
 }
 .page-header {
     padding-bottom: 9px;
-    margin: 40px 0 0.9rem;
+    margin: 40px 0 1rem;
     border-bottom: 1px solid #1c1e22;
 }
 ul,
@@ -1434,7 +1434,7 @@ ol ol {
 }
 dl {
     margin-top: 0;
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
 }
 dt,
 dd {
@@ -1470,8 +1470,8 @@ abbr[data-original-title] {
     text-transform: uppercase;
 }
 blockquote {
-    padding: 0.8rem 0.9rem;
-    margin: 0 0 0.9rem;
+    padding: 0.8rem 1rem;
+    margin: 0 0 1rem;
     font-size: 15px;
     border-left: 5px solid #7a8288;
 }
@@ -1518,7 +1518,7 @@ blockquote.pull-right .small:after {
     content: "\00A0 \2014";
 }
 address {
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
     font-style: normal;
     line-height: 1.42857143;
 }
@@ -2347,7 +2347,7 @@ th {
 .table {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -2582,7 +2582,7 @@ legend {
     display: block;
     width: 100%;
     padding: 0;
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
     font-size: 21px;
     line-height: inherit;
     color: #f0f0f0;
@@ -2727,8 +2727,8 @@ input[type="search"] {
 }
 .radio label,
 .checkbox label {
-    min-height: 0.9rem;
-    padding-left: 0.9rem;
+    min-height: 1rem;
+    padding-left: 1rem;
     margin-bottom: 0;
     font-weight: normal;
     cursor: pointer;
@@ -2738,7 +2738,7 @@ input[type="search"] {
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
     position: absolute;
-    margin-left: -0.9rem;
+    margin-left: -1rem;
     margin-top: 4px \9;
 }
 .radio + .radio,
@@ -2749,7 +2749,7 @@ input[type="search"] {
 .checkbox-inline {
     position: relative;
     display: inline-block;
-    padding-left: 0.9rem;
+    padding-left: 1rem;
     margin-bottom: 0;
     vertical-align: middle;
     font-weight: normal;
@@ -3633,7 +3633,7 @@ tbody.collapse.in {
 }
 .dropdown-menu > li > a {
     display: block;
-    padding: 3px 0.9rem;
+    padding: 3px 1rem;
     clear: both;
     font-weight: normal;
     line-height: 1.42857143;
@@ -3683,7 +3683,7 @@ tbody.collapse.in {
 }
 .dropdown-header {
     display: block;
-    padding: 3px 0.9rem;
+    padding: 3px 1rem;
     font-size: 0.8rem;
     line-height: 1.42857143;
     color: #7a8288;
@@ -4252,7 +4252,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar {
     position: relative;
     min-height: 50px;
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
     border: 1px solid transparent;
 }
 @media (min-width: 768px) {
@@ -4359,7 +4359,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: left;
     padding: 15px 15px;
     font-size: 16px;
-    line-height: 0.9rem;
+    line-height: 1rem;
     height: 50px;
 }
 .navbar-brand:hover,
@@ -4410,7 +4410,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-nav > li > a {
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
-    line-height: 0.9rem;
+    line-height: 1rem;
 }
 @media (max-width: 767px) {
     .navbar-nav .open .dropdown-menu {
@@ -4427,7 +4427,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
         padding: 5px 15px 5px 25px;
     }
     .navbar-nav .open .dropdown-menu > li > a {
-        line-height: 0.9rem;
+        line-height: 1rem;
     }
     .navbar-nav .open .dropdown-menu > li > a:hover,
     .navbar-nav .open .dropdown-menu > li > a:focus {
@@ -4776,7 +4776,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .breadcrumb {
     padding: 8px 15px;
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
     list-style: none;
     background-color: transparent;
     border-radius: 0px;
@@ -4795,7 +4795,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination {
     display: inline-block;
     padding-left: 0;
-    margin: 0.9rem 0;
+    margin: 1rem 0;
     border-radius: 0px;
 }
 .pagination > li {
@@ -4890,7 +4890,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .pager {
     padding-left: 0;
-    margin: 0.9rem 0;
+    margin: 1rem 0;
     list-style: none;
     text-align: center;
 }
@@ -5085,7 +5085,7 @@ a.badge:focus {
 .thumbnail {
     display: block;
     padding: 4px;
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
     line-height: 1.42857143;
     background-color: #1c1e22;
     border: 1px solid #0c0d0e;
@@ -5110,7 +5110,7 @@ a.thumbnail.active {
 }
 .alert {
     padding: 15px;
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: 0px;
 }
@@ -5201,8 +5201,8 @@ a.thumbnail.active {
 }
 .progress {
     overflow: hidden;
-    height: 0.9rem;
-    margin-bottom: 0.9rem;
+    height: 1rem;
+    margin-bottom: 1rem;
     background-color: #1c1e22;
     border-radius: 0px;
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -5213,7 +5213,7 @@ a.thumbnail.active {
     width: 0%;
     height: 100%;
     font-size: 0.8rem;
-    line-height: 0.9rem;
+    line-height: 1rem;
     color: #ffffff;
     text-align: center;
     background-color: #7a8288;
@@ -5452,7 +5452,7 @@ a.thumbnail.active {
     list-style: none;
 }
 .list-group {
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
     padding-left: 0;
 }
 .list-group-item {
@@ -5658,7 +5658,7 @@ button.list-group-item-danger.active:focus {
     line-height: 1.3;
 }
 .panel {
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
     background-color: rgba(30, 30, 30, 0.7);
     border: 1px solid transparent;
     border-radius: 0px;
@@ -5973,7 +5973,7 @@ button.list-group-item-danger.active:focus {
     margin-bottom: 0;
 }
 .panel-group {
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
 }
 .panel-group .panel {
     margin-bottom: 0;
@@ -6130,9 +6130,9 @@ button.list-group-item-danger.active:focus {
     padding-bottom: 75%;
 }
 .well {
-    min-height: 0.9rem;
+    min-height: 1rem;
     padding: 19px;
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
     background-color: #1c1e22;
     border: 1px solid #0c0d0e;
     border-radius: 0px;
@@ -6257,10 +6257,10 @@ button.close {
 }
 .modal-body {
     position: relative;
-    padding: 0.9rem;
+    padding: 1rem;
 }
 .modal-footer {
-    padding: 0.9rem;
+    padding: 1rem;
     text-align: right;
     border-top: 1px solid #1c1e22;
 }
@@ -6640,7 +6640,7 @@ button.close {
     width: 15%;
     opacity: 0.5;
     filter: alpha(opacity=50);
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #ffffff;
     text-align: center;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
@@ -6716,8 +6716,8 @@ button.close {
 }
 .carousel-control .icon-prev,
 .carousel-control .icon-next {
-    width: 0.9rem;
-    height: 0.9rem;
+    width: 1rem;
+    height: 1rem;
     line-height: 1;
     font-family: serif;
 }
@@ -6760,10 +6760,10 @@ button.close {
     position: absolute;
     left: 15%;
     right: 15%;
-    bottom: 0.9rem;
+    bottom: 1rem;
     z-index: 10;
-    padding-top: 0.9rem;
-    padding-bottom: 0.9rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     color: #ffffff;
     text-align: center;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
@@ -6795,7 +6795,7 @@ button.close {
         padding-bottom: 30px;
     }
     .carousel-indicators {
-        bottom: 0.9rem;
+        bottom: 1rem;
     }
 }
 .clearfix:before,

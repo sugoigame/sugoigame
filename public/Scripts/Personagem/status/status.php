@@ -1,13 +1,8 @@
 <?php
 include "../../../Includes/conectdb.php";
 $protector->need_tripulacao();
-$pers_cod = $protector->get_number_or_exit("cod");
 
-$pers = $userDetails->get_pers_by_cod($pers_cod);
-
-if (! $pers) {
-    $protector->exit_error("Personagem inválido");
-}
+$pers = $protector->get_tripulante_or_exit("cod");
 ?>
 <?php function get_atributo_max($pers, $bonus)
 {
@@ -115,12 +110,7 @@ if (! $pers) {
     }
 </script>
 
-<div class="list-group-item">
-    <?= $pers["nome"]; ?>
-    <?= ($pers_titulo) ? " - " . $pers_titulo : "" ?>, Nível
-    <?= $pers["lvl"]; ?>
-</div>
-
+<?php $bonus = calc_bonus($pers); ?>
 <div class="row pt1">
     <div class="col-xs-3">
         <div>
@@ -165,7 +155,6 @@ if (! $pers) {
                     href="#atributos-avancados-<?= $pers["cod"] ?>">Avançado</a>
             </li>
         </ul>
-        <?php $bonus = calc_bonus($pers); ?>
         <?php if ($pers["pts"]) : ?>
             <div>
                 Pontos a distribuir:
@@ -293,110 +282,6 @@ if (! $pers) {
                 </p>
             <?php endif; ?>
         </div>
-    </div>
-    <div>
-        <!-- <div class="col col-xs-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Haki
-            </div>
-            <div class="panel-body">
-                <h5>
-                    Haki disponível:
-                    <?= mascara_numeros_grandes($userDetails->tripulacao["haki_xp"]) ?>
-                </h5>
-                <h4>Nível de Haki
-                    <?= $pers["haki_lvl"] ?>/
-                    <?= HAKI_LVL_MAX ?>
-                </h4>
-
-                <div class="progress">
-                    <div class="progress-bar" style="width: <?= $pers["haki_xp"] / $pers["haki_xp_max"] * 100 ?>%">
-                        Pontos:
-                        <?= $pers["haki_xp"] . "/" . $pers["haki_xp_max"] ?>
-                    </div>
-                </div>
-                <?php if ($userDetails->tripulacao["haki_xp"] && $pers["haki_lvl"] < HAKI_LVL_MAX) : ?>
-                    <form class="ajax_form form-inline" action="Haki/haki_treinar"
-                        data-question="Deseja aplicar estes pontos de Haki para esse tripulante?" method="post">
-                        <input type="hidden" name="pers" value="<?= $pers["cod"] ?>">
-                        <div class="form-group">
-                            <label>Aplicar Haki:</label>
-                            <input class="form-control" name="quant" type="number"
-                                max="<?= min($pers["haki_xp_max"] - $pers["haki_xp"], $userDetails->tripulacao["haki_xp"]) ?>"
-                                min="1"
-                                value="<?= min($pers["haki_xp_max"] - $pers["haki_xp"], $userDetails->tripulacao["haki_xp"]) ?>">
-                        </div>
-                        <button class="btn btn-success">
-                            Aplicar
-                        </button>
-                    </form>
-                <?php endif; ?>
-                <br />
-                <?php if ($pers["haki_pts"]) : ?>
-                    <h4>
-                        Pontos a distribuir:
-                        <?= $pers["haki_pts"] ?>
-                        <?php $userDetails->render_alert("trip_sem_distribuir_haki." . $pers["cod"]) ?>
-                    </h4>
-                <?php endif; ?>
-                <div class="block-atributo-col col-md-<?= $pers["cod"] == $userDetails->capitao["cod"] ? 4 : 6 ?>"
-                    data-toggle="tooltip" data-html="true" data-placement="bottom"
-                    title="<strong>Observação</strong><br/> Cada ponto em Observação aumenta sua chance de esquiva em 1%">
-                    <div class="block-atributo btn btn-default <?= $pers["haki_pts"] > 0 && $pers["haki_esq"] < MAX_POINTS_MANTRA ? "link_send" : "disabled" ?>"
-                        <?= $pers["haki_pts"] > 0 && $pers["haki_esq"] < MAX_POINTS_MANTRA ? "href=\"link_Haki/haki_distribuir.php?pers=" . $pers["cod"] . "&tipo=1\"" : "" ?>>
-                        <div>
-                            <h3>
-                                <?= $pers["haki_esq"]; ?>
-                            </h3>
-                            <div>
-                                Observação
-                            </div>
-                            <?php render_personagem_mantra_bar($pers, false); ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="block-atributo-col col-md-<?= $pers["cod"] == $userDetails->capitao["cod"] ? 4 : 6 ?>"
-                    data-toggle="tooltip" data-html="true" data-placement="bottom"
-                    title="<strong>Armamento</strong><br/> Cada ponto em Armamento aumenta sua chance de bloqueio em 1% e também sua chance de acerto crítico em 1%.">
-                    <div class="block-atributo btn btn-default <?= $pers["haki_pts"] > 0 && $pers["haki_cri"] < MAX_POINTS_ARMAMENTO ? "link_send" : "disabled" ?>"
-                        <?= $pers["haki_pts"] > 0 && $pers["haki_cri"] < MAX_POINTS_ARMAMENTO ? "href=\"link_Haki/haki_distribuir.php?pers=" . $pers["cod"] . "&tipo=2\"" : "" ?>>
-                        <div>
-                            <h3>
-                                <?= $pers["haki_cri"]; ?>
-                            </h3>
-                            <div>
-                                Armamento
-                            </div>
-                            <?php render_personagem_armamento_bar($pers, false); ?>
-                        </div>
-                    </div>
-                </div>
-                <?php if ($pers["cod"] == $userDetails->capitao["cod"]) : ?>
-                    <div class="block-atributo-col col-md-<?= $pers["cod"] == $userDetails->capitao["cod"] ? 4 : 6 ?>"
-                        data-toggle="tooltip" data-html="true" data-placement="bottom"
-                        title="<strong>Haoshoku</strong><br/> O Haoshoku (ou Haki do Rei) é uma habilidade exclusiva do seu capitão que fica mais forte a cada nível evoluído.">
-                        <div class="block-atributo btn btn-default <?= $pers["haki_pts"] > 0 && $pers["haki_hdr"] < MAX_POINTS_HDR ? "link_send" : "disabled" ?>"
-                            <?= $pers["haki_pts"] > 0 && $pers["haki_hdr"] < MAX_POINTS_HDR ? "href=\"link_Haki/haki_distribuir.php?pers=" . $pers["cod"] . "&tipo=3\"" : "" ?>>
-                            <div>
-                                <h3>
-                                    <?= $pers["haki_hdr"]; ?>
-                                </h3>
-                                <div>
-                                    Haki do Rei
-                                </div>
-                                <?php render_personagem_hdr_bar($pers, false); ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php endif; ?>
-
-                <a class="link_content" href="./?ses=haki&cod=<?= $pers["cod"] ?>">
-                    Ver todos os detalhes sobre o Haki
-                </a>
-            </div>
-        </div>
-    </div> -->
     </div>
 </div>
 

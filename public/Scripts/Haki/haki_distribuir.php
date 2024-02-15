@@ -4,52 +4,51 @@ require "../../Includes/conectdb.php";
 $protector->need_tripulacao();
 $protector->must_be_out_of_any_kind_of_combat();
 
-$pers_cod = $protector->get_number_or_exit("pers");
-$tipo = $protector->get_enum_or_exit("tipo", array(1, 2, 3));
+$pers = $protector->get_tripulante_or_exit("cod");
+$tipo = $protector->get_enum_or_exit("tipo", array("haki_esq", "haki_cri", "haki_blo", "haki_hdr"));
+$quant = $protector->get_number_or_exit("quant");
 
-$pers = $userDetails->get_pers_by_cod($pers_cod);
+$max = array(
+    "haki_esq" => MAX_POINTS_MANTRA, "haki_cri" => MAX_POINTS_ARMAMENTO, "haki_blo" => MAX_POINTS_HAKI_AVANCADO, "haki_hdr" => MAX_POINTS_HDR
+);
 
-if (!$pers) {
-    $protector->exit_error("Personagem inválido");
+if ($quant < 0 || ($quant - $pers[$tipo]) > $pers["haki_pts"] || $quant > $max[$tipo]) {
+    $protector->exit_error("Quantidade inválida");
 }
 
-if ($pers["haki_pts"] <= 0) {
-    $protector->exit_error("Esse personagem nao tem pontos para distribuir.");
-}
+$old_hdr_lvl = $pers["haki_hdr"];
 
-if ($tipo == 1) {
-    if ($pers["haki_esq"] >= MAX_POINTS_MANTRA) {
+$dif = $quant - $pers[$tipo];
+$pers[$tipo] = $quant;
+$pers["haki_pts"] -= $dif;
+
+if ($tipo == "haki_hdr") {
+    if ($pers["cod"] != $userDetails->capitao["cod"]) {
         $protector->exit_error("Este personagem atingiu o limite de treino nesse Haki.");
     }
 
-    $connection->run("UPDATE tb_personagens SET haki_esq = haki_esq + 1, haki_pts = haki_pts - 1 WHERE cod = ?",
-        "i", array($pers_cod));
-} else if ($tipo == 2) {
-    if ($pers["haki_cri"] >= MAX_POINTS_ARMAMENTO) {
-        $protector->exit_error("Este personagem atingiu o limite de treino nesse Haki.");
-    }
-    $connection->run("UPDATE tb_personagens SET haki_cri = haki_cri + 1, haki_pts = haki_pts - 1 WHERE cod = ?",
-        "i", array($pers_cod));
-} else if ($tipo == 3) {
-    if ($pers["haki_hdr"] >= MAX_POINTS_HDR || $pers_cod != $userDetails->capitao["cod"]) {
-        $protector->exit_error("Este personagem atingiu o limite de treino nesse Haki.");
-    }
-    $connection->run("UPDATE tb_personagens SET haki_hdr = haki_hdr + 1, haki_pts = haki_pts - 1 WHERE cod = ?",
-        "i", array($pers_cod));
-
-    if (!$pers["haki_hdr"]) {
+    if (! $old_hdr_lvl) {
         $connection->run(
             "INSERT INTO tb_personagens_skil (cod, cod_skil, tipo, nome, descricao, icon)
             VALUES (?, ?, '1', 'Haoshoku Haki',
             'Uma forma rara de Haki que não pode ser alcançado por meio de treinamento
              e apenas um em um milhão de pessoas a transportar.', '900')",
-            "ii", array($pers_cod, $COD_HAOSHOKU_LVL[1])
+            "ii", array($pers["cod"], $COD_HAOSHOKU_LVL[$pers["haki_hdr"]])
+        );
+    } elseif (! $pers["haki_hdr"]) {
+        $connection->run(
+            "DELETE FROM tb_personagens_skil WHERE cod = ? AND cod_skil = ? AND tipo = ?",
+            "iii", array($pers["cod"], $COD_HAOSHOKU_LVL[$old_hdr_lvl], TIPO_SKILL_ATAQUE_CLASSE)
         );
     } else {
         $connection->run(
             "UPDATE tb_personagens_skil SET cod_skil = ? WHERE cod = ? AND cod_skil = ? AND tipo = ?",
-            "iiii", array($COD_HAOSHOKU_LVL[$pers["haki_hdr"] + 1], $pers_cod, $COD_HAOSHOKU_LVL[$pers["haki_hdr"]], TIPO_SKILL_ATAQUE_CLASSE)
+            "iiii", array($COD_HAOSHOKU_LVL[$pers["haki_hdr"]], $pers["cod"], $COD_HAOSHOKU_LVL[$old_hdr_lvl], TIPO_SKILL_ATAQUE_CLASSE)
         );
     }
 }
-echo ":haki&outro=" . $pers_cod;
+
+$connection->run("UPDATE tb_personagens SET haki_esq=?, haki_cri=?, haki_blo=?, haki_hdr=?, haki_pts=? WHERE cod = ?",
+    "iiiiii", array($pers["haki_esq"], $pers["haki_cri"], $pers["haki_blo"], $pers["haki_hdr"], $pers["haki_pts"], $pers["cod"]));
+
+echo ":";

@@ -5,7 +5,7 @@ require "../../Includes/conectdb.php";
 $protector->need_tripulacao();
 $protector->must_be_out_of_any_kind_of_combat();
 
-$cod = $protector->get_number_or_exit("cod");
+$pers = $protector->get_tripulante_or_exit("cod");
 $atr1 = $protector->get_number_or_exit("atr1");
 $atr2 = $protector->get_number_or_exit("atr2");
 $atr3 = $protector->get_number_or_exit("atr3");
@@ -16,11 +16,6 @@ if ($atr1 < 1 || $atr1 > 8 || $atr2 < 1 || $atr2 > 8 || $atr3 < 1 || $atr3 > 8) 
 $atr1 = nome_atributo_tabela($atr1);
 $atr2 = nome_atributo_tabela($atr2);
 $atr3 = nome_atributo_tabela($atr3);
-
-$pers = $userDetails->get_pers_by_cod($cod);
-if (! $pers) {
-    $protector->exit_error("Personagem inválido");
-}
 
 $hp_razao = $pers["hp"] / $pers["hp_max"];
 

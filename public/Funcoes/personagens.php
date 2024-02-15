@@ -48,11 +48,13 @@
                 for ($i = 1; $i <= 7; $i++) {
                     $bonus[nome_atributo_tabela($i)] += $titulo["bonus_atr_quant"];
                 }
-            } else if (isset($bonus[nome_atributo_tabela($titulo["bonus_atr"])])) {
+            } elseif (isset($bonus[nome_atributo_tabela($titulo["bonus_atr"])])) {
                 $bonus[nome_atributo_tabela($titulo["bonus_atr"])] += $titulo["bonus_atr_quant"];
             }
         }
     }
+
+    $bonus["atk"] += $pers["haki_blo"] * 2;
 
     if ($nivelamento && $pers["lvl"] < 50) {
         for ($i = 1; $i <= 7; $i++) {
@@ -267,7 +269,7 @@ function preco_selo_exp($pers)
             style="width: <?= $pers["hp"] / $pers["hp_max"] * 100 ?>%;">
             <?php if ($pers["id"] == $userDetails->tripulacao["id"] && $text) : ?>
                 <span>HP:
-                    <?= $pers["hp"] . "/" . $pers["hp_max"] ?>
+                    <?= mascara_numeros_grandes($pers["hp"]) . " / " . mascara_numeros_grandes($pers["hp_max"]) ?>
                 </span>
             <?php endif; ?>
         </div>
@@ -277,10 +279,10 @@ function preco_selo_exp($pers)
 { ?>
     <div class="progress">
         <div class="progress-bar progress-bar-default" role="progressbar"
-            style="width: <?= $pers["xp"] / ($pers["lvl"] >= 50 ? $pers["excelencia_xp_max"] : $pers["xp_max"]) * 100 ?>%;">
+            style="width: <?= $pers["xp"] / $pers["xp_max"] * 100 ?>%;">
             <?php if ($text) : ?>
                 <span>EXP:
-                    <?= $pers["xp"] . "/" . ($pers["lvl"] >= 50 ? $pers["excelencia_xp_max"] : $pers["xp_max"]) ?>
+                    <?= mascara_numeros_grandes($pers["xp"]) . " / " . mascara_numeros_grandes($pers["xp_max"]) ?>
                 </span>
             <?php endif; ?>
         </div>
@@ -296,38 +298,58 @@ function preco_selo_exp($pers)
         <?php endif; ?>
     </div>
 <?php } ?>
-<?php function render_personagem_mantra_bar($pers, $text = true)
+<?php function render_personagem_mantra_bar($pers, $text = true, $classe = "")
 { ?>
-    <div class="progress">
-        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+    <div class="progress <?= $classe ?>">
+        <div class="progress-bar progress-bar-success progress-bar-striped <?= $classe ?>" role="progressbar"
             style="width: <?= $pers["haki_esq"] / MAX_POINTS_MANTRA * 100 ?>%;">
             <?php if ($text) : ?>
-                Observação:
-                <?= $pers["haki_esq"] . "/" . MAX_POINTS_MANTRA; ?>
+                <span>
+                    Observação:
+                    <?= $pers["haki_esq"] . "/" . MAX_POINTS_MANTRA; ?>
+                </span>
             <?php endif; ?>
         </div>
     </div>
 <?php } ?>
-<?php function render_personagem_armamento_bar($pers, $text = true)
+<?php function render_personagem_armamento_bar($pers, $text = true, $classe = "")
 { ?>
-    <div class="progress">
-        <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
+    <div class="progress <?= $classe ?>">
+        <div class="progress-bar progress-bar-danger progress-bar-striped <?= $classe ?>" role="progressbar"
             style="width: <?= $pers["haki_cri"] / MAX_POINTS_ARMAMENTO * 100 ?>%;">
             <?php if ($text) : ?>
-                Armamento:
-                <?= $pers["haki_cri"] . "/" . MAX_POINTS_ARMAMENTO; ?>
+                <span>
+                    Armamento:
+                    <?= $pers["haki_cri"] . "/" . MAX_POINTS_ARMAMENTO; ?>
+                </span>
             <?php endif; ?>
         </div>
     </div>
 <?php } ?>
-<?php function render_personagem_hdr_bar($pers, $text = true)
+<?php function render_personagem_hdr_bar($pers, $text = true, $classe = "")
 { ?>
-    <div class="progress">
+    <div class="progress <?= $classe ?>">
         <div class="progress-bar progress-bar-default progress-bar-striped" role="progressbar"
             style="width: <?= $pers["haki_hdr"] / MAX_POINTS_HDR * 100 ?>%;">
             <?php if ($text) : ?>
-                Haoshoku:
-                <?= $pers["haki_hdr"] . "/" . MAX_POINTS_HDR; ?>
+                <span>
+                    Haoshoku:
+                    <?= $pers["haki_hdr"] . "/" . MAX_POINTS_HDR; ?>
+                </span>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php } ?>
+<?php function render_personagem_haki_avancado_bar($pers, $text = true, $classe = "")
+{ ?>
+    <div class="progress <?= $classe ?>">
+        <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar"
+            style="width: <?= $pers["haki_blo"] / MAX_POINTS_HAKI_AVANCADO * 100 ?>%;">
+            <?php if ($text) : ?>
+                <span>
+                    Haki Avançado:
+                    <?= $pers["haki_blo"] . "/" . MAX_POINTS_HAKI_AVANCADO; ?>
+                </span>
             <?php endif; ?>
         </div>
     </div>

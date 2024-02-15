@@ -101,6 +101,10 @@
         display: inline-block !important;
         width: 70% !important;
     }
+
+    .header-skin {
+        width: 2vw;
+    }
 </style>
 
 <div class="panel-body">
@@ -155,6 +159,9 @@
                     <?php $nav = isset($_GET["cod"]) && isset($_GET["nav"]) && $_GET["cod"] == $pers["cod"] ? $_GET["nav"] : "status"; ?>
                     <ul class="nav nav-pills nav-justified subsessions">
                         <?php render_nav("status", "Status", "fa fa-file-text", $nav, $pers) ?>
+                        <?php if ($userDetails->is_sistema_desbloqueado(SISTEMA_HAKI)) : ?>
+                            <?php render_nav("haki", "Haki", "fa fa-certificate", $nav, $pers) ?>
+                        <?php endif; ?>
                         <?php render_nav("customizacao", "Customização", "fa fa-male", $nav, $pers) ?>
                         <?php render_nav("akuma", "Akuma no Mi", "glyphicon glyphicon-apple", $nav, $pers) ?>
                         <?php render_nav("classe", "Classe", "fa fa-star-o", $nav, $pers) ?>
@@ -169,9 +176,19 @@
                     </ul>
 
                     <div class="w-100">
+                        <div class="list-group-item">
+                            <?= icon_pers_skin($pers["img"], $pers["skin_r"], "header-skin") ?>
+                            <?= $pers["nome"]; ?>
+                            <?= ($pers_titulo) ? " - " . $pers_titulo : "" ?>, Nível
+                            <?= $pers["lvl"]; ?>
+                        </div>
                         <div class="tab-content">
                             <div id="nav-status-<?= $pers["cod"] ?>"
                                 class="tab-pane <?= $nav == "status" ? "active" : "" ?>">
+                                <img src="Imagens/carregando.gif" />
+                            </div>
+
+                            <div id="nav-haki-<?= $pers["cod"] ?>" class="tab-pane <?= $nav == "haki" ? "active" : "" ?>">
                                 <img src="Imagens/carregando.gif" />
                             </div>
 

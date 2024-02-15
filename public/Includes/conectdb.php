@@ -44,8 +44,9 @@ define('PERSONAGENS_MAX', 369);
 
 define('MAX_POINTS_MANTRA', 20);
 define('MAX_POINTS_ARMAMENTO', 20);
+define('MAX_POINTS_HAKI_AVANCADO', 20);
 define('MAX_POINTS_HDR', 12);
-define('HAKI_LVL_MAX', 25);
+define('HAKI_LVL_MAX', 50);
 
 define('PONTOS_POR_NIVEL_BATALHA', 500);
 

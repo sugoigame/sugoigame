@@ -376,12 +376,26 @@ class UserDetails
             $level = $row['lvl'];
             $xp = $row['xp'];
             $xp_max = $row['xp_max'];
-            if ($xp >= $xp_max && $level < 50) {
+            $haki_xp = $row['haki_xp'];
+            $haki_xp_max = $row['haki_xp_max'];
+            $haki_lvl = $row['haki_lvl'];
+            if (($xp >= $xp_max && $level < 50) || ($haki_xp > $haki_xp_max && $haki_lvl < HAKI_LVL_MAX)) {
                 $runs = 0;
                 while ($xp >= $xp_max) {
                     if ($level < 50) {
                         $xp -= $xp_max;
                         $xp_max = formulaExp($level++);
+
+                        ++$runs;
+                    } else {
+                        break;
+                    }
+                }
+                $runs_haki = 0;
+                while ($haki_xp >= $haki_xp_max) {
+                    if ($haki_lvl < HAKI_LVL_MAX) {
+                        $haki_xp -= $haki_xp_max;
+                        $haki_xp_max = formulaExp($level++);
 
                         ++$runs;
                     } else {
@@ -1083,7 +1097,7 @@ class UserDetails
         $this->connection->run("DELETE FROM tb_personagens_skil WHERE cod = ? AND tipo = ? AND cod_skil IN (" . implode(',', $COD_HAOSHOKU_LVL) . ")",
             "ii", array($pers["cod"], TIPO_SKILL_ATAQUE_CLASSE));
     }
-    public function remove_skill($pers,$skill)
+    public function remove_skill($pers, $skill)
     {
         $this->connection->run("DELETE FROM tb_personagens_skil WHERE cod = ? AND cod_skil = ?",
             "ii", array($pers["cod"], $skill));
@@ -1718,7 +1732,7 @@ class UserDetails
                 "goal" => "Evolua o capitão até o nível 20",
                 "link" => "status",
                 "rewards" => array("xp" => 0, "berries" => 20000, "dobroes" => 0),
-                "unlock" => [],
+                "unlock" => [SISTEMA_HAKI],
                 "next" => 59,
                 "check_progress" => function () {
                     return $this->capitao["lvl"] >= 20;
@@ -1778,7 +1792,7 @@ class UserDetails
                 "goal" => "Entre no Novo Mundo",
                 "link" => "oceano",
                 "rewards" => array("xp" => 0, "berries" => 1000000, "dobroes" => 0),
-                "unlock" => [SISTEMA_HAKI],
+                "unlock" => [],
                 "next" => 65,
                 "check_progress" => function () {
                     return check_progress_in_ilha(44);
@@ -1919,22 +1933,11 @@ class UserDetails
         $this->connection->run("UPDATE tb_personagens SET xp = xp + ? WHERE id = ? AND lvl >= 50 AND ativo = 1",
             "ii", array($quant_lvl_max, $this->tripulacao["id"]));
     }
-    public function remove_xp_personagem($quant,$pers)
+    public function remove_xp_personagem($quant, $pers)
     {
-        global $connection;
-        $this->connection->run("UPDATE tb_personagens SET xp = xp - ? WHERE cod = ? AND ativo = 1",
-            "is", array($quant, $pers));
-
-       
+        $this->connection->run("UPDATE tb_personagens SET xp = xp - ? WHERE cod = ?",
+            "ii", array($quant, $pers["cod"]));
     }
-    
-
-    
-    
-    
-    
-
-    
 
     public function xp_for_profissao($quant, $prof)
     {
@@ -1944,12 +1947,9 @@ class UserDetails
 
     public function haki_for_all($quant)
     {
-        if ($bonus = $this->buffs->get_efeito("bonus_haki")) {
-            $quant += round($bonus * $quant);
+        foreach ($this->personagens as $pers) {
+            $this->add_haki($pers, $quant);
         }
-
-        $this->connection->run("UPDATE tb_usuarios SET haki_xp = haki_xp + ? WHERE id = ?",
-            "ii", array($quant, $this->tripulacao["id"]));
     }
 
     public function add_berries($quant)
@@ -1962,6 +1962,9 @@ class UserDetails
     {
         if ($pers["haki_lvl"] >= HAKI_LVL_MAX) {
             return;
+        }
+        if ($bonus = $this->buffs->get_efeito("bonus_haki")) {
+            $quant += round($bonus * $quant);
         }
 
         $haki_xp = $pers["haki_xp"] + $quant;
@@ -1982,7 +1985,6 @@ class UserDetails
 			WHERE  cod = ?",
             "i", $pers["cod"]
         );
-
     }
 
     public function can_add_item($quant = 1, $id = null)

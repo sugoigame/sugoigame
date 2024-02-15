@@ -5,18 +5,13 @@ require "../../Includes/conectdb.php";
 $protector->need_tripulacao();
 $protector->must_be_out_of_any_kind_of_combat();
 
-$cod = $protector->get_number_or_exit("cod");
+$pers = $protector->get_tripulante_or_exit("cod");
 $atr = $protector->get_number_or_exit("atr");
 
 if ($atr < 1 || $atr > 8) {
     $protector->exit_error("Atributo inválido");
 }
 $atr = nome_atributo_tabela($atr);
-
-$pers = $userDetails->get_pers_by_cod($cod);
-if (! $pers) {
-    $protector->exit_error("Personagem inválido");
-}
 
 $hp_razao = $pers["hp"] / $pers["hp_max"];
 

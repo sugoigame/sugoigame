@@ -1401,3 +1401,31 @@ input.input-danger[type="range"]:focus::-ms-fill-lower {
 input.input-danger[type="range"]:focus::-ms-fill-upper {
     background: #ff9394;
 }
+
+input.input-warning[type="range"]::-webkit-slider-runnable-track {
+    background: #c04000;
+}
+
+input.input-warning[type="range"]:focus::-webkit-slider-runnable-track {
+    background: #db7542;
+}
+
+input.input-warning[type="range"]::-moz-range-track {
+    background: #d2825a;
+}
+
+input.input-warning[type="range"]::-ms-fill-lower {
+    background: #c04000;
+}
+
+input.input-warning[type="range"]::-ms-fill-upper {
+    background: #cd7346;
+}
+
+input.input-warning[type="range"]:focus::-ms-fill-lower {
+    background: #cd7346;
+}
+
+input.input-warning[type="range"]:focus::-ms-fill-upper {
+    background: #efa17b;
+}
