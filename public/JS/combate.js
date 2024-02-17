@@ -5,7 +5,7 @@ $(function () {
             var x = $(this).data("x");
             var top = $(this).position().top;
             var left = $(this).position().left + 130;
-            if (left + 300 > $("#navio_batalha").width()) {
+            if (left + 500 > $("#navio_batalha").width()) {
                 left -= 500;
             }
             if (x >= 5) {
@@ -441,20 +441,31 @@ function runDirectionAtachingAttackUntilPers(
     var quadro;
     var x;
     var y;
-    for (var i = 1; i <= alcance; i++) {
+    for (
+        var i = tipo == 1 || tipo == 4 || tipo == 7 ? 1 : 0;
+        i <= alcance;
+        i++
+    ) {
         x = startX + i * dirX;
         y = startY + i * dirY;
         quadro = "#" + x + "_" + y;
-        if ($(quadro).length && !$(quadro).hasClass("personagem")) {
+        if (
+            $(quadro).length &&
+            (!$(quadro).hasClass("personagem") || (x == startX && y == startY))
+        ) {
             addSelectors($(quadro), "rgba(255,0,0,0.7)");
-            $(quadro).click(function () {
-                atacaquadro(this, cod, pers, tipo, area);
-            });
+            $(quadro)
+                .unbind("click")
+                .click(function () {
+                    atacaquadro(this, cod, pers, tipo, area);
+                });
         } else if ($(quadro).length) {
             addSelectors($(quadro), "rgba(255,0,0,0.7)");
-            $(quadro).click(function () {
-                atacaquadro(this, cod, pers, tipo, area);
-            });
+            $(quadro)
+                .unbind("click")
+                .click(function () {
+                    atacaquadro(this, cod, pers, tipo, area);
+                });
             i = alcance + 1;
         } else {
             i = alcance + 1;

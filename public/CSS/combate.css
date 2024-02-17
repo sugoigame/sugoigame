@@ -142,7 +142,11 @@
     position: absolute;
     top: 15vh;
     max-width: 350px;
-    z-index: 10;
+    z-index: 100;
+    color: black !important;
+}
+.buff-atributo-icon {
+    background: black;
 }
 
 .personagem-info .progress {

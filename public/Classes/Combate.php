@@ -893,6 +893,7 @@ class Combate
         $this->check_espera($personagem_combate, $cod_skil, $tipo_skil);
         $habilidade = $this->load_habilidade($personagem_combate, $cod_skil, $tipo_skil);
 
+        // TODO checa vontade em vez de consumo
         if ($personagem_combate["mp"] < $habilidade["consumo"]) {
             $this->protector->exit_error("Energia Insuficiente");
         }

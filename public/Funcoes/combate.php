@@ -788,15 +788,24 @@ function fadiga_batalha_ativa($personagens)
                                         </div>
                                     <?php endif; ?>
                                 <?php endif; ?>
+                            </div>
+                            <div class="col-xs-6">
+                                <?php if ($pers["tripulacao_id"] == $userDetails->tripulacao["id"] || $userDetails->tripulacao["adm"]) : ?>
+                                    Nível
+                                    <?= $pers["lvl"] ?>
+                                <?php endif; ?>
+
+                                <?php render_personagem_hp_bar($pers); ?>
+
                                 <?php if (isset($buffs[$pers["cod"]])) : ?>
                                     <h4>Buffs</h4>
                                     <?php foreach ($buffs[$pers["cod"]] as $buff) : ?>
                                         <div class="text-center">
-                                            <img src="Imagens/Icones/<?= nome_atributo_img($buff["atr"]) ?>.png" width="25px">
+                                            <img class="buff-atributo-icon" src="Imagens/Icones/<?= nome_atributo_img($buff["atr"]) ?>.png"
+                                                width="20vw">
                                             <?= $buff["efeito"] > 0 ? "+" : "" ?>
                                             <?= $buff["efeito"]; ?>
-                                            (
-                                            <?= $buff["espera"] ?>)
+                                            <?= "(" . $buff["espera"] . ")" ?>
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
@@ -810,14 +819,6 @@ function fadiga_batalha_ativa($personagens)
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
-                            </div>
-                            <div class="col-xs-6">
-                                <?php if ($pers["tripulacao_id"] == $userDetails->tripulacao["id"] || $userDetails->tripulacao["adm"]) : ?>
-                                    Nível
-                                    <?= $pers["lvl"] ?>
-                                <?php endif; ?>
-
-                                <?php render_personagem_hp_bar($pers); ?>
 
                                 <?php if (($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]) : ?>
                                     <?php render_personagem_haki_bars($pers); ?>
