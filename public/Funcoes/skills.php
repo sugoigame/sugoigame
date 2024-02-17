@@ -62,13 +62,6 @@ function is_editavel($skill)
         && ($skill["tipo"] != TIPO_SKILL_ATAQUE_CLASSE || ! in_array($skill["cod_skil"], $COD_HAOSHOKU_LVL));
 }
 
-function has_special_effect($skill, $skills_com_efeitos, $ataques_com_efeitos, $max_ataques_com_efeitos)
-{
-    return ($skill["tipo"] == TIPO_SKILL_ATAQUE_AKUMA && $ataques_com_efeitos < $max_ataques_com_efeitos && $skills_com_efeitos < 1)
-        || ($skill["tipo"] == TIPO_SKILL_ATAQUE_CLASSE && $skill["maestria"] && $ataques_com_efeitos < $max_ataques_com_efeitos && $skills_com_efeitos < 1)
-        || $skill["special_effect"];
-}
-
 function nome_tipo_skill($skill)
 {
     switch ($skill["tipo"]) {
@@ -129,7 +122,7 @@ function duracao_special_effect($effect)
         case SPECIAL_EFFECT_VENENO:
             return 6;
         case SPECIAL_EFFECT_MACHUCADO_JOELHO:
-            return 2;
+            return 1;
         case SPECIAL_EFFECT_PONTO_FRACO:
             return 1;
         default:
@@ -411,13 +404,16 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
 { ?>
     <ul>
         <?php if (! empty($skill["dano"])) : ?>
-            <li>Dano:
-                <?= $skill["dano"] * 10 ?>
+            <li>
+                Dano:
+                <?= $skill["dano"] * 100 ?>%
+                <?= ajuda_tooltip("Causa dano equivalente à " . ($skill["dano"] * 100) . "% dos pontos de ataque do tripulante.") ?>
             </li>
         <?php endif; ?>
         <?php if (! empty($skill["bonus_atr"])) : ?>
             <li>
-                Bonus:
+                <img src="Imagens/Icones/<?= nome_atributo_img($skill["bonus_atr"]) ?>.png" height="12vw"
+                    style="background: black" />
                 <?= nome_atributo($skill["bonus_atr"]) ?>
                 <?= $skill["bonus_atr_qnt"] > 0 ? "+" : "" ?>
                 <?= $skill["bonus_atr_qnt"] ?>
@@ -429,23 +425,45 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
             </li>
         <?php endif; ?>
         <?php if (! empty($skill["consumo"])) : ?>
-            <li>Consumo:
+            <li>
+                Vontade:
                 <?= $skill["consumo"] ?>
+                <img src="Imagens/Icones/vontade.png" height="12vw" />
             </li>
         <?php endif; ?>
-        <?php if (! empty($skill["alcance"])) : ?>
-            <li>Alcance:
-                <?= $skill["alcance"] ?> quadro(s)
+        <?php if ($skill["alcance"] == 0) : ?>
+            <li>
+                Área de efeito:
+                Em si mesmo
             </li>
-        <?php endif; ?>
-        <?php if (! empty($skill["area"])) : ?>
-            <li>Área de efeito:
-                <?= $skill["area"] ?> quadro(s)
-            </li>
+        <?php else : ?>
+            <?php if (! empty($skill["alcance"])) : ?>
+                <li>
+                    Alcance:
+                    <?= $skill["alcance"] ?> quadro(s)
+                </li>
+            <?php endif; ?>
+            <?php if (! empty($skill["area"])) : ?>
+                <li>Área de efeito:
+                    <?= $skill["area"] ?> quadro(s)
+                </li>
+            <?php endif; ?>
         <?php endif; ?>
         <?php if (! empty($skill["espera"])) : ?>
             <li>Espera:
                 <?= $skill["espera"] ?> turno(s)
+            </li>
+        <?php endif; ?>
+        <?php if (isset($skill["special_effect"])) : ?>
+            <li>
+                <?= nome_special_effect_apply_type($skill["special_apply_type"]) ?>
+                <?= nome_special_effect($skill["special_effect"]) ?>
+                no
+                <?= nome_special_effect_target($skill["special_target"]) ?> da Habilidade
+                <?= ajuda_tooltip(
+                    nome_special_effect($skill["special_effect"]) . ":" .
+                    descricao_special_effect($skill["special_effect"])
+                ) ?>
             </li>
         <?php endif; ?>
     </ul>

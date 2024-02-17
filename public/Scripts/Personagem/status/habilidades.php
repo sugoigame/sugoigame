@@ -17,11 +17,6 @@ if (!$pers) {
 
 <?php render_personagem_panel_top($pers, 0) ?>
 <?php $skills = get_all_skills($pers) ?>
-<?php $max_ataques_com_efeitos = 1; ?>
-<?php $skills_com_efeitos = $connection->run("SELECT * FROM tb_personagens_skil WHERE special_effect IS NOT NULL AND cod = ?",
-    "i", array($pers["cod"]))->count() ?>
-<?php $ataques_com_efeitos = $connection->run("SELECT * FROM tb_personagens_skil WHERE special_effect IS NOT NULL AND cod = ? AND tipo = ?",
-    "ii", array($pers["cod"], TIPO_SKILL_ATAQUE_AKUMA))->count() ?>
 
 <?php if (count($animacoes)): ?>
     <h3>Animações disponíveis:</h3>
@@ -50,17 +45,15 @@ if (!$pers) {
             </div>
         <?php endif; ?>
         <div class="panel panel-default col-sm-3 pt1">
-            <a href="#" class="noHref" data-toggle="popover" data-html="true" data-placement="bottom"
-               data-trigger="focus"
-               data-content="<div style='min-width:250px;'><p><?= str_replace(array('"', "'"), array("&quot;", "&lsquo;"), htmlspecialchars($skill["descricao"])) ?></p><?php render_skill_efeitos($skill) ?></div>">
+            <div>
                 <img src="Imagens/Skils/<?= $skill["icon"] ?>.jpg">
                 <h4>
                     <?= $skill["nome"] ?>
                 </h4>
-            </a>
-            <p>
-                <?php render_skill_efeitos_resumidos($skill); ?>
-            </p>
+            </div>
+            <div class="text-left">
+                <?php render_skill_efeitos($skill); ?>
+            </div>
             <?php if (has_animacao($skill)): ?>
                 <p>
                     <button data-effect="<?= $skill["effect"] ?>" class="play-effect btn btn-primary">
@@ -68,21 +61,7 @@ if (!$pers) {
                     </button>
                 </p>
             <?php endif; ?>
-            <?php if (has_special_effect($skill, $skills_com_efeitos, $ataques_com_efeitos, $max_ataques_com_efeitos)): ?>
-                <?php if ($skill["special_effect"]): ?>
-                    <h5>
-                        <?= nome_special_effect_apply_type($skill["special_apply_type"]) ?>
-                        <?= nome_special_effect($skill["special_effect"]) ?>
-                        no <?= nome_special_effect_target($skill["special_target"]) ?> da
-                        Habilidade
-                    </h5>
-                <?php else: ?>
-                    <h5 class="text-warning">
-                        Efeito especial disponível!
-                        <?= $userDetails->alerts->get_alert() ?>
-                    </h5>
-                <?php endif; ?>
-            <?php endif; ?>
+
             <?php $img_id = $skill["tipo"] . "_" . $skill["cod_skil"] . "_" . $pers["cod"]; ?>
             <script type="text/javascript">
                 $(function () {
@@ -200,90 +179,7 @@ if (!$pers) {
                                         <?php endif; ?>
                                     </div>
                                 <?php endif; ?>
-                                <?php if (has_special_effect($skill, $skills_com_efeitos, $ataques_com_efeitos, $max_ataques_com_efeitos)): ?>
-                                    <div class="col-md-6">
-                                        <div class="col-md-12">
-                                            <h3>Efeito Especial:</h3>
 
-                                            <?php if ($skill["special_effect"]): ?>
-                                                <p>
-                                                    <?= nome_special_effect_apply_type($skill["special_apply_type"]) ?>
-                                                    <?= nome_special_effect($skill["special_effect"]) ?>
-                                                    no <?= nome_special_effect_target($skill["special_target"]) ?> da
-                                                    Habilidade
-                                                </p>
-                                                <p>
-                                                    <?= nome_special_effect($skill["special_effect"]) ?>
-                                                    : <?= descricao_special_effect($skill["special_effect"]) ?>
-                                                </p>
-                                                <button class="btn btn-danger link_confirm"
-                                                        data-dismiss="modal"
-                                                        data-question="Deseja remover o efeito especial dessa habilidade?"
-                                                        href="Personagem/remover_efeito_especial.php?pers=<?= $pers["cod"] ?>&skill=<?= $skill["cod_skil"] ?>&tipo=<?= $skill["tipo"] ?>">
-                                                    Remover
-                                                    <img src="Imagens/Icones/Berries.png"/> <?= mascara_berries(PRECO_BERRIES_REMOVER_SPECIAL_EFFECT) ?>
-                                                </button>
-                                            <?php else: ?>
-                                                <form class="ajax_form" method="post"
-                                                      onsubmit="$('#modal-edit-skill-<?= $img_id ?>').modal('hide');"
-                                                      action="Personagem/salvar_efeito_especial">
-                                                    <input type="hidden" name="pers" value="<?= $pers["cod"] ?>">
-                                                    <input type="hidden" name="skill" value="<?= $skill["cod_skil"] ?>">
-                                                    <input type="hidden" name="tipo" value="<?= $skill["tipo"] ?>">
-                                                    <div class="form-group">
-                                                        <label>Selecione a forma de uso do efeito:</label>
-                                                        <select name="apply_type" class="form-control">
-                                                            <option value="<?= SPECIAL_APPLY_TYPE_APPLY ?>">
-                                                                <?= nome_special_effect_apply_type(SPECIAL_TARGET_SELF) ?>
-                                                            </option>
-                                                            <option value="<?= SPECIAL_APPLY_TYPE_REMOVE ?>">
-                                                                <?= nome_special_effect_apply_type(SPECIAL_APPLY_TYPE_REMOVE) ?>
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Selecione um efeito:</label>
-                                                        <select name="effect" class="form-control">
-                                                            <option value="<?= SPECIAL_EFFECT_SANGRAMENTO ?>">
-                                                                <?= nome_special_effect(SPECIAL_EFFECT_SANGRAMENTO) ?>
-                                                                : <?= descricao_special_effect(SPECIAL_EFFECT_SANGRAMENTO) ?>
-                                                            </option>
-                                                            <option value="<?= SPECIAL_EFFECT_VENENO ?>">
-                                                                <?= nome_special_effect(SPECIAL_EFFECT_VENENO) ?>
-                                                                : <?= descricao_special_effect(SPECIAL_EFFECT_VENENO) ?>
-                                                            </option>
-                                                            <option value="<?= SPECIAL_EFFECT_MACHUCADO_JOELHO ?>">
-                                                                <?= nome_special_effect(SPECIAL_EFFECT_MACHUCADO_JOELHO) ?>
-                                                                : <?= descricao_special_effect(SPECIAL_EFFECT_MACHUCADO_JOELHO) ?>
-                                                            </option>
-                                                            <option value="<?= SPECIAL_EFFECT_PONTO_FRACO ?>">
-                                                                <?= nome_special_effect(SPECIAL_EFFECT_PONTO_FRACO) ?>
-                                                                : <?= descricao_special_effect(SPECIAL_EFFECT_PONTO_FRACO) ?>
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Selecione o alvo do efeito:</label>
-                                                        <select name="target" class="form-control">
-                                                            <option value="<?= SPECIAL_TARGET_TARGET ?>">
-                                                                <?= nome_special_effect_target(SPECIAL_TARGET_TARGET) ?>
-                                                                da
-                                                                habilidade
-                                                            </option>
-                                                            <option value="<?= SPECIAL_TARGET_SELF ?>">
-                                                                <?= nome_special_effect_target(SPECIAL_TARGET_SELF) ?>
-                                                                da habilidade
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-success">
-                                                        Salvar efeito especial
-                                                    </button>
-                                                </form>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
-                                <?php endif; ?>
                                 <?php if (nome_origem_skill($skill) == "Akuma"): ?>
                                     <div class="col-md-6">
                                         <h3>Editar <?= nome_tipo_skill($skill) ?> de Akuma no Mi</h3>

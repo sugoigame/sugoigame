@@ -343,12 +343,15 @@
         "requisito_lvl": 5,
         "requisito_classe": 1,
         "requisito_prof": 0,
-        "dano": 0.7,
-        "alcance": 1,
-        "area": 4,
+        "dano": 1.2,
+        "alcance": 3,
+        "area": 1,
         "espera": 0,
         "categoria": 3,
-        "icone_padrao": 77
+        "icone_padrao": 77,
+        "special_apply_type": 1,
+        "special_effect": 1,
+        "special_target": 2
     },
     {
         "cod_skil": 1310,
@@ -371,12 +374,15 @@
         "requisito_lvl": 15,
         "requisito_classe": 1,
         "requisito_prof": 0,
-        "dano": 0.9,
-        "alcance": 1,
-        "area": 4,
+        "dano": 1.5,
+        "alcance": 3,
+        "area": 1,
         "espera": 0,
         "categoria": 3,
-        "icone_padrao": 80
+        "icone_padrao": 80,
+        "special_apply_type": 1,
+        "special_effect": 1,
+        "special_target": 2
     },
     {
         "cod_skil": 1320,
@@ -399,12 +405,15 @@
         "requisito_lvl": 25,
         "requisito_classe": 1,
         "requisito_prof": 0,
-        "dano": 1.1,
-        "alcance": 1,
-        "area": 4,
+        "dano": 1.8,
+        "alcance": 3,
+        "area": 1,
         "espera": 0,
         "categoria": 3,
-        "icone_padrao": 96
+        "icone_padrao": 96,
+        "special_apply_type": 1,
+        "special_effect": 1,
+        "special_target": 2
     },
     {
         "cod_skil": 1330,
@@ -427,12 +436,15 @@
         "requisito_lvl": 35,
         "requisito_classe": 1,
         "requisito_prof": 0,
-        "dano": 1.4,
-        "alcance": 1,
-        "area": 4,
+        "dano": 2.2,
+        "alcance": 3,
+        "area": 1,
         "espera": 0,
         "categoria": 3,
-        "icone_padrao": 189
+        "icone_padrao": 189,
+        "special_apply_type": 1,
+        "special_effect": 1,
+        "special_target": 2
     },
     {
         "cod_skil": 1340,
@@ -455,12 +467,15 @@
         "requisito_lvl": 45,
         "requisito_classe": 1,
         "requisito_prof": 0,
-        "dano": 1.8,
-        "alcance": 1,
-        "area": 4,
+        "dano": 2.5,
+        "alcance": 3,
+        "area": 1,
         "espera": 0,
         "categoria": 3,
-        "icone_padrao": 266
+        "icone_padrao": 266,
+        "special_apply_type": 1,
+        "special_effect": 1,
+        "special_target": 2
     },
     {
         "cod_skil": 1350,
@@ -651,9 +666,9 @@
         "requisito_lvl": 5,
         "requisito_classe": 2,
         "requisito_prof": 0,
-        "dano": 1.2,
-        "alcance": 3,
-        "area": 1,
+        "dano": 0.7,
+        "alcance": 1,
+        "area": 4,
         "espera": 0,
         "categoria": 2,
         "icone_padrao": 25
@@ -679,9 +694,9 @@
         "requisito_lvl": 15,
         "requisito_classe": 2,
         "requisito_prof": 0,
-        "dano": 1.4,
-        "alcance": 3,
-        "area": 1,
+        "dano": 0.9,
+        "alcance": 1,
+        "area": 4,
         "espera": 0,
         "categoria": 2,
         "icone_padrao": 30
@@ -707,9 +722,9 @@
         "requisito_lvl": 25,
         "requisito_classe": 2,
         "requisito_prof": 0,
-        "dano": 1.9,
-        "alcance": 3,
-        "area": 1,
+        "dano": 1.1,
+        "alcance": 1,
+        "area": 4,
         "espera": 0,
         "categoria": 2,
         "icone_padrao": 57
@@ -735,9 +750,9 @@
         "requisito_lvl": 35,
         "requisito_classe": 2,
         "requisito_prof": 0,
-        "dano": 2.3,
-        "alcance": 3,
-        "area": 1,
+        "dano": 1.4,
+        "alcance": 1,
+        "area": 4,
         "espera": 0,
         "categoria": 2,
         "icone_padrao": 154
@@ -763,9 +778,9 @@
         "requisito_lvl": 45,
         "requisito_classe": 2,
         "requisito_prof": 0,
-        "dano": 2.5,
-        "alcance": 3,
-        "area": 1,
+        "dano": 1.8,
+        "alcance": 1,
+        "area": 4,
         "espera": 0,
         "categoria": 2,
         "icone_padrao": 18
@@ -948,9 +963,12 @@
         "dano": 0.4,
         "alcance": 1,
         "area": 4,
-        "espera": 0,
+        "espera": 3,
         "categoria": 2,
-        "icone_padrao": 161
+        "icone_padrao": 161,
+        "special_apply_type": 1,
+        "special_effect": 3,
+        "special_target": 2
     },
     {
         "cod_skil": 3205,
@@ -964,7 +982,10 @@
         "area": 4,
         "espera": 0,
         "categoria": 2,
-        "icone_padrao": 62
+        "icone_padrao": 62,
+        "special_apply_type": 1,
+        "special_effect": 2,
+        "special_target": 2
     },
     {
         "cod_skil": 3210,
@@ -978,7 +999,10 @@
         "area": 4,
         "espera": 0,
         "categoria": 2,
-        "icone_padrao": 163
+        "icone_padrao": 163,
+        "special_apply_type": 1,
+        "special_effect": 2,
+        "special_target": 2
     },
     {
         "cod_skil": 3215,
@@ -992,7 +1016,10 @@
         "area": 4,
         "espera": 0,
         "categoria": 2,
-        "icone_padrao": 176
+        "icone_padrao": 176,
+        "special_apply_type": 1,
+        "special_effect": 2,
+        "special_target": 2
     },
     {
         "cod_skil": 3220,
@@ -1006,7 +1033,10 @@
         "area": 4,
         "espera": 0,
         "categoria": 2,
-        "icone_padrao": 192
+        "icone_padrao": 192,
+        "special_apply_type": 1,
+        "special_effect": 2,
+        "special_target": 2
     },
     {
         "cod_skil": 3225,
@@ -1020,7 +1050,10 @@
         "area": 4,
         "espera": 0,
         "categoria": 2,
-        "icone_padrao": 256
+        "icone_padrao": 256,
+        "special_apply_type": 1,
+        "special_effect": 2,
+        "special_target": 2
     },
     {
         "cod_skil": 3230,
@@ -1034,7 +1067,10 @@
         "area": 4,
         "espera": 0,
         "categoria": 2,
-        "icone_padrao": 257
+        "icone_padrao": 257,
+        "special_apply_type": 1,
+        "special_effect": 2,
+        "special_target": 2
     },
     {
         "cod_skil": 3235,
@@ -1048,7 +1084,10 @@
         "area": 4,
         "espera": 0,
         "categoria": 2,
-        "icone_padrao": 258
+        "icone_padrao": 258,
+        "special_apply_type": 1,
+        "special_effect": 2,
+        "special_target": 2
     },
     {
         "cod_skil": 3240,
@@ -1062,7 +1101,10 @@
         "area": 4,
         "espera": 0,
         "categoria": 2,
-        "icone_padrao": 262
+        "icone_padrao": 262,
+        "special_apply_type": 1,
+        "special_effect": 2,
+        "special_target": 2
     },
     {
         "cod_skil": 3245,
@@ -1076,7 +1118,10 @@
         "area": 4,
         "espera": 0,
         "categoria": 2,
-        "icone_padrao": 447
+        "icone_padrao": 447,
+        "special_apply_type": 1,
+        "special_effect": 2,
+        "special_target": 2
     },
     {
         "cod_skil": 3250,
@@ -1090,6 +1135,9 @@
         "area": 4,
         "espera": 0,
         "categoria": 2,
-        "icone_padrao": 450
+        "icone_padrao": 450,
+        "special_apply_type": 1,
+        "special_effect": 2,
+        "special_target": 2
     }
 ]

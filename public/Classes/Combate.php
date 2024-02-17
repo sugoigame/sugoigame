@@ -96,7 +96,7 @@ class Combate
     {
         $this->apply_sangramento();
         $this->apply_veneno();
-        $this->aplly_fadiga();
+        //$this->aplly_fadiga();
     }
 
     public function aplly_fadiga()

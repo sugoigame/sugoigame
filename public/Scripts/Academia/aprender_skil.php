@@ -39,7 +39,7 @@ if ($pers["lvl"] < $skill["requisito_lvl"]
 
 
 $habilidade = habilidade_random();
-$icon = $cod_skill;
+$icon = $skill["icone_padrao"];
 
 $skills_personagem = $connection->run(
     "SELECT * FROM tb_personagens_skil WHERE cod = ? AND (tipo = 1 OR tipo = 2 OR tipo = 3)",
