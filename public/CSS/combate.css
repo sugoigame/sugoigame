@@ -20,6 +20,14 @@
     font-size: 5vh;
     width: 10vw;
 }
+.battle-heading .vontade {
+    font-size: 5vh;
+    width: 8vw;
+    background: url(Imagens/Icones/Vontade.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
 .battle-heading .battle-player {
     width: 30vw;
@@ -119,13 +127,14 @@
     width: 4vw;
 }
 .table_batalha tr td img {
-    height: 80%;
+    height: 90%;
     width: 100%;
 }
 
 #relatorio-combate-content {
     max-height: 400px;
     overflow: auto;
+    display: none;
 }
 
 .personagem-aliado {
@@ -223,11 +232,12 @@
     flex-direction: column;
     justify-content: center;
 }
+
 .tempo-combate {
     text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000,
         -1px -1px #000, 1px -1px #000, -1px 1px #000;
 }
 
-#relatorio-combate-content {
-    display: none;
+.icon-skill-cbt p {
+    color: black;
 }

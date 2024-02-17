@@ -10,21 +10,24 @@ $protector->need_tripulacao_alive();
 $cod = $protector->get_number_or_exit("cod");
 $tipo = $protector->get_alphanumeric_or_exit("tipo");
 
-function nome_faccao($item) {
+function nome_faccao($item)
+{
     global $userDetails;
     global $tipo;
     $faccao = $userDetails->tripulacao["faccao"];
     return isset($item["nome_" . $tipo . "_" . $faccao]) ? $item["nome_" . $tipo . "_" . $faccao] : $item["nome"];
 }
 
-function img_faccao($item) {
+function img_faccao($item)
+{
     global $userDetails;
     global $tipo;
     $faccao = $userDetails->tripulacao["faccao"];
     return isset($item["img_" . $tipo . "_" . $faccao]) ? $item["img_" . $tipo . "_" . $faccao] : $item["nome"];
 }
 
-function skin_faccao($item) {
+function skin_faccao($item)
+{
     global $userDetails;
     global $tipo;
     $faccao = $userDetails->tripulacao["faccao"];
@@ -38,7 +41,7 @@ if ($tipo != TIPO_KARMA_BOM && $tipo != TIPO_KARMA_MAU) {
 $result = $connection->run("SELECT * FROM tb_ilha_missoes WHERE ilha = ? AND cod_missao = ?",
     "ii", array($userDetails->ilha["ilha"], $cod));
 
-if (!$result->count()) {
+if (! $result->count()) {
     $protector->exit_error("Missao nao encontrada");
 }
 
@@ -78,7 +81,7 @@ $connection->run(
     )
 );
 
-if (!$userDetails->tripulacao["missoes_automaticas"]) {
+if (! $userDetails->tripulacao["missoes_automaticas"]) {
     $battle_back = isset($missao["battle_back"]) ? $missao["battle_back"] : 1;
 
     $result = $connection->run(
@@ -134,7 +137,7 @@ if (!$userDetails->tripulacao["missoes_automaticas"]) {
           (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             "isiiiiiiiiiiiiiiiiiiiisiii", array(
                 $id, $pers["nome"], $pers["lvl"], $pers["img"], $pers["skin"], $pers["skin"], $pers["hp"], $pers["hp_max"],
-                $pers["mp"], $pers["mp_max"], $pers["atk"], $pers["def"], $pers["agl"], $pers["res"], $pers["pre"], $pers["dex"], $pers["con"], $pers["vit"],
+                1, 0, $pers["atk"], $pers["def"], $pers["agl"], $pers["res"], $pers["pre"], $pers["dex"], $pers["con"], $pers["vit"],
                 $pers["quadro_x"], $pers["quadro_y"], $pers["haki_esq"], $pers["haki_cri"], $pers["titulo"], $pers["classe"], $pers["classe_score"], $pers["pack_habilidade_id"]
             )
         );
@@ -160,4 +163,4 @@ $fim = atual_segundo() + $missao["duracao"];
 $connection->run("UPDATE tb_usuarios SET tempo_missao = ? WHERE id = ?",
     "ii", array($fim, $userDetails->tripulacao["id"]));
 
-echo($userDetails->tripulacao["missoes_automaticas"] ? "%missoes" : "%combate");
+echo ($userDetails->tripulacao["missoes_automaticas"] ? "%missoes" : "%combate");

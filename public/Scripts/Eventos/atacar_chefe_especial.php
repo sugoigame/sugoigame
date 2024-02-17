@@ -23,19 +23,19 @@ if ($chefe->count()) {
     $player["hp"] = $player["hp_max"] * 10;
     $rdm = $player;
 }
-if (!isset($rdm["skin_c"])) {
+if (! isset($rdm["skin_c"])) {
     $rdm["skin_c"] = NULL;
 }
 
 $connection->run(
-    "INSERT INTO tb_combate_npc 
-        (id, 
+    "INSERT INTO tb_combate_npc
+        (id,
         img_npc,
-        nome_npc, 
-        hp_npc, hp_max_npc, 
-        mp_npc, mp_max_npc, 
-		atk_npc, def_npc, agl_npc, res_npc, pre_npc, dex_npc, con_npc, 
-		dano, armadura, 
+        nome_npc,
+        hp_npc, hp_max_npc,
+        mp_npc, mp_max_npc,
+		atk_npc, def_npc, agl_npc, res_npc, pre_npc, dex_npc, con_npc,
+		dano, armadura,
 		zona, battle_back, skin_npc, chefe_especial)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
     "iisiiiiiiiiiiiiiiiii", array(
@@ -43,7 +43,7 @@ $connection->run(
         isset($rdm["img"]) ? $rdm["img"] : rand($rdm["img_rand_min"], $rdm["img_rand_max"]),
         $rdm["nome"],
         $rdm["hp"], $rdm["hp"],
-        0, 0,
+        1, 0,
         $rdm["atk"], $rdm["def"], $rdm["agl"], $rdm["res"], $rdm["pre"], $rdm["dex"], $rdm["con"],
         0, 0,
         9998, $rdm["battle_back"], $rdm["skin_c"], 1

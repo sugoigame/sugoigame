@@ -2,41 +2,41 @@
 function categoria_akuma($atacante, $alvo) {
     if ($atacante == 1) {
         if ($alvo == 2) $mod = 1.2;
-        else if ($alvo == 6) $mod = 0.8;
-        else if ($alvo == 9) $mod = 1.1;
+        elseif ($alvo == 6) $mod = 0.8;
+        elseif ($alvo == 9) $mod = 1.1;
         else $mod = 1;
-    } else if ($atacante == 2) {
+    } elseif ($atacante == 2) {
         if ($alvo == 3) $mod = 1.2;
-        else if ($alvo == 1) $mod = 0.8;
-        else if ($alvo == 9) $mod = 1.1;
+        elseif ($alvo == 1) $mod = 0.8;
+        elseif ($alvo == 9) $mod = 1.1;
         else $mod = 1;
-    } else if ($atacante == 3) {
+    } elseif ($atacante == 3) {
         if ($alvo == 4) $mod = 1.2;
-        else if ($alvo == 2) $mod = 0.8;
-        else if ($alvo == 9) $mod = 1.1;
+        elseif ($alvo == 2) $mod = 0.8;
+        elseif ($alvo == 9) $mod = 1.1;
         else $mod = 1;
-    } else if ($atacante == 4) {
+    } elseif ($atacante == 4) {
         if ($alvo == 5) $mod = 1.2;
-        else if ($alvo == 3) $mod = 0.8;
-        else if ($alvo == 9) $mod = 1.1;
+        elseif ($alvo == 3) $mod = 0.8;
+        elseif ($alvo == 9) $mod = 1.1;
         else $mod = 1;
-    } else if ($atacante == 5) {
+    } elseif ($atacante == 5) {
         if ($alvo == 6) $mod = 1.2;
-        else if ($alvo == 4) $mod = 0.8;
-        else if ($alvo == 9) $mod = 1.1;
+        elseif ($alvo == 4) $mod = 0.8;
+        elseif ($alvo == 9) $mod = 1.1;
         else $mod = 1;
-    } else if ($atacante == 6) {
+    } elseif ($atacante == 6) {
         if ($alvo == 1) $mod = 1.2;
-        else if ($alvo == 5) $mod = 0.8;
-        else if ($alvo == 9) $mod = 1.1;
+        elseif ($alvo == 5) $mod = 0.8;
+        elseif ($alvo == 9) $mod = 1.1;
         else $mod = 1;
-    } else if ($atacante == 7) {
+    } elseif ($atacante == 7) {
         if ($alvo == 7) $mod = 1;
         if ($alvo == 8) $mod = 1;
         else $mod = 1.1;
-    } else if ($atacante == 8) {
+    } elseif ($atacante == 8) {
         $mod = 1;
-    } else if ($atacante == 9) {
+    } elseif ($atacante == 9) {
         $mod = 1;
     } else $mod = 1;
 
@@ -242,9 +242,9 @@ function render_status_akuma($pers, $img_akuma, $tipoakuma) {
                                    id="cooldown_<?php if ($x == 0) echo 1; else echo $x; ?>"
                                    class="form-control input-text" readonly="true" size="1"
                                    value="<?php if ($x < 11) echo "1";
-                                   else if ($x > 11 AND $x < 21) echo "2";
-                                   else if ($x > 21 AND $x < 31) echo "3";
-                                   else if ($x > 31 AND $x < 41) echo "4";
+                                   elseif ($x > 11 AND $x < 21) echo "2";
+                                   elseif ($x > 21 AND $x < 31) echo "3";
+                                   elseif ($x > 31 AND $x < 41) echo "4";
                                    else echo "5"; ?>"/>
                         </div>
                     </div>

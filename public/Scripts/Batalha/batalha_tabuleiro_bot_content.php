@@ -2,19 +2,19 @@
 $personagens_combate = get_pers_in_combate($userDetails->tripulacao["id"]);
 $personagens_combate_bot = get_pers_bot_in_combate($userDetails->combate_bot["id"]);
 
-$perdeu = TRUE;
-$venceu = TRUE;
+$perdeu = true;
+$venceu = true;
 
 $tabuleiro = [];
 foreach ($personagens_combate as $pers) {
     if ($pers["hp"]) {
-        $perdeu = FALSE;
+        $perdeu = false;
         $tabuleiro[$pers["quadro_x"]][$pers["quadro_y"]] = $pers;
     }
 }
 foreach ($personagens_combate_bot as $pers) {
     if ($pers["hp"]) {
-        $venceu = FALSE;
+        $venceu = false;
         $tabuleiro[$pers["quadro_x"]][$pers["quadro_y"]] = $pers;
     }
 }
@@ -56,19 +56,19 @@ $special_effects = get_special_effects_bot($userDetails->tripulacao["id"], $user
                 <div class="navio navio-player" <?php if (! $userDetails->combate_bot["battle_back"]) : ?>
                         style="background: url(Imagens/Bandeiras/Navios/<?= $userDetails->combate_bot["faccao_inimiga"]; ?>/0/batalha.png) no-repeat center"
                     <?php endif; ?>>
-                    <?php render_tabuleiro($tabuleiro, 0, 5, NULL, NULL, $special_effects); ?>
+                    <?php render_tabuleiro($tabuleiro, 0, 5, null, null, $special_effects); ?>
                 </div>
                 <div class="navio navio-player" <?php if (! $userDetails->combate_bot["battle_back"]) : ?>
                         style="background: url(Imagens/Bandeiras/Navios/<?= $userDetails->tripulacao["faccao"]; ?>/<?= $userDetails->tripulacao["skin_tabuleiro_navio"] ?>/batalha.png) no-repeat center"
                     <?php endif; ?>>
-                    <?php render_tabuleiro($tabuleiro, 5, 10, NULL, NULL, $special_effects); ?>
+                    <?php render_tabuleiro($tabuleiro, 5, 10, null, null, $special_effects); ?>
                 </div>
             </div>
             <div class="personagens-info">
                 <?php render_personagens_info(
                     array_merge($personagens_combate, $personagens_combate_bot),
                     get_buffs_combate_bot($userDetails->tripulacao["id"], $userDetails->combate_bot["id"]),
-                    NULL,
+                    null,
                     $special_effects
                 ); ?>
             </div>

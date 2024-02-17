@@ -12,9 +12,9 @@ $missoes_disponiveis = $connection->run(
     "SELECT  count(ilhamis.cod_missao) AS total
     FROM tb_ilha_missoes ilhamis
     LEFT JOIN tb_missoes_concluidas conc ON ilhamis.cod_missao = conc.cod_missao AND conc.id = ?
-    INNER JOIN tb_missoes mis ON ilhamis.cod_missao = mis.cod_missao 
+    INNER JOIN tb_missoes mis ON ilhamis.cod_missao = mis.cod_missao
     LEFT JOIN tb_missoes_concluidas misreccon ON mis.requisito_missao = misreccon.cod_missao
-    WHERE ilhamis.ilha = ? AND (mis.faccao = '3' OR mis.faccao = ?) AND conc.cod_missao IS NULL 
+    WHERE ilhamis.ilha = ? AND (mis.faccao = '3' OR mis.faccao = ?) AND conc.cod_missao IS NULL
     GROUP BY mis.cod_missao
     ORDER BY mis.requisito_lvl",
     "iii", array($userDetails->tripulacao["id"], $userDetails->ilha["ilha"], $userDetails->tripulacao["faccao"]))->fetch_array()["total"];
@@ -41,14 +41,14 @@ $rdms = DataLoader::load("rdm");
 $rdm = $rdms[$rdm_id];
 
 $connection->run(
-    "INSERT INTO tb_combate_npc 
-        (id, 
+    "INSERT INTO tb_combate_npc
+        (id,
         img_npc,
-        nome_npc, 
-        hp_npc, hp_max_npc, 
-        mp_npc, mp_max_npc, 
-		atk_npc, def_npc, agl_npc, res_npc, pre_npc, dex_npc, con_npc, 
-		dano, armadura, 
+        nome_npc,
+        hp_npc, hp_max_npc,
+        mp_npc, mp_max_npc,
+		atk_npc, def_npc, agl_npc, res_npc, pre_npc, dex_npc, con_npc,
+		dano, armadura,
 		zona, battle_back, chefe_ilha)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
     "iisiiiiiiiiiiiiiiii", array(
@@ -56,7 +56,7 @@ $connection->run(
         isset($rdm["img"]) ? $rdm["img"] : rand($rdm["img_rand_min"], $rdm["img_rand_max"]),
         $rdm["nome"],
         $rdm["hp"], $rdm["hp"],
-        0, 0,
+        1, 0,
         $rdm["atk"], $rdm["def"], $rdm["agl"], $rdm["res"], $rdm["pre"], $rdm["dex"], $rdm["con"],
         0, 0,
         $rdm["id"], $rdm["battle_back"], 1

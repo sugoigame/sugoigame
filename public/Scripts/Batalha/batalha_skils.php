@@ -42,10 +42,10 @@ $skills = get_all_skills($pers);
         ?>
         <?php if ($skill["tipo"] != $last_tipo) : ?>
             <?php $last_tipo = $skill["tipo"]; ?>
-            <h5>
+            <div class="list-group-item">
                 <?= nome_tipo_skill($skill) ?> de
                 <?= nome_origem_skill($skill) ?>
-            </h5>
+            </div>
         <?php endif; ?>
         <div class="icon-skill-cbt">
             <div>
@@ -81,7 +81,7 @@ $skills = get_all_skills($pers);
                         <?= $espera["espera"] ?> turno(s)
                     </p>
                 <?php elseif ($pers["mp"] < $skill["consumo"]) : ?>
-                    <p>Energia insuficiente</p>
+                    <p>Vontade insuficiente</p>
                 <?php elseif (! $espera["espera"] && $pers["mp"] >= $skill["consumo"]) : ?>
                     <button class="btn btn-success" data-dismiss="modal"
                         onclick="usaSkil('<?= $skill["cod_skil"]; ?>','<?= $pers["cod"]; ?>','<?= $skill["alcance"]; ?>', '<?= $skill["tipo"]; ?>','<?= $skill["area"]; ?>')">
@@ -96,7 +96,9 @@ $skills = get_all_skills($pers);
         <?php $items = get_result_joined_mapped_by_type("tb_usuario_itens", "cod_item", "tipo_item", "tb_item_remedio", "cod_remedio", TIPO_ITEM_REMEDIO,
             "WHERE origem.id=?", "i", $userDetails->tripulacao["id"]); ?>
 
-        <h5>Remédios</h5>
+        <div class="list-group-item">
+            Remédios
+        </div>
         <?php foreach ($items as $item) : ?>
             <?php
             $result = $connection->run(
@@ -127,7 +129,7 @@ $skills = get_all_skills($pers);
                     <?php elseif ($pers["profissao_lvl"] < $item["requisito_lvl"]) : ?>
                         <p>Nível Baixo</p>
                     <?php elseif ($pers["mp"] < $consumo) : ?>
-                        <p>Energia insuficiente</p>
+                        <p>Vontade insuficiente</p>
                     <?php elseif (! $espera["espera"] && $pers["mp"] >= $consumo && $pers["profissao_lvl"] >= $item["requisito_lvl"]) : ?>
                         <button class="btn btn-success" data-dismiss="modal"
                             onclick="usaSkil('<?= $item["cod_remedio"]; ?>','<?= $pers["cod"]; ?>','1', '10','1')">

@@ -1,6 +1,6 @@
 <?php
 
-if (!$userDetails->tripulacao) {
+if (! $userDetails->tripulacao) {
     echo '{"error":"Você precisa estar logado."}';
     exit;
 }
@@ -13,11 +13,11 @@ if ($userDetails->combate_pve || $userDetails->combate_pvp) {
     echo '{"redirect":"combate"}';
     exit;
 }
-if (!$userDetails->navio) {
+if (! $userDetails->navio) {
     echo '{"error":"Você precisa de um navio."}';
     exit;
 }
-if (!$userDetails->rotas) {
+if (! $userDetails->rotas) {
     echo '{"error":"Você não traçou uma rota."}';
     exit;
 }
@@ -52,15 +52,15 @@ if ($xp >= $userDetails->navio["xp_max"]) {
     if ($lvl < 10) {
         $xp_max = $navio["xp_max"] + 250;
         $connection->run(
-            "UPDATE tb_usuario_navio 
-            SET xp = ?, xp_max = ?, lvl = ? 
+            "UPDATE tb_usuario_navio
+            SET xp = ?, xp_max = ?, lvl = ?
             WHERE id = ?",
             "iiii", array($xp, $xp_max, $lvl, $userDetails->tripulacao["id"])
         );
     }
 } else {
     $connection->run(
-        "UPDATE tb_usuario_navio 
+        "UPDATE tb_usuario_navio
          SET xp = ? WHERE id = ?",
         "ii", array($xp, $userDetails->tripulacao["id"])
     );
@@ -68,7 +68,7 @@ if ($xp >= $userDetails->navio["xp_max"]) {
 
 if ($userDetails->navegadores) {
     $connection->run(
-        "UPDATE tb_personagens SET profissao_xp = profissao_xp + 1 
+        "UPDATE tb_personagens SET profissao_xp = profissao_xp + 1
         WHERE id = ? AND profissao_xp < profissao_xp_max AND profissao = " . PROFISSAO_NAVEGADOR,
         "i", $userDetails->tripulacao["id"]
     );
@@ -80,7 +80,7 @@ if (rand(1, 100) <= 5) {
     $userDetails->add_item(133, TIPO_ITEM_REAGENT, 1);
 }
 
-if (!$battle_start) {
+if (! $battle_start) {
     // entra na GL
     if (
         $userDetails->capitao["lvl"] >= 15
@@ -170,7 +170,7 @@ if (!$battle_start) {
     $zona = $destino["zona_especial"] ? $destino["zona_especial"] : $destino["zona"];
     foreach ($rdms as $rdm) {
         if (isset($rdm["zona"]) && $rdm["zona"] == $zona) {
-            $zone_rdms [] = $rdm;
+            $zone_rdms[] = $rdm;
         }
     }
 
@@ -189,14 +189,14 @@ if (!$battle_start) {
     }
 
     $connection->run(
-        "INSERT INTO tb_combate_npc 
-        (id, 
+        "INSERT INTO tb_combate_npc
+        (id,
         img_npc,
-        nome_npc, 
-        hp_npc, hp_max_npc, 
-        mp_npc, mp_max_npc, 
-		atk_npc, def_npc, agl_npc, res_npc, pre_npc, dex_npc, con_npc, 
-		dano, armadura, 
+        nome_npc,
+        hp_npc, hp_max_npc,
+        mp_npc, mp_max_npc,
+		atk_npc, def_npc, agl_npc, res_npc, pre_npc, dex_npc, con_npc,
+		dano, armadura,
 		zona, boss_id)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         "iisiiiiiiiiiiiiiii", array(
@@ -204,7 +204,7 @@ if (!$battle_start) {
             isset($rdm["img"]) ? $rdm["img"] : rand($rdm["img_rand_min"], $rdm["img_rand_max"]),
             $rdm["nome"],
             $rdm["hp"], $rdm["hp"],
-            0, 0,
+            1, 0,
             $rdm["atk"], $rdm["def"], $rdm["agl"], $rdm["res"], $rdm["pre"], $rdm["dex"], $rdm["con"],
             0, 0,
             $rdm["id"], $rdm["boss"]

@@ -1,7 +1,8 @@
 <?php
 require "../../Includes/conectdb.php";
 // valida_alvo_valido($alvo_id, $incursao_progresso["progresso"], $incursao_nivel["nivel"])
-function valida_alvo_valido($alvo_id, $progresso, $nivel) {
+function valida_alvo_valido($alvo_id, $progresso, $nivel)
+{
     if ($progresso > $alvo_id/* || $nivel > $alvo_id*/) {
         // echo $progresso . ' > ' . $alvo_id . ' || ' . $nivel . ' > ' . $alvo_id;
         // exit ;
@@ -39,7 +40,7 @@ $incursao_progresso = $incursao_progresso->count() ? $incursao_progresso->fetch_
 
 $alvo = isset($incursao["especial"]) ? $incursao["niveis"][1][1] : get_adversario_incursao($alvo_id, $incursao);
 
-if (!$alvo || !valida_alvo_valido($alvo_id, $incursao_progresso["progresso"], $incursao_nivel["nivel"])) {
+if (! $alvo || ! valida_alvo_valido($alvo_id, $incursao_progresso["progresso"], $incursao_nivel["nivel"])) {
     $protector->exit_error("Adversário inválido");
 }
 
@@ -72,12 +73,12 @@ sorteia_posicoes($personagens_bot, array("tatic" => 1), "tatic_d", 0, 4, $bots, 
 
 foreach ($bots as $pers) {
     $connection->run(
-        "INSERT INTO tb_combate_personagens_bot 
-          (combate_bot_id, nome, lvl, img, skin_r, skin_c, hp, hp_max, mp, mp_max, atk, def, agl, res, pre, dex, con, vit, quadro_x, quadro_y, haki_esq, haki_cri, titulo, classe, classe_score, pack_habilidade_id) VALUE 
+        "INSERT INTO tb_combate_personagens_bot
+          (combate_bot_id, nome, lvl, img, skin_r, skin_c, hp, hp_max, mp, mp_max, atk, def, agl, res, pre, dex, con, vit, quadro_x, quadro_y, haki_esq, haki_cri, titulo, classe, classe_score, pack_habilidade_id) VALUE
           (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         "isiiiiiiiiiiiiiiiiiiiisiii", array(
             $id, $pers["nome"], $pers["lvl"], $pers["img"], $pers["skin"], $pers["skin"], $pers["hp"], $pers["hp_max"],
-            $pers["mp"], $pers["mp_max"], $pers["atk"], $pers["def"], $pers["agl"], $pers["res"], $pers["pre"], $pers["dex"], $pers["con"], $pers["vit"],
+            1, 0, $pers["atk"], $pers["def"], $pers["agl"], $pers["res"], $pers["pre"], $pers["dex"], $pers["con"], $pers["vit"],
             $pers["quadro_x"], $pers["quadro_y"], $pers["haki_esq"], $pers["haki_cri"], $pers["titulo"], $pers["classe"], $pers["classe_score"], $pers["pack_habilidade_id"]
         )
     );

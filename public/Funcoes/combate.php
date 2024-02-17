@@ -513,17 +513,30 @@ function dano_bloq($pers, $alvo)
 
 function dano_por_atributo($pers, $alvo)
 {
+    $atk = get_atk_combate($pers);
+    $def = get_def_combate($alvo);
+
+    return max(0, ($atk - $def) * 10);
+}
+function get_atk_combate($pers)
+{
     $atk = $pers["atk"];
-    $def = $alvo["def"];
 
     if ($pers["classe"] == 1) {
         $atk += $pers["atk"] * calc_score_mod($pers["classe_score"]);
     }
-    if ($alvo["classe"] == 2) {
-        $def += $alvo["def"] * calc_score_mod($alvo["classe_score"]);
+
+    return $atk;
+}
+function get_def_combate($pers)
+{
+    $def = $pers["def"];
+
+    if ($pers["classe"] == 2) {
+        $def += $pers["def"] * calc_score_mod($pers["classe_score"]);
     }
 
-    return max(0, ($atk - $def) * 10);
+    return $def;
 }
 
 function calc_dano($pers, $alvo, $dano_hab = 0)
@@ -548,8 +561,7 @@ function calc_dano($pers, $alvo, $dano_hab = 0)
     if ($retorno["dado_esquivou"] <= $esquiva) {
         $retorno["esquivou"] = true;
     } else {
-
-        $dano = dano_por_atributo($pers, $alvo) + $dano_hab;
+        $dano = (dano_por_atributo($pers, $alvo) * $dano_hab) + (get_atk_combate($pers) * 0.3);
 
         $chance_crit = chance_crit($pers, $alvo);
 
@@ -654,7 +666,7 @@ function atacar_rdm($rdm_id, $details = null, $conn = null)
             isset($rdm["img"]) ? $rdm["img"] : rand($rdm["img_rand_min"], $rdm["img_rand_max"]),
             $rdm["nome"],
             $rdm["hp"], $rdm["hp"],
-            0, 0,
+            1, 0,
             $rdm["atk"], $rdm["def"], $rdm["agl"], $rdm["res"], $rdm["pre"], $rdm["dex"], $rdm["con"],
             0, 0,
             $rdm["id"], $rdm["boss"], isset($rdm["battle_back"]) ? $rdm["battle_back"] : NULL
@@ -711,11 +723,6 @@ function fadiga_batalha_ativa($personagens)
                             <div class="progress progress-red">
                                 <div class="progress-bar progress-bar-success"
                                     style="width: <?= $tabuleiro[$x][$y]["hp"] / $tabuleiro[$x][$y]["hp_max"] * 100 ?>%">
-                                </div>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-warning"
-                                    style="width: <?= $tabuleiro[$x][$y]["mp"] / $tabuleiro[$x][$y]["mp_max"] * 100 ?>%">
                                 </div>
                             </div>
                             <img class="<?= (isset($special_effects[$tabuleiro[$x][$y]["cod"]])) ? get_special_effect_classes($special_effects[$tabuleiro[$x][$y]["cod"]]) : "" ?>"
@@ -973,10 +980,17 @@ function fadiga_batalha_ativa($personagens)
         <?php endforeach; ?>
     </ul>
 <?php } ?>
-<?php function render_combate_pvp_header($combate, $tripulacao, $id_blue = NULL)
+<?php function render_vontade($amount)
+{ ?>
+    <span class="vontade" data-toggle="tooltip" data-placement="bottom" data-container="body"
+        title="Vontade: A cada turno essa tripulação pode utilizar habilidades mais poderosas. Você ganha um ponto de Vontade adicional sempre que um tripulante for derrotado.">
+        <?= $amount ?>
+    </span>
+<?php } ?>
+<?php function render_combate_pvp_header($combate, $tripulacao, $id_blue = null)
 { ?>
     <?php global $userDetails, $personagens_combate; ?>
-    <?php if ($id_blue === NULL) {
+    <?php if ($id_blue === null) {
         $id_blue = $userDetails->tripulacao["id"];
     } ?>
     <div class="battle-heading-details">
@@ -985,6 +999,7 @@ function fadiga_batalha_ativa($personagens)
             <img class="personagem-<?= $tripulacao["1"]["id"] == $id_blue ? "aliado" : "inimigo" ?>"
                 src="Imagens/Bandeiras/img.php?cod=<?= $tripulacao["1"]["bandeira"] ?>&f=<?= $tripulacao["1"]["faccao"] ?>">
         </span>
+        <?php render_vontade($personagens_combate["1"][0]["mp"]) ?>
         <span class="placar text-<?= $tripulacao["1"]["id"] == $id_blue ? "info" : "danger" ?>">
             <?= count($personagens_combate["1"]) ?>
         </span>
@@ -992,6 +1007,7 @@ function fadiga_batalha_ativa($personagens)
         <span class="placar text-<?= $tripulacao["2"]["id"] == $id_blue ? "info" : "danger" ?>">
             <?= count($personagens_combate["2"]) ?>
         </span>
+        <?php render_vontade($personagens_combate["2"][0]["mp"]) ?>
         <span class="battle-player text-left">
             <img class="personagem-<?= $tripulacao["2"]["id"] == $id_blue ? "aliado" : "inimigo" ?>"
                 src="Imagens/Bandeiras/img.php?cod=<?= $tripulacao["2"]["bandeira"] ?>&f=<?= $tripulacao["2"]["faccao"] ?>">
@@ -1005,7 +1021,7 @@ function fadiga_batalha_ativa($personagens)
 
 <?php function render_battle_heading()
 {
-    global $userDetails; ?>
+    global $userDetails, $personagens_combate, $personagens_combate_bot; ?>
     <div class="battle-heading">
         <?php if ($userDetails->combate_pvp) : ?>
             <?php render_combate_pvp_header($userDetails->combate_pvp, $userDetails->tripulacoes_pvp); ?>
@@ -1016,9 +1032,15 @@ function fadiga_batalha_ativa($personagens)
                     <img
                         src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->tripulacao["bandeira"] ?>&f=<?= $userDetails->tripulacao["faccao"] ?>">
                 </span>
-                <span class="placar"></span>
+                <?php render_vontade($personagens_combate[0]["mp"]) ?>
+                <span class="placar">
+                    <?= count($personagens_combate) ?>
+                </span>
                 <img src="Imagens/Batalha/vs.png" />
-                <span class="placar"></span>
+                <span class="placar">
+                    <?= $userDetails->combate_pve["hp_pc"] ? "1" : "0" ?>
+                </span>
+                <?php render_vontade($userDetails->combate_pve["mp_npc"]) ?>
                 <span class="battle-player text-left">
                     <img src="Imagens/Batalha/npc.jpg" />
                     <?= $userDetails->combate_pve["nome_npc"] ?>
@@ -1031,9 +1053,15 @@ function fadiga_batalha_ativa($personagens)
                     <img
                         src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->tripulacao["bandeira"] ?>&f=<?= $userDetails->tripulacao["faccao"] ?>">
                 </span>
-                <span class="placar"></span>
+                <?php render_vontade($personagens_combate[0]["mp"]) ?>
+                <span class="placar text-info">
+                    <?= count($personagens_combate) ?>
+                </span>
                 <img src="Imagens/Batalha/vs.png" />
-                <span class="placar"></span>
+                <span class="placar text-danger">
+                    <?= count($personagens_combate_bot) ?>
+                </span>
+                <?php render_vontade($personagens_combate_bot[0]["mp"]) ?>
                 <span class="battle-player text-left">
                     <img
                         src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->combate_bot["bandeira_inimiga"] ?>&f=<?= $userDetails->combate_bot["faccao_inimiga"] ?>">

@@ -1,12 +1,12 @@
 <?php
 $personagens_combate = get_pers_in_combate($userDetails->tripulacao["id"]);
 
-$perdeu = TRUE;
+$perdeu = true;
 
 $tabuleiro = [];
 foreach ($personagens_combate as $pers) {
     if ($pers["hp"]) {
-        $perdeu = FALSE;
+        $perdeu = false;
         $tabuleiro[$pers["quadro_x"]][$pers["quadro_y"]] = $pers;
     }
 }

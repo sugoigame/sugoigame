@@ -62,8 +62,6 @@ class Combate
         if ($personagem_combate && $habilidade && $cod_skil && $tipo_skil) {
             $this->insert_espera($personagem_combate, $cod_skil, $tipo_skil, $habilidade["espera"]);
 
-            $this->reduz_mp($personagem_combate, $habilidade["consumo"]);
-
             $this->aumenta_xp_profissao($personagem_combate, $tipo_skil);
         }
 
@@ -240,8 +238,8 @@ class Combate
         if ($tipo_skil == TIPO_SKILL_ATAQUE_CLASSE
             || $tipo_skil == TIPO_SKILL_ATAQUE_PROFISSAO
             || $tipo_skil == TIPO_SKILL_ATAQUE_AKUMA) {
-            $skil_dano = ($habilidade["dano"] * 10);
-            $resultado = calc_dano($personagem_combate, $alvo, $skil_dano);
+
+            $resultado = calc_dano($personagem_combate, $alvo, $habilidade["dano"]);
 
             $relatorio_afetado["resultado"] = $resultado;
 
@@ -312,20 +310,14 @@ class Combate
                         if ($this->vale_score()) {
                             $this->modifica_score($personagem_combate, $alvo);
                         }
-                        if ($this->userDetails->combate_pvp) {
-                            if ($this->userDetails->combate_pvp["tipo"] != TIPO_AMIGAVEL
-                                && $this->userDetails->combate_pvp["tipo"] != TIPO_LOCALIZADOR_CASUAL
-                                && $this->userDetails->combate_pvp["tipo"] != TIPO_COLISEU
-                            ) {
-                                $derrotados_adversario = $this->connection->run(
-                                    "SELECT count(*) AS total FROM tb_combate_personagens WHERE id = ? AND hp <= 0",
-                                    "i", array($alvo["id"])
-                                )->fetch_array()["total"];
-                                $this->connection->run(
-                                    "UPDATE tb_usuarios SET battle_points = battle_points + ? WHERE id = ?",
-                                    "ii", array(27 - $derrotados_adversario, $this->userDetails->tripulacao["id"]));
-                            }
 
+                        if ($alvo["id"] == "bot") {
+                            $this->regen_mp_personagens_bot();
+                        } else {
+                            $this->regen_mp_personagens($alvo["id"]);
+                        }
+
+                        if ($this->userDetails->combate_pvp) {
                             $this->log_derrotado($alvo);
                         }
                     }
@@ -587,7 +579,9 @@ class Combate
         $relatorio_afetado["img"] = $this->userDetails->combate_pve["img_npc"];
         $relatorio_afetado["skin_r"] = "npc";
 
-        if ($tipo_skil == 1 or $tipo_skil == 4 or $tipo_skil == 7) {
+        if ($tipo_skil == TIPO_SKILL_ATAQUE_CLASSE
+            || $tipo_skil == TIPO_SKILL_ATAQUE_PROFISSAO
+            || $tipo_skil == TIPO_SKILL_ATAQUE_AKUMA) {
 
             $dano_habilidade = $habilidade["dano"] * 10;
 
@@ -629,7 +623,9 @@ class Combate
                 $relatorio_afetado["efeito"] = $resultado["dano"];
                 $this->userDetails->combate_pve["hp_npc"] = $nhp;
             }
-        } else if ($tipo_skil == 2 or $tipo_skil == 5 or $tipo_skil == 8) {
+        } else if ($tipo_skil == TIPO_SKILL_BUFF_CLASSE
+            || $tipo_skil == TIPO_SKILL_BUFF_PROFISSAO
+            || $tipo_skil == TIPO_SKILL_BUFF_AKUMA) {
             $this->connection->run("INSERT INTO tb_combate_buff_npc (tripulacao_id, atr, efeito, espera) VALUES (?, ?, ?, ?)",
                 "iiii", array(
                     $this->userDetails->tripulacao["id"],
@@ -641,7 +637,7 @@ class Combate
             $relatorio_afetado["tipo"] = 1;
             $relatorio_afetado["efeito"] = $habilidade["bonus_atr_qnt"];
             $relatorio_afetado["atributo"] = $habilidade["bonus_atr"];
-        } else if ($tipo_skil == 10) {
+        } else if ($tipo_skil == TIPO_SKILL_MEDICAMENTO) {
             $bonush = $habilidade["hp_recuperado"] * 10;
             $nhp = min($this->userDetails->combate_pve["hp_npc"] + $bonush, $this->userDetails->combate_pve["hp_max_npc"]);
 
@@ -818,16 +814,22 @@ class Combate
             $this->connection->run("UPDATE tb_combate_personagens SET hp = ? WHERE cod = ?",
                 "ii", array($nhp, $alvo["cod"]));
 
-            if ($nhp <= 0 && ! $this->userDetails->combate_pve["boss_id"] && ! $this->userDetails->combate_pve["chefe_ilha"]) {
-                if ($this->userDetails->tripulacao["missao_caca"]) {
-                    $missoes = DataLoader::load("missoes_caca");
-                    $missao = $missoes[$this->userDetails->tripulacao["missao_caca"]];
-                    if ($missao["objetivo"] != $this->userDetails->combate_pve["zona"]) {
+            if ($nhp <= 0) {
+                if (! $this->userDetails->combate_pve["boss_id"]
+                    && ! $this->userDetails->combate_pve["chefe_ilha"]) {
+
+                    if ($this->userDetails->tripulacao["missao_caca"]) {
+                        $missoes = DataLoader::load("missoes_caca");
+                        $missao = $missoes[$this->userDetails->tripulacao["missao_caca"]];
+                        if ($missao["objetivo"] != $this->userDetails->combate_pve["zona"]) {
+                            reduz_score($alvo);
+                        }
+                    } else {
                         reduz_score($alvo);
                     }
-                } else {
-                    reduz_score($alvo);
                 }
+
+                $this->regen_mp_personagens($this->userDetails->tripulacao["id"]);
             }
 
             $relatorio_afetado["esq"] = "0";
@@ -893,9 +895,8 @@ class Combate
         $this->check_espera($personagem_combate, $cod_skil, $tipo_skil);
         $habilidade = $this->load_habilidade($personagem_combate, $cod_skil, $tipo_skil);
 
-        // TODO checa vontade em vez de consumo
         if ($personagem_combate["mp"] < $habilidade["consumo"]) {
-            $this->protector->exit_error("Energia Insuficiente");
+            $this->protector->exit_error("Vontade Insuficiente");
         }
 
         if (count($quadros) > $habilidade["area"]) {
@@ -1129,11 +1130,30 @@ class Combate
 
     public function regen_mp()
     {
-        $this->connection->run("UPDATE tb_combate_personagens SET mp = mp + CEIL(mp * 0.02) WHERE id = ?",
-            "i", $this->userDetails->tripulacao["id"]);
-        $this->connection->run("UPDATE tb_combate_personagens SET mp = mp_max WHERE mp > mp_max AND id = ?",
-            "i", $this->userDetails->tripulacao["id"]);
-        $this->connection->run("UPDATE tb_combate_personagens SET mp = 1 WHERE mp = 0 AND id = ?",
+        if ($this->userDetails->combate_pvp) {
+            $this->regen_mp_personagens($this->userDetails->combate_pvp["id_1"]);
+            $this->regen_mp_personagens($this->userDetails->combate_pvp["id_2"]);
+        } elseif ($this->userDetails->combate_pve) {
+            $this->regen_mp_personagens($this->userDetails->tripulacao["id"]);
+            $this->regen_mp_npc();
+        } elseif ($this->userDetails->combate_bot) {
+            $this->regen_mp_personagens($this->userDetails->tripulacao["id"]);
+            $this->regen_mp_personagens_bot();
+        }
+    }
+    public function regen_mp_personagens($id)
+    {
+        $this->connection->run("UPDATE tb_combate_personagens SET mp = mp + 1 WHERE id = ?",
+            "i", $id);
+    }
+    public function regen_mp_personagens_bot()
+    {
+        $this->connection->run("UPDATE tb_combate_personagens_bot SET mp = mp + 1 WHERE combate_bot_id = ?",
+            "i", $this->userDetails->combate_bot["id"]);
+    }
+    public function regen_mp_npc()
+    {
+        $this->connection->run("UPDATE tb_combate_pnc SET mp_npc = mp_npc + 1 WHERE id = ?",
             "i", $this->userDetails->tripulacao["id"]);
     }
 
