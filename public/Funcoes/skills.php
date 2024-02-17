@@ -315,7 +315,7 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
         <div class="panel-body pt1 pb0">
             <div class="d-flex justify-content-center align-items-center mb">
                 <div class="mr">
-                    <img src="Imagens/Skils/<?= $aprendida_linha ? $aprendida_linha["icon"] : $skill["cod_skil"] ?>.jpg"
+                    <img src="Imagens/Skils/<?= $aprendida_linha ? $aprendida_linha["icon"] : $skill["icone_padrao"] ?>.jpg"
                         width="40vw">
                 </div>
                 <div>
