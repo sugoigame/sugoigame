@@ -939,7 +939,7 @@ class Combate
                     MapLoader::find("remedios", ["cod_remedio" => $habilidade["cod_item"]]),
                     $habilidade
                 );
-                $habilidade["consumo"] = $habilidade["hp_recuperado"] + $habilidade["mp_recuperado"];
+                $habilidade["consumo"] = $habilidade["requisito_lvl"] * 4;
                 $habilidade["espera"] = 5;
                 $habilidade["area"] = 1;
                 $habilidade["alcance"] = 1;

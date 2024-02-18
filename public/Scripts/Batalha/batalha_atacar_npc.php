@@ -20,7 +20,7 @@ $habilidade = $combate->check_and_load_habilidade($personagem_combate, $cod_skil
 $tabuleiro = $combate->load_tabuleiro($userDetails->tripulacao["id"]);
 
 //batalha NPC
-if (!$userDetails->combate_pve["hp_npc"]) {
+if (! $userDetails->combate_pve["hp_npc"]) {
     $protector->exit_error("Seu adversário já foi derrotado");
 }
 
@@ -51,7 +51,7 @@ $relatorio_afetado = array();
 foreach ($quadros as $x => $quadro) {
     if ($quadro["npc"]) {
         $relatorio_afetado[$x] = $combate->ataca_npc($personagem_combate, $habilidade, $tipo_skil, $npc_stats);
-    } else if (isset($tabuleiro[$quadro["x"]]) && isset($tabuleiro[$quadro["x"]][$quadro["y"]])) {
+    } elseif (isset($tabuleiro[$quadro["x"]]) && isset($tabuleiro[$quadro["x"]][$quadro["y"]])) {
         $relatorio_afetado[$x] = $combate->ataca_quadro($personagem_combate, $habilidade, $tipo_skil, $tabuleiro[$quadro["x"]][$quadro["y"]]);
     }
 }

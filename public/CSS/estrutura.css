@@ -163,14 +163,12 @@ hr {
     justify-content: center;
 }
 
-@media (min-width: 768px) {
-    .row {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        flex-wrap: wrap;
-    }
+.row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 table tr td {
@@ -887,7 +885,7 @@ table tr td {
 
 .info-item {
     padding: 1em;
-    min-width: 20vw;
+    min-width: 5vw;
     max-width: 30vw;
 }
 
@@ -989,6 +987,8 @@ table tr td {
 .panel-combate {
     background: rgba(0, 0, 0, 0.3) !important;
     border: none;
+}
+#fim_batalha {
     color: #f0f0f0;
 }
 
@@ -1214,6 +1214,9 @@ a.list-group-item .list-group-item-text {
 }
 .modal-backdrop {
     display: none;
+}
+.modal-xlg {
+    width: 90%;
 }
 
 .modal-open {

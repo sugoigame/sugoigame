@@ -983,34 +983,31 @@ class UserDetails
                 $alerts["status.status." . $pers["cod"]] = true;
                 $alerts["trip_sem_distribuir_atributo." . $pers["cod"]] = true;
             }
-            if ($this->alerts->has_alert_trip_sem_classe($pers)) {
+            if ($this->is_sistema_desbloqueado(SISTEMA_ACADEMIA)
+                && $this->alerts->has_alert_trip_sem_classe($pers)) {
                 $alerts["status"] = true;
                 $alerts["status." . $pers["cod"]] = true;
                 $alerts["status.classe." . $pers["cod"]] = true;
                 $alerts["trip_sem_classe." . $pers["cod"]] = true;
             }
-            if ($this->alerts->has_alert_trip_sem_profissao($pers)) {
+            if ($this->is_sistema_desbloqueado(SISTEMA_PROFISSOES)
+                && $this->alerts->has_alert_trip_sem_profissao($pers)) {
                 $alerts["status"] = true;
                 $alerts["status&nav=profissao"] = true;
                 $alerts["status." . $pers["cod"]] = true;
                 $alerts["status.profissao." . $pers["cod"]] = true;
                 $alerts["trip_sem_profissao." . $pers["cod"]] = true;
             }
-            if ($this->alerts->has_alert_trip_sem_distribuir_haki($pers)) {
+            if ($this->is_sistema_desbloqueado(SISTEMA_HAKI)
+                && $this->alerts->has_alert_trip_sem_distribuir_haki($pers)) {
                 $alerts["status"] = true;
                 $alerts["status&nav=haki"] = true;
                 $alerts["status." . $pers["cod"]] = true;
                 $alerts["status.haki." . $pers["cod"]] = true;
                 $alerts["trip_sem_distribuir_haki." . $pers["cod"]] = true;
             }
-            if ($this->alerts->has_alert_trip_sem_efeito_especial($pers)) {
-                $alerts["status"] = true;
-                $alerts["status&nav=habilidades"] = true;
-                $alerts["status." . $pers["cod"]] = true;
-                $alerts["status.habilidades." . $pers["cod"]] = true;
-                $alerts["trip_sem_efeito_especial." . $pers["cod"]] = true;
-            }
-            if ($this->alerts->has_alert_nova_habilidade_classe($pers)) {
+            if ($this->is_sistema_desbloqueado(SISTEMA_ACADEMIA)
+                && $this->alerts->has_alert_nova_habilidade_classe($pers)) {
                 $alerts["status"] = true;
                 $alerts["status." . $pers["cod"]] = true;
                 $alerts["status.classe." . $pers["cod"]] = true;
@@ -1023,23 +1020,25 @@ class UserDetails
                 $alerts["status.akuma." . $pers["cod"]] = true;
                 $alerts["nova_habilidade_akuma." . $pers["cod"]] = true;
             }
-            if ($this->alerts->has_alert_nova_habilidade_profissao($pers)) {
+            if ($this->is_sistema_desbloqueado(SISTEMA_PROFISSOES)
+                && $this->alerts->has_alert_nova_habilidade_profissao($pers)) {
                 $alerts["status"] = true;
                 $alerts["status&nav=profissao"] = true;
                 $alerts["status." . $pers["cod"]] = true;
                 $alerts["status.profissao." . $pers["cod"]] = true;
                 $alerts["nova_habilidade_profissao." . $pers["cod"]] = true;
             }
-            if ($this->alerts->has_alert_sem_equipamento($pers)) {
+            if ($this->is_sistema_desbloqueado(SISTEMA_EQUIPAMENTOS)
+                && $this->alerts->has_alert_sem_equipamento($pers)) {
                 $alerts["status"] = true;
                 $alerts["status&nav=equipamentos"] = true;
                 $alerts["equipamentos." . $pers["cod"]] = true;
                 $alerts["status.equipamentos." . $pers["cod"]] = true;
                 $alerts["sem_equipamento." . $pers["cod"]] = true;
             }
-            if ($this->tripulacao["battle_points"] > PONTOS_POR_NIVEL_BATALHA) {
-                $alerts["tripulacao"] = true;
-            }
+        }
+        if ($this->tripulacao["battle_points"] > PONTOS_POR_NIVEL_BATALHA) {
+            $alerts["tripulacao"] = true;
         }
 
         return $this->alerts_data = $alerts;

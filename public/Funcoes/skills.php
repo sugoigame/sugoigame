@@ -30,7 +30,7 @@ function get_all_skills($pers)
 {
     global $connection;
     $skills = $connection->run(
-        "SELECT * FROM tb_personagens_skil WHERE cod = ? and tipo IN (1, 2, 4, 5) ORDER BY tipo",
+        "SELECT * FROM tb_personagens_skil WHERE cod = ? and tipo IN (1, 2, 4, 5)",
         "i", $pers["cod"]
     )->fetch_all_array();
 
@@ -45,7 +45,13 @@ function get_all_skills($pers)
         array("nome" => "tb_akuma_skil_buff", "coluna" => "cod_skil", "tipo" => 8)
     ), "WHERE origem.cod = ? ORDER BY origem.tipo", "i", $pers["cod"]);
 
-    return array_merge($skills, $skills_akuma);
+    $skills = array_merge($skills, $skills_akuma);
+
+    usort($skills, function ($a, $b) {
+        return $a["consumo"] - $b["consumo"];
+    });
+
+    return $skills;
 }
 
 function has_animacao($skill)

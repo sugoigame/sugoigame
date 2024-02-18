@@ -140,7 +140,7 @@ function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcen
     }
     if (isset($item["tipo_item"]) && $item_info["tipo_item"] === TIPO_ITEM_REMEDIO) {
         $return .= '<div>';
-        $return .= "Energia necessária em combate: " . ($item_info["hp_recuperado"] + $item_info["mp_recuperado"]);
+        $return .= "Vontade: " . ($item_info["requisito_lvl"] * 4);
         $return .= '</div>';
     }
     if (isset($item_info["apontando"])) {
