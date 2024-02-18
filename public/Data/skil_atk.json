@@ -793,7 +793,7 @@
         "area": 1,
         "espera": 0,
         "categoria": 0,
-        "icone_padrao": 450
+        "icone_padrao": 234
     },
     {
         "cod_skil": 9102,
@@ -808,7 +808,7 @@
         "area": 1,
         "espera": 0,
         "categoria": 0,
-        "icone_padrao": 450
+        "icone_padrao": 56
     },
     {
         "cod_skil": 9103,
@@ -823,7 +823,7 @@
         "area": 1,
         "espera": 0,
         "categoria": 0,
-        "icone_padrao": 450
+        "icone_padrao": 311
     },
     {
         "cod_skil": 9104,
@@ -838,7 +838,7 @@
         "area": 1,
         "espera": 0,
         "categoria": 0,
-        "icone_padrao": 450
+        "icone_padrao": 141
     },
     {
         "cod_skil": 9105,
@@ -853,7 +853,7 @@
         "area": 1,
         "espera": 0,
         "categoria": 0,
-        "icone_padrao": 450
+        "icone_padrao": 152
     },
     {
         "cod_skil": 9106,
@@ -868,7 +868,7 @@
         "area": 1,
         "espera": 0,
         "categoria": 0,
-        "icone_padrao": 450
+        "icone_padrao": 452
     },
     {
         "cod_skil": 9107,
@@ -883,7 +883,7 @@
         "area": 1,
         "espera": 0,
         "categoria": 0,
-        "icone_padrao": 450
+        "icone_padrao": 399
     },
     {
         "cod_skil": 9108,
@@ -898,7 +898,7 @@
         "area": 1,
         "espera": 0,
         "categoria": 0,
-        "icone_padrao": 450
+        "icone_padrao": 280
     },
     {
         "cod_skil": 9109,
@@ -913,7 +913,7 @@
         "area": 1,
         "espera": 0,
         "categoria": 0,
-        "icone_padrao": 450
+        "icone_padrao": 401
     },
     {
         "cod_skil": 9110,
@@ -928,6 +928,6 @@
         "area": 1,
         "espera": 0,
         "categoria": 0,
-        "icone_padrao": 450
+        "icone_padrao": 76
     }
 ]
