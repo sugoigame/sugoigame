@@ -991,8 +991,9 @@ class UserDetails
             }
             if ($this->alerts->has_alert_trip_sem_profissao($pers)) {
                 $alerts["status"] = true;
+                $alerts["status&nav=profissao"] = true;
                 $alerts["status." . $pers["cod"]] = true;
-                $alerts["status.status." . $pers["cod"]] = true;
+                $alerts["status.profissao." . $pers["cod"]] = true;
                 $alerts["trip_sem_profissao." . $pers["cod"]] = true;
             }
             if ($this->alerts->has_alert_trip_sem_distribuir_haki($pers)) {

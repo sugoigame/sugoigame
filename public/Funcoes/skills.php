@@ -419,7 +419,7 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
             <li>
                 Dano:
                 <?= $skill["dano"] * 100 ?>%
-                <?= ajuda_tooltip("Causa dano equivalente à " . ($skill["dano"] * 100) . "% dos pontos de Ataque do tripulante. Garante um dano mínimo equivalente à 30% dos pontos de Ataque do tripulante.") ?>
+                <?= ajuda_tooltip("Causa dano equivalente à " . ($skill["dano"] * 100) . "% dos pontos de Ataque do tripulante. Garante um dano mínimo de " . ($skill["dano"] * 400) . " pontos de dano.") ?>
             </li>
         <?php endif; ?>
         <?php if (! empty($skill["bonus_atr"])) : ?>

@@ -96,9 +96,11 @@ function toggleTurn(vez) {
             bindDefaultAction();
         }
 
-        var origemGolpe = $(".relatorio-origem-meta-data").data("log");
+        var origemGolpe = $(
+            "#relatorio-combate-content .relatorio-origem-meta-data"
+        ).data("log");
 
-        $(".relatorio-meta-data").each(function () {
+        $("#relatorio-combate-content .relatorio-meta-data").each(function () {
             var log = $(this).data("log");
             var offset = $("#" + log.quadro).offset();
 

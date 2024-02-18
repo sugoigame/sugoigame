@@ -9,25 +9,33 @@ function refreshTimeout() {
 function batalha() {
     var queryParams = getQueryParams();
     $.ajax({
-        type: 'get',
-        url: 'Scripts/Batalha/batalha_tabuleiro_assistir.php?combate=' + queryParams['combate'],
+        type: "get",
+        url:
+            "Scripts/Batalha/batalha_tabuleiro_assistir.php?combate=" +
+            queryParams["combate"],
         cache: false,
         success: function (retorno) {
             retorno = retorno.trim();
             if (retorno.substr(0, 1) == "#") {
                 bancandoEspertinho(retorno.substr(0, retorno.length));
             } else if (retorno.substr(0, 1) == "%") {
-                loadPagina(retorno.substr(1, (retorno.length - 1)));
+                loadPagina(retorno.substr(1, retorno.length - 1));
             } else {
-                var scroll = $('.fight-zone').scrollLeft();
-                var scrollRelatorio = $('#relatorio-combate-content').scrollTop();
+                var scroll = $(".fight-zone").scrollLeft();
+                var scrollRelatorio = $(
+                    "#relatorio-combate-content"
+                ).scrollTop();
                 $("#navio_batalha").html(retorno);
-                $('.fight-zone').scrollLeft(scroll);
-                $('#relatorio-combate-content').scrollTop(scrollRelatorio);
+                $(".fight-zone").scrollLeft(scroll);
+                $("#relatorio-combate-content").scrollTop(scrollRelatorio);
 
-                toggleTurn($('#vez-combate').val() == 1 ? 'eu' : 'ele');
+                setTimeout(
+                    () =>
+                        toggleTurn($("#vez-combate").val() == 1 ? "eu" : "ele"),
+                    30
+                );
             }
-        }
+        },
     });
 }
 function tempo_batalha() {

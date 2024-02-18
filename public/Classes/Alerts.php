@@ -115,7 +115,7 @@ class Alerts
 
     private function _habilidades_profissao_por_lvl($profissao, $lvl)
     {
-        return $profissao == PROFISSAO_MUSICO ? $lvl * 2 : $lvl;
+        return $profissao == PROFISSAO_MUSICO ? $lvl : $lvl;
     }
 
     function destroy()

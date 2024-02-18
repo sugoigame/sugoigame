@@ -516,7 +516,7 @@ function dano_por_atributo($pers, $alvo)
     $atk = get_atk_combate($pers);
     $def = get_def_combate($alvo);
 
-    return max(0, ($atk - $def) * 10);
+    return max(0, ($atk - $def));
 }
 function get_atk_combate($pers)
 {
@@ -526,7 +526,7 @@ function get_atk_combate($pers)
         $atk += $pers["atk"] * calc_score_mod($pers["classe_score"]);
     }
 
-    return $atk;
+    return $atk * 10;
 }
 function get_def_combate($pers)
 {
@@ -536,7 +536,7 @@ function get_def_combate($pers)
         $def += $pers["def"] * calc_score_mod($pers["classe_score"]);
     }
 
-    return $def;
+    return $def * 10;
 }
 
 function calc_dano($pers, $alvo, $dano_hab = 0)
@@ -561,7 +561,7 @@ function calc_dano($pers, $alvo, $dano_hab = 0)
     if ($retorno["dado_esquivou"] <= $esquiva) {
         $retorno["esquivou"] = true;
     } else {
-        $dano = (dano_por_atributo($pers, $alvo) * $dano_hab) + (get_atk_combate($pers) * 0.3);
+        $dano = (dano_por_atributo($pers, $alvo) * $dano_hab) + ($dano_hab * 400);
 
         $chance_crit = chance_crit($pers, $alvo);
 
