@@ -366,20 +366,28 @@ class MapServerUserDetails extends UserDetails
 
         $wind = $navigation->get_wind($this->tripulacao["x"], $this->tripulacao["y"]);
         $wind_modifier = 0;
-        if ($wind && $wind["direction"] == $direction) {
-            if ($this->navio["cod_velas"]) {
-                $wind["power"] += 0.1;
+        if ($wind) {
+            $power = $wind["power"] + ($this->navio["cod_velas"] ? 0.1 : 0);
+            $comparison = abs($wind["direcao"] - $direction);
+            if ($comparison == 1 || $comparison == 7) {
+                $power /= 2.0;
+            } elseif ($comparison != 0) {
+                $power = 0;
             }
-            $wind_modifier = $base_speed * ($wind["power"] * 0.5 + 0.2);
+            $wind_modifier = $base_speed * ($power * 0.5 + 0.1);
         }
 
         $chain = $navigation->get_chain($this->tripulacao["x"], $this->tripulacao["y"]);
         $chain_modifier = 0;
         if ($chain && isset($chain["power"]) && $chain["direcao"] == $direction) {
-            if ($this->navio["cod_leme"]) {
-                $chain["power"] += 0.1;
+            $power = $chain["power"] + ($this->navio["cod_leme"] ? 0.1 : 0);
+            $comparison = abs($chain["direcao"] - $direction);
+            if ($comparison == 1 || $comparison == 7) {
+                $power /= 2.0;
+            } elseif ($comparison != 0) {
+                $power = 0;
             }
-            $chain_modifier = $base_speed * ($chain["power"] * 0.5 + 0.2);
+            $chain_modifier = $base_speed * ($power * 0.5 + 0.1);
         }
 
         $base_speed = max(0.1, $base_speed - $chain_modifier - $wind_modifier);

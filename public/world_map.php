@@ -369,7 +369,7 @@ require_once "Includes/conectdb.php";
         gameState.windIndicator.visible = !!data.map.wind;
         if (gameState.windIndicator.visible) {
             gameState.windIndicator.tint = 0xFF * data.map.wind.power * 0x10000;
-            gameState.windIndicator.frame = data.map.wind.direction;
+            gameState.windIndicator.frame = data.map.wind.direcao;
         }
 
         renderSelectedPlayers();
