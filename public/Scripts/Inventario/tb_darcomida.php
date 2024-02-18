@@ -9,14 +9,14 @@ $cod_comida = $protector->get_number_or_exit("comida");
 $tipo = $protector->get_enum_or_exit("tipo", array(1, 7));
 
 if ($tipo == TIPO_ITEM_COMIDA) {
-    $comida = get_result_joined_mapped_by_type("tb_usuario_itens", "cod_item", "tipo_item", "tb_item_comida", "cod_comida", 1,
-        "WHERE origem.id = ? AND origem.cod_item = ?", "ii", array($userDetails->tripulacao["id"], $cod_comida));
-
-    if (! count($comida)) {
+    $comida = $connection->run(
+        "SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=? AND cod_item=?",
+        "iii", [$userDetails->tripulacao["id"], TIPO_ITEM_COMIDA, $cod_comida]);
+    if (! $comida->count()) {
         $protector->exit_error("O item acabou");
     }
 
-    $comida = $comida[0];
+    $comida = array_merge($comida->fetch_array(), MapLoader::find("comidas", ["cod_comida" => $cod_comida]));
 } else {
     $comida = $connection->run(
         "SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=? AND cod_item=?",

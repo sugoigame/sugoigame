@@ -115,9 +115,7 @@ switch ($tipo) {
         $nome_item = $item_info["nome"];
         break;
     case 1:
-        $query = "SELECT * FROM tb_item_comida WHERE cod_comida='$cod'";
-        $result = $connection->run($query);
-        $item_info = $result->fetch_array();
+        $item_info = MapLoader::find("comidas", ["cod_comida" => $cod]);
         $nome_item = $item_info["nome"];
         break;
     case 4:

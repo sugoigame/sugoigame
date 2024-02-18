@@ -1,0 +1,103 @@
+[
+    {
+        "cod_comida": 1,
+        "nome": "Bolinhos de carne",
+        "descricao": "Carne moída, ovo, cheiro verde, cebola, pimenta-do-reino e farinha de trigo.",
+        "hp_recuperado": 100,
+        "mp_recuperado": 0,
+        "img": 62,
+        "requisito_lvl": 1,
+        "mergulho": 1
+    },
+    {
+        "cod_comida": 2,
+        "nome": "Sopa",
+        "descricao": "Cebola, carne, tomate, batata, cenoura, mandioca, cheiro verde e temperos diversos.\r\n\r\n",
+        "hp_recuperado": 200,
+        "mp_recuperado": 0,
+        "img": 37,
+        "requisito_lvl": 2,
+        "mergulho": 1
+    },
+    {
+        "cod_comida": 3,
+        "nome": "Macarrão com legumes",
+        "descricao": "Macarrão, missô, ovo, cenoura e cheiro verde.",
+        "hp_recuperado": 250,
+        "mp_recuperado": 0,
+        "img": 38,
+        "requisito_lvl": 3,
+        "mergulho": 1
+    },
+    {
+        "cod_comida": 4,
+        "nome": "Bolo",
+        "descricao": "Ovo, açúcar, leite, farinha de trigo,  fermento, manteiga, creme de leite, leite condensado e leite de coco.",
+        "hp_recuperado": 300,
+        "mp_recuperado": 0,
+        "img": 88,
+        "requisito_lvl": 4,
+        "mergulho": 1
+    },
+    {
+        "cod_comida": 5,
+        "nome": "Carne",
+        "descricao": "Carne de Boi",
+        "hp_recuperado": 400,
+        "mp_recuperado": 0,
+        "img": 36,
+        "requisito_lvl": 5,
+        "mergulho": 1
+    },
+
+    {
+        "cod_comida": 11,
+        "nome": "Sushi",
+        "descricao": "Arroz, vinagre, açúcar, sal, ajinomoto, shoyu, hondashi, cenoura, gengibre e nori",
+        "hp_recuperado": 500,
+        "mp_recuperado": 0,
+        "img": 122,
+        "requisito_lvl": 6,
+        "mergulho": 2
+    },
+    {
+        "cod_comida": 13,
+        "nome": "Lasanha",
+        "descricao": "Carne, creme de leite, farinha, presunto, sal, sal, cebola e molho de tomate",
+        "hp_recuperado": 600,
+        "mp_recuperado": 0,
+        "img": 124,
+        "requisito_lvl": 7,
+        "mergulho": 2
+    },
+    {
+        "cod_comida": 15,
+        "nome": "Carne de Rei dos Mares",
+        "descricao": "Porção pequena",
+        "hp_recuperado": 700,
+        "mp_recuperado": 0,
+        "img": 126,
+        "requisito_lvl": 8,
+        "mergulho": 2
+    },
+    {
+        "cod_comida": 17,
+        "nome": "Panetone",
+        "descricao": "Pão doce de natal com fragrância discreta de baunilha e recheio de frutas secas: damasco, laranja, limão, figo, maçã, cidra e a uva passa.",
+        "hp_recuperado": 1400,
+        "mp_recuperado": 0,
+        "img": 374,
+        "requisito_lvl": 0,
+        "mergulho": 0
+    },
+    {
+        "cod_comida": 18,
+        "nome": "Hambúrger",
+        "descricao": "Hamburger de picanha, cheddar, cebola crua, alface, tomate e maionese artesanal.",
+        "hp_recuperado": 800,
+        "mp_recuperado": 0,
+        "img": 392,
+        "requisito_lvl": 10,
+        "mergulho": 0
+    }
+]

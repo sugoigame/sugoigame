@@ -8,12 +8,13 @@
 
     <?php $items = get_many_results_joined_mapped_by_type("tb_alianca_shop", "cod", "tipo", array(
         array("nome" => "tb_item_acessorio", "coluna" => "cod_acessorio", "tipo" => TIPO_ITEM_ACESSORIO),
-        array("nome" => "tb_item_comida", "coluna" => "cod_comida", "tipo" => TIPO_ITEM_COMIDA),
     ), " WHERE origem.faccao = ? OR origem.faccao = 3", "i", array($userDetails->tripulacao["faccao"])); ?>
 
     <?php foreach ($items as $key => $item) {
         if ($item["tipo"] == TIPO_ITEM_REMEDIO) {
             $items[$key] = array_merge($item, MapLoader::find("remedios", ["cod_remedio" => $item["cod_item"]]));
+        } elseif ($item["tipo"] == TIPO_ITEM_COMIDA) {
+            $items[$key] = array_merge($item, MapLoader::find("comidas", ["cod_comida" => $item["cod_item"]]));
         }
     } ?>
 

@@ -51,8 +51,10 @@ for ($x = 1; $x <= $quant; $x++) {
     $rand = rand(1, 100);
 
     if ($rand <= 24) {
-        $item = $connection->run("SELECT nome, cod_comida FROM tb_item_comida WHERE mergulho='$mar' ORDER BY RAND() LIMIT 1")->fetch_array();
-
+        $remedios = MapLoader::filter("comidas", function ($item) use ($mar) {
+            return $item["mergulho"] == $mar;
+        });
+        $item = $remedios[array_rand($remedios)];
         $userDetails->add_item($item["cod_comida"], TIPO_ITEM_COMIDA, 1);
 
         $recompensas[] = $item["nome"];

@@ -92,7 +92,6 @@
 
     <?php $items = get_many_results_joined_mapped_by_type("tb_alianca_banco", "cod_item", "tipo_item", array(
         array("nome" => "tb_item_acessorio", "coluna" => "cod_acessorio", "tipo" => TIPO_ITEM_ACESSORIO),
-        array("nome" => "tb_item_comida", "coluna" => "cod_comida", "tipo" => TIPO_ITEM_COMIDA),
         array("nome" => "tb_item_navio_leme", "coluna" => "cod_leme", "tipo" => TIPO_ITEM_LEME),
         array("nome" => "tb_item_navio_velas", "coluna" => "cod_velas", "tipo" => TIPO_ITEM_VELAS),
         array("nome" => "tb_item_navio_canhao", "coluna" => "cod_canhao", "tipo" => TIPO_ITEM_CANHAO),
@@ -102,6 +101,8 @@
     <?php foreach ($items as $key => $item) {
         if ($item["tipo"] == TIPO_ITEM_REMEDIO) {
             $items[$key] = array_merge($item, MapLoader::find("remedios", ["cod_remedio" => $item["cod_item"]]));
+        } elseif ($item["tipo"] == TIPO_ITEM_COMIDA) {
+            $items[$key] = array_merge($item, MapLoader::find("comidas", ["cod_comida" => $item["cod_item"]]));
         }
     } ?>
 

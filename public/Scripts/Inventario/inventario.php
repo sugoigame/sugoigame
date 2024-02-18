@@ -8,7 +8,6 @@ $protector->need_tripulacao();
 
 $items = get_many_results_joined_mapped_by_type("tb_usuario_itens", "cod_item", "tipo_item", array(
     array("nome" => "tb_item_acessorio", "coluna" => "cod_acessorio", "tipo" => TIPO_ITEM_ACESSORIO),
-    array("nome" => "tb_item_comida", "coluna" => "cod_comida", "tipo" => TIPO_ITEM_COMIDA),
     array("nome" => "tb_item_mapa", "coluna" => "cod_mapa", "tipo" => TIPO_ITEM_MAPA),
     array("nome" => "tb_item_navio_casco", "coluna" => "cod_casco", "tipo" => TIPO_ITEM_CASCO),
     array("nome" => "tb_item_navio_leme", "coluna" => "cod_leme", "tipo" => TIPO_ITEM_LEME),
@@ -24,6 +23,12 @@ $result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_i
     "ii", [$userDetails->tripulacao["id"], TIPO_ITEM_REMEDIO]);
 while ($item = $result->fetch_array()) {
     $items[] = array_merge($item, MapLoader::find("remedios", ["cod_remedio" => $item["cod_item"]]));
+}
+
+$result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=?",
+    "ii", [$userDetails->tripulacao["id"], TIPO_ITEM_COMIDA]);
+while ($item = $result->fetch_array()) {
+    $items[] = array_merge($item, MapLoader::find("comidas", ["cod_comida" => $item["cod_item"]]));
 }
 
 // Logias

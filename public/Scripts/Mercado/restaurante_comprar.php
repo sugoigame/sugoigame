@@ -5,7 +5,6 @@ include "../../Includes/verifica_login_sem_pers.php";
 include "../../Includes/verifica_missao.php";
 
 if ($inmissao) {
-
     echo ("#Você está ocupado em uma missão neste meomento.");
     exit();
 }
@@ -33,9 +32,7 @@ if ($conect) {
     $cont = $result->count();
 
     if ($cont != 0) {
-        $query = "SELECT * FROM tb_item_comida WHERE cod_comida='$item'";
-        $result = $connection->run($query);
-        $item_info = $result->fetch_array();
+        $item_info = MapLoader::find("comidas", ["cod_comida" => $item]);
 
         $query = "SELECT * FROM tb_ilha_mod WHERE ilha='" . $usuario["ilha"] . "'";
         $result = $connection->run($query);

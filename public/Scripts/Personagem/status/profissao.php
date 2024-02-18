@@ -107,34 +107,42 @@ if (! $pers) {
     </div>
 <?php endif; ?>
 <?php if ($pers["profissao"] == PROFISSAO_COZINHEIRO) : ?>
-    <?php $items = $connection->run("SELECT * FROM tb_item_comida WHERE requisito_lvl<>'0' ORDER BY requisito_lvl"); ?>
+    <?php $items = MapLoader::filter("comidas", function ($remedio) {
+        return $remedio["requisito_lvl"] != 0;
+    }); ?>
 
     <div class="row">
-        <?php while ($item = $items->fetch_array()) : ?>
+        <?php foreach ($items as $item) : ?>
             <?php $preco = (($item["hp_recuperado"] + $item["mp_recuperado"]) * 50) * (1 - $pers["profissao_lvl"] * 0.05); ?>
-            <div class="list-group-item col-md-4" style="height: 400px">
-                <?= info_item_with_img($item, $item, FALSE, FALSE, FALSE) ?>
-                <p>
-                    Nível de profissão necessário:
-                    <?= $item["requisito_lvl"]; ?>
-                </p>
-                <div>
-                    <img src="Imagens/Icones/Berries.png" />
-                    <?= mascara_berries($preco) ?>
+            <div class="panel panel-default col-xs-4 h-100 m0">
+                <div class="panel-body">
+                    <?= info_item_with_img($item, $item, FALSE, FALSE, FALSE) ?>
+                    <p>
+                        Nível de profissão necessário:
+                        <?= $item["requisito_lvl"]; ?>
+                    </p>
+                    <div>
+                        <img src="Imagens/Icones/Berries.png" />
+                        <?= mascara_berries($preco) ?>
+                    </div>
                 </div>
-                <?php if ($userDetails->tripulacao["berries"] >= $preco && $pers["profissao_lvl"] >= $item["requisito_lvl"]) : ?>
-                    <form
-                        action="Scripts/Profissao/cozinheiro_criar_comida.php?pers=<?= $pers["cod"]; ?>&item=<?= $item["cod_comida"] ?>"
-                        method="post">
-                        <input placeholder="Insira a quantidade desejada" class="form-control" size="4" min="1" type="number"
-                            max="<?= floor($userDetails->tripulacao["berries"] / $preco) ?>" name="quant" value="1" type="number">
-                        <button type="submit" class="btn btn-success">
-                            Fazer
-                        </button>
-                    </form>
-                <?php endif; ?>
+                <div class="panel-footer">
+                    <?php if ($userDetails->tripulacao["berries"] >= $preco && $pers["profissao_lvl"] >= $item["requisito_lvl"]) : ?>
+                        <form class="form-inline ajax_form" action="Profissao/cozinheiro_criar_comida" method="post"
+                            data-question="Deseja mesmo criar este item?">
+                            <input type="hidden" name="pers" value="<?= $pers["cod"]; ?>" />
+                            <input type="hidden" name="item" value="<?= $item["cod_comida"]; ?>" />
+                            <input placeholder="Insira a quantidade desejada" class="form-control w-50" size="4" min="1"
+                                type="number" max="<?= floor($userDetails->tripulacao["berries"] / $preco) ?>" name="quant"
+                                value="1" type="number">
+                            <button type="submit" class="btn btn-success">
+                                Criar
+                            </button>
+                        </form>
+                    <?php endif; ?>
+                </div>
             </div>
-        <?php endwhile; ?>
+        <?php endforeach; ?>
     </div>
 <?php endif; ?>
 <?php if ($pers["profissao"] == PROFISSAO_FERREIRO

@@ -4,49 +4,19 @@ require "../../Includes/conectdb.php";
 include "../../Includes/verifica_login_sem_pers.php";
 include "../../Includes/verifica_missao.php";
 
-if (! $conect) {
+$protector->need_tripulacao();
 
-    header("location:../../?msg=Você precisa estar logado para executar essa ação.");
-    exit;
-}
-if ($inmissao) {
-
-    header("location../../?msg=Você está ocupado em uma missão neste meomento.");
-    exit;
-}
-if (! isset($_GET["pers"]) or
-    ! isset($_GET["item"]) or
-    ! isset($_POST["quant"])
-) {
-
-    header("location../../?msg=Você informou algum caracter inválido.");
-    exit();
-}
-
-if (! preg_match("/^[\d]+$/", $_GET["pers"]) or
-    ! preg_match("/^[\d]+$/", $_GET["item"]) or
-    ! preg_match("/^[\d]+$/", $_POST["quant"])
-) {
-
-    header("location../../?msg=Você informou algum caracter inválido.");
-    exit();
-}
-
-$pers = $protector->get_number_or_exit("pers");
-$item = $protector->get_number_or_exit("item");
+$pers = $protector->post_number_or_exit("pers");
+$item = $protector->post_number_or_exit("item");
 $quant_faz = $protector->post_number_or_exit("quant");
 
 if ($quant_faz < 0) {
-
-    header("location../../?msg=Você informou algum caracter inválido.");
-    exit();
+    $protector->exit_error("Você informou algum caracter inválido.");
 }
 $query = "SELECT * FROM tb_usuario_itens WHERE id='" . $usuario["id"] . "'";
 $result = $connection->run($query);
 if ($result->count() >= $usuario["capacidade_iventario"]) {
-
-    header("location:../../?msg=Seu iventário está lotado.");
-    exit;
+    $protector->exit_error("Seu iventário está lotado.");
 }
 
 $query = "SELECT * FROM tb_personagens WHERE id='" . $usuario["id"] . "' AND cod='$pers'";
@@ -54,26 +24,18 @@ $result = $connection->run($query);
 $personagem = $result->fetch_array();
 
 if ($personagem["profissao"] != 7) {
-
-    header("location../../?msg=Este personagem não é um cozinheiro.");
-    exit;
+    $protector->exit_error("Este personagem não é um cozinheiro.");
 }
 
-$query = "SELECT * FROM tb_item_comida WHERE cod_comida='$item'";
-$result = $connection->run($query);
-$item = $result->fetch_array();
+$item = MapLoader::find("comidas", ["cod_comida" => $item]);
 $item["preco"] = ($item["hp_recuperado"] + $item["mp_recuperado"]) * 50;
 $item["preco"] *= (((1 - $personagem["profissao_lvl"] * 0.05)) * $quant_faz);
 if ($usuario["berries"] < $item["preco"]) {
-
-    header("location../../?msg=Você não tem dinheiro para fazer essa quantidade de comida.");
-    exit;
+    $protector->exit_error("Você não tem dinheiro para essa quantidade de itens.");
 }
 
-if ($personagem["profissao_lvl"] < $item["requisito_lvl"] and $item["requisito_lvl"] != 0) {
-
-    header("location../../?msg=Você não cumpre os requisitos para fazer este item.");
-    exit;
+if ($personagem["profissao_lvl"] < $item["requisito_lvl"] && $item["requisito_lvl"] != 0) {
+    $protector->exit_error("Você não cumpre os requisitos para fazer este item.");
 }
 $berries = $usuario["berries"] - $item["preco"];
 $query = "UPDATE tb_usuarios SET berries='$berries' WHERE id='" . $usuario["id"] . "'";
@@ -100,6 +62,4 @@ if ($personagem["profissao_xp"] < $personagem["profissao_xp_max"] and $personage
     $connection->run($query) or die("Nao foi possivel evoluir profisssao");
 }
 
-header("location:../../?ses=profissoes");
-?>
 
