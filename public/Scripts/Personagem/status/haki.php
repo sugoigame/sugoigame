@@ -5,15 +5,15 @@ $protector->need_tripulacao();
 $pers = $protector->get_tripulante_or_exit("cod");
 ?>
 <div class="row pt1">
-    <div class="col-xs-4">
+    <div class="col-xs-12">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                Nível de Haki
-                <?= $pers["haki_lvl"] ?> /
-                <?= HAKI_LVL_MAX ?>
-                <?= ajuda_tooltip("Os tripulantes podem usar os pontos de experiência para evoluir seu Haki."); ?>
-            </div>
             <div class="panel-body">
+                <p>
+                    Nível de Haki
+                    <?= $pers["haki_lvl"] ?> /
+                    <?= HAKI_LVL_MAX ?>
+                    <?= ajuda_tooltip("Os tripulantes podem usar os pontos de experiência para evoluir seu Haki."); ?>
+                </p>
                 <div class="progress">
                     <div class="progress-bar progress-bar-info"
                         style="width: <?= $pers["haki_xp"] / $pers["haki_xp_max"] * 100 ?>%">
@@ -45,8 +45,10 @@ $pers = $protector->get_tripulante_or_exit("cod");
                 <?php endif; ?>
             </div>
         </div>
-
-        <?php if ($pers["cod"] == $userDetails->capitao["cod"] && isset($COD_HAOSHOKU_LVL[$pers["haki_hdr"] + 1])) : ?>
+    </div>
+    <?php $exibe_hdr = $pers["cod"] == $userDetails->capitao["cod"] && isset($COD_HAOSHOKU_LVL[$pers["haki_hdr"] + 1]); ?>
+    <?php if ($exibe_hdr) : ?>
+        <div class="col-xs-4">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <?php $hdr = MapLoader::find("skil_atk", ["cod_skil" => $COD_HAOSHOKU_LVL[$pers["haki_hdr"] + 1]]); ?>
@@ -60,23 +62,23 @@ $pers = $protector->get_tripulante_or_exit("cod");
                     </div>
                 </div>
             </div>
-        <?php endif; ?>
-    </div>
-    <div class="col-xs-8">
+        </div>
+    <?php endif; ?>
+    <div class="<?= $exibe_hdr ? "col-xs-8" : "col-xs-12" ?> ">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                Pontos a distribuir:
-                <strong>
-                    <?= $pers["haki_pts"] ?>
-                </strong>
-                <?= ajuda_tooltip("A cada nível evoluído, o tripulante pode distribuir 1 ponto no Haki de sua escolha."); ?>
-            </div>
             <div class="panel-body">
+                <p>
+                    Pontos a distribuir:
+                    <strong>
+                        <?= $pers["haki_pts"] ?>
+                    </strong>
+                    <?= ajuda_tooltip("A cada nível evoluído, o tripulante pode distribuir 1 ponto no Haki de sua escolha."); ?>
+                </p>
                 <div>
-                    Haki da Observação:
+                    Haki da Observação
+                    <?= $pers["haki_esq"] . "/" . MAX_POINTS_MANTRA; ?>:
                     <?= ajuda_tooltip("Cada ponto aumenta em 1% de chance do tripulante se esquivar de um ataque."); ?>
                 </div>
-                <?php render_personagem_mantra_bar($pers, true, "m0"); ?>
                 <p>
                     <input data-haki="haki_esq" data-cod="<?= $pers["cod"] ?>" class="atr-input haki input-success"
                         type="range" step="1" min="0" value="<?= $pers["haki_esq"] ?>"
@@ -88,10 +90,10 @@ $pers = $protector->get_tripulante_or_exit("cod");
                 </p>
 
                 <div>
-                    Haki do Armamento:
+                    Haki do Armamento
+                    <?= $pers["haki_cri"] . "/" . MAX_POINTS_ARMAMENTO; ?>:
                     <?= ajuda_tooltip("Cada ponto aumenta em 1% a chance do tripulante bloquear um ataque e em 1% a chance de acertar um ataque crítico."); ?>
                 </div>
-                <?php render_personagem_armamento_bar($pers, true, "m0"); ?>
                 <p>
                     <input data-haki="haki_cri" data-cod="<?= $pers["cod"] ?>" class="atr-input haki input-danger"
                         type="range" step="1" min="0" value="<?= $pers["haki_cri"] ?>"
@@ -103,10 +105,10 @@ $pers = $protector->get_tripulante_or_exit("cod");
                 </p>
 
                 <div>
-                    Haki Avançado:
+                    Haki Avançado
+                    <?= $pers["haki_blo"] . "/" . MAX_POINTS_HAKI_AVANCADO; ?>:
                     <?= ajuda_tooltip("Cada ponto aumenta o Ataque do tripulante em 2."); ?>
                 </div>
-                <?php render_personagem_haki_avancado_bar($pers, true, "m0"); ?>
                 <p>
                     <input data-haki="haki_blo" data-cod="<?= $pers["cod"] ?>" class="atr-input haki input-warning"
                         type="range" step="1" min="0" value="<?= $pers["haki_blo"] ?>"
@@ -119,10 +121,10 @@ $pers = $protector->get_tripulante_or_exit("cod");
 
                 <?php if ($pers["cod"] == $userDetails->capitao["cod"]) : ?>
                     <div>
-                        Haki do Rei:
+                        Haki do Rei
+                        <?= $pers["haki_hdr"] . "/" . MAX_POINTS_HDR; ?>:
                         <?= ajuda_tooltip("Cada ponto fortalece a habilidade do Haki do Rei."); ?>
                     </div>
-                    <?php render_personagem_hdr_bar($pers, true, "m0"); ?>
                     <div>
                         <input data-haki="haki_hdr" data-cod="<?= $pers["cod"] ?>" class="atr-input haki" type="range"
                             step="1" min="0" value="<?= $pers["haki_hdr"] ?>"

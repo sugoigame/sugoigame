@@ -211,20 +211,6 @@
         "icone_padrao": 17
     },
     {
-        "cod_skil": 1115,
-        "description": "Espada 1-15",
-        "consumo": 12,
-        "requisito_lvl": 15,
-        "requisito_classe": 1,
-        "requisito_prof": 0,
-        "dano": 1.8,
-        "alcance": 1,
-        "area": 1,
-        "espera": 0,
-        "categoria": 1,
-        "icone_padrao": 26
-    },
-    {
         "cod_skil": 1120,
         "description": "Espada 1-20",
         "consumo": 16,
@@ -237,20 +223,6 @@
         "espera": 0,
         "categoria": 1,
         "icone_padrao": 33
-    },
-    {
-        "cod_skil": 1125,
-        "description": "Espada 1-25",
-        "consumo": 20,
-        "requisito_lvl": 25,
-        "requisito_classe": 1,
-        "requisito_prof": 0,
-        "dano": 2.2,
-        "alcance": 1,
-        "area": 1,
-        "espera": 0,
-        "categoria": 1,
-        "icone_padrao": 66
     },
     {
         "cod_skil": 1130,
@@ -267,20 +239,6 @@
         "icone_padrao": 67
     },
     {
-        "cod_skil": 1135,
-        "description": "Espada 1-35",
-        "consumo": 28,
-        "requisito_lvl": 35,
-        "requisito_classe": 1,
-        "requisito_prof": 0,
-        "dano": 2.6,
-        "alcance": 1,
-        "area": 1,
-        "espera": 0,
-        "categoria": 1,
-        "icone_padrao": 71
-    },
-    {
         "cod_skil": 1140,
         "description": "Espada 1-40",
         "consumo": 32,
@@ -293,20 +251,6 @@
         "espera": 0,
         "categoria": 1,
         "icone_padrao": 72
-    },
-    {
-        "cod_skil": 1145,
-        "description": "Espada 1-45",
-        "consumo": 36,
-        "requisito_lvl": 45,
-        "requisito_classe": 1,
-        "requisito_prof": 0,
-        "dano": 3,
-        "alcance": 1,
-        "area": 1,
-        "espera": 0,
-        "categoria": 1,
-        "icone_padrao": 73
     },
     {
         "cod_skil": 1150,
@@ -368,23 +312,6 @@
         "icone_padrao": 79
     },
     {
-        "cod_skil": 1315,
-        "description": "Espada 3-15",
-        "consumo": 12,
-        "requisito_lvl": 15,
-        "requisito_classe": 1,
-        "requisito_prof": 0,
-        "dano": 1.5,
-        "alcance": 3,
-        "area": 1,
-        "espera": 0,
-        "categoria": 3,
-        "icone_padrao": 80,
-        "special_apply_type": 1,
-        "special_effect": 1,
-        "special_target": 2
-    },
-    {
         "cod_skil": 1320,
         "description": "Espada 3-20",
         "consumo": 16,
@@ -397,23 +324,6 @@
         "espera": 0,
         "categoria": 3,
         "icone_padrao": 88
-    },
-    {
-        "cod_skil": 1325,
-        "description": "Espada 3-25",
-        "consumo": 20,
-        "requisito_lvl": 25,
-        "requisito_classe": 1,
-        "requisito_prof": 0,
-        "dano": 1.8,
-        "alcance": 3,
-        "area": 1,
-        "espera": 0,
-        "categoria": 3,
-        "icone_padrao": 96,
-        "special_apply_type": 1,
-        "special_effect": 1,
-        "special_target": 2
     },
     {
         "cod_skil": 1330,
@@ -430,23 +340,6 @@
         "icone_padrao": 103
     },
     {
-        "cod_skil": 1335,
-        "description": "Espada 3-35",
-        "consumo": 28,
-        "requisito_lvl": 35,
-        "requisito_classe": 1,
-        "requisito_prof": 0,
-        "dano": 2.2,
-        "alcance": 3,
-        "area": 1,
-        "espera": 0,
-        "categoria": 3,
-        "icone_padrao": 189,
-        "special_apply_type": 1,
-        "special_effect": 1,
-        "special_target": 2
-    },
-    {
         "cod_skil": 1340,
         "description": "Espada 3-40",
         "consumo": 32,
@@ -459,23 +352,6 @@
         "espera": 0,
         "categoria": 3,
         "icone_padrao": 265
-    },
-    {
-        "cod_skil": 1345,
-        "description": "Espada 3-45",
-        "consumo": 36,
-        "requisito_lvl": 45,
-        "requisito_classe": 1,
-        "requisito_prof": 0,
-        "dano": 2.5,
-        "alcance": 3,
-        "area": 1,
-        "espera": 0,
-        "categoria": 3,
-        "icone_padrao": 266,
-        "special_apply_type": 1,
-        "special_effect": 1,
-        "special_target": 2
     },
     {
         "cod_skil": 1350,
@@ -534,20 +410,6 @@
         "icone_padrao": 12
     },
     {
-        "cod_skil": 2115,
-        "description": "Luta 1-15",
-        "consumo": 12,
-        "requisito_lvl": 15,
-        "requisito_classe": 2,
-        "requisito_prof": 0,
-        "dano": 1.8,
-        "alcance": 1,
-        "area": 1,
-        "espera": 0,
-        "categoria": 1,
-        "icone_padrao": 13
-    },
-    {
         "cod_skil": 2120,
         "description": "Luta 1-20",
         "consumo": 16,
@@ -560,20 +422,6 @@
         "espera": 0,
         "categoria": 1,
         "icone_padrao": 29
-    },
-    {
-        "cod_skil": 2125,
-        "description": "Luta 1-25",
-        "consumo": 20,
-        "requisito_lvl": 25,
-        "requisito_classe": 2,
-        "requisito_prof": 0,
-        "dano": 2.2,
-        "alcance": 1,
-        "area": 1,
-        "espera": 0,
-        "categoria": 1,
-        "icone_padrao": 55
     },
     {
         "cod_skil": 2130,
@@ -590,20 +438,6 @@
         "icone_padrao": 65
     },
     {
-        "cod_skil": 2135,
-        "description": "Luta 1-35",
-        "consumo": 28,
-        "requisito_lvl": 35,
-        "requisito_classe": 2,
-        "requisito_prof": 0,
-        "dano": 2.6,
-        "alcance": 1,
-        "area": 1,
-        "espera": 0,
-        "categoria": 1,
-        "icone_padrao": 112
-    },
-    {
         "cod_skil": 2140,
         "description": "Luta 1-40",
         "consumo": 32,
@@ -616,20 +450,6 @@
         "espera": 0,
         "categoria": 1,
         "icone_padrao": 246
-    },
-    {
-        "cod_skil": 2145,
-        "description": "Luta 1-45",
-        "consumo": 36,
-        "requisito_lvl": 45,
-        "requisito_classe": 2,
-        "requisito_prof": 0,
-        "dano": 3,
-        "alcance": 1,
-        "area": 1,
-        "espera": 0,
-        "categoria": 1,
-        "icone_padrao": 247
     },
     {
         "cod_skil": 2150,
@@ -688,20 +508,6 @@
         "icone_padrao": 24
     },
     {
-        "cod_skil": 2215,
-        "description": "Luta 2-15",
-        "consumo": 12,
-        "requisito_lvl": 15,
-        "requisito_classe": 2,
-        "requisito_prof": 0,
-        "dano": 0.9,
-        "alcance": 1,
-        "area": 4,
-        "espera": 0,
-        "categoria": 2,
-        "icone_padrao": 30
-    },
-    {
         "cod_skil": 2220,
         "description": "Luta 2-20",
         "consumo": 16,
@@ -714,20 +520,6 @@
         "espera": 0,
         "categoria": 2,
         "icone_padrao": 44
-    },
-    {
-        "cod_skil": 2225,
-        "description": "Luta 2-25",
-        "consumo": 20,
-        "requisito_lvl": 25,
-        "requisito_classe": 2,
-        "requisito_prof": 0,
-        "dano": 1.1,
-        "alcance": 1,
-        "area": 4,
-        "espera": 0,
-        "categoria": 2,
-        "icone_padrao": 57
     },
     {
         "cod_skil": 2230,
@@ -744,20 +536,6 @@
         "icone_padrao": 97
     },
     {
-        "cod_skil": 2235,
-        "description": "Luta 2-35",
-        "consumo": 28,
-        "requisito_lvl": 35,
-        "requisito_classe": 2,
-        "requisito_prof": 0,
-        "dano": 1.4,
-        "alcance": 1,
-        "area": 4,
-        "espera": 0,
-        "categoria": 2,
-        "icone_padrao": 154
-    },
-    {
         "cod_skil": 2240,
         "description": "Luta 2-40",
         "consumo": 32,
@@ -770,20 +548,6 @@
         "espera": 0,
         "categoria": 2,
         "icone_padrao": 2
-    },
-    {
-        "cod_skil": 2245,
-        "description": "Luta 2-45",
-        "consumo": 36,
-        "requisito_lvl": 45,
-        "requisito_classe": 2,
-        "requisito_prof": 0,
-        "dano": 1.8,
-        "alcance": 1,
-        "area": 4,
-        "espera": 0,
-        "categoria": 2,
-        "icone_padrao": 18
     },
     {
         "cod_skil": 2250,
@@ -842,20 +606,6 @@
         "icone_padrao": 253
     },
     {
-        "cod_skil": 3115,
-        "description": "Atira 1-15",
-        "consumo": 12,
-        "requisito_lvl": 15,
-        "requisito_classe": 3,
-        "requisito_prof": 0,
-        "dano": 1.3,
-        "alcance": 10,
-        "area": 1,
-        "espera": 0,
-        "categoria": 1,
-        "icone_padrao": 254
-    },
-    {
         "cod_skil": 3120,
         "description": "Atira 1-20",
         "consumo": 16,
@@ -868,20 +618,6 @@
         "espera": 0,
         "categoria": 1,
         "icone_padrao": 47
-    },
-    {
-        "cod_skil": 3125,
-        "description": "Atira 1-25",
-        "consumo": 20,
-        "requisito_lvl": 25,
-        "requisito_classe": 3,
-        "requisito_prof": 0,
-        "dano": 1.6,
-        "alcance": 10,
-        "area": 1,
-        "espera": 0,
-        "categoria": 1,
-        "icone_padrao": 259
     },
     {
         "cod_skil": 3130,
@@ -898,20 +634,6 @@
         "icone_padrao": 260
     },
     {
-        "cod_skil": 3135,
-        "description": "Atira 1-35",
-        "consumo": 28,
-        "requisito_lvl": 35,
-        "requisito_classe": 3,
-        "requisito_prof": 0,
-        "dano": 1.8,
-        "alcance": 10,
-        "area": 1,
-        "espera": 0,
-        "categoria": 1,
-        "icone_padrao": 264
-    },
-    {
         "cod_skil": 3140,
         "description": "Atira 1-40",
         "consumo": 32,
@@ -924,20 +646,6 @@
         "espera": 0,
         "categoria": 1,
         "icone_padrao": 255
-    },
-    {
-        "cod_skil": 3145,
-        "description": "Atira 1-45",
-        "consumo": 36,
-        "requisito_lvl": 45,
-        "requisito_classe": 3,
-        "requisito_prof": 0,
-        "dano": 2.2,
-        "alcance": 10,
-        "area": 1,
-        "espera": 0,
-        "categoria": 1,
-        "icone_padrao": 448
     },
     {
         "cod_skil": 3150,
@@ -1005,23 +713,6 @@
         "special_target": 2
     },
     {
-        "cod_skil": 3215,
-        "description": "Atira 2-15",
-        "consumo": 12,
-        "requisito_lvl": 15,
-        "requisito_classe": 3,
-        "requisito_prof": 0,
-        "dano": 0.7,
-        "alcance": 1,
-        "area": 4,
-        "espera": 0,
-        "categoria": 2,
-        "icone_padrao": 176,
-        "special_apply_type": 1,
-        "special_effect": 2,
-        "special_target": 2
-    },
-    {
         "cod_skil": 3220,
         "description": "Atira 2-20",
         "consumo": 16,
@@ -1034,23 +725,6 @@
         "espera": 0,
         "categoria": 2,
         "icone_padrao": 192,
-        "special_apply_type": 1,
-        "special_effect": 2,
-        "special_target": 2
-    },
-    {
-        "cod_skil": 3225,
-        "description": "Atira 2-25",
-        "consumo": 20,
-        "requisito_lvl": 25,
-        "requisito_classe": 3,
-        "requisito_prof": 0,
-        "dano": 0.9,
-        "alcance": 1,
-        "area": 4,
-        "espera": 0,
-        "categoria": 2,
-        "icone_padrao": 256,
         "special_apply_type": 1,
         "special_effect": 2,
         "special_target": 2
@@ -1073,23 +747,6 @@
         "special_target": 2
     },
     {
-        "cod_skil": 3235,
-        "description": "Atira 2-35",
-        "consumo": 28,
-        "requisito_lvl": 35,
-        "requisito_classe": 3,
-        "requisito_prof": 0,
-        "dano": 1.1,
-        "alcance": 1,
-        "area": 4,
-        "espera": 0,
-        "categoria": 2,
-        "icone_padrao": 258,
-        "special_apply_type": 1,
-        "special_effect": 2,
-        "special_target": 2
-    },
-    {
         "cod_skil": 3240,
         "description": "Atira 2-40",
         "consumo": 32,
@@ -1102,23 +759,6 @@
         "espera": 0,
         "categoria": 2,
         "icone_padrao": 262,
-        "special_apply_type": 1,
-        "special_effect": 2,
-        "special_target": 2
-    },
-    {
-        "cod_skil": 3245,
-        "description": "Atira 2-45",
-        "consumo": 36,
-        "requisito_lvl": 45,
-        "requisito_classe": 3,
-        "requisito_prof": 0,
-        "dano": 1.3,
-        "alcance": 1,
-        "area": 4,
-        "espera": 0,
-        "categoria": 2,
-        "icone_padrao": 447,
         "special_apply_type": 1,
         "special_effect": 2,
         "special_target": 2

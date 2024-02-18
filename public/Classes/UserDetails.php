@@ -997,8 +997,9 @@ class UserDetails
             }
             if ($this->alerts->has_alert_trip_sem_distribuir_haki($pers)) {
                 $alerts["status"] = true;
+                $alerts["status&nav=haki"] = true;
                 $alerts["status." . $pers["cod"]] = true;
-                $alerts["status.status." . $pers["cod"]] = true;
+                $alerts["status.haki." . $pers["cod"]] = true;
                 $alerts["trip_sem_distribuir_haki." . $pers["cod"]] = true;
             }
             if ($this->alerts->has_alert_trip_sem_efeito_especial($pers)) {

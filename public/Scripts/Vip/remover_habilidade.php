@@ -28,4 +28,4 @@ $connection->run("DELETE FROM tb_personagens_skil WHERE cod = ? AND cod_skil = ?
     $tipo_skill
 ]);
 
-echo "Habilidade removida!";
+echo ":";

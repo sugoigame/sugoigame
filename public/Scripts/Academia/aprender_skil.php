@@ -72,4 +72,4 @@ $connection->run(
         $icon
     ]);
 
-$response->send($pers["nome"] . " aprendeu uma nova habilidade. Visite o menu de Habilidades para customiza-la!");
+echo ":";

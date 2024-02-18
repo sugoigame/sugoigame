@@ -267,7 +267,7 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
 <?php function render_habilidades_classe_tab($skills, $pers, $form_url, $pode_aprender_func)
 { ?>
     <?php global $connection; ?>
-    <?php $lvls = array(1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50); ?>
+    <?php $lvls = array(1, 5, 10, 20, 30, 40, 50); ?>
     <?php foreach ($lvls as $linha => $lvl) : ?>
         <div class="panel panel-default p0">
             <div class="panel-heading">
@@ -329,13 +329,12 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
         </div>
         <div class="panel-footer">
             <?php if ($aprendidas[$skill["categoria"]]) : ?>
-                <button class="btn btn-danger link_confirm"
-                    href="Vip/remover_habilidade.php?cod=<?= $pers["cod"] ?>&codskill=<?= $skill["cod_skil"] ?>&tiposkill=<?= $skill["tiponum"] ?>"
-                    data-question="Tem certeza que deseja remover essa habilidade?">
+                <button class="btn btn-danger link_send"
+                    href="Link_Vip/remover_habilidade.php?cod=<?= $pers["cod"] ?>&codskill=<?= $skill["cod_skil"] ?>&tiposkill=<?= $skill["tiponum"] ?>">
                     Remover
                 </button>
             <?php else : ?>
-                <?php render_new_skill_form($skill, $pers, $form_url, $pode_aprender_func, "Escolher", true) ?>
+                <?php render_new_skill_form($skill, $pers, $form_url, $pode_aprender_func, "Escolher") ?>
             <?php endif; ?>
         </div>
     </div>
@@ -498,7 +497,7 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
 <?php function render_new_skill_form($skill, $pers, $form_url, $pode_aprender_func, $submit_button_text = "Aprender", $confirm = false)
 { ?>
     <?php if ($pode_aprender_func($pers, $skill)) : ?>
-        <button class="btn btn-success link_<?= $confirm ? "confirm" : "send" ?>"
+        <button class="btn btn-success btn_aprender_skill link_<?= $confirm ? "confirm" : "send" ?>"
             data-question="Deseja aprender essa habilidade?"
             href="<?= $confirm ? "" : "link_" ?><?= $form_url ?>?cod=<?= $pers["cod"]; ?>&codskill=<?= $skill["cod_skil"]; ?>&tiposkill=<?= $skill["tiponum"]; ?>">
             <?= $submit_button_text ?>
