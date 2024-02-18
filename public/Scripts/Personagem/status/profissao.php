@@ -114,7 +114,7 @@ if (! $pers) {
     <div class="row">
         <?php foreach ($items as $item) : ?>
             <?php $preco = (($item["hp_recuperado"] + $item["mp_recuperado"]) * 50) * (1 - $pers["profissao_lvl"] * 0.05); ?>
-            <div class="panel panel-default col-xs-4 h-100 m0">
+            <div class="panel panel-default col-xs-4 col-md-3 h-100 m0">
                 <div class="panel-body">
                     <?= info_item_with_img($item, $item, FALSE, FALSE, FALSE) ?>
                     <p>
@@ -132,9 +132,9 @@ if (! $pers) {
                             data-question="Deseja mesmo criar este item?">
                             <input type="hidden" name="pers" value="<?= $pers["cod"]; ?>" />
                             <input type="hidden" name="item" value="<?= $item["cod_comida"]; ?>" />
-                            <input placeholder="Insira a quantidade desejada" class="form-control w-50" size="4" min="1"
-                                type="number" max="<?= floor($userDetails->tripulacao["berries"] / $preco) ?>" name="quant"
-                                value="1" type="number">
+                            <input placeholder="Insira a quantidade desejada" class="form-control" size="4" min="1" type="number"
+                                max="<?= floor($userDetails->tripulacao["berries"] / $preco) ?>" name="quant" value="1"
+                                type="number">
                             <button type="submit" class="btn btn-success">
                                 Criar
                             </button>

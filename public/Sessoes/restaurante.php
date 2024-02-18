@@ -1,5 +1,6 @@
 <div class="panel-heading">
     Restaurante
+    <?= ajuda("Restaurante", "Aqui você compra comida para sua tripulação.") ?>
 </div>
 
 <script type="text/javascript">
@@ -13,7 +14,6 @@
 </script>
 
 <div class="panel-body">
-    <?= ajuda("Restaurante", "Aqui você compra comida para sua tripulação.") ?>
 
     <?php $mods = $connection->run("SELECT * FROM tb_ilha_mod WHERE ilha = ?", "i", $userDetails->ilha["ilha"])->fetch_array(); ?>
 
@@ -32,13 +32,11 @@
         }
     } ?>
 
-    <h3>Itens a venda:</h3>
-
     <?php if (count($items)) : ?>
         <div class="row">
             <?php foreach ($items as $item) : ?>
                 <?php $preco = ($item["hp_recuperado"] + $item["mp_recuperado"]) * 60 * $mods["mod"]; ?>
-                <div class="panel panel-default col-xs-3">
+                <div class="panel panel-default col-xs-4 col-sm-3 col-md-2">
                     <div class="panel-body">
                         <?= info_item_with_img($item, $item, FALSE, FALSE, FALSE) ?>
                         <div>
