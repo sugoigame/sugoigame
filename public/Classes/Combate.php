@@ -929,13 +929,16 @@ class Combate
 
             $result = $this->connection->run(
                 "SELECT * FROM tb_usuario_itens itn
-				 INNER JOIN tb_item_remedio rm ON itn.cod_item = rm.cod_remedio AND itn.tipo_item = ?
 				 WHERE itn.id = ? AND itn.cod_item = ? AND itn.tipo_item = ?",
-                "iiii", array(TIPO_ITEM_REMEDIO, $this->userDetails->tripulacao["id"], $cod_skil, TIPO_ITEM_REMEDIO)
+                "iii", array($this->userDetails->tripulacao["id"], $cod_skil, TIPO_ITEM_REMEDIO)
             );
 
             if ($result->count()) {
                 $habilidade = $result->fetch_array();
+                $habilidade = array_merge(
+                    MapLoader::find("remedios", ["cod_remedio" => $habilidade["cod_item"]]),
+                    $habilidade
+                );
                 $habilidade["consumo"] = $habilidade["hp_recuperado"] + $habilidade["mp_recuperado"];
                 $habilidade["espera"] = 5;
                 $habilidade["area"] = 1;

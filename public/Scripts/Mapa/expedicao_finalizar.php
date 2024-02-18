@@ -11,7 +11,7 @@ $tipo = $protector->get_alphanumeric_or_exit("tipo");
 
 $personagem = $userDetails->get_pers_by_cod($pers);
 
-if (!$personagem || $personagem["profissao"] != PROFISSAO_ARQUEOLOGO) {
+if (! $personagem || $personagem["profissao"] != PROFISSAO_ARQUEOLOGO) {
     $protector->exit_error("Personagem inválido");
 }
 
@@ -19,7 +19,7 @@ $mergulhadores = $userDetails->arqueologos;
 
 $quant = min(count($mergulhadores), 3);
 
-if (!$userDetails->can_add_item($quant)) {
+if (! $userDetails->can_add_item($quant)) {
     $protector->exit_error("Seu inventário está cheio. Libere $quant espaços para pegar sua recompensa");
 }
 
@@ -75,7 +75,10 @@ for ($x = 1; $x <= $quant; $x++) {
 
         $recompensas[] = $item["nome"];
     } else if ($rand <= 45) {
-        $item = $connection->run("SELECT nome, cod_remedio FROM tb_item_remedio WHERE mergulho='$mar' ORDER BY RAND() LIMIT 1")->fetch_array();
+        $remedios = MapLoader::filter("remedios", function ($remedio) use ($mar) {
+            return $remedio["mergulho"] == $mar;
+        });
+        $item = $remedios[array_rand($remedios)];
 
         $userDetails->add_item($item["cod_remedio"], TIPO_ITEM_REMEDIO, 1);
 

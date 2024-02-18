@@ -11,16 +11,23 @@ $tipo = $protector->get_enum_or_exit("tipo", array(1, 7));
 if ($tipo == TIPO_ITEM_COMIDA) {
     $comida = get_result_joined_mapped_by_type("tb_usuario_itens", "cod_item", "tipo_item", "tb_item_comida", "cod_comida", 1,
         "WHERE origem.id = ? AND origem.cod_item = ?", "ii", array($userDetails->tripulacao["id"], $cod_comida));
+
+    if (! count($comida)) {
+        $protector->exit_error("O item acabou");
+    }
+
+    $comida = $comida[0];
 } else {
-    $comida = get_result_joined_mapped_by_type("tb_usuario_itens", "cod_item", "tipo_item", "tb_item_remedio", "cod_remedio", 7,
-        "WHERE origem.id = ? AND origem.cod_item = ?", "ii", array($userDetails->tripulacao["id"], $cod_comida));
+    $comida = $connection->run(
+        "SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=? AND cod_item=?",
+        "iii", [$userDetails->tripulacao["id"], TIPO_ITEM_REMEDIO, $cod_comida]);
+    if (! $comida->count()) {
+        $protector->exit_error("O item acabou");
+    }
+
+    $comida = array_merge($comida->fetch_array(), MapLoader::find("remedios", ["cod_remedio" => $cod_comida]));
 }
 
-if (! count($comida)) {
-    $protector->exit_error("O item acabou");
-}
-
-$comida = $comida[0];
 ?>
 <div class="modal-body">
     <?= get_img_item($comida) ?> x

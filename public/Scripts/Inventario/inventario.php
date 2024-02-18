@@ -14,13 +14,17 @@ $items = get_many_results_joined_mapped_by_type("tb_usuario_itens", "cod_item", 
     array("nome" => "tb_item_navio_leme", "coluna" => "cod_leme", "tipo" => TIPO_ITEM_LEME),
     array("nome" => "tb_item_navio_velas", "coluna" => "cod_velas", "tipo" => TIPO_ITEM_VELAS),
     array("nome" => "tb_item_pose", "coluna" => "cod_pose", "tipo" => TIPO_ITEM_POSE),
-    array("nome" => "tb_item_remedio", "coluna" => "cod_remedio", "tipo" => TIPO_ITEM_REMEDIO),
     array("nome" => "tb_item_navio_canhao", "coluna" => "cod_canhao", "tipo" => TIPO_ITEM_CANHAO),
     array("nome" => "tb_item_equipamentos", "coluna" => "cod_equipamento", "tipo" => TIPO_ITEM_EQUIPAMENTO),
     array("nome" => "tb_item_reagents", "coluna" => "cod_reagent", "tipo" => TIPO_ITEM_REAGENT),
     array("nome" => "tb_item_missao", "coluna" => "id", "tipo" => TIPO_ITEM_MISSAO),
 ), "WHERE origem.id = ? ORDER BY origem.cod_item", "i", $userDetails->tripulacao["id"]);
 
+$result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=?",
+    "ii", [$userDetails->tripulacao["id"], TIPO_ITEM_REMEDIO]);
+while ($item = $result->fetch_array()) {
+    $items[] = array_merge($item, MapLoader::find("remedios", ["cod_remedio" => $item["cod_item"]]));
+}
 
 // Logias
 $result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id = ? AND tipo_item = 8 ORDER BY cod_item",
@@ -112,16 +116,19 @@ $connection->run("UPDATE tb_usuario_itens SET novo = 0 WHERE id=?", "i", array($
     <div class="inventario-items">
         <?php foreach ($items as $item) : ?>
             <?php $item["cod"] = $item["cod_item"]; ?>
-            <?php if (!isset($item["tipo"])) $item["tipo"] = $item["tipo_item"]; ?>
+            <?php if (! isset($item["tipo"]))
+                $item["tipo"] = $item["tipo_item"]; ?>
             <button class="inventario-item equipamentos_casse_<?= isset($item["categoria"]) ? $item["categoria"] : "1" ?>"
-                    data-content="-" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="focus"
-                    data-template='<div class="inventario-item-info"><?= info_item($item, $item, TRUE, TRUE, $userDetails->combate_pvp || $userDetails->combate_pve); ?></div>'>
+                data-content="-" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="focus"
+                data-template='<div class="inventario-item-info"><?= info_item($item, $item, TRUE, TRUE, $userDetails->combate_pvp || $userDetails->combate_pve); ?></div>'>
 
                 <?= get_img_item($item) ?>
-                <?php if (isset($item["quant"]) && $item["quant"] > 1): ?>
-                    <span class="badge badge-default"><?= $item["quant"] ?></span>
+                <?php if (isset($item["quant"]) && $item["quant"] > 1) : ?>
+                    <span class="badge badge-default">
+                        <?= $item["quant"] ?>
+                    </span>
                 <?php endif; ?>
-                <?php if (isset($item["novo"]) && $item["novo"]): ?>
+                <?php if (isset($item["novo"]) && $item["novo"]) : ?>
                     <span class="label label-danger">*</span>
                 <?php endif; ?>
             </button>
@@ -129,5 +136,7 @@ $connection->run("UPDATE tb_usuario_itens SET novo = 0 WHERE id=?", "i", array($
     </div>
 </div>
 <div class="modal-footer">
-    Capacidade: <?= count($items) ?> / <?= $userDetails->navio["capacidade_inventario"]; ?>
+    Capacidade:
+    <?= count($items) ?> /
+    <?= $userDetails->navio["capacidade_inventario"]; ?>
 </div>

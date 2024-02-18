@@ -61,7 +61,7 @@ if ($usuario["berries"] < 10000) {
     exit();
 }
 
-$query = "SELECT * FROM tb_alianca_banco WHERE cod_alianca='" . $usuario["alianca"]["cod_alianca"] . "' 
+$query = "SELECT * FROM tb_alianca_banco WHERE cod_alianca='" . $usuario["alianca"]["cod_alianca"] . "'
 	AND cod_item='$cod' AND tipo_item='$tipo'";
 $result = $connection->run($query);
 if ($result->count() == 0) {
@@ -133,9 +133,7 @@ switch ($tipo) {
         $nome_item = $item_info["nome"];
         break;
     case 7:
-        $query = "SELECT * FROM tb_item_remedio WHERE cod_remedio='$cod'";
-        $result = $connection->run($query);
-        $item_info = $result->fetch_array();
+        $item_info = MapLoader::find("remedios", ["cod_remedio" => $cod]);
         $nome_item = $item_info["nome"];
         break;
     case 8:
@@ -170,7 +168,7 @@ if ($total["quant"] == $quant["quant"])
     $query = "DELETE FROM tb_alianca_banco WHERE cod_alianca='" . $usuario["alianca"]["cod_alianca"] . "' AND cod_item='$cod' AND tipo_item='$tipo' LIMIT 1";
 else {
     $nquant = $total["quant"] - $quant["quant"];
-    $query = "UPDATE tb_alianca_banco SET quant='$nquant' 
+    $query = "UPDATE tb_alianca_banco SET quant='$nquant'
 		WHERE cod_alianca='" . $usuario["alianca"]["cod_alianca"] . "' AND cod_item='$cod' AND tipo_item='$tipo' LIMIT 1";
 }
 $connection->run($query) or die("Não foi possivel remover o item");

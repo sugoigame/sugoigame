@@ -16,22 +16,28 @@ if (isset($_GET["quant"])) {
 
 $personagem = $userDetails->get_pers_by_cod($pers);
 
-if (!$personagem) {
+if (! $personagem) {
     $protector->exit_error("Personagem invalido");
 }
 
 if ($tipo == TIPO_ITEM_COMIDA) {
     $comida = get_result_joined_mapped_by_type("tb_usuario_itens", "cod_item", "tipo_item", "tb_item_comida", "cod_comida", 1,
         "WHERE origem.id = ? AND origem.cod_item = ?", "ii", array($userDetails->tripulacao["id"], $cod_comida));
+    if (! count($comida)) {
+        $protector->exit_error("O item acabou");
+    }
+    $comida = $comida[0];
 } else {
-    $comida = get_result_joined_mapped_by_type("tb_usuario_itens", "cod_item", "tipo_item", "tb_item_remedio", "cod_remedio", 7,
-        "WHERE origem.id = ? AND origem.cod_item = ?", "ii", array($userDetails->tripulacao["id"], $cod_comida));
+    $comida = $connection->run(
+        "SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=? AND cod_item=?",
+        "iii", [$userDetails->tripulacao["id"], TIPO_ITEM_REMEDIO, $cod_comida]);
+    if (! $comida->count()) {
+        $protector->exit_error("O item acabou");
+    }
+
+    $comida = array_merge($comida->fetch_array(), MapLoader::find("remedios", ["cod_remedio" => $cod_comida]));
 }
 
-if (!count($comida)) {
-    $protector->exit_error("O item acabou");
-}
-$comida = $comida[0];
 
 if ($comida["quant"] < $quant) {
     $protector->exit_error("Você não tem todos estes item disponíveis");
@@ -48,4 +54,4 @@ $connection->run("UPDATE tb_personagens SET hp = ?, mp = ? WHERE cod = ?",
 
 $userDetails->reduz_item($cod_comida, $tipo, $quant);
 
-echo("@");
+echo ("@");

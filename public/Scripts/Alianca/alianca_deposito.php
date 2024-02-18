@@ -105,7 +105,7 @@ if ($tipo == 1 or $tipo == 7 or $tipo == 13 or $tipo == 15) {
     } else {
         $quant_i = $result->fetch_array();
         $quant_i = $quant_i["quant"] + $quant["quant"];
-        $query = "UPDATE tb_alianca_banco SET quant='$quant_i' 
+        $query = "UPDATE tb_alianca_banco SET quant='$quant_i'
 			WHERE cod_alianca='" . $usuario["alianca"]["cod_alianca"] . "' AND cod_item='$cod' AND tipo_item='$tipo' LIMIT 1";
         $connection->run($query) or die("Não foi possivel remover o item");
     }
@@ -147,9 +147,7 @@ switch ($tipo) {
         $nome_item = $item_info["nome"];
         break;
     case 7:
-        $query = "SELECT * FROM tb_item_remedio WHERE cod_remedio='$cod'";
-        $result = $connection->run($query);
-        $item_info = $result->fetch_array();
+        $item_info = MapLoader::find("remedios", ["cod_remedio" => $cod]);
         $nome_item = $item_info["nome"];
         break;
     case 12:

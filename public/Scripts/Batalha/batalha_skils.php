@@ -93,8 +93,13 @@ $skills = get_all_skills($pers);
     <?php endforeach; ?>
     <?php if ($pers["profissao"] == PROFISSAO_MEDICO) : ?>
 
-        <?php $items = get_result_joined_mapped_by_type("tb_usuario_itens", "cod_item", "tipo_item", "tb_item_remedio", "cod_remedio", TIPO_ITEM_REMEDIO,
-            "WHERE origem.id=?", "i", $userDetails->tripulacao["id"]); ?>
+        <?php $items = $connection->run(
+            "SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=?",
+            "ii", [$userDetails->tripulacao["id"], TIPO_ITEM_REMEDIO])
+            ->fetch_all_array(); ?>
+        <?php foreach ($items as $key => $item) {
+            $items[$key] = array_merge($item, MapLoader::find("remedios", ["cod_remedio" => $item["cod_item"]]));
+        } ?>
 
         <div class="list-group-item">
             Remédios
