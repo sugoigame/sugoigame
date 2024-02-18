@@ -1,5 +1,6 @@
 <div class="panel-heading">
     Navio
+    <?= ajuda("Navio", "Veja aqui as informações sobre o seu navio, como nível, partes equipadas, etc.") ?>
 </div>
 
 <script type="text/javascript">
@@ -22,7 +23,6 @@
 </script>
 
 <div class="panel-body">
-    <?= ajuda("Navio", "Veja aqui as informações sobre o seu navio, como nível, partes equipadas, etc.") ?>
 
     <div>
         <?php render_navio_icon(); ?>
@@ -38,25 +38,30 @@
     <div class="clearfix">
         <?php render_navio_hp_bar() ?>
 
-        <h4>Nível <?= $userDetails->navio["lvl"] ?></h4>
+        <h4>Nível
+            <?= $userDetails->navio["lvl"] ?>
+        </h4>
         <p>Seu navio fica ganha mais pontos de vida a cada nível evoluido</p>
         <?php render_navio_xp_bar() ?>
     </div>
 
     <div class="list-group-item">
         <h4>Invetário:</h4>
-        <p>Capacidade: <?= $userDetails->navio["capacidade_inventario"] ?></p>
+        <p>Capacidade:
+            <?= $userDetails->navio["capacidade_inventario"] ?>
+        </p>
         <p>
             A cada nível de profissão evoluído, o carpinteiro da sua tripulação
             pode aumentar a capacidade do seu inventário em 10 espaços.
         </p>
-        <?php if (($userDetails->navio["capacidade_inventario"] - 55) < ($userDetails->lvl_carpinteiro * 10)): ?>
+        <?php if (($userDetails->navio["capacidade_inventario"] - 55) < ($userDetails->lvl_carpinteiro * 10)) : ?>
             <?php $preco = ((($userDetails->navio["capacidade_inventario"] - 55) / 10) + 1) * 100000; ?>
             <p>
                 <button class="btn btn-info link_confirm" href="Navio/navio_aumentar_inventario.php"
-                        data-question="Deseja aprimorar seu inventario?" <?= $userDetails->tripulacao["berries"] < $preco ? "disabled" : "" ?>>
-                    <img src="Imagens/Icones/Berries.png"> <?= mascara_berries($preco) ?>
-                    <br/>
+                    data-question="Deseja aprimorar seu inventario?" <?= $userDetails->tripulacao["berries"] < $preco ? "disabled" : "" ?>>
+                    <img src="Imagens/Icones/Berries.png">
+                    <?= mascara_berries($preco) ?>
+                    <br />
                     Aumentar a capacidade do inventário
                 </button>
             </p>
@@ -65,40 +70,56 @@
 
     <h3>Partes equipadas:</h3>
     <div class="list-group clearfix">
-        <?php if ($userDetails->navio["cod_casco"]): ?>
+        <?php if ($userDetails->navio["cod_casco"]) : ?>
             <?php $casco = $connection->run("SELECT * FROM tb_item_navio_casco WHERE cod_casco = ?",
                 "i", $userDetails->navio["cod_casco"])->fetch_array(); ?>
             <div class="list-group-item col-md-3">
-                <img src="Imagens/Itens/<?= $casco["img"]; ?>.png"/>
-                <h4><?= $casco["nome"]; ?></h4>
-                <p>HP + <?= $casco["bonus"]; ?></p>
+                <img src="Imagens/Itens/<?= $casco["img"]; ?>.png" />
+                <h4>
+                    <?= $casco["nome"]; ?>
+                </h4>
+                <p>HP +
+                    <?= $casco["bonus"]; ?>
+                </p>
             </div>
         <?php endif; ?>
-        <?php if ($userDetails->navio["cod_leme"]): ?>
+        <?php if ($userDetails->navio["cod_leme"]) : ?>
             <?php $leme = $connection->run("SELECT * FROM tb_item_navio_leme WHERE cod_leme = ?",
                 "i", $userDetails->navio["cod_leme"])->fetch_array(); ?>
             <div class="list-group-item col-md-3">
-                <img src="Imagens/Itens/<?= $leme["img"]; ?>.png"/>
-                <h4><?= $leme["nome"]; ?></h4>
-                <p>Efeito de correntes + <?= $leme["bonus"]; ?>%</p>
+                <img src="Imagens/Itens/<?= $leme["img"]; ?>.png" />
+                <h4>
+                    <?= $leme["nome"]; ?>
+                </h4>
+                <p>Efeito de correntes +
+                    <?= $leme["bonus"]; ?>%
+                </p>
             </div>
         <?php endif; ?>
-        <?php if ($userDetails->navio["cod_velas"]): ?>
+        <?php if ($userDetails->navio["cod_velas"]) : ?>
             <?php $velas = $connection->run("SELECT * FROM tb_item_navio_velas WHERE cod_velas = ?",
                 "i", $userDetails->navio["cod_velas"])->fetch_array(); ?>
             <div class="list-group-item col-md-3">
-                <img src="Imagens/Itens/<?= $velas["img"]; ?>.png"/>
-                <h4><?= $velas["nome"]; ?></h4>
-                <p>Efeito de ventos + <?= $velas["bonus"]; ?>%</p>
+                <img src="Imagens/Itens/<?= $velas["img"]; ?>.png" />
+                <h4>
+                    <?= $velas["nome"]; ?>
+                </h4>
+                <p>Efeito de ventos +
+                    <?= $velas["bonus"]; ?>%
+                </p>
             </div>
         <?php endif; ?>
-        <?php if ($userDetails->navio["cod_canhao"]): ?>
+        <?php if ($userDetails->navio["cod_canhao"]) : ?>
             <?php $canhao = $connection->run("SELECT * FROM tb_item_navio_canhao WHERE cod_canhao = ?",
                 "i", $userDetails->navio["cod_canhao"])->fetch_array(); ?>
             <div class="list-group-item col-md-3">
-                <img src="Imagens/Itens/<?= $canhao["img"]; ?>.png"/>
-                <h4><?= $canhao["nome"]; ?></h4>
-                <p>Chance de acerto: <?= $canhao["bonus"]; ?>%</p>
+                <img src="Imagens/Itens/<?= $canhao["img"]; ?>.png" />
+                <h4>
+                    <?= $canhao["nome"]; ?>
+                </h4>
+                <p>Chance de acerto:
+                    <?= $canhao["bonus"]; ?>%
+                </p>
             </div>
         <?php endif; ?>
     </div>
@@ -119,8 +140,8 @@
                 <p>
                     <?php if ($userDetails->carpinteiros) : ?>
                         <button class="link_confirm btn btn-primary"
-                                data-question="Deseja equipar este item no navio?<br/> Itens já equipados serão perdidos."
-                                href="Navio/navio_equipar.php?cod=<?= $item["cod_item"] ?>&tipo=<?= $item["tipo_item"] ?>">
+                            data-question="Deseja equipar este item no navio?<br/> Itens já equipados serão perdidos."
+                            href="Navio/navio_equipar.php?cod=<?= $item["cod_item"] ?>&tipo=<?= $item["tipo_item"] ?>">
                             Instalar
                         </button>
                     <?php endif; ?>

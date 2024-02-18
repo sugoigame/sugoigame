@@ -141,8 +141,8 @@ function super_menu_can_be_active($menu)
                         <?= menu_link("realizacoes", "Conquistas", "glyphicon glyphicon-star-empty", "") ?>
                         <?= menu_link("listaNegra", "Lista Negra", "fa fa-th-list", "") ?>
                         <?= menu_link("tatics", "Táticas", "glyphicon glyphicon-knight", "") ?>
-                        <?= menu_link("combateLog", "Meus Combate", "fa fa-file-text", "") ?>
-                        <?= menu_link("wantedLog", "Minhas Recompensas", "fa fa-file-text", "") ?>
+                        <?= menu_link("combateLog", "Histórico de Combates", "fa fa-file-text", "") ?>
+                        <?= menu_link("wantedLog", "Histórico de Recompensas", "fa fa-file-text", "") ?>
                     </ul>
                 </div>
                 <?php if ($userDetails->navio) : ?>

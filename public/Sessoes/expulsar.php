@@ -1,9 +1,9 @@
 <div class="panel-heading">
     Expulsar tripulante
+    <?= ajuda("Expulsar tripulante", "Faça os inúteis da sua tripulação andarem na pracha.") ?>
 </div>
 
 <div class="panel-body">
-    <?= ajuda("Expulsar tripulante", "Faça os inúteis da sua tripulação andarem na pracha.") ?>
 
     <script type="text/javascript">
         $(function () {
@@ -18,10 +18,11 @@
         });
     </script>
     <ul class="list-group">
-        <?php foreach ($userDetails->personagens as $pers): ?>
-            <?php if ($pers["cod"] != $userDetails->capitao["cod"]): ?>
+        <?php foreach ($userDetails->personagens as $pers) : ?>
+            <?php if ($pers["cod"] != $userDetails->capitao["cod"]) : ?>
                 <li class="list-group-item">
-                    <h4><img src="Imagens/Personagens/Icons/<?= get_img($pers, "r") ?>.jpg"/><br><?= $pers["nome"] ?>
+                    <h4><img src="Imagens/Personagens/Icons/<?= get_img($pers, "r") ?>.jpg" /><br>
+                        <?= $pers["nome"] ?>
                     </h4>
                     <p>
                         <button class="bt_expulsar btn btn-danger" href="Recrutar/demitir.php?cod=<?= $pers["cod"] ?>">

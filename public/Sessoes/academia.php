@@ -1,11 +1,11 @@
 <div class="panel-heading">
     Academia
-</div>
-
-<div class="panel-body clearfix">
     <?= ajuda("Academia", "Na academia você ensina as classes de batalha aos seus personagens, espadachim, atirador e lutador.<br>
             Cada classe tem 3 sequências de habilidades, sendo que não é possível aprender a última habilidade de
             mais de uma sequência, então escolha sua build de atributos a partir daqui.") ?>
+</div>
+
+<div class="panel-body clearfix">
     <script type="text/javascript">
         $(function () {
             $(".aprender_classe").click(function () {

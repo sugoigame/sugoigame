@@ -1,5 +1,6 @@
 <div class="panel-heading">
     Hall da Fama
+    <?= ajuda("Hall da Fama", "Conheça os maiores jogadores de eras passadas.") ?>
 </div>
 
 <style type="text/css">
@@ -37,7 +38,6 @@
 </style>
 
 <div class="panel-body">
-    <?= ajuda("Hall da Fama", "Conheça os maiores jogadores de eras passadas.") ?>
 
     <div class="panel panel-default hidden">
         <div class="panel-heading">

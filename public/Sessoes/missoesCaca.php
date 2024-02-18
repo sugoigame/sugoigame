@@ -1,9 +1,9 @@
 <div class="panel-heading">
     Missões de caça
+    <?= ajuda("Missões de caça", "Missões de caça são missões que pagam uma boa grana para que você derrote criaturas marítimas diversas.") ?>
 </div>
 
 <div class="panel-body">
-    <?= ajuda("Missões de caça", "Missões de caça são missões que pagam uma boa grana para que você derrote criaturas marítimas diversas.") ?>
 
     <?php $missoes = DataLoader::load("missoes_caca"); ?>
     <?php $rdms = DataLoader::load("rdm"); ?>

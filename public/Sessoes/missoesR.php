@@ -1,5 +1,6 @@
 <div class="panel-heading">
     Missões repetitivas
+    <?= ajuda("Pesquisas", "Precisando de dinheiro? Aqui você pode fazer tarefas que vão lhe permitir sair da miséria."); ?>
 </div>
 
 <script type="text/javascript">
@@ -44,7 +45,6 @@
     });
 </script>
 <div class="panel-body">
-    <?= ajuda("Pesquisas", "Precisando de dinheiro? Aqui você pode fazer tarefas que vão lhe permitir sair da miséria."); ?>
 
     <?php $missao_r_ini = $connection->run("SELECT * FROM tb_missoes_r WHERE id = ?",
         "i", array($userDetails->tripulacao["id"])); ?>

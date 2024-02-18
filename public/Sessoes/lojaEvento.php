@@ -1,10 +1,9 @@
 <div class="panel-heading">
     Loja de Eventos
+    <?= ajuda("Loja de Eventos", "Aqui você consegue comprar recompensas exclusivas por participar ativamente dos eventos do jogo"); ?>
 </div>
 
 <div class="panel-body">
-    <?= ajuda("Loja de Eventos", "Aqui você consegue comprar recompensas exclusivas por participar ativamente dos eventos do jogo"); ?>
-
     <h3>
         Você possui
         <?= $userDetails->tripulacao["moedas_evento"] ?>

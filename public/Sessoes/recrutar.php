@@ -1,7 +1,8 @@
 <?php
 $recrutados = $connection->run("SELECT img FROM tb_personagens WHERE id = ?", "i", $userDetails->tripulacao["id"])->fetch_all_array();
 
-function can_recruit($img) {
+function can_recruit($img)
+{
     global $recrutados;
 
     foreach ($recrutados as $pers) {
@@ -16,6 +17,8 @@ function can_recruit($img) {
 
 <div class="panel-heading">
     Recrutamento
+    <?= ajuda("Recrutamento", "Espalhe cartazes pela ilha para que personagens que se interessarem em entrar para sua
+    tripulação apareçam, depois você poderá selecionar seu novo tripulante.") ?>
 </div>
 <script type="text/javascript">
     $(function () {
@@ -45,10 +48,10 @@ function can_recruit($img) {
             reloadPagina();
         } else {
             if (tmp) {
-                    document.title = '[' + transforma_tempo(tmp) + '] ' + gameTitle;
-                } else {
-                    document.title = gameTitle;
-                }
+                document.title = '[' + transforma_tempo(tmp) + '] ' + gameTitle;
+            } else {
+                document.title = gameTitle;
+            }
         }
         conttmp += 1;
     }
@@ -92,7 +95,7 @@ function can_recruit($img) {
 
         var lvl = parseInt($('#input_lvl').val(), 10);
         if (lvl > 1) {
-            var precoGold   = (lvl - 1) * <?= PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO ?>;
+            var precoGold = (lvl - 1) * <?= PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO ?>;
             var precoDobrao = (lvl - 1) * <?= PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO ?>;
             $('#preco-lvl-gold').html(precoGold);
             $('#preco-lvl-dobrao').html(precoDobrao);
@@ -143,9 +146,6 @@ function can_recruit($img) {
 </script>
 
 <div class="panel-body">
-    <?= ajuda("Recrutamento", "Espalhe cartazes pela ilha para que personagens que se interessarem em entrar para sua 
-    tripulação apareçam, depois você poderá selecionar seu novo tripulante.") ?>
-
     <?php $ilha_personagens_db = $connection->run("SELECT * FROM tb_ilha_personagens WHERE ilha = ?",
         "i", $userDetails->ilha["ilha"])->fetch_all_array(); ?>
 
@@ -159,9 +159,9 @@ function can_recruit($img) {
         }
     } ?>
 
-    <?php if (!$userDetails->tripulacao["recrutando"]) : ?>
+    <?php if (! $userDetails->tripulacao["recrutando"]) : ?>
         <?php if ($userDetails->navio) : ?>
-            <?php if (count($ilha_personagens) <= 0): ?>
+            <?php if (count($ilha_personagens) <= 0) : ?>
                 <p>Você já recrutou todos os personagens dessa ilha</p>
             <?php elseif (count($userDetails->personagens) < $userDetails->navio["limite"]) : ?>
                 <h4>Está pronto para encontrar um novo companheiro?</h4>
@@ -170,7 +170,7 @@ function can_recruit($img) {
                         Procurar tripulantes
                     </button>
                 </p>
-            <?php else: ?>
+            <?php else : ?>
                 Seu navio não tem espaço para mais tripulantes.
             <?php endif; ?>
         <?php else : ?>
@@ -179,49 +179,50 @@ function can_recruit($img) {
     <?php elseif ($userDetails->tripulacao["recrutando"] > atual_segundo()) : ?>
         <h4>Recrutamento em andamento...</h4>
         Tempo restante:
-        <span id="tempo_min"><?= transforma_tempo_min($userDetails->tripulacao["recrutando"] - atual_segundo()) ?></span>
-        <span id="tempo_sec"
-              style="display: none;"><?= ($userDetails->tripulacao["recrutando"] - atual_segundo()) ?></span>
+        <span id="tempo_min">
+            <?= transforma_tempo_min($userDetails->tripulacao["recrutando"] - atual_segundo()) ?>
+        </span>
+        <span id="tempo_sec" style="display: none;">
+            <?= ($userDetails->tripulacao["recrutando"] - atual_segundo()) ?>
+        </span>
         <p>
             <button href="Recrutar/recrutamento_cancelar.php" data-question="Deseja cancelar o recrutamento?"
-                    class="link_confirm btn btn-danger">
+                class="link_confirm btn btn-danger">
                 Cancelar
             </button>
         </p>
     <?php else : ?>
         <h4>Recrutamento concluído!</h4>
         <p>
-            Os seguintes <?= ($userDetails->tripulacao["faccao"] == 0) ? "marinheiros" : "piratas" ?> se
+            Os seguintes
+            <?= ($userDetails->tripulacao["faccao"] == 0) ? "marinheiros" : "piratas" ?> se
             interessaram
             em entrar na sua tripulação:
         </p>
         <div class="row">
-            <?php foreach ($ilha_personagens as $ilha_pers): ?>
+            <?php foreach ($ilha_personagens as $ilha_pers) : ?>
                 <div class="list-group-item col-md-2">
-                    <img style="cursor: pointer"
-                         onclick="recruta('<?= sprintf("%04d", $ilha_pers["img"]) ?>',this)"
-                         src="Imagens/Personagens/Icons/<?= sprintf("%04d", $ilha_pers["img"]) ?>(0).jpg">
+                    <img style="cursor: pointer" onclick="recruta('<?= sprintf("%04d", $ilha_pers["img"]) ?>',this)"
+                        src="Imagens/Personagens/Icons/<?= sprintf("%04d", $ilha_pers["img"]) ?>(0).jpg">
                 </div>
             <?php endforeach; ?>
         </div>
-        <br/>
+        <br />
         <form class="form-inline" onsubmit="event.preventDefault(); verifica_form()">
             <div id="form_recruta">
                 <div class="form-group">
                     <label> Nome:</label>
-                    <input id="input_nome" class="form-control" name="nome" value="" maxlength="15"
-                           onblur="verifica_pers()"
-                           onkeyup="verifica_pers();this.value=removeCaracteres2(this.value);">
+                    <input id="input_nome" class="form-control" name="nome" value="" maxlength="15" onblur="verifica_pers()"
+                        onkeyup="verifica_pers();this.value=removeCaracteres2(this.value);">
                 </div>
-                <img id="status" src="Imagens/Icones/3.gif"/><br>
+                <img id="status" src="Imagens/Icones/3.gif" /><br>
                 <span id="status_text" class="status_fail"></span>
-                <br/>
-                <br/>
+                <br />
+                <br />
                 <div class="form-group">
                     <label> Nível do novo tripulante:</label>
                     <input id="input_lvl" class="form-control" name="lvl" value="1" type="number" min="1"
-                           max="<?= $userDetails->capitao["lvl"]; ?>"
-                           onchange="verifica_pers()">
+                        max="<?= $userDetails->capitao["lvl"]; ?>" onchange="verifica_pers()">
                 </div>
                 <div class="form-group">
                     <label>
@@ -235,11 +236,10 @@ function can_recruit($img) {
                         <span id="preco-lvl-dobrao">0</span> <img src="Imagens/Icones/Dobrao.png">
                     </label>
                 </div>
-                <br/>
-                <input id="input_img" name="img" value="" readonly="true" type="hidden"/><br>
+                <br />
+                <input id="input_img" name="img" value="" readonly="true" type="hidden" /><br>
 
-                <button type="button" href="link_Recrutar/recrutamento_cancelar.php"
-                        class="link_send btn btn-danger">
+                <button type="button" href="link_Recrutar/recrutamento_cancelar.php" class="link_send btn btn-danger">
                     Cancelar
                 </button>
                 <button type="submit" class="btn btn-success">

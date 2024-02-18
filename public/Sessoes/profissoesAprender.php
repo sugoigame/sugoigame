@@ -1,12 +1,12 @@
 <div class="panel-heading">
     Escola de profissões
-</div>
-
-<div class="panel-body">
     <?= ajuda("Escola de profissões", " Aqui sua tripulação aprende profissões para ajudarem no seu navio.<br>
                 Cada personagem pode ter apenas 1 profissão, então escolha com cuidado!<br>
                 Cada profissão evoliu de uma maneira diferente, combatentes usando habilidades em combate, navegadores
                 navegando, etc."); ?>
+</div>
+
+<div class="panel-body">
 
     <?php $profissoes = $connection->run("SELECT * FROM tb_ilha_profissoes WHERE ilha= ?", "i", $userDetails->ilha["ilha"])->fetch_all_array(); ?>
 
@@ -23,8 +23,11 @@
         </div>
         <div class="panel-body">
             <ul class="text-left">
-                <?php foreach ($profissoes as $prof): ?>
-                    <li><?= nome_prof($prof["profissao"]) ?> até o nível <?= $prof["profissao_lvl_max"] ?></li>
+                <?php foreach ($profissoes as $prof) : ?>
+                    <li>
+                        <?= nome_prof($prof["profissao"]) ?> até o nível
+                        <?= $prof["profissao_lvl_max"] ?>
+                    </li>
                 <?php endforeach; ?>
             </ul>
         </div>
@@ -35,43 +38,54 @@
     </div>
 
     <div class="tab-content">
-        <?php foreach ($userDetails->personagens as $index => $pers): ?>
+        <?php foreach ($userDetails->personagens as $index => $pers) : ?>
             <?php render_personagem_panel_top($pers, $index) ?>
             <?php render_personagem_sub_panel_with_img_top($pers); ?>
             <div class="panel-body">
-                <?php if (!$pers["profissao"]): ?>
+                <?php if (! $pers["profissao"]) : ?>
                     <ul class="list-group">
-                        <?php foreach ($profissoes as $prof): ?>
+                        <?php foreach ($profissoes as $prof) : ?>
                             <li class="list-group-item">
-                                <h4><?= nome_prof($prof["profissao"]) ?></h4>
-                                <p><?= desc_prof($prof["profissao"]) ?></p>
-                                <p>Preço: <img src="Imagens/Icones/Berries.png" height="15px"/> 1.000</p>
+                                <h4>
+                                    <?= nome_prof($prof["profissao"]) ?>
+                                </h4>
+                                <p>
+                                    <?= desc_prof($prof["profissao"]) ?>
+                                </p>
+                                <p>Preço: <img src="Imagens/Icones/Berries.png" height="15px" /> 1.000</p>
                                 <?php if ($userDetails->tripulacao["berries"] > 1000) : ?>
-                                    <button href="Profissao/profissao_aprender.php?cod=<?= $pers["cod"]; ?>&prof=<?= $prof["profissao"] ?>"
-                                            data-question="Deseja aprender essa profissão?"
-                                            class="link_confirm btn btn-success">
+                                    <button
+                                        href="Profissao/profissao_aprender.php?cod=<?= $pers["cod"]; ?>&prof=<?= $prof["profissao"] ?>"
+                                        data-question="Deseja aprender essa profissão?" class="link_confirm btn btn-success">
                                         Aprender
                                     </button>
                                 <?php endif; ?>
                             </li>
                         <?php endforeach; ?>
                     </ul>
-                <?php else: ?>
-                    <h3><?= nome_prof($pers["profissao"]) ?></h3>
-                    <h4>Nível: <?= $pers["profissao_lvl"]; ?></h4>
+                <?php else : ?>
+                    <h3>
+                        <?= nome_prof($pers["profissao"]) ?>
+                    </h3>
+                    <h4>Nível:
+                        <?= $pers["profissao_lvl"]; ?>
+                    </h4>
                     <?php if ($pers["profissao_xp"] < $pers["profissao_xp_max"]) : ?>
                         <div class="progress">
                             <div class="progress-bar"
-                                 style="width: <?= $pers["profissao_xp"] / $pers["profissao_xp_max"] * 100 ?>%;">
-                                <span>EXP:<?= $pers["profissao_xp"] . "/" . $pers["profissao_xp_max"] ?></span>
+                                style="width: <?= $pers["profissao_xp"] / $pers["profissao_xp_max"] * 100 ?>%;">
+                                <span>EXP:
+                                    <?= $pers["profissao_xp"] . "/" . $pers["profissao_xp_max"] ?>
+                                </span>
                             </div>
                         </div>
                     <?php elseif (isset($profissoes_lvl[$pers["profissao"]]) && $pers["profissao_lvl"] < $profissoes_lvl[$pers["profissao"]]) : ?>
                         <p>
-                            Preço: <img src="Imagens/Icones/Berries.png"/> <?= $pers["profissao_lvl"] * 2000; ?><br>
+                            Preço: <img src="Imagens/Icones/Berries.png" />
+                            <?= $pers["profissao_lvl"] * 2000; ?><br>
                         </p>
                         <button href="link_Profissao/profissao_evoluir.php?cod=<?= $pers["cod"]; ?>"
-                                class="link_send btn btn-success">
+                            class="link_send btn btn-success">
                             Evoluir
                         </button>
                     <?php else : ?>
@@ -79,10 +93,10 @@
                     <?php endif; ?>
                     <?php if ($pers["profissao"] == PROFISSAO_CARTOGRAFO) : ?>
                         <?php $mapa = $connection->run("SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item='2'", "i", $userDetails->tripulacao["id"])->count(); ?>
-                        <?php if (!$mapa) : ?>
+                        <?php if (! $mapa) : ?>
                             <div>
-                                <img src="Imagens/Itens/22.png"/>
-                                <img src="Imagens/Icones/Berries.png" height="15px"/> 2.000
+                                <img src="Imagens/Itens/22.png" />
+                                <img src="Imagens/Icones/Berries.png" height="15px" /> 2.000
                             </div>
                             <button href="link_Profissao/comprar_mapa.php" class="link_send btn btn-primary">
                                 Comprar Mapa

@@ -13,15 +13,15 @@ function is_buff_ativo($bonus_ativos, $buff_id) {
 
 <div class="panel-heading">
     Domínio da ilha
+    <?= ajuda("Domínio da ilha",
+        "As ilhas podem ser disputadas pelos jogadores.
+        Consulte o calendário para saber a data e horário em que acontece a disputa por cada ilha.
+        O jogador que governa uma ilha pode ativar bônus para os jogadores próximos à ilha e negociar recursos com os governantes de outras ilhas do jogo.
+        Esses recursos podem ser saqueados e vendidos para ganhar recompensas.
+        Fique de olho na Gaivota Mensageira para saber quando um navio marcador iniciou sua jornada e assim poder saquea-lo.") ?>
 </div>
 
 <div class="panel-body">
-    <?= ajuda("Domínio da ilha",
-        "As ilhas podem ser disputadas pelos jogadores. 
-        Consulte o calendário para saber a data e horário em que acontece a disputa por cada ilha. 
-        O jogador que governa uma ilha pode ativar bônus para os jogadores próximos à ilha e negociar recursos com os governantes de outras ilhas do jogo. 
-        Esses recursos podem ser saqueados e vendidos para ganhar recompensas. 
-        Fique de olho na Gaivota Mensageira para saber quando um navio marcador iniciou sua jornada e assim poder saquea-lo.") ?>
 
     <?php $disputa = $connection->run("SELECT * FROM tb_ilha_disputa d LEFT JOIN tb_usuarios u ON d.vencedor_id = u.id WHERE d.ilha = ?",
         "i", array($userDetails->ilha["ilha"])); ?>
@@ -433,7 +433,7 @@ function is_buff_ativo($bonus_ativos, $buff_id) {
                 <?php if (isset($_GET["tab"]) && $_GET["tab"] == "negociarRecursos"): ?>
                     <div class="tab-pane active">
                         <?php $mercadores = $connection->run(
-                            "SELECT * FROM tb_ilha_mercador m 
+                            "SELECT * FROM tb_ilha_mercador m
                             LEFT JOIN tb_mapa_contem c ON m.id = c.mercador_id
                             WHERE m.ilha_destino = ?",
                             "i", array($userDetails->ilha["ilha"])

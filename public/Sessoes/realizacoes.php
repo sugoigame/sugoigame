@@ -1,6 +1,7 @@
 <?php $realizacoes_mng = new Realizacoes($userDetails, $connection); ?>
 
-<?php function render_realizacao($realizacao, $key, $pers = NULL) { ?>
+<?php function render_realizacao($realizacao, $key, $pers = NULL)
+{ ?>
     <?php global $realizacoes_mng; ?>
     <?php
     $status_key = "status_" . $realizacao["cod_realizacao"];
@@ -18,26 +19,37 @@
             <img src="Imagens/Icones/r_<?= $status["status"]["status"] ?>.png">
             <?= $realizacao["nome"] ?>
         </h4>
-        <p><?= $realizacao["descricao"] ?></p>
-        <p><?= $realizacao["pontos"] ?> Pontos de Realização</p>
+        <p>
+            <?= $realizacao["descricao"] ?>
+        </p>
+        <p>
+            <?= $realizacao["pontos"] ?> Pontos de Realização
+        </p>
 
         <?php if ($realizacao["titulo"]) : ?>
-            <p>Titulo: <?= $realizacao["titulo"] ?></p>
-            <?php if ($realizacao["bonus_quant"]): ?>
-                <p> <?= nome_atributo($realizacao["bonus_atr"]) ?> + <?= $realizacao["bonus_quant"] ?></p>
+            <p>Titulo:
+                <?= $realizacao["titulo"] ?>
+            </p>
+            <?php if ($realizacao["bonus_quant"]) : ?>
+                <p>
+                    <?= nome_atributo($realizacao["bonus_atr"]) ?> +
+                    <?= $realizacao["bonus_quant"] ?>
+                </p>
             <?php endif; ?>
         <?php endif; ?>
         <?php if ($status["status"]["status"] == REALIZACAO_STATUS_COMPLETO) : ?>
             <button href="link_Realizacoes/concluir.php?cod=<?= $realizacao["cod_realizacao"] ?>&pers=<?= $pers["cod"] ?>"
-                    class="link_send btn btn-success">
+                class="link_send btn btn-success">
                 Concluir
             </button>
-        <?php elseif ($status["status"]["status"] != REALIZACAO_STATUS_RECOMPENSADO && $status["progresso"]): ?>
+        <?php elseif ($status["status"]["status"] != REALIZACAO_STATUS_RECOMPENSADO && $status["progresso"]) : ?>
             <div>
                 <div class="progress">
                     <div class="progress-bar progress-bar-primary"
-                         style="width: <?= $status["progresso"]["current"] / $status["progresso"]["max"] * 100 ?>%;">
-                        <span><?= $status["progresso"]["current"] . "/" . $status["progresso"]["max"] ?></span>
+                        style="width: <?= $status["progresso"]["current"] / $status["progresso"]["max"] * 100 ?>%;">
+                        <span>
+                            <?= $status["progresso"]["current"] . "/" . $status["progresso"]["max"] ?>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -47,6 +59,10 @@
 
 <div class="panel-heading">
     Conquistas
+    <?= ajuda("Conquistas", "Conquistas são atos importantes que quando concluidos, dão pontos para rankear os
+        jogadores que mais completaram grandes feitos no jogo.<br>
+        Existem também conquistas individuais que dão titulos aos personagens, títulos esses que por sua vez
+        dão algum bonus ao  personagem que o adquirir.") ?>
 </div>
 
 <script type="text/javascript">
@@ -79,16 +95,14 @@
 </script>
 
 <div class="panel-body">
-    <?= ajuda("Conquistas", "Conquistas são atos importantes que quando concluidos, dão pontos para rankear os 
-        jogadores que mais completaram grandes feitos no jogo.<br>
-        Existem também conquistas individuais que dão titulos aos personagens, títulos esses que por sua vez
-        dão algum bonus ao  personagem que o adquirir.") ?>
 
-    <h3> Total: <?= $userDetails->tripulacao["realizacoes"] ?> Pontos </h3>
+    <h3> Total:
+        <?= $userDetails->tripulacao["realizacoes"] ?> Pontos
+    </h3>
 
 
     <?php $realizacoes = $connection->run(
-        "SELECT 
+        "SELECT
           rel.tipo AS tipo,
           rel.categoria AS categoria,
           rel.cod_realizacao AS cod_realizacao,
@@ -96,11 +110,11 @@
           rel.pontos AS pontos,
           rel.descricao AS descricao,
           conc.momento AS conclusao,
-          conc.personagem AS cod_pers, 
+          conc.personagem AS cod_pers,
           titulo.nome AS titulo,
           titulo.bonus_atr AS bonus_atr,
           titulo.bonus_atr_quant AS bonus_quant
-        FROM tb_realizacoes rel 
+        FROM tb_realizacoes rel
         LEFT JOIN tb_realizacoes_concluidas conc ON rel.cod_realizacao = conc.cod_realizacao AND conc.id = ?
         LEFT JOIN tb_titulos titulo ON rel.titulo = titulo.cod_titulo",
         "i", array($userDetails->tripulacao["id"])
@@ -217,9 +231,9 @@
             </div>
 
             <div class="tab-content">
-                <?php foreach ($userDetails->personagens as $index => $pers): ?>
+                <?php foreach ($userDetails->personagens as $index => $pers) : ?>
                     <?php $realizacoes = $connection->run(
-                        "SELECT 
+                        "SELECT
                           rel.tipo AS tipo,
                           rel.categoria AS categoria,
                           rel.cod_realizacao AS cod_realizacao,
@@ -227,11 +241,11 @@
                           rel.pontos AS pontos,
                           rel.descricao AS descricao,
                           conc.momento AS conclusao,
-                          conc.personagem AS cod_pers, 
+                          conc.personagem AS cod_pers,
                           titulo.nome AS titulo,
                           titulo.bonus_atr AS bonus_atr,
                           titulo.bonus_atr_quant AS bonus_quant
-                        FROM tb_realizacoes rel 
+                        FROM tb_realizacoes rel
                         LEFT JOIN tb_realizacoes_concluidas conc ON rel.cod_realizacao = conc.cod_realizacao AND conc.id = ? AND conc.personagem = ?
                         LEFT JOIN tb_titulos titulo ON rel.titulo = titulo.cod_titulo",
                         "ii", array($userDetails->tripulacao["id"], $pers["cod"])
@@ -240,7 +254,8 @@
                     <ul class="list-group">
                         <div>
                             <ul class="nav nav-pills nav-justified">
-                                <li class="active"><a href="#categoria_2_<?= $pers["cod"] ?>_sel" data-toggle="tab">habilidades</a>
+                                <li class="active"><a href="#categoria_2_<?= $pers["cod"] ?>_sel"
+                                        data-toggle="tab">habilidades</a>
                                 </li>
                             </ul>
                         </div>

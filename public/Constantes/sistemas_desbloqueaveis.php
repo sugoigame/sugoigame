@@ -22,6 +22,8 @@ define('SISTEMA_HAKI', 'SISTEMA_HAKI');
 define('SISTEMA_EQUIPAMENTOS', 'SISTEMA_EQUIPAMENTOS');
 define('SISTEMA_COLISEU', 'SISTEMA_COLISEU');
 define('SISTEMA_MAESTRIA', 'SISTEMA_MAESTRIA');
+define('SISTEMA_OBSTACULOS', 'SISTEMA_OBSTACULOS');
+define('SISTEMA_VINGANCA', 'SISTEMA_VINGANCA');
 
 $sessoes_por_sistema = array(
     SISTEMA_ACADEMIA => ["academia"],
@@ -43,7 +45,9 @@ $sessoes_por_sistema = array(
     SISTEMA_ALIANCAS => ["aliancaLista", "aliancaCriar", "aliancaBanco", "alianca", "aliancaDiplomacia", "aliancaCooperacao", "aliancaMissoes"],
     SISTEMA_BANDEIRA => ["bandeira"],
     SISTEMA_SERVICO_TRANSPORTE => ["transporte"],
-    SISTEMA_OCEANO => ["amigaveis", "servicoDenDen"]
+    SISTEMA_OCEANO => ["amigaveis", "servicoDenDen"],
+    SISTEMA_OBSTACULOS => ["obstaculos"],
+    SISTEMA_VINGANCA => ["listaNegra"]
 );
 
 $sistemas_por_sessao = [];

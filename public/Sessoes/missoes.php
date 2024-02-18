@@ -128,7 +128,7 @@
         <?php $missoes_total = count($missoes_disponiveis); ?>
 
         <?php render_karma_bars(); ?>
-        <p style="margin-top: -20px">
+        <p>
             <a class="link_content" href="./?ses=karma">
                 Ver recompensas de Karma
             </a>

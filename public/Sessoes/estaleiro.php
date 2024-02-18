@@ -1,9 +1,9 @@
 <div class="panel-heading">
     Estaleiro
+    <?= ajuda("Estaleiro", "O estaleiro vende e concerta embarcações, além de vender partes importantes para aprimorar seu navio.") ?>
 </div>
 
 <div class="panel-body">
-    <?= ajuda("Estaleiro", "O estaleiro vende e concerta embarcações, além de vender partes importantes para aprimorar seu navio.") ?>
     <script type="text/javascript">
         $(function () {
             $(".bt_comprar_barco").click(function (e) {

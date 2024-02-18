@@ -1,9 +1,9 @@
 <div class="panel-heading">
     Ranking
+    <?= ajuda("Ranking", "Conheça os melhores jogadores do Sugoi Game") ?>
 </div>
 
 <div class="panel-body">
-    <?= ajuda("Ranking", "Conheça os melhores jogadores do Sugoi Game") ?>
 
     <div class="row">
         <div class="col-xs-6 col-md-6">
@@ -56,7 +56,7 @@
             </li>
         </ul>
         <ul class="nav nav-pills nav-justified" style="margin-bottom:5px">
-        <li class="<?= $ranking == "espadachins" ? "active" : "" ?>">
+            <li class="<?= $ranking == "espadachins" ? "active" : "" ?>">
                 <a href="./?ses=ranking&rank=espadachins" class="link_content">Espadachins</a>
             </li>
             <li class="<?= $ranking == "lutadores" ? "active" : "" ?>">
@@ -74,10 +74,12 @@
                     <a href="./?ses=ranking&rank=<?= $ranking ?>" class="link_content">Todas facções</a>
                 </li>
                 <li class="<?= $faccao !== NULL && $faccao == FACCAO_MARINHA ? "active" : "" ?>">
-                    <a href="./?ses=ranking&rank=<?= $ranking ?>&faccao=<?= FACCAO_MARINHA ?>" class="link_content">Marinheiros</a>
+                    <a href="./?ses=ranking&rank=<?= $ranking ?>&faccao=<?= FACCAO_MARINHA ?>"
+                        class="link_content">Marinheiros</a>
                 </li>
                 <li class="<?= $faccao !== NULL && $faccao == FACCAO_PIRATA ? "active" : "" ?>">
-                    <a href="./?ses=ranking&rank=<?= $ranking ?>&faccao=<?= FACCAO_PIRATA ?>" class="link_content">Piratas</a>
+                    <a href="./?ses=ranking&rank=<?= $ranking ?>&faccao=<?= FACCAO_PIRATA ?>"
+                        class="link_content">Piratas</a>
                 </li>
             </ul>
         </div>
@@ -109,11 +111,16 @@
             <?php while ($rnk = $result->fetch_array()) : ?>
                 <li class="list-group-item">
                     <h4>
-                        <img data-toggle="tooltip" data-placement="bottom" title="<?= get_patente_nome($rnk["faccao"], $rnk["reputacao"]) ?>" src="Imagens/Ranking/Patentes/<?= $rnk["faccao"] . "_" . get_patente_id($rnk["reputacao"]) ?>.png" />
+                        <img data-toggle="tooltip" data-placement="bottom"
+                            title="<?= get_patente_nome($rnk["faccao"], $rnk["reputacao"]) ?>"
+                            src="Imagens/Ranking/Patentes/<?= $rnk["faccao"] . "_" . get_patente_id($rnk["reputacao"]) ?>.png" />
                         <img src="Imagens/Bandeiras/img.php?cod=<?= $rnk["bandeira"]; ?>&f=<?= $rnk["faccao"]; ?>" />
-                        <?= $rnk["posicao"] ?>º <?= $rnk["nome"] ?>
+                        <?= $rnk["posicao"] ?>º
+                        <?= $rnk["nome"] ?>
                     </h4>
-                    <p>Reputação: <?= $rnk["reputacao"] ?></p>
+                    <p>Reputação:
+                        <?= $rnk["reputacao"] ?>
+                    </p>
                 </li>
             <?php endwhile; ?>
         </ul>
@@ -143,9 +150,12 @@
                 <li class="list-group-item">
                     <h4>
                         <img src="Imagens/Bandeiras/img.php?cod=<?= $rnk["bandeira"]; ?>&f=<?= $rnk["faccao"]; ?>" />
-                        <?= $rnk["posicao"] ?>º <?= $rnk["nome"] ?>
+                        <?= $rnk["posicao"] ?>º
+                        <?= $rnk["nome"] ?>
                     </h4>
-                    <p>Reputação: <?= $rnk["reputacao"] ?></p>
+                    <p>Reputação:
+                        <?= $rnk["reputacao"] ?>
+                    </p>
                 </li>
             <?php endwhile; ?>
         </ul>
@@ -173,10 +183,12 @@
                     <h4>
                         <img src="Imagens/Personagens/Icons/<?= get_img($rnk, "r"); ?>.jpg" />
                         <img src="Imagens/Bandeiras/img.php?cod=<?= $rnk["bandeira"]; ?>&f=<?= $rnk["faccao"]; ?>" />
-                        <?= $rnk["posicao"] ?>º <?= $rnk["nome"] ?>
+                        <?= $rnk["posicao"] ?>º
+                        <?= $rnk["nome"] ?>
                     </h4>
                     <p>
-                        <img src="Imagens/Icones/Berries.png" /> <?= mascara_berries(calc_recompensa($rnk["fama_ameaca"])) ?>
+                        <img src="Imagens/Icones/Berries.png" />
+                        <?= mascara_berries(calc_recompensa($rnk["fama_ameaca"])) ?>
                     </p>
                 </li>
             <?php endwhile; ?>
@@ -205,9 +217,12 @@
                     <h4>
                         <img src="Imagens/Personagens/Icons/<?= get_img($rnk, "r"); ?>.jpg" />
                         <img src="Imagens/Bandeiras/img.php?cod=<?= $rnk["bandeira"]; ?>&f=<?= $rnk["faccao"]; ?>" />
-                        <?= $rnk["posicao"] ?>º <?= $rnk["nome"] ?>
+                        <?= $rnk["posicao"] ?>º
+                        <?= $rnk["nome"] ?>
                     </h4>
-                    <p>Score: <?= $rnk["score"] ?></p>
+                    <p>Score:
+                        <?= $rnk["score"] ?>
+                    </p>
                 </li>
             <?php endwhile; ?>
         </ul>
@@ -235,9 +250,12 @@
                     <h4>
                         <img src="Imagens/Personagens/Icons/<?= get_img($rnk, "r"); ?>.jpg" />
                         <img src="Imagens/Bandeiras/img.php?cod=<?= $rnk["bandeira"]; ?>&f=<?= $rnk["faccao"]; ?>" />
-                        <?= $rnk["posicao"] ?>º <?= $rnk["nome"] ?>
+                        <?= $rnk["posicao"] ?>º
+                        <?= $rnk["nome"] ?>
                     </h4>
-                    <p>Score: <?= $rnk["score"] ?></p>
+                    <p>Score:
+                        <?= $rnk["score"] ?>
+                    </p>
                 </li>
             <?php endwhile; ?>
         </ul>
@@ -266,9 +284,12 @@
                     <h4>
                         <img src="Imagens/Personagens/Icons/<?= get_img($rnk, "r"); ?>.jpg" />
                         <img src="Imagens/Bandeiras/img.php?cod=<?= $rnk["bandeira"]; ?>&f=<?= $rnk["faccao"]; ?>" />
-                        <?= $rnk["posicao"] ?>º <?= $rnk["nome"] ?>
+                        <?= $rnk["posicao"] ?>º
+                        <?= $rnk["nome"] ?>
                     </h4>
-                    <p>Score: <?= $rnk["score"] ?></p>
+                    <p>Score:
+                        <?= $rnk["score"] ?>
+                    </p>
                 </li>
             <?php endwhile; ?>
         </ul>
@@ -278,7 +299,8 @@
         <ul class="pagination">
             <?php if ($page > 0) : ?>
                 <li>
-                    <a href="./?ses=ranking&rank=<?= $ranking ?>&faccao=<?= $faccao ?>&page=<?= $page - 1 ?>" class="link_content">
+                    <a href="./?ses=ranking&rank=<?= $ranking ?>&faccao=<?= $faccao ?>&page=<?= $page - 1 ?>"
+                        class="link_content">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
@@ -288,7 +310,9 @@
                     <?php if ($i >= 0) : ?>
                         <li class="<?= $i == $page ? "active" : "" ?>">
                             <a href="./?ses=ranking&rank=<?= $ranking ?>&faccao=<?= $faccao ?>&page=<?= $i ?>" class="link_content">
-                                <span aria-hidden="true"><?= $i + 1 ?></span>
+                                <span aria-hidden="true">
+                                    <?= $i + 1 ?>
+                                </span>
                             </a>
                         </li>
                     <?php endif; ?>
@@ -296,7 +320,8 @@
             <?php endif; ?>
             <?php if ($page < floor($total / 25)) : ?>
                 <li>
-                    <a href="./?ses=ranking&rank=<?= $ranking ?>&faccao=<?= $faccao ?>&page=<?= $page + 1 ?>" class="link_content">
+                    <a href="./?ses=ranking&rank=<?= $ranking ?>&faccao=<?= $faccao ?>&page=<?= $page + 1 ?>"
+                        class="link_content">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

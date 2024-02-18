@@ -1,10 +1,10 @@
 <div class="panel-heading">
     FAQ
+    <?= ajuda("FAQ", "Aqui ficam registradas as respostas para algumas das perguntas mais frequentes, pode haver uma
+     solução rápida para sua dúvida.") ?>
 </div>
 
 <div class="panel-body">
-    <?= ajuda("FAQ", "Aqui ficam registradas as respostas para algumas das perguntas mais frequentes, pode haver uma
-     solução rápida para sua dúvida.") ?>
 
     <div class="text-left">
         <div class="panel panel-default">
@@ -24,7 +24,8 @@
                 <a href="#perg_10">Onde encontro Akumas no Mi?</a><br>
                 <a href="#perg_11">Onde fica a próxima ilha?</a><br>
                 <a href="#perg_12">Quando fui aprender uma habilidade apareceu: Formuário incompleto</a><br><br>
-                Em caso de dúvidas acesse a área <a href="http://sugoigame.forumeiros.com/f5-tutoriais" target="_bank">Tutorias
+                Em caso de dúvidas acesse a área <a href="http://sugoigame.forumeiros.com/f5-tutoriais"
+                    target="_bank">Tutorias
                     no Forum do jogo.</a><br><br>
             </div>
         </div>

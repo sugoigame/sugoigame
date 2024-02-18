@@ -1,12 +1,12 @@
 <div class="panel-heading">
     Minha Conta
+    <?= ajuda("Minha Conta", "Mantenha suas informações sempre atualizadas.") ?>
 </div>
 
 <div class="panel-body">
-    <?= ajuda("Minha Conta", "Mantenha suas informações sempre atualizadas.") ?>
     <script type="text/javascript">
-        $(function() {
-            $("#conta_editar").submit(function(e) {
+        $(function () {
+            $("#conta_editar").submit(function (e) {
                 e.preventDefault();
                 verifica_ed();
             });
@@ -49,7 +49,8 @@
             </div>
             <div class="form-group col-xs-6 col-md-4">
                 <label>Nome:</label>
-                <input class="form-control" id="nome" name="nome" type="text" value="<?= $userDetails->conta["nome"]; ?>" required>
+                <input class="form-control" id="nome" name="nome" type="text"
+                    value="<?= $userDetails->conta["nome"]; ?>" required>
             </div>
             <div class="form-group col-xs-6 col-md-4">
                 <label>Senha atual:</label>
