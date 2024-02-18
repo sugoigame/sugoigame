@@ -313,9 +313,6 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
                 </div>
                 <div>
                     <?= $skill["tipo"] ?> <img src="Imagens/Skils/Tipo/<?= $skill["tipo"] ?>.png" width="15vw">
-                    <?php if ($skill["requisito_lvl"] <= $pers["lvl"] && ! $aprendidas[$skill["categoria"]]) : ?>
-                        <?= get_alert() ?>
-                    <?php endif; ?>
                 </div>
             </div>
             <?php if ($requisitos) : ?>
@@ -347,22 +344,29 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
         $result = $connection->run("SELECT * FROM tb_personagens_skil WHERE cod = ? AND cod_skil = ? AND tipo = ?",
             "iii", array($pers["cod"], $skill["cod_skil"], $skill["tiponum"]));
         if (! $result->count()) : ?>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <?= $skill["tipo"] ?>
-                </div>
+            <div class="panel panel-default col-xs-4 h-100 m-0">
                 <div class="panel-body">
-                    <div class="col-md-6 text-left">
-                        <h5>Requisitos:</h5>
-                        <?php render_skill_requisitos($skill, $pers) ?>
+                    <div class="mr">
+                        <img src="Imagens/Skils/<?= $skill["icone_padrao"] ?>.jpg" width="40vw">
                     </div>
-                    <div class="col-md-6 text-left">
-                        <h5>Efeitos:</h5>
-                        <?php render_skill_efeitos($skill) ?>
+                    <div>
+                        <?= $skill["tipo"] ?> <img src="Imagens/Skils/Tipo/<?= $skill["tipo"] ?>.png" width="15vw">
                     </div>
                     <div class="text-left">
-                        <?php render_new_skill_form($skill, $pers, $form_url, $pode_aprender_func) ?>
+                        <?php render_skill_efeitos($skill) ?>
                     </div>
+                    <div>
+                        <div>Requisitos:</div>
+                        <?php render_skill_requisitos($skill, $pers) ?>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <?php render_new_skill_form($skill, $pers, $form_url, $pode_aprender_func) ?>
+                    <?php if (! $pode_aprender_func($pers, $skill)) : ?>
+                        <button class="btn btn-default" disabled>
+                            Indisponível
+                        </button>
+                    <?php endif; ?>
                 </div>
             </div>
         <?php endif; ?>
@@ -378,6 +382,15 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
                     class="<?= $pers["profissao"] == $skill["requisito_prof"] && $pers["profissao_lvl"] >= $skill["requisito_lvl"] ? "text-success text-line-through" : "" ?>">
                     <?= nome_prof($skill["requisito_prof"]) ?> Nível: <strong>
                         <?= $skill["requisito_lvl"]; ?>
+                    </strong>
+                </div>
+            <?php endif; ?>
+            <?php if (isset($skill["requisito_berries"])) : ?>
+                <div
+                    class="<?= $userDetails->tripulacao["berries"] >= $skill["requisito_berries"] ? "text-success text-line-through" : "" ?>">
+                    <img src="Imagens/Icones/Berries.png" width="15vw" />
+                    <strong>
+                        <?= mascara_berries($skill["requisito_berries"]); ?>
                     </strong>
                 </div>
             <?php endif; ?>

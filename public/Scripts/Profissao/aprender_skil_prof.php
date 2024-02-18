@@ -22,8 +22,6 @@ if (! $skill) {
     $protector->exit_error("Habilidade inválida");
 }
 
-$skill = $skill->fetch_array();
-
 if ($pers["profissao_lvl"] < $skill["requisito_lvl"]
     || $userDetails->tripulacao["berries"] < $skill["requisito_berries"]
     || $pers["profissao"] != $skill["requisito_prof"]) {

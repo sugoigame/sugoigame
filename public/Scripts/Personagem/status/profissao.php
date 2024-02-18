@@ -53,8 +53,8 @@ if (!$pers) {
     <?php $pode_aprender_func = function ($pers, $skill) {
         global $userDetails;
         return $pers["profissao_lvl"] >= $skill["requisito_lvl"]
-            AND $userDetails->tripulacao["berries"] >= $skill["requisito_berries"]
-            AND $pers["profissao"] == $skill["requisito_prof"];
+            && $userDetails->tripulacao["berries"] >= $skill["requisito_berries"]
+            && $pers["profissao"] == $skill["requisito_prof"];
     }; ?>
     <?php render_habilidades_tab($skills, $pers, "Profissao/aprender_skil_prof.php", $pode_aprender_func) ?>
 <?php endif; ?>
