@@ -28,9 +28,7 @@ if (! $pers) {
                         <div class="panel panel-default h-100">
                             <div class="panel-body">
                                 <div>
-                                    Prêmio por uma
-                                    <?= $userDetails->tripulacao["faccao"] == FACCAO_PIRATA ? "Recompensa" : "Gratificação"; ?>
-                                    de
+                                    Prêmio por uma Recompensa de
                                     <?= mascara_berries($premio["objetivo"]) ?> de Berries
                                 </div>
                                 <div class="progress">

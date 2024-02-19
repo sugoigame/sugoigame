@@ -234,7 +234,7 @@ function preco_selo_exp($pers)
         <div class="col-md-3 hidden-sm hidden-xs">
             <img src="Imagens/Personagens/Big/<?= getImg($pers, "c") ?>.jpg">
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 col-xs-12">
             <div class="panel panel-default">
             <?php } ?>
             <?php function render_personagem_sub_panel_with_img_bottom()

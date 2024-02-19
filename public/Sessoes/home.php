@@ -251,7 +251,7 @@ function render_maior_do_mundo($tipo)
     <div class="row">
         <div class="col-md-8">
             <div class="text-left">
-                <h3 class="text-center">Mural de Noticías</h3>
+                <h3 class="text-center">Noticías</h3>
             </div>
             <?php
             $pagina = 1;
@@ -321,8 +321,10 @@ function render_maior_do_mundo($tipo)
         </div>
 
         <div class="col-md-4">
-            <h3>Os Melhores</h3>
-            <?php render_top_ranking_reputacao("reputacao", array(FACCAO_PIRATA, FACCAO_MARINHA)); ?>
+            <div class="panel panel-default">
+                <div class="panel-heading">Os Melhores</div>
+                <?php render_top_ranking_reputacao("reputacao", array(FACCAO_PIRATA, FACCAO_MARINHA)); ?>
+            </div>
         </div>
     </div>
     <br />
@@ -353,31 +355,6 @@ function render_maior_do_mundo($tipo)
     </div>
 
     <div class="row">
-        <div class="col-sm-6">
-            <h3>Grande Era dos Piratas</h3>
-            <div class="row">
-                <div class="col-xs-12 col-md-6" style="margin-bottom: 10px;">
-                    <?php render_top_ranking_reputacao("reputacao", array(FACCAO_PIRATA), 4); ?>
-                </div>
-                <div class="col-xs-12 col-md-6" style="margin-bottom: 10px;">
-                    <?php render_top_ranking_reputacao("reputacao", array(FACCAO_MARINHA), 4); ?>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <h3>Grandes Poderes</h3>
-            <div class="row">
-                <div class="col-xs-12 col-md-6" style="margin-bottom: 10px;">
-                    <?php render_top_ranking_reputacao("reputacao_mensal", array(FACCAO_PIRATA), 4); ?>
-                </div>
-                <div class="col-xs-12 col-md-6" style="margin-bottom: 10px;">
-                    <?php render_top_ranking_reputacao("reputacao_mensal", array(FACCAO_MARINHA), 4); ?>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">Os Mais Procurados</div>
@@ -388,6 +365,41 @@ function render_maior_do_mundo($tipo)
             <div class="panel panel-default">
                 <div class="panel-heading">As Maiores Recompensas da Cross Guild</div>
                 <?php render_procurados(FACCAO_MARINHA); ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Road Poneglyphs
+                    <img src="Imagens/Icones/road-poneglyph.png" width="15vw" />
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <?php render_top_ranking_reputacao("reputacao", array(FACCAO_PIRATA), 4); ?>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <?php render_top_ranking_reputacao("reputacao", array(FACCAO_MARINHA), 4); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Poneglyphs
+                    <img src="Imagens/Icones/poneglyph.png" width="15vw" />
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <?php render_top_ranking_reputacao("reputacao_mensal", array(FACCAO_PIRATA), 4); ?>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <?php render_top_ranking_reputacao("reputacao_mensal", array(FACCAO_MARINHA), 4); ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -426,46 +438,6 @@ function render_maior_do_mundo($tipo)
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-6">
-            <h3>Excelência de Classe</h3>
-            <?php $rep_mais_forte = $connection->run(
-                "SELECT max(excelencia_lvl) AS total FROM tb_personagens"
-            )->fetch_array()["total"]; ?>
-            <?php if (! $rep_mais_forte) {
-                $rep_mais_forte = 1;
-            } ?>
-            <?php $result = $connection->run(
-                "SELECT usr.id, pers.excelencia_lvl AS reputacao, usr.faccao, usr.bandeira, usr.tripulacao, pers.img, pers.nome, pers.skin_r
-                FROM tb_usuarios usr
-                INNER JOIN tb_personagens pers ON usr.cod_personagem = pers.cod
-                WHERE usr.adm='0' ORDER BY pers.excelencia_lvl DESC LIMIT 6"
-            ); ?>
-
-            <div class="list-group">
-                <?php render_top_ranking($result, $rep_mais_forte, "reputacao", "níveis de excelência"); ?>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <h3>Nível de Batalha</h3>
-            <?php $rep_mais_forte = $connection->run(
-                "SELECT max(battle_lvl) AS total FROM tb_usuarios"
-            )->fetch_array()["total"]; ?>
-            <?php if (! $rep_mais_forte) {
-                $rep_mais_forte = 1;
-            } ?>
-            <?php $result = $connection->run(
-                "SELECT usr.id, usr.battle_lvl AS reputacao, usr.faccao, usr.bandeira, usr.tripulacao, pers.img, pers.nome, pers.skin_r
-                FROM tb_usuarios usr
-                INNER JOIN tb_personagens pers ON usr.cod_personagem = pers.cod
-                WHERE usr.adm='0' ORDER BY  usr.battle_lvl DESC LIMIT 6"
-            ); ?>
-
-            <div class="list-group">
-                <?php render_top_ranking($result, $rep_mais_forte, "reputacao", "níveis de batalha"); ?>
-            </div>
-        </div>
-    </div>
     <?php $result = $connection->run(
         "SELECT
               log.combate AS combate_id,

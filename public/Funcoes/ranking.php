@@ -96,8 +96,7 @@ function get_patente_nome($faccao, $battle_level)
             <?php endwhile; ?>
         </div>
         <div class="panel-footer">
-            Os
-            <?= $titulo_plural ?> são eleitos nas Batalhas dos Grandes Poderes
+            <?= $titulo_plural ?> são eleitos uma vez por mês por terem a maior quantidade de Poneglyphs
         </div>
     </div>
 <?php } ?>
@@ -195,7 +194,7 @@ function get_patente_nome($faccao, $battle_level)
                 INNER JOIN tb_personagens pers ON usr.cod_personagem = pers.cod
                 WHERE usr.adm='0' AND usr.faccao IN (" . implode(",", $faccoes) . ") ORDER BY usr.$coluna_reputacao DESC LIMIT $limit"
     ); ?>
-    <?php render_top_ranking($result, $rep_mais_forte, "reputacao", "pontos de reputação"); ?>
+    <?php render_top_ranking($result, $rep_mais_forte, "reputacao", ($coluna_reputacao == "reputacao" ? "Road " : "") . "Poneglyphs"); ?>
 <?php } ?>
 <?php function render_campeao_incursao($id, $titulo)
 { ?>
@@ -218,7 +217,7 @@ function get_patente_nome($faccao, $battle_level)
 <?php function render_top_ranking($result, $mais_forte, $column, $label)
 { ?>
     <?php while ($famoso = $result->fetch_array()) : ?>
-        <div class="list-group-item">
+        <div class="panel-footer py0">
             <div class="media">
                 <div class="media-left">
                     <img src="Imagens/Bandeiras/img.php?cod=<?= $famoso["bandeira"]; ?>&f=<?= $famoso["faccao"]; ?>"
@@ -231,12 +230,12 @@ function get_patente_nome($faccao, $battle_level)
                         <?= $famoso["tripulacao"] ?>
                     </p>
                     <div class="progress" style="margin: 0">
-                        <a>
-                            <?= mascara_numeros_grandes($famoso[$column]) ?>
-                            <?= $label ?>
-                        </a>
                         <div class="progress-bar progress-bar-success"
                             style="width: <?= $famoso[$column] / $mais_forte * 100 ?>%">
+                            <span>
+                                <?= mascara_numeros_grandes($famoso[$column]) ?>
+                                <?= $label ?>
+                            </span>
                         </div>
                     </div>
                 </div>

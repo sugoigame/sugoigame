@@ -172,7 +172,7 @@
                         <?php if ($userDetails->is_sistema_desbloqueado(SISTEMA_EQUIPAMENTOS)) : ?>
                             <?php render_nav("equipamentos", "Equipamentos", "fa fa-shield", $nav, $pers) ?>
                         <?php endif; ?>
-                        <?php render_nav("wanted", $userDetails->tripulacao["faccao"] == FACCAO_PIRATA ? "Nível de Procurado" : "Honrarias", "fa fa-fire", $nav, $pers) ?>
+                        <?php render_nav("wanted", "Nível de Procurado", "fa fa-fire", $nav, $pers) ?>
                     </ul>
 
                     <div class="w-100">
