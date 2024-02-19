@@ -52,6 +52,8 @@ function has_mapa()
 
             <?php include "Includes/Components/Header/denden_mushi.php"; ?>
         <?php else : ?>
+            <?php include "Includes/Components/Header/news_coo.php"; ?>
+
             <?php include "Includes/Components/Header/icon_torneio.php"; ?>
 
             <?php include "Includes/Components/Header/localizador_pvp.php"; ?>

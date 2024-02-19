@@ -333,68 +333,6 @@ table tr td {
     max-width: 280px;
     margin-left: auto;
 }
-.news-coo-text p {
-    margin: 0;
-}
-
-/* make sidebar nav vertical */
-
-.vertical-menu-header {
-    background-image: -moz-linear-gradient(to top, #675534, #bb9e65);
-    background-image: -webkit-linear-gradient(to top, #675534, #bb9e65);
-    background-image: -ms-linear-gradient(to top, #675534, #bb9e65);
-    background-image: linear-gradient(to top, #675534, #bb9e65);
-    padding: 0.3em;
-    border: 1px solid #4c4129;
-}
-
-.vertical-menu-news {
-    background-image: -moz-linear-gradient(to top, #8e8e8e, #d6d6d6);
-    background-image: -webkit-linear-gradient(to top, #8e8e8e, #d6d6d6);
-    background-image: -ms-linear-gradient(to top, #8e8e8e, #d6d6d6);
-    background-image: linear-gradient(to top, #8e8e8e, #d6d6d6);
-    padding: 0 1em;
-    color: #414141;
-    border: 1px solid #414141;
-    max-height: 150px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.vertical-menu-news .row {
-    padding: 0.5em 0;
-    border-bottom: 1px solid #414141;
-}
-
-.vertical-menu-news .row.new {
-    background-image: -moz-linear-gradient(to top, #9c6b06, #d69308);
-    background-image: -webkit-linear-gradient(to top, #9c6b06, #d69308);
-    background-image: -ms-linear-gradient(to top, #9c6b06, #d69308);
-    background-image: linear-gradient(to top, #9c6b06, #d69308);
-    color: #292929;
-}
-
-.vertical-menu-news a {
-    color: #414141;
-}
-
-.vertical-menu-news a:hover {
-    color: #525252;
-}
-
-.vertical-menu-news marquee {
-    height: 80px;
-    overflow: auto;
-}
-
-.vertical-menu-header a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-}
-
-.vertical-menu-header a:hover {
-    color: #ffffff;
-}
 
 #vertical-menu {
     z-index: 100;

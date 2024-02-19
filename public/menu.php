@@ -55,43 +55,6 @@ function super_menu_can_be_active($menu)
     return get_super_menu() == $menu;
 }
 ?>
-<!-- <?php if ($userDetails->tripulacao) : ?>
-    <?php $news = $connection->run("SELECT *, unix_timestamp(data) AS timestamp FROM tb_news_coo ORDER BY data DESC LIMIT 6")->fetch_all_array(); ?>
-    <?php if ($news) : ?>
-        <div class="vertical-menu-news clearfix" style="margin-bottom: 10px;">
-            <?php foreach ($news as $new) : ?>
-                <div class="row <?= $new["timestamp"] > ($userDetails->tripulacao["ultimo_logon"] - 300) ? "new" : "" ?>">
-                    <div class="col-xs-4 col-sm-12 col-md-4">
-                        <img class="hidden-sm" src="Imagens/news.png" />
-                    </div>
-                    <div class="col-xs-8 col-sm-12 col-md-8 news-coo-text">
-                        <small><?= date("d/m/Y - h:i", $new["timestamp"]); ?></small>
-                        <br />
-                        <p class="text-justify"><?= $new["msg"]; ?></p>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
-
-    <?php $anuncios = array(
-        // 1 => "./?ses=noticia&cod=22",
-        2 => "./?ses=recrutamento",
-        3 => "./?ses=vipComprar"
-    );
-
-    if (is_coliseu_aberto()) {
-        $anuncios[4] = "./?ses=coliseu";
-    }
-
-    $anuncio = array_rand($anuncios); ?>
-
-    <div style="border-left: 1px solid #000; border-right: 1px solid #000; margin-bottom: 10px;">
-        <a class="link_content" href="<?= $anuncios[$anuncio]; ?>">
-            <img src="Imagens/Banners/destaque-<?= $anuncio ?>.jpg" width="100%"/>
-        </a>
-    </div>
-<?php endif; ?> -->
 <div id="vertical-menu">
     <div class="panel border-none">
         <?= super_menu_link("home", "menu-principal", "Principal", "principal", "principal") ?>
