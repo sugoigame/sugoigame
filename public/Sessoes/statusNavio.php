@@ -41,7 +41,7 @@
         <h4>Nível
             <?= $userDetails->navio["lvl"] ?>
         </h4>
-        <p>Seu navio fica ganha mais pontos de vida a cada nível evoluido</p>
+        <p>Seu navio ganha mais pontos de vida a cada nível evoluido</p>
         <?php render_navio_xp_bar() ?>
     </div>
 

@@ -155,7 +155,7 @@ function render_maior_do_mundo($tipo)
                     "progress-wanted",
                     $userDetails->fa_mais_alta / $fa_mais_forte,
                     abrevia_numero_grande(calc_recompensa($userDetails->fa_mais_alta)),
-                    ($userDetails->tripulacao["faccao"] == FACCAO_PIRATA ? "Recompensa" : "Gratificação") . " mais alta de " . abrevia_numero_grande(calc_recompensa($userDetails->fa_mais_alta)),
+                    "Recompensa mais alta de " . abrevia_numero_grande(calc_recompensa($userDetails->fa_mais_alta)),
                     "#ee5f5b",
                     "ranking&rank=fa"
                 ); ?>
@@ -379,12 +379,16 @@ function render_maior_do_mundo($tipo)
 
     <div class="row">
         <div class="col-md-6">
-            <h3>Os Mais Procurados</h3>
-            <?php render_procurados(FACCAO_PIRATA); ?>
+            <div class="panel panel-default">
+                <div class="panel-heading">Os Mais Procurados</div>
+                <?php render_procurados(FACCAO_PIRATA); ?>
+            </div>
         </div>
         <div class="col-md-6">
-            <h3>As Maiores Gratificações</h3>
-            <?php render_procurados(FACCAO_MARINHA); ?>
+            <div class="panel panel-default">
+                <div class="panel-heading">As Maiores Recompensas da Cross Guild</div>
+                <?php render_procurados(FACCAO_MARINHA); ?>
+            </div>
         </div>
     </div>
 

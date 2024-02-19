@@ -431,6 +431,29 @@ function calc_recompensa($fa)
     }
 }
 
+function get_cross_guild_stars($reward)
+{
+    $ret = "";
+    $bilion = 1000000000;
+    $milion = 100000000;
+    $cont = 0;
+    if ($reward > $bilion) {
+        while ($reward > $bilion && $cont < 5) {
+            $ret .= "♛";
+            $reward -= $bilion;
+            $cont++;
+        }
+    } else {
+        while ($cont <= 0 || ($reward > 0 && $cont < 5)) {
+            $ret .= "★";
+            $reward -= $milion;
+            $cont++;
+        }
+    }
+
+    return $ret;
+}
+
 function calc_score_mod($classe_score)
 {
     return ($classe_score / 10000) * 0.01;

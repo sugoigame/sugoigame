@@ -696,12 +696,19 @@ table tr td {
     position: relative;
     background-size: contain;
     background-repeat: no-repeat;
-    padding: 26px 2px;
+    padding: 26px 1px;
 }
 
 .cartaz_procurado.tripulante_quadro .tripulante_quadro_img {
     width: 70px;
     margin-bottom: -27px;
+}
+
+.cartaz_procurado.tripulante_quadro .tripulante_quadro_img.marine {
+    border-radius: 50%;
+    width: 82px;
+    height: 48px;
+    margin-bottom: -35px;
 }
 
 .cartaz_procurado.tripulante_quadro:hover {

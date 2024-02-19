@@ -177,12 +177,16 @@
 
                     <div class="w-100">
                         <div class="list-group-item">
-                            <?= icon_pers_skin($pers["img"], $pers["skin_r"], "header-skin") ?>
-                            <?= $pers["nome"]; ?>
-                            <?= ($pers_titulo) ? " - " . $pers_titulo : "" ?>,
-                            <?= nome_classe($pers["classe"]) ?>
-                            <?= nome_prof($pers["profissao"]) ?> Nível
-                            <?= $pers["lvl"]; ?>
+                            <strong>
+                                <?= icon_pers_skin($pers["img"], $pers["skin_r"], "header-skin") ?>
+                                <?= $pers["nome"]; ?>
+                                <?= ($pers_titulo) ? " - " . $pers_titulo : "" ?> -
+                                <?= nome_classe($pers["classe"]) ?>
+                                <?= nome_prof($pers["profissao"]) ?> Nível
+                                <?= $pers["lvl"]; ?>
+                                - Recompensa de
+                                <?= mascara_berries(calc_recompensa($pers["fama_ameaca"])); ?>
+                            </strong>
                         </div>
                         <div class="tab-content">
                             <div id="nav-status-<?= $pers["cod"] ?>"

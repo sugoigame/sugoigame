@@ -69,7 +69,7 @@
         </div>
 
         <div class="col col-xs-9">
-            <div>
+            <div class="p1">
                 <h3>
                     Nível de Batalha:
                     <?= $userDetails->tripulacao["battle_lvl"] ?>
@@ -101,7 +101,7 @@
                     <?= ajuda_tooltip("Sua patente é determinada de acordo com seu nível de batlha."); ?>
                 </h4>
             </div>
-            <div class="row"><br>
+            <div class="row p1">
                 <?php $max_patente_level = get_max_patente_level(); ?>
                 <?php $marks = get_patente_marks(); ?>
                 <div class="col-xs-12">

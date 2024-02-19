@@ -5,7 +5,7 @@ $pers_cod = $protector->get_number_or_exit("cod");
 
 $pers = $userDetails->get_pers_by_cod($pers_cod);
 
-if (!$pers) {
+if (! $pers) {
     $protector->exit_error("Personagem inválido");
 }
 ?>
@@ -16,47 +16,51 @@ if (!$pers) {
 
 <div class="row">
     <div class="col-md-12">
-        <h4>
-            Valor exato da recompensa:
-            <imgsrc
-            ="Imagens/Icones/Berries.png"/> <?= mascara_berries($pers["fama_ameaca"]) ?>
-        </h4>
+        <div>
+            <?php render_cartaz_procurado($pers, $userDetails->tripulacao["faccao"]); ?>
+        </div>
         <h3>Prêmios disponíveis:</h3>
-        <ul class="list-group">
-            <?php foreach ($fa_premios as $premio_index => $premio): ?>
-                <li class="list-group-item">
-                    <h4>Prêmio por uma
-                        <?= $userDetails->tripulacao["faccao"] == FACCAO_PIRATA ? "Recompensa" : "Gratificação"; ?>
-                        de <?= mascara_berries($premio["objetivo"]) ?> de Berries</h4>
-                    <?php if ($pers["fa_premio"] > $premio_index): ?>
-                        <p class="text-success">Você já recebeu essa recompensa</p>
-                    <?php else: ?>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success"
-                                 style="width: <?= $pers["fama_ameaca"] / $premio["objetivo"] * 100 ?>%;">
-                                <?= mascara_berries($pers["fama_ameaca"]) . "/" . mascara_berries($premio["objetivo"]) ?>
+        <div class="row">
+            <?php foreach ($fa_premios as $premio_index => $premio) : ?>
+
+                <?php if ($pers["fa_premio"] <= $premio_index) : ?>
+                    <div class="col-xs-3 h-100">
+                        <div class="panel panel-default h-100">
+                            <div class="panel-body">
+                                <div>
+                                    Prêmio por uma
+                                    <?= $userDetails->tripulacao["faccao"] == FACCAO_PIRATA ? "Recompensa" : "Gratificação"; ?>
+                                    de
+                                    <?= mascara_berries($premio["objetivo"]) ?> de Berries
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success"
+                                        style="width: <?= $pers["fama_ameaca"] / $premio["objetivo"] * 100 ?>%;">
+                                        <?= mascara_berries($pers["fama_ameaca"]) . "/" . mascara_berries($premio["objetivo"]) ?>
+                                    </div>
+                                </div>
+                                <?php foreach ($premio["recompensas"] as $recompensa) : ?>
+                                    <p>
+                                        <?php render_recompensa($recompensa, $reagents, $equipamentos); ?>
+                                        <?php if (isset($recompensa["unico"])) : ?>
+                                            <span class="text-warning">Único para a tripulação</span>
+                                        <?php endif; ?>
+                                    </p>
+                                <?php endforeach; ?>
+                                <?php if ($pers["fama_ameaca"] >= $premio["objetivo"] && $premio_index == $pers["fa_premio"]) : ?>
+                                    <p>
+                                        <button class="btn btn-success link_send"
+                                            href="link_Personagem/premio_wanted.php?cod=<?= $pers["cod"] ?>">
+                                            Receber o prêmio
+                                        </button>
+                                    </p>
+                                <?php endif; ?>
                             </div>
                         </div>
-                        <?php foreach ($premio["recompensas"] as $recompensa): ?>
-                            <p>
-                                <?php render_recompensa($recompensa, $reagents, $equipamentos); ?>
-                                <?php if (isset($recompensa["unico"])): ?>
-                                    <span class="text-warning">Único para a tripulação</span>
-                                <?php endif; ?>
-                            </p>
-                        <?php endforeach; ?>
-                        <?php if ($pers["fama_ameaca"] >= $premio["objetivo"] && $premio_index == $pers["fa_premio"]): ?>
-                            <p>
-                                <button class="btn btn-success link_send"
-                                        href="link_Personagem/premio_wanted.php?cod=<?= $pers["cod"] ?>">
-                                    Receber o prêmio
-                                </button>
-                            </p>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                </li>
+                    </div>
+                <?php endif; ?>
             <?php endforeach; ?>
-        </ul>
+        </div>
         <p>
             A sua
             <?= $userDetails->tripulacao["faccao"] == FACCAO_PIRATA ? "Recompensa" : "Gratificação"; ?>

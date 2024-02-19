@@ -17,7 +17,6 @@ if (! $userDetails->conta &&
 <head>
     <title>Sugoi Game - One Piece MMORPG</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=.5, initial-scale=1" />
     <meta name="description" content="Um RPG estratégico cheio de PvP feito por fãs de One Piece." />
 
     <meta property="og:url" content="https://sugoigame.com.br/" />

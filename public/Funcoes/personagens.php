@@ -349,6 +349,12 @@ function preco_selo_exp($pers)
         <img class="tripulante_quadro_img  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>"
             src="Imagens/Personagens/Icons/<?= getImg($famoso, "r"); ?>.jpg">
         <div class="recompensa_text  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>">
+            <?php if ($faccao == FACCAO_MARINHA) : ?>
+                <div class="recompensa_stars">
+                    <?= get_cross_guild_stars(calc_recompensa($famoso["fama_ameaca"])) ?>
+                </div>
+            <?php endif; ?>
+            <div></div>
             <div class="recompensa_name">
                 <?= $famoso["nome"] ?>
             </div>
