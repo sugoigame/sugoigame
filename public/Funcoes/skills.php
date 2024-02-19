@@ -36,7 +36,7 @@ function get_all_skills($pers)
 
     foreach ($skills as $key => $skill) {
         $tb = get_skill_table($skill["tipo"]);
-        $details = MapLoader::find($tb, ["cod_skil" => $skill["cod_skil"]]);
+        $details = MapLoader::find($tb, ["cod_skil" => $skill["cod_skil"]]) ?? [];
         $skills[$key] = array_merge($skill, $details);
     }
 
