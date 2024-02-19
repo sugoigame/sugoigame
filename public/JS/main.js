@@ -101,16 +101,17 @@ $(function () {
         });
     });
 
-    $(window).scroll(function () {
-        if ($(this).scrollTop()) {
-            $("#to-top").fadeIn();
-        } else {
-            $("#to-top").fadeOut();
+    $("#fullscreen").click(function () {
+        const body = document.body;
+        if (body.requestFullscreen) {
+            body.requestFullscreen();
+        } else if (body.webkitrequestFullscreen) {
+            body.webkitrequestFullscreen();
+        } else if (body.mozrequestFullscreen) {
+            body.mozrequestFullscreen();
+        } else if (body.msrequestFullscreen) {
+            body.msrequestFullscreen();
         }
-    });
-
-    $("#to-top").click(function () {
-        $("html, body").animate({ scrollTop: 0 }, 200);
     });
 
     window.onpopstate = function () {
@@ -129,19 +130,6 @@ $(function () {
     screen.orientation.lock("landscape").catch(function () {
         // the device not support orientation
     });
-
-    if (window.outerWidth <= 768) {
-        var body = document.documentElement;
-        if (body.requestFullscreen) {
-            body.requestFullscreen();
-        } else if (body.webkitrequestFullscreen) {
-            body.webkitrequestFullscreen();
-        } else if (body.mozrequestFullscreen) {
-            body.mozrequestFullscreen();
-        } else if (body.msrequestFullscreen) {
-            body.msrequestFullscreen();
-        }
-    }
 });
 
 function appendLinks() {

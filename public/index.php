@@ -59,8 +59,8 @@ if (! $userDetails->conta &&
         <?php endif; ?>
     </div>
 
-    <button id="to-top">
-        <i class="glyphicon glyphicon-chevron-up"></i>
+    <button id="fullscreen" title="Tela cheia" data-toggle="tooltip" data-placement="top" data-trigger="hover">
+        <i class="fa fa-arrows-alt"></i>
     </button>
 
     <!-- Modais globais que precisam permanecer abertas mesmo caso haja mudança de sessao.
