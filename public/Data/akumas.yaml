@@ -1,0 +1,704 @@
+- nome: Gomu Gomu no Mi
+  cod_akuma: 1
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Alcance
+    - AB:agl,dex,res
+    - Dano
+# - nome: Bara Bara no Mi
+#   cod_akuma: 2
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - Dano
+#     - AB:agl
+#     - Teleporte
+- nome: Sube Sube no Mi
+  cod_akuma: 3
+  tipo: paramecia
+  categoria: defensiva
+  arquetipos:
+    - Dano
+    - AB:agl
+    - Buff:agl
+- nome: Bomu Bomu no Mi
+  cod_akuma: 4
+  tipo: paramecia
+  categoria: ofensiva
+  arquetipos:
+    - Area
+    - AB:dex
+    - Alcance
+- nome: Kilo Kilo no Mi
+  cod_akuma: 5
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - AB:def
+    - AB:agl
+    - AB:agl
+# - nome: Hana Hana no Mi
+#   cod_akuma: 6
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - Imobilizar
+#     - Area
+#     - Clone
+- nome: Doru Doru no Mi
+  cod_akuma: 7
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Buff:def,res
+    - Buff:dex
+    - Imobilizar
+- nome: Baku Baku no Mi
+  cod_akuma: 8
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Dano
+    - Area
+    - Area
+# - nome: Mane Mane no Mi
+#   cod_akuma: 9
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - CopiarAtributos:atk,def,agl,res,dex
+#     - CopiarAtributos:pre,atk,dex
+#     - CopiarAtributos:res,agl
+- nome: Supa Supa no Mi
+  cod_akuma: 10
+  tipo: paramecia
+  categoria: ofensiva
+  arquetipos:
+    - Dano
+    - Area
+    - AB:atk,dex
+- nome: Toge Toge no Mi
+  cod_akuma: 11
+  tipo: paramecia
+  categoria: ofensiva
+  arquetipos:
+    - Dano
+    - Area
+    - AB:atk,dex
+- nome: Ori Ori no Mi
+  cod_akuma: 12
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Imobilizar
+    - Debuff:agl
+    - Dano
+- nome: Bane Bane no Mi
+  cod_akuma: 13
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - AB:agl
+    - AB:dex
+    - Dano
+# - nome: Ito Ito no Mi
+#   cod_akuma: 14
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - Imobilizar
+#     - Alcance
+#     - Aproximar
+- nome: Noro Noro no Mi
+  cod_akuma: 15
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Debuff:agl
+    - Debuff:atk
+    - Debuff:dex
+# - nome: Doa Doa no Mi
+#   cod_akuma: 16
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - AB:agl
+#     - Alcance
+#     - Teleporte
+# - nome: Awa Awa no Mi
+#   cod_akuma: 17
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - Desarmar
+#     - Buff:agl
+#     - Buff:agl
+# - nome: Beri Beri no Mi
+#   cod_akuma: 18
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - Dano
+#     - AB:agl
+#     - Teleporte
+- nome: Sabi Sabi no Mi
+  cod_akuma: 19
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Debuff:atk
+    - Debuff:dex
+    - Dano
+- nome: Shari Shari no Mi
+  cod_akuma: 20
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Dano
+    - AB:agl
+    - AB:dex
+- nome: Horo Horo no Mi
+  cod_akuma: 21
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Debuff:def
+    - Debuff:atk
+    - Debuff:agl, res
+# - nome: Yomi Yomi no Mi
+#   cod_akuma: 22
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - AB:ressurrect
+#     - AB:agl
+#     - AB:agl
+- nome: Kage Kage no Mi
+  cod_akuma: 23
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Imobilizar
+    - Dano
+    - Debuff:atk
+# - nome: Suke Suke no Mi
+#   cod_akuma: 24
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - AB:agl
+#     - Furtividade
+#     - Invisiblidade
+# - nome: Nikyu Nikyu no Mi
+#   cod_akuma: 25
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - Debuff:atk,def,agl,res,pre
+#     - Debuff:dex,atk,def
+#     - Teleporte
+- nome: Toshi Toshi no Mi
+  cod_akuma: 26
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - AB:atk,def,agl,res,pre
+    - AB:dex,atk,def
+    - AB:pre,agl
+# - nome: Jiki Jiki no Mi
+#   cod_akuma: 27
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - Area
+#     - Afastar
+#     - Aproximar
+# - nome: Ope Ope no Mi
+#   cod_akuma: 28
+#   tipo: paramecia
+#   categoria: defensiva
+#   arquetipos:
+#     - Cura
+#     - Sangramento
+#     - Imobilizar
+# - nome: Shiro Shiro no Mi
+#   cod_akuma: 29
+#   tipo: paramecia
+#   categoria: defensiva
+#   arquetipos:
+#     - AB:def
+#     - AB:res
+#     - Imunidade
+- nome: Wara Wara no Mi
+  cod_akuma: 30
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Area
+    - Dano
+    - AB:def,res
+- nome: Oto Oto no Mi
+  cod_akuma: 31
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Alcance
+    - Area
+    - Area
+- nome: Mero Mero no Mi
+  cod_akuma: 32
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Imobilizar
+    - Debuff:atk
+    - Debuff:dex
+- nome: Doku Doku no Mi
+  cod_akuma: 33
+  tipo: paramecia
+  categoria: ofensiva
+  arquetipos:
+    - Veneno
+    - Area
+    - Dano
+# - nome: Horu Horu no Mi
+#   cod_akuma: 34
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - TrocarAtributos:atk-def,agl-dex,res-pre,atk-agl,def-pre
+#     - TrocarAtributos:pre-dex,atk-res,dex-def
+#     - TrocarAtributos:res-agl,agl-pre
+- nome: Choki Choki no Mi
+  cod_akuma: 35
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Dano
+    - Area
+    - Alcance
+- nome: Gura Gura no Mi
+  cod_akuma: 36
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Area
+    - Alcance
+    - Dano
+- nome: Kira Kira no Mi
+  cod_akuma: 37
+  tipo: paramecia
+  categoria: defensiva
+  arquetipos:
+    - AB:def
+    - AB:res
+    - AB:res
+- nome: Woshu Woshu no Mi
+  cod_akuma: 38
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Imobilizar
+    - Debuff:def
+    - Debuff:res
+- nome: Fuwa Fuwa no Mi
+  cod_akuma: 39
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Buff:agl
+    - Debuff:def
+    - Debuff:def
+- nome: Deka Deka no Mi
+  cod_akuma: 40
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - AB:atk
+    - AB:dex
+    - AB:dex
+- nome: Mato Mato no Mi
+  cod_akuma: 41
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - AB:pre
+    - AB:dex
+    - AB:dex
+- nome: Fuku Fuku no Mi
+  cod_akuma: 42
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - AB:agl
+    - AB:res
+    - AB:res
+# - nome: Hobi Hobi no Mi
+#   cod_akuma: 43
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - Debuff:def
+#     - Debuff:agl
+#     - Desarmar
+- nome: Buki Buki no Mi
+  cod_akuma: 44
+  tipo: paramecia
+  categoria: ofensiva
+  arquetipos:
+    - Alcance
+    - Dano
+    - Area
+# - nome: Guru Guru no Mi
+#   cod_akuma: 45
+#   tipo: paramecia
+#   categoria: tatica
+#   arquetipos:
+#     - Alcance
+#     - AB:dex
+#     - Empurrar
+- nome: Beta Beta no Mi
+  cod_akuma: 46
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Alcance
+    - Area
+    - Imobilizar
+- nome: Zushi Zushi no Mi
+  cod_akuma: 47
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Area
+    - Debuff:agl
+    - Dano
+- nome: Bari Bari no Mi
+  cod_akuma: 48
+  tipo: paramecia
+  categoria: defensiva
+  arquetipos:
+    - Buff:def
+    - Buff:res
+    - Buff:res
+# - nome: Chiyu Chiyu no Mi
+#   cod_akuma: 49
+#   tipo: paramecia
+#   categoria: defensiva
+#   arquetipos:
+#     - Cura
+#     - Buff:def
+#     - Buff:res
+- nome: Mochi Mochi no Mi
+  cod_akuma: 50
+  tipo: paramecia
+  categoria: tatica
+  arquetipos:
+    - Alcance
+    - AB:agl
+    - Dano
+- nome: Hito Hito no Mi, Modelo Nika
+  cod_akuma: 51
+  tipo: zoan
+  categoria: mitica
+  arquetipos:
+    - Alcance
+    - Area
+    - AB:agl
+- nome: Ushi Ushi no Mi, Modelo Bisão
+  cod_akuma: 52
+  tipo: zoan
+  categoria: tatica
+  arquetipos:
+    - AB:def,res
+    - Dano
+    - AB:atk
+- nome: Hito Hito no Mi
+  cod_akuma: 52
+  tipo: zoan
+  categoria: tatica
+  arquetipos:
+    - Dano
+    - Alcance
+    - Area
+- nome: Tori Tori no Mi, Modelo Falcão
+  cod_akuma: 53
+  tipo: zoan
+  categoria: tatica
+  arquetipos:
+    - Dano
+    - AB:agl
+    - AB:dex
+- nome: Mogu Mogu no Mi
+  cod_akuma: 54
+  tipo: zoan
+  categoria: tatica
+  arquetipos:
+    - Dano
+    - Area
+    - AB:dex
+- nome: Inu Inu no Mi, Modelo:Chacal
+  cod_akuma: 55
+  tipo: zoan
+  categoria: tatica
+  arquetipos:
+    - Dano
+    - AB:atk
+    - AB:dex
+- nome: Neko Neko no Mi, Modelo Leopardo
+  cod_akuma: 56
+  tipo: zoan
+  categoria: tatica
+  arquetipos:
+    - Dano
+    - AB:agl
+    - AB:dex,pre
+- nome: Inu Inu no Mi, Modelo Lobo
+  cod_akuma: 57
+  tipo: zoan
+  categoria: tatica
+  arquetipos:
+    - Dano
+    - AB:atk
+    - AB:dex,pre
+- nome: Ushi Ushi no Mi, Modelo Girafa
+  cod_akuma: 58
+  tipo: zoan
+  categoria: tatica
+  arquetipos:
+    - Dano
+    - AB:def
+    - AB:dex,res
+- nome: Ryu Ryu no Mi, Modelo Alossauro
+  cod_akuma: 58
+  tipo: zoan
+  categoria: ancestral
+  arquetipos:
+    - Dano
+    - AB:def
+    - AB:dex,atk
+- nome: Hebi Hebi no Mi, Modelo Naja Rei
+  cod_akuma: 59
+  tipo: zoan
+  categoria: tatica
+  arquetipos:
+    - Veneno
+    - Dano
+    - AB:agl,atk
+- nome: Hebi Hebi no Mi, Modelo Anaconda
+  cod_akuma: 60
+  tipo: zoan
+  categoria: tatica
+  arquetipos:
+    - Veneno
+    - Dano
+    - AB:res,atk
+# - nome: Tori Tori no Mi, Modelo:Fênix
+#   cod_akuma: 61
+#   tipo: zoan
+#   categoria: mitica
+#   arquetipos:
+#     - Area
+#     - AB:atk,agl,dex
+#     - AB:ressurrect
+- nome: Hito Hito no Mi, Modelo Daibutsu
+  cod_akuma: 62
+  tipo: zoan
+  categoria: mitica
+  arquetipos:
+    - Area
+    - AB:atk,agl,dex
+    - AB:def,res
+- nome: Zou Zou no Mi, Modelo Mamute
+  cod_akuma: 62
+  tipo: zoan
+  categoria: ancestral
+  arquetipos:
+    - Dano
+    - AB:atk,agl,dex
+    - AB:def,res
+- nome: Uo Uo no Mi Modelo Seiryu
+  cod_akuma: 63
+  tipo: zoan
+  categoria: mitica
+  arquetipos:
+    - Alcance
+    - Area
+    - AB:atk,dex
+- nome: Hebi Hebi no Mi, Modelo Yamata no Orochi
+  cod_akuma: 64
+  tipo: zoan
+  categoria: mitica
+  arquetipos:
+    - Alcance
+    - Area
+    - AB:dex
+- nome: Ryu Ryu no Mi, Modelo Espinossauro
+  cod_akuma: 64
+  tipo: zoan
+  categoria: ancestral
+  arquetipos:
+    - Dano
+    - AB:agl
+    - AB:dex
+- nome: Ryu Ryu no Mi, Modelo Pteranodonte
+  cod_akuma: 65
+  tipo: zoan
+  categoria: ancestral
+  arquetipos:
+    - Dano
+    - AB:agl,atk,dex
+    - AB:res,pre
+- nome: Ryu Ryu no Mi, Modelo Braquiossauro
+  cod_akuma: 66
+  tipo: zoan
+  categoria: ancestral
+  arquetipos:
+    - Dano
+    - AB:def
+    - AB:res
+- nome: Ryu Ryu no Mi, Modelo Paquicefalossauro
+  cod_akuma: 67
+  tipo: zoan
+  categoria: ancestral
+  arquetipos:
+    - Dano
+    - AB:agl
+    - AB:res
+- nome: Inu Inu no Mi, Modelo Okuchi no Makami
+  cod_akuma: 68
+  tipo: zoan
+  categoria: mitica
+  arquetipos:
+    - Dano
+    - AB:dex
+    - AB:atk
+- nome: Neko Neko no Mi, Modelo Dentes de Sabre
+  cod_akuma: 69
+  tipo: zoan
+  categoria: ancestral
+  arquetipos:
+    - Dano
+    - AB:agl
+    - AB:agl
+- nome: Ryu Ryu no Mi, Modelo Triceratops
+  cod_akuma: 70
+  tipo: zoan
+  categoria: ancestral
+  arquetipos:
+    - Dano
+    - AB:def
+    - AB:res
+- nome: Uma Uma no Mi, Modelo Pegasus
+  cod_akuma: 71
+  tipo: zoan
+  categoria: mitica
+  arquetipos:
+    - Dano
+    - AB:agl,pre
+    - AB:dex
+- nome: Moku Moku no Mi
+  cod_akuma: 72
+  tipo: logia
+  categoria: tatica
+  arquetipos:
+    - Area
+    - Dano
+    - AB:agl
+- nome: Suna Suna no Mi
+  cod_akuma: 73
+  tipo: logia
+  categoria: tatica
+  arquetipos:
+    - Area
+    - Dano
+    - Alcance
+- nome: Mera Mera no Mi
+  cod_akuma: 74
+  tipo: logia
+  categoria: ofensiva
+  arquetipos:
+    - Area
+    - Alcance
+    - Dano
+- nome: Goro Goro no Mi
+  cod_akuma: 75
+  tipo: logia
+  categoria: ofensiva
+  arquetipos:
+    - Area
+    - Alcance
+    - AB:dex
+- nome: Hie Hie no Mi
+  cod_akuma: 76
+  tipo: logia
+  categoria: ofensiva
+  arquetipos:
+    - Area
+    - Alcance
+    - Imobilizar
+- nome: Yami Yami no Mi
+  cod_akuma: 77
+  tipo: logia
+  categoria: ofensiva
+  arquetipos:
+    - Debuff:def
+    - Area
+    - Dano
+- nome: Pika Pika no Mi
+  cod_akuma: 78
+  tipo: logia
+  categoria: ofensiva
+  arquetipos:
+    - AB:agl
+    - Alcance
+    - Dano
+- nome: Magu Magu no Mi
+  cod_akuma: 79
+  tipo: logia
+  categoria: ofensiva
+  arquetipos:
+    - Dano
+    - Area
+    - AB:atk
+- nome: Susu Susu no Mi
+  cod_akuma: 80
+  tipo: logia
+  categoria: ofensiva
+  arquetipos:
+    - Area
+    - Alcance
+    - AB:agl
+- nome: Numa Numa no Mi
+  cod_akuma: 81
+  tipo: logia
+  categoria: tatica
+  arquetipos:
+    - Area
+    - Alcance
+    - Debuff:agl
+- nome: Gasu Gasu no Mi
+  cod_akuma: 82
+  tipo: logia
+  categoria: ofensiva
+  arquetipos:
+    - Veneno
+    - Sangramento
+    - Area
+- nome: Yuki Yuki no Mi
+  cod_akuma: 83
+  tipo: logia
+  categoria: ofensiva
+  arquetipos:
+    - Area
+    - Alcance
+    - Imobilizar
+- nome: Mori Mori no Mi
+  cod_akuma: 84
+  tipo: logia
+  categoria: tatica
+  arquetipos:
+    - Area
+    - Alcance
+    - AB:def,res

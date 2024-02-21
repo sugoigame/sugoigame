@@ -22,10 +22,14 @@ class MapLoader
         return strlen($lines) ? json_decode($lines, true) : [];
     }
 
-    public static function save($map, $data)
+    public static function save($data, $filename)
     {
-        $file = fopen(dirname(__FILE__) . "/../Data/" . $data . ".json", "w");
-        fwrite($file, json_encode($map, JSON_PRETTY_PRINT));
+        MapLoader::save_full_path($data, dirname(__FILE__) . "/../Data/" . $filename . ".json");
+    }
+    public static function save_full_path($data, $fullpath)
+    {
+        $file = fopen($fullpath, "w");
+        fwrite($file, json_encode($data, JSON_PRETTY_PRINT));
         fclose($file);
     }
     public static function filter($map, $func)

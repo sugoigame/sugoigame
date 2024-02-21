@@ -136,19 +136,35 @@ function duracao_special_effect($effect)
     }
 }
 
-function descricao_special_effect($effect)
+function descricao_special_effect($effect, $vontade)
 {
     switch ($effect) {
         case SPECIAL_EFFECT_SANGRAMENTO:
-            return "O personagem que sofre desse efeito perde 6% da vida máxima a cada turno durante " . duracao_special_effect($effect) . " turnos até ficar com 1 ponto de vida.";
+            return "O personagem que sofre desse efeito perde " . dano_special_effect($effect, $vontade) . "% da vida máxima a cada turno durante " . duracao_special_effect($effect) . " turnos até ficar com 1 ponto de vida.";
         case SPECIAL_EFFECT_VENENO:
-            return "O personagem que sofre desse efeito perde 3% da vida máxima a cada turno durante " . duracao_special_effect($effect) . " turnos até ficar com 1 ponto de vida.";
+            return "O personagem que sofre desse efeito perde " . dano_special_effect($effect, $vontade) . "% da vida máxima a cada turno durante " . duracao_special_effect($effect) . " turnos até ficar com 1 ponto de vida.";
         case SPECIAL_EFFECT_MACHUCADO_JOELHO:
             return "O personagem que sofre desse efeito não pode se movimentar por " . duracao_special_effect($effect) . " turnos";
         case SPECIAL_EFFECT_PONTO_FRACO:
             return "O golpe que acerta o ponto fraco ignora 50% da defesa do adversário. (Esse efeito só funciona no Coliseu e em disputas amigáveis)";
         default:
             return "";
+    }
+}
+
+function dano_special_effect($effect, $vontade)
+{
+    switch ($effect) {
+        case SPECIAL_EFFECT_SANGRAMENTO:
+            return round($vontade / 4.0 + 2.0, 2);
+        case SPECIAL_EFFECT_VENENO:
+            return round($vontade / 8.0 + 2.0, 2);
+        case SPECIAL_EFFECT_MACHUCADO_JOELHO:
+            return 0;
+        case SPECIAL_EFFECT_PONTO_FRACO:
+            return 0;
+        default:
+            return 0;
     }
 }
 
@@ -480,7 +496,7 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
                 <?= nome_special_effect_target($skill["special_target"]) ?> da Habilidade
                 <?= ajuda_tooltip(
                     nome_special_effect($skill["special_effect"]) . ":" .
-                    descricao_special_effect($skill["special_effect"])
+                    descricao_special_effect($skill["special_effect"], $skill["consumo"])
                 ) ?>
             </li>
         <?php endif; ?>

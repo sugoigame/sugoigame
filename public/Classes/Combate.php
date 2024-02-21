@@ -129,7 +129,7 @@ class Combate
         )->fetch_all_array();
 
         foreach ($sangrando as $alvo) {
-            $nhp = max(1, $alvo["hp"] - ceil($alvo["hp_max"] * 0.06));
+            $nhp = max(1, $alvo["hp"] - ceil($alvo["hp_max"] * dano_special_effect(SPECIAL_EFFECT_SANGRAMENTO, $sangrando["vontade"]) / 100.0));
             $this->connection->run("UPDATE tb_combate_personagens SET hp = ? WHERE cod = ?",
                 "ii", array($nhp, $alvo["cod"]));
         }
@@ -149,7 +149,7 @@ class Combate
         )->fetch_all_array();
 
         foreach ($sangrando as $alvo) {
-            $nhp = max(1, $alvo["hp"] - ceil($alvo["hp_max"] * 0.03));
+            $nhp = max(1, $alvo["hp"] - ceil($alvo["hp_max"] * dano_special_effect(SPECIAL_EFFECT_VENENO, $sangrando["vontade"]) / 100.0));
             $this->connection->run("UPDATE tb_combate_personagens SET hp = ? WHERE cod = ?",
                 "ii", array($nhp, $alvo["cod"]));
         }
@@ -173,11 +173,11 @@ class Combate
     public function aplica_imunidade_special_effect($personagem_combate, $habilidade)
     {
         if ($personagem_combate["id"] == "bot") {
-            $this->connection->run("INSERT INTO tb_combate_special_effect (bot_id, personagem_bot_id, special_effect, duracao) VALUE (?,?,?,?)",
-                "iiii", array($this->userDetails->combate_bot["id"], $personagem_combate["bot_id"], -$habilidade["special_effect"], 1));
+            $this->connection->run("INSERT INTO tb_combate_special_effect (bot_id, personagem_bot_id, special_effect, duracao, vontade) VALUE (?,?,?,?, ?)",
+                "iiiii", array($this->userDetails->combate_bot["id"], $personagem_combate["bot_id"], -$habilidade["special_effect"], 1, $habilidade["consumo"]));
         } else {
-            $this->connection->run("INSERT INTO tb_combate_special_effect (combate_id, tripulacao_id, personagem_id, special_effect, duracao) VALUE (?,?,?,?,?)",
-                "iiiii", array($this->userDetails->combate_pvp["combate"], $this->userDetails->tripulacao["id"], $personagem_combate["cod"], -$habilidade["special_effect"], 1));
+            $this->connection->run("INSERT INTO tb_combate_special_effect (combate_id, tripulacao_id, personagem_id, special_effect, duracao, vontade) VALUE (?,?,?,?,?,?)",
+                "iiiiii", array($this->userDetails->combate_pvp["combate"], $this->userDetails->tripulacao["id"], $personagem_combate["cod"], -$habilidade["special_effect"], 1, $habilidade["consumo"]));
         }
     }
 
@@ -424,8 +424,8 @@ class Combate
                 if ($habilidade["special_effect"] == SPECIAL_EFFECT_PONTO_FRACO) {
                     $alvo["def"] = ceil($alvo["def"] * 0.5);
                 } else {
-                    $this->connection->run("INSERT INTO tb_combate_special_effect (bot_id, personagem_bot_id, special_effect, duracao) VALUE (?,?,?,?)",
-                        "iiii", array($this->userDetails->combate_bot["id"], $alvo["bot_id"], $habilidade["special_effect"], duracao_special_effect($habilidade["special_effect"])));
+                    $this->connection->run("INSERT INTO tb_combate_special_effect (bot_id, personagem_bot_id, special_effect, duracao, vontade) VALUE (?,?,?,?,?)",
+                        "iiii", array($this->userDetails->combate_bot["id"], $alvo["bot_id"], $habilidade["special_effect"], duracao_special_effect($habilidade["special_effect"])), $habilidade["consumo"]);
                 }
             }
         } else {
@@ -437,8 +437,8 @@ class Combate
                 if ($habilidade["special_effect"] == SPECIAL_EFFECT_PONTO_FRACO) {
                     $alvo["def"] = ceil($alvo["def"] * 0.5);
                 } else {
-                    $this->connection->run("INSERT INTO tb_combate_special_effect (combate_id, tripulacao_id, personagem_id, special_effect, duracao) VALUE (?,?,?,?,?)",
-                        "iiiii", array($this->userDetails->combate_pvp["combate"], $alvo["id"], $alvo["cod"], $habilidade["special_effect"], duracao_special_effect($habilidade["special_effect"])));
+                    $this->connection->run("INSERT INTO tb_combate_special_effect (combate_id, tripulacao_id, personagem_id, special_effect, duracao, vontade) VALUE (?,?,?,?,?,?)",
+                        "iiiiii", array($this->userDetails->combate_pvp["combate"], $alvo["id"], $alvo["cod"], $habilidade["special_effect"], duracao_special_effect($habilidade["special_effect"]), $habilidade["consumo"]));
                 }
             }
         }

@@ -89,7 +89,7 @@ class CombateBot
         )->fetch_all_array();
 
         foreach ($sangrando as $alvo) {
-            $nhp = max(1, $alvo["hp"] - ceil($alvo["hp_max"] * 0.06));
+            $nhp = max(1, $alvo["hp"] - ceil($alvo["hp_max"] * dano_special_effect(SPECIAL_EFFECT_SANGRAMENTO, $sangrando["vontade"]) / 100.0));
             $this->connection->run("UPDATE tb_combate_personagens_bot SET hp = ? WHERE id = ?",
                 "ii", array($nhp, $alvo["personagem_bot_id"]));
         }
@@ -106,7 +106,7 @@ class CombateBot
         )->fetch_all_array();
 
         foreach ($sangrando as $alvo) {
-            $nhp = max(1, $alvo["hp"] - ceil($alvo["hp_max"] * 0.03));
+            $nhp = max(1, $alvo["hp"] - ceil($alvo["hp_max"] * dano_special_effect(SPECIAL_EFFECT_VENENO, $sangrando["vontade"]) / 100.0));
             $this->connection->run("UPDATE tb_combate_personagens_bot SET hp = ? WHERE id = ?",
                 "ii", array($nhp, $alvo["personagem_bot_id"]));
         }
