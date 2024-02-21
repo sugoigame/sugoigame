@@ -1156,7 +1156,7 @@ class Combate
     }
     public function regen_mp_npc()
     {
-        $this->connection->run("UPDATE tb_combate_pnc SET mp_npc = mp_npc + 1 WHERE id = ?",
+        $this->connection->run("UPDATE tb_combate_npc SET mp_npc = mp_npc + 1 WHERE id = ?",
             "i", $this->userDetails->tripulacao["id"]);
     }
 
