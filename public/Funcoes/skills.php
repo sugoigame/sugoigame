@@ -79,8 +79,12 @@ function nome_tipo_skill($skill)
         case TIPO_SKILL_BUFF_PROFISSAO:
         case TIPO_SKILL_BUFF_AKUMA:
             return "Buff";
-        default:
+        case TIPO_SKILL_PASSIVA_CLASSE:
+        case TIPO_SKILL_PASSIVA_PROFISSAO:
+        case TIPO_SKILL_PASSIVA_AKUMA:
             return "Passiva";
+        default:
+            return $skill["tipo"];
     }
 }
 
@@ -314,7 +318,7 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
         </div>
     <?php endforeach; ?>
 <?php } ?>
-<?php function render_one_skill_info($skill, $pers, $form_url, $pode_aprender_func, $aprendidas, $requisitos = true)
+<?php function render_one_skill_info($skill, $pers, $form_url, $pode_aprender_func, $aprendidas = [], $requisitos = true)
 { ?>
     <?php
     $aprendida_linha = false;
@@ -324,17 +328,21 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
             break;
         }
     }
+
+    $icone = $aprendida_linha ? $aprendida_linha["icon"] : $skill["icone_padrao"];
     ?>
     <div class="panel panel-default m0 h-100"
         style="<?= $aprendida_linha && ! $aprendidas[$skill["categoria"]] ? "opacity: 0.2" : "" ?>">
         <div class="panel-body pt1 pb0">
             <div class="d-flex justify-content-center align-items-center mb">
-                <div class="mr">
-                    <img src="Imagens/Skils/<?= $aprendida_linha ? $aprendida_linha["icon"] : $skill["icone_padrao"] ?>.jpg"
-                        width="40vw">
-                </div>
+                <?php if ($icone) : ?>
+                    <div class="mr">
+                        <img src="Imagens/Skils/<?= $icone ?>.jpg" width="40vw">
+                    </div>
+                <?php endif; ?>
                 <div>
-                    <?= $skill["tipo"] ?> <img src="Imagens/Skils/Tipo/<?= $skill["tipo"] ?>.png" width="15vw">
+                    <?= nome_tipo_skill($skill) ?> <img src="Imagens/Skils/Tipo/<?= nome_tipo_skill($skill) ?>.png"
+                        width="15vw">
                 </div>
             </div>
             <?php if ($requisitos) : ?>

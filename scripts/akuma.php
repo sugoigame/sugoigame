@@ -2,6 +2,7 @@
 include "../public/Classes/DataLoader.php";
 include "../public/Classes/MapLoader.php";
 include "../public/Funcoes/atributos.php";
+include "../public/Constantes/skills.php";
 
 $akumas = DataLoader::load('akumas');
 
@@ -41,154 +42,96 @@ function createSkill($akuma, $index, $lvl, $categoria)
     $cod_skill = ($akuma["cod_akuma"] * 100) + $lvl + $categoria;
     $description = $akuma["nome"] . " - " . $lvl . $categoria . " " . $arquetipo;
 
+    $skill = [
+        "cod_skil" => $cod_skill,
+        "cod_akuma" => $akuma["cod_akuma"],
+        "description" => $description,
+        "consumo" => $vontade,
+        "requisito_lvl" => $lvl,
+        "requisito_classe" => 0,
+        "requisito_prof" => 0,
+        "categoria" => $categoria
+    ];
+
     if ($arquetipo == "Dano") {
-        return [
-            "cod_skil" => $cod_skill,
-            "description" => $description,
-            "consumo" => $vontade,
-            "requisito_lvl" => $lvl,
-            "requisito_classe" => 0,
-            "requisito_prof" => 0,
-            "dano" => round(($vontade / 4) * 0.2 + 1.2, 2),
-            "alcance" => 1,
-            "area" => 1,
-            "espera" => 0,
-            "categoria" => $categoria
-        ];
+        $skill["tipo"] = TIPO_SKILL_ATAQUE_AKUMA;
+        $skill["dano"] = round(($vontade / 4) * 0.2 + 1.2, 2);
+        $skill["alcance"] = 1;
+        $skill["area"] = 1;
+        $skill["espera"] = 0;
+        $skill["categoria"] = $categoria;
     } elseif ($arquetipo == "Alcance") {
-        return [
-            "cod_skil" => $cod_skill,
-            "description" => $description,
-            "consumo" => $vontade,
-            "requisito_lvl" => $lvl,
-            "requisito_classe" => 0,
-            "requisito_prof" => 0,
-            "dano" => round(($vontade / 4) * 0.15 + 1, 2),
-            "alcance" => 10,
-            "area" => 1,
-            "espera" => 0,
-            "categoria" => $categoria
-        ];
+        $skill["tipo"] = TIPO_SKILL_ATAQUE_AKUMA;
+        $skill["dano"] = round(($vontade / 4) * 0.15 + 1, 2);
+        $skill["alcance"] = 10;
+        $skill["area"] = 1;
+        $skill["espera"] = 0;
     } elseif ($arquetipo == "Area") {
-        return [
-            "cod_skil" => $cod_skill,
-            "description" => $description,
-            "consumo" => $vontade,
-            "requisito_lvl" => $lvl,
-            "requisito_classe" => 0,
-            "requisito_prof" => 0,
-            "dano" => round(($vontade / 4) * 0.15 + 0.6, 2),
-            "alcance" => 1,
-            "area" => 4,
-            "espera" => 0,
-            "categoria" => $categoria
-        ];
+        $skill["tipo"] = TIPO_SKILL_ATAQUE_AKUMA;
+        $skill["dano"] = round(($vontade / 4) * 0.15 + 0.6, 2);
+        $skill["alcance"] = 1;
+        $skill["area"] = 4;
+        $skill["espera"] = 0;
     } elseif ($arquetipo == "Imobilizar") {
-        return [
-            "cod_skil" => $cod_skill,
-            "description" => $description,
-            "consumo" => $vontade,
-            "requisito_lvl" => $lvl,
-            "requisito_classe" => 0,
-            "requisito_prof" => 0,
-            "dano" => round(($vontade / 4) * 0.15 + 1, 2),
-            "alcance" => 3,
-            "area" => 0,
-            "espera" => 0,
-            "categoria" => $categoria,
-            "special_apply_type" => 1,
-            "special_effect" => 3,
-            "special_target" => 2
-        ];
+        $skill["tipo"] = TIPO_SKILL_ATAQUE_AKUMA;
+        $skill["dano"] = round(($vontade / 4) * 0.15 + 1, 2);
+        $skill["alcance"] = 3;
+        $skill["area"] = 0;
+        $skill["espera"] = 0;
+        $skill["special_apply_type"] = 1;
+        $skill["special_effect"] = 3;
+        $skill["special_target"] = 2;
     } elseif ($arquetipo == "Veneno") {
-        return [
-            "cod_skil" => $cod_skill,
-            "description" => $description,
-            "consumo" => $vontade,
-            "requisito_lvl" => $lvl,
-            "requisito_classe" => 0,
-            "requisito_prof" => 0,
-            "dano" => round(($vontade / 4) * 0.15 + 1, 2),
-            "alcance" => 3,
-            "area" => 0,
-            "espera" => 0,
-            "categoria" => $categoria,
-            "special_apply_type" => 1,
-            "special_effect" => 2,
-            "special_target" => 2
-        ];
+        $skill["tipo"] = TIPO_SKILL_ATAQUE_AKUMA;
+        $skill["dano"] = round(($vontade / 4) * 0.15 + 1, 2);
+        $skill["alcance"] = 3;
+        $skill["area"] = 0;
+        $skill["espera"] = 0;
+        $skill["special_apply_type"] = 1;
+        $skill["special_effect"] = 2;
+        $skill["special_target"] = 2;
     } elseif ($arquetipo == "Sangramento") {
-        return [
-            "cod_skil" => $cod_skill,
-            "description" => $description,
-            "consumo" => $vontade,
-            "requisito_lvl" => $lvl,
-            "requisito_classe" => 0,
-            "requisito_prof" => 0,
-            "dano" => round(($vontade / 4) * 0.15 + 1, 2),
-            "alcance" => 3,
-            "area" => 0,
-            "espera" => 0,
-            "categoria" => $categoria,
-            "special_apply_type" => 1,
-            "special_effect" => 1,
-            "special_target" => 2
-        ];
+        $skill["tipo"] = TIPO_SKILL_ATAQUE_AKUMA;
+        $skill["dano"] = round(($vontade / 4) * 0.15 + 1, 2);
+        $skill["alcance"] = 3;
+        $skill["area"] = 0;
+        $skill["espera"] = 0;
+        $skill["special_apply_type"] = 1;
+        $skill["special_effect"] = 1;
+        $skill["special_target"] = 2;
     } elseif (str_starts_with($arquetipo, "AB")) {
         $bonus_atr = get_bonus_atr(str_replace("AB:", "", $arquetipo), $cod_arquetipo, $index);
-        return [
-            "cod_skil" => $cod_skill,
-            "description" => $description,
-            "consumo" => $vontade,
-            "requisito_lvl" => $lvl,
-            "requisito_classe" => 0,
-            "requisito_prof" => 0,
-            "bonus_atr" => $bonus_atr,
-            "bonus_atr_qnt" => 100,
-            "duracao" => 4,
-            "alcance" => 0,
-            "area" => 1,
-            "espera" => 4,
-            "categoria" => $categoria
-        ];
+        $skill["tipo"] = TIPO_SKILL_BUFF_AKUMA;
+        $skill["bonus_atr"] = $bonus_atr;
+        $skill["bonus_atr_qnt"] = 100;
+        $skill["duracao"] = 4;
+        $skill["alcance"] = 0;
+        $skill["area"] = 1;
+        $skill["espera"] = 4;
     } elseif (str_starts_with($arquetipo, "Buff")) {
         $bonus_atr = get_bonus_atr(str_replace("Buff:", "", $arquetipo), $cod_arquetipo, $index);
-        return [
-            "cod_skil" => $cod_skill,
-            "description" => $description,
-            "consumo" => $vontade,
-            "requisito_lvl" => $lvl,
-            "requisito_classe" => 0,
-            "requisito_prof" => 0,
-            "bonus_atr" => $bonus_atr,
-            "bonus_atr_qnt" => 100,
-            "duracao" => 3,
-            "alcance" => 1,
-            "area" => 2,
-            "espera" => 4,
-            "categoria" => $categoria
-        ];
+        $skill["tipo"] = TIPO_SKILL_BUFF_AKUMA;
+        $skill["bonus_atr"] = $bonus_atr;
+        $skill["bonus_atr_qnt"] = 100;
+        $skill["duracao"] = 3;
+        $skill["alcance"] = 1;
+        $skill["area"] = 2;
+        $skill["espera"] = 4;
     } elseif (str_starts_with($arquetipo, "Debuff")) {
         $bonus_atr = get_bonus_atr(str_replace("Debuff:", "", $arquetipo), $cod_arquetipo, $index);
-        return [
-            "cod_skil" => $cod_skill,
-            "description" => $description,
-            "consumo" => $vontade,
-            "requisito_lvl" => $lvl,
-            "requisito_classe" => 0,
-            "requisito_prof" => 0,
-            "bonus_atr" => $bonus_atr,
-            "bonus_atr_qnt" => -100,
-            "duracao" => 3,
-            "alcance" => 1,
-            "area" => 2,
-            "espera" => 4,
-            "categoria" => $categoria
-        ];
+        $skill["tipo"] = TIPO_SKILL_BUFF_AKUMA;
+        $skill["bonus_atr"] = $bonus_atr;
+        $skill["bonus_atr_qnt"] = -100;
+        $skill["duracao"] = 3;
+        $skill["alcance"] = 1;
+        $skill["area"] = 2;
+        $skill["espera"] = 4;
     } else {
         echo $arquetipo;
         return [];
     }
+
+    return $skill;
 }
 
 foreach ($akumas as $akuma) {

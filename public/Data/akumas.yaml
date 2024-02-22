@@ -8,6 +8,8 @@
     - Alcance
     - AB:agl,dex,res
     - Dano
+  vantagens:
+    - 75
 # - nome: Bara Bara no Mi
 #   cod_akuma: 2
 #   tipo: paramecia
@@ -742,6 +744,8 @@
     - Area
     - Alcance
     - Dano
+  vantagens:
+    - 81
 - nome: Goro Goro no Mi
   descricao:
   icon: 1
@@ -762,6 +766,8 @@
     - Area
     - Alcance
     - Imobilizar
+  vantagens:
+    - 83
 - nome: Yami Yami no Mi
   descricao:
   icon: 1
@@ -792,6 +798,8 @@
     - Dano
     - Area
     - AB:atk
+  vantagens:
+    - 74
 - nome: Susu Susu no Mi
   descricao:
   icon: 1

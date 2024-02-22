@@ -141,9 +141,9 @@
                 <?php $pode_aprender_func = function ($pers, $skill) {
                     global $userDetails;
                     return $pers["lvl"] >= $skill["requisito_lvl"]
-                        and $pers[nome_atributo_tabela($skill["requisito_atr_1"])] >= $skill["requisito_atr_1_qnt"]
-                        and $userDetails->tripulacao["berries"] >= $skill["requisito_berries"]
-                        and $pers["classe"] == $skill["requisito_classe"];
+                        && $pers[nome_atributo_tabela($skill["requisito_atr_1"])] >= $skill["requisito_atr_1_qnt"]
+                        && $userDetails->tripulacao["berries"] >= $skill["requisito_berries"]
+                        && $pers["classe"] == $skill["requisito_classe"];
                 }; ?>
                 <h4>Atenção! Você só pode escolher uma habilidade por linha.</h4>
                 <?php render_habilidades_classe_tab($skills_classe[$pers["classe"]], $pers, "Academia/aprender_skil.php", $pode_aprender_func) ?>
