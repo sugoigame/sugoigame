@@ -520,13 +520,6 @@ class Combate
 
     public function get_mod_akuma($personagem_combate, $alvo)
     {
-        if (isset($personagem_combate["categoria_akuma"])) {
-            $personagem_combate["akuma"] = true;
-        }
-        if (isset($alvo["categoria_akuma"])) {
-            $alvo["akuma"] = true;
-        }
-
         if (! isset($personagem_combate["akuma"])) {
             $personagem_combate["akuma"] = null;
         }
@@ -540,10 +533,11 @@ class Combate
             || $this->userDetails->buffs->get_efeito_from_tripulacao("anula_efeito_akuma", $alvo["id"])
         ) {
             $mod_akuma = 1;
-        } else if ($personagem_combate["akuma"] && $alvo["akuma"]) {
-            $categoria_atacante = isset($personagem_combate["categoria_akuma"]) ? $personagem_combate["categoria_akuma"] : get_categoria_akuma($personagem_combate["akuma"]);
-            $categoria_alvo = isset($alvo["categoria_akuma"]) ? $alvo["categoria_akuma"] : get_categoria_akuma($alvo["akuma"]);
-            $mod_akuma = categoria_akuma($categoria_atacante, $categoria_alvo);
+        } elseif ($personagem_combate["akuma"] && $alvo["akuma"]) {
+            $mod_akuma = categoria_akuma(
+                DataLoader::find("akumas", ["cod_akuma" => $personagem_combate["akuma"]]),
+                DataLoader::find("akumas", ["cod_akuma" => $alvo["akuma"]])
+            );
         } else {
             $mod_akuma = 1;
         }

@@ -7,31 +7,29 @@
     <div class="panel panel-default">
         <div class="panel-heading">Calculadora de Combate</div>
         <div class="panel-body">
-            <?php $atk_1 = isset($_GET["atk_1"]) && validate_number($_GET["atk_1"]) ? $_GET["atk_1"] : NULL ?>
-            <?php $def_1 = isset($_GET["def_1"]) && validate_number($_GET["def_1"]) ? $_GET["def_1"] : NULL ?>
-            <?php $agl_1 = isset($_GET["agl_1"]) && validate_number($_GET["agl_1"]) ? $_GET["agl_1"] : NULL ?>
-            <?php $res_1 = isset($_GET["res_1"]) && validate_number($_GET["res_1"]) ? $_GET["res_1"] : NULL ?>
-            <?php $pre_1 = isset($_GET["pre_1"]) && validate_number($_GET["pre_1"]) ? $_GET["pre_1"] : NULL ?>
-            <?php $dex_1 = isset($_GET["dex_1"]) && validate_number($_GET["dex_1"]) ? $_GET["dex_1"] : NULL ?>
-            <?php $per_1 = isset($_GET["per_1"]) && validate_number($_GET["per_1"]) ? $_GET["per_1"] : NULL ?>
-            <?php $mantra_1 = isset($_GET["mantra_1"]) && validate_number($_GET["mantra_1"]) ? $_GET["mantra_1"] : NULL ?>
-            <?php $armamento_1 = isset($_GET["armamento_1"]) && validate_number($_GET["armamento_1"]) ? $_GET["armamento_1"] : NULL ?>
-            <?php $classe_1 = isset($_GET["classe_1"]) && validate_number($_GET["classe_1"]) ? $_GET["classe_1"] : NULL ?>
-            <?php $score_1 = isset($_GET["score_1"]) && validate_number($_GET["score_1"]) ? $_GET["score_1"] : NULL ?>
-            <?php $akuma_1 = isset($_GET["akuma_1"]) && validate_number($_GET["akuma_1"]) ? $_GET["akuma_1"] : NULL ?>
-            <?php $atk_2 = isset($_GET["atk_2"]) && validate_number($_GET["atk_2"]) ? $_GET["atk_2"] : NULL ?>
-            <?php $def_2 = isset($_GET["def_2"]) && validate_number($_GET["def_2"]) ? $_GET["def_2"] : NULL ?>
-            <?php $agl_2 = isset($_GET["agl_2"]) && validate_number($_GET["agl_2"]) ? $_GET["agl_2"] : NULL ?>
-            <?php $res_2 = isset($_GET["res_2"]) && validate_number($_GET["res_2"]) ? $_GET["res_2"] : NULL ?>
-            <?php $pre_2 = isset($_GET["pre_2"]) && validate_number($_GET["pre_2"]) ? $_GET["pre_2"] : NULL ?>
-            <?php $dex_2 = isset($_GET["dex_2"]) && validate_number($_GET["dex_2"]) ? $_GET["dex_2"] : NULL ?>
-            <?php $per_2 = isset($_GET["per_2"]) && validate_number($_GET["per_2"]) ? $_GET["per_2"] : NULL ?>
-            <?php $mantra_2 = isset($_GET["mantra_2"]) && validate_number($_GET["mantra_2"]) ? $_GET["mantra_2"] : NULL ?>
-            <?php $armamento_2 = isset($_GET["armamento_2"]) && validate_number($_GET["armamento_2"]) ? $_GET["armamento_2"] : NULL ?>
-            <?php $classe_2 = isset($_GET["classe_2"]) && validate_number($_GET["classe_2"]) ? $_GET["classe_2"] : NULL ?>
-            <?php $score_2 = isset($_GET["score_2"]) && validate_number($_GET["score_2"]) ? $_GET["score_2"] : NULL ?>
-            <?php $akuma_2 = isset($_GET["akuma_2"]) && validate_number($_GET["akuma_2"]) ? $_GET["akuma_2"] : NULL ?>
-            <?php $habilidade = isset($_GET["habilidade"]) && validate_number($_GET["habilidade"]) ? $_GET["habilidade"] : NULL ?>
+            <?php $atk_1 = isset($_GET["atk_1"]) && validate_number($_GET["atk_1"]) ? $_GET["atk_1"] : null ?>
+            <?php $def_1 = isset($_GET["def_1"]) && validate_number($_GET["def_1"]) ? $_GET["def_1"] : null ?>
+            <?php $agl_1 = isset($_GET["agl_1"]) && validate_number($_GET["agl_1"]) ? $_GET["agl_1"] : null ?>
+            <?php $res_1 = isset($_GET["res_1"]) && validate_number($_GET["res_1"]) ? $_GET["res_1"] : null ?>
+            <?php $pre_1 = isset($_GET["pre_1"]) && validate_number($_GET["pre_1"]) ? $_GET["pre_1"] : null ?>
+            <?php $dex_1 = isset($_GET["dex_1"]) && validate_number($_GET["dex_1"]) ? $_GET["dex_1"] : null ?>
+            <?php $per_1 = isset($_GET["per_1"]) && validate_number($_GET["per_1"]) ? $_GET["per_1"] : null ?>
+            <?php $mantra_1 = isset($_GET["mantra_1"]) && validate_number($_GET["mantra_1"]) ? $_GET["mantra_1"] : null ?>
+            <?php $armamento_1 = isset($_GET["armamento_1"]) && validate_number($_GET["armamento_1"]) ? $_GET["armamento_1"] : null ?>
+            <?php $classe_1 = isset($_GET["classe_1"]) && validate_number($_GET["classe_1"]) ? $_GET["classe_1"] : null ?>
+            <?php $score_1 = isset($_GET["score_1"]) && validate_number($_GET["score_1"]) ? $_GET["score_1"] : null ?>
+            <?php $atk_2 = isset($_GET["atk_2"]) && validate_number($_GET["atk_2"]) ? $_GET["atk_2"] : null ?>
+            <?php $def_2 = isset($_GET["def_2"]) && validate_number($_GET["def_2"]) ? $_GET["def_2"] : null ?>
+            <?php $agl_2 = isset($_GET["agl_2"]) && validate_number($_GET["agl_2"]) ? $_GET["agl_2"] : null ?>
+            <?php $res_2 = isset($_GET["res_2"]) && validate_number($_GET["res_2"]) ? $_GET["res_2"] : null ?>
+            <?php $pre_2 = isset($_GET["pre_2"]) && validate_number($_GET["pre_2"]) ? $_GET["pre_2"] : null ?>
+            <?php $dex_2 = isset($_GET["dex_2"]) && validate_number($_GET["dex_2"]) ? $_GET["dex_2"] : null ?>
+            <?php $per_2 = isset($_GET["per_2"]) && validate_number($_GET["per_2"]) ? $_GET["per_2"] : null ?>
+            <?php $mantra_2 = isset($_GET["mantra_2"]) && validate_number($_GET["mantra_2"]) ? $_GET["mantra_2"] : null ?>
+            <?php $armamento_2 = isset($_GET["armamento_2"]) && validate_number($_GET["armamento_2"]) ? $_GET["armamento_2"] : null ?>
+            <?php $classe_2 = isset($_GET["classe_2"]) && validate_number($_GET["classe_2"]) ? $_GET["classe_2"] : null ?>
+            <?php $score_2 = isset($_GET["score_2"]) && validate_number($_GET["score_2"]) ? $_GET["score_2"] : null ?>
+            <?php $habilidade = isset($_GET["habilidade"]) && validate_number($_GET["habilidade"]) ? $_GET["habilidade"] : null ?>
             <form method="get">
                 <input type="hidden" name="ses" value="calculadoras">
                 <div class="row">
@@ -103,22 +101,6 @@
                             <label>Score do atacante:</label>
                             <input min="1" class="form-control" type="number" name="score_1" required
                                 value="<?= $score_1 ? $score_1 : 1000 ?>">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Categoria da Akuma no Mi do Atacante:</label>
-                            <select name="akuma_1" class="form-control">
-                                <option value="0" <?= $akuma_1 == 0 ? "selected" : "" ?>>Sem Akuma no Mi</option>
-                                <option value="1" <?= $akuma_1 == 1 ? "selected" : "" ?>>A</option>
-                                <option value="2" <?= $akuma_1 == 2 ? "selected" : "" ?>>B</option>
-                                <option value="3" <?= $akuma_1 == 3 ? "selected" : "" ?>>C</option>
-                                <option value="4" <?= $akuma_1 == 4 ? "selected" : "" ?>>D</option>
-                                <option value="5" <?= $akuma_1 == 5 ? "selected" : "" ?>>E</option>
-                                <option value="6" <?= $akuma_1 == 6 ? "selected" : "" ?>>F</option>
-                                <option value="7" <?= $akuma_1 == 7 ? "selected" : "" ?>>Mística</option>
-                                <option value="8" <?= $akuma_1 == 8 ? "selected" : "" ?>>Neutra</option>
-                                <option value="9" <?= $akuma_1 == 9 ? "selected" : "" ?>>Ineficaz</option>
-                            </select>
                         </div>
 
                         <div class="form-group">
@@ -196,22 +178,6 @@
                             <input min="1" class="form-control" type="number" name="score_2" required
                                 value="<?= $score_2 ? $score_2 : 1000 ?>">
                         </div>
-
-                        <div class="form-group">
-                            <label>Categoria da Akuma no Mi do Defensor:</label>
-                            <select name="akuma_2" class="form-control">
-                                <option value="0" <?= $akuma_2 == 0 ? "selected" : "" ?>>Sem Akuma no Mi</option>
-                                <option value="1" <?= $akuma_2 == 1 ? "selected" : "" ?>>A</option>
-                                <option value="2" <?= $akuma_2 == 2 ? "selected" : "" ?>>B</option>
-                                <option value="3" <?= $akuma_2 == 3 ? "selected" : "" ?>>C</option>
-                                <option value="4" <?= $akuma_2 == 4 ? "selected" : "" ?>>D</option>
-                                <option value="5" <?= $akuma_2 == 5 ? "selected" : "" ?>>E</option>
-                                <option value="6" <?= $akuma_2 == 6 ? "selected" : "" ?>>F</option>
-                                <option value="7" <?= $akuma_2 == 7 ? "selected" : "" ?>>Mística</option>
-                                <option value="8" <?= $akuma_2 == 8 ? "selected" : "" ?>>Neutra</option>
-                                <option value="9" <?= $akuma_2 == 9 ? "selected" : "" ?>>Ineficaz</option>
-                            </select>
-                        </div>
                     </div>
                 </div>
                 <div>
@@ -227,8 +193,8 @@
             && $pre_1 && $pre_2
             && $dex_1 && $dex_2
             && $per_1 && $per_2
-            && $mantra_1 !== NULL && $mantra_2 !== NULL
-            && $armamento_1 !== NULL && $armamento_2 !== NULL
+            && $mantra_1 !== null && $mantra_2 !== null
+            && $armamento_1 !== null && $armamento_2 !== null
             && $classe_1 && $classe_2
             && $score_1 && $score_2
             && $habilidade
@@ -259,7 +225,6 @@
                 "classe" => $classe_2,
                 "classe_score" => $score_2
             ); ?>
-            <?php $mod_akuma = $akuma_1 && $akuma_2 ? categoria_akuma($akuma_1, $akuma_2) : 1; ?>
             <div class="panel-footer text-left">
                 <h4>Porcentagens:</h4>
                 <ul>
@@ -282,10 +247,6 @@
                     <li>
                         Redução de dano por Bloqueio:
                         <?= dano_bloq($pers, $alvo) * 100 ?>%
-                    </li>
-                    <li>
-                        Alteração no dano pela vantagem da Akuma no Mi:
-                        <?= ($mod_akuma - 1) * 100 ?>%
                     </li>
                 </ul>
                 <h4>Simulação de Habilidade com
@@ -315,7 +276,7 @@
                         Defensor
                         <?= $resultado["bloqueou"] ? "Bloqueou" : "" ?> e
                         perdeu
-                        <?= $resultado["dano"] * $mod_akuma ?> pontos de
+                        <?= $resultado["dano"] ?> pontos de
                         vida
                         <?= $resultado["critou"] ? "Ataque Crítico" : "" ?>
                     </p>

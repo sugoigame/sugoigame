@@ -1,75 +1,25 @@
 <?php
-function categoria_akuma($atacante, $alvo)
+function categoria_akuma($atacante_akuma, $alvo_akuma)
 {
-    if ($atacante == 1) {
-        if ($alvo == 2)
-            $mod = 1.2;
-        elseif ($alvo == 6)
-            $mod = 0.8;
-        elseif ($alvo == 9)
-            $mod = 1.1;
-        else
-            $mod = 1;
-    } elseif ($atacante == 2) {
-        if ($alvo == 3)
-            $mod = 1.2;
-        elseif ($alvo == 1)
-            $mod = 0.8;
-        elseif ($alvo == 9)
-            $mod = 1.1;
-        else
-            $mod = 1;
-    } elseif ($atacante == 3) {
-        if ($alvo == 4)
-            $mod = 1.2;
-        elseif ($alvo == 2)
-            $mod = 0.8;
-        elseif ($alvo == 9)
-            $mod = 1.1;
-        else
-            $mod = 1;
-    } elseif ($atacante == 4) {
-        if ($alvo == 5)
-            $mod = 1.2;
-        elseif ($alvo == 3)
-            $mod = 0.8;
-        elseif ($alvo == 9)
-            $mod = 1.1;
-        else
-            $mod = 1;
-    } elseif ($atacante == 5) {
-        if ($alvo == 6)
-            $mod = 1.2;
-        elseif ($alvo == 4)
-            $mod = 0.8;
-        elseif ($alvo == 9)
-            $mod = 1.1;
-        else
-            $mod = 1;
-    } elseif ($atacante == 6) {
-        if ($alvo == 1)
-            $mod = 1.2;
-        elseif ($alvo == 5)
-            $mod = 0.8;
-        elseif ($alvo == 9)
-            $mod = 1.1;
-        else
-            $mod = 1;
-    } elseif ($atacante == 7) {
-        if ($alvo == 7)
-            $mod = 1;
-        if ($alvo == 8)
-            $mod = 1;
-        else
-            $mod = 1.1;
-    } elseif ($atacante == 8) {
-        $mod = 1;
-    } elseif ($atacante == 9) {
-        $mod = 1;
-    } else
-        $mod = 1;
+    $atacante = $atacante_akuma["categoria"];
+    $alvo = $alvo_akuma["categoria"];
+    if (($atacante == "ofensiva" && $alvo == "tatica")
+        || ($atacante == "tatica" && $alvo == "defensiva")
+        || ($atacante == "defensiva" && $alvo == "ofensiva")
+        || ($atacante == "mitica" && $alvo == "ancestral")
+        || ($atacante == "ancestral" && $alvo == "mitica")) {
+        return 1.2;
+    }
 
-    return $mod;
+    if (isset($atacante_akuma["vantagens"])) {
+        foreach ($atacante_akuma["vantagens"] as $vantagem) {
+            if ($vantagem == $alvo_akuma["cod_akuma"]) {
+                return 1.2;
+            }
+        }
+    }
+
+    return 1;
 }
 
 function nome_categoria_akuma($categoria)
