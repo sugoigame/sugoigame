@@ -6,11 +6,6 @@
 <div class="panel-body">
 
     <?php
-    $result = $connection->run("SELECT count(akm.cod_akuma) AS `count` FROM tb_akuma akm
-INNER JOIN tb_personagens per ON per.akuma = akm.cod_akuma
-INNER JOIN tb_usuarios usr ON per.id = usr.id
-WHERE usr.adm = 0");
-
     if (! isset($_GET["p"]) || ! validate_number($_GET["p"])) {
         $p = 0;
     } else {
@@ -18,50 +13,40 @@ WHERE usr.adm = 0");
     }
     $p *= 10;
 
-    $total = $result->fetch_array()["count"];
+    $akumas = DataLoader::load("akumas");
 
-    if ($total) :
-        $result = $connection->run(
-            "SELECT
-                akm.img AS img,
-                akm.nome AS akm_nome,
-                per.nome AS per_nome,
-                akm.descricao AS descricao,
-                akm.tipo AS tipo
-            FROM tb_akuma AS akm
-            INNER JOIN tb_personagens AS per ON per.akuma = akm.cod_akuma
-            INNER JOIN tb_usuarios AS usr ON per.id = usr.id
-            WHERE usr.adm = 0
-            ORDER BY cod_akuma DESC LIMIT $p, 10"
-        );
-        ?>
+    $total = count($akumas);
 
-        <ul class="list-group">
-            <? while ($akuma = $result->fetch_array()) : ?>
-                <li class="list-group-item">
-                    <div class="media">
-                        <div class="media-left">
-                            <img src="Imagens/Itens/<?= $akuma["img"] ?>.png" />
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">
-                                <? echo $akuma["akm_nome"]; ?> -
-                                <? echo $akuma["per_nome"]; ?>
-                                <span class="label label-success">
-                                    <?= nome_tipo_akuma($akuma["tipo"]) ?>
-                                </span>
-                            </h4>
+    $page = array_slice($akumas, $p, 10);
+    ?>
+
+    <ul class="list-group">
+        <? foreach ($page as $akuma) : ?>
+            <li class="list-group-item">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="Imagens/Itens/<?= $akuma["icon"] ?>.jpg" />
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <?= $akuma["nome"]; ?>
+                        </h4>
+
+                        <span class="label label-<?= label_tipo_akuma($akuma["tipo"]) ?>">
+                            <?= nome_tipo_akuma($akuma["tipo"]) ?>
+                        </span>
+                        &nbsp;
+                        <span class="label label-<?= label_categoria_akuma($akuma["categoria"]) ?>">
+                            <?= nome_categoria_akuma($akuma["categoria"]) ?>
+                        </span>
+                        <div>
                             <?= $akuma["descricao"]; ?>
                         </div>
                     </div>
-                </li>
-            <?php endwhile; ?>
-        </ul>
-    <?php else : ?>
-        <p>
-            Nenhuma Akuma foi encontrada ainda...
-        </p>
-    <?php endif; ?>
+                </div>
+            </li>
+        <?php endforeach; ?>
+    </ul>
     <?php $p /= 10; ?>
     <nav aria-label="Page navigation">
         <ul class="pagination">
@@ -73,7 +58,7 @@ WHERE usr.adm = 0");
                 </li>
             <?php endif; ?>
             <?php if ($total) : ?>
-                <?php for ($i = $p - 3; $i <= $p + 3 && $i < floor($total / 10); $i++) : ?>
+                <?php for ($i = 0; $i < floor($total / 10); $i++) : ?>
                     <?php if ($i >= 0) : ?>
                         <li>
                             <a href="./?ses=akumaBook&p=<?= $i ?>" aria-label="link_content"
