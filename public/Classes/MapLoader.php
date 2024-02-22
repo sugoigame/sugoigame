@@ -42,14 +42,14 @@ class MapLoader
     {
         $data = MapLoader::load($map);
         foreach ($data as $item) {
-            if (MapLoader::_keys_are_equal($item, $search)) {
+            if (MapLoader::keys_are_equal($item, $search)) {
                 return $item;
             }
         }
         return null;
     }
 
-    private static function _keys_are_equal($item, $search)
+    public static function keys_are_equal($item, $search)
     {
         foreach ($search as $key => $value) {
             if ($search[$key] != $item[$key]) {

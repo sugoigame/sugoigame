@@ -125,6 +125,24 @@ function label_categoria_akuma($categoria)
     }
 }
 
+function vantagem_categoria_akuma($categoria)
+{
+    switch ($categoria) {
+        case "ofensiva":
+            return "tatica";
+        case "tatica":
+            return "defensiva";
+        case "defensiva":
+            return "ofensiva";
+        case "ancestral":
+            return "mitica";
+        case "mitica":
+            return "ancestral";
+        default:
+            return "Inexistente";
+    }
+}
+
 function nome_tipo_akuma($tipo)
 {
     switch ($tipo) {
