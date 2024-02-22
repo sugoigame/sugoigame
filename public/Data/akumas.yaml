@@ -1,4 +1,5 @@
 - nome: Gomu Gomu no Mi
+  icon: 1
   cod_akuma: 1
   tipo: paramecia
   categoria: tatica
@@ -15,6 +16,7 @@
 #     - AB:agl
 #     - Teleporte
 - nome: Sube Sube no Mi
+  icon: 1
   cod_akuma: 3
   tipo: paramecia
   categoria: defensiva
@@ -23,6 +25,7 @@
     - AB:agl
     - Buff:agl
 - nome: Bomu Bomu no Mi
+  icon: 1
   cod_akuma: 4
   tipo: paramecia
   categoria: ofensiva
@@ -31,6 +34,7 @@
     - AB:dex
     - Alcance
 - nome: Kilo Kilo no Mi
+  icon: 1
   cod_akuma: 5
   tipo: paramecia
   categoria: tatica
@@ -47,6 +51,7 @@
 #     - Area
 #     - Clone
 - nome: Doru Doru no Mi
+  icon: 1
   cod_akuma: 7
   tipo: paramecia
   categoria: tatica
@@ -55,6 +60,7 @@
     - Buff:dex
     - Imobilizar
 - nome: Baku Baku no Mi
+  icon: 1
   cod_akuma: 8
   tipo: paramecia
   categoria: tatica
@@ -71,6 +77,7 @@
 #     - CopiarAtributos:pre,atk,dex
 #     - CopiarAtributos:res,agl
 - nome: Supa Supa no Mi
+  icon: 1
   cod_akuma: 10
   tipo: paramecia
   categoria: ofensiva
@@ -79,6 +86,7 @@
     - Area
     - AB:atk,dex
 - nome: Toge Toge no Mi
+  icon: 1
   cod_akuma: 11
   tipo: paramecia
   categoria: ofensiva
@@ -87,6 +95,7 @@
     - Area
     - AB:atk,dex
 - nome: Ori Ori no Mi
+  icon: 1
   cod_akuma: 12
   tipo: paramecia
   categoria: tatica
@@ -95,6 +104,7 @@
     - Debuff:agl
     - Dano
 - nome: Bane Bane no Mi
+  icon: 1
   cod_akuma: 13
   tipo: paramecia
   categoria: tatica
@@ -111,6 +121,7 @@
 #     - Alcance
 #     - Aproximar
 - nome: Noro Noro no Mi
+  icon: 1
   cod_akuma: 15
   tipo: paramecia
   categoria: tatica
@@ -143,6 +154,7 @@
 #     - AB:agl
 #     - Teleporte
 - nome: Sabi Sabi no Mi
+  icon: 1
   cod_akuma: 19
   tipo: paramecia
   categoria: tatica
@@ -151,6 +163,7 @@
     - Debuff:dex
     - Dano
 - nome: Shari Shari no Mi
+  icon: 1
   cod_akuma: 20
   tipo: paramecia
   categoria: tatica
@@ -159,6 +172,7 @@
     - AB:agl
     - AB:dex
 - nome: Horo Horo no Mi
+  icon: 1
   cod_akuma: 21
   tipo: paramecia
   categoria: tatica
@@ -175,6 +189,7 @@
 #     - AB:agl
 #     - AB:agl
 - nome: Kage Kage no Mi
+  icon: 1
   cod_akuma: 23
   tipo: paramecia
   categoria: tatica
@@ -199,6 +214,7 @@
 #     - Debuff:dex,atk,def
 #     - Teleporte
 - nome: Toshi Toshi no Mi
+  icon: 1
   cod_akuma: 26
   tipo: paramecia
   categoria: tatica
@@ -231,6 +247,7 @@
 #     - AB:res
 #     - Imunidade
 - nome: Wara Wara no Mi
+  icon: 1
   cod_akuma: 30
   tipo: paramecia
   categoria: tatica
@@ -239,6 +256,7 @@
     - Dano
     - AB:def,res
 - nome: Oto Oto no Mi
+  icon: 1
   cod_akuma: 31
   tipo: paramecia
   categoria: tatica
@@ -247,6 +265,7 @@
     - Area
     - Area
 - nome: Mero Mero no Mi
+  icon: 1
   cod_akuma: 32
   tipo: paramecia
   categoria: tatica
@@ -255,6 +274,7 @@
     - Debuff:atk
     - Debuff:dex
 - nome: Doku Doku no Mi
+  icon: 1
   cod_akuma: 33
   tipo: paramecia
   categoria: ofensiva
@@ -271,6 +291,7 @@
 #     - TrocarAtributos:pre-dex,atk-res,dex-def
 #     - TrocarAtributos:res-agl,agl-pre
 - nome: Choki Choki no Mi
+  icon: 1
   cod_akuma: 35
   tipo: paramecia
   categoria: tatica
@@ -279,6 +300,7 @@
     - Area
     - Alcance
 - nome: Gura Gura no Mi
+  icon: 1
   cod_akuma: 36
   tipo: paramecia
   categoria: tatica
@@ -287,6 +309,7 @@
     - Alcance
     - Dano
 - nome: Kira Kira no Mi
+  icon: 1
   cod_akuma: 37
   tipo: paramecia
   categoria: defensiva
@@ -295,6 +318,7 @@
     - AB:res
     - AB:res
 - nome: Woshu Woshu no Mi
+  icon: 1
   cod_akuma: 38
   tipo: paramecia
   categoria: tatica
@@ -303,6 +327,7 @@
     - Debuff:def
     - Debuff:res
 - nome: Fuwa Fuwa no Mi
+  icon: 1
   cod_akuma: 39
   tipo: paramecia
   categoria: tatica
@@ -311,6 +336,7 @@
     - Debuff:def
     - Debuff:def
 - nome: Deka Deka no Mi
+  icon: 1
   cod_akuma: 40
   tipo: paramecia
   categoria: tatica
@@ -319,6 +345,7 @@
     - AB:dex
     - AB:dex
 - nome: Mato Mato no Mi
+  icon: 1
   cod_akuma: 41
   tipo: paramecia
   categoria: tatica
@@ -327,6 +354,7 @@
     - AB:dex
     - AB:dex
 - nome: Fuku Fuku no Mi
+  icon: 1
   cod_akuma: 42
   tipo: paramecia
   categoria: tatica
@@ -343,6 +371,7 @@
 #     - Debuff:agl
 #     - Desarmar
 - nome: Buki Buki no Mi
+  icon: 1
   cod_akuma: 44
   tipo: paramecia
   categoria: ofensiva
@@ -359,6 +388,7 @@
 #     - AB:dex
 #     - Empurrar
 - nome: Beta Beta no Mi
+  icon: 1
   cod_akuma: 46
   tipo: paramecia
   categoria: tatica
@@ -367,6 +397,7 @@
     - Area
     - Imobilizar
 - nome: Zushi Zushi no Mi
+  icon: 1
   cod_akuma: 47
   tipo: paramecia
   categoria: tatica
@@ -375,6 +406,7 @@
     - Debuff:agl
     - Dano
 - nome: Bari Bari no Mi
+  icon: 1
   cod_akuma: 48
   tipo: paramecia
   categoria: defensiva
@@ -391,6 +423,7 @@
 #     - Buff:def
 #     - Buff:res
 - nome: Mochi Mochi no Mi
+  icon: 1
   cod_akuma: 50
   tipo: paramecia
   categoria: tatica
@@ -399,6 +432,7 @@
     - AB:agl
     - Dano
 - nome: Hito Hito no Mi, Modelo Nika
+  icon: 1
   cod_akuma: 51
   tipo: zoan
   categoria: mitica
@@ -407,6 +441,7 @@
     - Area
     - AB:agl
 - nome: Ushi Ushi no Mi, Modelo Bisão
+  icon: 1
   cod_akuma: 52
   tipo: zoan
   categoria: tatica
@@ -415,6 +450,7 @@
     - Dano
     - AB:atk
 - nome: Hito Hito no Mi
+  icon: 1
   cod_akuma: 52
   tipo: zoan
   categoria: tatica
@@ -423,6 +459,7 @@
     - Alcance
     - Area
 - nome: Tori Tori no Mi, Modelo Falcão
+  icon: 1
   cod_akuma: 53
   tipo: zoan
   categoria: tatica
@@ -431,6 +468,7 @@
     - AB:agl
     - AB:dex
 - nome: Mogu Mogu no Mi
+  icon: 1
   cod_akuma: 54
   tipo: zoan
   categoria: tatica
@@ -439,6 +477,7 @@
     - Area
     - AB:dex
 - nome: Inu Inu no Mi, Modelo:Chacal
+  icon: 1
   cod_akuma: 55
   tipo: zoan
   categoria: tatica
@@ -447,6 +486,7 @@
     - AB:atk
     - AB:dex
 - nome: Neko Neko no Mi, Modelo Leopardo
+  icon: 1
   cod_akuma: 56
   tipo: zoan
   categoria: tatica
@@ -455,6 +495,7 @@
     - AB:agl
     - AB:dex,pre
 - nome: Inu Inu no Mi, Modelo Lobo
+  icon: 1
   cod_akuma: 57
   tipo: zoan
   categoria: tatica
@@ -463,6 +504,7 @@
     - AB:atk
     - AB:dex,pre
 - nome: Ushi Ushi no Mi, Modelo Girafa
+  icon: 1
   cod_akuma: 58
   tipo: zoan
   categoria: tatica
@@ -471,6 +513,7 @@
     - AB:def
     - AB:dex,res
 - nome: Ryu Ryu no Mi, Modelo Alossauro
+  icon: 1
   cod_akuma: 58
   tipo: zoan
   categoria: ancestral
@@ -479,6 +522,7 @@
     - AB:def
     - AB:dex,atk
 - nome: Hebi Hebi no Mi, Modelo Naja Rei
+  icon: 1
   cod_akuma: 59
   tipo: zoan
   categoria: tatica
@@ -487,6 +531,7 @@
     - Dano
     - AB:agl,atk
 - nome: Hebi Hebi no Mi, Modelo Anaconda
+  icon: 1
   cod_akuma: 60
   tipo: zoan
   categoria: tatica
@@ -503,6 +548,7 @@
 #     - AB:atk,agl,dex
 #     - AB:ressurrect
 - nome: Hito Hito no Mi, Modelo Daibutsu
+  icon: 1
   cod_akuma: 62
   tipo: zoan
   categoria: mitica
@@ -511,6 +557,7 @@
     - AB:atk,agl,dex
     - AB:def,res
 - nome: Zou Zou no Mi, Modelo Mamute
+  icon: 1
   cod_akuma: 62
   tipo: zoan
   categoria: ancestral
@@ -519,6 +566,7 @@
     - AB:atk,agl,dex
     - AB:def,res
 - nome: Uo Uo no Mi Modelo Seiryu
+  icon: 1
   cod_akuma: 63
   tipo: zoan
   categoria: mitica
@@ -527,6 +575,7 @@
     - Area
     - AB:atk,dex
 - nome: Hebi Hebi no Mi, Modelo Yamata no Orochi
+  icon: 1
   cod_akuma: 64
   tipo: zoan
   categoria: mitica
@@ -535,6 +584,7 @@
     - Area
     - AB:dex
 - nome: Ryu Ryu no Mi, Modelo Espinossauro
+  icon: 1
   cod_akuma: 64
   tipo: zoan
   categoria: ancestral
@@ -543,6 +593,7 @@
     - AB:agl
     - AB:dex
 - nome: Ryu Ryu no Mi, Modelo Pteranodonte
+  icon: 1
   cod_akuma: 65
   tipo: zoan
   categoria: ancestral
@@ -551,6 +602,7 @@
     - AB:agl,atk,dex
     - AB:res,pre
 - nome: Ryu Ryu no Mi, Modelo Braquiossauro
+  icon: 1
   cod_akuma: 66
   tipo: zoan
   categoria: ancestral
@@ -559,6 +611,7 @@
     - AB:def
     - AB:res
 - nome: Ryu Ryu no Mi, Modelo Paquicefalossauro
+  icon: 1
   cod_akuma: 67
   tipo: zoan
   categoria: ancestral
@@ -567,6 +620,7 @@
     - AB:agl
     - AB:res
 - nome: Inu Inu no Mi, Modelo Okuchi no Makami
+  icon: 1
   cod_akuma: 68
   tipo: zoan
   categoria: mitica
@@ -575,6 +629,7 @@
     - AB:dex
     - AB:atk
 - nome: Neko Neko no Mi, Modelo Dentes de Sabre
+  icon: 1
   cod_akuma: 69
   tipo: zoan
   categoria: ancestral
@@ -583,6 +638,7 @@
     - AB:agl
     - AB:agl
 - nome: Ryu Ryu no Mi, Modelo Triceratops
+  icon: 1
   cod_akuma: 70
   tipo: zoan
   categoria: ancestral
@@ -591,6 +647,7 @@
     - AB:def
     - AB:res
 - nome: Uma Uma no Mi, Modelo Pegasus
+  icon: 1
   cod_akuma: 71
   tipo: zoan
   categoria: mitica
@@ -599,6 +656,7 @@
     - AB:agl,pre
     - AB:dex
 - nome: Moku Moku no Mi
+  icon: 1
   cod_akuma: 72
   tipo: logia
   categoria: tatica
@@ -607,6 +665,7 @@
     - Dano
     - AB:agl
 - nome: Suna Suna no Mi
+  icon: 1
   cod_akuma: 73
   tipo: logia
   categoria: tatica
@@ -615,6 +674,7 @@
     - Dano
     - Alcance
 - nome: Mera Mera no Mi
+  icon: 1
   cod_akuma: 74
   tipo: logia
   categoria: ofensiva
@@ -623,6 +683,7 @@
     - Alcance
     - Dano
 - nome: Goro Goro no Mi
+  icon: 1
   cod_akuma: 75
   tipo: logia
   categoria: ofensiva
@@ -631,6 +692,7 @@
     - Alcance
     - AB:dex
 - nome: Hie Hie no Mi
+  icon: 1
   cod_akuma: 76
   tipo: logia
   categoria: ofensiva
@@ -639,6 +701,7 @@
     - Alcance
     - Imobilizar
 - nome: Yami Yami no Mi
+  icon: 1
   cod_akuma: 77
   tipo: logia
   categoria: ofensiva
@@ -647,6 +710,7 @@
     - Area
     - Dano
 - nome: Pika Pika no Mi
+  icon: 1
   cod_akuma: 78
   tipo: logia
   categoria: ofensiva
@@ -655,6 +719,7 @@
     - Alcance
     - Dano
 - nome: Magu Magu no Mi
+  icon: 1
   cod_akuma: 79
   tipo: logia
   categoria: ofensiva
@@ -663,6 +728,7 @@
     - Area
     - AB:atk
 - nome: Susu Susu no Mi
+  icon: 1
   cod_akuma: 80
   tipo: logia
   categoria: ofensiva
@@ -671,6 +737,7 @@
     - Alcance
     - AB:agl
 - nome: Numa Numa no Mi
+  icon: 1
   cod_akuma: 81
   tipo: logia
   categoria: tatica
@@ -679,6 +746,7 @@
     - Alcance
     - Debuff:agl
 - nome: Gasu Gasu no Mi
+  icon: 1
   cod_akuma: 82
   tipo: logia
   categoria: ofensiva
@@ -687,6 +755,7 @@
     - Sangramento
     - Area
 - nome: Yuki Yuki no Mi
+  icon: 1
   cod_akuma: 83
   tipo: logia
   categoria: ofensiva
@@ -695,6 +764,7 @@
     - Alcance
     - Imobilizar
 - nome: Mori Mori no Mi
+  icon: 1
   cod_akuma: 84
   tipo: logia
   categoria: tatica
