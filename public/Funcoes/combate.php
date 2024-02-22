@@ -621,17 +621,16 @@ function calc_dano($pers, $alvo, $dano_hab = 0)
 
 function get_categoria_akuma($cod_akuma)
 {
-    global $connection;
-
-    return $connection->run("SELECT categoria FROM tb_akuma WHERE cod_akuma=?", "i", $cod_akuma)->fetch_array()["categoria"];
+    return DataLoader::find("akumas", ["cod_akuma" => $cod_akuma])["categoria"];
 }
 
 function calc_mod_akuma_for_cbt($pers, $alvo)
 {
     if ($pers["akuma"] && $alvo["akuma"]) {
-        $categoria_personagem = get_categoria_akuma($pers["akuma"]);
-        $categoria_alvo = get_categoria_akuma($alvo["akuma"]);
-        return categoria_akuma($categoria_personagem, $categoria_alvo);
+        return categoria_akuma(
+            DataLoader::find("akumas", ["cod_akuma" => $pers["akuma"]]),
+            DataLoader::find("akumas", ["cod_akuma" => $alvo["akuma"]])
+        );
     } else {
         return 1;
     }
