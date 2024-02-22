@@ -1,6 +1,6 @@
 - nome: Gomu Gomu no Mi
-  descricao: Fruta da borracha
-  icon: 1
+  descricao: Permite ao usuário ter um corpo de borracha.
+  icon: 36
   cod_akuma: 1
   tipo: paramecia
   categoria: tatica
@@ -19,8 +19,8 @@
 #     - AB:agl
 #     - Teleporte
 - nome: Sube Sube no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário adquirir um corpo escorregadio
+  icon: 12
   cod_akuma: 3
   tipo: paramecia
   categoria: defensiva
@@ -29,8 +29,8 @@
     - AB:agl
     - Buff:agl
 - nome: Bomu Bomu no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário explodir partes do seu corpo inclusive cabelo, meleca do nariz e bafo
+  icon: 32
   cod_akuma: 4
   tipo: paramecia
   categoria: ofensiva
@@ -39,8 +39,8 @@
     - AB:dex
     - Alcance
 - nome: Kilo Kilo no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário alterar seu peso desde 1 a 10.000 kg
+  icon: 20
   cod_akuma: 5
   tipo: paramecia
   categoria: tatica
@@ -57,8 +57,8 @@
 #     - Area
 #     - Clone
 - nome: Doru Doru no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário produzir cera do seu corpo e moldá-la em qualquer forma que quiser.
+  icon: 11
   cod_akuma: 7
   tipo: paramecia
   categoria: tatica
@@ -67,8 +67,8 @@
     - Buff:dex
     - Imobilizar
 - nome: Baku Baku no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário expandir sua boca em grandes proporções, mastigar e comer qualquer coisa, desde madeira até os mais fortes metais.
+  icon: 8
   cod_akuma: 8
   tipo: paramecia
   categoria: tatica
@@ -85,8 +85,8 @@
 #     - CopiarAtributos:pre,atk,dex
 #     - CopiarAtributos:res,agl
 - nome: Supa Supa no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário adquirir um corpo composto completamente de aço e transformar qualquer parte do mesmo em lâminas de aço para atacar
+  icon: 5
   cod_akuma: 10
   tipo: paramecia
   categoria: ofensiva
@@ -95,8 +95,8 @@
     - Area
     - AB:atk,dex
 - nome: Toge Toge no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário brotar espinhos de qualquer parte do seu corpo que podem atravessar paredes de pedra.
+  icon: 12
   cod_akuma: 11
   tipo: paramecia
   categoria: ofensiva
@@ -105,8 +105,8 @@
     - Area
     - AB:atk,dex
 - nome: Ori Ori no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário colocar algemas de ferro em seus inimigos
+  icon: 15
   cod_akuma: 12
   tipo: paramecia
   categoria: tatica
@@ -115,8 +115,8 @@
     - Debuff:agl
     - Dano
 - nome: Bane Bane no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário transformar suas pernas em molas.
+  icon: 19
   cod_akuma: 13
   tipo: paramecia
   categoria: tatica
@@ -133,8 +133,8 @@
 #     - Alcance
 #     - Aproximar
 - nome: Noro Noro no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário lançar raios de Noroma Fótons que diminui a velocidade de qualquer coisa
+  icon: 14
   cod_akuma: 15
   tipo: paramecia
   categoria: tatica
@@ -167,8 +167,8 @@
 #     - AB:agl
 #     - Teleporte
 - nome: Sabi Sabi no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário enferrujar objetos metálicos e quebrá-los
+  icon: 8
   cod_akuma: 19
   tipo: paramecia
   categoria: tatica
@@ -177,8 +177,8 @@
     - Debuff:dex
     - Dano
 - nome: Shari Shari no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário transformar seus braços e pés em rodas, girando-os em alta velocidade
+  icon: 50
   cod_akuma: 20
   tipo: paramecia
   categoria: tatica
@@ -187,8 +187,8 @@
     - AB:agl
     - AB:dex
 - nome: Horo Horo no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar e controlar hormônios especiais que podem afetar qualquer um
+  icon: 40
   cod_akuma: 21
   tipo: paramecia
   categoria: tatica
@@ -205,8 +205,8 @@
 #     - AB:agl
 #     - AB:agl
 - nome: Kage Kage no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário manifestar e controlar sombras em uma forma física, podendo alterar a forma ou o tamanho, colocar uma sombra em um cadáver sem vida para criar um zombie e trocar de lugar com uma para evitar ataques físicos
+  icon: 48
   cod_akuma: 23
   tipo: paramecia
   categoria: tatica
@@ -231,8 +231,8 @@
 #     - Debuff:dex,atk,def
 #     - Teleporte
 - nome: Toshi Toshi no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário manipular a idade de pessoas ou objetos
+  icon: 7
   cod_akuma: 26
   tipo: paramecia
   categoria: tatica
@@ -265,8 +265,8 @@
 #     - AB:res
 #     - Imunidade
 - nome: Wara Wara no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar e manipular palha à vontade, com a palha tendo propriedades de redirecionar danos.
+  icon: 22
   cod_akuma: 30
   tipo: paramecia
   categoria: tatica
@@ -275,8 +275,8 @@
     - Dano
     - AB:def,res
 - nome: Oto Oto no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário transformar partes de seu corpo em instrumentos musicais e tocar música com uma variedade de efeitos destrutivos.
+  icon: 6
   cod_akuma: 31
   tipo: paramecia
   categoria: tatica
@@ -285,8 +285,8 @@
     - Area
     - Area
 - nome: Mero Mero no Mi
-  descricao:
-  icon: 1
+  descricao: Concede ao usuário o poder de transformar qualquer ser humano, que tenha pensamentos luxuriosos ou apaixonados, em pedra.
+  icon: 25
   cod_akuma: 32
   tipo: paramecia
   categoria: tatica
@@ -295,8 +295,8 @@
     - Debuff:atk
     - Debuff:dex
 - nome: Doku Doku no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário produzir e controlar veneno, além de conceder imunidade ao mesmo
+  icon: 55
   cod_akuma: 33
   tipo: paramecia
   categoria: ofensiva
@@ -313,8 +313,8 @@
 #     - TrocarAtributos:pre-dex,atk-res,dex-def
 #     - TrocarAtributos:res-agl,agl-pre
 - nome: Choki Choki no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário transformar os dedos e mãos em tesouras que cortam qualquer material como se fosse papel
+  icon: 23
   cod_akuma: 35
   tipo: paramecia
   categoria: tatica
@@ -323,8 +323,8 @@
     - Area
     - Alcance
 - nome: Gura Gura no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar ondas de choque com força suficiente para criar um terremoto
+  icon: 55
   cod_akuma: 36
   tipo: paramecia
   categoria: tatica
@@ -333,7 +333,7 @@
     - Alcance
     - Dano
 - nome: Kira Kira no Mi
-  descricao:
+  descricao: Permite ao usuário transformar seu corpo em diamante.
   icon: 1
   cod_akuma: 37
   tipo: paramecia
@@ -343,8 +343,8 @@
     - AB:res
     - AB:res
 - nome: Woshu Woshu no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário literalmente "lavar e pendurar para secar" as pessoas e objetos como se fossem roupas
+  icon: 60
   cod_akuma: 38
   tipo: paramecia
   categoria: tatica
@@ -353,8 +353,8 @@
     - Debuff:def
     - Debuff:res
 - nome: Fuwa Fuwa no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário tornar objetos e o próprio corpo leves e controlá-los
+  icon: 48
   cod_akuma: 39
   tipo: paramecia
   categoria: tatica
@@ -363,8 +363,8 @@
     - Debuff:def
     - Debuff:def
 - nome: Deka Deka no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário aumentar seu tamanho
+  icon: 48
   cod_akuma: 40
   tipo: paramecia
   categoria: tatica
@@ -373,8 +373,8 @@
     - AB:dex
     - AB:dex
 - nome: Mato Mato no Mi
-  descricao:
-  icon: 1
+  descricao: Dá habilidades ao usuário de uma perfeita precisão
+  icon: 54
   cod_akuma: 41
   tipo: paramecia
   categoria: tatica
@@ -383,8 +383,8 @@
     - AB:dex
     - AB:dex
 - nome: Fuku Fuku no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar roupas e outros trajes a partir de folhas ou pedras
+  icon: 46
   cod_akuma: 42
   tipo: paramecia
   categoria: tatica
@@ -401,8 +401,8 @@
 #     - Debuff:agl
 #     - Desarmar
 - nome: Buki Buki no Mi
-  descricao:
-  icon: 1
+  descricao: Dá ao usuário a capacidade de mudar suas partes do corpo em armas
+  icon: 33
   cod_akuma: 44
   tipo: paramecia
   categoria: ofensiva
@@ -419,8 +419,8 @@
 #     - AB:dex
 #     - Empurrar
 - nome: Beta Beta no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar, e controlar uma espécie de substância pegajosa e explosiva
+  icon: 29
   cod_akuma: 46
   tipo: paramecia
   categoria: tatica
@@ -429,8 +429,8 @@
     - Area
     - Imobilizar
 - nome: Zushi Zushi no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário manipular a gravidade em torno de um local escolhido, enviando forças gravitacionais
+  icon: 28
   cod_akuma: 47
   tipo: paramecia
   categoria: tatica
@@ -439,8 +439,8 @@
     - Debuff:agl
     - Dano
 - nome: Bari Bari no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar barreiras para defender ou atacar à vontade
+  icon: 54
   cod_akuma: 48
   tipo: paramecia
   categoria: defensiva
@@ -457,8 +457,8 @@
 #     - Buff:def
 #     - Buff:res
 - nome: Mochi Mochi no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar, controlar e se transformar em massa
+  icon: 11
   cod_akuma: 50
   tipo: paramecia
   categoria: tatica
@@ -467,8 +467,8 @@
     - AB:agl
     - Dano
 - nome: Hito Hito no Mi, Modelo Nika
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se transformar no lendário "Deus do Sol" Nika e ganhar seus atributos, notavelmente um corpo com 100% de propriedades da borracha.
+  icon: 36
   cod_akuma: 51
   tipo: zoan
   categoria: mitica
@@ -477,8 +477,8 @@
     - Area
     - AB:agl
 - nome: Ushi Ushi no Mi, Modelo Bisão
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário transformar em um bisão híbrido e em um bisão completo à vontade.
+  icon: 48
   cod_akuma: 52
   tipo: zoan
   categoria: tatica
@@ -487,8 +487,8 @@
     - Dano
     - AB:atk
 - nome: Hito Hito no Mi
-  descricao:
-  icon: 1
+  descricao: Permite que seu usuário se transforme em um híbrido de humano e um ser humano completo à vontade.
+  icon: 21
   cod_akuma: 52
   tipo: zoan
   categoria: tatica
@@ -497,8 +497,8 @@
     - Alcance
     - Area
 - nome: Tori Tori no Mi, Modelo Falcão
-  descricao:
-  icon: 1
+  descricao: Permite o usuário se transformar em um híbrido metade homem metade falcão ou em um falcão completo.
+  icon: 30
   cod_akuma: 53
   tipo: zoan
   categoria: tatica
@@ -507,8 +507,8 @@
     - AB:agl
     - AB:dex
 - nome: Mogu Mogu no Mi
-  descricao:
-  icon: 1
+  descricao: Dá ao usuário a capacidade de se transformar em uma toupeira gigante ou um híbrido de toupeira-humana
+  icon: 30
   cod_akuma: 54
   tipo: zoan
   categoria: tatica
@@ -517,8 +517,8 @@
     - Area
     - AB:dex
 - nome: Inu Inu no Mi, Modelo:Chacal
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário transformar em um chacal híbrido e um chacal completo à vontade
+  icon: 47
   cod_akuma: 55
   tipo: zoan
   categoria: tatica
@@ -527,8 +527,8 @@
     - AB:atk
     - AB:dex
 - nome: Neko Neko no Mi, Modelo Leopardo
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário transformar-se num Leopardo Hibrido, num Leopardo completo
+  icon: 49
   cod_akuma: 56
   tipo: zoan
   categoria: tatica
@@ -537,8 +537,8 @@
     - AB:agl
     - AB:dex,pre
 - nome: Inu Inu no Mi, Modelo Lobo
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se transformar um lobisomem híbrido e um lobisomem completo quando quiser
+  icon: 50
   cod_akuma: 57
   tipo: zoan
   categoria: tatica
@@ -547,8 +547,8 @@
     - AB:atk
     - AB:dex,pre
 - nome: Ushi Ushi no Mi, Modelo Girafa
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário transformar-se em um híbrido (metade girafa e metade humanoide) ou em uma girafa completa à vontade
+  icon: 47
   cod_akuma: 58
   tipo: zoan
   categoria: tatica
@@ -557,8 +557,8 @@
     - AB:def
     - AB:dex,res
 - nome: Ryu Ryu no Mi, Modelo Alossauro
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se transformar em um alossauro híbrido e um alossauro completo à vontade
+  icon: 53
   cod_akuma: 58
   tipo: zoan
   categoria: ancestral
@@ -577,8 +577,8 @@
     - Dano
     - AB:agl,atk
 - nome: Hebi Hebi no Mi, Modelo Anaconda
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se transformar em uma anaconda híbrida ou completa à vontade.
+  icon: 40
   cod_akuma: 60
   tipo: zoan
   categoria: tatica
@@ -595,8 +595,8 @@
 #     - AB:atk,agl,dex
 #     - AB:ressurrect
 - nome: Hito Hito no Mi, Modelo Daibutsu
-  descricao:
-  icon: 1
+  descricao: permite ao usuário se transformar em um Daibutsu (estátua do gigante Buda).
+  icon: 25
   cod_akuma: 62
   tipo: zoan
   categoria: mitica
@@ -605,8 +605,8 @@
     - AB:atk,agl,dex
     - AB:def,res
 - nome: Zou Zou no Mi, Modelo Mamute
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se transformar em mamute completo e híbrido
+  icon: 60
   cod_akuma: 62
   tipo: zoan
   categoria: ancestral
@@ -615,8 +615,8 @@
     - AB:atk,agl,dex
     - AB:def,res
 - nome: Uo Uo no Mi Modelo Seiryu
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se transformar em uma forma híbrida e completa de um Dragão Azul à vontade. 
+  icon: 64
   cod_akuma: 63
   tipo: zoan
   categoria: mitica
@@ -625,8 +625,8 @@
     - Area
     - AB:atk,dex
 - nome: Hebi Hebi no Mi, Modelo Yamata no Orochi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se transformar em uma versão híbrida e completa do Yamata no Orochi, um dragão serpentino de oito cabeças.
+  icon: 65
   cod_akuma: 64
   tipo: zoan
   categoria: mitica
@@ -635,8 +635,8 @@
     - Area
     - AB:dex
 - nome: Ryu Ryu no Mi, Modelo Espinossauro
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se transformar em um espinossauro híbrido e um espinossauro completo à vontade
+  icon: 64
   cod_akuma: 64
   tipo: zoan
   categoria: ancestral
@@ -645,8 +645,8 @@
     - AB:agl
     - AB:dex
 - nome: Ryu Ryu no Mi, Modelo Pteranodonte
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se transformar em um pteranodonte híbrido e um pteranodonte completo à vontade.
+  icon: 49
   cod_akuma: 65
   tipo: zoan
   categoria: ancestral
@@ -655,8 +655,8 @@
     - AB:agl,atk,dex
     - AB:res,pre
 - nome: Ryu Ryu no Mi, Modelo Braquiossauro
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se transformar em um braquiossauro híbrido e um braquiossauro completo à vontade.
+  icon: 29
   cod_akuma: 66
   tipo: zoan
   categoria: ancestral
@@ -665,8 +665,8 @@
     - AB:def
     - AB:res
 - nome: Ryu Ryu no Mi, Modelo Paquicefalossauro
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se transformar em uma versão híbrida e completa de um paquicefalossauro à vontade.
+  icon: 28
   cod_akuma: 67
   tipo: zoan
   categoria: ancestral
@@ -675,8 +675,8 @@
     - AB:agl
     - AB:res
 - nome: Inu Inu no Mi, Modelo Okuchi no Makami
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se transformar em uma forma híbrida e completa de uma divindade lobo
+  icon: 23
   cod_akuma: 68
   tipo: zoan
   categoria: mitica
@@ -685,8 +685,8 @@
     - AB:dex
     - AB:atk
 - nome: Neko Neko no Mi, Modelo Dentes de Sabre
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se transformar em uma versão híbrida e completa de um tigre dentes de sabre à vontade.
+  icon: 53
   cod_akuma: 69
   tipo: zoan
   categoria: ancestral
@@ -695,8 +695,8 @@
     - AB:agl
     - AB:agl
 - nome: Ryu Ryu no Mi, Modelo Triceratops
-  descricao:
-  icon: 1
+  descricao:  Permite que o usuário se transforme em uma versão animal ou híbrida de um Triceratops,
+  icon: 57
   cod_akuma: 70
   tipo: zoan
   categoria: ancestral
@@ -705,8 +705,8 @@
     - AB:def
     - AB:res
 - nome: Uma Uma no Mi, Modelo Pegasus
-  descricao:
-  icon: 1
+  descricao: Dá a habilidade de se transformar em um Pégaso.
+  icon: 60
   cod_akuma: 71
   tipo: zoan
   categoria: mitica
@@ -715,8 +715,8 @@
     - AB:agl,pre
     - AB:dex
 - nome: Moku Moku no Mi
-  descricao:
-  icon: 1
+  descricao:  Permite ao usuário criar, controlar e se transformar em fumaça à vontade
+  icon: 17
   cod_akuma: 72
   tipo: logia
   categoria: tatica
@@ -725,8 +725,8 @@
     - Dano
     - AB:agl
 - nome: Suna Suna no Mi
-  descricao:
-  icon: 1
+  descricao: permite ao usuário criar, controlar e se transformar em areia à vontade, podendo controlar os mais diversos tipos desta.
+  icon: 9
   cod_akuma: 73
   tipo: logia
   categoria: tatica
@@ -735,8 +735,8 @@
     - Dano
     - Alcance
 - nome: Mera Mera no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar, controlar e se transformar em chamas à vontade.
+  icon: 63
   cod_akuma: 74
   tipo: logia
   categoria: ofensiva
@@ -747,8 +747,8 @@
   vantagens:
     - 81
 - nome: Goro Goro no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar, controlar e transformar-se em eletricidade à vontade
+  icon: 21
   cod_akuma: 75
   tipo: logia
   categoria: ofensiva
@@ -757,8 +757,8 @@
     - Alcance
     - AB:dex
 - nome: Hie Hie no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar, controlar e se transformar em gelo
+  icon: 31
   cod_akuma: 76
   tipo: logia
   categoria: ofensiva
@@ -769,8 +769,8 @@
   vantagens:
     - 83
 - nome: Yami Yami no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar e controlar as trevas à vontade
+  icon: 26
   cod_akuma: 77
   tipo: logia
   categoria: ofensiva
@@ -779,8 +779,8 @@
     - Area
     - Dano
 - nome: Pika Pika no Mi
-  descricao:
-  icon: 1
+  descricao:  Permite ao usuário criar, controlar e se transformar em luz à vontade
+  icon: 57
   cod_akuma: 78
   tipo: logia
   categoria: ofensiva
@@ -789,8 +789,8 @@
     - Alcance
     - Dano
 - nome: Magu Magu no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário se tornar, controlar e gerar magma
+  icon: 68
   cod_akuma: 79
   tipo: logia
   categoria: ofensiva
@@ -801,8 +801,8 @@
   vantagens:
     - 74
 - nome: Susu Susu no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar, controlar e se transformar em fuligem à vontade
+  icon: 62
   cod_akuma: 80
   tipo: logia
   categoria: ofensiva
@@ -811,8 +811,8 @@
     - Alcance
     - AB:agl
 - nome: Numa Numa no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário tornar-se o elemento de "pântano"
+  icon: 52
   cod_akuma: 81
   tipo: logia
   categoria: tatica
@@ -821,8 +821,8 @@
     - Alcance
     - Debuff:agl
 - nome: Gasu Gasu no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar, controlar e se transformar em gás à vontade
+  icon: 28
   cod_akuma: 82
   tipo: logia
   categoria: ofensiva
@@ -831,8 +831,8 @@
     - Sangramento
     - Area
 - nome: Yuki Yuki no Mi
-  descricao:
-  icon: 1
+  descricao: Permite ao usuário criar, controlar e se transformar em elemento de "neve" à vontade
+  icon: 29
   cod_akuma: 83
   tipo: logia
   categoria: ofensiva
@@ -841,8 +841,8 @@
     - Alcance
     - Imobilizar
 - nome: Mori Mori no Mi
-  descricao:
-  icon: 1
+  descricao: Permitindo que o usuário produza plantas
+  icon: 54
   cod_akuma: 84
   tipo: logia
   categoria: tatica
