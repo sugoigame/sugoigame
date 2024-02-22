@@ -520,13 +520,6 @@ class Combate
 
     public function get_mod_akuma($personagem_combate, $alvo)
     {
-        if (isset($personagem_combate["categoria_akuma"])) {
-            $personagem_combate["akuma"] = true;
-        }
-        if (isset($alvo["categoria_akuma"])) {
-            $alvo["akuma"] = true;
-        }
-
         if (! isset($personagem_combate["akuma"])) {
             $personagem_combate["akuma"] = null;
         }
