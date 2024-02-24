@@ -136,7 +136,7 @@
         <?php endforeach; ?>
         <div class=" col-md-4">
             <div class="list-group-item">
-                <p class="equipamentos_casse_0">
+                <p class="equipamentos_classe_0">
                     <img src="Imagens/Itens/168.png" /><br />
                     Bala de Canhão
                 </p>

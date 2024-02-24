@@ -10,9 +10,8 @@ function get_skill_table($tipo)
         case TIPO_SKILL_BUFF_PROFISSAO:
             return "skil_buff";
         case TIPO_SKILL_ATAQUE_AKUMA:
-            return "tb_akuma_skil_atk";
         case TIPO_SKILL_BUFF_AKUMA:
-            return "tb_akuma_skil_buff";
+            return "skil_akuma";
         default:
             return null;
     }
@@ -30,7 +29,7 @@ function get_all_skills($pers)
 {
     global $connection;
     $skills = $connection->run(
-        "SELECT * FROM tb_personagens_skil WHERE cod = ? and tipo IN (1, 2, 4, 5)",
+        "SELECT * FROM tb_personagens_skil WHERE cod = ? and tipo IN (1, 2, 4, 5, 7, 8)",
         "i", $pers["cod"]
     )->fetch_all_array();
 
@@ -40,14 +39,12 @@ function get_all_skills($pers)
         $skills[$key] = array_merge($skill, $details);
     }
 
-    $skills_akuma = get_many_results_joined_mapped_by_type("tb_personagens_skil", "cod_skil", "tipo", array(
-        array("nome" => "tb_akuma_skil_atk", "coluna" => "cod_skil", "tipo" => 7),
-        array("nome" => "tb_akuma_skil_buff", "coluna" => "cod_skil", "tipo" => 8)
-    ), "WHERE origem.cod = ? ORDER BY origem.tipo", "i", $pers["cod"]);
-
-    $skills = array_merge($skills, $skills_akuma);
-
     usort($skills, function ($a, $b) {
+        if ($a["tipo"] < $b["tipo"]) {
+            return -1;
+        } elseif ($a["tipo"] > $b["tipo"]) {
+            return 1;
+        }
         return $a["consumo"] - $b["consumo"];
     });
 
@@ -245,55 +242,11 @@ function aprende_habilidade_random($pers, $cod_skill, $tipo_skill)
     $connection->run("INSERT INTO tb_personagens_skil (cod, cod_skil, tipo, nome, descricao, icon) VALUE (?,?,?,?,?,?)",
         "iiissi", array($pers["cod"], $cod_skill, $tipo_skill, $habilidade["nome"], $habilidade["descricao"], $icon));
 }
-
-function aprende_todas_habilidades_disponiveis_akuma($pers)
-{
-    global $connection;
-
-    $result = $connection->run(
-        "SELECT * FROM tb_akuma_skil_atk a
-    LEFT JOIN tb_personagens_skil s ON a.cod_skil = s.cod_skil AND s.tipo = ?
-    WHERE a.cod_akuma= ? AND s.cod IS NULL ORDER BY a.lvl",
-        "ii", array(TIPO_SKILL_ATAQUE_AKUMA, $pers["akuma"])
-    );
-
-    while ($skill = $result->fetch_array()) {
-        if ($skill["lvl"] <= $pers["lvl"]) {
-            aprende_habilidade_random($pers, $skill["cod_skil"], TIPO_SKILL_ATAQUE_AKUMA);
-        }
-    }
-
-    $result = $connection->run(
-        "SELECT * FROM tb_akuma_skil_buff a
-    LEFT JOIN tb_personagens_skil s ON a.cod_skil = s.cod_skil AND s.tipo = ?
-    WHERE a.cod_akuma= ? AND s.cod IS NULL ORDER BY a.lvl",
-        "ii", array(TIPO_SKILL_BUFF_AKUMA, $pers["akuma"])
-    );
-
-    while ($skill = $result->fetch_array()) {
-        if ($skill["lvl"] <= $pers["lvl"]) {
-            aprende_habilidade_random($pers, $skill["cod_skil"], TIPO_SKILL_BUFF_AKUMA);
-        }
-    }
-
-    $result = $connection->run(
-        "SELECT * FROM tb_akuma_skil_passiva a
-    LEFT JOIN tb_personagens_skil s ON a.cod_skil = s.cod_skil AND s.tipo = ?
-    WHERE a.cod_akuma= ? AND s.cod IS NULL ORDER BY a.lvl",
-        "ii", array(TIPO_SKILL_PASSIVA_AKUMA, $pers["akuma"])
-    );
-
-    while ($skill = $result->fetch_array()) {
-        if ($skill["lvl"] <= $pers["lvl"]) {
-            aprende_habilidade_random($pers, $skill["cod_skil"], TIPO_SKILL_PASSIVA_AKUMA);
-        }
-    }
-}
 ?>
-<?php function render_habilidades_classe_tab($skills, $pers, $form_url, $pode_aprender_func)
+<?php function render_habilidades_classe_tab($skills, $pers, $form_url, $pode_aprender_func, $lvls = array(1, 5, 10, 20, 30, 40, 50), $categorias = 3)
 { ?>
     <?php global $connection; ?>
-    <?php $lvls = array(1, 5, 10, 20, 30, 40, 50); ?>
+    <?php $categorias_size = [1 => 12, 2 => 6, 3 => 4, 4 => 3] ?>
     <?php foreach ($lvls as $linha => $lvl) : ?>
         <div class="panel panel-default p0">
             <div class="panel-heading">
@@ -309,8 +262,8 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
                     3 => $connection->run("SELECT * FROM tb_personagens_skil WHERE cod = ? AND cod_skil = ? AND tipo = ?",
                         "iii", array($pers["cod"], $skills[3][$linha]["cod_skil"], $skills[3][$linha]["tiponum"]))->fetch_array()
                 ); ?>
-                <?php for ($categoria = 1; $categoria <= 3; $categoria++) : ?>
-                    <div class="col-xs-4 p0">
+                <?php for ($categoria = 1; $categoria <= $categorias; $categoria++) : ?>
+                    <div class="col-xs-<?= $categorias_size[$categorias] ?> p0">
                         <?php render_one_skill_info($skills[$categoria][$linha], $pers, $form_url, $pode_aprender_func, $aprendidas, false) ?>
                     </div>
                 <?php endfor; ?>
@@ -376,9 +329,11 @@ function aprende_todas_habilidades_disponiveis_akuma($pers)
         if (! $result->count()) : ?>
             <div class="panel panel-default col-xs-4 h-100 m-0">
                 <div class="panel-body">
-                    <div class="mr">
-                        <img src="Imagens/Skils/<?= $skill["icone_padrao"] ?>.jpg" width="40vw">
-                    </div>
+                    <?php if (isset($skill["icone_padrao"])) : ?>
+                        <div class="mr">
+                            <img src="Imagens/Skils/<?= $skill["icone_padrao"] ?>.jpg" width="40vw">
+                        </div>
+                    <?php endif; ?>
                     <div>
                         <?= $skill["tipo"] ?> <img src="Imagens/Skils/Tipo/<?= $skill["tipo"] ?>.png" width="15vw">
                     </div>

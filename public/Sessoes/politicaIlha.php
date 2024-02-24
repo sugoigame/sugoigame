@@ -289,7 +289,7 @@ function is_buff_ativo($bonus_ativos, $buff_id) {
                                     </p>
                                 <?php endif; ?>
                                 <?php if (isset($recompensa["akuma"])): ?>
-                                    <div class="equipamentos_casse_6 pull-left">
+                                    <div class="equipamentos_classe_6 pull-left">
                                         <img src="Imagens/Itens/100.png">
                                     </div>
                                     <p>
@@ -314,7 +314,7 @@ function is_buff_ativo($bonus_ativos, $buff_id) {
                                 <?php if (isset($recompensa["tipo_item"])): ?>
                                     <?php if ($recompensa["tipo_item"] == TIPO_ITEM_REAGENT): ?>
                                         <div class="clearfix">
-                                            <div class="equipamentos_casse_1 pull-left">
+                                            <div class="equipamentos_classe_1 pull-left">
                                                 <img src="Imagens/Itens/<?= $reagents[$recompensa["cod_item"]]["img"] ?>.png">
                                             </div>
                                             <p>

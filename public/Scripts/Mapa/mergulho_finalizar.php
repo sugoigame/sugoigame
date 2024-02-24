@@ -98,7 +98,7 @@ for ($x = 1; $x <= $quant; $x++) {
 
         $recompensas[] = $item["nome"];
     } else {
-        $userDetails->add_item(rand(100, 110), rand(8, 10), 1, true);
+        $userDetails->add_item(get_random_akuma()["cod_akuma"], TIPO_ITEM_AKUMA, 1, true);
 
         $recompensas[] = "Akuma no Mi";
     }

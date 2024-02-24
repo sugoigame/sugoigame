@@ -5,18 +5,18 @@ include "../../Includes/verifica_login.php";
 
 if (! $conect) {
 
-	echo ("#Você precisa estar logado!");
-	exit();
+    echo ("#Você precisa estar logado!");
+    exit();
 }
 if (! $inilha) {
 
-	echo "#Você precisa estar em uma ilha.";
-	exit();
+    echo "#Você precisa estar em uma ilha.";
+    exit();
 }
 if ($usuario["ilha"] != 47) {
 
-	echo "#Você precisa estar em uma ilha.";
-	exit();
+    echo "#Você precisa estar em uma ilha.";
+    exit();
 }
 
 $query = "SELECT * FROM tb_jardim_laftel WHERE id='" . $usuario["id"] . "'";
@@ -24,30 +24,30 @@ $result = $connection->run($query);
 
 $possivel = FALSE;
 if ($result->count() == 0)
-	$possivel = TRUE;
+    $possivel = TRUE;
 else {
-	$tempo = $result->fetch_array();
+    $tempo = $result->fetch_array();
 
-	if ($tempo["tempo"] < atual_segundo())
-		$possivel = TRUE;
+    if ($tempo["tempo"] < atual_segundo())
+        $possivel = TRUE;
 }
 
 if (! $possivel) {
 
-	echo "#Você ainda não pode colher uma Akuma no Mi.";
-	exit();
+    echo "#Você ainda não pode colher uma Akuma no Mi.";
+    exit();
 }
 
 $query = "SELECT * FROM tb_usuario_itens WHERE id='" . $usuario["id"] . "'";
 $result = $connection->run($query);
 if ($result->count() >= $usuario["capacidade_iventario"]) {
 
-	echo "#Seu inventário está cheio.";
-	exit();
+    echo "#Seu inventário está cheio.";
+    exit();
 }
 
-$tipo = rand(8, 10);
-$cod = rand(100, 110);
+$tipo = TIPO_ITEM_AKUMA;
+$cod = get_random_akuma()["cod_akma"];
 
 $query = "DELETE FROM tb_jardim_laftel WHERE id='" . $usuario["id"] . "'";
 $connection->run($query);

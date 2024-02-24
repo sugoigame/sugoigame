@@ -108,7 +108,7 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
                             </p>
                         <?php endif; ?>
                         <?php if (isset($recompensa["akuma"])) : ?>
-                            <div class="equipamentos_casse_6 pull-left">
+                            <div class="equipamentos_classe_6 pull-left">
                                 <img src="Imagens/Itens/100.png">
                             </div>
                             <p>
@@ -117,7 +117,7 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
                         <?php endif; ?>
                         <?php if (isset($recompensa["tipo_item"])) : ?>
                             <?php if ($recompensa["tipo_item"] == TIPO_ITEM_REAGENT) : ?>
-                                <div class="equipamentos_casse_1 pull-left">
+                                <div class="equipamentos_classe_1 pull-left">
                                     <?= get_img_item($reagents[$recompensa["cod_item"]]) ?>
                                 </div>
                                 <p>
@@ -127,14 +127,14 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
                                 </p>
                             <?php elseif ($recompensa["tipo_item"] == TIPO_ITEM_EQUIPAMENTO) : ?>
                                 <div
-                                    class="equipamentos_casse_<?= $equipamentos[$recompensa["cod_item"]]["categoria"] ?> pull-left">
+                                    class="equipamentos_classe_<?= $equipamentos[$recompensa["cod_item"]]["categoria"] ?> pull-left">
                                     <img src="Imagens/Itens/<?= $equipamentos[$recompensa["cod_item"]]["img"] ?>.png">
                                 </div>
                                 <p>
                                     <?= $equipamentos[$recompensa["cod_item"]]["nome"] ?>
                                 </p>
                             <?php elseif ($recompensa["tipo_item"] == TIPO_ITEM_COMIDA) : ?>
-                                <div class="equipamentos_casse_1 pull-left">
+                                <div class="equipamentos_classe_1 pull-left">
                                     <img src="Imagens/Itens/<?= $comidas[$recompensa["cod_item"]]["img"] ?>.png">
                                 </div>
                                 <p>

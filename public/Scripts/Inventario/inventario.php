@@ -19,58 +19,25 @@ $items = get_many_results_joined_mapped_by_type("tb_usuario_itens", "cod_item", 
     array("nome" => "tb_item_missao", "coluna" => "id", "tipo" => TIPO_ITEM_MISSAO),
 ), "WHERE origem.id = ? ORDER BY origem.cod_item", "i", $userDetails->tripulacao["id"]);
 
+// remedios
 $result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=?",
     "ii", [$userDetails->tripulacao["id"], TIPO_ITEM_REMEDIO]);
 while ($item = $result->fetch_array()) {
     $items[] = array_merge($item, MapLoader::find("remedios", ["cod_remedio" => $item["cod_item"]]));
 }
 
+// comidas
 $result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=?",
     "ii", [$userDetails->tripulacao["id"], TIPO_ITEM_COMIDA]);
 while ($item = $result->fetch_array()) {
     $items[] = array_merge($item, MapLoader::find("comidas", ["cod_comida" => $item["cod_item"]]));
 }
 
-// Logias
-$result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id = ? AND tipo_item = 8 ORDER BY cod_item",
-    "i", $userDetails->tripulacao["id"]);
-
+// akumas
+$result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=?",
+    "ii", [$userDetails->tripulacao["id"], TIPO_ITEM_AKUMA]);
 while ($item = $result->fetch_array()) {
-    $items[] = array_merge($item, array(
-        "nome" => "Akuma no Mi",
-        "descricao" => "Permite que o personagem aprenda 5 novas habilidades passivas, 3 novos buffs e 3 novos ataques.",
-        "tipo" => "Logia",
-        "categoria" => 6,
-        "img" => substr($item["cod_item"], -3, 3)
-    ));
-}
-
-// Paramecias
-$result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id = ? AND tipo_item = 9 ORDER BY cod_item",
-    "i", $userDetails->tripulacao["id"]);
-
-while ($item = $result->fetch_array()) {
-    $items[] = array_merge($item, array(
-        "nome" => "Akuma no Mi",
-        "descricao" => "Permite que o personagem aprenda 4 novas habilidades passivas, 4 novos buffs e 3 novos ataques.",
-        "tipo" => "Paramecia",
-        "categoria" => 6,
-        "img" => substr($item["cod_item"], -3, 3)
-    ));
-}
-
-// Zoan
-$result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id = ? AND tipo_item = 10 ORDER BY cod_item",
-    "i", $userDetails->tripulacao["id"]);
-
-while ($item = $result->fetch_array()) {
-    $items[] = array_merge($item, array(
-        "nome" => "Akuma no Mi",
-        "descricao" => "Permite que o personagem aprenda 4 novas habilidades passivas, 5 novos buffs e 2 novos ataques.",
-        "tipo" => "Zoan",
-        "categoria" => 6,
-        "img" => substr($item["cod_item"], -3, 3)
-    ));
+    $items[] = array_merge($item, DataLoader::find("akumas", ["cod_akuma" => $item["cod_item"]]));
 }
 
 // Bala de canhao
@@ -123,7 +90,7 @@ $connection->run("UPDATE tb_usuario_itens SET novo = 0 WHERE id=?", "i", array($
             <?php $item["cod"] = $item["cod_item"]; ?>
             <?php if (! isset($item["tipo"]))
                 $item["tipo"] = $item["tipo_item"]; ?>
-            <button class="inventario-item equipamentos_casse_<?= isset($item["categoria"]) ? $item["categoria"] : "1" ?>"
+            <button class="inventario-item equipamentos_classe_<?= isset($item["categoria"]) ? $item["categoria"] : "1" ?>"
                 data-content="-" data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="focus"
                 data-template='<div class="inventario-item-info"><?= info_item($item, $item, TRUE, TRUE, $userDetails->combate_pvp || $userDetails->combate_pve); ?></div>'>
 

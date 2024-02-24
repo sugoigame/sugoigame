@@ -169,7 +169,7 @@
         <?php foreach ($recompensas as $id => $recompensa) : ?>
             <div class="list-group-item col-md-4">
                 <?php if (isset($recompensa["akuma"])) : ?>
-                    <div class="equipamentos_casse_6 pull-left">
+                    <div class="equipamentos_classe_6 pull-left">
                         <img src="Imagens/Itens/100.png">
                     </div>
                     <p>

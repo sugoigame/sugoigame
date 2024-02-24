@@ -48,7 +48,7 @@
                     </p>
                 <?php endif; ?>
                 <?php if (isset($recompensa["akuma"])) : ?>
-                    <div class="equipamentos_casse_6 pull-left">
+                    <div class="equipamentos_classe_6 pull-left">
                         <img src="Imagens/Itens/100.png">
                     </div>
                     <p>
@@ -76,7 +76,7 @@
                 <?php if (isset($recompensa["tipo_item"])) : ?>
                     <?php if ($recompensa["tipo_item"] == TIPO_ITEM_REAGENT) : ?>
                         <div class="clearfix">
-                            <div class="equipamentos_casse_1 pull-left">
+                            <div class="equipamentos_classe_1 pull-left">
                                 <img src="Imagens/Itens/<?= $reagents[$recompensa["cod_item"]]["img"] ?>.png">
                             </div>
                             <p>
@@ -89,7 +89,7 @@
                         <?= info_item_with_img($equipamentos[$recompensa["cod_item"]], $equipamentos[$recompensa["cod_item"]], FALSE, FALSE, FALSE) ?>
                     <?php elseif ($recompensa["tipo_item"] == TIPO_ITEM_COMIDA) : ?>
                         <div class="clearfix">
-                            <div class="equipamentos_casse_1 pull-left">
+                            <div class="equipamentos_classe_1 pull-left">
                                 <img src="Imagens/Itens/<?= $comidas[$recompensa["cod_item"]]["img"] ?>.png">
                             </div>
                             <p>

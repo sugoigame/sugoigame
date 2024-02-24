@@ -8,7 +8,7 @@ $recompensa_id = $protector->get_number_or_exit("rec");
 
 $recompensas = DataLoader::load("loja_cargas");
 
-if (!isset($recompensas[$recompensa_id])) {
+if (! isset($recompensas[$recompensa_id])) {
     $protector->exit_error("Recompensa inválida");
 }
 
@@ -16,12 +16,12 @@ $recompensa = $recompensas[$recompensa_id];
 
 $cargas = $userDetails->get_item(CARGA_ROUBADA_ID, TIPO_ITEM_REAGENT);
 
-if (!$cargas || $cargas["quant"] < $recompensa["preco"]) {
+if (! $cargas || $cargas["quant"] < $recompensa["preco"]) {
     $protector->exit_error("Você não possui cargas roubadas suficientes");
 }
 
 if (isset($recompensa["akuma"])) {
-    if (!$userDetails->add_item(rand(100, 110), rand(8, 10), 1, true)) {
+    if (! $userDetails->add_item(get_random_akuma()["cod_akuma"], TIPO_ITEM_AKUMA, 1, true)) {
         $protector->exit_error("Seu inventário está lotado. Libere espaço antes de pegar sua recompensa");
     }
 }
@@ -29,11 +29,11 @@ if (isset($recompensa["akuma"])) {
 if (isset($recompensa["tipo_item"])) {
     $quant = isset($recompensa["quant"]) ? $recompensa["quant"] : 1;
     if ($recompensa["tipo_item"] == TIPO_ITEM_REAGENT || $recompensa["tipo_item"] == TIPO_ITEM_COMIDA) {
-        if (!$userDetails->add_item($recompensa["cod_item"], $recompensa["tipo_item"], $quant)) {
+        if (! $userDetails->add_item($recompensa["cod_item"], $recompensa["tipo_item"], $quant)) {
             $protector->exit_error("Seu inventário está lotado. Libere espaço antes de pegar sua recompensa");
         }
     } elseif ($recompensa["tipo_item"] == TIPO_ITEM_EQUIPAMENTO) {
-        if (!$userDetails->can_add_item()) {
+        if (! $userDetails->can_add_item()) {
             $protector->exit_error("Seu inventário está lotado. Libere espaço antes de pegar sua recompensa");
         }
 

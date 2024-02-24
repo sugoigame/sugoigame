@@ -15,25 +15,21 @@ if ($exists->count()) {
     $protector->exit_error("Você já possui essa habilidade");
 }
 
-if ($tipo_skill == TIPO_SKILL_ATAQUE_AKUMA) {
-    $tb = "tb_akuma_skil_atk";
-} else if ($tipo_skill == TIPO_SKILL_BUFF_AKUMA) {
-    $tb = "tb_akuma_skil_buff";
-} else {
-    $tb = "tb_akuma_skil_passiva";
-}
+$skill = MapLoader::find("skil_akuma", ["cod_akuma" => $pers["akuma"], "cod_skil" => $cod_skill]);
 
-$skill = $connection->run("SELECT * FROM $tb WHERE cod_skil = ?", "i", array($cod_skill));
-
-if (!$skill->count()) {
-    $protector->exit_error("Habilidade inválida");
-}
-
-$skill = $skill->fetch_array();
-
-if ($pers["lvl"] < $skill["lvl"]) {
+if (! $skill || $pers["lvl"] < $skill["requisito_lvl"]) {
     $protector->exit_error("Você não cumpre os requisitos para aprender essa habilidade");
 }
+
+$outras_skills = MapLoader::filter("skil_akuma", function ($s) use ($skill) {
+    return $s["cod_akuma"] == $skill["cod_akuma"] && $s["requisito_lvl"] == $skill["requisito_lvl"];
+});
+$cods = [];
+foreach ($outras_skills as $s) {
+    $cods[] = $s["cod_skil"];
+}
+$connection->run("DELETE FROM tb_personagens_skil WHERE cod = ? AND cod_skil IN (" . implode(",", $cods) . ") AND tipo IN (?,?,?)",
+    "iiii", array($pers["cod"], TIPO_SKILL_ATAQUE_AKUMA, TIPO_SKILL_BUFF_AKUMA, TIPO_SKILL_PASSIVA_AKUMA));
 
 $habilidade = habilidade_random();
 $icon = rand(1, SKILLS_ICONS_MAX);
@@ -41,4 +37,4 @@ $icon = rand(1, SKILLS_ICONS_MAX);
 $connection->run("INSERT INTO tb_personagens_skil (cod, cod_skil, tipo, nome, descricao, icon) VALUE (?,?,?,?,?,?)",
     "iiissi", array($pers["cod"], $cod_skill, $tipo_skill, $habilidade["nome"], $habilidade["descricao"], $icon));
 
-$response->send($pers["nome"] . " aprendeu uma nova habilidade. Visite o menu de Habilidades para customiza-la!");
+echo ":";

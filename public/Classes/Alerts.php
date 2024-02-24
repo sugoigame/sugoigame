@@ -27,7 +27,7 @@ class Alerts
 
     public function get_alert($class = "")
     {
-        return "<span class=\"label label-danger $class\">!</span>";
+        return "<span class=\"label label-danger label-alert $class\">!</span>";
     }
 
     public function has_alert_trip_sem_distribuir_atributo($pers)
@@ -110,7 +110,7 @@ class Alerts
 
     private function _habilidades_akuma_por_lvl($lvl)
     {
-        return floor($lvl / 5) + 1;
+        return floor($lvl / 10);
     }
 
     private function _habilidades_profissao_por_lvl($profissao, $lvl)

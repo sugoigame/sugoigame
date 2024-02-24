@@ -43,7 +43,7 @@
             <div class="col col-xs-4 h-100">
                 <div class="panel panel-default h-100">
                     <div class="panel-body">
-                        <img src="Imagens/Itens/<?= $akuma["icon"] ?>.jpg" class="mb" />
+                        <?= get_img_item($akuma) ?>
                         <h4 class="m0">
                             <?= $akuma["nome"]; ?>
                         </h4>
@@ -61,19 +61,7 @@
                             </span>
                         </div>
 
-                        <div>
-                            Causa mais dano contra Akumas
-                            <?= nome_categoria_akuma(vantagem_categoria_akuma($akuma["categoria"])) ?>s
-                        </div>
-                        <?php if (isset($akuma["vantagens"])) : ?>
-                            <?php foreach ($akuma["vantagens"] as $vantagem) : ?>
-                                <?php $akuma_vantagem = DataLoader::find("akumas", ["cod_akuma" => $vantagem]); ?>
-                                <div>
-                                    Causa mais dano contra
-                                    <?= $akuma_vantagem["nome"] ?>
-                                </div>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                        <?php render_vantagens_akuma($akuma); ?>
                     </div>
                     <div class="panel-footer">
                         <button class="btn btn-info" data-toggle="modal" data-container="body"

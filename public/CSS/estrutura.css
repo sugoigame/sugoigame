@@ -240,8 +240,9 @@ table tr td {
     border-radius: 2px;
     padding: 3px 4px;
 }
-
-/* */
+.label-alert {
+    position: absolute;
+}
 
 .col-sm-12 .main-panel {
     margin: auto;
@@ -855,7 +856,7 @@ body:fullscreen #fullscreen {
     margin: 1em auto;
 }
 
-.equipamentos_casse_1 {
+.equipamentos_classe_1 {
     background: #6e6e6e !important;
     color: #424242;
     padding: 2px 4px;
@@ -863,7 +864,7 @@ body:fullscreen #fullscreen {
     text-shadow: none;
 }
 
-.equipamentos_casse_2 {
+.equipamentos_classe_2 {
     background: #ffffff !important;
     color: #424242;
     padding: 2px 4px;
@@ -871,7 +872,7 @@ body:fullscreen #fullscreen {
     text-shadow: none;
 }
 
-.equipamentos_casse_3 {
+.equipamentos_classe_3 {
     background: #00ff00 !important;
     color: #424242;
     padding: 2px 4px;
@@ -879,7 +880,7 @@ body:fullscreen #fullscreen {
     text-shadow: none;
 }
 
-.equipamentos_casse_4 {
+.equipamentos_classe_4 {
     background: #00bfff !important;
     color: #424242;
     padding: 2px 4px;
@@ -887,7 +888,7 @@ body:fullscreen #fullscreen {
     text-shadow: none;
 }
 
-.equipamentos_casse_5 {
+.equipamentos_classe_5 {
     background: #000000 !important;
     color: #ffffff;
     padding: 2px 4px;
@@ -895,7 +896,12 @@ body:fullscreen #fullscreen {
     text-shadow: none;
 }
 
-.equipamentos_casse_6 {
+.equipamentos_classe_6,
+.equipamentos_classe_tatica,
+.equipamentos_classe_ofensiva,
+.equipamentos_classe_defensiva,
+.equipamentos_classe_ancestral,
+.equipamentos_classe_mitica {
     background: #eedd82 !important;
     color: #424242;
     padding: 2px 4px;

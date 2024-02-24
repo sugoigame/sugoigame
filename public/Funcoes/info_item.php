@@ -58,7 +58,7 @@ function get_img_item($item)
 function info_item_with_img($item, $item_info, $extra, $acao, $incombate = FALSE, $porcent = 1, $treino = array())
 {
     $categoria = isset($item_info["categoria"]) ? $item_info["categoria"] : 0;
-    return "<a href='#' class='noHref' data-toggle='popover' data-html='true' data-placement='bottom' data-container='#tudo' data-trigger='focus' data-content='" . info_item($item, $item_info, $extra, $acao, $incombate, $porcent, $treino) . "'><p class='equipamentos_casse_$categoria'>" . get_img_item($item) . "<br/>" . ucwords($item["nome"]) . "</p></a>";
+    return "<a href='#' class='noHref' data-toggle='popover' data-html='true' data-placement='bottom' data-container='#tudo' data-trigger='focus' data-content='" . info_item($item, $item_info, $extra, $acao, $incombate, $porcent, $treino) . "'><p class='equipamentos_classe_$categoria'>" . get_img_item($item) . "<br/>" . ucwords($item["nome"]) . "</p></a>";
 }
 
 function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcent = 1, $treino = array())
@@ -66,7 +66,7 @@ function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcen
     global $userDetails;
 
     $return = '<div class="info-item">';
-    $return .= '<div class="info-item-title ' . (isset($item_info["categoria"]) ? 'equipamentos_casse_' . $item_info["categoria"] : '') . '">';
+    $return .= '<div class="info-item-title ' . (isset($item_info["categoria"]) ? 'equipamentos_classe_' . $item_info["categoria"] : '') . '">';
     $return .= "<b>" . $item_info["nome"] . "</b>";
 
     if (isset($item_info["upgrade"]) && $item_info["upgrade"] > 0) {
@@ -148,26 +148,24 @@ function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcen
         $return .= "<b>Direção:</b> " . $item_info["apontando"];
         $return .= '</div>';
     }
-    if (isset($item_info["tipo"]) && $acao) {
-        if ($item_info["tipo"] === "Logia" || $item_info["tipo"] === "Paramecia" || $item_info["tipo"] === "Zoan") {
-            $return .= '<div>';
-            $return .= "<b>Tipo:</b> " . $item_info["tipo"];
-            $return .= '</div>';
-            $return .= '<div class="text-center">';
-            $return .= '<a href="link_akuma" data-dismiss="modal"  class="link_content2 btn btn-success">Comer</a>';
-            $return .= '</div>';
-        }
+    if (isset($item_info["cod_akuma"]) && $acao) {
+        $return .= '<div>';
+        $return .= nome_tipo_akuma($item_info["tipo"]);
+        $return .= '</div>';
+        $return .= '<div class="text-center">';
+        $return .= '<a href="link_status&nav=akuma" data-dismiss="modal"  class="link_content2 btn btn-success">Comer</a>';
+        $return .= '</div>';
     }
     if (isset($item_info["bonus"])) {
         $return .= '<div>';
         $return .= "<b>Bonus:</b> ";
         if ($item["tipo_item"] == 3) {
             $return .= "HP + " . $item_info["bonus"];
-        } else if ($item["tipo_item"] == 4) {
+        } elseif ($item["tipo_item"] == 4) {
             $return .= "Influência de correntes: " . $item_info["bonus"] . "%";
-        } else if ($item["tipo_item"] == 5) {
+        } elseif ($item["tipo_item"] == 5) {
             $return .= "Influência de ventos: " . $item_info["bonus"] . "%";
-        } else if ($item["tipo_item"] == 12) {
+        } elseif ($item["tipo_item"] == 12) {
             $return .= "Chance de acerto: " . $item_info["bonus"] . "%";
         }
         $return .= '</div>';

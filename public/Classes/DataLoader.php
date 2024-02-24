@@ -12,6 +12,11 @@ class DataLoader
         }
         return DataLoader::$cache[$data];
     }
+    public static function filter($map, $func)
+    {
+        $data = MapLoader::load($map);
+        return array_filter($data, $func);
+    }
     public static function find($map, $search)
     {
         $data = DataLoader::load($map);

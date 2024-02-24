@@ -28,7 +28,7 @@ if (! $pers) {
 <?php function render_item($cod, $tipo, $quant, $materiais, $equipamentos)
 { ?>
     <?php if ($tipo == TIPO_ITEM_REAGENT) : ?>
-        <button class="inventario-item equipamentos_casse_1" data-content="-" data-toggle="popover" data-html="true"
+        <button class="inventario-item equipamentos_classe_1" data-content="-" data-toggle="popover" data-html="true"
             data-placement="bottom" data-trigger="focus"
             data-template='<div class="inventario-item-info"><?= $materiais[$cod]["nome"] ?></div>'>
             <?= get_img_item($materiais[$cod]) ?>
@@ -37,7 +37,7 @@ if (! $pers) {
             </span>
         </button>
     <?php elseif ($tipo == TIPO_ITEM_EQUIPAMENTO) : ?>
-        <button class="inventario-item equipamentos_casse_<?= $equipamentos[$cod]["categoria"] ?>" data-content="-"
+        <button class="inventario-item equipamentos_classe_<?= $equipamentos[$cod]["categoria"] ?>" data-content="-"
             data-toggle="popover" data-html="true" data-placement="bottom" data-trigger="focus"
             data-template='<div class="inventario-item-info"><?= $equipamentos[$cod]["nome"] ?> - <?= nome_slot($equipamentos[$cod]["slot"]) ?> - Nível <?= $equipamentos[$cod]["lvl"] ?> (<?= nome_atributo($equipamentos[$cod]["b_1"]) . " e " . nome_atributo($equipamentos[$cod]["b_2"]) ?>)</div>'>
             <img src="Imagens/Itens/<?= $equipamentos[$cod]["img"] ?>.png" /><br />
