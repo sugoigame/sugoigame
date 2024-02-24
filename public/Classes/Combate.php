@@ -902,21 +902,7 @@ class Combate
 
     public function load_habilidade($personagem, $cod_skil, $tipo_skil)
     {
-        if ($tipo_skil == TIPO_SKILL_ATAQUE_AKUMA || $tipo_skil == TIPO_SKILL_BUFF_AKUMA) {
-            $table = get_skill_table($tipo_skil);
-            $result = $this->connection->run(
-                "SELECT * FROM tb_personagens_skil skil
-				INNER JOIN $table info ON skil.cod_skil = info.cod_skil AND skil.tipo = ?
-				WHERE skil.cod_skil = ? AND skil.cod = ? AND skil.tipo = ?",
-                "iiii", array($tipo_skil, $cod_skil, $personagem["cod"], $tipo_skil)
-            );
-
-            if (! $result->count()) {
-                $this->protector->exit_error("Habilidade inválida");
-            }
-
-            return $result->fetch_array();
-        } elseif ($tipo_skil == TIPO_SKILL_MEDICAMENTO) {
+        if ($tipo_skil == TIPO_SKILL_MEDICAMENTO) {
             if ($personagem["profissao"] != PROFISSAO_MEDICO) {
                 $this->protector->exit_error("este personagem nao possui profissao adequada");
             }

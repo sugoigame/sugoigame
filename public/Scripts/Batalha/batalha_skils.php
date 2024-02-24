@@ -23,6 +23,10 @@ $pers = $result->fetch_array();
 
 $skills = get_all_skills($pers);
 
+usort($skills, function ($a, $b) {
+    return $a["consumo"] - $b["consumo"];
+});
+
 ?>
 <div class="row">
     <?php foreach ($skills as $skill) : ?>
