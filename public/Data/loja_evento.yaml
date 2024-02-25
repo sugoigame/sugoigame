@@ -1,32 +1,6 @@
-
-2:
-  tipo_item: 14
-  cod_item: 221
-  preco: 4
-3:
-  tipo_item: 14
-  cod_item: 231
-  preco: 4
-4:
-  tipo_item: 14
-  cod_item: 281
-  preco: 4
-5:
-  tipo_item: 14
-  cod_item: 291
-  preco: 4
-6:
-  tipo_item: 14
-  cod_item: 341
-  preco: 4
-7:
-  tipo_item: 14
-  cod_item: 351
-  preco: 4
 8:
-  tipo_item: 14
-  cod_item: 401
-  preco: 4
+  akuma: 1
+  preco: 99999
 9:
   tipo_item: 15
   cod_item: 51
@@ -38,7 +12,7 @@
   quant: 50
   preco: 1
 11:
-  haki: 5000
+  xp: 1000
   preco: 1
 12:
   alcunha: 87

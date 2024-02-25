@@ -77,10 +77,7 @@
   quant: 1
   berries: 500000
   diario: 1
-  recompensas:
-    - tipo: reagent
-      cod_item: 159
-      quant: 1
+
 10:
   nome: Derrote o Kraken
   objetivo: 10
@@ -90,10 +87,7 @@
   quant: 1
   berries: 800000
   diario: 1
-  recompensas:
-    - tipo: reagent
-      cod_item: 159
-      quant: 1
+
 11:
   nome: Derrote o Peixe Cavalo
   objetivo: 12
@@ -103,10 +97,7 @@
   quant: 1
   berries: 1000000
   diario: 1
-  recompensas:
-    - tipo: reagent
-      cod_item: 159
-      quant: 1
+
 12:
   nome: Derrote o Peixe Boi
   objetivo: 13
@@ -116,10 +107,7 @@
   quant: 1
   berries: 1500000
   diario: 1
-  recompensas:
-    - tipo: reagent
-      cod_item: 159
-      quant: 1
+
 13:
   nome: Derrote o Peixe Coelho
   objetivo: 14
@@ -131,5 +119,5 @@
   diario: 1
   recompensas:
     - tipo: reagent
-      cod_item: 159
+      cod_item: 147
       quant: 1

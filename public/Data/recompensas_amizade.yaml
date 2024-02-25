@@ -8,7 +8,7 @@
   effect: Golpe de fogo
 2:
   minimo: 2
-  tipo: haki
+  tipo: xp
   quant: 1000
 15:
   minimo: 2
@@ -24,7 +24,7 @@
   effect: Golpe de trovão
 4:
   minimo: 4
-  tipo: haki
+  tipo: xp
   quant: 1000
 17:
   minimo: 4
@@ -50,9 +50,6 @@
   minimo: 7
   tipo: effect
   effect: Incendiar tudo 1
-10:
-  minimo: 7
-  tipo: akuma
 11:
   minimo: 7
   tipo: alcunha

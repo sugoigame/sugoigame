@@ -1,9 +1,6 @@
 2:
   fa: 80000
   preco: 1
-3:
-  xp: 5000
-  preco: 1
 9:
   tipo_item: 15
   cod_item: 51
@@ -15,7 +12,7 @@
   quant: 50
   preco: 10
 11:
-  haki: 5000
+  xp: 5000
   preco: 3
 12:
   alcunha: 111

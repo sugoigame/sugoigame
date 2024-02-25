@@ -1094,14 +1094,14 @@ class ItemUsavel
             $this->userDetails->add_item(184, TIPO_ITEM_REAGENT, 1);
 
             return "Você recebeu 1 Carta de Honra ao Mérito";
-        } else if ($rand <= 90) {
-            $this->userDetails->add_item(180, TIPO_ITEM_REAGENT, 1);
+        // } else if ($rand <= 90) {
+        //     $this->userDetails->add_item(180, TIPO_ITEM_REAGENT, 1);
 
-            return "Você recebeu 1 Baú de Equipamentos Brancos";
+        //     return "Você recebeu 1 Baú de Equipamentos Brancos";
         } else if ($rand <= 100) {
-            $this->userDetails->add_berries(10000000);
+            $this->userDetails->add_berries(1000000);
 
-            return "Você recebeu 10 milhões Berries";
+            return "Você recebeu 1 milhão Berries";
         } else if ($rand <= 110) {
             $this->userDetails->xp_for_all(10000);
 
