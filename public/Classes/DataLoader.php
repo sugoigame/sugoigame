@@ -20,11 +20,6 @@ class DataLoader
     public static function find($map, $search)
     {
         $data = DataLoader::load($map);
-        foreach ($data as $item) {
-            if (MapLoader::keys_are_equal($item, $search)) {
-                return $item;
-            }
-        }
-        return null;
+        return array_find($data, $search);
     }
 }

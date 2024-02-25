@@ -74,7 +74,6 @@ class UserDetails
 
         $this->_update_last_logon();
         $this->_update_vip();
-        $this->_update_mini_eventos();
 
         $this->buffs = new BuffTripulacao($this, $connection);
         $this->equipamentos = new Equipamentos($connection);
@@ -153,42 +152,6 @@ class UserDetails
         if ($this->vip["formacoes_duracao"] < $tempo and $this->vip["formacoes_duracao"] != 0) {
             $this->connection->run("UPDATE tb_vip SET formacoes = '0', formacoes_duracao = '0' WHERE id= ?",
                 "i", $this->tripulacao["id"]);
-        }
-    }
-
-    private function _update_mini_eventos()
-    {
-        $events_details = DataLoader::load("mini_eventos");
-        $events = $this->connection->run(
-            "SELECT * FROM tb_mini_eventos WHERE fim < NOW()"
-        )->fetch_all_array();
-
-        foreach ($events as $event) {
-            $event_detail = $events_details[$event["id"]];
-
-            $this->connection->run(
-                "UPDATE tb_mini_eventos SET fim = ADDTIME(current_timestamp, ?), inicio = current_timestamp, pack_recompensa = ? WHERE id = ?",
-                "sii", array($event_detail["duracao"], array_rand($event_detail["recompensas"]), $event["id"]));
-
-            $this->connection->run("DELETE FROM tb_mapa_rdm WHERE rdm_id IN (" . implode(",", $event_detail["zonas"]) . ")");
-            for ($i = 0; $i < $event_detail["quant"]; $i++) {
-                spawn_rdm_in_random_coord($event_detail["mares"][array_rand($event_detail["mares"])], $event_detail["zonas"][array_rand($event_detail["zonas"])]);
-            }
-            $this->connection->run("DELETE FROM tb_mini_eventos_concluidos WHERE mini_evento_id = ?", "i", array($event["id"]));
-        }
-
-        foreach ($events_details as $id => $event) {
-            $event_in_db = $this->connection->run("SELECT * FROM tb_mini_eventos WHERE id = ?", "i", array($id));
-            if (! $event_in_db->count()) {
-                $this->connection->run(
-                    "INSERT INTO tb_mini_eventos (id, fim, pack_recompensa) VALUE (?, ADDTIME(current_timestamp, ?), ?)",
-                    "isi", array($id, $event["duracao"], array_rand($event["recompensas"])));
-
-                $this->connection->run("DELETE FROM tb_mapa_rdm WHERE rdm_id IN (" . implode(",", $event["zonas"]) . ")");
-                for ($i = 0; $i < $event["quant"]; $i++) {
-                    spawn_rdm_in_random_coord($event["mares"][array_rand($event["mares"])], $event["zonas"][array_rand($event["zonas"])]);
-                }
-            }
         }
     }
 
@@ -391,25 +354,12 @@ class UserDetails
                         break;
                     }
                 }
-                $runs_haki = 0;
-                while ($haki_xp >= $haki_xp_max) {
-                    if ($haki_lvl < HAKI_LVL_MAX) {
-                        $haki_xp -= $haki_xp_max;
-                        $haki_xp_max = formulaExp($level++);
-
-                        ++$runs;
-                    } else {
-                        break;
-                    }
-                }
                 $row['lvl'] = $level;
                 $row['xp'] = $xp;
                 $row['xp_max'] = $xp_max;
                 $row['pts'] += PONTOS_POR_NIVEL * $runs;
-                $row['hp_max'] += 100 * $runs;
+                $row['hp_max'] += HP_POR_NIVEL * $runs;
                 $row['hp'] = $row['hp_max'];
-                $row['mp_max'] += 7 * $runs;
-                $row['mp'] = $row['mp_max'];
                 $row['fama_ameaca'] += 20000 * $runs;
 
                 $this->connection->run("UPDATE tb_personagens

@@ -675,27 +675,11 @@ table tr td {
 .info-buff-tripulacao {
     display: none;
     position: absolute;
-    bottom: 0;
+    top: 0;
     max-width: 300px;
     width: 100%;
     z-index: 200;
-    background: rgba(50, 50, 50, 0.95);
-    border: 1px solid #000;
-    height: 0;
 }
-
-.info-buff-tripulacao .row {
-    padding-top: 15px;
-    background: rgba(50, 50, 50, 0.95);
-    border-bottom: 3px double rgba(224, 190, 122, 0.6);
-    border-left: 3px double rgba(224, 190, 122, 0.6);
-    border-right: 3px double rgba(224, 190, 122, 0.6);
-}
-
-.info-buff-tripulacao .row:first-child {
-    border-top: 3px double rgba(224, 190, 122, 0.6);
-}
-
 .inventario-items {
     text-align: left;
 }

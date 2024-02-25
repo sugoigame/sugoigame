@@ -41,21 +41,6 @@ class MapLoader
     public static function find($map, $search)
     {
         $data = MapLoader::load($map);
-        foreach ($data as $item) {
-            if (MapLoader::keys_are_equal($item, $search)) {
-                return $item;
-            }
-        }
-        return null;
-    }
-
-    public static function keys_are_equal($item, $search)
-    {
-        foreach ($search as $key => $value) {
-            if ($search[$key] != $item[$key]) {
-                return false;
-            }
-        }
-        return true;
+        return array_find($data, $search);
     }
 }
