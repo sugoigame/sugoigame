@@ -11,10 +11,7 @@ $valor_dobrao = calc_cotacao_dobrao();
 
 $berries = $quant * $valor_dobrao;
 
-if ($valor_dobrao > 100000) {
-    $connection->run("UPDATE tb_variavel_global SET valor_int = valor_int - ? WHERE variavel = ?",
-        "is", array(round($quant * 0.8), VARIAVEL_BALANCO_VENDA_DOBRAO));
-}
+increment_value_int_variavel_global(VARIAVEL_BALANCO_VENDA_DOBRAO, -$quant);
 
 $connection->run("UPDATE tb_usuarios SET berries = berries + ? WHERE id = ?",
     "ii", array($berries, $userDetails->tripulacao["id"]));

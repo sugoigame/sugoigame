@@ -11,8 +11,7 @@ $preco = $quant * $valor_dobrao;
 
 $protector->need_berries($preco);
 
-$connection->run("UPDATE tb_variavel_global SET valor_int = valor_int + ? WHERE variavel = ?",
-    "is", array(round($quant * 1.2), VARIAVEL_BALANCO_VENDA_DOBRAO));
+increment_value_int_variavel_global(VARIAVEL_BALANCO_VENDA_DOBRAO, $quant);
 
 $connection->run("UPDATE tb_conta SET dobroes = dobroes + ? WHERE conta_id = ?",
     "ii", array($quant, $userDetails->conta["conta_id"]));

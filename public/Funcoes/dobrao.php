@@ -1,11 +1,9 @@
 <?php
-function calc_cotacao_dobrao() {
-    global $connection;
-    $negociacoes = $connection->run("SELECT * FROM tb_variavel_global WHERE variavel = ?",
-        "s", array(VARIAVEL_BALANCO_VENDA_DOBRAO))->fetch_array();
+function calc_cotacao_dobrao()
+{
+    $balanco = get_value_int_variavel_global(VARIAVEL_BALANCO_VENDA_DOBRAO);
+    $transacoes = abs($balanco);
+    $mod = $balanco >= 0 ? 1 : -1;
 
-    $transacoes = abs($negociacoes["valor_int"]);
-    $mod = $negociacoes["valor_int"] >= 0 ? 1 : -1;
-
-    return floor(max(100000, (200000 + ($mod * (($transacoes / 500) * 100000)))));
+    return floor(max(100000, (1000000 + ($mod * (($transacoes / 1) * 100000)))));
 }
