@@ -1,156 +1,122 @@
 0:
-  berries: 10000
-  reputacao: 15
+  berries: 1000
+  tipo_item: 15
+  cod_item: 51
+  quant: 5
 1:
-  berries: 20000
-  reputacao: 15
+  berries: 2000
+  tipo_item: 15
+  cod_item: 51
+  quant: 10
 2:
-  berries: 30000
-  haki: 10000
-  reputacao: 15
+  berries: 3000
+  tipo_item: 15
+  cod_item: 1
+  quant: 1
 3:
-  berries: 40000
-  xp: 2000
-  reputacao: 15
+  berries: 4000
+  tipo_item: 15
+  cod_item: 3
+  quant: 1
 4:
+  berries: 5000
+  tipo_item: 15
+  cod_item: 51
+  quant: 25
+5:
+  berries: 6000
+  tipo_item: 15
+  cod_item: 3
+  quant: 1
+6:
+  berries: 7000
+  tipo_item: 15
+  cod_item: 5
+  quant: 1
+7:
+  berries: 20000
+  tipo_item: 15
+  cod_item: 5
+  quant: 1
+8:
+  berries: 40000
+  tipo_item: 15
+  cod_item: 5
+  quant: 1
+9:
   berries: 50000
   tipo_item: 15
-  cod_item: 51
-  quant: 25
-  reputacao: 15
-5:
-  berries: 60000
-  tipo_item: 15
-  cod_item: 75
-  quant: 25
-  reputacao: 15
-6:
-  berries: 70000
-  haki: 20000
-  tipo_item: 15
-  cod_item: 155
+  cod_item: 134
   quant: 1
-  reputacao: 15
-7:
-  berries: 2000000
-  reputacao: 15
-8:
-  berries: 90000
-  xp: 5000
-  reputacao: 15
-9:
+10:
+  berries: 60000
+  xp: 500
+  
+11:
+  berries: 70000
+  xp: 700
+12:
+  berries: 70000
+  tipo_item: 15
+  cod_item: 51
+  quant: 50
+13:
   berries: 100000
   tipo_item: 15
-  cod_item: 180
-  quant: 1
-  reputacao: 15
-10:
-  berries: 110000
-  dobroes: 5
-  reputacao: 15
-11:
-  berries: 120000
-  xp: 7000
-  reputacao: 15
-12:
-  berries: 130000
-  tipo_item: 15
-  cod_item: 51
-  quant: 50
-  reputacao: 15
-13:
-  berries: 140000
-  tipo_item: 15
   cod_item: 75
   quant: 50
-  reputacao: 15
 14:
   berries: 150000
-  tipo_item: 15
-  cod_item: 155
-  quant: 1
-  reputacao: 15
+  xp: 700
 15:
-  berries: 5000000
-  reputacao: 15
+  berries: 150000
+  xp: 500
 16:
   berries: 200000
-  haki: 30000
-  reputacao: 15
+  xp: 500
 17:
-  berries: 250000
-  xp: 10000
-  dobroes: 5
-  reputacao: 15
+  berries: 200000
+  xp: 500
 18:
-  berries: 500000
+  berries: 250000
   tipo_item: 15
   cod_item: 1
   quant: 10
-  reputacao: 15
 19:
-  berries: 750000
+  berries: 250000
   tipo_item: 15
   cod_item: 2
   quant: 3
-  reputacao: 15
 20:
-  berries: 1000000
-  tipo_item: 15
-  cod_item: 155
-  quant: 1
-  reputacao: 15
+  berries: 300000
+  xp: 500
 21:
-  berries: 1000000
-  tipo_item: 15
-  cod_item: 180
-  quant: 1
-  reputacao: 15
+  berries: 300000
 22:
-  berries: 1000000
-  tipo_item: 15
-  cod_item: 180
-  quant: 1
-  reputacao: 15
+  berries: 350000
+  xp: 500
 23:
-  berries: 1000000
-  tipo_item: 15
-  cod_item: 180
-  quant: 1
-  reputacao: 15
+  berries: 350000
+  xp: 500
 24:
-  berries: 1000000
-  tipo_item: 15
-  cod_item: 180
-  quant: 1
-  reputacao: 15
+  berries: 400000
+  xp: 500
 25:
-  berries: 1000000
-  tipo_item: 15
-  cod_item: 180
-  quant: 1
-  reputacao: 15
+  berries: 400000
+  xp: 500
 26:
-  berries: 1000000
-  tipo_item: 15
-  cod_item: 180
-  quant: 1
-  reputacao: 15
+  berries: 500000
+  xp: 500
 27:
-  berries: 1000000
-  haki: 50000
-  tipo_item: 15
-  cod_item: 155
-  quant: 1
-  reputacao: 15
+  berries: 500000
+  xp: 500
 28:
-  berries: 1000000
-  dobroes: 5
-  reputacao: 15
+  berries: 550000
+  tipo_item: 15
+  cod_item: 147
+  quant: 1
 29:
   berries: 1000000
-  akuma: 1
   tipo_item: 15
-  cod_item: 155
+  cod_item: 147
   quant: 1
-  reputacao: 15

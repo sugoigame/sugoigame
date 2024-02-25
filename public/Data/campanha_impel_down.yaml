@@ -258,7 +258,7 @@
     - tipo: berries
       quant: 200000
     - tipo: reagent
-      cod_item: 155
+      cod_item: 146
       quant: 1
   next: 13
 13:
@@ -759,7 +759,7 @@
     - tipo: skin_navio
       skin: 10
     - tipo: reagent
-      cod_item: 155
+      cod_item: 146
       quant: 1
     - tipo: reagent
       cod_item: 181

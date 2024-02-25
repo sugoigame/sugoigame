@@ -7,7 +7,7 @@
     - 3
     - 4
   quant: 15
-  berries: 10000
+  berries: 1000
 2:
   nome: Caça as Baleias
   objetivo: 2
@@ -17,7 +17,7 @@
     - 3
     - 4
   quant: 15
-  berries: 50000
+  berries: 5000
 3:
   nome: Caça Tubarões
   objetivo: 3
@@ -28,42 +28,42 @@
     - 4
     - 5
   quant: 15
-  berries: 100000
+  berries: 10000
 4:
   nome: Caça aos Filhotes de Reis dos Mares
   objetivo: 4
   mares:
     - 5
   quant: 15
-  berries: 300000
+  berries: 30000
 5:
   nome: Caça aos Reis dos Mares
   objetivo: 5
   mares:
     - 5
   quant: 15
-  berries: 400000
+  berries: 40000
 6:
   nome: Caça aos Reis dos Mares Gigante
   objetivo: 6
   mares:
     - 5
   quant: 15
-  berries: 500000
+  berries: 50000
 7:
   nome: Caça aos Filhotes de Dragão Marítimos
   objetivo: 7
   mares:
     - 6
   quant: 15
-  berries: 600000
+  berries: 60000
 8:
   nome: Caça aos Dragões Marítimos
   objetivo: 8
   mares:
     - 6
   quant: 15
-  berries: 650000
+  berries: 65000
 9:
   nome: Derrote Mohmoo
   objetivo: 9
@@ -75,12 +75,9 @@
     - 4
     - 5
   quant: 1
-  berries: 5000000
+  berries: 500000
   diario: 1
-  recompensas:
-    - tipo: reagent
-      cod_item: 159
-      quant: 1
+
 10:
   nome: Derrote o Kraken
   objetivo: 10
@@ -88,12 +85,9 @@
   mares:
     - 5
   quant: 1
-  berries: 8000000
+  berries: 800000
   diario: 1
-  recompensas:
-    - tipo: reagent
-      cod_item: 159
-      quant: 1
+
 11:
   nome: Derrote o Peixe Cavalo
   objetivo: 12
@@ -101,12 +95,9 @@
   mares:
     - 6
   quant: 1
-  berries: 10000000
+  berries: 1000000
   diario: 1
-  recompensas:
-    - tipo: reagent
-      cod_item: 159
-      quant: 1
+
 12:
   nome: Derrote o Peixe Boi
   objetivo: 13
@@ -114,12 +105,9 @@
   mares:
     - 6
   quant: 1
-  berries: 15000000
+  berries: 1500000
   diario: 1
-  recompensas:
-    - tipo: reagent
-      cod_item: 159
-      quant: 1
+
 13:
   nome: Derrote o Peixe Coelho
   objetivo: 14
@@ -127,9 +115,9 @@
   mares:
     - 6
   quant: 1
-  berries: 20000000
+  berries: 2000000
   diario: 1
   recompensas:
     - tipo: reagent
-      cod_item: 159
+      cod_item: 147
       quant: 1

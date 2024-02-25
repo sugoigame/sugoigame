@@ -43,19 +43,7 @@
   tipo: reagent
   cod_item: 146
   quant: 1
-10:
-  minimo: 20
-  tipo: akuma
-11:
-  minimo: 20
-  tipo: reagent
-  cod_item: 184
-  quant: 1
-12:
-  minimo: 20
-  tipo: reagent
-  cod_item: 185
-  quant: 1
+
 13:
   minimo: 20
   tipo: moeda_evento
@@ -65,14 +53,10 @@
   tipo: reagent
   cod_item: 147
   quant: 1
-16:
-  minimo: 20
-  tipo: reagent
-  cod_item: 155
-  quant: 1
+
 18:
   minimo: 20
-  tipo: haki
+  tipo: xp
   quant: 50000
 19:
   minimo: 20

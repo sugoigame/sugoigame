@@ -43,9 +43,6 @@
   tipo: reagent
   cod_item: 146
   quant: 1
-10:
-  minimo: 15
-  tipo: akuma
 11:
   minimo: 15
   tipo: alcunha
@@ -63,9 +60,4 @@
   minimo: 15
   tipo: reagent
   cod_item: 147
-  quant: 1
-16:
-  minimo: 15
-  tipo: reagent
-  cod_item: 155
   quant: 1

@@ -2,616 +2,644 @@
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 8
-          tipo: equipamento
+       - tipo_item: 15
+          cod_item: 134
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 1
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
       2:
         tripulacao: 2
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
       3:
         tripulacao: 3
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
 2:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 15
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 134
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 4
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 12
       2:
         tripulacao: 5
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 12
       3:
         tripulacao: 6
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 12
 3:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 16
-          tipo: equipamento
+       - tipo_item: 15
+          cod_item: 134
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 7
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 12
       2:
         tripulacao: 8
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 12
       3:
         tripulacao: 9
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 12
 4:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 21
-          tipo: equipamento
+       - tipo_item: 15
+          cod_item: 134
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 10
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 38
       2:
         tripulacao: 11
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 38
       3:
         tripulacao: 12
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 38
 5:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 23
-          tipo: equipamento
+       - tipo_item: 15
+          cod_item: 134
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 13
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 30
       2:
         tripulacao: 14
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 30
       3:
         tripulacao: 15
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 30
 6:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 22
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 16
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 14
       2:
         tripulacao: 17
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 14
       3:
         tripulacao: 18
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 14
 7:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 34
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 19
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 30
       2:
         tripulacao: 20
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 30
       3:
         tripulacao: 21
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 30
 8:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 8
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 1
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 12
       2:
         tripulacao: 2
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 12
       3:
         tripulacao: 3
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 12
 9:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 15
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 4
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 14
       2:
         tripulacao: 5
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 14
       3:
         tripulacao: 6
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 14
 10:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 16
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 7
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 12
       2:
         tripulacao: 8
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 12
       3:
         tripulacao: 9
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 12
 11:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 21
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 10
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
       2:
         tripulacao: 11
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
       3:
         tripulacao: 12
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
 12:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 23
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 13
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
       2:
         tripulacao: 14
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
       3:
         tripulacao: 15
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
 13:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 22
-          tipo: equipamento
+       - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 16
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 5
       2:
         tripulacao: 17
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 5
       3:
         tripulacao: 18
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 5
 14:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 34
-          tipo: equipamento
+       - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 19
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 30
       2:
         tripulacao: 20
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 30
       3:
         tripulacao: 21
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 30
 15:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 8
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 1
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 38
       2:
         tripulacao: 2
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 38
       3:
         tripulacao: 3
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 38
 16:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 15
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 4
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
       2:
         tripulacao: 5
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
       3:
         tripulacao: 6
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
 17:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 16
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 7
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 14
       2:
         tripulacao: 8
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 14
       3:
         tripulacao: 9
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 14
 18:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 21
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 10
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 38
       2:
         tripulacao: 11
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 38
       3:
         tripulacao: 12
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 38
 19:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 23
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 13
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
       2:
         tripulacao: 14
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
       3:
         tripulacao: 15
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
 20:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 22
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 16
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 41
       2:
         tripulacao: 17
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 41
       3:
         tripulacao: 18
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 41
 21:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 34
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 19
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 11
       2:
         tripulacao: 20
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 11
       3:
         tripulacao: 21
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 11
 22:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 8
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 1
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
       2:
         tripulacao: 2
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
       3:
         tripulacao: 3
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 1
 23:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 15
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 4
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 38
       2:
         tripulacao: 5
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 38
       3:
         tripulacao: 6
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 38
 24:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 16
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 7
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 22
       2:
         tripulacao: 8
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 22
       3:
         tripulacao: 9
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 22
 25:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 21
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 10
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 25
       2:
         tripulacao: 11
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 25
       3:
         tripulacao: 12
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 25
 26:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 23
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 13
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 32
       2:
         tripulacao: 14
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 32
       3:
         tripulacao: 15
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 32
 27:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 22
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 16
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 25
       2:
         tripulacao: 17
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 25
       3:
         tripulacao: 18
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 25
 28:
   niveis:
     1:
       recompensas:
-        - tipo_item: 14
-          cod_item: 34
-          tipo: equipamento
+        - tipo_item: 15
+          cod_item: 146
+          quant: 1
+          tipo: reagent
       1:
         tripulacao: 19
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 35
       2:
         tripulacao: 20
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 35
       3:
         tripulacao: 21
-        xp: 700
+        xp: 300
         berries: 5000
         battle_back: 35
 29:
@@ -624,17 +652,17 @@
           quant: 100
       1:
         tripulacao: 22
-        xp: 700
+        xp: 300
         berries: 50000
         battle_back: 28
       2:
         tripulacao: 22
-        xp: 710
+        xp: 310
         berries: 60000
         battle_back: 28
       3:
         tripulacao: 22
-        xp: 720
+        xp: 320
         berries: 70000
         battle_back: 28
 30:
@@ -647,17 +675,17 @@
           quant: 60
       1:
         tripulacao: 23
-        xp: 710
+        xp: 310
         berries: 60000
         battle_back: 12
       2:
         tripulacao: 23
-        xp: 720
+        xp: 320
         berries: 70000
         battle_back: 12
       3:
         tripulacao: 24
-        xp: 730
+        xp: 330
         berries: 80000
         battle_back: 12
 31:
@@ -670,17 +698,17 @@
           quant: 30
       1:
         tripulacao: 25
-        xp: 720
+        xp: 320
         berries: 70000
         battle_back: 21
       2:
         tripulacao: 25
-        xp: 730
+        xp: 330
         berries: 80000
         battle_back: 21
       3:
         tripulacao: 26
-        xp: 740
+        xp: 340
         berries: 90000
         battle_back: 21
 32:
@@ -693,17 +721,17 @@
           tipo: reagent
       1:
         tripulacao: 27
-        xp: 730
+        xp: 330
         berries: 80000
         battle_back: 6
       2:
         tripulacao: 27
-        xp: 740
+        xp: 340
         berries: 90000
         battle_back: 6
       3:
         tripulacao: 28
-        xp: 750
+        xp: 350
         berries: 100000
         battle_back: 6
 33:
@@ -716,17 +744,17 @@
           tipo: reagent
       1:
         tripulacao: 29
-        xp: 740
+        xp: 340
         berries: 90000
         battle_back: 25
       2:
         tripulacao: 29
-        xp: 750
+        xp: 350
         berries: 100000
         battle_back: 25
       3:
         tripulacao: 29
-        xp: 760
+        xp: 360
         berries: 110000
         battle_back: 25
 34:
@@ -739,17 +767,17 @@
           tipo: reagent
       1:
         tripulacao: 29
-        xp: 750
+        xp: 350
         berries: 100000
         battle_back: 25
       2:
         tripulacao: 29
-        xp: 760
+        xp: 360
         berries: 110000
         battle_back: 25
       3:
         tripulacao: 29
-        xp: 770
+        xp: 370
         berries: 120000
         battle_back: 25
 35:
@@ -770,17 +798,17 @@
           tipo: reagent
       1:
         tripulacao: 30
-        xp: 770
+        xp: 370
         berries: 120000
         battle_back: 25
       2:
         tripulacao: 30
-        xp: 780
+        xp: 380
         berries: 130000
         battle_back: 25
       3:
         tripulacao: 30
-        xp: 790
+        xp: 390
         berries: 140000
         battle_back: 25
 36:
@@ -793,17 +821,17 @@
           tipo: reagent
       1:
         tripulacao: 30
-        xp: 770
+        xp: 370
         berries: 120000
         battle_back: 25
       2:
         tripulacao: 30
-        xp: 780
+        xp: 380
         berries: 130000
         battle_back: 25
       3:
         tripulacao: 30
-        xp: 790
+        xp: 390
         berries: 140000
         battle_back: 25
 37:
@@ -816,12 +844,12 @@
           tipo: reagent
       1:
         tripulacao: 31
-        xp: 780
+        xp: 380
         berries: 130000
         battle_back: 30
       2:
         tripulacao: 31
-        xp: 790
+        xp: 390
         berries: 140000
         battle_back: 30
       3:
@@ -839,17 +867,17 @@
           tipo: reagent
       1:
         tripulacao: 31
-        xp: 790
+        xp: 390
         berries: 140000
         battle_back: 12
       2:
         tripulacao: 31
-        xp: 800
+        xp: 400
         berries: 150000
         battle_back: 12
       3:
         tripulacao: 31
-        xp: 810
+        xp: 410
         berries: 160000
         battle_back: 12
 39:
@@ -862,17 +890,17 @@
           tipo: reagent
       1:
         tripulacao: 32
-        xp: 800
+        xp: 400
         berries: 150000
         battle_back: 38
       2:
         tripulacao: 32
-        xp: 810
+        xp: 410
         berries: 160000
         battle_back: 38
       3:
         tripulacao: 32
-        xp: 820
+        xp: 420
         berries: 170000
         battle_back: 38
 40:
@@ -889,17 +917,17 @@
           tipo: reagent
       1:
         tripulacao: 34
-        xp: 820
+        xp: 420
         berries: 170000
         battle_back: 30
       2:
         tripulacao: 34
-        xp: 830
+        xp: 430
         berries: 180000
         battle_back: 30
       3:
         tripulacao: 34
-        xp: 840
+        xp: 440
         berries: 190000
         battle_back: 30
 41:
@@ -912,17 +940,17 @@
           tipo: reagent
       1:
         tripulacao: 33
-        xp: 810
+        xp: 410
         berries: 160000
         battle_back: 18
       2:
         tripulacao: 33
-        xp: 820
+        xp: 420
         berries: 170000
         battle_back: 18
       3:
         tripulacao: 33
-        xp: 830
+        xp: 430
         berries: 180000
         battle_back: 18
 42:
@@ -935,17 +963,17 @@
           tipo: reagent
       1:
         tripulacao: 35
-        xp: 830
+        xp: 430
         berries: 180000
         battle_back: 38
       2:
         tripulacao: 35
-        xp: 840
+        xp: 440
         berries: 190000
         battle_back: 38
       3:
         tripulacao: 35
-        xp: 850
+        xp: 450
         berries: 200000
         battle_back: 38
 43:
@@ -958,17 +986,17 @@
           tipo: reagent
       1:
         tripulacao: 36
-        xp: 850
+        xp: 450
         berries: 200000
         battle_back: 15
       2:
         tripulacao: 36
-        xp: 860
+        xp: 460
         berries: 210000
         battle_back: 15
       3:
         tripulacao: 36
-        xp: 870
+        xp: 470
         berries: 220000
         battle_back: 15
 44:
@@ -981,17 +1009,17 @@
           tipo: reagent
       1:
         tripulacao: 36
-        xp: 860
+        xp: 460
         berries: 220000
         battle_back: 43
       2:
         tripulacao: 36
-        xp: 870
+        xp: 470
         berries: 230000
         battle_back: 43
       3:
         tripulacao: 36
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 43
 45:
@@ -1004,17 +1032,17 @@
           tipo: reagent
       1:
         tripulacao: 36
-        xp: 870
+        xp: 470
         berries: 230000
         battle_back: 3
       2:
         tripulacao: 36
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 3
       3:
         tripulacao: 36
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 3
 46:
@@ -1027,38 +1055,40 @@
           tipo: reagent
       1:
         tripulacao: 37
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 16
       2:
         tripulacao: 37
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 16
       3:
         tripulacao: 37
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 16
 47:
   niveis:
     1:
       recompensas:
-        - quant: 1
-          tipo: akuma
+        - tipo_item: 15
+          cod_item: 147
+          quant: 3
+          tipo: reagent
       1:
         tripulacao: 37
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 38
       2:
         tripulacao: 37
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 38
       3:
         tripulacao: 37
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 38
 101:
@@ -1075,17 +1105,17 @@
           tipo: reagent
       1:
         tripulacao: 48
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 55
       2:
         tripulacao: 48
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 55
       3:
         tripulacao: 48
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 55
     2:
@@ -1096,17 +1126,17 @@
           tipo: reagent
       4:
         tripulacao: 48
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 56
       5:
         tripulacao: 48
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 56
       6:
         tripulacao: 48
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 56
     3:
@@ -1117,17 +1147,17 @@
           tipo: reagent
       7:
         tripulacao: 48
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 57
       8:
         tripulacao: 48
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 57
       9:
         tripulacao: 48
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 57
     4:
@@ -1138,17 +1168,17 @@
           tipo: reagent
       10:
         tripulacao: 48
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 58
       11:
         tripulacao: 48
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 58
       12:
         tripulacao: 48
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 58
     5:
@@ -1163,17 +1193,17 @@
           tipo: reagent
       13:
         tripulacao: 48
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 59
       14:
         tripulacao: 48
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 59
       15:
         tripulacao: 48
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 59
     6:
@@ -1184,17 +1214,17 @@
           tipo: reagent
       16:
         tripulacao: 48
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 60
       17:
         tripulacao: 48
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 60
       18:
         tripulacao: 48
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 60
 102:
@@ -1202,7 +1232,7 @@
     1:
       recompensas:
         - tipo_item: 15
-          cod_item: 134
+          cod_item: 147
           quant: 1
           tipo: reagent
         - tipo_item: 15
@@ -1211,17 +1241,17 @@
           tipo: reagent
       1:
         tripulacao: 49
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 61
       2:
         tripulacao: 49
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 61
       3:
         tripulacao: 49
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 61
     2:
@@ -1232,17 +1262,17 @@
           tipo: reagent
       4:
         tripulacao: 49
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 12
       5:
         tripulacao: 49
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 12
       6:
         tripulacao: 49
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 12
     3:
@@ -1253,17 +1283,17 @@
           tipo: reagent
       7:
         tripulacao: 49
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 49
       8:
         tripulacao: 49
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 49
       9:
         tripulacao: 49
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 49
     4:
@@ -1274,17 +1304,17 @@
           tipo: reagent
       10:
         tripulacao: 49
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 62
       11:
         tripulacao: 49
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 62
       12:
         tripulacao: 49
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 62
     5:
@@ -1295,17 +1325,17 @@
           tipo: reagent
       13:
         tripulacao: 49
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 63
       14:
         tripulacao: 49
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 63
       15:
         tripulacao: 49
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 63
     6:
@@ -1316,16 +1346,16 @@
           tipo: reagent
       16:
         tripulacao: 49
-        xp: 880
+        xp: 480
         berries: 240000
         battle_back: 64
       17:
         tripulacao: 49
-        xp: 890
+        xp: 490
         berries: 250000
         battle_back: 64
       18:
         tripulacao: 49
-        xp: 900
+        xp: 500
         berries: 260000
         battle_back: 64
