@@ -1,24 +1,24 @@
 <?php
 function get_current_evento_periodico()
 {
-    $now = time();
-    $current_week = date("W", $now);
-    $current_day_of_week = date("w", $now);
-    $current_day_of_month = date("j", $now);
-    $current_month = date("n", $now);
-    $current_year = date("Y", $now);
-    $current_week_quarter = $current_week % 4;
-    $start = strtotime('-' . $current_day_of_week . ' days',
-        mktime(0, 0, 0, $current_month, $current_day_of_month, $current_year)
-    );
-    $end = strtotime("+1 weeks", $start);
-
     $eventos = [
         "eventoLadroesTesouro",
         "eventoChefesIlhas",
         "boss",
         "eventoPirata"
     ];
+
+    $now = time();
+    $current_week = date("W", $now);
+    $current_day_of_week = date("w", $now);
+    $current_day_of_month = date("j", $now);
+    $current_month = date("n", $now);
+    $current_year = date("Y", $now);
+    $current_week_quarter = $current_week % count($eventos);
+    $start = strtotime('-' . $current_day_of_week . ' days',
+        mktime(0, 0, 0, $current_month, $current_day_of_month, $current_year)
+    );
+    $end = strtotime("+1 weeks", $start);
 
     return [
         "start" => $start,
@@ -37,7 +37,10 @@ function cron_atualiza_evento_periodico()
     if ($evento_registrado != $evento["id"]) {
         set_value_varchar_variavel_global(VARIAVEL_EVENTO_PERIODICO_ATIVO, $evento["id"]);
 
-        // TODO entrega premios de fim de era
+        $connection->run("DELETE FROM tb_pve WHERE zona = 73");
+        $connection->run("DELETE FROM tb_pve WHERE zona >=15 AND zona <=21");
+        $connection->run("DELETE FROM tb_evento_chefes");
+        $connection->run("DELETE FROM tb_boss_damage WHERE real_boss_id = 10");
     }
 }
 
