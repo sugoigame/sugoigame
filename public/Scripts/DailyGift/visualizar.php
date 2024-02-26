@@ -38,15 +38,39 @@ $rdms = DataLoader::load("rdm");
 $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_eventos WHERE inicio > DATE_SUB(NOW(), INTERVAL 5 MINUTE) ")->fetch_array()["total"];
 
 ?>
-<?php function render_evento_periodico($session, $name)
+<?php function render_evento_ativo($session, $name, $evento, $ranking = null)
 { ?>
-    <div class="list-group-item col-md-4">
+    <?php $tempo_total = $evento["end"] - $evento["start"] ?>
+    <?php $dias_totais = round($tempo_total / (60 * 60 * 24)); ?>
+    <?php $tempo_restante = $evento["end"] - time() ?>
+    <?php $dias_restantes = round($tempo_restante / (60 * 60 * 24)); ?>
+    <div class="list-group-item col-md-12">
         <h4>
             <?= $name ?>
         </h4>
+        <h5>
+            De
+            <?= date("d/m/Y H:i:s", $evento["start"]) ?> até
+            <?= date("d/m/Y H:i:s", $evento["end"]) ?>
+        </h5>
+        <div class="progress">
+            <div class="progress-bar progress-bar-<?= dias_restantes_color($dias_restantes) ?>"
+                style="width: <?= ($dias_totais - $dias_restantes) / $dias_totais * 100 ?>%">
+                <a href="./?ses=<?= $session ?>" data-dismiss="modal" class="link_content">
+                    Restante:
+                    <?= $dias_restantes ?>
+                    dias
+                </a>
+            </div>
+        </div>
         <a href="./?ses=<?= $session ?>" data-dismiss="modal" class="link_content btn btn-info">
             Recompensas
         </a>
+        <?php if ($ranking) : ?>
+            <a href="./?ses=<?= $ranking ?>" data-dismiss="modal" class="link_content btn btn-success">
+                Ranking
+            </a>
+        <?php endif; ?>
     </div>
 <?php } ?>
 <div class="modal-body">
@@ -166,71 +190,23 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
         <div class="tab-pane" id="calendar-tab-eventos">
             <h4>Eventos ativos neste momento:</h4>
             <div class="row">
-                <div class="list-group-item col-md-4">
-                    <?php $end = new DateTime("2021-09-17 00:00:00"); ?>
-                    <?php $now = new DateTime(date("Y-m-d H:i:s")); ?>
-                    <?php $tempo_restante = $now->diff($end); ?>
-                    <?php $dias_restantes = $tempo_restante->format('%a'); ?>
-                    <h4>
-                        <a href="./?ses=era" data-dismiss="modal" class="link_content">
-                            2º Grande Era dos Piratas
-                        </a>
-                    </h4>
-                    <h5>Duração: 90 dias</h5>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-<?= dias_restantes_color($dias_restantes) ?>"
-                            style="width: <?= (90 - $dias_restantes) / 90 * 100 ?>%">
-                            <a href="./?ses=ranking&rank=reputacao" data-dismiss="modal" class="link_content">
-                                Restante:
-                                <?= $tempo_restante->format('%a') ?>
-                                dias,
-                                <?= $tempo_restante->format('%h') ?> horas
-                                e
-                                <?= $tempo_restante->format('%i') ?> minutos
-                            </a>
-                        </div>
-                    </div>
-                    <a href="./?ses=era" data-dismiss="modal" class="link_content btn btn-info">
-                        Premiação
-                    </a>
-                    <a href="./?ses=ranking&rank=reputacao" data-dismiss="modal" class="link_content btn btn-success">
-                        Ranking
-                    </a>
-                </div>
-                <div class="list-group-item col-md-4">
-                    <?php $end = new DateTime("2021-07-17 00:00:00"); ?>
-                    <?php $tempo_restante = $now->diff($end); ?>
-                    <?php $dias_restantes = $tempo_restante->format('%a'); ?>
-                    <h4>
-                        <a href="./?ses=batalhaPoderes" data-dismiss="modal" class="link_content">
-                            Batalha dos Grandes Poderes
-                        </a>
-                    </h4>
-                    <h5>Duração: 30 dias</h5>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-<?= dias_restantes_color($dias_restantes) ?>"
-                            style="width: <?= (30 - $dias_restantes) / 30 * 100 ?>%">
-                            <a href="./?ses=ranking&rank=reputacao_mensal" data-dismiss="modal" class="link_content">
-                                Restante:
-                                <?= $tempo_restante->format('%a') ?>
-                                dias,
-                                <?= $tempo_restante->format('%h') ?> horas
-                                e
-                                <?= $tempo_restante->format('%i') ?> minutos
-                            </a>
-                        </div>
-                    </div>
-                    <a href="./?ses=batalhaPoderes" data-dismiss="modal" class="link_content btn btn-info">
-                        Premiação
-                    </a>
-                    <a href="./?ses=ranking&rank=reputacao_mensal" data-dismiss="modal"
-                        class="link_content btn btn-success">
-                        Ranking
-                    </a>
-                </div>
+                <?php render_evento_ativo(
+                    "era",
+                    "Grande Era dos Piratas",
+                    $eventos_ativos["eraDosPiratas"],
+                    "ranking&rank=reputacao"
+                ) ?>
+
+                <?php render_evento_ativo(
+                    "batalhaPoderes",
+                    "Batalha pelos Poneglyphs",
+                    $eventos_ativos["batalhaPoneglyphs"],
+                    "ranking&rank=reputacao_mensal"
+                ) ?>
+
                 <?php $disputas = $connection->run("SELECT * FROM tb_ilha_disputa LEFT JOIN tb_usuarios ON tb_ilha_disputa.vencedor_id = tb_usuarios.id"); ?>
                 <?php while ($disputa = $disputas->fetch_array()) : ?>
-                    <div class="list-group-item col-md-4">
+                    <div class="list-group-item col-md-12">
                         <h4>
                             Disputa por
                             <?= nome_ilha($disputa["ilha"]) ?>
@@ -243,35 +219,32 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
                     </div>
                 <?php endwhile; ?>
 
-                <?php $evento_periodico_ativo = get_value_varchar_variavel_global(VARIAVEL_EVENTO_PERIODICO_ATIVO); ?>
-                <?php if ($evento_periodico_ativo == "eventoLadroesTesouro") : ?>
-                    <?php render_evento_periodico("eventoLadroesTesouro", "Em busca do tesouro roubado"); ?>
-                <?php elseif ($evento_periodico_ativo == "eventoChefesIlhas") : ?>
-                    <?php render_evento_periodico("eventoChefesIlhas", "Equilibrando os poderes do mundo"); ?>
-                <?php elseif ($evento_periodico_ativo == "boss") : ?>
-                    <?php render_evento_periodico("boss", "Caça ao Chefão"); ?>
-                <?php elseif ($evento_periodico_ativo == "eventoPirata") : ?>
-                    <?php render_evento_periodico("eventoPirata", "Caça aos Piratas"); ?>
+                <?php $evento_periodico_ativo = get_current_evento_periodico(); ?>
+                <?php if ($evento_periodico_ativo["id"] == "eventoLadroesTesouro") : ?>
+                    <?php render_evento_ativo(
+                        "eventoLadroesTesouro",
+                        "Em busca do tesouro roubado",
+                        $evento_periodico_ativo
+                    ); ?>
+                <?php elseif ($evento_periodico_ativo["id"] == "eventoChefesIlhas") : ?>
+                    <?php render_evento_ativo(
+                        "eventoChefesIlhas",
+                        "Equilibrando os poderes do mundo",
+                        $evento_periodico_ativo
+                    ); ?>
+                <?php elseif ($evento_periodico_ativo["id"] == "boss") : ?>
+                    <?php render_evento_ativo(
+                        "boss",
+                        "Caça ao Chefão",
+                        $evento_periodico_ativo
+                    ); ?>
+                <?php elseif ($evento_periodico_ativo["id"] == "eventoPirata") : ?>
+                    <?php render_evento_ativo(
+                        "eventoPirata",
+                        "Caça aos Piratas",
+                        $evento_periodico_ativo
+                    ); ?>
                 <?php endif; ?>
-                <!--<div class="list-group-item col-md-4">
-                    <h4>
-                        Evento de Ano Novo
-                    </h4>
-                    <a href="./?ses=eventoAnoNovo" data-dismiss="modal" class="link_content btn btn-info">
-                        Recompensas
-                    </a>
-                </div>
-                <div class="list-group-item col-md-4">
-                    <h4>
-                        Bonus de Experiência
-                    </h4>
-                </div>-->
-            </div>
-            <h4>Calendário do jogo</h4>
-            <div>
-                <iframe
-                    src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=sms7pac1e14pshj0om7knh78ng%40group.calendar.google.com&amp;color=%232F6309&amp;src=c20petsj832cqfr06ldnrsbsj0%40group.calendar.google.com&amp;color=%23BE6D00&amp;src=52efetkf9qqlb7du0g04h8vftg%40group.calendar.google.com&amp;color=%23B1440E&amp;src=muumg01esl24lipcttqs76drs0%40group.calendar.google.com&amp;color=%23B1365F&amp;src=hi7n536og0a6ukl2uvs1ti805o%40group.calendar.google.com&amp;color=%2328754E&amp;src=nb59ici543mjciji179i8rd2j8%40group.calendar.google.com&amp;color=%235229A3&amp;src=8uconpno7gg52k4dvkj0j30stc%40group.calendar.google.com&amp;color=%23AB8B00&amp;ctz=America%2FSao_Paulo"
-                    style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
         <div class="tab-pane" id="calendar-tab-missoes-diarias">

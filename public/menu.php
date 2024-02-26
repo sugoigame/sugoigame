@@ -66,9 +66,8 @@ function super_menu_can_be_active($menu)
                     <?= menu_link("akumaBook", "Akuma Book", "fa fa-book", "Veja quais foram as Akuma no Mi já encontradas") ?>
                     <?= menu_link("hall", "Hall da fama", "fa fa-trophy", "Veja quais foram os melhores jogadores de eras passadas") ?>
                     <?= menu_link("ranking", "Ranking", "fa fa-trophy", "") ?>
-                    <?= menu_link("calendario", "Calendário do jogo", "fa fa-calendar", "") ?>
                     <?= menu_link("conta", "Minha Conta", "fa fa-address-card", "") ?>
-                    <?= menu_link("calculadoras", "Calculadoras", "fa fa-calculator", "") ?>
+                    <!-- <?= menu_link("calculadoras", "Calculadoras", "fa fa-calculator", "") ?> -->
                     <?= menu_link("#", "Destravar Tripulação", "fa fa-cogs", "Corrigir bugs que podem ter travado sua conta.", "", "", "unstuck-acc") ?>
                     <?= menu_link("vipLoja", "Gold Shop", "fa fa-shopping-cart", "") ?>
                     <?= menu_link("vipComprar", "Faça uma doação", "fa fa-diamond", "") ?>

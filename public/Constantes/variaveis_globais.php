@@ -1,4 +1,6 @@
 <?php
+define('VARIAVEL_ERA_ATUAL', 'ERA_ATUAL');
+define('VARIAVEL_BATALHA_PONEGLYPH_ATUAL', 'BATALHA_PONEGLYPH_ATUAL');
 define('VARIAVEL_BALANCO_VENDA_DOBRAO', 'BALANCO_VENDA_DOBRAO');
 define('VARIAVEL_VENCEDORES_ERA_PIRATA', 'VENCEDORES_ERA_PIRATA');
 define('VARIAVEL_VENCEDORES_ERA_MARINHA', 'VENCEDORES_ERA_MARINHA');
@@ -33,6 +35,13 @@ function get_value_int_variavel_global($variavel)
     $value = get_value_variavel_global($variavel);
 
     return $value ? $value["valor_int"] : false;
+}
+
+function set_value_varchar_variavel_global($variavel, $value)
+{
+    global $connection;
+    $connection->run("UPDATE tb_variavel_global SET valor_varchar = ? WHERE variavel = ?",
+        "ss", array($value, $variavel));
 }
 
 function set_value_int_variavel_global($variavel, $quant)
