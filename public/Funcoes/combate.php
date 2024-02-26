@@ -1060,7 +1060,7 @@ function fadiga_batalha_ativa($personagens)
                 </span>
                 <img src="Imagens/Batalha/vs.png" />
                 <span class="placar">
-                    <?= $userDetails->combate_pve["hp_pc"] ? "1" : "0" ?>
+                    <?= $userDetails->combate_pve["hp_npc"] ? "1" : "0" ?>
                 </span>
                 <?php render_vontade($userDetails->combate_pve["mp_npc"]) ?>
                 <span class="battle-player text-left">

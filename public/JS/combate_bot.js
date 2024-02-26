@@ -21,7 +21,7 @@ function batalha() {
         cache: false,
         success: function (retorno) {
             var scroll = $(".fight-zone").scrollLeft();
-            $("#navio_batalha").html(retorno);
+            $("#batalha-content").html(retorno);
             $(".fight-zone").scrollLeft(scroll);
             if ($("#turno-vez").length) {
                 if ($("#botao_atacar").length) {

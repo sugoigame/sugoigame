@@ -1,5 +1,8 @@
 //atualiza o tabuleiro
 var v = 1;
+$(function () {
+    toggleTurn(v);
+});
 function batalha() {
     $.ajax({
         type: "get",
@@ -7,7 +10,7 @@ function batalha() {
         cache: false,
         success: function (retorno) {
             var scroll = $(".fight-zone").scrollLeft();
-            $("#navio_batalha").html(retorno);
+            $("#batalha-content").html(retorno);
             $(".fight-zone").scrollLeft(scroll);
             if ($("#botao_mover").data("move") == 5) {
                 setTimeout(() => toggleTurn(v++), 30);
