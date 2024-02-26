@@ -314,19 +314,21 @@ class Navigation
         ];
 
         $turned = 0;
-        $power = rand(0, 100) / 100.0;
 
         for ($i = 0; $i < $amount; $i++) {
             $size = rand(5, 30);
+
+            $power = rand(0, 100) / 100.0;
 
             $x = rand(0, SEA_MAX_X);
             $y = rand(0, SEA_MAX_Y);
             $direction = rand(0, 7);
             for ($j = 0; $j < $size; $j++) {
                 if (! $this->collide(array("x" => $x, "y" => $y))) {
+                    $power = min(max($power + (rand(-10, 10) / 100.0), 0.2), 1.0);
                     $effects[$x][$y] = array(
                         "direcao" => $direction,
-                        "power" => min(max($power + (rand(-10, 10) / 100.0), 0.0), 1.0)
+                        "power" => $power
                     );
                 }
                 $x += $direction_increment[$direction]["x"];
@@ -364,6 +366,46 @@ class Navigation
 
         return $effects;
     }
+    private function _get_effect_block($min, $max)
+    {
+        $effects = [];
+        $amount = rand($min, $max);
+
+        for ($a = 0; $a < $amount; $a++) {
+            $size_x = rand(5, 30);
+            $size_y = rand(5, 30);
+
+            $x_start = rand(0, SEA_MAX_X);
+            $y_start = rand(0, SEA_MAX_Y);
+
+            $power = rand(0, 100) / 100.0;
+
+            $direction = rand(0, 7);
+            for ($i = 0; $i < $size_x; $i++) {
+                for ($j = 0; $j < $size_y; $j++) {
+                    $x = $x_start + $i;
+                    $y = $y_start + $j;
+                    if ($x > SEA_MAX_X) {
+                        $x -= SEA_MAX_X;
+                    }
+                    if ($y > SEA_MAX_Y) {
+                        $y -= SEA_MAX_Y;
+                    }
+
+                    if (! $this->collide(array("x" => $x, "y" => $y))) {
+                        $power = min(max($power + (rand(-10, 10) / 100.0), 0.2), 1.0);
+                        $effects[$x][$y] = array(
+                            "direcao" => $direction,
+                            "power" => $power
+                        );
+                    }
+
+                }
+            }
+        }
+
+        return $effects;
+    }
 
     function update_chain()
     {
@@ -382,7 +424,7 @@ class Navigation
         }
         $this->last_wind_update = atual_segundo();
 
-        $this->wind = $this->_get_continous_effects(7000, 10000);
+        $this->wind = $this->_get_effect_block(500, 1000);
     }
 
     function update_swirl()
