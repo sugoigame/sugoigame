@@ -1,6 +1,6 @@
 <div class="panel-heading">
     Ranking
-    <?= ajuda("Ranking", "Conheça os melhores jogadores do Sugoi Game") ?>
+    <?= ajuda_tooltip("Conheça os melhores jogadores do Sugoi Game") ?>
 </div>
 
 <div class="panel-body">
@@ -8,13 +8,13 @@
     <div class="row">
         <div class="col-xs-6 col-md-6">
             <a href="./?ses=era" class="link_content btn btn-info btn-block">
-                Ver recompensas pela Grande Era dos Piratas
+                Ver recompensas da Grande Era dos Piratas
             </a>
         </div>
         <div class="col-xs-6 col-md-6">
 
             <a href="./?ses=batalhaPoderes" class="link_content btn btn-info btn-block">
-                Ver recompensas pela Batalha dos Grandes Poderes
+                Ver recompensas da Batalha pelos Poneglyphs
             </a>
         </div>
         <div class="col-md-12">
@@ -33,7 +33,7 @@
     }
     $limit_start = $page * 25;
 
-    $faccao = NULL;
+    $faccao = null;
     if (isset($_GET["faccao"]) && ($_GET["faccao"] == FACCAO_MARINHA || $_GET["faccao"] == FACCAO_PIRATA)) {
         $faccao = $_GET["faccao"];
     }
@@ -43,14 +43,15 @@
     <div>
         <ul class="nav nav-pills nav-justified">
             <li class="<?= $ranking == "reputacao" ? "active" : "" ?>">
-                <a href="./?ses=ranking&rank=reputacao" class="link_content">Era dos Piratas</a>
+                <a href="./?ses=ranking&rank=reputacao" class="link_content">
+                    Era dos Piratas
+                </a>
             </li>
             <li class="<?= $ranking == "reputacao_mensal" ? "active" : "" ?>">
-                <a href="./?ses=ranking&rank=reputacao_mensal" class="link_content">Grandes Poderes</a>
+                <a href="./?ses=ranking&rank=reputacao_mensal" class="link_content">
+                    Batalha pelos Poneglyphs
+                </a>
             </li>
-            <!--<li class="<?= $ranking == "incursao" ? "active" : "" ?>">
-                <a href="./?ses=ranking&rank=incursao" class="link_content">Incursão à Alubarna</a>
-            </li>-->
             <li class="<?= $ranking == "fa" ? "active" : "" ?>">
                 <a href="./?ses=ranking&rank=fa" class="link_content">Recompensa</a>
             </li>
@@ -70,14 +71,14 @@
     <?php if ($ranking != "incursao") : ?>
         <div>
             <ul class="nav nav-pills nav-justified">
-                <li class="<?= $faccao === NULL ? "active" : "" ?>">
+                <li class="<?= $faccao === null ? "active" : "" ?>">
                     <a href="./?ses=ranking&rank=<?= $ranking ?>" class="link_content">Todas facções</a>
                 </li>
-                <li class="<?= $faccao !== NULL && $faccao == FACCAO_MARINHA ? "active" : "" ?>">
+                <li class="<?= $faccao !== null && $faccao == FACCAO_MARINHA ? "active" : "" ?>">
                     <a href="./?ses=ranking&rank=<?= $ranking ?>&faccao=<?= FACCAO_MARINHA ?>"
                         class="link_content">Marinheiros</a>
                 </li>
-                <li class="<?= $faccao !== NULL && $faccao == FACCAO_PIRATA ? "active" : "" ?>">
+                <li class="<?= $faccao !== null && $faccao == FACCAO_PIRATA ? "active" : "" ?>">
                     <a href="./?ses=ranking&rank=<?= $ranking ?>&faccao=<?= FACCAO_PIRATA ?>"
                         class="link_content">Piratas</a>
                 </li>
@@ -88,7 +89,7 @@
     <?php if ($ranking == "reputacao") : ?>
         <?php
         $query = "SELECT count(posicao) AS total FROM tb_ranking_reputacao ";
-        if ($faccao !== NULL) {
+        if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
         $total = $connection->run($query)->fetch_array()["total"];
@@ -96,29 +97,23 @@
 
         <?php
         $query = "SELECT * FROM tb_ranking_reputacao ";
-        if ($faccao !== NULL) {
+        if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
         $query .= " ORDER BY posicao LIMIT $limit_start, 25 ";
         $result = $connection->run($query);
         ?>
-        <h5>
-            Atenção: Apenas os jogadores que já participaram de pelo menos 10 batalhas PvP durante essa Era aparecem no
-            Ranking
-        </h5>
 
         <ul class="list-group">
             <?php while ($rnk = $result->fetch_array()) : ?>
                 <li class="list-group-item">
                     <h4>
-                        <img data-toggle="tooltip" data-placement="bottom"
-                            title="<?= get_patente_nome($rnk["faccao"], $rnk["reputacao"]) ?>"
-                            src="Imagens/Ranking/Patentes/<?= $rnk["faccao"] . "_" . get_patente_id($rnk["reputacao"]) ?>.png" />
                         <img src="Imagens/Bandeiras/img.php?cod=<?= $rnk["bandeira"]; ?>&f=<?= $rnk["faccao"]; ?>" />
                         <?= $rnk["posicao"] ?>º
                         <?= $rnk["nome"] ?>
                     </h4>
-                    <p>Reputação:
+                    <p>
+                        Road Poneglyphs:
                         <?= $rnk["reputacao"] ?>
                     </p>
                 </li>
@@ -127,7 +122,7 @@
     <?php elseif ($ranking == "reputacao_mensal") : ?>
         <?php
         $query = "SELECT count(posicao) AS total FROM tb_ranking_reputacao_mensal ";
-        if ($faccao !== NULL) {
+        if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
         $total = $connection->run($query)->fetch_array()["total"];
@@ -135,16 +130,12 @@
 
         <?php
         $query = "SELECT * FROM tb_ranking_reputacao_mensal ";
-        if ($faccao !== NULL) {
+        if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
         $query .= " ORDER BY posicao LIMIT $limit_start, 25 ";
         $result = $connection->run($query);
         ?>
-        <h5>
-            Atenção: Apenas os jogadores que já participaram de pelo menos 3 batalhas PvP durante esse Mês aparecem no
-            Ranking
-        </h5>
         <ul class="list-group">
             <?php while ($rnk = $result->fetch_array()) : ?>
                 <li class="list-group-item">
@@ -153,7 +144,8 @@
                         <?= $rnk["posicao"] ?>º
                         <?= $rnk["nome"] ?>
                     </h4>
-                    <p>Reputação:
+                    <p>
+                        Poneglyphs:
                         <?= $rnk["reputacao"] ?>
                     </p>
                 </li>
@@ -162,7 +154,7 @@
     <?php elseif ($ranking == "fa") : ?>
         <?php
         $query = "SELECT count(posicao) AS total FROM tb_ranking_fa ";
-        if ($faccao !== NULL) {
+        if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
         $total = $connection->run($query)->fetch_array()["total"];
@@ -170,7 +162,7 @@
 
         <?php
         $query = "SELECT * FROM tb_ranking_fa INNER JOIN tb_personagens ON tb_ranking_fa.cod=tb_personagens.cod ";
-        if ($faccao !== NULL) {
+        if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
         $query .= " ORDER BY posicao LIMIT $limit_start, 25 ";
@@ -196,7 +188,7 @@
     <?php elseif ($ranking == "espadachins") : ?>
         <?php
         $query = "SELECT count(posicao) AS total FROM tb_ranking_score_espadachim ";
-        if ($faccao !== NULL) {
+        if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
         $total = $connection->run($query)->fetch_array()["total"];
@@ -204,7 +196,7 @@
 
         <?php
         $query = "SELECT * FROM tb_ranking_score_espadachim INNER JOIN tb_personagens ON tb_ranking_score_espadachim.cod=tb_personagens.cod ";
-        if ($faccao !== NULL) {
+        if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
         $query .= " ORDER BY posicao LIMIT $limit_start, 25 ";
@@ -229,7 +221,7 @@
     <?php elseif ($ranking == "lutadores") : ?>
         <?php
         $query = "SELECT count(posicao) AS total FROM tb_ranking_score_lutador ";
-        if ($faccao !== NULL) {
+        if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
         $total = $connection->run($query)->fetch_array()["total"];
@@ -237,7 +229,7 @@
 
         <?php
         $query = "SELECT * FROM tb_ranking_score_lutador INNER JOIN tb_personagens ON tb_ranking_score_lutador.cod=tb_personagens.cod ";
-        if ($faccao !== NULL) {
+        if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
         $query .= " ORDER BY posicao LIMIT $limit_start, 25 ";
@@ -263,7 +255,7 @@
     <?php elseif ($ranking == "atiradores") : ?>
         <?php
         $query = "SELECT count(posicao) AS total FROM tb_ranking_score_atirador ";
-        if ($faccao !== NULL) {
+        if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
         $total = $connection->run($query)->fetch_array()["total"];
@@ -271,7 +263,7 @@
 
         <?php
         $query = "SELECT * FROM tb_ranking_score_atirador INNER JOIN tb_personagens ON tb_ranking_score_atirador.cod=tb_personagens.cod ";
-        if ($faccao !== NULL) {
+        if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
         $query .= " ORDER BY posicao LIMIT $limit_start, 25 ";

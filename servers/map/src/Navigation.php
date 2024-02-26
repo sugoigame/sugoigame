@@ -424,7 +424,7 @@ class Navigation
         }
         $this->last_wind_update = atual_segundo();
 
-        $this->wind = $this->_get_effect_block(500, 1000);
+        $this->wind = $this->_get_effect_block(200, 500);
     }
 
     function update_swirl()
