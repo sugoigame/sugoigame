@@ -107,7 +107,7 @@ if (! function_exists('nome_ilha')) {
             case 46:
                 return "Raijin";
             case 47:
-                return "Laftel";
+                return "Laugh Tail";
 
             // outras
             case 101:

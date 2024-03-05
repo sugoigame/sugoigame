@@ -53,19 +53,23 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
             <?= date("d/m/Y H:i:s", $evento["start"]) ?> até
             <?= date("d/m/Y H:i:s", $evento["end"]) ?>
         </h5>
-        <div class="progress">
-            <div class="progress-bar progress-bar-<?= dias_restantes_color($dias_restantes) ?>"
-                style="width: <?= ($dias_totais - $dias_restantes) / $dias_totais * 100 ?>%">
-                <a href="./?ses=<?= $session ?>" data-dismiss="modal" class="link_content">
-                    Restante:
-                    <?= $dias_restantes ?>
-                    dias
-                </a>
+        <?php if ($dias_totais > 0) : ?>
+            <div class="progress">
+                <div class="progress-bar progress-bar-<?= dias_restantes_color($dias_restantes) ?>"
+                    style="width: <?= ($dias_totais - $dias_restantes) / $dias_totais * 100 ?>%">
+                    <a href="./?ses=<?= $session ?>" data-dismiss="modal" class="link_content">
+                        Restante:
+                        <?= $dias_restantes ?>
+                        dias
+                    </a>
+                </div>
             </div>
-        </div>
-        <a href="./?ses=<?= $session ?>" data-dismiss="modal" class="link_content btn btn-info">
-            Recompensas
-        </a>
+        <?php endif; ?>
+        <?php if ($session) : ?>
+            <a href="./?ses=<?= $session ?>" data-dismiss="modal" class="link_content btn btn-info">
+                Recompensas
+            </a>
+        <?php endif; ?>
         <?php if ($ranking) : ?>
             <a href="./?ses=<?= $ranking ?>" data-dismiss="modal" class="link_content btn btn-success">
                 Ranking
@@ -85,6 +89,11 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
             <li>
                 <a href="#calendar-tab-eventos" data-toggle="tab">
                     Eventos Ativos
+                </a>
+            </li>
+            <li>
+                <a href="#calendar-tab-pvp" data-toggle="tab">
+                    Calendário PvP
                 </a>
             </li>
             <li>
@@ -190,34 +199,15 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
         <div class="tab-pane" id="calendar-tab-eventos">
             <h4>Eventos ativos neste momento:</h4>
             <div class="row">
-                <?php render_evento_ativo(
-                    "era",
-                    "Grande Era dos Piratas",
-                    $eventos_ativos["eraDosPiratas"],
-                    "ranking&rank=reputacao"
-                ) ?>
 
-                <?php render_evento_ativo(
-                    "batalhaPoderes",
-                    "Batalha pelos Poneglyphs",
-                    $eventos_ativos["batalhaPoneglyphs"],
-                    "ranking&rank=reputacao_mensal"
-                ) ?>
-
-                <?php $disputas = $connection->run("SELECT * FROM tb_ilha_disputa LEFT JOIN tb_usuarios ON tb_ilha_disputa.vencedor_id = tb_usuarios.id"); ?>
-                <?php while ($disputa = $disputas->fetch_array()) : ?>
-                    <div class="list-group-item col-md-12">
-                        <h4>
-                            Disputa por
-                            <?= nome_ilha($disputa["ilha"]) ?>
-                        </h4>
-                        <?php if ($disputa["vencedor_id"]) : ?>
-                            <h4>
-                                <?= $disputa["tripulacao"] ?> concluiu a incursão pela ilha
-                            </h4>
-                        <?php endif; ?>
-                    </div>
-                <?php endwhile; ?>
+                <?php $disputa_ativa = get_current_disputa_ilha(); ?>
+                <?php if ($disputa_ativa) : ?>
+                    <?php render_evento_ativo(
+                        null,
+                        "Disputa por " . $disputa_ativa["id"],
+                        $disputa_ativa
+                    ); ?>
+                <?php endif; ?>
 
                 <?php $evento_periodico_ativo = get_current_evento_periodico(); ?>
                 <?php if ($evento_periodico_ativo["id"] == "eventoLadroesTesouro") : ?>
@@ -245,6 +235,37 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
                         $evento_periodico_ativo
                     ); ?>
                 <?php endif; ?>
+
+                <?php render_evento_ativo(
+                    "batalhaPoderes",
+                    "Batalha pelos Poneglyphs",
+                    $eventos_ativos["batalhaPoneglyphs"],
+                    "ranking&rank=reputacao_mensal"
+                ) ?>
+                <?php render_evento_ativo(
+                    "era",
+                    "Grande Era dos Piratas",
+                    $eventos_ativos["eraDosPiratas"],
+                    "ranking&rank=reputacao"
+                ) ?>
+            </div>
+        </div>
+        <div class="tab-pane" id="calendar-tab-pvp">
+            <div class="row">
+                <?php foreach ($disputas_ilhas as $disputa) : ?>
+                    <div class="list-group-item col-md-4">
+                        <h4>
+                            Batalha por
+                            <?= $disputa["id"] ?>
+                        </h4>
+                        <h5>
+                            Todo(a)
+                            <?= utf8_encode(strftime('%A', strtotime("Sunday +" . $disputa["day_of_week"] . " days"))); ?>
+                            às
+                            <?= $disputa["start_hour"] ?>
+                        </h5>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="tab-pane" id="calendar-tab-missoes-diarias">
