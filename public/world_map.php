@@ -25,7 +25,7 @@ require_once "Includes/conectdb.php";
         z-index: 4;
         top: 50%;
         transform: translateY(-50%);
-        right: 0;
+        right: 10px;
         margin: auto;
         text-align: center;
         display: flex;
@@ -34,8 +34,7 @@ require_once "Includes/conectdb.php";
     }
 
     #skills-area .skill {
-        width: 6vw;
-        margin: auto;
+        margin: 3px auto;
         position: relative;
         border-radius: 5px;
         display: block;
@@ -65,10 +64,21 @@ require_once "Includes/conectdb.php";
         bottom: 5px;
     }
 
-    #skill-profissoes {
+    #skill-kairouseki {
+        width: 55px;
+        height: 55px;
+    }
+
+    #skill-profissoes,
+    #skill-pvp {
         background: black;
-        width: 3em !important;
+        width: 55px;
+        height: 40px;
         padding: 0.5em 0;
+        color: #fff !important;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
     }
 </style>
 
@@ -100,6 +110,10 @@ require_once "Includes/conectdb.php";
         data-placement="top">
         <span class="badge"></span>
         <img src="Imagens/Itens/165.png" />
+    </div>
+    <div class="skill skill-allowed" id="skill-pvp" data-toggle="tooltip" title="Habilitar/Desabilitar PvP"
+        data-placement="top">
+        PVP
     </div>
     <div class="skill skill-allowed" id="skill-profissoes" data-toggle="tooltip" title="Abrir o painel de profissões"
         data-placement="top">
@@ -248,9 +262,12 @@ require_once "Includes/conectdb.php";
         if (data.me.has_kairouseki) {
             $('#skill-kairouseki')
                 .removeClass('hidden')
-                .css('background', data.me.kairouseki_ativo ? 'green' : 'red');
+                .css('background', data.me.kairouseki_ativo ? 'green' : '#990000');
             $('#skill-kairouseki .badge').html(data.me.kairouseki_ativo ? 'Ativ.' : 'Des.');
         }
+
+        $('#skill-pvp').css('background', data.me.protecao_pvp ? '#990000' : 'green');
+        $('#skill-pvp').html(data.me.protecao_pvp ? 'PVP Off' : 'PVP On');
 
         if (data.me.canhao) {
             $('#skill-shot').removeClass('hidden');
@@ -863,6 +880,14 @@ require_once "Includes/conectdb.php";
             }
         });
 
+        this.pvpSkill = new Skill({
+            interval: 0,
+            element: '#skill-pvp',
+            trigger: function () {
+                gameState.togglePvP();
+            }
+        });
+
         this.coupDeBurstSkill = new Skill({
             interval: 0,
             element: '#skill-coup-de-burst',
@@ -1083,6 +1108,41 @@ require_once "Includes/conectdb.php";
                 event: 'toggle_kairouseki'
             }));
         }
+    };
+
+    Game.prototype.togglePvP = function () {
+        let inilha = false;
+        for (var i = 0; i < islands.length; i++) {
+            if (islands[i].data.x === this.player.data.x
+                && islands[i].data.y === this.player.data.y) {
+                inilha = true;
+                break;
+            }
+        }
+
+        if (!inilha) {
+            this.player.showFloatingText('Você precisa estar em uma ilha!', {
+                font: '15px',
+                fill: '#ff0000',
+                align: 'center',
+                wordWrap: false
+            }, Phaser.Easing.Linear.None);
+            return;
+        }
+
+        if (this.player.data.reputacao) {
+            this.player.showFloatingText('Você não pode desativar o PvP se possuir um Poneglyph.', {
+                font: '15px',
+                fill: '#ff0000',
+                align: 'center',
+                wordWrap: false
+            }, Phaser.Easing.Linear.None);
+            return;
+        }
+
+        ws.send(JSON.stringify({
+            event: 'toggle_pvp'
+        }));
     };
 
     Game.prototype.useCoupDeBurst = function () {
@@ -1682,6 +1742,10 @@ require_once "Includes/conectdb.php";
 
         $('#skill-kairouseki').click(function () {
             gameState.kairousekiSkill.use();
+        });
+
+        $('#skill-pvp').click(function () {
+            gameState.pvpSkill.use();
         });
 
         $('#skill-coup-de-burst').click(function () {

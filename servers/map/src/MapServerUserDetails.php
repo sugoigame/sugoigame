@@ -85,6 +85,7 @@ class MapServerUserDetails extends UserDetails
             (n.hp_teste / n.hp_max) AS hp_navio,
             v.luneta,
             v.coup_de_burst,
+            if(u.reputacao > 0, 0, u.protecao_pvp) as protecao_pvp,
             u.kai AS kairouseki_ativo,
             c.kairouseki AS has_kairouseki,
             m.ilha
@@ -652,6 +653,19 @@ class MapServerUserDetails extends UserDetails
 
         $this->connection->run("UPDATE tb_usuarios SET kai = ? WHERE id = ?",
             "ii", array($this->tripulacao["kai"] ? 0 : 1, $this->tripulacao["id"]));
+        unset($this->tripulacao);
+    }
+
+    function toggle_pvp()
+    {
+        $data = $this->get_public_data();
+
+        if ($data["reputacao"] || ! $data["ilha"]) {
+            return;
+        }
+
+        $this->connection->run("UPDATE tb_usuarios SET protecao_pvp = ? WHERE id = ?",
+            "ii", array($this->tripulacao["protecao_pvp"] ? 0 : 1, $this->tripulacao["id"]));
         unset($this->tripulacao);
     }
 

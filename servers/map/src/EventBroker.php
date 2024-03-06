@@ -213,6 +213,14 @@ class EventBroker
         }
     }
 
+    public function toggle_pvp($from)
+    {
+        if ($from->details && $from->details->tripulacao) {
+            $from->details->toggle_pvp();
+            $this->get_field_of_view($from);
+        }
+    }
+
     private function encode($event, $data)
     {
         return json_encode(array(

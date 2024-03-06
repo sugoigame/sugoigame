@@ -79,11 +79,11 @@ function get_player_data_for_combat_check($alvo_id)
 function can_attack($content)
 {
     global $userDetails;
-    if ($content["imune"]) {
+    if (! $content["reputacao"] && $content["protecao_pvp"]) {
         return false;
     }
 
-    if ($userDetails->tripulacao["imune"]) {
+    if (! $userDetails->tripulacao["reputacao"] && $userDetails->tripulacao["protecao_pvp"]) {
         return false;
     }
 
