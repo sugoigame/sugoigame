@@ -65,6 +65,7 @@ class MapServerUserDetails extends UserDetails
             u.direcao_navio,
             u.reputacao,
             u.reputacao_mensal,
+            u.battle_lvl,
             u.x,
             u.y,
             u.mar_visivel,
@@ -256,7 +257,7 @@ class MapServerUserDetails extends UserDetails
         unset($this->in_combate);
 
         if ($this->in_combate) {
-            $this->connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = NULL, navegacao_inicio = NULL, navegacao_fim = NULL WHERE id = ? ",
+            $this->connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = null, navegacao_inicio = null, navegacao_fim = null WHERE id = ? ",
                 "i", array($this->tripulacao["id"]));
 
             unset($this->tripulacao);
@@ -274,7 +275,7 @@ class MapServerUserDetails extends UserDetails
         $rdm = $navigation->get_rdm($next_position["x"], $next_position["y"]);
 
         if (! $this->tripulacao["kai"] && $rdm && rand(1, 100) < $rdm["chance"]) {
-            $this->connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = NULL, navegacao_inicio = NULL, navegacao_fim = NULL WHERE id = ?",
+            $this->connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = null, navegacao_inicio = null, navegacao_fim = null WHERE id = ?",
                 "i", array($this->tripulacao["id"]));
 
             atacar_rdm($rdm["id"], $this, $this->connection);
@@ -283,7 +284,7 @@ class MapServerUserDetails extends UserDetails
             $chain = $navigation->get_chain($next_position["x"], $next_position["y"]);
             $swirl = $navigation->get_swirl($next_position["x"], $next_position["y"]);
 
-            if ($swirl && ! $this->tripulacao['adm']) {
+            if ($swirl) {
                 $swirl_demage = rand(0, 25) / 100;
                 $this->connection->run("UPDATE tb_usuario_navio SET hp_teste = GREATEST(0, hp_teste - (hp_max * {$swirl_demage})) WHERE id = ?",
                     "i", array($this->tripulacao["id"]));
@@ -304,7 +305,7 @@ class MapServerUserDetails extends UserDetails
                 $future_position = $this->project_next_position($this->get_direction($next_position, $destino), $next_position);
 
                 if ($navigation->collide($future_position, $this->capitao["lvl"]) || $next_position["x"] . "_" . $next_position["y"] == $this->tripulacao["navegacao_destino"]) {
-                    $this->connection->run("UPDATE tb_usuarios SET mar_visivel = 1, x = ?, y = ?, navegacao_destino = NULL, navegacao_inicio = NULL, navegacao_fim = NULL WHERE id = ? AND navegacao_fim < unix_timestamp(current_timestamp(3)) ",
+                    $this->connection->run("UPDATE tb_usuarios SET mar_visivel = 1, x = ?, y = ?, navegacao_destino = null, navegacao_inicio = null, navegacao_fim = null WHERE id = ? AND navegacao_fim < unix_timestamp(current_timestamp(3)) ",
                         "iii", array($next_position["x"], $next_position["y"], $this->tripulacao["id"]));
                 } else {
                     $direction = $this->get_direction($next_position, $destino);
@@ -416,9 +417,6 @@ class MapServerUserDetails extends UserDetails
         unset($this->navio);
 
         $percent = (rand(5, 10) + $this->lvl_carpinteiro) / 100;
-        if ($this->tripulacao['adm'] > 0) {
-            $percent = 1;
-        }
 
         $cura = round($percent * $this->navio["hp_max"]);
         $this->navio["hp_teste"] = min($this->navio["hp_max"], $this->navio["hp_teste"] + $cura);
@@ -435,16 +433,16 @@ class MapServerUserDetails extends UserDetails
     {
         unset($this->has_ilha_envolta_me);
         if (atual_segundo() < $this->navio["ultimo_disparo"] + 5 || $this->has_ilha_envolta_me) {
-            return NULL;
+            return null;
         }
 
         if (! $this->navio['cod_canhao'])
-            return NULL;
+            return null;
 
         if (abs($target->x - $this->tripulacao["x"] > $this->distancia_visao) ||
             abs($target->y - $this->tripulacao["y"]) > $this->distancia_visao
         ) {
-            return NULL;
+            return null;
         }
 
         $alvos = $this->connection->run(
@@ -476,11 +474,11 @@ class MapServerUserDetails extends UserDetails
     {
         unset($this->has_ilha_envolta_me);
         if (atual_segundo() < $this->navio["ultimo_disparo"] + 5)
-            return NULL;
+            return null;
         if ($this->has_ilha_envolta_me)
-            return NULL;
+            return null;
         if ($target_id == $this->tripulacao["id"])
-            return NULL;
+            return null;
 
         $alvo = $this->connection->run(
             "SELECT u.x, u.y, n.*
@@ -491,7 +489,7 @@ class MapServerUserDetails extends UserDetails
         );
 
         if (! $alvo->count()) {
-            return NULL;
+            return null;
         }
 
         $alvo = $alvo->fetch_array();
@@ -499,7 +497,7 @@ class MapServerUserDetails extends UserDetails
         if (abs($alvo["x"] - $this->tripulacao["x"] > $this->distancia_visao) ||
             abs($alvo["y"] - $this->tripulacao["y"]) > $this->distancia_visao
         ) {
-            return NULL;
+            return null;
         }
 
         $damages = array();
@@ -569,7 +567,7 @@ class MapServerUserDetails extends UserDetails
     {
         $result = $this->connection->run("SELECT * FROM tb_usuarios WHERE id = ? AND mar_visivel = 1", "i", $target_id);
         if (! $result->count()) {
-            return NULL;
+            return null;
         }
 
         $target = $result->fetch_array();
@@ -577,62 +575,60 @@ class MapServerUserDetails extends UserDetails
             "x" => $target["x"],
             "y" => $target["y"]
         ]) > 2) {
-            return FALSE;
+            return false;
         }
 
         if (count($navigation->get_islands($target['x'], $target['y'], 2, 2, $this->connection)) > 0) {
-            return FALSE;
+            return false;
         }
 
         $capitaoAlvo = $this->connection->run("SELECT * FROM tb_personagens WHERE cod = ? LIMIT 1", "i", $target['cod_personagem'])->fetch_array();
         if ($capitaoAlvo['lvl'] < 10) {
-            return FALSE;
+            return false;
         }
 
         if ($this->connection->run("SELECT * FROM tb_combate WHERE id_1 = ? OR id_2 = ?", "ii", [
             $target_id,
             $target_id
         ])->count()) {
-            return FALSE;
+            return false;
         }
         if ($this->connection->run("SELECT * FROM tb_combate_npc WHERE id = ?", "i", $target_id)->count()) {
-            return FALSE;
+            return false;
         }
         if ($this->connection->run("SELECT * FROM tb_combate_bot WHERE tripulacao_id = ?", "i", $target_id)->count()) {
-            return FALSE;
+            return false;
         }
         if ($target["adm"]) {
-            return FALSE;
+            return false;
         }
         if (! $target["mar_visivel"]) {
-            return FALSE;
+            return false;
         }
         if (! can_attack($target)) {
-            return FALSE;
+            return false;
         }
 
-        print_r($target);
-
-        return TRUE;
+        return true;
     }
 
     function atacar_nps($target, Navigation $navigation)
     {
         if (distancia($this->tripulacao, array("x" => $target->x, "y" => $target->y)) > 2) {
-            return FALSE;
+            return false;
         }
 
         if ($this->navio['ultimo_disparo_sofrido'] + 30 > atual_segundo()) {
-            return FALSE;
+            return false;
         }
         if ($this->navio['ultimo_disparo'] + 30 > atual_segundo()) {
-            return FALSE;
+            return false;
         }
 
         $nps = $navigation->get_nps($target->x, $target->y);
 
         if (! $nps) {
-            return FALSE;
+            return false;
         }
 
         atacar_rdm($nps["rdm_id"], $this, $this->connection);

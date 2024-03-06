@@ -111,17 +111,6 @@
             "Vip/formacao_comprar.php?tipo=dobrao"
         ); ?>
 
-        <? php/* render_vantagem(
-        "atributos.png",
-        "Conhecimento estratégico",
-        "Permite ver os atributos, experiência de profissão, categoria de akuma e score dos seus tripulantes durante um combate. Exibe também os atributos dos personagens ao clicar nos respectivos cartazes de procurado no topo da tela.",
-        $userDetails->vip["conhecimento_duracao"],
-        PRECO_GOLD_CONHECIMENTO,
-        PRECO_DOBRAO_CONHECIMENTO,
-        "Vip/conhecimento_comprar.php?tipo=gold",
-        "Vip/conhecimento_comprar.php?tipo=dobrao"
-    ); */ ?>
-
         <?php render_vantagem(
             "coup-de-burst.gif",
             "Pacote de Coup De Burst diário",
@@ -133,16 +122,6 @@
             "Vip/coup_de_burst_comprar.php?tipo=dobrao"
         ); ?>
 
-        <? php/* render_vantagem(
-        "ocultar.jpg",
-        "Camuflagem",
-        "Esconda seu navio no oceano ficando invisível para os outros jogadores. Você só estará invisível enquanto estiver parado, quando navegar voltará a ser visível.",
-        FALSE,
-        PRECO_GOLD_CAMUFLAGEM,
-        PRECO_DOBRAO_CAMUFLAGEM,
-        "Vip/ocultar.php",
-        "VipDobroes/ocultar.php"
-    ); */ ?>
         <li class="list-group-item">
             <div class="row">
                 <div class="col-xs-2 col-md-2">

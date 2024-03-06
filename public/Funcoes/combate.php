@@ -79,6 +79,10 @@ function get_player_data_for_combat_check($alvo_id)
 function can_attack($content)
 {
     global $userDetails;
+    if ($content["imune"]) {
+        return false;
+    }
+
     if ($userDetails->tripulacao["imune"]) {
         return false;
     }
@@ -91,14 +95,43 @@ function can_attack($content)
         return true;
     }
 
-    return ! both_marine($content)
+    if (get_tempo_desde_ultimo_ataque($content) <= (10 * 60 * 1000)) {
+        return false;
+    }
 
+    return ! both_marine($content)
         && $userDetails->is_visivel
         && ! has_ilha_envolta_target($content)
         && ! $userDetails->has_ilha_envolta_me
         && ! same_ally($content)
         && ao_lado($content)
         && ! tem_protecao_contra_mim($content);
+}
+
+function get_tempo_desde_ultimo_ataque($target)
+{
+    global $connection;
+    global $userDetails;
+
+    $result = $connection->run("SELECT unix_timestamp(current_timestamp) - unix_timestamp(fim) AS duracao
+    FROM tb_combate_log
+    WHERE ((id_1 = ? AND id_2 = ?) OR (id_1 = ? AND id_2 = ?)) AND tipo = ?
+    ORDER BY horario DESC
+    LIMIT 1",
+        "iiiii",
+        [
+            $userDetails->tripulacao["id"],
+            $target["id"],
+            $target["id"],
+            $userDetails->tripulacao["id"],
+            TIPO_ATAQUE
+        ]
+    );
+    if (! $result->count()) {
+        return PHP_INT_MAX;
+    }
+
+    return $result->fetch_array()["duracao"];
 }
 
 function can_attack_mercador($content)
@@ -456,7 +489,7 @@ function get_cross_guild_stars($reward)
 
 function calc_score_mod($classe_score)
 {
-    return ($classe_score / 10000) * 0.01;
+    return($classe_score / 10000) * 0.01;
 }
 
 function min_max($value, $min, $max)
@@ -879,7 +912,7 @@ function fadiga_batalha_ativa($personagens)
 <?php } ?>
 <?php function get_img_combate($log)
 {
-    return ($log["skin_r"] === "npc")
+    return($log["skin_r"] === "npc")
         ? "Imagens/Batalha/Npc/" . $log["img"] . ".png"
         : "Imagens/Personagens/Icons/" . get_img($log, "r") . ".jpg";
 } ?>

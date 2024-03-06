@@ -14,7 +14,7 @@ require_once "Includes/conectdb.php";
     #mar-game-tooltip {
         display: none;
         position: fixed;
-        width: 250px;
+        width: 300px;
         z-index: 2;
         max-height: 300px;
         overflow: auto;
@@ -74,25 +74,23 @@ require_once "Includes/conectdb.php";
 
 <div id="mar-game-tooltip">
     <div class="panel panel-default" style="margin: 0;">
-        <button type="button" class="close" style="position: absolute; right: 10px">&times;</button>
         <div class="panel-body" style="padding: 4px 18px;"></div>
     </div>
 </div>
 
 <div id="skills-area">
     <div class="skill" id="skill-heal" data-toggle="tooltip" title="Restaurar o navio" data-placement="top">
-        <span class="badge">1</span>
         <img src="Imagens/Skils/513.jpg" />
     </div>
     <div class="skill need-target" id="skill-shot" data-toggle="tooltip" title="Disparar uma bala de canhão"
         data-placement="top">
-        <span class="badge">2</span>
         <img src="Imagens/Skils/514.jpg" />
     </div>
-    <div class="skill need-target" id="skill-attack" data-toggle="tooltip" title="Atacar um navio inimigo"
-        data-placement="top">
-        <span class="badge">3</span>
-        <img src="Imagens/Skils/33.jpg" />
+    <div class="hidden">
+        <div class="skill need-target" id="skill-attack" data-toggle="tooltip" title="Atacar um navio inimigo"
+            data-placement="top">
+            <img src="Imagens/Skils/33.jpg" />
+        </div>
     </div>
     <div class="skill hidden" id="skill-coup-de-burst" data-toggle="tooltip" title="Coup De Burst" data-placement="top">
         <span class="badge"></span>
@@ -148,67 +146,58 @@ require_once "Includes/conectdb.php";
 
     function getPatenteMarks() {
         return [
-            5000,
-            6000,
-            8000,
-            10000,
-            12000,
-            16000,
-            18000,
-            20000,
-            24000,
-            28000,
-            30000,
-            32000,
-            34000
+            5,
+            10,
+            15,
+            20,
+            30,
+            40,
+            50,
+            60,
+            80,
+            100
         ];
     }
 
-    function getPatenteId($reputacao) {
+    function getPatenteId($battle_lvl) {
         var $marks = getPatenteMarks();
 
         for (var $i = 0; $i < $marks.length; $i++) {
-            if ($reputacao < $marks[$i]) {
+            if ($battle_lvl < $marks[$i]) {
                 return $i;
             }
         }
         return $marks.length;
     }
 
-    function getPatenteNome($faccao, $reputacao) {
-        var $id = getPatenteId($reputacao);
+    function getPatenteNome($faccao, $battle_lvl) {
+        var $id = getPatenteId($battle_lvl);
 
         var $patentes = [
             [
                 "Recruta",
-                "Aprendiz",
-                "Soldado de Primeira Classe",
+                "Cabo",
                 "Sargento",
-                "Sargento-Major",
-                "Subtenente",
-                "Terceiro Tenente",
-                "Segundo Tenente",
+                "Sargento-Mor",
                 "Tenente",
-                "Capitão",
                 "Tenente-Comandante",
-                "Tenente-Coronel",
-                "Coronel",
+                "Comandante",
+                "Capitão",
+                "Comodoro",
+                "Contra-Almirante",
                 "Vice-Almirante"
             ], [
                 "Recruta",
-                "Bucaneiro ",
+                "Novato",
+                "Bucaneiro",
+                "Aventureiro",
+                "Explorador",
                 "Mestre de Navio",
-                "Capitão Experiente",
-                "Aprendiz de Pirata",
-                "Pirata Novato",
-                "Pirata Explorador",
-                "Pirata Problemático",
-                "Pirata Veterano",
-                "Pirata Conhecido",
-                "Pirata de Renome",
-                "Novato do Novo Mundo",
-                "Veterano no Novo Mundo",
-                "General"
+                "Pirata em Ascensão",
+                "Supernova",
+                "Veterano",
+                "Comandante",
+                "General",
             ]
         ];
 
@@ -393,8 +382,8 @@ require_once "Includes/conectdb.php";
         var top = (event.clientY - SQUARE_SIZE);
         var left = (event.clientX + SQUARE_SIZE);
 
-        if (left > window.innerWidth - 250) {
-            left -= 250 + SQUARE_SIZE * 2;
+        if (left > window.innerWidth - 400) {
+            left -= 300 + SQUARE_SIZE * 2;
         }
         if (top > window.innerHeight - 300) {
             top -= $('#mar-game-tooltip').height() - SQUARE_SIZE * 2;
@@ -411,7 +400,8 @@ require_once "Includes/conectdb.php";
         }
 
         islands.forEach(function (island) {
-            if (Math.abs(selectedEvent.worldX - island.position.x) <= SQUARE_SIZE / 2 && Math.abs(selectedEvent.worldY - island.position.y) <= SQUARE_SIZE / 2) {
+            const islandPosition = Game.prototype.convertTileToPoint(island.position);
+            if (selectedCoord.x === islandPosition.x && selectedCoord.y === islandPosition.y) {
                 renderIsland(island);
             }
         });
@@ -421,12 +411,13 @@ require_once "Includes/conectdb.php";
         }
         for (var key in ships) {
             var ship = ships[key];
-            if (ship.sprite && Phaser.Point.distance(new Phaser.Point(selectedEvent.worldX, selectedEvent.worldY), ship.sprite.position) <= SQUARE_SIZE) {
+            if (ship.sprite && ship.x === selectedCoord.x && ship.y === selectedCoord.y) {
                 renderShip(ship);
             }
         }
         nps.forEach(function (np) {
-            if (Phaser.Point.distance(new Phaser.Point(selectedEvent.worldX, selectedEvent.worldY), np.position) <= SQUARE_SIZE) {
+            const npPosition = Game.prototype.convertTileToPoint(np.position);
+            if (npPosition.x === selectedCoord.x && npPosition.y === selectedCoord.y) {
                 renderNps(np);
             }
         });
@@ -434,7 +425,7 @@ require_once "Includes/conectdb.php";
         $('#mar-game-tooltip .panel-body .row:last-child')
             .css('border', 'none')
             .css('margin-bottom', '0')
-            .css('padding-bottom', '0');
+            .css('padding-bottom', '.5rem');
 
         if (!$('#mar-game-tooltip .panel-body').html().length) {
             $('#mar-game-tooltip').hide();
@@ -448,7 +439,7 @@ require_once "Includes/conectdb.php";
                     .addClass('row')
                     .css('margin-bottom', '10px')
                     .css('padding-bottom', '10px')
-                    .css('border-bottom', '3px double rgba(224, 190, 122, 0.6)')
+                    .css('border-bottom', '1px solid rgba(224, 190, 122, 0.6)')
                     .append(
                         $('<DIV>')
                             .addClass('col-xs-2')
@@ -456,7 +447,6 @@ require_once "Includes/conectdb.php";
                             .append(
                                 $('<DIV>').html(
                                     '<img src="Imagens/Bandeiras/img.php?cod=' + ship.data.bandeira + '&f=' + ship.data.faccao + '" style="max-width: 100%"><br/>'
-                                    + '<img title="' + getPatenteNome(ship.data.faccao, ship.data.reputacao) + '" src="Imagens/Ranking/Patentes/' + ship.data.faccao + '_' + getPatenteId(ship.data.reputacao) + '.png" style="max-width: 100%"/>'
                                 )
                             )
                     )
@@ -465,8 +455,8 @@ require_once "Includes/conectdb.php";
                             .addClass('col-xs-8')
                             .append(
                                 $('<DIV>')
-                                    .append('<h6>' + ship.data.tripulacao + '</h6>')
-                                    .append('<small>' + ship.data.capitao_nome + (ship.data.capitao_titulo ? '<br/>' + ship.data.capitao_titulo : '') + '<br/>Nível ' + ship.data.lvl_mais_forte + '</small>')
+                                    .append('<div>' + ship.data.tripulacao + ' Nível ' + ship.data.lvl_mais_forte + '</div>')
+                                    .append(ship.data.reputacao ? ('<small>Poneglyphs: ' + ship.data.reputacao + '</small>') : '')
                             )
                     )
                     .append(
@@ -474,48 +464,28 @@ require_once "Includes/conectdb.php";
                             .addClass('col-xs-2')
                             .css('padding', '0')
                             .append(
-                                gameState.target && gameState.target.sprite && gameState.target.data.id == ship.data.id
-                                    ? $('<P>').addClass('text-danger').html('Alvo!')
-                                    : $('<BUTTON>')
-                                        .attr('title', 'Marcar Alvo')
-                                        .addClass('btn')
-                                        .addClass('btn-success')
-                                        .html('<i class="glyphicon glyphicon-screenshot"></i>')
-                                        .click(function () {
-                                            gameState.target = ship;
-                                            renderSelectedPlayers();
-                                        })
+                                gameState.player.id !== ship.data.id
+                                    ? (gameState.target && gameState.target.sprite && gameState.target.data.id == ship.data.id
+                                        ? $('<BUTTON>')
+                                            .attr('title', 'Cancelar perseguição')
+                                            .addClass('btn')
+                                            .addClass('btn-danger')
+                                            .html('<i class="fa fa-times"></i>')
+                                            .click(function () {
+                                                gameState.target = null;
+                                                renderSelectedPlayers();
+                                            })
+                                        : $('<BUTTON>')
+                                            .attr('title', 'Atacar Alvo')
+                                            .addClass('btn')
+                                            .addClass('btn-success')
+                                            .html('<i class="glyphicon glyphicon-screenshot"></i>')
+                                            .click(function () {
+                                                gameState.target = ship;
+                                                renderSelectedPlayers();
+                                            }))
+                                    : ''
                             )
-                    )
-                    .append(
-                        ship.data.poder_batalha
-                            ? $('<DIV>')
-                                .addClass('col-xs-12')
-                                .append(
-                                    $('<DIV>')
-                                        .append('<p class="text-warning" style="margin: 0;"><b>Poder de Batalha: ' + ship.data.poder_batalha + '</b></p>')
-                                )
-                            : ''
-                    )
-                    .append(
-                        ship.data.reputacao_vitoria
-                            ? $('<DIV>')
-                                .addClass('col-xs-12')
-                                .append(
-                                    $('<DIV>')
-                                        .append('<small>Vale ' + ship.data.reputacao_vitoria.vencedor_rep + ' pontos de reputação na Era.</small>')
-                                )
-                            : ''
-                    )
-                    .append(
-                        ship.data.reputacao_mensal_vitoria
-                            ? $('<DIV>')
-                                .addClass('col-xs-12')
-                                .append(
-                                    $('<DIV>')
-                                        .append('<small>Vale ' + ship.data.reputacao_mensal_vitoria.vencedor_rep + ' pontos de reputação no Mês.</small>')
-                                )
-                            : ''
                     )
                     .append(
                         ship.data.is_adm
@@ -537,7 +507,7 @@ require_once "Includes/conectdb.php";
                     .addClass('row')
                     .css('margin-bottom', '10px')
                     .css('padding-bottom', '10px')
-                    .css('border-bottom', '3px double rgba(224, 190, 122, 0.6)')
+                    .css('border-bottom', '1px solid rgba(224, 190, 122, 0.6)')
                     .append(
                         $('<DIV>')
                             .addClass('col-xs-3')
@@ -560,9 +530,17 @@ require_once "Includes/conectdb.php";
                             .addClass('col-xs-3')
                             .append(
                                 gameState.target && !gameState.target.sprite && gameState.target.data.id == ship.data.id
-                                    ? $('<P>').addClass('text-danger').html('Alvo!')
+                                    ? $('<BUTTON>')
+                                        .attr('title', 'Cancelar perseguição')
+                                        .addClass('btn')
+                                        .addClass('btn-danger')
+                                        .html('<i class="fa fa-times"></i>')
+                                        .click(function () {
+                                            gameState.target = null;
+                                            renderSelectedPlayers();
+                                        })
                                     : $('<BUTTON>')
-                                        .attr('title', 'Marcar Alvo')
+                                        .attr('title', 'Atacar Alvo')
                                         .addClass('btn')
                                         .addClass('btn-success')
                                         .html('<i class="glyphicon glyphicon-screenshot"></i>')
@@ -577,20 +555,12 @@ require_once "Includes/conectdb.php";
 
     function renderIsland(island) {
         var $panel = $('#mar-game-tooltip .panel-body');
-        $panel.append(
+        $panel.prepend(
             $('<DIV>')
-                .addClass('row')
+                .addClass('list-group-item')
                 .css('margin-bottom', '10px')
-                .css('padding-bottom', '2px')
-                .css('border-bottom', island.data.govern.tripulacao ? 'none' : '3px double rgba(224, 190, 122, 0.6)')
-                .append(
-                    $('<DIV>')
-                        .addClass('col-xs-12')
-                        .append(
-                            $('<DIV>')
-                                .append('<h6>' + island.data.island_name + '</h6>')
-                        )
-                )
+                .css('padding', '2px')
+                .append('<h6>' + island.data.island_name + '</h6>')
         );
         if (island.data.govern.tripulacao) {
             $panel.append(
@@ -598,10 +568,11 @@ require_once "Includes/conectdb.php";
                     .addClass('row')
                     .css('margin-bottom', '10px')
                     .css('padding-bottom', '10px')
-                    .css('border-bottom', '3px double rgba(224, 190, 122, 0.6)')
+                    .css('border-bottom', '1px solid rgba(224, 190, 122, 0.6)')
                     .append(
                         $('<DIV>')
                             .addClass('col-xs-4')
+                            .addClass('text-right')
                             .append(
                                 $('<DIV>').html(
                                     '<img src="Imagens/Bandeiras/img.php?cod=' + island.data.govern.bandeira + '&f=' + island.data.govern.faccao + '" style="max-width: 100%"><br/>'
@@ -611,9 +582,10 @@ require_once "Includes/conectdb.php";
                     .append(
                         $('<DIV>')
                             .addClass('col-xs-8')
+                            .addClass('text-left')
                             .append(
                                 $('<DIV>')
-                                    .append('<small>Esta ilha está ' + (island.data.govern.karma_bom ? 'protegida pelo ' : 'sob o controle do ') + island.data.govern.tripulacao + '</small>')
+                                    .append('<small>Esta ilha está ' + (island.data.govern.karma_bom ? 'protegida por ' : 'sob o controle do ') + island.data.govern.tripulacao + '</small>')
                             )
                     )
             );
@@ -860,7 +832,6 @@ require_once "Includes/conectdb.php";
         this.healSkill = new Skill({
             interval: 5,
             element: '#skill-heal',
-            key: Phaser.Keyboard.ONE,
             trigger: function () {
                 gameState.useHeal();
             }
@@ -870,7 +841,6 @@ require_once "Includes/conectdb.php";
             this.shotSkill = new Skill({
                 interval: 5,
                 element: '#skill-shot',
-                key: Phaser.Keyboard.TWO,
                 trigger: function () {
                     gameState.useShot();
                 }
@@ -878,9 +848,8 @@ require_once "Includes/conectdb.php";
         }
 
         this.attackSkill = new Skill({
-            interval: 0,
+            interval: 1,
             element: '#skill-attack',
-            key: Phaser.Keyboard.THREE,
             trigger: function () {
                 gameState.useAttack();
             }
@@ -1037,6 +1006,9 @@ require_once "Includes/conectdb.php";
     };
 
     Game.prototype.useAttack = function (destination) {
+        this.wantUseShot = false;
+        this.showHover();
+        this.attackSkill.postUse();
         if (!this.target) {
             this.player.showFloatingText('Você precisa de um alvo!', {
                 font: '15px',
@@ -1103,9 +1075,6 @@ require_once "Includes/conectdb.php";
                 }
             }));
         }
-        this.wantUseShot = false;
-        this.showHover();
-        this.attackSkill.postUse();
     };
 
     Game.prototype.useKairouseki = function () {
@@ -1194,15 +1163,38 @@ require_once "Includes/conectdb.php";
         this.player.update();
 
         if (this.target) {
+            const destination = this.target.sprite ? this.target.sprite.position : this.target.position;
+
             this.targetSprite.visible = true;
-            if (this.target.sprite) {
-                this.targetSprite.position.x = this.target.sprite.position.x;
-                this.targetSprite.position.y = this.target.sprite.position.y;
-            } else {
-                this.targetSprite.position.x = this.target.position.x;
-                this.targetSprite.position.y = this.target.position.y;
-            }
+            this.targetSprite.position.x = destination.x;
+            this.targetSprite.position.y = destination.y;
+
             this.targetSprite.animations.play('play');
+
+            const realPosition = this.convertTileToPoint(destination);
+            var distance = Phaser.Point.distance(this.player, realPosition);
+
+            if (distance <= 1) {
+                this.attackSkill.use();
+            } else if (!this.lastTarget
+                || !gameState.player.destination
+                || destination.x !== this.lastTarget.x
+                || destination.y !== this.lastTarget.y) {
+
+                ws.send(JSON.stringify({
+                    event: 'set_destination',
+                    destination: {
+                        x: realPosition.x,
+                        y: realPosition.y
+                    }
+                }));
+                if (gameState.player.destination) {
+                    gameState.player.destination.x = realPosition.x * SQUARE_SIZE;
+                    gameState.player.destination.y = realPosition.y * SQUARE_SIZE;
+                }
+            }
+
+            this.lastTarget = destination;
         } else {
             this.targetSprite.visible = false;
         }
@@ -1381,7 +1373,6 @@ require_once "Includes/conectdb.php";
             this.destroy();
             return;
         }
-        renderSelectedPlayers();
 
         var loader = new Phaser.Loader(game);
         loader.spritesheet('ship_' + data.id, 'Imagens/Bandeiras/navio_sprite.php?cod=' + data.bandeira + '&f=' + data.faccao + '&s=' + data.skin_navio, skin_sizes[data.skin_navio], skin_sizes[data.skin_navio]);
@@ -1511,8 +1502,6 @@ require_once "Includes/conectdb.php";
         this.x = data.x;
         this.y = data.y;
         this.data = data;
-
-        renderSelectedPlayers();
 
         if (!this.sprite) {
             this.sprite = gameState.characterGroup.create(this.x * SQUARE_SIZE, this.y * SQUARE_SIZE, 'ship_' + data.id);
@@ -1677,10 +1666,6 @@ require_once "Includes/conectdb.php";
 
         window.addEventListener('resize', function () {
             adjust();
-        });
-
-        $('#mar-game-tooltip .close').on('click', function () {
-            $('#mar-game-tooltip').hide();
         });
 
         $('#skill-heal').click(function () {

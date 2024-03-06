@@ -6,16 +6,12 @@ $protector->must_be_out_of_any_kind_of_combat();
 $protector->must_be_out_of_missao_and_recrute();
 
 $alvo = $protector->get_number_or_exit("id");
-$tipo = $protector->get_enum_or_exit("tipo", array(TIPO_ATAQUE, TIPO_SAQUE, TIPO_AMIGAVEL, TIPO_COLISEU, TIPO_CONTROLE_ILHA, TIPO_LOCALIZADOR_CASUAL, TIPO_LOCALIZADOR_COMPETITIVO, TIPO_TORNEIO));
+$tipo = $protector->get_enum_or_exit("tipo", array(TIPO_ATAQUE, TIPO_AMIGAVEL, TIPO_COLISEU, TIPO_CONTROLE_ILHA, TIPO_LOCALIZADOR_CASUAL, TIPO_LOCALIZADOR_COMPETITIVO, TIPO_TORNEIO));
 
 
 // valida ataque e saque
 if ($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) {
     $protector->must_be_out_of_ilha();
-
-    // if ($userDetails->capitao["lvl"] < 10) {
-    //     $protector->exit_error("É necessário ter o capitão no nível 10 para iniciar um combate PvP");
-    // }
 }
 
 // remove desafio
@@ -132,9 +128,6 @@ if ($result->count()) {
 if ($usuario_alvo["adm"]) {
     $protector->exit_error("Um dos requisitos para atacar esse alvo não está cumprido.");
 }
-if ($usuario_alvo["imune"]) {
-    $protector->exit_error("O alvo esta imune a batalhas pvp");
-}
 
 // valida requisitos de ataque
 if ($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) {
@@ -148,25 +141,6 @@ if ($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) {
         $protector->exit_error("Um dos requisitos para atacar esse alvo não está cumprido.");
     }
 }
-// Executar a consulta SQL para obter a duração do último combate
-$resultado = $connection->run("SELECT unix_timestamp(current_timestamp) - unix_timestamp(fim) AS duracao
-                              FROM tb_combate_log
-                              WHERE (id_1 = ? AND id_2 = ?) OR (id_1 = ? AND id_2 = ?)
-                              ORDER BY horario DESC
-                              LIMIT 1",
-    "iiii",
-    array(
-        $userDetails->combate_pvp["combatente_a"],
-        $userDetails->combate_pvp["combatente_b"],
-        $userDetails->combate_pvp["combatente_b"],
-        $userDetails->combate_pvp["combatente_a"]));
-$duracao_combate = $resultado->fetch_array()["duracao"];
-
-if ($duracao_combate <= 600000) {
-    // Não permitir o novo ataque
-    $protector->exit_error("Você só pode atacar novamente após 10 minutos do último ataque");
-}
-
 
 // carega personagens do alvo
 if ($tipo == TIPO_COLISEU) {

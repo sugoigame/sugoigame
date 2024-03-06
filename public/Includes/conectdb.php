@@ -1,7 +1,7 @@
 <?php
 require_once "database/mywrap.php";
 
-setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 
 // mysqli
 $connection = new mywrap_con();
