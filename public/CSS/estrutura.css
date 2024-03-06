@@ -802,7 +802,7 @@ table tr td {
 #fullscreen {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    right: 65px;
     z-index: 1050;
     color: rgba(0, 0, 0, 0.7);
     background: rgba(255, 255, 255, 0.7);

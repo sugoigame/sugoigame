@@ -109,8 +109,6 @@ if ($tipo == TIPO_TORNEIO) {
         "ii", array($userDetails->tripulacao["id"], $alvo));
 }
 
-
-
 // valida alvo em combate
 $result = $connection->run("SELECT * FROM tb_combate WHERE id_1 = ? OR id_2 = ?", "ii", array($alvo, $alvo));
 if ($result->count()) {
@@ -137,8 +135,8 @@ if ($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) {
         $protector->exit_error("O seu alvo precisa estar visível");
     }
 
-    if (! can_attack($usuario_alvo)) {
-        $protector->exit_error("Um dos requisitos para atacar esse alvo não está cumprido.");
+    if ($restriction = get_attack_restriction($usuario_alvo)) {
+        $protector->exit_error($restriction);
     }
 }
 

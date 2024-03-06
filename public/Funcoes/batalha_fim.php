@@ -27,7 +27,7 @@ function get_personagens_combate($id = null)
         FROM tb_combate_personagens cbtpers
         INNER JOIN tb_personagens pers ON cbtpers.cod = pers.cod
         WHERE cbtpers.id = ?",
-        "i", $id
+        "i", [$id]
     )->fetch_all_array();
 }
 
@@ -64,7 +64,7 @@ function atualiza_hp_tripulantes($personagens_in_combate)
             "UPDATE tb_personagens SET
               hp = '$nhp'
             WHERE cod = ?",
-            "i", $pers["cod"]
+            "i", [$pers["cod"]]
         );
     }
 }
@@ -486,7 +486,7 @@ function check_vitoria_pvp($personagens_combate_1, $personagens_combate_2)
 
 function pvp_tipo_deve_atualizar_hp($tipo)
 {
-    return $tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE;
+    return false;
 }
 
 function is_pvp_competitivo_valido($tipo, $vencedor, $perdedor)

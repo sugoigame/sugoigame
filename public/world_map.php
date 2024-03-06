@@ -865,7 +865,7 @@ require_once "Includes/conectdb.php";
         }
 
         this.attackSkill = new Skill({
-            interval: 1,
+            interval: 3,
             element: '#skill-attack',
             trigger: function () {
                 gameState.useAttack();
@@ -1090,7 +1090,24 @@ require_once "Includes/conectdb.php";
                 alvo: this.target.data.id,
                 type: 1
             }));*/
-            sendGet('Mapa/mapa_atacar.php?id=' + this.target.data.id + '&tipo=1');
+            $.ajax({
+                type: "get",
+                url: 'Scripts/Mapa/mapa_atacar.php?id=' + this.target.data.id + '&tipo=1',
+                cache: false,
+                success: (retorno) => {
+                    retorno = retorno.trim();
+                    if (retorno.substr(0, 1) == "#") {
+                        this.player.showFloatingText(retorno.substr(1, retorno.length - 1), {
+                            font: '15px',
+                            fill: '#ff0000',
+                            align: 'center',
+                            wordWrap: false
+                        }, Phaser.Easing.Linear.None);
+                    } else {
+                        loadPagina('combate');
+                    }
+                },
+            });
         } else {
             ws.send(JSON.stringify({
                 event: 'atacar_nps',

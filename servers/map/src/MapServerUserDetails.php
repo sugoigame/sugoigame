@@ -85,7 +85,7 @@ class MapServerUserDetails extends UserDetails
             (n.hp_teste / n.hp_max) AS hp_navio,
             v.luneta,
             v.coup_de_burst,
-            if(u.reputacao > 0, 0, u.protecao_pvp) as protecao_pvp,
+            IF(u.reputacao > 0, 0, u.protecao_pvp) as protecao_pvp,
             u.kai AS kairouseki_ativo,
             c.kairouseki AS has_kairouseki,
             m.ilha
@@ -606,9 +606,9 @@ class MapServerUserDetails extends UserDetails
         if (! $target["mar_visivel"]) {
             return false;
         }
-        if (! can_attack($target)) {
-            return false;
-        }
+        // if (! can_attack($target)) {
+        //     return false;
+        // }
 
         return true;
     }

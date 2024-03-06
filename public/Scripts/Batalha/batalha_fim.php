@@ -57,8 +57,8 @@ if ($userDetails->combate_pve) {
 
     $duracao = get_batalha_duracao($userDetails->combate_pvp["combate"]);
 
-    $personagens_combate_1 = get_personagens_combate($userDetails->tripulacoes_pvp["1"]);
-    $personagens_combate_2 = get_personagens_combate($userDetails->tripulacoes_pvp["2"]);
+    $personagens_combate_1 = get_personagens_combate($userDetails->tripulacoes_pvp["1"]["id"]);
+    $personagens_combate_2 = get_personagens_combate($userDetails->tripulacoes_pvp["2"]["id"]);
 
     $vencedor_ref = check_vitoria_pvp($personagens_combate_1, $personagens_combate_2);
     $vencedor = $userDetails->tripulacoes_pvp[$vencedor_ref];

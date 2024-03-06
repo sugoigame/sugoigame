@@ -59,7 +59,7 @@ function get_player_data_for_combat_check($alvo_id)
         usr.x AS x,
         usr.y AS y,
         usr.adm AS adm,
-        usr.imune AS imune,
+        IF(usr.reputacao > 0, 0, usr.protecao_pvp) as protecao_pvp,
         usr.cod_personagem AS cod_personagem,
         usr.faccao AS faccao,
         usr.ip AS ip,
@@ -76,36 +76,54 @@ function get_player_data_for_combat_check($alvo_id)
     );
 }
 
-function can_attack($content)
+function get_attack_restriction($content)
 {
     global $userDetails;
     if (! $content["reputacao"] && $content["protecao_pvp"]) {
-        return false;
+        return "O alvo está com o PVP desativado.";
     }
 
     if (! $userDetails->tripulacao["reputacao"] && $userDetails->tripulacao["protecao_pvp"]) {
-        return false;
+        return "Você está com o PVP desativado.";
     }
 
     if (same_id($content)) {
-        return false;
+        return "Você não pode atacar a si mesmo";
     }
 
     if (in_guerra($content)) {
-        return true;
+        return null;
     }
 
-    if (get_tempo_desde_ultimo_ataque($content) <= (10 * 60 * 1000)) {
-        return false;
+    if (get_tempo_desde_ultimo_ataque($content) <= (10 * 60)) {
+        return "Você precisa aguardar 10 minutos para atacar este alvo novamente.";
     }
 
-    return ! both_marine($content)
-        && $userDetails->is_visivel
-        && ! has_ilha_envolta_target($content)
-        && ! $userDetails->has_ilha_envolta_me
-        && ! same_ally($content)
-        && ao_lado($content)
-        && ! tem_protecao_contra_mim($content);
+    if (both_marine($content)) {
+        return "Você não pode atacar outro marinheiro.";
+    }
+
+    if (! $userDetails->is_visivel) {
+        return "Você não pode atacar enquanto estiver invisível.";
+    }
+
+    if (has_ilha_envolta_target($content)) {
+        return "O alvo está em uma área segura.";
+    }
+
+    if ($userDetails->has_ilha_envolta_me) {
+        return "Você está em uma área segura.";
+    }
+
+    if (same_ally($content)) {
+        return "Você não pode atacar outro membro da sua aliança.";
+    }
+
+    if (tem_protecao_contra_mim($content)) {
+        return "O alvo tem uma proteção contra você.";
+    }
+
+    return null;
 }
 
 function get_tempo_desde_ultimo_ataque($target)
