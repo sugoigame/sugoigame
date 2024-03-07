@@ -388,7 +388,7 @@ function nome_tipo_combate($tipo)
         case TIPO_LOCALIZADOR_COMPETITIVO:
             return "Batalha Competitiva";
         case TIPO_TORNEIO:
-            return "Torneio";
+            return "Batalha pelo Poneglyph";
         default:
             return "";
     }

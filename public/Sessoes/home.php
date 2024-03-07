@@ -238,14 +238,6 @@ function render_maior_do_mundo($tipo)
                 </div>
             <?php endif; ?>
         <?php endif; ?>
-
-        <?php $convocacao_torneio = $connection->run("SELECT * FROM tb_torneio_inscricao WHERE tripulacao_id = ?", "i", array($userDetails->tripulacao["id"])); ?>
-        <?php if ($convocacao_torneio->count()) : ?>
-            <div class="alert alert-warning" style="margin-bottom: 10px;;">
-                <b>Atenção!</b> Você está sendo convocado para o Torneio dos Melhores Sugoi Game! Clique <a
-                    href="./?ses=torneio" class="alert-link link_content">aqui</a> para apresentar-se.
-            </div>
-        <?php endif; ?>
     <?php endif; ?>
 
     <div class="row">

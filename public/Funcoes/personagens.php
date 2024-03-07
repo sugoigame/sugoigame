@@ -56,7 +56,7 @@
 
 function calc_pers_hp_max($pers)
 {
-    return (($pers["lvl"] - 1) * HP_POR_NIVEL) + HP_INICIAL + (($pers["vit"] - 1) * HP_POR_VITALIDADE);
+    return(($pers["lvl"] - 1) * HP_POR_NIVEL) + HP_INICIAL + (($pers["vit"] - 1) * HP_POR_VITALIDADE);
 }
 
 function ajusta_hp($pers, $bonus)
@@ -185,11 +185,6 @@ function insert_personagens_combate($id, $all_pers, $vip, $tatic_type, $x1, $x2,
     }
 
     $connection->run("UPDATE tb_coliseu_fila SET pausado = 1 WHERE id = ?", "i", array($id));
-
-    $connection->run("UPDATE tb_torneio_inscricao
-        SET tempo_na_fila = IFNULL((unix_timestamp() - unix_timestamp(fila_entrada)) + IFNULL(tempo_na_fila, 0), tempo_na_fila), na_fila = 0, fila_entrada = NULL
-        WHERE tripulacao_id = ?",
-        "i", array($id));
 }
 
 function preco_selo_exp($pers)

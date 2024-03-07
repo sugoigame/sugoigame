@@ -638,7 +638,7 @@ function envia_noticia_pvp($vencedor, $perdedor)
         } elseif ($userDetails->combate_pvp["tipo"] == TIPO_LOCALIZADOR_COMPETITIVO) {
             $mar = "pelo Localizador Competitivo";
         } elseif ($userDetails->combate_pvp["tipo"] == TIPO_TORNEIO) {
-            $mar = "no Torneio PvP";
+            $mar = "na batalha pelo Poneglyph";
         } else {
             $nome_mar = nome_mar($userDetails->ilha["mar"]);
             $mar = $userDetails->ilha["mar"] == 5 ? "na " . $nome_mar : "no " . $nome_mar;

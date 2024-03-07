@@ -1,5 +1,6 @@
 <?php
-function attack_torneio() {
+function attack_torneio()
+{
     global $userDetails;
     global $connection;
 
@@ -8,7 +9,7 @@ function attack_torneio() {
         "i", array($userDetails->tripulacao["id"])
     );
 
-    if (!$participante->count()) {
+    if (! $participante->count()) {
         return false;
     }
 
@@ -23,7 +24,7 @@ function attack_torneio() {
 
     $oponentes_pontos = [];
     foreach ($oponentes as $oponente) {
-        if (!isset($oponentes_pontos[$oponente["pontos"]])) {
+        if (! isset($oponentes_pontos[$oponente["pontos"]])) {
             $oponentes_pontos[$oponente["pontos"]] = [];
         }
         $oponentes_pontos[$oponente["pontos"]][] = $oponente;
@@ -54,4 +55,20 @@ function attack_torneio() {
     } while ($total_participantes_rodada == $total_participantes && $tolerance < 5);
 
     return false;
+}
+
+function inicia_torneio($torneio, $torneio_db)
+{
+    global $connection;
+
+    $result = $connection->run("SELECT * FROM tb_torneio_inscricao WHERE torneio_id = ?", "i", [$torneio["id"]]);
+
+    if (! $result->count()) {
+        $connection->run("UPDATE tb_torneio SET `status` = ? WHERE id = ?",
+            "ii", [TORNEIO_STATUS_FINALIZADO, $torneio["id"]]);
+    } else {
+        $connection->run("UPDATE tb_torneio SET `status` = ? WHERE id = ?",
+            "ii", [TORNEIO_STATUS_ANDAMENTO, $torneio["id"]]);
+        // TODO cria as chaves
+    }
 }

@@ -243,16 +243,16 @@ function get_random_coord_navegavel($mar)
         if ($mar == 1) {
             $x = rand(290, 430);
             $y = rand(20, 95);
-        } else if ($mar == 2) {
+        } elseif ($mar == 2) {
             $x = rand(30, 165);
             $y = rand(20, 95);
-        } else if ($mar == 3) {
+        } elseif ($mar == 3) {
             $x = rand(288, 430);
             $y = rand(266, 345);
-        } else if ($mar == 4) {
+        } elseif ($mar == 4) {
             $x = rand(30, 165);
             $y = rand(266, 345);
-        } else if ($mar == 5) {
+        } elseif ($mar == 5) {
             $x = rand(291, 430);
             $y = rand(106, 254);
         } else {
