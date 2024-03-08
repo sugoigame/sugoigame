@@ -78,8 +78,6 @@ $facebook_url = "https://www.facebook.com/dialog/oauth?client_id=444646756906612
     <div id="menu-wrapper">
         <?php include "menu.php"; ?>
     </div>
-    <?php include "Includes/Components/Header/missoes_auxiliares.php"; ?>
-    <?php include "Includes/Components/Header/torneio_poneglyph.php"; ?>
     <?php include "Includes/Components/Header/bandeira.php"; ?>
 <?php endif; ?>
 <?php if ($userDetails->tripulacao && ! $protector->is_ful_wide_session($sessao)) : ?>

@@ -1059,6 +1059,7 @@ a.list-group-item .list-group-item-text {
     text-decoration: none;
 }
 
+#torneio-poneglyph .user-progress-finished,
 #missao-auxiliar a.user-progress-finished {
     color: #ee0;
 }

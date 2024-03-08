@@ -610,9 +610,8 @@ require_once "Includes/conectdb.php";
     }
 
     var inIlha = undefined;
-
     function reloadMenu(data) {
-        if (inIlha !== data.me.ilha) {
+        if (inIlha !== data.me.ilha || !data.me.navegando) {
             $.ajax({
                 url: 'menu_for_oceano.php',
                 success: function (response) {

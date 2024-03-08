@@ -4,10 +4,13 @@
     <div id="torneio-poneglyph">
         <a href="./?ses=torneio" class="link_content text-center">
             <?php if ($torneio["status"] === TORNEIO_STATUS_AGUARDANDO) : ?>
-                <div>
+                <?php $coord = json_decode($torneio["coordenadas"], true)[$userDetails->ilha["mar"]]; ?>
+                <div class="<?= $coord["x"] == $userDetails->tripulacao["x"]
+                    && $coord["y"] == $userDetails->tripulacao["y"]
+                    ? "user-progress-finished"
+                    : "" ?>">
                     <div>Poneglyph localizado:</div>
                     <strong>
-                        <?php $coord = json_decode($torneio["coordenadas"], true)[$userDetails->ilha["mar"]]; ?>
                         <?= get_human_location($coord["x"], $coord["y"]) ?>
                     </strong>
                     <small>

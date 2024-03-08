@@ -55,6 +55,10 @@ function super_menu_can_be_active($menu)
     return get_super_menu() == $menu;
 }
 ?>
+
+<?php include "Includes/Components/Header/missoes_auxiliares.php"; ?>
+<?php include "Includes/Components/Header/torneio_poneglyph.php"; ?>
+
 <div id="vertical-menu">
     <div class="panel border-none">
         <?= super_menu_link("home", "menu-principal", "Principal", "principal", "principal") ?>
