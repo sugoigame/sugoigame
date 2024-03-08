@@ -54,8 +54,6 @@ function has_mapa()
         <?php else : ?>
             <?php include "Includes/Components/Header/news_coo.php"; ?>
 
-            <?php include "Includes/Components/Header/icon_torneio.php"; ?>
-
             <?php include "Includes/Components/Header/localizador_pvp.php"; ?>
 
             <?php include "Includes/Components/Header/daily_gift.php"; ?>

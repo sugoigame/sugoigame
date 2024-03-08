@@ -2,6 +2,7 @@
 require_once "database/mywrap.php";
 
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+date_default_timezone_set('America/Sao_Paulo');
 
 // mysqli
 $connection = new mywrap_con();
@@ -25,7 +26,7 @@ define('EMAIL_FORMAT_2', "/^[A-Za-z0-9_\\-\\.]+@[A-Za-z0-9_\\-\\.]{2,}\\.[A-Za-z
 define('DATA_FORMAT', "/^\\d{4}-\\d{1,2}-\\d{1,2}$/");
 define('COORD_FORMAT', "/^\\d{1,3}_\\d{1,3}$/");
 
-define('IS_BETA', FALSE);
+define('IS_BETA', false);
 
 define('BONUS_DOBROES_ATIVACAO', 600);
 

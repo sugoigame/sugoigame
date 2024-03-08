@@ -1044,17 +1044,34 @@ a.list-group-item .list-group-item-text {
     width: 10vw;
     text-align: left;
     background: rgba(0, 0, 0, 0.2);
-    padding: 1vh;
     border-radius: 5px;
 }
-#missao-auxiliar a {
+#missao-auxiliar a,
+#torneio-poneglyph a {
+    padding: 1vh;
+    display: block;
     color: #f0f0f0;
     text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000,
         -1px -1px #000, 1px -1px #000, -1px 1px #000;
 }
+#missao-auxiliar a:hover,
+#torneio-poneglyph a:hover {
+    text-decoration: none;
+}
 
 #missao-auxiliar a.user-progress-finished {
     color: #ee0;
+}
+
+#torneio-poneglyph {
+    position: fixed;
+    z-index: 1;
+    right: 12vw;
+    top: 10vh;
+    width: 13vw;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
 
 .user-progress-0 img,

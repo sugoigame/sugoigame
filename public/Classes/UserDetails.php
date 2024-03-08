@@ -230,25 +230,25 @@ class UserDetails
         $token = $this->_get_token();
 
         if (! $token) {
-            return ($this->conta = false);
+            return($this->conta = false);
         }
 
         $result = $this->connection->run("SELECT * FROM tb_conta WHERE conta_id = ? LIMIT 1", "s", array($token["id_encrypted"]));
 
         if (! $result->count()) {
-            return ($this->conta = false);
+            return($this->conta = false);
         }
 
         $conta = $result->fetch_array();
 
         if (! $this->_token_matches($conta["cookie"], $token["token"])) {
-            return ($this->conta = false);
+            return($this->conta = false);
         }
 
         //$this->connection->run("INSERT INTO tb_log_acesso (conta_id, tripulacao_id, url) VALUES (?, ?, ?)",
         //   "iis", array($conta["conta_id"], $conta["tripulacao_id"], $_SERVER["REQUEST_URI"]));
 
-        return ($this->conta = $conta);
+        return($this->conta = $conta);
     }
 
     private function _token_matches($saved_token, $request_token)
@@ -259,10 +259,10 @@ class UserDetails
     private function _load_tripulacao()
     {
         if (! $this->conta) {
-            return ($this->tripulacao = false);
+            return($this->tripulacao = false);
         }
         if (! $this->conta["tripulacao_id"]) {
-            return ($this->tripulacao = false);
+            return($this->tripulacao = false);
         }
 
         $result = $this->connection->run("SELECT * FROM tb_usuarios WHERE id = ?", "i", array($this->conta["tripulacao_id"]));
@@ -313,24 +313,24 @@ class UserDetails
 
         $tripulacao["poder"] = 0;
 
-        return ($this->tripulacao = $tripulacao);
+        return($this->tripulacao = $tripulacao);
     }
 
     private function _load_tripulacoes()
     {
         if (! $this->conta) {
-            return ($this->tripulacoes = false);
+            return($this->tripulacoes = false);
         }
 
         $result = $this->connection->run("SELECT * FROM tb_usuarios WHERE conta_id = ?", "i", array($this->conta["conta_id"]));
 
-        return ($this->tripulacoes = $result->fetch_all_array());
+        return($this->tripulacoes = $result->fetch_all_array());
     }
 
     private function _load_personagens()
     {
         if (! $this->tripulacao) {
-            return ($this->personagens = false);
+            return($this->personagens = false);
         }
 
         $personagens = [];
@@ -391,22 +391,22 @@ class UserDetails
         }
 
         // return ($this->personagens = $result->fetch_all_array());
-        return ($this->personagens = $personagens);
+        return($this->personagens = $personagens);
     }
 
     private function _load_capitao()
     {
         if (! $this->personagens) {
-            return ($this->capitao = false);
+            return($this->capitao = false);
         }
 
-        return ($this->capitao = $this->personagens[0]);
+        return($this->capitao = $this->personagens[0]);
     }
 
     private function _load_lvl_mais_forte()
     {
         if (! $this->personagens) {
-            return ($this->lvl_mais_forte = false);
+            return($this->lvl_mais_forte = false);
         }
         $lvl_max = 0;
         foreach ($this->personagens as $pers) {
@@ -415,13 +415,13 @@ class UserDetails
             }
         }
 
-        return ($this->lvl_mais_forte = $lvl_max);
+        return($this->lvl_mais_forte = $lvl_max);
     }
 
     private function _load_fa_mais_alta()
     {
         if (! $this->personagens) {
-            return ($this->fa_mais_alta = false);
+            return($this->fa_mais_alta = false);
         }
         $fa_max = 0;
         foreach ($this->personagens as $pers) {
@@ -430,43 +430,43 @@ class UserDetails
             }
         }
 
-        return ($this->fa_mais_alta = $fa_max);
+        return($this->fa_mais_alta = $fa_max);
     }
 
     private function _load_medicos()
     {
         if (! $this->personagens) {
-            return ($this->medicos = false);
+            return($this->medicos = false);
         }
 
-        return ($this->medicos = $this->get_personagens_by_profissao(PROFISSAO_MEDICO));
+        return($this->medicos = $this->get_personagens_by_profissao(PROFISSAO_MEDICO));
     }
 
     private function _load_lvl_medico()
     {
         if (! $this->medicos) {
-            return ($this->lvl_medico = false);
+            return($this->lvl_medico = false);
         }
 
-        return ($this->lvl_medico = $this->_load_lvl_prof($this->medicos));
+        return($this->lvl_medico = $this->_load_lvl_prof($this->medicos));
     }
 
     private function _load_navegadores()
     {
         if (! $this->personagens) {
-            return ($this->navegadores = false);
+            return($this->navegadores = false);
         }
 
-        return ($this->navegadores = $this->get_personagens_by_profissao(PROFISSAO_NAVEGADOR));
+        return($this->navegadores = $this->get_personagens_by_profissao(PROFISSAO_NAVEGADOR));
     }
 
     private function _load_lvl_navegador()
     {
         if (! $this->navegadores) {
-            return ($this->lvl_navegador = false);
+            return($this->lvl_navegador = false);
         }
 
-        return ($this->lvl_navegador = $this->_load_lvl_prof($this->navegadores));
+        return($this->lvl_navegador = $this->_load_lvl_prof($this->navegadores));
     }
 
     private function _load_lvl_prof($profissionais)
@@ -494,91 +494,91 @@ class UserDetails
     private function _load_carpinteiros()
     {
         if (! $this->personagens) {
-            return ($this->carpinteiros = false);
+            return($this->carpinteiros = false);
         }
 
-        return ($this->carpinteiros = $this->get_personagens_by_profissao(PROFISSAO_CARPINTEIRO));
+        return($this->carpinteiros = $this->get_personagens_by_profissao(PROFISSAO_CARPINTEIRO));
     }
 
     private function _load_lvl_carpinteiro()
     {
         if (! $this->carpinteiros) {
-            return ($this->lvl_carpinteiro = false);
+            return($this->lvl_carpinteiro = false);
         }
 
-        return ($this->lvl_carpinteiro = $this->_load_lvl_prof($this->carpinteiros));
+        return($this->lvl_carpinteiro = $this->_load_lvl_prof($this->carpinteiros));
     }
 
     private function _load_ferreiros()
     {
         if (! $this->personagens) {
-            return ($this->ferreiros = false);
+            return($this->ferreiros = false);
         }
 
-        return ($this->ferreiros = $this->get_personagens_by_profissao(PROFISSAO_FERREIRO));
+        return($this->ferreiros = $this->get_personagens_by_profissao(PROFISSAO_FERREIRO));
     }
 
     private function _load_artesoes()
     {
         if (! $this->personagens) {
-            return ($this->artesoes = false);
+            return($this->artesoes = false);
         }
 
-        return ($this->artesoes = $this->get_personagens_by_profissao(PROFISSAO_ARTESAO));
+        return($this->artesoes = $this->get_personagens_by_profissao(PROFISSAO_ARTESAO));
     }
 
     private function _load_mergulhadores()
     {
         if (! $this->personagens) {
-            return ($this->mergulhadores = false);
+            return($this->mergulhadores = false);
         }
 
-        return ($this->mergulhadores = $this->get_personagens_by_profissao(PROFISSAO_MERGULHADOR));
+        return($this->mergulhadores = $this->get_personagens_by_profissao(PROFISSAO_MERGULHADOR));
     }
 
     private function _load_lvl_mergulhador()
     {
         if (! $this->mergulhadores) {
-            return ($this->lvl_mergulhador = false);
+            return($this->lvl_mergulhador = false);
         }
 
-        return ($this->lvl_mergulhador = $this->_load_lvl_min_prof($this->mergulhadores));
+        return($this->lvl_mergulhador = $this->_load_lvl_min_prof($this->mergulhadores));
     }
 
     private function _load_arqueologos()
     {
         if (! $this->personagens) {
-            return ($this->arqueologos = false);
+            return($this->arqueologos = false);
         }
 
-        return ($this->arqueologos = $this->get_personagens_by_profissao(PROFISSAO_ARQUEOLOGO));
+        return($this->arqueologos = $this->get_personagens_by_profissao(PROFISSAO_ARQUEOLOGO));
     }
 
     private function _load_lvl_arqueologo()
     {
         if (! $this->arqueologos) {
-            return ($this->lvl_arqueologo = false);
+            return($this->lvl_arqueologo = false);
         }
 
-        return ($this->lvl_arqueologo = $this->_load_lvl_min_prof($this->arqueologos));
+        return($this->lvl_arqueologo = $this->_load_lvl_min_prof($this->arqueologos));
     }
 
     private function _load_cartografos()
     {
         if (! $this->personagens) {
-            return ($this->cartografos = false);
+            return($this->cartografos = false);
         }
 
-        return ($this->cartografos = $this->get_personagens_by_profissao(PROFISSAO_CARTOGRAFO));
+        return($this->cartografos = $this->get_personagens_by_profissao(PROFISSAO_CARTOGRAFO));
     }
 
     private function _load_lvl_cartografo()
     {
         if (! $this->cartografos) {
-            return ($this->lvl_cartografo = false);
+            return($this->lvl_cartografo = false);
         }
 
-        return ($this->lvl_cartografo = $this->_load_lvl_min_prof($this->cartografos));
+        return($this->lvl_cartografo = $this->_load_lvl_min_prof($this->cartografos));
     }
 
     public function get_personagens_by_profissao($prof)
@@ -594,16 +594,16 @@ class UserDetails
     private function _load_rotas()
     {
         if (! $this->tripulacao) {
-            return ($this->rotas = false);
+            return($this->rotas = false);
         }
 
         $result = $this->connection->run("SELECT * FROM tb_rotas WHERE id = ? ORDER BY indice", "i", $this->tripulacao["id"]);
 
         if (! $result->count()) {
-            return ($this->rotas = false);
+            return($this->rotas = false);
         }
 
-        return ($this->rotas = $result->fetch_all_array());
+        return($this->rotas = $result->fetch_all_array());
     }
 
     public function can_access_inpel_down()
@@ -629,10 +629,10 @@ class UserDetails
         } else if ($ilha == 47) {
             if ($this->tripulacao["faccao"] == FACCAO_PIRATA) {
                 $rdp = get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_ERA_PIRATA);
-                return ($rdp == $this->tripulacao["id"]);
+                return($rdp == $this->tripulacao["id"]);
             } else if ($this->tripulacao["faccao"] == FACCAO_MARINHA) {
                 $adf = get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_ERA_MARINHA);
-                return ($adf == $this->tripulacao["id"]);
+                return($adf == $this->tripulacao["id"]);
             }
         } else if ($ilha == 101) {
             if ($this->can_access_inpel_down()) {
@@ -652,7 +652,7 @@ class UserDetails
     private function _load_in_ilha()
     {
         if (! $this->tripulacao) {
-            return ($this->in_ilha = false);
+            return($this->in_ilha = false);
         }
 
         return $this->in_ilha = $this->_verify_in_ilha($this->ilha["ilha"]);
@@ -661,7 +661,7 @@ class UserDetails
     private function _load_ilha()
     {
         if (! $this->tripulacao) {
-            return ($this->ilha = false);
+            return($this->ilha = false);
         }
 
         $result = $this->connection->run("SELECT * FROM tb_mapa WHERE x = ? AND y = ? LIMIT 1",
@@ -688,7 +688,7 @@ class UserDetails
     private function _load_navio()
     {
         if (! $this->tripulacao) {
-            return ($this->navio = false);
+            return($this->navio = false);
         }
         $result = $this->connection->run("SELECT
 			*,
@@ -699,31 +699,31 @@ class UserDetails
 			 WHERE usrnav.id = ?", "i", $this->tripulacao["id"]);
 
         if (! $result->count()) {
-            return ($this->navio = false);
+            return($this->navio = false);
         }
-        return ($this->navio = $result->fetch_array());
+        return($this->navio = $result->fetch_array());
     }
 
     private function _load_vip()
     {
         if (! $this->tripulacao) {
-            return ($this->vip = false);
+            return($this->vip = false);
         }
 
         $result = $this->connection->run("SELECT * FROM tb_vip WHERE id = ?", "i", $this->tripulacao["id"]);
-        return ($this->vip = $result->fetch_array());
+        return($this->vip = $result->fetch_array());
     }
 
     private function _load_ally()
     {
         if (! $this->tripulacao) {
-            return ($this->ally = false);
+            return($this->ally = false);
         }
 
         $result = $this->connection->run("SELECT * FROM tb_alianca_membros WHERE id = ?", "i", $this->tripulacao["id"]);
 
         if (! $result->count()) {
-            return ($this->ally = false);
+            return($this->ally = false);
         }
 
         $ally = $result->fetch_array();
@@ -744,42 +744,42 @@ class UserDetails
     private function _load_combate_pvp()
     {
         if (! $this->tripulacao) {
-            return ($this->combate_pvp = false);
+            return($this->combate_pvp = false);
         }
         $result = $this->connection->run("SELECT * FROM tb_combate WHERE id_1 =  ? OR id_2 = ?",
             "ii", array($this->tripulacao["id"], $this->tripulacao["id"]));
 
         if (! $result->count()) {
-            return ($this->combate_pvp = false);
+            return($this->combate_pvp = false);
         }
 
         $this->connection->run("DELETE FROM tb_combate_npc WHERE id = ?", "i", $this->tripulacao["id"]);
 
-        return ($this->combate_pvp = $result->fetch_array());
+        return($this->combate_pvp = $result->fetch_array());
     }
 
     private function _load_tripulacoes_pvp()
     {
         if (! $this->combate_pvp) {
-            return ($this->tripulacoes_pvp = false);
+            return($this->tripulacoes_pvp = false);
         }
         $tripulacao["1"] = $this->connection->run("SELECT * FROM tb_usuarios WHERE id = ?", "i", $this->combate_pvp["id_1"])
             ->fetch_array();
         $tripulacao["2"] = $this->connection->run("SELECT * FROM tb_usuarios WHERE id = ?", "i", $this->combate_pvp["id_2"])
             ->fetch_array();
 
-        return ($this->tripulacoes_pvp = $tripulacao);
+        return($this->tripulacoes_pvp = $tripulacao);
     }
 
     private function _load_combate_pve()
     {
         if (! $this->tripulacao) {
-            return ($this->combate_pve = false);
+            return($this->combate_pve = false);
         }
         $result = $this->connection->run("SELECT * FROM tb_combate_npc WHERE id = ?", "i", $this->tripulacao["id"]);
 
         if (! $result->count()) {
-            return ($this->combate_pve = false);
+            return($this->combate_pve = false);
         }
         $combate = $result->fetch_array();
         if ($combate["boss_id"]) {
@@ -788,27 +788,27 @@ class UserDetails
             $combate["real_boss_id"] = $boss["real_boss_id"];
         }
 
-        return ($this->combate_pve = $combate);
+        return($this->combate_pve = $combate);
     }
 
     private function _load_combate_bot()
     {
         if (! $this->tripulacao) {
-            return ($this->combate_bot = false);
+            return($this->combate_bot = false);
         }
         $result = $this->connection->run("SELECT * FROM tb_combate_bot WHERE tripulacao_id = ?", "i", array($this->tripulacao["id"]));
 
         if (! $result->count()) {
-            return ($this->combate_bot = false);
+            return($this->combate_bot = false);
         }
 
-        return ($this->combate_bot = $result->fetch_array());
+        return($this->combate_bot = $result->fetch_array());
     }
 
     private function _load_missao()
     {
         if (! $this->tripulacao) {
-            return ($this->missao = false);
+            return($this->missao = false);
         }
         $result = $this->connection->run(
             "SELECT * FROM tb_missoes_iniciadas misini WHERE misini.id = ?",
@@ -816,42 +816,42 @@ class UserDetails
         );
 
         if (! $result->count()) {
-            return ($this->missao = false);
+            return($this->missao = false);
         }
 
         $missao_iniciada = $result->fetch_array();
 
         $missoes = DataLoader::load("missoes");
 
-        return ($this->missao = array_merge($missao_iniciada, $missoes[$missao_iniciada["cod_missao"]]));
+        return($this->missao = array_merge($missao_iniciada, $missoes[$missao_iniciada["cod_missao"]]));
     }
 
     private function _load_missao_r()
     {
         if (! $this->tripulacao) {
-            return ($this->missao_r = false);
+            return($this->missao_r = false);
         }
         $result = $this->connection->run("SELECT * FROM tb_missoes_r WHERE id = ?", "i", $this->tripulacao["id"]);
 
         if (! $result->count()) {
-            return ($this->missao_r = false);
+            return($this->missao_r = false);
         }
-        return ($this->missao_r = $result->fetch_array());
+        return($this->missao_r = $result->fetch_array());
     }
 
     private function _load_is_visivel()
     {
         if (! $this->tripulacao) {
-            return ($this->is_visivel = false);
+            return($this->is_visivel = false);
         }
 
-        return ($this->is_visivel = $this->tripulacao["mar_visivel"]);
+        return($this->is_visivel = $this->tripulacao["mar_visivel"]);
     }
 
     private function _load_has_ilha_envolta_me()
     {
         if (! $this->tripulacao) {
-            return ($this->has_ilha_envolta_me = false);
+            return($this->has_ilha_envolta_me = false);
         }
 
         $my_x = $this->tripulacao["x"];
@@ -861,13 +861,13 @@ class UserDetails
             "iiii", array($my_x - 2, $my_x + 2, $my_y - 2, $my_y + 2)
         );
 
-        return ($this->has_ilha_envolta_me = ! ! $result->count());
+        return($this->has_ilha_envolta_me = ! ! $result->count());
     }
 
     private function _load_has_ilha_or_terra_envolta_me()
     {
         if ($this->has_ilha_envolta_me) {
-            return ($this->has_ilha_or_terra_envolta_me = true);
+            return($this->has_ilha_or_terra_envolta_me = true);
         } else {
             $ilha_proxima = $this->connection->run("SELECT * FROM tb_mapa WHERE x >= ? AND x <= ? AND y >= ? AND y <= ? AND (navegavel = 0 OR ilha <> 0)",
                 "iiii", array(
@@ -876,14 +876,14 @@ class UserDetails
                     $this->tripulacao["y"] - 1,
                     $this->tripulacao["y"] + 1
                 ));
-            return ($this->has_ilha_or_terra_envolta_me = ! ! $ilha_proxima->count());
+            return($this->has_ilha_or_terra_envolta_me = ! ! $ilha_proxima->count());
         }
     }
 
     private function _load_tripulacao_alive()
     {
         if (! $this->tripulacao) {
-            return ($this->tripulacao_alive = false);
+            return($this->tripulacao_alive = false);
         }
 
         $this->tripulacao_alive = false;
@@ -900,7 +900,7 @@ class UserDetails
     private function _load_fila_coliseu()
     {
         if (! $this->tripulacao) {
-            return ($this->fila_coliseu = false);
+            return($this->fila_coliseu = false);
         }
 
         $result = $this->connection->run("SELECT * FROM tb_coliseu_fila WHERE id = ?", "i", array($this->tripulacao["id"]));
@@ -911,7 +911,7 @@ class UserDetails
     private function _load_lvl_coliseu()
     {
         if (! $this->tripulacao) {
-            return ($this->lvl_coliseu = false);
+            return($this->lvl_coliseu = false);
         }
 
         return $this->lvl_coliseu = $this->connection->run("SELECT MAX(lvl) AS lvl FROM tb_personagens WHERE id = ? AND time_coliseu = 1",
@@ -921,7 +921,7 @@ class UserDetails
     private function _load_alerts_data()
     {
         if (! $this->tripulacao) {
-            return ($this->alerts_data = array());
+            return($this->alerts_data = array());
         }
 
         $alerts = array();
@@ -997,7 +997,7 @@ class UserDetails
     private function _load_super_alerts_data()
     {
         if (! $this->tripulacao) {
-            return ($this->super_alerts_data = array());
+            return($this->super_alerts_data = array());
         }
 
         $alerts = array();
@@ -1373,7 +1373,7 @@ class UserDetails
                 "goal" => "Viaje até " . nome_ilha($segunda_ilha) . " em " . get_human_location($segunda_ilha_coord["x"], $segunda_ilha_coord["y"]),
                 "link" => "oceano",
                 "rewards" => array("xp" => 0, "berries" => 2000, "dobroes" => 0),
-                "unlock" => [],
+                "unlock" => [SISTEMA_TORNEIO_PONEGLIPH],
                 "next" => 29,
                 "check_progress" => function () use ($segunda_ilha) {
                     return check_progress_in_ilha($segunda_ilha);
@@ -1941,7 +1941,7 @@ class UserDetails
         $item_count = $this->connection->run("SELECT count(id) AS total FROM tb_usuario_itens WHERE id = ?",
             "i", array($id))->fetch_array()["total"];
         $navio = $this->connection->run("SELECT * FROM tb_usuario_navio WHERE id = ?", "i", array($id))->fetch_array();
-        return ($item_count + $quant) <= $navio["capacidade_inventario"];
+        return($item_count + $quant) <= $navio["capacidade_inventario"];
     }
 
     public function add_equipamento($equipamento)

@@ -34,7 +34,7 @@ require_once "Includes/conectdb.php";
     }
 
     #skills-area .skill {
-        margin: 3px auto;
+        margin: 1px auto;
         position: relative;
         border-radius: 5px;
         display: block;
@@ -1253,6 +1253,7 @@ require_once "Includes/conectdb.php";
 
             if (distance <= 1) {
                 this.attackSkill.use();
+                this.target = null;
             } else if (!this.lastTarget
                 || !gameState.player.destination
                 || destination.x !== this.lastTarget.x
@@ -1299,8 +1300,8 @@ require_once "Includes/conectdb.php";
         this.fog.position.y = game.camera.position.y;
         game.world.bringToTop(this.fog);
 
-        this.windIndicator.position.x = game.camera.position.x + game.camera.width - 250;
-        this.windIndicator.position.y = game.camera.position.y + 150;
+        this.windIndicator.position.x = game.camera.position.x + game.camera.width - 150;
+        this.windIndicator.position.y = game.camera.position.y + 250;
         game.world.bringToTop(this.windIndicator);
 
         this.locationText.position.x = game.camera.position.x + game.camera.width - 150;

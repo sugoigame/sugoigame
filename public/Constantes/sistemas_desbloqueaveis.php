@@ -24,6 +24,7 @@ define('SISTEMA_COLISEU', 'SISTEMA_COLISEU');
 define('SISTEMA_MAESTRIA', 'SISTEMA_MAESTRIA');
 define('SISTEMA_OBSTACULOS', 'SISTEMA_OBSTACULOS');
 define('SISTEMA_VINGANCA', 'SISTEMA_VINGANCA');
+define('SISTEMA_TORNEIO_PONEGLIPH', 'SISTEMA_TORNEIO_PONEGLIPH');
 
 $sessoes_por_sistema = array(
     SISTEMA_ACADEMIA => ["academia"],
@@ -47,7 +48,8 @@ $sessoes_por_sistema = array(
     SISTEMA_SERVICO_TRANSPORTE => ["transporte"],
     SISTEMA_OCEANO => ["amigaveis", "servicoDenDen"],
     SISTEMA_OBSTACULOS => ["obstaculos"],
-    SISTEMA_VINGANCA => ["listaNegra"]
+    SISTEMA_VINGANCA => ["listaNegra"],
+    SISTEMA_TORNEIO_PONEGLIPH => ["torneio"]
 );
 
 $sistemas_por_sessao = [];

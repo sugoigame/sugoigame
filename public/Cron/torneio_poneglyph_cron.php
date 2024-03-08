@@ -2,21 +2,23 @@
 
 function get_current_torneio_poneglyph()
 {
+    $duracao = "+220 minutes";
+
     $inicio = mktime(0, 0, 0, 3, 1, 2024);
+    $end = strtotime($duracao, $inicio);
     $now = time();
     $id = 1;
-    while ($inicio > $now) {
-        $inicio = strtotime('+220 minutes', $inicio);
+    while ($end < $now) {
+        $inicio = strtotime($duracao, $inicio);
+        $end = strtotime($duracao, $inicio);
         $id++;
     }
-
-    $fim = strtotime('+220 minutes', $inicio);
 
     $limite_inscricao = strtotime('+20 minutes', $inicio);
 
     return [
         "start" => $inicio,
-        "end" => $fim,
+        "end" => $end,
         "limite_inscricao" => $limite_inscricao,
         "id" => $id,
     ];
