@@ -1012,6 +1012,7 @@ class UserDetails
         return $this->super_alerts_data = $alerts;
     }
 
+
     public function add_effect($effect, $quant = 1)
     {
         $animacao = $this->connection->run("SELECT * FROM tb_tripulacao_animacoes_skills WHERE tripulacao_id = ? AND effect = ?",

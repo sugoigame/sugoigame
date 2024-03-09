@@ -8,7 +8,7 @@ function attack_torneio()
     return false;
 }
 
-function inicia_torneio($torneio, $torneio_db)
+function inicia_torneio($torneio)
 {
     global $connection;
 
@@ -36,6 +36,11 @@ function get_inscritos_torneio_poneglyph($torneio)
 {
     global $connection;
     return $connection
-        ->run("SELECT * FROM tb_torneio_inscricao WHERE torneio_id = ?", "i", [$torneio["id"]])
+        ->run(
+            "SELECT * FROM tb_torneio_inscricao ti
+            INNER JOIN tb_usuarios u ON ti.tripulacao_id = u.id
+             WHERE ti.torneio_id = ?",
+            "i", [$torneio["id"]]
+        )
         ->fetch_all_array();
 }

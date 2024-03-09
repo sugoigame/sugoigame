@@ -14,7 +14,8 @@ function get_current_torneio_poneglyph()
         $id++;
     }
 
-    $limite_inscricao = strtotime('+20 minutes', $inicio);
+    // todo fix to 20 min
+    $limite_inscricao = strtotime('+220 minutes', $inicio);
 
     return [
         "start" => $inicio,
@@ -56,7 +57,7 @@ function cron_atualiza_torneio_poneglyph()
         $torneio_db = $result->fetch_array();
 
         if ($torneio_db["status"] == TORNEIO_STATUS_AGUARDANDO && time() > $torneio["limite_inscricao"]) {
-            inicia_torneio($torneio, $torneio_db);
+            inicia_torneio(array_merge($torneio_db, $torneio));
         }
     }
 }

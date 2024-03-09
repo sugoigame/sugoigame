@@ -23,7 +23,8 @@
                     <div>
                         <small>
                             Tripulações no local:
-                            <?= count($inscritos) ?>/8
+                            <?= count($inscritos) ?> /
+                            <?= TORNEIO_LIMITE_PARTICIPANTES ?>
                         </small>
                     </div>
                 </div>
