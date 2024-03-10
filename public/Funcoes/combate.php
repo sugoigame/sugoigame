@@ -59,7 +59,7 @@ function get_player_data_for_combat_check($alvo_id)
         usr.x AS x,
         usr.y AS y,
         usr.adm AS adm,
-        IF(usr.reputacao > 0, 0, usr.protecao_pvp) as protecao_pvp,
+        IF(usr.reputacao_mensal > 0, 0, usr.protecao_pvp) as protecao_pvp,
         usr.cod_personagem AS cod_personagem,
         usr.faccao AS faccao,
         usr.ip AS ip,
@@ -79,11 +79,11 @@ function get_player_data_for_combat_check($alvo_id)
 function get_attack_restriction($content)
 {
     global $userDetails;
-    if (! $content["reputacao"] && $content["protecao_pvp"]) {
+    if (! $content["reputacao_mensal"] && $content["protecao_pvp"]) {
         return "O alvo está com o PVP desativado.";
     }
 
-    if (! $userDetails->tripulacao["reputacao"] && $userDetails->tripulacao["protecao_pvp"]) {
+    if (! $userDetails->tripulacao["reputacao_mensal"] && $userDetails->tripulacao["protecao_pvp"]) {
         return "Você está com o PVP desativado.";
     }
 

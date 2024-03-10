@@ -496,7 +496,7 @@ class Protector
 
     public function must_has_pvp_on()
     {
-        if ($this->userDetails->tripulacao["reputacao"] || $this->userDetails->tripulacao["protecao_pvp"]) {
+        if (! $this->userDetails->tripulacao["reputacao_mensal"] && $this->userDetails->tripulacao["protecao_pvp"]) {
             $this->exit_error("Você precisa estar com o PvP ligado.");
         }
     }

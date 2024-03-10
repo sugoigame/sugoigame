@@ -85,7 +85,7 @@ class MapServerUserDetails extends UserDetails
             (n.hp_teste / n.hp_max) AS hp_navio,
             v.luneta,
             v.coup_de_burst,
-            IF(u.reputacao > 0, 0, u.protecao_pvp) as protecao_pvp,
+            IF(u.reputacao_mensal > 0, 0, u.protecao_pvp) as protecao_pvp,
             u.kai AS kairouseki_ativo,
             c.kairouseki AS has_kairouseki,
             m.ilha
