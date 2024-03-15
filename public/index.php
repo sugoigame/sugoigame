@@ -34,6 +34,7 @@ if (! $userDetails->conta &&
     <link rel="stylesheet" type="text/css" href="CSS/theme.css?ver=1.0.4" />
     <link rel="stylesheet" type="text/css" href="CSS/bootstrap-select.min.css" />
     <link rel="stylesheet" type="text/css" href="CSS/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/jquery.bracket.min.css" />
     <link rel="stylesheet" type="text/css" href="CSS/estrutura.css?ver=2.0.14" />
 
     <?php if ($_SERVER['HTTP_HOST'] == 'sugoigame.com.br') { ?>
@@ -99,6 +100,7 @@ if (! $userDetails->conta &&
     <script type="text/javascript" src="JS/reconnecting-websocket.min.js"></script>
     <script type="text/javascript" src="JS/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="JS/phaser.min.js"></script>
+    <script type="text/javascript" src="JS/jquery.bracket.min.js"></script>
     <script type="text/javascript" src="JS/library.js?ver=1.0.0"></script>
     <script type="text/javascript" src="JS/main.js?ver=1.0.0"></script>
 
