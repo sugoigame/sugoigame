@@ -14,5 +14,6 @@ if ($userDetails->tripulacao) {
         "torneio" => attack_torneio()
     );
     echo json_encode($retorno, JSON_NUMERIC_CHECK);
-} else
+} else {
     echo json_encode([], JSON_NUMERIC_CHECK);
+}

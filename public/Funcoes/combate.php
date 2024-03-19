@@ -418,16 +418,6 @@ function calc_modificador_reputacao($vencedor, $perdedor)
     return $dif < 1.5 ? $dif : 1.5;
 }
 
-// function calc_modificador_lvl($vencedor_lvl, $perdedor_lvl) {
-//     $dif = abs($vencedor_lvl - $perdedor_lvl);
-//     if ($dif <= 0) {
-//         return 1;
-//     } else if ($dif >= 10) {
-//         return 0;
-//     } else {
-//         return 1 - ($dif * 10) / 100;
-//     }
-// }
 function calc_modificador_lvl($vencedor_rep, $perdedor_rep)
 {
     $dif = abs($vencedor_rep - $perdedor_rep);
@@ -438,11 +428,6 @@ function calc_modificador_lvl($vencedor_rep, $perdedor_rep)
     } else {
         return 1 - ($dif * 10) / 100;
     }
-}
-
-function reduz_score($pers)
-{
-    // np
 }
 
 function aumenta_score($pers)
@@ -507,7 +492,7 @@ function get_cross_guild_stars($reward)
 
 function calc_score_mod($classe_score)
 {
-    return($classe_score / 10000) * 0.01;
+    return ($classe_score / 10000) * 0.01;
 }
 
 function min_max($value, $min, $max)
@@ -716,7 +701,7 @@ function atacar_rdm($rdm_id, $details = null, $conn = null)
 
     $rdm = $rdms[$rdm_id];
 
-    if (! isset($rdm["boss"])) {
+    if (! isset ($rdm["boss"])) {
         $rdm["boss"] = null;
     }
 
@@ -736,13 +721,13 @@ function atacar_rdm($rdm_id, $details = null, $conn = null)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         "iisiiiiiiiiiiiiiiii", array(
             $userDetails->tripulacao["id"],
-            isset($rdm["img"]) ? $rdm["img"] : rand($rdm["img_rand_min"], $rdm["img_rand_max"]),
+            isset ($rdm["img"]) ? $rdm["img"] : rand($rdm["img_rand_min"], $rdm["img_rand_max"]),
             $rdm["nome"],
             $rdm["hp"], $rdm["hp"],
             1, 0,
             $rdm["atk"], $rdm["def"], $rdm["agl"], $rdm["res"], $rdm["pre"], $rdm["dex"], $rdm["con"],
             0, 0,
-            $rdm["id"], $rdm["boss"], isset($rdm["battle_back"]) ? $rdm["battle_back"] : NULL
+            $rdm["id"], $rdm["boss"], isset ($rdm["battle_back"]) ? $rdm["battle_back"] : NULL
         )
     );
 
@@ -772,6 +757,293 @@ function fadiga_batalha_ativa($personagens)
     return $count_tanque > $count_ataque;
 }
 
+function cria_crianca($id)
+{
+    global $connection;
+    $imgs = array(
+        array("img" => 2, "skin" => 9),
+        array("img" => 3, "skin" => 4),
+        array("img" => 4, "skin" => 3),
+        array("img" => 5, "skin" => 1),
+        array("img" => 6, "skin" => 4),
+        array("img" => 9, "skin" => 4),
+        array("img" => 13, "skin" => 10),
+        array("img" => 34, "skin" => 1),
+        array("img" => 85, "skin" => 11),
+        array("img" => 179, "skin" => 2),
+        array("img" => 3, "skin" => 4),
+        array("img" => 186, "skin" => 14),
+        array("img" => 191, "skin" => 4),
+        array("img" => 199, "skin" => 2),
+        array("img" => 224, "skin" => 1),
+        array("img" => 228, "skin" => 1)
+    );
+
+    $img = $imgs[array_rand($imgs)];
+
+    $result = $connection->run("INSERT INTO tb_personagens (id, img, nome, skin_r, skin_c, xp, hp, hp_max, ativo, temporario) VALUES (?, ?, ?, ?, ?, ?, 1, 1, 0, 1)",
+        "iisiii", array($id, $img["img"], "Catarrento " . $id, $img["skin"], $img["skin"], 0));
+
+    $cod = $result->last_id();
+
+    $connection->run("INSERT INTO tb_personagens_skil (cod, cod_skil, tipo, nome, descricao, icon)
+    VALUES ('$cod', '" . COD_SKILL_SOCO . "', '" . TIPO_SKILL_ATAQUE_CLASSE . "', 'Soco', 'Tenta acerta um soco no oponente.', '1')");
+
+    return $connection->run("SELECT * FROM tb_personagens WHERE cod = ?",
+        "i", array($cod))->fetch_array();
+}
+
+function inicia_combate($alvo, $tipo, $chave = null)
+{
+    global $protector;
+    global $connection;
+    global $userDetails;
+
+    // valida ataque e saque
+    if ($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) {
+        $protector->must_be_out_of_ilha();
+    }
+
+    // remove desafio
+    if ($tipo == TIPO_AMIGAVEL) {
+        $result = $connection->run("SELECT * FROM tb_combate_desafio WHERE desafiado = ?", "i", $userDetails->tripulacao["id"]);
+        if (! $result->count()) {
+            $protector->exit_error("Você não foi desafiado por esse jogador.");
+        }
+
+        $connection->run("DELETE FROM tb_combate_desafio WHERE desafiado = ?", "i", $userDetails->tripulacao["id"]);
+    }
+
+    // valida controle de ilha
+    if ($tipo == TIPO_CONTROLE_ILHA) {
+        if ($userDetails->ilha["ilha_dono"] != $userDetails->tripulacao["id"] && $userDetails->ilha["ilha_dono"] != $alvo) {
+            $protector->exit_error("Nenhum de voces e dono da ilha");
+        }
+        $disputa = $connection->run("SELECT * FROM tb_ilha_disputa d LEFT JOIN tb_usuarios u ON d.vencedor_id = u.id WHERE d.ilha = ?",
+            "i", array($userDetails->ilha["ilha"]));
+
+        if (! $disputa->count()) {
+            $protector->exit_error("Essa ilha não está sob disputa");
+        }
+
+        $disputa = $disputa->fetch_array();
+
+        if ($disputa["vencedor_id"] != $userDetails->tripulacao["id"] && $disputa["vencedor_id"] != $alvo) {
+            $protector->exit_error("Nenhum de voces foi vencedor da disputa pela ilha");
+        }
+    }
+
+    // valida o coliseu
+    if ($tipo == TIPO_COLISEU || $tipo == TIPO_LOCALIZADOR_CASUAL || $tipo == TIPO_LOCALIZADOR_COMPETITIVO) {
+        if (! $userDetails->fila_coliseu
+            || ! $userDetails->fila_coliseu["desafio"]
+            || $alvo != $userDetails->fila_coliseu["desafio"]
+            || ! $userDetails->fila_coliseu["desafio_aceito"]
+            || $userDetails->fila_coliseu["desafio_tipo"] != $tipo
+        ) {
+            $protector->exit_error("Você não foi desafiado.");
+        }
+
+        $adversario_fila = $connection->run("SELECT * FROM tb_coliseu_fila WHERE desafio = ?",
+            "i", array($userDetails->tripulacao["id"]));
+
+        if (! $adversario_fila->count()) {
+            $protector->exit_error("Seu adversário não recebeu o desafio");
+        }
+        $adversario_fila = $adversario_fila->fetch_array();
+
+        if (! $adversario_fila["desafio_aceito"]) {
+            $protector->exit_error("Seu adversário ainda não aceitou o desafio");
+        }
+
+        $connection->run("DELETE FROM tb_coliseu_fila WHERE id = ? OR id = ?",
+            "ii", array($userDetails->tripulacao["id"], $adversario_fila["id"]));
+    }
+
+    // carrega usuario alvo
+    $result = get_player_data_for_combat_check($alvo);
+    if (! $result->count()) {
+        $protector->exit_error("Alvo não encontrado");
+    }
+    $usuario_alvo = $result->fetch_array();
+
+    // valida alvo em combate
+    $result = $connection->run("SELECT * FROM tb_combate WHERE id_1 = ? OR id_2 = ?", "ii", array($alvo, $alvo));
+    if ($result->count()) {
+        $protector->exit_error("Seu alvo já está em combate");
+    }
+    $result = $connection->run("SELECT * FROM tb_combate_npc WHERE id = ?", "i", $alvo);
+    if ($result->count()) {
+        $protector->exit_error("Seu alvo já está em combate contra um rei dos mares");
+    }
+    $result = $connection->run("SELECT * FROM tb_combate_bot WHERE tripulacao_id = ?", "i", $alvo);
+    if ($result->count()) {
+        $protector->exit_error("Seu alvo já está em combate contra bots");
+    }
+
+    // if ($usuario_alvo["adm"]) {
+    //     $protector->exit_error("Um dos requisitos para atacar esse alvo não está cumprido.");
+    // }
+
+    // valida requisitos de ataque
+    if ($tipo == TIPO_ATAQUE || $tipo == TIPO_SAQUE) {
+        $protector->must_be_visivel();
+
+        if (! $usuario_alvo["mar_visivel"]) {
+            $protector->exit_error("O seu alvo precisa estar visível");
+        }
+
+        if ($restriction = get_attack_restriction($usuario_alvo)) {
+            $protector->exit_error($restriction);
+        }
+    }
+
+    // carega personagens do alvo
+    if ($tipo == TIPO_COLISEU) {
+        $personagens_alvo = $connection->run("SELECT * FROM tb_personagens WHERE id = ? AND time_coliseu= 1", "i", array($alvo))->fetch_all_array();
+        $personagens_alvo = nivela_personagens_coliseu($personagens_alvo);
+
+        $meus_personagens = $connection->run("SELECT * FROM tb_personagens WHERE id = ? AND time_coliseu= 1", "i", array($userDetails->tripulacao["id"]))->fetch_all_array();
+        $meus_personagens = nivela_personagens_coliseu($meus_personagens);
+    } else if ($tipo == TIPO_LOCALIZADOR_CASUAL) {
+        $personagens_alvo = $connection->run("SELECT * FROM tb_personagens WHERE id = ? AND time_casual= 1", "i", array($alvo))->fetch_all_array();
+        $personagens_alvo = nivela_personagens_coliseu($personagens_alvo);
+
+        $meus_personagens = $connection->run("SELECT * FROM tb_personagens WHERE id = ? AND time_casual= 1", "i", array($userDetails->tripulacao["id"]))->fetch_all_array();
+        $meus_personagens = nivela_personagens_coliseu($meus_personagens);
+    } else if ($tipo == TIPO_LOCALIZADOR_COMPETITIVO) {
+        $personagens_alvo = $connection->run("SELECT * FROM tb_personagens WHERE id = ? AND time_competitivo= 1", "i", array($alvo))->fetch_all_array();
+
+        $meus_personagens = $connection->run("SELECT * FROM tb_personagens WHERE id = ? AND time_competitivo= 1", "i", array($userDetails->tripulacao["id"]))->fetch_all_array();
+    } else {
+        $personagens_alvo = $connection->run("SELECT * FROM tb_personagens WHERE id = ? AND ativo = 1", "i", array($alvo))->fetch_all_array();
+        $meus_personagens = $userDetails->personagens;
+    }
+
+
+    // carrega o vip do alvo
+    $alvo_vip = $connection->run("SELECT * FROM tb_vip WHERE id = ?", "i", $alvo)->fetch_array();
+
+    // remove do oceano
+    $connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = NULL, navegacao_inicio = NULL, navegacao_fim = NULL  WHERE id = ?", "i", array($userDetails->tripulacao["id"]));
+    $connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = NULL, navegacao_inicio = NULL, navegacao_fim = NULL  WHERE id = ?", "i", array($alvo));
+
+    // comeca a transaction
+    $connection->link()->begin_transaction();
+
+    // deleta combate_personagem por seguranca
+    $connection->run("DELETE FROM tb_combate_personagens WHERE id = ? ", "i", $alvo)->fetch_all_array();
+    $connection->run("DELETE FROM tb_combate_personagens WHERE id = ? ", "i", $userDetails->tripulacao["id"])->fetch_all_array();
+
+    // insere os personagens no combate
+    $taticas_alvo = $tipo == TIPO_COLISEU || $tipo == TIPO_CONTROLE_ILHA ? "tatic_a" : "tatic_d";
+    $limites_alvo = $tipo == TIPO_COLISEU || $tipo == TIPO_CONTROLE_ILHA ? array(5, 9) : array(0, 4);
+    $taticas_user = $tipo == TIPO_COLISEU || $tipo == TIPO_CONTROLE_ILHA ? "tatic_d" : "tatic_a";
+    $limites_user = $tipo == TIPO_COLISEU || $tipo == TIPO_CONTROLE_ILHA ? array(0, 4) : array(5, 9);
+
+    $id_1 = $tipo == TIPO_COLISEU || $tipo == TIPO_CONTROLE_ILHA ? $usuario_alvo["id"] : $userDetails->tripulacao["id"];
+    $id_2 = $tipo == TIPO_COLISEU || $tipo == TIPO_CONTROLE_ILHA ? $userDetails->tripulacao["id"] : $usuario_alvo["id"];
+
+    $obstaculos = $connection->run("SELECT * FROM tb_obstaculos WHERE tripulacao_id = ? AND tipo = 1",
+        "i", array($id_1))->fetch_all_array();
+
+    $obstaculos = array_merge($obstaculos, $connection->run("SELECT * FROM tb_obstaculos WHERE tripulacao_id = ? AND tipo = 2",
+        "i", array($id_2))->fetch_all_array());
+
+
+
+    if ($userDetails->buffs->get_efeito("chamado_infantil")) {
+        $connection->run("UPDATE tb_usuarios SET batalhas_criancas = batalhas_criancas + 1 WHERE id = ?",
+            "i", array($userDetails->tripulacao["id"]));
+
+        $meus_personagens = array_merge($meus_personagens, array(cria_crianca($userDetails->tripulacao["id"])));
+    }
+
+    if ($userDetails->buffs->get_efeito_from_tripulacao("chamado_infantil", $alvo)) {
+        $connection->run("UPDATE tb_usuarios SET batalhas_criancas = batalhas_criancas + 1 WHERE id = ?",
+            "i", array($alvo));
+
+        $personagens_alvo = array_merge($personagens_alvo, array(cria_crianca($alvo)));
+    }
+
+    $nivelamento = $tipo == TIPO_COLISEU || $tipo == TIPO_LOCALIZADOR_CASUAL;
+    insert_personagens_combate($usuario_alvo["id"], $personagens_alvo, $alvo_vip, $taticas_alvo, $limites_alvo[0], $limites_alvo[1], $obstaculos, $nivelamento);
+    insert_personagens_combate($userDetails->tripulacao["id"], $meus_personagens, $userDetails->vip, $taticas_user, $limites_user[0], $limites_user[1], $obstaculos, $nivelamento);
+
+    // dead lock validation
+    $result = $connection->run("SELECT * FROM tb_combate WHERE id_1 = ? OR id_2 = ? OR id_1 = ? OR id_2 = ?",
+        "iiii", array($alvo, $alvo, $userDetails->tripulacao["id"], $userDetails->tripulacao["id"]));
+    if ($result->count()) {
+        $connection->link()->rollback();
+        $protector->exit_error("Seu alvo já está em combate");
+    }
+    $result = $connection->run("SELECT * FROM tb_combate_npc WHERE id = ?", "i", $alvo);
+    if ($result->count()) {
+        $connection->link()->rollback();
+        $protector->exit_error("Seu alvo já está em combate contra um rei dos mares");
+    }
+
+    // cria o registro de combate
+    $vez = 1;
+    $tempo = $tipo == TIPO_COLISEU || $tipo == TIPO_CONTROLE_ILHA ? (atual_segundo() + 120) : (atual_segundo() + 90);
+    $battle_back = $tipo == TIPO_COLISEU ? 42 : ($tipo == TIPO_CONTROLE_ILHA ? 54 : NULL);
+    $result = $connection->run(
+        "INSERT INTO tb_combate (id_1, id_2, vez, vez_tempo, move_1, move_2, tipo, battle_back)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        "iiiiiiii", array($id_1, $id_2, $vez, $tempo, '5', '5', $tipo, $battle_back)
+    );
+    $combate_id = $result->last_id();
+
+    // cria o log
+
+    $pos_1 = $userDetails->tripulacao["x"] . "_" . $userDetails->tripulacao["y"];
+    $pos_2 = $usuario_alvo["x"] . "_" . $usuario_alvo["y"];
+    $connection->run(
+        "INSERT INTO tb_combate_log (combate, id_1, id_2, tipo, pos_1, pos_2, ip_1, ip_2)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        "iiiissss", array($combate_id, $id_1, $id_2, $tipo, $pos_1, $pos_2, $userDetails->tripulacao["ip"], $usuario_alvo["ip"])
+    );
+
+    // envia a noticia para todos
+    if ($tipo != TIPO_AMIGAVEL && $userDetails->ilha["mar"] > 4) {
+        if ($tipo == TIPO_COLISEU) {
+            $mar = "no Coliseu";
+        } else if ($tipo == TIPO_CONTROLE_ILHA) {
+            $mar = "pelo controle de " . nome_ilha($userDetails->ilha["ilha"]);
+        } else if ($tipo == TIPO_LOCALIZADOR_CASUAL) {
+            $mar = "pelo Localizador Casual";
+        } else if ($tipo == TIPO_LOCALIZADOR_COMPETITIVO) {
+            $mar = "pelo Localizador Competitivo";
+        } else if ($tipo == TIPO_TORNEIO) {
+            $mar = "em uma batalha por um Poneglyph";
+        } else {
+            $nome_mar = nome_mar($userDetails->ilha["mar"]);
+            $mar = $userDetails->ilha["mar"] == 5 ? "na " . $nome_mar : "no " . $nome_mar;
+        }
+        $connection->run(
+            "INSERT INTO tb_news_coo (msg) VALUE (?)",
+            "s", array(
+                $userDetails->tripulacao["tripulacao"] . " entrou em combate contra " . $usuario_alvo["tripulacao"] . " " . $mar
+            )
+        );
+    }
+
+    if ($tipo == TIPO_TORNEIO) {
+        $posicao = $chave["tripulacao_1_id"] == $userDetails->tripulacao["id"] ? "1" : "2";
+        $placar_1 = $posicao == "1" ? count($meus_personagens) : count($personagens_alvo);
+        $placar_2 = $posicao == "2" ? count($meus_personagens) : count($personagens_alvo);
+        $connection->run(
+            "UPDATE tb_torneio_chave SET em_andamento = 1, placar_1 = ?, placar_2 = ?, combate_id = ? WHERE id = ?",
+            "iiii", [$placar_1, $placar_2, $combate_id, $chave["id"]]
+        );
+    }
+
+    // fim
+    $connection->link()->commit();
+
+    return $combate_id;
+}
+
 ?>
 <?php function render_tabuleiro($tabuleiro, $x1, $x2, $id_blue = NULL, $mira = NULL, $special_effects = array())
 { ?>
@@ -790,15 +1062,15 @@ function fadiga_batalha_ativa($personagens)
                     <?php endif; ?>
                 </td>
                 <?php for ($y = 0; $y < 20; $y++) : ?>
-                    <td id="<?= isset($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>"
-                        class="<?= $x . "_" . $y; ?> <?= isset($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "personagem-aliado" : "personagem-inimigo") : "" ?>">
-                        <?php if (isset($tabuleiro[$x][$y])) : ?>
+                    <td id="<?= isset ($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>"
+                        class="<?= $x . "_" . $y; ?> <?= isset ($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "personagem-aliado" : "personagem-inimigo") : "" ?>">
+                        <?php if (isset ($tabuleiro[$x][$y])) : ?>
                             <div class="progress progress-red">
                                 <div class="progress-bar progress-bar-success"
                                     style="width: <?= $tabuleiro[$x][$y]["hp"] / $tabuleiro[$x][$y]["hp_max"] * 100 ?>%">
                                 </div>
                             </div>
-                            <img class="<?= (isset($special_effects[$tabuleiro[$x][$y]["cod"]])) ? get_special_effect_classes($special_effects[$tabuleiro[$x][$y]["cod"]]) : "" ?>"
+                            <img class="<?= (isset ($special_effects[$tabuleiro[$x][$y]["cod"]])) ? get_special_effect_classes($special_effects[$tabuleiro[$x][$y]["cod"]]) : "" ?>"
                                 src="Imagens/Personagens/Icons/<?= getImg($tabuleiro[$x][$y], "r") ?>.jpg">
                         <?php endif; ?>
                     </td>
@@ -813,9 +1085,9 @@ function fadiga_batalha_ativa($personagens)
                 </td>
                 <?php for ($y = 0; $y < 20; $y++) : ?>
                     <td id="<?= $x . "_" . $y; ?>"
-                        class="selecionavel td-selecao <?= isset($tabuleiro[$x][$y]) ? "personagem" : "" ?> <?= isset($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "aliado" : "inimigo") : "" ?>"
+                        class="selecionavel td-selecao <?= isset ($tabuleiro[$x][$y]) ? "personagem" : "" ?> <?= isset ($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "aliado" : "inimigo") : "" ?>"
                         data-x="<?= $x ?>" data-y="<?= $y ?>"
-                        data-cod="<?= isset($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>">
+                        data-cod="<?= isset ($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>">
                         <img src="Imagens/Icones/selecao.png" />
                     </td>
                 <?php endfor; ?>
@@ -841,7 +1113,7 @@ function fadiga_batalha_ativa($personagens)
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-6">
-                                <?= big_pers_skin($pers["img"], $pers["skin_c"], isset($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="100%"') ?>
+                                <?= big_pers_skin($pers["img"], $pers["skin_c"], isset ($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="100%"') ?>
                                 <br />
                                 <?php if (($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]) : ?>
                                     <div>
@@ -877,7 +1149,7 @@ function fadiga_batalha_ativa($personagens)
 
                                 <?php render_personagem_hp_bar($pers); ?>
 
-                                <?php if (isset($buffs[$pers["cod"]])) : ?>
+                                <?php if (isset ($buffs[$pers["cod"]])) : ?>
                                     <h4>Buffs</h4>
                                     <?php foreach ($buffs[$pers["cod"]] as $buff) : ?>
                                         <div class="text-center">
@@ -889,7 +1161,7 @@ function fadiga_batalha_ativa($personagens)
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
-                                <?php if (isset($special_effects[$pers["cod"]])) : ?>
+                                <?php if (isset ($special_effects[$pers["cod"]])) : ?>
                                     <h4>Estado</h4>
                                     <?php foreach ($special_effects[$pers["cod"]] as $effect) : ?>
                                         <div class="text-center">
@@ -930,7 +1202,7 @@ function fadiga_batalha_ativa($personagens)
 <?php } ?>
 <?php function get_img_combate($log)
 {
-    return($log["skin_r"] === "npc")
+    return ($log["skin_r"] === "npc")
         ? "Imagens/Batalha/Npc/" . $log["img"] . ".png"
         : "Imagens/Personagens/Icons/" . get_img($log, "r") . ".jpg";
 } ?>
@@ -980,14 +1252,14 @@ function fadiga_batalha_ativa($personagens)
                                 <?php if ($afetado["tipo"] == 0) : ?>
                                     <?php if ($afetado["esq"] == 1) : ?>
                                         <span class="esquiva">Se esquivou</span>
-                                        <?php if ($avancado && isset($afetado["resultado"])) : ?>
+                                        <?php if ($avancado && isset ($afetado["resultado"])) : ?>
                                             <span class="text-success">Rolou no dado
                                                 <?= $afetado["resultado"]["dado_esquivou"] ?>/100 com chance de
                                                 <?= $afetado["resultado"]["chance_esquiva"] ?>%
                                             </span>
                                         <?php endif; ?>
                                     <?php else : ?>
-                                        <?php if ($avancado && isset($afetado["resultado"])) : ?>
+                                        <?php if ($avancado && isset ($afetado["resultado"])) : ?>
                                             <span>Tentou esquivar, mas rolou no dado
                                                 <?= $afetado["resultado"]["dado_esquivou"] ?>/100 com chance de
                                                 <?= $afetado["resultado"]["chance_esquiva"] ?>%
@@ -995,14 +1267,14 @@ function fadiga_batalha_ativa($personagens)
                                         <?php endif; ?>
                                         <?php if ($afetado["bloq"] == 1) : ?>
                                             <span class="bloqueio">Bloqueou</span>
-                                            <?php if ($avancado && isset($afetado["resultado"])) : ?>
+                                            <?php if ($avancado && isset ($afetado["resultado"])) : ?>
                                                 <span class="text-info">Rolou no dado
                                                     <?= $afetado["resultado"]["dado_bloqueou"] ?>/100 com chance de
                                                     <?= $afetado["resultado"]["chance_bloqueio"] ?>%
                                                 </span>
                                             <?php endif; ?>
                                         <?php else : ?>
-                                            <?php if ($avancado && isset($afetado["resultado"])) : ?>
+                                            <?php if ($avancado && isset ($afetado["resultado"])) : ?>
                                                 <span>Tentou bloquear mas rolou no dado
                                                     <?= $afetado["resultado"]["dado_bloqueou"] ?>/100 com chance de
                                                     <?= $afetado["resultado"]["chance_bloqueio"] ?>%
@@ -1013,14 +1285,14 @@ function fadiga_batalha_ativa($personagens)
                                         <?= $afetado["efeito"] ?> pontos de vida
                                         <?php if ($afetado["cri"] == 1) : ?>
                                             <span class="critico">Ataque crítico</span>
-                                            <?php if ($avancado && isset($afetado["resultado"])) : ?>
+                                            <?php if ($avancado && isset ($afetado["resultado"])) : ?>
                                                 <span class="text-danger">Rolou no dado
                                                     <?= $afetado["resultado"]["dado_critou"] ?>/100 com chance de
                                                     <?= $afetado["resultado"]["chance_critico"] ?>%
                                                 </span>
                                             <?php endif; ?>
                                         <?php else : ?>
-                                            <?php if ($avancado && isset($afetado["resultado"])) : ?>
+                                            <?php if ($avancado && isset ($afetado["resultado"])) : ?>
                                                 <span>O ataque crítico falhou pois rolou no dado
                                                     <?= $afetado["resultado"]["dado_critou"] ?>/100 com chance de
                                                     <?= $afetado["resultado"]["chance_critico"] ?>%
@@ -1036,11 +1308,11 @@ function fadiga_batalha_ativa($personagens)
                                     <?= $afetado["efeito"] ?> pontos em
                                     <?= nome_atributo($afetado["atributo"]) ?>
                                 <?php elseif ($afetado["tipo"] == 2) : ?>
-                                    <?php if (! empty($afetado["cura_h"])) : ?>
+                                    <?php if (! empty ($afetado["cura_h"])) : ?>
                                         recebeu
                                         <?= $afetado["cura_h"] ?> pontos de vida
                                     <?php endif; ?>
-                                    <?php if (! empty($afetado["cura_m"])) : ?>
+                                    <?php if (! empty ($afetado["cura_m"])) : ?>
                                         recebeu
                                         <?= $afetado["cura_m"] ?> pontos de energia
                                     <?php endif; ?>

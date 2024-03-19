@@ -1,8 +1,26 @@
-<?php function render_chave_torneio($chave)
+<?php function render_torneio_button($chave, $posicao)
 {
     global $userDetails;
-    $is_id_1 = $userDetails->tripulacao["id"] == $chave["tripulacao_1_id"];
-    $is_id_2 = $userDetails->tripulacao["id"] == $chave["tripulacao_2_id"];
+
+    $is_position = $userDetails->tripulacao["id"] == $chave["tripulacao_" . $posicao . "_id"];
+    ?>
+    <?php if ($chave["tripulacao_" . $posicao . "_pronto"]) : ?>
+        <button class="btn btn-info" disabled title="Pronto!" data-toggle="tooltip" data-placement="top" data-trigger="hover">
+            <i class="fa fa-check"></i>
+        </button>
+    <?php else : ?>
+        <button class="btn btn-<?= $is_position ? "success link_confirm" : "default"; ?>" <?= ! $is_position ? "disabled" : ""; ?>
+            title="<?= $is_position ? "Estou pronto!" : "Aguardando..."; ?>" data-toggle="tooltip" data-placement="top"
+            data-question="Quando ambas as tripulações estiverem prontas a batalha começará automaticamente. Você está pronto para começar essa batalha?"
+            data-trigger="hover" <?= $is_position ? 'href="Torneio/torneio_pronto.php"' : "" ?>>
+            <i class="fa fa-<?= $is_position ? "check" : "spinner"; ?>"></i>
+        </button>
+    <?php endif; ?>
+<?php
+}
+?>
+<?php function render_chave_torneio($chave)
+{
     ?>
     <div class="panel panel-default">
         <div class="panel-body">
@@ -50,34 +68,12 @@
             <?php if (! $chave["em_andamento"] && ! $chave["finalizada"]) : ?>
                 <div class="row">
                     <div class="col-xs-5">
-                        <?php if ($chave["tripulacao_1_pronto"]) : ?>
-                            <button class="btn btn-info" disabled>
-                                <i class="fa fa-check"></i>
-                            </button>
-                        <?php else : ?>
-                            <button class="btn btn-<?= $is_id_1 ? "success" : "default"; ?>" <?= ! $is_id_1 ? "disabled" : ""; ?>
-                                title="<?= $is_id_1 ? "Estou pronto!" : "Aguardando..."; ?>" data-toggle="tooltip"
-                                data-placement="top" data-trigger="hover">
-                                <i class="fa fa-<?= $is_id_1 ? "check" : "spinner"; ?>"></i>
-                            </button>
-                        <?php endif; ?>
+                        <?php render_torneio_button($chave, "1"); ?>
                     </div>
                     <div class="col-xs-2">
                     </div>
                     <div class="col-xs-5">
-                        <?php if (! $chave["em_andamento"]) : ?>
-                            <?php if ($chave["tripulacao_2_pronto"]) : ?>
-                                <button class="btn btn-info" disabled>
-                                    <i class="fa fa-check"></i>
-                                </button>
-                            <?php else : ?>
-                                <button class="btn btn-<?= $is_id_2 ? "success" : "default"; ?>" <?= ! $is_id_2 ? "disabled" : ""; ?>
-                                    title="<?= $is_id_2 ? "Estou pronto!" : "Aguardando..."; ?>" data-toggle="tooltip"
-                                    data-placement="top" data-trigger="hover">
-                                    <i class="fa fa-<?= $is_id_2 ? "check" : "spinner"; ?>"></i>
-                                </button>
-                            <?php endif; ?>
-                        <?php endif; ?>
+                        <?php render_torneio_button($chave, "2"); ?>
                     </div>
                 </div>
             <?php endif; ?>
