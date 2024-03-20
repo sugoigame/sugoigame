@@ -9,8 +9,8 @@
             <i class="fa fa-check"></i>
         </button>
     <?php else : ?>
-        <button class="btn btn-<?= $is_position ? "success link_confirm" : "default"; ?>" <?= ! $is_position ? "disabled" : ""; ?>
-            title="<?= $is_position ? "Estou pronto!" : "Aguardando..."; ?>" data-toggle="tooltip" data-placement="top"
+        <button class="btn btn-<?= $is_position ? "success link_confirm" : "default" ?>" <?= ! $is_position ? "disabled" : ""; ?>
+            title="<?= $is_position ? "Estou pronto!" : "Aguardando..." ?>" data-toggle="tooltip" data-placement="top"
             data-question="Quando ambas as tripulações estiverem prontas a batalha começará automaticamente. Você está pronto para começar essa batalha?"
             data-trigger="hover" <?= $is_position ? 'href="Torneio/torneio_pronto.php"' : "" ?>>
             <i class="fa fa-<?= $is_position ? "check" : "spinner"; ?>"></i>
@@ -195,61 +195,65 @@
             "SELECT * FROM tb_torneio_chave WHERE torneio_id = ?",
             "i", [$torneio["id"]]
         )->fetch_all_array();
-
-        $tripulacoes = [];
-        foreach ($chaves as $chave) {
-            if ($chave["tripulacao_1_id"]) {
-                $tripulacoes[] = $chave["tripulacao_1_id"];
-            }
-            if ($chave["tripulacao_2_id"]) {
-                $tripulacoes[] = $chave["tripulacao_2_id"];
-            }
-        }
-        $tripulacoes = $connection->run(
-            "SELECT * FROM tb_usuarios WHERE id IN (" . implode($tripulacoes, ",") . ")"
-        )->fetch_all_array();
-
-        foreach ($chaves as $key => $chave) {
-            $chaves[$key]["tripulacao_1"] = array_find($tripulacoes, ["id" => $chave["tripulacao_1_id"]]);
-            $chaves[$key]["tripulacao_2"] = array_find($tripulacoes, ["id" => $chave["tripulacao_2_id"]]);
-        }
-
         ?>
-        <?php $final = array_find($chaves, ["proxima_chave" => null]); ?>
-        <?php $semi_finais = array_filter($chaves, function ($chave) use ($final) {
-            return $chave["proxima_chave"] == $final["id"];
-        }); ?>
-        <?php $quartas = array_filter($chaves, function ($chave) use ($semi_finais) {
-            return array_find($semi_finais, ["id" => $chave["proxima_chave"]]);
-        }); ?>
 
-        <div class="row">
-            <div class="col-xs-4">
+        <?php if (count($chaves)) : ?>
+            <?php
+            $tripulacoes = [];
+            foreach ($chaves as $chave) {
+                if ($chave["tripulacao_1_id"]) {
+                    $tripulacoes[] = $chave["tripulacao_1_id"];
+                }
+                if ($chave["tripulacao_2_id"]) {
+                    $tripulacoes[] = $chave["tripulacao_2_id"];
+                }
+            }
+            $tripulacoes = $connection->run(
+                "SELECT * FROM tb_usuarios WHERE id IN (" . implode($tripulacoes, ",") . ")"
+            )->fetch_all_array();
+
+            foreach ($chaves as $key => $chave) {
+                $chaves[$key]["tripulacao_1"] = array_find($tripulacoes, ["id" => $chave["tripulacao_1_id"]]);
+                $chaves[$key]["tripulacao_2"] = array_find($tripulacoes, ["id" => $chave["tripulacao_2_id"]]);
+            }
+
+            ?>
+            <?php $final = array_find($chaves, ["proxima_chave" => null]); ?>
+            <?php $semi_finais = array_filter($chaves, function ($chave) use ($final) {
+                return $chave["proxima_chave"] == $final["id"];
+            }); ?>
+            <?php $quartas = array_filter($chaves, function ($chave) use ($semi_finais) {
+                return array_find($semi_finais, ["id" => $chave["proxima_chave"]]);
+            }); ?>
+
+            <div class="row">
+                <div class="col-xs-4">
+                </div>
+                <div class="col-xs-4">
+                    <?php render_chave_torneio($final); ?>
+                </div>
             </div>
-            <div class="col-xs-4">
-                <?php render_chave_torneio($final); ?>
+
+            <div class="row">
+                <?php foreach ($semi_finais as $semi_final) : ?>
+                    <div class="col-xs-1" style="width: 12.5%">
+                    </div>
+                    <div class="col-xs-3">
+                        <?php render_chave_torneio($semi_final); ?>
+                    </div>
+                    <div class="col-xs-1" style="width: 12.5%">
+                    </div>
+                <?php endforeach; ?>
             </div>
-        </div>
 
-        <div class="row">
-            <?php foreach ($semi_finais as $semi_final) : ?>
-                <div class="col-xs-1" style="width: 12.5%">
-                </div>
-                <div class="col-xs-3">
-                    <?php render_chave_torneio($semi_final); ?>
-                </div>
-                <div class="col-xs-1" style="width: 12.5%">
-                </div>
-            <?php endforeach; ?>
-        </div>
+            <div class="row">
+                <?php foreach ($quartas as $quarta) : ?>
+                    <div class="col-xs-3">
+                        <?php render_chave_torneio($quarta); ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
 
-        <div class="row">
-            <?php foreach ($quartas as $quarta) : ?>
-                <div class="col-xs-3">
-                    <?php render_chave_torneio($quarta); ?>
-                </div>
-            <?php endforeach; ?>
-        </div>
-
+        <?php endif; ?>
     <?php endif; ?>
 </div>

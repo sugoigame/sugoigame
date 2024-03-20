@@ -4,7 +4,7 @@ require "../../Includes/conectdb.php";
 $protector->must_be_out_of_ilha();
 $protector->must_has_pvp_on();
 
-$torneio = get_current_torneio_poneglyph_completo();
+$torneio = get_current_torneio_poneglyph();
 
 $chave = $connection->run(
     "SELECT * FROM tb_torneio_chave

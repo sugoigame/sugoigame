@@ -228,6 +228,64 @@ function inicia_torneio($torneio)
     }
 }
 
+function finaliza_chave_torneio($reputacao, $tipo, $vencedor, $perdedor, $personagens_vencedor, $personagens_perdedor)
+{
+
+    global $connection;
+
+    if ($tipo != TIPO_TORNEIO) {
+        return $reputacao;
+    }
+
+    $torneio = get_current_torneio_poneglyph();
+
+    $chave = $connection->run(
+        "SELECT * FROM tb_torneio_chave
+        WHERE torneio_id = ?
+        AND ((tripulacao_1_id = ? AND tripulacao_2_id = ?) OR (tripulacao_1_id = ? AND tripulacao_2_id = ?))
+        AND (em_andamento = 1)
+        AND (finalizada IS NULL OR finalizada = 0)",
+        "iiiii", [$torneio["id"], $vencedor["id"], $perdedor["id"], $perdedor["id"], $vencedor["id"]]
+    );
+
+    if (! $chave->count()) {
+        return $reputacao;
+    }
+
+    $chave = $chave->fetch_array();
+
+    $posicao_vencedor = $chave["tripulacao_1_id"] == $vencedor["id"] ? "1" : "2";
+    $placar_1 = $posicao_vencedor == "1" ? count(filter_personagens_vivos($personagens_vencedor)) : count(filter_personagens_vivos($personagens_perdedor));
+    $placar_2 = $posicao_vencedor == "2" ? count(filter_personagens_vivos($personagens_vencedor)) : count(filter_personagens_vivos($personagens_perdedor));
+
+    $connection->run(
+        "UPDATE tb_torneio_chave SET vencedor = ?, finalizada = 1, em_andamento = 0, placar_1 = ?, placar_2 = ? WHERE id = ?",
+        "iiii", [$vencedor["id"], $placar_1, $placar_2, $chave["id"]]
+    );
+
+    if ($chave["proxima_chave"]) {
+        // ids pares jogam pro 2, ids impares jogam pro 1
+        $posicao_proxima_chave = $chave["id"] % 2 == 0 ? "2" : "1";
+        $connection->run(
+            "UPDATE tb_torneio_chave SET tripulacao_" . $posicao_proxima_chave . "_id = ? WHERE id = ?",
+            "ii", [$vencedor["id"], $chave["proxima_chave"]]
+        );
+    } else {
+        $connection->run(
+            "UPDATE tb_usuarios SET reputacao_mensal = reputacao_mensal + 1 WHERE id = ?",
+            "i", [$vencedor["id"]]
+        );
+        $reputacao["vencedor_rep_mensal"] += 1;
+
+        $connection->run(
+            "UPDATE tb_torneio SET `status` = ?, vencedor = ? WHERE id = ?",
+            "iii", [TORNEIO_STATUS_FINALIZADO, $vencedor["id"], $chave["torneio_id"]]
+        );
+    }
+
+    return $reputacao;
+}
+
 function set_vencedor_torneio($torneio, $inscrito)
 {
     global $connection;
