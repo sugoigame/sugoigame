@@ -97,15 +97,6 @@ for ($classe = 1; $classe <= 3; $classe++) {
             && $pers["classe"] == $skill["requisito_classe"];
     }; ?>
     <?php render_habilidades_classe_tab($skills_classe[$pers["classe"]], $pers, "Academia/aprender_skil.php", $pode_aprender_func) ?>
-
-    <h3>
-        <b>Score:</b>
-        <?= $pers["classe_score"]; ?>
-        <?= ajuda_tooltip("O Score aumenta quando o tripulante atacar em combate e diminui quando ele for atacado.
-    Espadachins ganham 1% de bônus de Ataque para cada 10 mil pontos de Score.
-    Lutadores ganham 1% de bônus de Defesa para cada 10 mil pontos de Score.
-    Atiradores ganham 1% de bônus de Precisão e 1% de bônus de Destreza para cada 10 mil pontos de Score.") ?>
-    </h3>
     <p>
         <button class="link_confirm btn btn-info" <?= ($userDetails->conta["gold"] >= PRECO_GOLD_RESET_CLASSE ? "" : "disabled") ?>
             data-question="Resetar a classe desse personagem permitirá que ele aprenda uma nova. Deseja continuar?"

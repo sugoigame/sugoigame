@@ -24,17 +24,17 @@
 
     <?php
     $ranking = "reputacao";
-    if (isset($_GET["rank"]) && validate_alphanumeric($_GET["rank"])) {
+    if (isset ($_GET["rank"]) && validate_alphanumeric($_GET["rank"])) {
         $ranking = $_GET["rank"];
     }
     $page = 0;
-    if (isset($_GET["page"]) && validate_number($_GET["page"])) {
+    if (isset ($_GET["page"]) && validate_number($_GET["page"])) {
         $page = $_GET["page"];
     }
     $limit_start = $page * 25;
 
     $faccao = null;
-    if (isset($_GET["faccao"]) && ($_GET["faccao"] == FACCAO_MARINHA || $_GET["faccao"] == FACCAO_PIRATA)) {
+    if (isset ($_GET["faccao"]) && ($_GET["faccao"] == FACCAO_MARINHA || $_GET["faccao"] == FACCAO_PIRATA)) {
         $faccao = $_GET["faccao"];
     }
 
@@ -212,8 +212,9 @@
                         <?= $rnk["posicao"] ?>º
                         <?= $rnk["nome"] ?>
                     </h4>
-                    <p>Score:
-                        <?= $rnk["score"] ?>
+                    <p>
+                        <img src="Imagens/Icones/Berries.png" />
+                        <?= mascara_berries(calc_recompensa($rnk["score"])) ?>
                     </p>
                 </li>
             <?php endwhile; ?>
@@ -245,8 +246,9 @@
                         <?= $rnk["posicao"] ?>º
                         <?= $rnk["nome"] ?>
                     </h4>
-                    <p>Score:
-                        <?= $rnk["score"] ?>
+                    <p>
+                        <img src="Imagens/Icones/Berries.png" />
+                        <?= mascara_berries(calc_recompensa($rnk["score"])) ?>
                     </p>
                 </li>
             <?php endwhile; ?>
@@ -279,8 +281,9 @@
                         <?= $rnk["posicao"] ?>º
                         <?= $rnk["nome"] ?>
                     </h4>
-                    <p>Score:
-                        <?= $rnk["score"] ?>
+                    <p>
+                        <img src="Imagens/Icones/Berries.png" />
+                        <?= mascara_berries(calc_recompensa($rnk["score"])) ?>
                     </p>
                 </li>
             <?php endwhile; ?>

@@ -430,25 +430,6 @@ function calc_modificador_lvl($vencedor_rep, $perdedor_rep)
     }
 }
 
-function aumenta_score($pers)
-{
-    global $connection;
-
-    if (! $pers["classe"]) {
-        return;
-    }
-    if ($pers["classe_score"] < 500) {
-        $pers["classe_score"] = 500;
-    }
-
-    $score = round(pow(1 / ($pers["classe_score"] + 1000), 2) * 1000000000);
-    if ($score < 1) {
-        $score = 1;
-    }
-    $score = $pers["classe_score"] + $score;
-    $connection->run("UPDATE tb_personagens SET classe_score = '$score' WHERE cod = ?", "i", $pers["cod"]);
-}
-
 function calc_recompensa($fa)
 {
     $milhao = 1000000;
@@ -490,11 +471,6 @@ function get_cross_guild_stars($reward)
     return $ret;
 }
 
-function calc_score_mod($classe_score)
-{
-    return ($classe_score / 10000) * 0.01;
-}
-
 function min_max($value, $min, $max)
 {
     if ($value < $min) {
@@ -511,10 +487,6 @@ function chance_esquiva($pers, $alvo)
     $pre = $pers["pre"];
     $agl = $alvo["agl"];
 
-    if ($pers["classe"] == 3) {
-        $pre += $pers["pre"] * calc_score_mod($pers["classe_score"]);
-    }
-
     $esquiva_haki = max(0, $alvo["haki_esq"] - $pers["haki_esq"]);
 
     $esquiva = min_max($agl - $pre, 0, 50) + $esquiva_haki;
@@ -527,10 +499,6 @@ function chance_crit($pers, $alvo)
     $dex = $pers["dex"];
     $con = $alvo["con"];
 
-    if ($pers["classe"] == 3) {
-        $dex += $pers["dex"] * calc_score_mod($pers["classe_score"]);
-    }
-
     $crit_haki = max(0, $pers["haki_cri"] - $alvo["haki_cri"]);
 
     $chance_crit = min_max($dex - $con, 0, 50) + $crit_haki;
@@ -542,10 +510,6 @@ function dano_crit($pers, $alvo)
 {
     $dex = $pers["dex"];
     $con = $alvo["con"];
-
-    if ($pers["classe"] == 3) {
-        $dex += $pers["dex"] * calc_score_mod($pers["classe_score"]);
-    }
 
     return (float) min_max($dex - $con, 25, 90) / 100;
 }
@@ -581,19 +545,11 @@ function get_atk_combate($pers)
 {
     $atk = $pers["atk"];
 
-    if ($pers["classe"] == 1) {
-        $atk += $pers["atk"] * calc_score_mod($pers["classe_score"]);
-    }
-
     return $atk * 10;
 }
 function get_def_combate($pers)
 {
     $def = $pers["def"];
-
-    if ($pers["classe"] == 2) {
-        $def += $pers["def"] * calc_score_mod($pers["classe_score"]);
-    }
 
     return $def * 10;
 }
@@ -1116,10 +1072,6 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                 <?= big_pers_skin($pers["img"], $pers["skin_c"], isset ($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="100%"') ?>
                                 <br />
                                 <?php if (($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]) : ?>
-                                    <div>
-                                        Score:
-                                        <?= $pers["classe_score"]; ?>
-                                    </div>
                                     <?php if ($pers["akuma"]) : ?>
                                         <div>
                                             Akuma no Mi:

@@ -116,10 +116,6 @@
                         <?= nome_classe($pers["classe"]) ?>
                     </h4>
                     <p>
-                        <b>Score:</b>
-                        <?= $pers["classe_score"]; ?>
-                    </p>
-                    <p>
                         <button class="link_confirm btn btn-info" <?= $userDetails->conta["gold"] >= PRECO_GOLD_RESET_CLASSE ? "" : "disabled" ?>
                             data-question="Resetar a classe desse personagem permitirá que ele aprenda uma nova. Deseja continuar?"
                             href="Vip/reset_classe.php?cod=<?= $pers["cod"] ?>&tipo=gold">

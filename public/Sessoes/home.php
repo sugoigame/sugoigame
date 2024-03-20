@@ -19,7 +19,7 @@ function render_maior_do_mundo($tipo)
         "SELECT p.*, u.*, IF(p.sexo =0, t.nome, t.nome_f) AS titulo_nome FROM tb_personagens p
             LEFT JOIN tb_titulos t ON p.titulo = t.cod_titulo
             INNER JOIN tb_usuarios u ON p.id = u.id
-            WHERE u.adm = 0 AND p.classe = ? ORDER BY classe_score DESC LIMIT 1",
+            WHERE u.adm = 0 AND p.classe = ? ORDER BY fama_ameaca DESC LIMIT 1",
         "i", $class
     );
     ?>
@@ -249,7 +249,7 @@ function render_maior_do_mundo($tipo)
             $pagina = 1;
             $topicos_por_pagina = 30;
 
-            if (isset($_GET["pagina"]) && validate_number($_GET["pagina"])) {
+            if (isset ($_GET["pagina"]) && validate_number($_GET["pagina"])) {
                 $pagina = $_GET["pagina"];
             }
             ?>
@@ -333,7 +333,6 @@ function render_maior_do_mundo($tipo)
                 <?php render_maior_do_mundo("lutador"); ?>
                 <?php render_maior_do_mundo("atirador"); ?>
             </div>
-            <!-- <p>Os primeiros tripulantes a conseguir 15.000 de Score em uma Era são eleitos os melhores do mundo.</p> -->
         </div>
     </div>
 
