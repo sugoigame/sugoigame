@@ -4,7 +4,7 @@ function menu_link($ses, $text, $img, $title, $href_prefix = "./?ses=", $class =
     $sess = $_GET["sessao"];
     global $userDetails;
     global $sistemas_por_sessao;
-    if (isset($sistemas_por_sessao[$ses]) && ! $userDetails->is_sistema_desbloqueado($sistemas_por_sessao[$ses])) {
+    if (isset ($sistemas_por_sessao[$ses]) && ! $userDetails->is_sistema_desbloqueado($sistemas_por_sessao[$ses])) {
         return "";
     }
 
@@ -207,7 +207,7 @@ function super_menu_can_be_active($menu)
                     </ul>
                 </div>
             <?php endif; ?>
-            <?= super_menu_link(
+            <!-- <?= super_menu_link(
                 "aliancaLista",
                 "menu-alianca",
                 $userDetails->tripulacao["faccao"] == FACCAO_PIRATA
@@ -234,7 +234,7 @@ function super_menu_can_be_active($menu)
                     <?php endif; ?>
                     <?= menu_link("aliancaLista", "Frotas e Alianças", "fa fa-th-list", "") ?>
                 </ul>
-            </div>
+            </div> -->
 
             <?= super_menu_link("lojaEvento", "menu-events", "Eventos", "eventos", "eventos", [SISTEMA_EVENTOS]) ?>
             <div id="menu-events" class="collapse <?= super_menu_in_out("eventos") ?>">

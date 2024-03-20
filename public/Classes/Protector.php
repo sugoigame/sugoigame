@@ -124,29 +124,29 @@ class Protector
                 $this->must_be_out_of_any_kind_of_combat();
                 break;
             case "akumaBook":
-            case "aliancaLista":
+            //case "aliancaLista":
             case "bandeira":
             case "ranking":
             case "kanban":
             case "torneio":
                 $this->need_tripulacao();
                 break;
-            case "aliancaCriar":
-                $this->need_tripulacao();
-                $this->must_be_out_of_an_ally();
-                break;
-            case "aliancaBanco":
-                $this->need_tripulacao();
-                $this->must_be_in_ilha();
-                $this->must_be_in_an_ally();
-                break;
-            case "alianca":
-            case "aliancaDiplomacia":
-            case "aliancaCooperacao":
-            case "aliancaMissoes":
-                $this->need_tripulacao();
-                $this->must_be_in_an_ally();
-                break;
+            // case "aliancaCriar":
+            //     $this->need_tripulacao();
+            //     $this->must_be_out_of_an_ally();
+            //     break;
+            // case "aliancaBanco":
+            //     $this->need_tripulacao();
+            //     $this->must_be_in_ilha();
+            //     $this->must_be_in_an_ally();
+            //     break;
+            // case "alianca":
+            // case "aliancaDiplomacia":
+            // case "aliancaCooperacao":
+            // case "aliancaMissoes":
+            //     $this->need_tripulacao();
+            //     $this->must_be_in_an_ally();
+            //     break;
             case "cadastrosucess":
             case "ativacaosucess":
                 break;
