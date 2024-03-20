@@ -8,7 +8,7 @@ if (! $conect) {
     echo ("#Você precisa estar logado!");
     exit();
 }
-if (! isset($_GET["cod"]) or ! isset($_GET["pos"])) {
+if (! isset ($_GET["cod"]) or ! isset ($_GET["pos"])) {
 
     echo ("#Informações insuficientes");
     exit();
@@ -47,7 +47,7 @@ if ($result->count() != 0) {
 }
 
 $query = "UPDATE tb_personagens SET tatic_a='$coord' WHERE cod='$cod'";
-$connection->run($query) or die("Nao foi possivel atualizar a posição");
+$connection->run($query) or die ("Nao foi possivel atualizar a posição");
 
-echo "Posição fixa definida!";
+echo ":";
 

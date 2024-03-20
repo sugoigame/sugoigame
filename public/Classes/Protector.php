@@ -27,7 +27,7 @@ class Protector
     public function protect($session)
     {
         global $sistemas_por_sessao;
-        if (isset($sistemas_por_sessao[$session])) {
+        if (isset ($sistemas_por_sessao[$session])) {
             $this->need_sistema($sistemas_por_sessao[$session]);
         }
 
@@ -571,7 +571,7 @@ class Protector
 
     public function get_number_or_exit($key)
     {
-        if (! isset($_GET[$key]) || ! validate_number($_GET[$key])) {
+        if (! isset ($_GET[$key]) || ! validate_number($_GET[$key])) {
             $this->_exit_with_msg_for_input();
         }
         return $_GET[$key];
@@ -579,7 +579,7 @@ class Protector
 
     public function get_alphanumeric_or_exit($key)
     {
-        if (! isset($_GET[$key]) || ! validate_alphanumeric($_GET[$key])) {
+        if (! isset ($_GET[$key]) || ! validate_alphanumeric($_GET[$key])) {
             $this->_exit_with_msg_for_input();
         }
         return $_GET[$key];
@@ -587,7 +587,7 @@ class Protector
 
     public function get_enum_or_exit($key, $enum)
     {
-        if (! isset($_GET[$key]) || ! in_array($_GET[$key], $enum)) {
+        if (! isset ($_GET[$key]) || ! in_array($_GET[$key], $enum)) {
             $this->_exit_with_msg_for_input();
         }
         return $_GET[$key];
@@ -595,7 +595,7 @@ class Protector
 
     public function get_test_pass_or_exit($key, $test)
     {
-        if (! isset($_GET[$key]) || ! preg_match($test, $_GET[$key])) {
+        if (! isset ($_GET[$key]) || ! preg_match($test, $_GET[$key])) {
             $this->_exit_with_msg_for_input();
         }
         return $_GET[$key];
@@ -613,7 +613,7 @@ class Protector
 
     public function post_enum_or_exit($key, $enum)
     {
-        if (! isset($_POST[$key]) || ! in_array($_POST[$key], $enum)) {
+        if (! isset ($_POST[$key]) || ! in_array($_POST[$key], $enum)) {
             $this->_exit_with_msg_for_input();
         }
         return $_POST[$key];
@@ -621,7 +621,7 @@ class Protector
 
     public function post_number_or_exit($key)
     {
-        if (! isset($_POST[$key]) || ! validate_number($_POST[$key])) {
+        if (! isset ($_POST[$key]) || ! validate_number($_POST[$key])) {
             $this->_exit_with_msg_for_input();
         }
         return $_POST[$key];
@@ -629,7 +629,7 @@ class Protector
 
     public function post_alphanumeric_or_exit($key)
     {
-        if (! isset($_POST[$key]) || ! validate_alphanumeric($_POST[$key])) {
+        if (! isset ($_POST[$key]) || ! validate_alphanumeric($_POST[$key])) {
             $this->_exit_with_msg_for_input();
         }
         return $_POST[$key];
@@ -637,7 +637,7 @@ class Protector
 
     public function post_value_or_exit($key)
     {
-        if (! isset($_POST[$key])) {
+        if (! isset ($_POST[$key])) {
             $this->_exit_with_msg_for_input();
         }
         return $_POST[$key];

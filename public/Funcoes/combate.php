@@ -257,9 +257,9 @@ function get_pers_in_combate($id)
         cbtpers.hp_max AS hp_max,
         cbtpers.mp AS mp,
         cbtpers.mp_max AS mp_max,
-        IFNULL(cbtpers.img, pers.img) AS img,
-        IFNULL(cbtpers.skin_c, pers.skin_c) AS skin_c,
-        IFNULL(cbtpers.skin_r, pers.skin_r) AS skin_r,
+        IFnull(cbtpers.img, pers.img) AS img,
+        IFnull(cbtpers.skin_c, pers.skin_c) AS skin_c,
+        IFnull(cbtpers.skin_r, pers.skin_r) AS skin_r,
         pers.borda AS borda,
         IF (pers.sexo = 0, titulo.nome, titulo.nome_f) AS titulo,
         cbtpers.atk AS atk,
@@ -683,11 +683,11 @@ function atacar_rdm($rdm_id, $details = null, $conn = null)
             1, 0,
             $rdm["atk"], $rdm["def"], $rdm["agl"], $rdm["res"], $rdm["pre"], $rdm["dex"], $rdm["con"],
             0, 0,
-            $rdm["id"], $rdm["boss"], isset ($rdm["battle_back"]) ? $rdm["battle_back"] : NULL
+            $rdm["id"], $rdm["boss"], isset ($rdm["battle_back"]) ? $rdm["battle_back"] : null
         )
     );
 
-    $connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = NULL, navegacao_inicio = NULL, navegacao_fim = NULL WHERE id = ?",
+    $connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = null, navegacao_inicio = null, navegacao_fim = null WHERE id = ?",
         "i", array($userDetails->tripulacao["id"]));
 
     insert_personagens_combate($userDetails->tripulacao["id"], $userDetails->personagens, $userDetails->vip, "tatic_p", 0, 4, array(), false, $userDetails, $connection);
@@ -881,8 +881,8 @@ function inicia_combate($alvo, $tipo, $chave = null)
     $alvo_vip = $connection->run("SELECT * FROM tb_vip WHERE id = ?", "i", $alvo)->fetch_array();
 
     // remove do oceano
-    $connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = NULL, navegacao_inicio = NULL, navegacao_fim = NULL  WHERE id = ?", "i", array($userDetails->tripulacao["id"]));
-    $connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = NULL, navegacao_inicio = NULL, navegacao_fim = NULL  WHERE id = ?", "i", array($alvo));
+    $connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = null, navegacao_inicio = null, navegacao_fim = null  WHERE id = ?", "i", array($userDetails->tripulacao["id"]));
+    $connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = null, navegacao_inicio = null, navegacao_fim = null  WHERE id = ?", "i", array($alvo));
 
     // comeca a transaction
     $connection->link()->begin_transaction();
@@ -942,7 +942,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
     // cria o registro de combate
     $vez = 1;
     $tempo = $tipo == TIPO_COLISEU || $tipo == TIPO_CONTROLE_ILHA ? (atual_segundo() + 120) : (atual_segundo() + 90);
-    $battle_back = $tipo == TIPO_COLISEU ? 42 : ($tipo == TIPO_CONTROLE_ILHA ? 54 : NULL);
+    $battle_back = $tipo == TIPO_COLISEU ? 42 : ($tipo == TIPO_CONTROLE_ILHA ? 54 : null);
     $result = $connection->run(
         "INSERT INTO tb_combate (id_1, id_2, vez, vez_tempo, move_1, move_2, tipo, battle_back)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
@@ -1001,17 +1001,17 @@ function inicia_combate($alvo, $tipo, $chave = null)
 }
 
 ?>
-<?php function render_tabuleiro($tabuleiro, $x1, $x2, $id_blue = NULL, $mira = NULL, $special_effects = array())
+<?php function render_tabuleiro($tabuleiro, $x1, $x2, $id_blue = null, $mira = null, $special_effects = array())
 { ?>
     <?php global $userDetails; ?>
-    <?php if ($id_blue === NULL) {
+    <?php if ($id_blue === null) {
         $id_blue = $userDetails->tripulacao["id"];
     } ?>
     <table class="table_batalha">
         <?php for ($x = $x1; $x < $x2; $x++) : ?>
             <tr>
                 <td class="td-mira">
-                    <?php if ($mira !== NULL && $mira == $x) : ?>
+                    <?php if ($mira !== null && $mira == $x) : ?>
                         <div class="tabuleiro-mira" data-toggle="tooltip" title="O adversário está mirando aqui.">
                             <i class="fa fa-arrow-right"></i>
                         </div>
@@ -1051,10 +1051,10 @@ function inicia_combate($alvo, $tipo, $chave = null)
         <?php endfor; ?>
     </table>
 <?php } ?>
-<?php function render_personagens_info($personagens_combate, $buffs, $id_blue = NULL, $special_effects = array())
+<?php function render_personagens_info($personagens_combate, $buffs, $id_blue = null, $special_effects = array())
 { ?>
     <?php global $userDetails; ?>
-    <?php if ($id_blue === NULL) {
+    <?php if ($id_blue === null) {
         $id_blue = $userDetails->tripulacao["id"];
     } ?>
     <?php foreach ($personagens_combate as $pers) : ?>

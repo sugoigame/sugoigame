@@ -247,3 +247,6 @@
 .navio .progress {
     color: #fff;
 }
+.td-mira {
+    display: none !important;
+}

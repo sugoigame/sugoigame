@@ -1,22 +1,23 @@
-<?php function render_tatics($tabuleiro, $sem_tatica, $tipo, $x1, $x2) { ?>
+<?php function render_tatics($tabuleiro, $sem_tatica, $tipo, $x1, $x2)
+{ ?>
     <?php global $userDetails; ?>
     <div class="navio_batalha">
         <div class="batalha_background">
             <div class="fight-zone">
-                <?php if ($x2 <= 5): ?>
+                <?php if ($x2 <= 5) : ?>
                     <div class="navio navio-player"
-                         style="background: url(Imagens/Batalha/bg-navio-<?= $userDetails->tripulacao["faccao"] ?>.png) no-repeat center">
+                        style="background: url(Imagens/Batalha/bg-navio-<?= $userDetails->tripulacao["faccao"] ?>.png) no-repeat center">
                         <?php render_tabuleiro($tabuleiro[$tipo], $x1, $x2); ?>
                     </div>
                     <div class="navio navio-player"
-                         style="background: url(Imagens/Batalha/bg-navio-<?= $userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? FACCAO_PIRATA : FACCAO_MARINHA ?>.png) no-repeat center">
+                        style="background: url(Imagens/Batalha/bg-navio-<?= $userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? FACCAO_PIRATA : FACCAO_MARINHA ?>.png) no-repeat center">
                     </div>
-                <?php else: ?>
+                <?php else : ?>
                     <div class="navio navio-player"
-                         style="background: url(Imagens/Batalha/bg-navio-<?= $userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? FACCAO_PIRATA : FACCAO_MARINHA ?>.png) no-repeat center">
+                        style="background: url(Imagens/Batalha/bg-navio-<?= $userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? FACCAO_PIRATA : FACCAO_MARINHA ?>.png) no-repeat center">
                     </div>
                     <div class="navio navio-player"
-                         style="background: url(Imagens/Batalha/bg-navio-<?= $userDetails->tripulacao["faccao"] ?>.png) no-repeat center">
+                        style="background: url(Imagens/Batalha/bg-navio-<?= $userDetails->tripulacao["faccao"] ?>.png) no-repeat center">
                         <?php render_tabuleiro($tabuleiro[$tipo], $x1, $x2); ?>
                     </div>
                 <?php endif; ?>
@@ -24,7 +25,7 @@
         </div>
     </div>
     <div>
-        <?php foreach ($sem_tatica[$tipo] as $pers): ?>
+        <?php foreach ($sem_tatica[$tipo] as $pers) : ?>
             <a href="#" class="personagemRandom noHref" data-cod="<?= $pers["cod"] ?>">
                 <img src="Imagens/Personagens/Icons/<?= get_img($pers, "r") ?>.jpg">
             </a>
@@ -34,10 +35,22 @@
 
 <div class="panel-heading">
     Taticas
+    <?= ajuda_tooltip("Defina a posição inicial dos tripulantes nas batalhas."); ?>
 </div>
 
 <style type="text/css">
     <?php include "CSS/combate.css"; ?>
+
+    .navio_batalha {
+        height: 73vh;
+    }
+
+    #batalha_background,
+    .batalha_background {
+        transform: scale(0.7);
+        left: -13vw;
+        top: -8vh;
+    }
 </style>
 
 <script type="text/javascript">
@@ -62,37 +75,19 @@
 </script>
 
 <div class="panel-body">
-    <?= ajuda("Taticas", "Defina sua tática de posicionamento dos personagens para as batalhas."); ?>
-
-    <p>Defina a posição de personagens para batalhas, mas não se esqueça que para usar essas posições é necessário
-        ativar a função VIP "Taticas"</p>
-    <p><a href="./?ses=vipLoja" class="link_content">Clique Aqui</a> para acessar a loja VIP e ativar o recurso.</p>
-
     <?php
     $selected_tatics = "A";
-    if (isset($_GET["tatics"]) && validate_alphanumeric($_GET["tatics"])) {
+    if (isset ($_GET["tatics"]) && validate_alphanumeric($_GET["tatics"])) {
         $selected_tatics = $_GET["tatics"];
     }
     ?>
-    <div>
-        <ul class="nav nav-pills nav-justified">
-            <li class="<?= $selected_tatics == "A" ? "active" : "" ?>">
-                <a href="./?ses=tatics&tatics=A" class="link_content">Atacando jogadores</a>
-            </li>
-            <li class="<?= $selected_tatics == "D" ? "active" : "" ?>">
-                <a href="./?ses=tatics&tatics=D" class="link_content">Sendo atacado por jogadores</a>
-            </li>
-            <li class="<?= $selected_tatics == "P" ? "active" : "" ?>">
-                <a href="./?ses=tatics&tatics=P" class="link_content">Batalha contra Reis dos Mares</a>
-            </li>
-        </ul>
-    </div>
+
 
     <?php
     $tabuleiro = array("a" => [], "d" => [], "p" => []);
     $sem_tatica = array("a" => [], "d" => [], "p" => []);
     foreach ($userDetails->personagens as $pers) {
-        if (!$pers["hp"]) {
+        if (! $pers["hp"]) {
             $pers["hp"] = 1;
         }
         $pers["tripulacao_id"] = $pers["id"];
@@ -144,22 +139,38 @@
                 <div id="batalha_background">
                     <div class="fight-zone">
                         <div class="navio navio-npc"
-                             style="background: url(Imagens/Batalha/Npc/1.png) no-repeat center">
+                            style="background: url(Imagens/Batalha/Npc/1.png) no-repeat center">
                         </div>
                         <div class="navio navio-player"
-                             style="background: url(Imagens/Batalha/bg-navio-<?= $userDetails->tripulacao["faccao"] ?>.png) no-repeat center">
+                            style="background: url(Imagens/Batalha/bg-navio-<?= $userDetails->tripulacao["faccao"] ?>.png) no-repeat center">
                             <?php render_tabuleiro($tabuleiro["p"], 0, 5); ?>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <?php foreach ($sem_tatica["p"] as $pers): ?>
-                        <a href="#" class="personagemRandom noHref" data-cod="<?= $pers["cod"] ?>">
-                            <img src="Imagens/Personagens/Icons/<?= get_img($pers, "r") ?>.jpg">
-                        </a>
-                    <?php endforeach; ?>
-                </div>
+            </div>
+            <div>
+                <?php foreach ($sem_tatica["p"] as $pers) : ?>
+                    <a href="#" class="personagemRandom noHref" data-cod="<?= $pers["cod"] ?>">
+                        <img src="Imagens/Personagens/Icons/<?= get_img($pers, "r") ?>.jpg">
+                    </a>
+                <?php endforeach; ?>
             </div>
         </div>
+    </div>
+    <p>Não se esqueça que para usar essas posições é necessário ativar a função VIP "Taticas"</p>
+    <p><a href="./?ses=vipLoja" class="link_content">Clique Aqui para acessar a loja VIP e ativar o recurso.</a></p>
+
+    <div>
+        <ul class="nav nav-pills nav-justified">
+            <li class="<?= $selected_tatics == "A" ? "active" : "" ?>">
+                <a href="./?ses=tatics&tatics=A" class="link_content">Atacando jogadores</a>
+            </li>
+            <li class="<?= $selected_tatics == "D" ? "active" : "" ?>">
+                <a href="./?ses=tatics&tatics=D" class="link_content">Sendo atacado por jogadores</a>
+            </li>
+            <li class="<?= $selected_tatics == "P" ? "active" : "" ?>">
+                <a href="./?ses=tatics&tatics=P" class="link_content">Batalha contra Reis dos Mares</a>
+            </li>
+        </ul>
     </div>
 </div>
