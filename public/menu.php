@@ -147,7 +147,6 @@ function super_menu_can_be_active($menu)
                                 <?= menu_link("politicaIlha", "Domínio da Ilha", "fa fa-globe", "") ?>
                                 <?= menu_link("mercado", "Mercado", "fa fa-shopping-cart", "") ?>
                                 <?= menu_link("restaurante", "Restaurante", "fa fa-cutlery", "") ?>
-                                <?= menu_link("leiloes", "Centro de comércio", "fa fa-exchange", "") ?>
                                 <?= menu_link("upgrader", "Aprimoramentos", "fa fa-arrow-up", "") ?>
                                 <?= menu_link("estaleiro", "Estaleiro", "fa fa-ship", "") ?>
                                 <?= menu_link("hospital", "Hospital", "fa fa-h-square", "") ?>

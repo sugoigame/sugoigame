@@ -271,13 +271,6 @@ $pers = $protector->get_tripulante_or_exit("cod");
                         <img src="Imagens/Icones/Gold.png"> <br />
                         Evoluir um nível
                     </button>
-                    <button href="Vip/personagem_xp_para_evoluir.php?cod=<?= $pers["cod"] ?>&tipo=dobrao"
-                        data-question="Deseja adquirir a experiência restante para que este tripulante evolua um nível?"
-                        class="link_confirm btn btn-info" <?= $userDetails->conta["dobroes"] < ceil(PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO) ? "disabled" : "" ?>>
-                        <?= ceil(PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO) ?>
-                        <img src="Imagens/Icones/Dobrao.png"> <br />
-                        Evoluir um nível
-                    </button>
                 </p>
             <?php endif; ?>
         </div>

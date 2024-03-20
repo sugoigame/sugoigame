@@ -9,7 +9,6 @@ include_once(dirname(__FILE__) . "/classes.php");
 include_once(dirname(__FILE__) . "/coliseu.php");
 include_once(dirname(__FILE__) . "/combate.php");
 include_once(dirname(__FILE__) . "/denden.php");
-include_once(dirname(__FILE__) . "/dobrao.php");
 include_once(dirname(__FILE__) . "/equipamentos.php");
 include_once(dirname(__FILE__) . "/eventos.php");
 include_once(dirname(__FILE__) . "/forum.php");

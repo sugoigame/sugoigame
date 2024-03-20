@@ -88,9 +88,9 @@
 
 </script>
 <div class="panel-body">
-    <?= ajuda("Forja", "Aqui seu ferreiro pode criar armas e equipamentos.<br>Para forjar algum item, é preciso antes 
-        conhecer a receita daquele item, então coloque os ingredientes certos a ordem certa (lembrando que o lugar 
-        onde você coloca o item na bigorna e a quantidade de itens fazem diferença), e clique em 
+    <?= ajuda("Forja", "Aqui seu ferreiro pode criar armas e equipamentos.<br>Para forjar algum item, é preciso antes
+        conhecer a receita daquele item, então coloque os ingredientes certos a ordem certa (lembrando que o lugar
+        onde você coloca o item na bigorna e a quantidade de itens fazem diferença), e clique em
         \"Forjar\" para ver o resultado.") ?>
 
     <div class="clearfix">
@@ -116,12 +116,7 @@
                     <input type="radio" name="ferreiro-select" value="ferreiro">
                 </label>
             </div>
-            <div class="col-md-3">
-                <label>
-                    Ferreiro VIP: <?= PRECO_DOBRAO_FERREIRO_VIP ?> <img src="Imagens/Icones/Dobrao.png"/>
-                    <input type="radio" name="ferreiro-select" value="ferreiro_dobrao">
-                </label>
-            </div>
+
         </div>
     </div>
     <div class="row">

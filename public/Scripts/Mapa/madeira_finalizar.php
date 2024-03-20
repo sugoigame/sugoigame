@@ -61,8 +61,6 @@ $connection->run("UPDATE tb_personagens SET profissao_xp = LEAST(profissao_xp_ma
 if ($userDetails->tripulacao["madeira"] > atual_segundo()) {
     if ($tipo == "gold") {
         $userDetails->reduz_gold($preco, "madeira_novamente");
-    } else if ($tipo == "dobroes") {
-        $userDetails->reduz_dobrao($preco, "madeira_novamente");
     }
     $tempo += $userDetails->tripulacao["madeira"];
 } else {

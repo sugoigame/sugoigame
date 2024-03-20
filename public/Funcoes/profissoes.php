@@ -205,12 +205,7 @@ function render_painel_profissao($pers)
                 <?= PRECO_GOLD_RESET_PROFISSAO ?> <img src="Imagens/Icones/Gold.png" />
                 Resetar Profissão
             </button>
-            <button class="link_confirm btn btn-info" <?= $userDetails->conta["dobroes"] >= PRECO_DOBRAO_RESET_PROFISSAO ? "" : "disabled" ?>
-                data-question="Resetar a profissão desse personagem permitirá que ele aprenda uma nova. Porém toda a experiência e níveis adquiridos serão perdidos. Deseja continuar?"
-                href="Vip/reset_profissao.php?cod=<?= $pers["cod"] ?>&tipo=dobrao">
-                <?= PRECO_DOBRAO_RESET_PROFISSAO ?> <img src="Imagens/Icones/Dobrao.png" />
-                Resetar Profissão
-            </button>
+
         </p>
     <?php endif; ?>
 <?php } ?>

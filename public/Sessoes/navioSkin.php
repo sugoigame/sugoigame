@@ -82,12 +82,6 @@
                         <?= $userDetails->conta["gold"] < $PRECO_GOLD_SKIN_NAVIO[$skin] ? "disabled" : "" ?>>
                         <?= $PRECO_GOLD_SKIN_NAVIO[$skin] ?> <img src="Imagens/Icones/Gold.png"/> Comprar
                     </button>
-                    <button href="Vip/comprar_skin_navio.php?skin=<?= $skin ?>&tipo=dobrao"
-                            data-question="A aparência só precisa ser comprada uma única vez. Após comprada você poderá ativa-la ou desativa-la a vontade. Deseja comprar essa aparência?"
-                            class="link_confirm btn btn-success"
-                        <?= $userDetails->conta["dobroes"] < $PRECO_DOBRAO_SKIN_NAVIO[$skin] ? "disabled" : "" ?>>
-                        <?= $PRECO_DOBRAO_SKIN_NAVIO[$skin] ?> <img src="Imagens/Icones/Dobrao.png"/> Comprar
-                    </button>
                 <?php else: ?>
                     <p>Essa é uma aparência rara obtida através de eventos e não pode ser comprada</p>
                 <?php endif; ?>

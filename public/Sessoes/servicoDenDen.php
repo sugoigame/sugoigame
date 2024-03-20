@@ -45,11 +45,7 @@
                         </button>
                     </p>
                     <p>
-                        <button class="link_send btn btn-info"
-                                href="link_VipDobroes/servicoDenDen_comprar.php?cod=0&tipo=17&quant=10"
-                            <?= $userDetails->conta["dobroes"] < PRECO_DOBRAO_ISCA_10 ? "disabled" : "" ?>>
-                            <?= PRECO_DOBRAO_ISCA_10 ?> <img src="Imagens/Icones/Dobrao.png"/> Comprar
-                        </button>
+
                     </p>
                 </div>
                 <div class="list-group-item col-md-4">
@@ -70,13 +66,7 @@
                             <?= PRECO_GOLD_ISCA_130 ?> <img src="Imagens/Icones/Gold.png"/> Comprar
                         </button>
                     </p>
-                    <p>
-                        <button class="link_send btn btn-info"
-                                href="link_VipDobroes/servicoDenDen_comprar.php?cod=0&tipo=17&quant=130"
-                            <?= $userDetails->conta["dobroes"] < PRECO_DOBRAO_ISCA_130 ? "disabled" : "" ?>>
-                            <?= PRECO_DOBRAO_ISCA_130 ?> <img src="Imagens/Icones/Dobrao.png"/> Comprar
-                        </button>
-                    </p>
+
                 </div>
             </div>
         </div>

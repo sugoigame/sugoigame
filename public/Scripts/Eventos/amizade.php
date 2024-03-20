@@ -34,11 +34,7 @@ switch ($recompensa["tipo"]) {
             "ii", array($recompensa["quant"], $userDetails->tripulacao["id"]));
         $msg = "Você recebeu " . mascara_berries($recompensa["quant"]) . " Berries";
         break;
-    case "dobrao":
-        $connection->run("UPDATE tb_conta SET dobroes = dobroes + ? WHERE conta_id = ?",
-            "ii", array($recompensa["quant"], $userDetails->conta["conta_id"]));
-        $msg = "Você recebeu " . $recompensa["quant"] . " Dobrões de Ouro";
-        break;
+
     case "haki":
         $userDetails->haki_for_all($recompensa["quant"]);
         $msg = "Sua tripulação recebeu " . $recompensa["quant"] . " pontos de Haki";

@@ -104,12 +104,6 @@ for ($classe = 1; $classe <= 3; $classe++) {
             <?= PRECO_GOLD_RESET_CLASSE ?> <img src="Imagens/Icones/Gold.png" />
             Trocar de Classe
         </button>
-        <button class="link_confirm btn btn-info" <?= $userDetails->conta["dobroes"] >= PRECO_DOBRAO_RESET_CLASSE ? "" : "disabled" ?>
-            data-question="Resetar a classe desse personagem permitirá que ele aprenda uma nova. Deseja continuar?"
-            href="Vip/reset_classe.php?cod=<?= $pers["cod"] ?>&tipo=dobrao">
-            <?= PRECO_DOBRAO_RESET_CLASSE ?> <img src="Imagens/Icones/Dobrao.png" />
-            Trocar de Classe
-        </button>
     </p>
 <?php endif; ?>
 <?php render_personagem_panel_bottom() ?>

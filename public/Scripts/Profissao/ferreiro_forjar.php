@@ -72,13 +72,13 @@ if (validate_number($pers)) {
         $tb = "tb_combinacoes_forja";
         $tb2 = "tb_combinacoes_forja_aleatorio";
     }
-} else if ($pers == "artesao" || $pers == "artesao_dobrao") {
+} else if ($pers == "artesao") {
     $tb = "tb_combinacoes_artesao";
     $tb2 = "tb_combinacoes_artesao_aleatorio";
-} else if ($pers == "carpinteiro" || $pers == "carpinteiro_dobrao") {
+} else if ($pers == "carpinteiro") {
     $tb = "tb_combinacoes_carpinteiro";
     $tb2 = "tb_combinacoes_carpinteiro_aleatorio";
-} else if ($pers == "ferreiro" || $pers == "ferreiro_dobrao") {
+} else if ($pers == "ferreiro") {
     $tb = "tb_combinacoes_forja";
     $tb2 = "tb_combinacoes_forja_aleatorio";
 } else {
@@ -120,11 +120,8 @@ if (!$userDetails->can_add_item($quant)) {
 }
 
 if (!validate_number($pers)) {
-    if ($pers == "artesao_dobrao" || $pers == "carpinteiro_dobrao" || $pers == "ferreiro_dobrao") {
-        $protector->need_dobroes(PRECO_DOBRAO_FERREIRO_VIP);
-    } else {
         $protector->need_gold(PRECO_GOLD_FERREIRO_VIP);
-    }
+
 } else {
     if ($receita["lvl"] > $personagem["profissao_lvl"]) {
         $protector->exit_error("Este personagem ainda não tem o nível de profissão adequado para criar essa receita");
@@ -180,11 +177,8 @@ if ($tipo_insert == TIPO_ITEM_EQUIPAMENTO) {
 }
 
 if (!validate_number($pers)) {
-    if ($pers == "artesao_dobrao" || $pers == "carpinteiro_dobrao" || $pers == "ferreiro_dobrao") {
-        $userDetails->reduz_dobrao(PRECO_DOBRAO_FERREIRO_VIP, "ferreiro_forjar");
-    } else {
         $userDetails->reduz_gold(PRECO_GOLD_FERREIRO_VIP, "ferreiro_forjar");
-    }
+
 }
 
 echo("-Novo item criado!");

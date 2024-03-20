@@ -26,17 +26,7 @@ require "../../Includes/conectdb.php";
                     <?= $action ?> novamente
                 </button>
             </p>
-            <?php $preco = ceil($preco * 1.2); ?>
-            <p>
-                <button href="Mapa/<?= $script_id ?>_finalizar.php?pers=<?= $pers["cod"] ?>&tipo=dobroes"
-                        class="link_confirm btn btn-info"
-                        data-dismiss="modal"
-                        data-question="Deseja <?= $action ?> novamente?"
-                    <?= $userDetails->conta["dobroes"] >= $preco ? "" : "disabled" ?>>
-                    <?= $preco ?> <img src="Imagens/Icones/Dobrao.png">
-                    <?= $action ?> novamente
-                </button>
-            </p>
+
         <?php else: ?>
             <p>
                 Espera:
