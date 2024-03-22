@@ -1,7 +1,7 @@
 <?php
 require "../../Includes/conectdb.php";
 
-require_once('../../Includes/PagSeguro/PagSeguroLibrary.php');
+require_once ('../../Includes/PagSeguro/PagSeguroLibrary.php');
 
 $method = $_SERVER['REQUEST_METHOD'];
 if ('POST' == $method) {
@@ -16,23 +16,23 @@ if ('POST' == $method) {
     if ($notificationType === 'transaction') {
         $transaction = PagSeguroNotificationService::checkTransaction($credentials, $notificationCode);
 
-        $pagamentoItem      = $transaction->getReference();
-        $pagamentoStatus    = $transaction->getStatus()->getTypeFromValue();
-        $pagamentoMetodo    = $transaction->getPaymentMethod()->getType()->getTypeFromValue();
-        $pagamentoReff      = $transaction->getCode();
+        $pagamentoItem = $transaction->getReference();
+        $pagamentoStatus = $transaction->getStatus()->getTypeFromValue();
+        $pagamentoMetodo = $transaction->getPaymentMethod()->getType()->getTypeFromValue();
+        $pagamentoReff = $transaction->getCode();
 
         $result = $connection->run("SELECT * FROM tb_vip_compras WHERE id = ? LIMIT 1", 'i', [
             $pagamentoItem
         ]);
         if ($result->count() < 1) {
-            exit('Invalid buy!');
+            exit ('Invalid buy!');
         } else {
             $compra = $result->fetch();
-            $plano  = $connection->run("SELECT * FROM tb_vip_planos WHERE id = ? LIMIT 1", 'i', [
+            $plano = $connection->run("SELECT * FROM tb_vip_planos WHERE id = ? LIMIT 1", 'i', [
                 $compra['plano_id']
             ])->fetch();
 
-            $golds  = $plano['golds'];
+            $golds = $plano['golds'];
             if ($plano['bonus'] > 0) {
                 $golds = $plano['golds'] * (($plano['bonus'] / 100) + 1);
             }
@@ -40,7 +40,7 @@ if ('POST' == $method) {
             $is_dbl = $connection->run("SELECT `id` FROM tb_vip_dobro WHERE ? BETWEEN data_inicio AND data_fim LIMIT 1", 's', [
                 $compra['criacao']
             ])->count();
-            $golds    = !$is_dbl ? $golds : ($golds * 2);
+            $golds = ! $is_dbl ? $golds : ($golds * 2);
 
             switch ($pagamentoStatus) {
                 case 'PAID':
@@ -58,17 +58,14 @@ if ('POST' == $method) {
                         $compra['conta_id']
                     ])->fetch();
 
-                    $connection->run("UPDATE tb_conta SET email = ?, senha = ?, fbid = ?, cookie = NULL, gold = gold - ? WHERE conta_id = ? LIMIT 1", 'sssii', [
-                        'banned-' . $conta['email'],
-                        'banned-' . $conta['senha'],
-                        'banned-' . $conta['fbid'],
+                    $connection->run("UPDATE tb_conta SET gold = gold - ? WHERE conta_id = ? LIMIT 1", 'ii', [
                         $golds,
                         $conta['conta_id']
                     ]);
 
                     break;
             }
-            
+
             $connection->run("UPDATE `tb_vip_compras` SET `data_baixa` = NOW(), `status` = ?, `metodo` = ?, `referencia` = ? WHERE `id` = ? LIMIT 1", 'sssi', [
                 $pagamentoStatus,
                 $pagamentoMetodo,

@@ -3,16 +3,16 @@ require "../../Includes/conectdb.php";
 
 $protector->need_conta();
 
-$idPlano    = base64_decode($_GET['plano']);
+$idPlano = base64_decode($_GET['plano']);
 
-$result = $connection->run("SELECT * FROM tb_vip_planos WHERE id = ?", 'i', $idPlano);
+$result = $connection->run("SELECT * FROM tb_vip_planos WHERE id = ?", 'i', [$idPlano]);
 if ($result->count() < 1) {
     header("Location: ../../?ses=vipComprar&msg=" . urlencode('Escolha um plano válido!') . "&");
     exit;
 } else {
-    $plano =$result->fetch();
+    $plano = $result->fetch();
 
-    require_once('../../Includes/PagSeguro/PagSeguroLibrary.php');
+    require_once ('../../Includes/PagSeguro/PagSeguroLibrary.php');
     $paymentRequest = new PagSeguroPaymentRequest();
     $paymentRequest->addItem($plano['id'], 'Sugoi Game - ' . $plano['nome'], 1, $plano['valor_brl']);
     $paymentRequest->setCurrency('BRL');
@@ -27,9 +27,9 @@ if ($result->count() < 1) {
         'PagSeguro'
     ]);
     $paymentRequest->setReference($connection->last_id());
-    
+
     // Finalizar carrinho e direcionar ao pagamento
     $credentials = PagSeguroConfig::getAccountCredentials();
     $checkoutUrl = $paymentRequest->register($credentials);
-    exit(header("Location: " . $checkoutUrl));
+    exit (header("Location: " . $checkoutUrl));
 }
