@@ -3,7 +3,7 @@ require "../../Includes/conectdb.php";
 
 $protector->need_tripulacao();
 
-$tipo = $protector->get_enum_or_exit("tipo", array("gold", "dobrao"));
+$tipo = $protector->get_enum_or_exit("tipo", array("gold"));
 $protector->need_gold_or_dobrao($tipo, PRECO_GOLD_RESET_CLASSE, PRECO_DOBRAO_RESET_CLASSE);
 
 $pers = $protector->get_tripulante_or_exit("cod");
@@ -21,7 +21,7 @@ if ($pers["classe"] == 1) {
 }
 
 $connection->run(
-    "UPDATE tb_personagens 
+    "UPDATE tb_personagens
 	SET $atributo classe='0', classe_score='0'
 	WHERE cod= ?",
     "i", array($pers["cod"]));

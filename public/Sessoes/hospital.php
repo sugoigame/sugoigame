@@ -109,13 +109,6 @@ function filter_personagem_pode_finalizar($pers) {
                             <?= PRECO_GOLD_FINALIZAR_TRATAMENTO_HOSPITAL ?> <img src="Imagens/Icones/Gold.png"/>
                             Finalizar imediatamente
                         </button>
-                        <button href="VipDobroes/hospital_finalizar.php?cod=<?= $pers["cod"]; ?>"
-                                data-question="Deseja finalizar este tratamento agora?"
-                                class="link_confirm btn btn-info"
-                            <?= $userDetails->conta["dobroes"] < PRECO_DOBRAO_FINALIZAR_TRATAMENTO_HOSPITAL ? "disabled" : "" ?>>
-                            <?= PRECO_DOBRAO_FINALIZAR_TRATAMENTO_HOSPITAL ?> <img src="Imagens/Icones/Dobrao.png"/>
-                            Finalizar imediatamente
-                        </button>
                     <? else : ?>
                         <button href="link_Hospital/hospital_finalizar_recuperacao.php?cod=<?= $pers["cod"]; ?>"
                                 class="link_send btn btn-success">

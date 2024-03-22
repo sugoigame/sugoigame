@@ -130,12 +130,6 @@ if (!$pers) {
                                                         <?= PRECO_GOLD_CUSTOMIZAR_SKILL ?>
                                                         <img src="Imagens/Icones/Gold.png"/>
                                                     </label>
-                                                    <label>
-                                                        <input type="radio" name="tipo_pagamento" value="dobrao"
-                                                               required>
-                                                        <?= PRECO_DOBRAO_CUSTOMIZAR_SKILL ?>
-                                                        <img src="Imagens/Icones/Dobrao.png"/>
-                                                    </label>
                                                 </div>
                                             <?php endif; ?>
                                             <button class="btn btn-success" type="submit">

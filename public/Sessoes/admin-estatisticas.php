@@ -19,7 +19,6 @@
     $ips_ativos[] = $relatorio["ips_ativos_24_horas"];
     $novas_contas[] = $relatorio["novas_contas_24_horas"];
     $gold[] = $relatorio["gold_gasto_24_horas"];
-    $dobroes[] = $relatorio["dobrao_gasto_24_horas"];
 } ?>
 <script type="text/javascript">
     $(function () {

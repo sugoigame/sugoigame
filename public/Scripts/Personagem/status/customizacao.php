@@ -139,12 +139,6 @@ if ($pers["titulo"]) {
             <img src="Imagens/Icones/Gold.png" />
             Trocar Personagem
         </button>
-        <button class="btn btn-info trocar-personagem" data-pers="<?= $pers["cod"] ?>" data-tipo="dobrao"
-            <?= $userDetails->conta["dobroes"] >= PRECO_DOBRAO_TROCAR_PERSONAGEM ? "" : "disabled" ?>>
-            <?= PRECO_DOBRAO_TROCAR_PERSONAGEM ?>
-            <img src="Imagens/Icones/Dobrao.png" />
-            Trocar Personagem
-        </button>
     </div>
     <div class="col-md-9 col-xs-12">
         <h4>
@@ -175,11 +169,6 @@ if ($pers["titulo"]) {
         <p>
             <button class="reset-nome btn btn-info" data-pers="<?= $pers["cod"] ?>" <?= $userDetails->conta["gold"] >= PRECO_GOLD_RESET_NOME_PERSONAGEM ? "" : "disabled" ?>>
                 <?= PRECO_GOLD_RESET_NOME_PERSONAGEM ?> <img src="Imagens/Icones/Gold.png" />
-                Renomear o personagem
-            </button>
-            <button class="reset-nome-dobroes btn btn-info" data-pers="<?= $pers["cod"] ?>"
-                <?= $userDetails->conta["dobroes"] >= PRECO_DOBRAO_RESET_NOME_PERSONAGEM ? "" : "disabled" ?>>
-                <?= PRECO_DOBRAO_RESET_NOME_PERSONAGEM ?> <img src="Imagens/Icones/Dobrao.png" />
                 Renomear o personagem
             </button>
         </p>
@@ -223,12 +212,6 @@ if ($pers["titulo"]) {
                                     class="btn btn-info link_confirm">
                                     <?= $skins[$pers["img"]][$skin] ?>
                                     <img src="Imagens/Icones/Gold.png">
-                                </button>
-                                <button href="Vip/comprar_skin.php?tipo=dobrao&img=<?= $pers["img"] ?>&skin=<?= $skin ?>"
-                                    data-question="Deseja comprar essa aparência para <?= $pers["nome"] ?>?"
-                                    class="btn btn-info link_confirm">
-                                    <?= ceil($skins[$pers["img"]][$skin] * 1.2) ?>
-                                    <img src="Imagens/Icones/Dobrao.png">
                                 </button>
                             <?php else : ?>
                                 <p>

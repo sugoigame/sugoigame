@@ -807,8 +807,6 @@
       - tipo: berries
         quant: 1000000
     11:
-      - tipo: dobrao
-        quant: 10
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -896,8 +894,6 @@
       - tipo: berries
         quant: 1000000
     11:
-      - tipo: dobrao
-        quant: 10
       - tipo: xp
         quant: 500
       - tipo: berries
@@ -985,8 +981,6 @@
       - tipo: berries
         quant: 1000000
     11:
-      - tipo: dobrao
-        quant: 10
       - tipo: xp
         quant: 500
       - tipo: berries

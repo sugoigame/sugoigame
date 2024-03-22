@@ -341,10 +341,5 @@
             <?= PRECO_GOLD_TROCAR_BANDEIRA ?> <img src="Imagens/Icones/Gold.png">
             Mudar
         </button>
-        <button class="bt_mudar_bandeira btn btn-success" data-tipo="dobrao"
-            <?= $userDetails->conta["dobroes"] < PRECO_DOBRAO_TROCAR_BANDEIRA ? "disabled" : "" ?>>
-            <?= PRECO_DOBRAO_TROCAR_BANDEIRA ?> <img src="Imagens/Icones/Dobrao.png">
-            Mudar
-        </button>
     <? endif; ?>
 </div>

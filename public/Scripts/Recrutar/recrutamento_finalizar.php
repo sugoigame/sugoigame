@@ -47,15 +47,12 @@ if (!preg_match("/^[\d]+$/", $img)) {
 
 if ($lvl > 1) {
     $tipoLvl = $protector->post_enum_or_exit("tipoLvl", [
-        "gold",
-        "dobrao"
+        "gold"
     ]);
 
     $preco = $lvl * PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO;
     if ($tipoLvl == "gold") {
         $protector->need_gold($preco);
-    } else {
-        $protector->need_dobroes(ceil($preco * PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO));
     }
 }
 
@@ -147,16 +144,12 @@ $connection->run("INSERT INTO tb_personagens_skil (cod,cod_skil,tipo,nome,descri
 
 if ($lvl > 1) {
     $tipoLvl = $protector->post_enum_or_exit("tipoLvl", [
-        "gold",
-        "dobrao"
+        "gold"
     ]);
 
     $precoGold      = ($lvl - 1) * PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO;
-    $precoDobrao    = ($lvl - 1) * PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO;
     if ($tipoLvl == "gold") {
         $userDetails->reduz_gold($precoGold, "recrutar_lvl_alto");
-    } else {
-        $userDetails->reduz_dobrao($precoDobrao, "recrutar_lvl_alto");
     }
 }
 

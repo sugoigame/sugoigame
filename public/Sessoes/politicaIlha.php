@@ -276,11 +276,7 @@ function is_buff_ativo($bonus_ativos, $buff_id) {
                                         <?= $recompensa["xp"] ?> pontos de experiência para toda a tripulação
                                     </p>
                                 <?php endif; ?>
-                                <?php if (isset($recompensa["dobroes"])): ?>
-                                    <p>
-                                        <?= $recompensa["dobroes"] ?> <img src="Imagens/Icones/Dobrao.png">
-                                    </p>
-                                <?php endif; ?>
+
                                 <?php if (isset($recompensa["fa"])): ?>
                                     <p>
                                         Aumento na recompensa de toda a tripulação em

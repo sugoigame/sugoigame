@@ -13,10 +13,7 @@ function recebe_recompensa($recompensa, $pers = null, $exit_error = true)
         case "xp":
             $userDetails->xp_for_all($recompensa["quant"]);
             return "Você recebeu " . mascara_berries($recompensa["quant"]) . " Pontos de experiência";
-        case "dobrao":
-            $connection->run("UPDATE tb_conta SET dobroes = dobroes + ? WHERE conta_id = ?",
-                "ii", array($recompensa["quant"], $userDetails->conta["conta_id"]));
-            return "Você recebeu " . $recompensa["quant"] . " Dobrões de Ouro";
+
         case "haki":
             $userDetails->haki_for_all($recompensa["quant"]);
             return "Sua tripulação recebeu " . $recompensa["quant"] . " pontos de Haki";
@@ -86,11 +83,7 @@ function render_recompensa($recompensa, $reagents, $equipamentos)
                 title="Pontos de Experiência para toda tripulação" />
             <?= mascara_numeros_grandes($recompensa["quant"]) ?>
         </p>
-    <?php elseif ($recompensa["tipo"] == "dobrao") : ?>
-        <p>
-            <img src="Imagens/Icones/Dobrao.png" />
-            <?= $recompensa["quant"] ?>
-        </p>
+
     <?php elseif ($recompensa["tipo"] == "haki") : ?>
         <p>
             <?= mascara_numeros_grandes($recompensa["quant"]) ?> pontos de Haki para distribuir entre os tripulantes

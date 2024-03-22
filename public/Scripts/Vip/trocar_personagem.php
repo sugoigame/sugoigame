@@ -5,12 +5,10 @@ $protector->need_tripulacao();
 
 $pers = $protector->get_number_or_exit("pers");
 $img = $protector->get_number_or_exit("img");
-$tipo = $protector->get_enum_or_exit("tipo", array("gold", "dobrao"));
+$tipo = $protector->get_enum_or_exit("tipo", array("gold"));
 
 if ($tipo == "gold") {
     $protector->need_gold(PRECO_GOLD_TROCAR_PERSONAGEM);
-} else {
-    $protector->need_dobroes(PRECO_DOBRAO_TROCAR_PERSONAGEM);
 }
 
 $personagem = $userDetails->get_pers_by_cod($pers);
@@ -33,8 +31,6 @@ $connection->run("UPDATE tb_personagens SET img = ?, skin_r = 0, skin_c = 0 WHER
 
 if ($tipo == "gold") {
     $userDetails->reduz_gold(PRECO_GOLD_TROCAR_PERSONAGEM, "trocar_personagem");
-} else {
-    $userDetails->reduz_dobrao(PRECO_DOBRAO_TROCAR_PERSONAGEM, "trocar_personagem");
 }
 
 echo "-Personagem alterado";

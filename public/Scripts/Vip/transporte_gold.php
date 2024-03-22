@@ -7,7 +7,7 @@ $protector->need_tripulacao_alive();
 $protector->must_be_out_of_any_kind_of_combat();
 
 $destino = $protector->get_number_or_exit("destino");
-$tipo = $protector->get_enum_or_exit("tipo", array("gold", "dobrao"));
+$tipo = $protector->get_enum_or_exit("tipo", array("gold"));
 
 $result = $connection->run("SELECT * FROM tb_mapa WHERE ilha=?", "i", array($destino));
 
@@ -29,8 +29,6 @@ if ($preco < 20) {
 
 if ($tipo == "gold") {
     $protector->need_gold($preco);
-} else {
-    $protector->need_dobroes(ceil($preco * 1.5));
 }
 
 $connection->run("UPDATE tb_usuarios SET x = ?, y = ?, mar_visivel = 0 WHERE id = ?",
@@ -38,8 +36,6 @@ $connection->run("UPDATE tb_usuarios SET x = ?, y = ?, mar_visivel = 0 WHERE id 
 
 if ($tipo == "gold") {
     $userDetails->reduz_gold($preco, "transporte_gold");
-} else {
-    $userDetails->reduz_dobrao(ceil($preco * 1.2), "transporte_gold");
 }
 
 echo("%oceano");

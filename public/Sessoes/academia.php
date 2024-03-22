@@ -122,12 +122,6 @@
                             <?= PRECO_GOLD_RESET_CLASSE ?> <img src="Imagens/Icones/Gold.png" />
                             Resetar a classe
                         </button>
-                        <button class="link_confirm btn btn-info" <?= $userDetails->conta["dobroes"] >= PRECO_DOBRAO_RESET_CLASSE ? "" : "disabled" ?>
-                            data-question="Resetar a classe desse personagem permitirá que ele aprenda uma nova. Deseja continuar?"
-                            href="Vip/reset_classe.php?cod=<?= $pers["cod"] ?>&tipo=dobrao">
-                            <?= PRECO_DOBRAO_RESET_CLASSE ?> <img src="Imagens/Icones/Dobrao.png" />
-                            Resetar a classe
-                        </button>
                     </p>
                 <?php endif; ?>
             </div>

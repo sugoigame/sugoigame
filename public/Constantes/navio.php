@@ -14,18 +14,7 @@ $PRECO_GOLD_SKIN_NAVIO = array(
     10 => -1,
 );
 
-$PRECO_DOBRAO_SKIN_NAVIO = array(
-    1 => 720,
-    2 => 720,
-    3 => 720,
-    4 => -1,
-    5 => 720,
-    6 => -1,
-    7 => 720,
-    8 => 720,
-    9 => 720,
-    10 => -1,
-);
+
 
 $SKIN_NAVIO_OFFSET = array(
     0 => array(
