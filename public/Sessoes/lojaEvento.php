@@ -42,11 +42,7 @@
                         <?= $recompensa["xp"] ?> pontos de experiência para toda a tripulação
                     </p>
                 <?php endif; ?>
-                <?php if (isset($recompensa["dobroes"])) : ?>
-                    <p>
-                        <?= $recompensa["dobroes"] ?> <img src="Imagens/Icones/Dobrao.png">
-                    </p>
-                <?php endif; ?>
+
                 <?php if (isset($recompensa["akuma"])) : ?>
                     <div class="equipamentos_classe_6 pull-left">
                         <img src="Imagens/Itens/100.png">

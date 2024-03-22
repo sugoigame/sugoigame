@@ -28,28 +28,24 @@ if (!$skill->count()) {
 $skill = $skill->fetch_array();
 
 if ($skill["editado"]) {
-    $tipo = $protector->post_enum_or_exit("tipo_pagamento", array("gold", "dobrao"));
+    $tipo = $protector->post_enum_or_exit("tipo_pagamento", array("gold"));
 
     if ($tipo == "gold") {
         $protector->need_gold(PRECO_GOLD_CUSTOMIZAR_SKILL);
-    } else {
-        $protector->need_dobroes(PRECO_DOBRAO_CUSTOMIZAR_SKILL);
     }
 }
 
 $connection->run(
-    "UPDATE tb_personagens_skil SET nome = ?, descricao = ?, icon = ?, editado = 1 
+    "UPDATE tb_personagens_skil SET nome = ?, descricao = ?, icon = ?, editado = 1
       WHERE cod = ? AND cod_skil = ? AND tipo = ?",
     "ssiiii", array($nome, $descricao, $icon, $cod_pers, $cod_skill, $tipo_skill));
 
 
 if ($skill["editado"]) {
-    $tipo = $protector->post_enum_or_exit("tipo_pagamento", array("gold", "dobrao"));
+    $tipo = $protector->post_enum_or_exit("tipo_pagamento", array("gold"));
 
     if ($tipo == "gold") {
         $userDetails->reduz_gold(PRECO_GOLD_CUSTOMIZAR_SKILL, "customizar_skill");
-    } else {
-        $userDetails->reduz_dobrao(PRECO_DOBRAO_CUSTOMIZAR_SKILL, "customizar_skill");
     }
 }
 

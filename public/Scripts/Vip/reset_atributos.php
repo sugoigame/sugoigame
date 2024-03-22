@@ -3,13 +3,13 @@ require "../../Includes/conectdb.php";
 
 $protector->need_tripulacao();
 
-$tipo = $protector->get_enum_or_exit("tipo", array("gold", "dobrao", "free"));
+$tipo = $protector->get_enum_or_exit("tipo", array("gold",  "free"));
 if ($tipo == "free") {
     if (! $userDetails->tripulacao["free_reset_atributos"]) {
         $protector->exit_error("você não pode resetar seus atributos gratuitamente");
     }
 } else {
-    $protector->need_gold_or_dobrao($tipo, PRECO_GOLD_RESET_ATRIBUTOS, PRECO_DOBRAO_RESET_ATRIBUTOS);
+    $protector->need_gold($tipo, PRECO_GOLD_RESET_ATRIBUTOS);
 }
 
 $pers = $protector->get_tripulante_or_exit("cod");
@@ -64,7 +64,7 @@ if ($tipo == "free") {
     $connection->run("UPDATE tb_usuarios SET free_reset_atributos = free_reset_atributos - 1 WHERE id = ?",
         "i", array($userDetails->tripulacao["id"]));
 } else {
-    $userDetails->reduz_gold_or_dobrao($tipo, PRECO_GOLD_RESET_ATRIBUTOS, PRECO_DOBRAO_RESET_ATRIBUTOS, "resetar_atributos");
+    $userDetails->reduz_gold($tipo, PRECO_GOLD_RESET_ATRIBUTOS, "resetar_atributos");
 }
 
 echo ("-Atributos Resetados!");

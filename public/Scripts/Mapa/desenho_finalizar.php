@@ -16,8 +16,8 @@ if (!$cartografo || $cartografo["profissao"] != PROFISSAO_CARTOGRAFO) {
 }
 
 $result = $connection->run(
-    "SELECT 
-    mapa.cod_mapa AS cod_mapa, 
+    "SELECT
+    mapa.cod_mapa AS cod_mapa,
     mapa.desenho AS desenho
     FROM tb_usuario_itens itn
     INNER JOIN tb_item_mapa mapa ON itn.cod_item = mapa.cod_mapa AND itn.tipo_item = " . TIPO_ITEM_MAPA .
@@ -38,11 +38,6 @@ if ($userDetails->tripulacao["desenho"] > atual_segundo()) {
     if ($tipo == "gold") {
         if (!$userDetails->reduz_gold($preco, "desenho_novamente")) {
             $protector->exit_error("Você não tem moedas de ouro suficientes");
-        }
-    } else if ($tipo == "dobroes") {
-        $preco = ceil($preco * 1.2);
-        if (!$userDetails->reduz_dobrao($preco, "desenho_novamente")) {
-            $protector->exit_error("Você não tem dobrões o suficientes");
         }
     }
 }

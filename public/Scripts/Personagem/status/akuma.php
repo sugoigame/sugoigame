@@ -70,11 +70,6 @@ if (! $pers) {
                 <?= PRECO_GOLD_RESET_AKUMA ?> <img src="Imagens/Icones/Gold.png" />
                 Remover a Akuma no Mi
             </button>
-            <button class="link_confirm btn btn-info" data-question="Deseja remover a Akuma no Mi desse personagem?"
-                href="VipDobroes/reset_akuma.php?cod=<?= $pers["cod"] ?>" <?= $userDetails->conta["dobroes"] < PRECO_DOBRAO_RESET_AKUMA ? "disabled" : "" ?>>
-                <?= PRECO_DOBRAO_RESET_AKUMA ?> <img src="Imagens/Icones/Dobrao.png" />
-                Remover a Akuma no Mi
-            </button>
         </div>
     <?php endif; ?>
 </div>

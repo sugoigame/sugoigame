@@ -13,12 +13,10 @@ if ($userDetails->tripulacao["bandeira"] == "01011304675801012812354201011520402
     $connection->run("UPDATE tb_usuarios SET bandeira= ? WHERE id = ?",
         "si", array($cod, $userDetails->tripulacao["id"]));
 } else {
-    $tipo = $protector->get_enum_or_exit("tipo", array("gold", "dobrao"));
+    $tipo = $protector->get_enum_or_exit("tipo", array("gold"));
 
     if ($tipo == "gold") {
         $protector->need_gold(PRECO_GOLD_TROCAR_BANDEIRA);
-    } else {
-        $protector->need_dobroes(PRECO_DOBRAO_TROCAR_BANDEIRA);
     }
 
     $connection->run("UPDATE tb_usuarios SET bandeira= ? WHERE id = ?",
@@ -26,8 +24,6 @@ if ($userDetails->tripulacao["bandeira"] == "01011304675801012812354201011520402
 
     if ($tipo == "gold") {
         $userDetails->reduz_gold(PRECO_GOLD_TROCAR_BANDEIRA, "bandeira_mudar");
-    } else {
-        $userDetails->reduz_dobrao(PRECO_DOBRAO_TROCAR_BANDEIRA, "bandeira_mudar");
     }
 
 }

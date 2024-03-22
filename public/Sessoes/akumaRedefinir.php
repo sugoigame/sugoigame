@@ -37,7 +37,7 @@
     $img_akuma = $akuma["img"];
     ?>
 
-    <?= ajuda("Redefinir Akuma no Mi", "A Akuma no Mi libera uma hárvore de habilidades exclusiva do seu personagem, 
+    <?= ajuda("Redefinir Akuma no Mi", "A Akuma no Mi libera uma hárvore de habilidades exclusiva do seu personagem,
     escolha com sabedoria as habilidades que você irá aprender!") ?>
 
     <script type="text/javascript">
@@ -55,12 +55,6 @@
             <label>
                 <input required type="radio" name="tipo_reset" value="gold"> <?= PRECO_GOLD_REDEFINE_AKUMA ?> <img
                         src="Imagens/Icones/Gold.png"/>
-            </label>
-        </p>
-        <p>
-            <label>
-                <input required type="radio" name="tipo_reset" value="dobrao"> <?= PRECO_DOBRAO_REDEFINE_AKUMA ?> <img
-                        src="Imagens/Icones/Dobrao.png"/>
             </label>
         </p>
 

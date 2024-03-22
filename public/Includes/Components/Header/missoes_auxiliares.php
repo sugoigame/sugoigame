@@ -26,14 +26,7 @@
                             </span>
                         </div>
                     <?php endif; ?>
-                    <?php if ($progress_reward["dobroes"]) : ?>
-                        <div>
-                            <img height="15px" src="Imagens/Icones/Dobrao.png" />
-                            <span id="span_gold">
-                                <?= mascara_numeros_grandes($progress_reward["dobroes"]); ?>
-                            </span>
-                        </div>
-                    <?php endif; ?>
+
                 </div>
             </div>
         </a>

@@ -96,12 +96,11 @@ function can_recruit($img)
         var lvl = parseInt($('#input_lvl').val(), 10);
         if (lvl > 1) {
             var precoGold = (lvl - 1) * <?= PRECO_MODIFICADOR_RECRUTAR_LVL_ALTO ?>;
-            var precoDobrao = (lvl - 1) * <?= PRECO_MODIFICADOR_DOBRAO_RECRUTAR_LVL_ALTO ?>;
+
             $('#preco-lvl-gold').html(precoGold);
-            $('#preco-lvl-dobrao').html(precoDobrao);
+
         } else {
             $('#preco-lvl-gold').html(0);
-            $('#preco-lvl-dobrao').html(0);
         }
     }
     function verifica_form() {
@@ -230,12 +229,7 @@ function can_recruit($img)
                         <span id="preco-lvl-gold">0</span> <img src="Imagens/Icones/Gold.png">
                     </label>
                 </div>
-                <div class="form-group">
-                    <label>
-                        <input name="dobrao" type="checkbox" id="recrutar-lvl-dobrao">
-                        <span id="preco-lvl-dobrao">0</span> <img src="Imagens/Icones/Dobrao.png">
-                    </label>
-                </div>
+
                 <br />
                 <input id="input_img" name="img" value="" readonly="true" type="hidden" /><br>
 

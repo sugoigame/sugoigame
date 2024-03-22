@@ -30,11 +30,7 @@
                         data-question="Deseja retornar para sua ilha de retorno salva?" <?= $userDetails->conta["gold"] >= PRECO_GOLD_VIAJA_RETORNO ? "" : "disabled" ?>>
                         <?= PRECO_GOLD_VIAJA_RETORNO ?> <img src="Imagens/Icones/Gold.png" /> Viajar
                     </button>
-                    <button href="VipDobroes/transporte_retorno_dobroes.php" class="link_confirm btn btn-success"
-                        data-question="Deseja retornar para sua ilha de retorno salva?"
-                        <?= $userDetails->conta["dobroes"] >= PRECO_DOBRAO_VIAJA_RETORNO ? "" : "disabled" ?>>
-                        <?= PRECO_DOBRAO_VIAJA_RETORNO ?> <img src="Imagens/Icones/Dobrao.png" /> Viajar
-                    </button>
+
                 </div>
             </div>
         </div>
@@ -92,12 +88,7 @@
                                 <?= $preco ?> <img src="Imagens/Icones/Gold.png" /> Viajar
                             </button>
                             <?php $preco = ceil($preco * 1.5); ?>
-                            <button href="Vip/transporte_gold.php?tipo=dobrao&destino=<?= $ilha["ilha"]; ?>"
-                                class="link_confirm btn btn-success"
-                                data-question="Deseja viajar para <?= nome_ilha($ilha["ilha"]); ?>?"
-                                <?= $userDetails->conta["dobroes"] >= $preco ? "" : "disabled" ?>>
-                                <?= $preco ?> <img src="Imagens/Icones/Dobrao.png" /> Viajar
-                            </button>
+
                         </div>
                     </div>
                 </div>
@@ -129,11 +120,7 @@
                         data-question="Deseja retornar para sua ilha de retorno salva?" <?= $userDetails->conta["gold"] >= PRECO_GOLD_VIAJA_RETORNO ? "" : "disabled" ?>>
                         <?= PRECO_GOLD_VIAJA_RETORNO ?> <img src="Imagens/Icones/Gold.png" /> Viajar
                     </button>
-                    <button href="VipDobroes/transporte_retorno_dobroes.php" class="link_confirm btn btn-success"
-                        data-question="Deseja retornar para sua ilha de retorno salva?"
-                        <?= $userDetails->conta["dobroes"] >= PRECO_DOBRAO_VIAJA_RETORNO ? "" : "disabled" ?>>
-                        <?= PRECO_DOBRAO_VIAJA_RETORNO ?> <img src="Imagens/Icones/Dobrao.png" /> Viajar
-                    </button>
+
                 </div>
             </div>
         </li>
@@ -191,12 +178,7 @@
                                 <?= $preco ?> <img src="Imagens/Icones/Gold.png" /> Viajar
                             </button>
                             <?php $preco = ceil($preco * 1.5); ?>
-                            <button href="Vip/transporte_gold.php?tipo=dobrao&destino=<?= $ilha["ilha"]; ?>"
-                                class="link_confirm btn btn-success"
-                                data-question="Deseja viajar para <?= nome_ilha($ilha["ilha"]); ?>?"
-                                <?= $userDetails->conta["dobroes"] >= $preco ? "" : "disabled" ?>>
-                                <?= $preco ?> <img src="Imagens/Icones/Dobrao.png" /> Viajar
-                            </button>
+
                         </div>
                     </div>
                 </li>

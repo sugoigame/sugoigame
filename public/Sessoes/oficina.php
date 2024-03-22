@@ -88,7 +88,7 @@
 <div class="panel-body">
     <?= ajuda("Oficina", "Aqui seu artesão e seu carpinteiro podem criar itens e equipamentos.<br>
 			Para criar algum item, é preciso antes conhecer a receita daquele item, então coloque os ingredientes certos
-			na ordem certa (lembrando que o lugar onde você coloca o item na mesa e a quantidade de itens fazem diferença no 
+			na ordem certa (lembrando que o lugar onde você coloca o item na mesa e a quantidade de itens fazem diferença no
 			resultado), e clique em \"Criar\" para ver o resultado.") ?>
 
 
@@ -131,24 +131,14 @@
                     <input type="radio" name="ferreiro-select" value="artesao">
                 </label>
             </div>
-            <div class=" col-md-3">
-                <label>
-                    Artesão VIP: <?= PRECO_DOBRAO_FERREIRO_VIP ?> <img src="Imagens/Icones/Dobrao.png"/><br/>
-                    <input type="radio" name="ferreiro-select" value="artesao_dobrao">
-                </label>
-            </div>
+
             <div class=" col-md-3">
                 <label>
                     Carpinteiro VIP: <?= PRECO_GOLD_FERREIRO_VIP ?> <img src="Imagens/Icones/Gold.png"/><br/>
                     <input type="radio" name="ferreiro-select" value="carpinteiro">
                 </label>
             </div>
-            <div class=" col-md-3">
-                <label>
-                    Carpinteiro VIP: <?= PRECO_DOBRAO_FERREIRO_VIP ?> <img src="Imagens/Icones/Dobrao.png"/><br/>
-                    <input type="radio" name="ferreiro-select" value="carpinteiro_dobrao">
-                </label>
-            </div>
+
         </div>
     </div>
     <div class="row">

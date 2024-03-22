@@ -49,10 +49,7 @@
                     <p>
                         <img src="Imagens/Icones/Berries.png"/> <?= mascara_berries($recompensa["quant"]) ?>
                     </p>
-                <?php elseif ($recompensa["tipo"] == "dobrao"): ?>
-                    <p>
-                        <img src="Imagens/Icones/Dobrao.png"/> <?= $recompensa["quant"] ?>
-                    </p>
+
                 <?php elseif ($recompensa["tipo"] == "haki"): ?>
                     <p>
                         <?= $recompensa["quant"] ?> pontos de Haki para toda a tripulação
