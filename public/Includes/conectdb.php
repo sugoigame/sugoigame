@@ -26,7 +26,7 @@ define('EMAIL_FORMAT_2', "/^[A-Za-z0-9_\\-\\.]+@[A-Za-z0-9_\\-\\.]{2,}\\.[A-Za-z
 define('DATA_FORMAT', "/^\\d{4}-\\d{1,2}-\\d{1,2}$/");
 define('COORD_FORMAT', "/^\\d{1,3}_\\d{1,3}$/");
 
-define('IS_BETA', false);
+define('IS_BETA', true);
 
 define('BONUS_GOLD_ATIVACAO', 300);
 
@@ -71,9 +71,9 @@ $COD_HAOSHOKU_LVL = [
 define('ILHA_COLISEU', 42);
 define('ILHA_COLISEU_2', 44);
 
-require_once(dirname(__FILE__) . "/../Funcoes/requires.php");
-require_once(dirname(__FILE__) . "/../Classes/requires.php");
-require_once(dirname(__FILE__) . "/../Cron/cron.php");
+require_once (dirname(__FILE__) . "/../Funcoes/requires.php");
+require_once (dirname(__FILE__) . "/../Classes/requires.php");
+require_once (dirname(__FILE__) . "/../Cron/cron.php");
 
 $userDetails = new UserDetails($connection);
 $response = new Response();
