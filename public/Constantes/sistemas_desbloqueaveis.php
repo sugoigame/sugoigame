@@ -1,5 +1,4 @@
 <?php
-define('SISTEMA_HOSPITAL', 'SISTEMA_HOSPITAL');
 define('SISTEMA_ACADEMIA', 'SISTEMA_ACADEMIA');
 define('SISTEMA_VISAO_GERAL_TRIPULACAO', 'SISTEMA_VISAO_GERAL_TRIPULACAO');
 define('SISTEMA_ESTALEIRO', 'SISTEMA_ESTALEIRO');
@@ -31,7 +30,6 @@ $sessoes_por_sistema = array(
     SISTEMA_EQUIPAMENTOS => ["equipShop", "mercado", "materiais", "upgrader", "forja", "oficina", "equipamentos"],
     SISTEMA_ESTALEIRO => ["estaleiro"],
     SISTEMA_RESTAURANTE => ["restaurante"],
-    SISTEMA_HOSPITAL => ["hospital"],
     SISTEMA_PROFISSOES => ["profissoesAprender"],
     SISTEMA_TRIPULANTES_FORA_BARCO => ["tripulantesInativos"],
     SISTEMA_DOMINIO_ILHA => ["politicaIlha"],
