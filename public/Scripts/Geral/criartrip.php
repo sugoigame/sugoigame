@@ -8,12 +8,12 @@ if (! $contaOk) {
 }
 
 if (! isset($_POST["faccao"])
-    or ! isset($_POST["capitao"])
-    or ! isset($_POST["icon_capitao"])
-    or ! isset($_POST["oceano"])
-    or ! isset($_POST["apelido"])
+    || ! isset($_POST["capitao"])
+    || ! isset($_POST["icon_capitao"])
+    || ! isset($_POST["oceano"])
+    || ! isset($_POST["apelido"])
 ) {
-    header("location:../../?ses=seltrip&msg=Formulário incompleto.");
+    header("location:../../?ses=seltrip&msg=F||mulário incompleto.");
     exit();
 }
 
@@ -24,29 +24,29 @@ $oceano = strip_tags($_POST["oceano"]);
 $apelido = trim($_POST["apelido"]);
 
 if (! preg_match("/^[\d]+$/", $faccao)) {
-    header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido4.");
+    header("location:../../?ses=seltrip&msg=Você inf||mou algum caracter inválido4.");
     exit();
 }
 if (! preg_match("/^[\w ]+$/", $capitao)) {
-    header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido5.");
+    header("location:../../?ses=seltrip&msg=Você inf||mou algum caracter inválido5.");
     exit();
 }
 if (! preg_match("/^[\d]+$/", $icon)) {
-    header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido6.");
+    header("location:../../?ses=seltrip&msg=Você inf||mou algum caracter inválido6.");
     exit();
 }
 if (! preg_match("/^[\d]+$/", $oceano)) {
-    header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido7.");
+    header("location:../../?ses=seltrip&msg=Você inf||mou algum caracter inválido7.");
     exit();
 }
 if (! preg_match("/^[\w ]+$/", $apelido)) {
-    header("location:../../?ses=seltrip&msg=Você informou algum caracter inválido8.");
+    header("location:../../?ses=seltrip&msg=Você inf||mou algum caracter inválido8.");
     exit();
 }
 $capitao = stripslashes($capitao);
 
 $erro = false;
-if ($faccao != 0 and $faccao != 1) {
+if ($faccao != 0 && $faccao != 1) {
     $erro = true;
 }
 if (strlen($capitao) < 3) {
@@ -63,7 +63,7 @@ if (strlen($oceano) == 0) {
 }
 
 if ($erro) {
-    header("location:../../?ses=seltrip&msg=Algum valor informado nao atende os requisitos de tamanho.");
+    header("location:../../?ses=seltrip&msg=Algum val|| inf||mado nao atende os requisitos de tamanho.");
     exit();
 } else {
     $cont = $connection->run("SELECT nome FROM tb_personagens WHERE nome = ? LIMIT 1", 's', [
@@ -71,14 +71,14 @@ if ($erro) {
     ])->count();
 
     if ($cont != 0) {
-        header("location:../../?ses=seltrip&msg=O nome de capitão informado já está cadastrado.");
+        header("location:../../?ses=seltrip&msg=O nome de capitão inf||mado já está cadastrado.");
         exit();
     } else {
         $result = $connection->run("SELECT * FROM tb_usuarios WHERE conta_id = ?", 'i', [
             $conta['conta_id']
         ]);
         if ($result->count() >= 3) {
-            header("location:../../?ses=seltrip&msg=O limite de tripulações por conta é de 3.");
+            header("location:../../?ses=seltrip&msg=O limite de tripulações p|| conta é de 3.");
             exit();
         }
 
@@ -97,15 +97,15 @@ if ($erro) {
                 $x = 428;
                 $y = 31;
                 $i++;
-            } else if ($oceano == "2") {
+            } elseif ($oceano == "2") {
                 $x = 70;
                 $y = 51;
                 $i++;
-            } else if ($oceano == "3") {
+            } elseif ($oceano == "3") {
                 $x = 424;
                 $y = 341;
                 $i++;
-            } else if ($oceano == "4") {
+            } elseif ($oceano == "4") {
                 $x = 35;
                 $y = 337;
                 $i++;
