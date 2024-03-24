@@ -157,7 +157,7 @@
                     <i class="fa fa-check"></i>Você já está inscrito!
                 </span>
             <?php else : ?>
-                <button class="btn btn-success link_send" href="link_torneio/torneio_inscrever.php" <?= $no_local ? "" : "disabled" ?>>
+                <button class="btn btn-success link_send" href="link_Torneio/torneio_inscrever.php" <?= $no_local ? "" : "disabled" ?>>
                     Quero participar
                 </button>
             <?php endif; ?>
