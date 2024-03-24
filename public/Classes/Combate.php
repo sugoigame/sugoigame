@@ -413,7 +413,7 @@ class Combate
                     $alvo["def"] = ceil($alvo["def"] * 0.5);
                 } else {
                     $this->connection->run("INSERT INTO tb_combate_special_effect (bot_id, personagem_bot_id, special_effect, duracao, vontade) VALUE (?,?,?,?,?)",
-                        "iiiii", array($this->userDetails->combate_bot["id"], $alvo["bot_id"], $habilidade["special_effect"], duracao_special_effect($habilidade["special_effect"])), $habilidade["consumo"]);
+                        "iiiii", array($this->userDetails->combate_bot["id"], $alvo["bot_id"], intval($habilidade["special_effect"]), duracao_special_effect($habilidade["special_effect"])), $habilidade["consumo"]);
                 }
             }
         } else {
@@ -426,7 +426,7 @@ class Combate
                     $alvo["def"] = ceil($alvo["def"] * 0.5);
                 } else {
                     $this->connection->run("INSERT INTO tb_combate_special_effect (combate_id, tripulacao_id, personagem_id, special_effect, duracao, vontade) VALUE (?,?,?,?,?,?)",
-                        "iiiiii", array($this->userDetails->combate_pvp["combate"], $alvo["id"], $alvo["cod"], $habilidade["special_effect"], duracao_special_effect($habilidade["special_effect"]), $habilidade["consumo"]));
+                        "iiiiii", array($this->userDetails->combate_pvp["combate"], $alvo["id"], $alvo["cod"], intval($habilidade["special_effect"]), duracao_special_effect($habilidade["special_effect"]), $habilidade["consumo"]));
                 }
             }
         }
