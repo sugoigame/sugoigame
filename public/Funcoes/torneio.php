@@ -31,6 +31,8 @@ function inicia_torneio($torneio)
             "proxima_chave" => null,
             "tripulacao_1_id" => null,
             "tripulacao_2_id" => null,
+            "limite_inicio" => 0,
+            "limite_fim" => 0,
         ];
         $semi_finais = [
             [
@@ -39,12 +41,16 @@ function inicia_torneio($torneio)
                 "proxima_chave" => $final["id"],
                 "tripulacao_1_id" => null,
                 "tripulacao_2_id" => null,
+                "limite_inicio" => 0,
+                "limite_fim" => 0,
             ], [
                 "id" => $id_final + 2,
                 "torneio_id" => $torneio["id"],
                 "proxima_chave" => $final["id"],
                 "tripulacao_1_id" => null,
                 "tripulacao_2_id" => null,
+                "limite_inicio" => 0,
+                "limite_fim" => 0,
             ]
         ];
         $quartas = [
@@ -54,24 +60,32 @@ function inicia_torneio($torneio)
                 "proxima_chave" => $semi_finais[0]["id"],
                 "tripulacao_1_id" => null,
                 "tripulacao_2_id" => null,
+                "limite_inicio" => 0,
+                "limite_fim" => 0,
             ], [
                 "id" => $id_final + 4,
                 "torneio_id" => $torneio["id"],
                 "proxima_chave" => $semi_finais[0]["id"],
                 "tripulacao_1_id" => null,
                 "tripulacao_2_id" => null,
+                "limite_inicio" => 0,
+                "limite_fim" => 0,
             ], [
                 "id" => $id_final + 5,
                 "torneio_id" => $torneio["id"],
                 "proxima_chave" => $semi_finais[1]["id"],
                 "tripulacao_1_id" => null,
                 "tripulacao_2_id" => null,
+                "limite_inicio" => 0,
+                "limite_fim" => 0,
             ], [
                 "id" => $id_final + 6,
                 "torneio_id" => $torneio["id"],
                 "proxima_chave" => $semi_finais[1]["id"],
                 "tripulacao_1_id" => null,
                 "tripulacao_2_id" => null,
+                "limite_inicio" => 0,
+                "limite_fim" => 0,
             ]
         ];
 
