@@ -184,7 +184,7 @@ class Combate
     public function has_special_effect($habilidade)
     {
         return ($this->userDetails->combate_pvp || $this->userDetails->combate_bot)
-            && isset ($habilidade["special_effect"])
+            && isset($habilidade["special_effect"])
             && $habilidade["special_effect"];
     }
 
@@ -198,7 +198,7 @@ class Combate
         return $this->userDetails->combate_pvp
             && $this->userDetails->combate_pvp["tipo"] != TIPO_AMIGAVEL
             && $this->userDetails->combate_pvp["tipo"] != TIPO_LOCALIZADOR_CASUAL
-            && ! isset ($alvo["obstaculo"]);
+            && ! isset($alvo["obstaculo"]);
     }
 
     public function ataca_quadro(&$personagem_combate, $habilidade, $tipo_skil, &$alvo)
@@ -206,7 +206,7 @@ class Combate
         $relatorio_afetado = array();
         $relatorio_afetado["acerto"] = "1";
 
-        if (! isset ($alvo["obstaculo"])) {
+        if (! isset($alvo["obstaculo"])) {
             $this->aplica_buffs($alvo);
         }
 
@@ -216,7 +216,7 @@ class Combate
         $relatorio_afetado["img"] = $alvo["img"];
         $relatorio_afetado["skin_r"] = $alvo["skin_r"];
 
-        if (! isset ($alvo["obstaculo"]) && $this->has_special_effect($habilidade)) {
+        if (! isset($alvo["obstaculo"]) && $this->has_special_effect($habilidade)) {
             if ($habilidade["special_target"] == SPECIAL_TARGET_TARGET) {
                 if ($habilidade["special_apply_type"] == SPECIAL_APPLY_TYPE_REMOVE) {
                     $this->remove_special_effect($alvo, $habilidade);
@@ -242,7 +242,7 @@ class Combate
                     $this->aumenta_fa_esq_bloq($alvo, $personagem_combate);
                 }
             } else {
-                if (! isset ($alvo["obstaculo"]) && $this->has_special_effect($habilidade)) {
+                if (! isset($alvo["obstaculo"]) && $this->has_special_effect($habilidade)) {
                     if ($habilidade["special_target"] == SPECIAL_TARGET_TARGET) {
                         if ($habilidade["special_apply_type"] == SPECIAL_APPLY_TYPE_APPLY
                             && $habilidade["special_effect"] != SPECIAL_EFFECT_PONTO_FRACO
@@ -290,7 +290,7 @@ class Combate
                 //novo hp do alvo
                 $nhp = max(0, $alvo["hp"] - $dano);
 
-                if (! isset ($alvo["obstaculo"])) {
+                if (! isset($alvo["obstaculo"])) {
                     if ($alvo["id"] == "bot") {
                         $this->connection->run("UPDATE tb_combate_personagens_bot SET hp = ? WHERE id = ?",
                             "ii", array($nhp, $alvo["bot_id"]));
@@ -330,7 +330,7 @@ class Combate
         } elseif ($tipo_skil == TIPO_SKILL_BUFF_CLASSE
             || $tipo_skil == TIPO_SKILL_BUFF_PROFISSAO
             || $tipo_skil == TIPO_SKILL_BUFF_AKUMA) {
-            if (! isset ($alvo["obstaculo"])) {
+            if (! isset($alvo["obstaculo"])) {
                 if ($alvo["id"] == "bot") {
                     $this->connection->run(
                         "INSERT INTO tb_combate_buff_bot (id, cod, cod_buff, atr, efeito, espera)
@@ -364,7 +364,7 @@ class Combate
                 $relatorio_afetado["atributo"] = $habilidade["bonus_atr"];
             }
         } elseif ($tipo_skil == TIPO_SKILL_MEDICAMENTO) {
-            if (! isset ($alvo["obstaculo"])) {
+            if (! isset($alvo["obstaculo"])) {
                 $hp_recuperado = $habilidade["hp_recuperado"] * 10;
                 $alvo["hp"] = min($alvo["hp_max"], $alvo["hp"] + $hp_recuperado);
 
@@ -413,7 +413,7 @@ class Combate
                     $alvo["def"] = ceil($alvo["def"] * 0.5);
                 } else {
                     $this->connection->run("INSERT INTO tb_combate_special_effect (bot_id, personagem_bot_id, special_effect, duracao, vontade) VALUE (?,?,?,?,?)",
-                        "iiii", array($this->userDetails->combate_bot["id"], $alvo["bot_id"], $habilidade["special_effect"], duracao_special_effect($habilidade["special_effect"])), $habilidade["consumo"]);
+                        "iiiii", array($this->userDetails->combate_bot["id"], $alvo["bot_id"], $habilidade["special_effect"], duracao_special_effect($habilidade["special_effect"])), $habilidade["consumo"]);
                 }
             }
         } else {
@@ -501,10 +501,10 @@ class Combate
 
     public function get_mod_akuma($personagem_combate, $alvo)
     {
-        if (! isset ($personagem_combate["akuma"])) {
+        if (! isset($personagem_combate["akuma"])) {
             $personagem_combate["akuma"] = null;
         }
-        if (! isset ($alvo["akuma"])) {
+        if (! isset($alvo["akuma"])) {
             $alvo["akuma"] = null;
         }
 
@@ -729,7 +729,7 @@ class Combate
         }
 
         if (rand(1, 100) <= 90) {
-            if (! isset ($tabuleiro[$mira]) || ! count($tabuleiro[$mira])) {
+            if (! isset($tabuleiro[$mira]) || ! count($tabuleiro[$mira])) {
                 return $this->get_alvo_npc($this->get_mira_adjacente($mira), $tabuleiro);
             }
 
@@ -998,8 +998,8 @@ class Combate
             ) {
                 return true;
             }
-            if (isset ($tabuleiro[$i * $x])
-                && isset ($tabuleiro[$i * $x][$i * $y])
+            if (isset($tabuleiro[$i * $x])
+                && isset($tabuleiro[$i * $x][$i * $y])
                 && $tabuleiro[$i * $x][$i * $y]["hp"] > 0) {
                 return false;
             }
