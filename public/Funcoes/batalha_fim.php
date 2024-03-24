@@ -49,7 +49,9 @@ function zera_hp_tripulantes($personagens_in_combate)
     foreach ($personagens_in_combate as $pers) {
         $cods[] = $pers["cod"];
     }
-    $connection->run("UPDATE tb_personagens SET hp = 0 WHERE cod IN (" . (implode(",", $cods)) . ")");
+    if (count($cods)) {
+        $connection->run("UPDATE tb_personagens SET hp = 0 WHERE cod IN (" . (implode(",", $cods)) . ")");
+    }
 }
 
 function atualiza_hp_tripulantes($personagens_in_combate)
@@ -73,7 +75,7 @@ function add_rdm_loot($rdm)
 {
     global $userDetails;
 
-    if (isset ($rdm["loot"])) {
+    if (isset($rdm["loot"])) {
         $drop = $rdm["loot"][rand(0, count($rdm["loot"]) - 1)];
 
         $userDetails->add_item($drop["cod"], $drop["tipo"], 1, $drop["tipo"] == TIPO_ITEM_ACESSORIO);
@@ -171,7 +173,7 @@ function atualiza_mini_eventos($rdm)
     global $userDetails;
     global $connection;
 
-    if (isset ($rdm["mini_evento"]) && $rdm["mini_evento"]) {
+    if (isset($rdm["mini_evento"]) && $rdm["mini_evento"]) {
         $eventos = DataLoader::load("mini_eventos");
 
         foreach ($eventos as $id => $evento) {
@@ -340,7 +342,7 @@ function atualiza_incursao()
                 "iii", array($userDetails->tripulacao["id"], $userDetails->ilha["ilha"], $progresso));
         }
 
-        $adversario = get_adversario_incursao(isset ($incursao["especial"]) ? 1 : $progresso - 1, $incursao);
+        $adversario = get_adversario_incursao(isset($incursao["especial"]) ? 1 : $progresso - 1, $incursao);
 
         $userDetails->xp_for_all($adversario["xp"]);
         $connection->run("UPDATE tb_usuarios SET berries = berries + ? WHERE id = ?",
