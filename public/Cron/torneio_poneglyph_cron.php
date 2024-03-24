@@ -113,18 +113,20 @@ function cron_finaliza_chave_tempo_limite()
     );
 
     while ($chave = $result->fetch_array()) {
-        $personagens_combate_1 = get_personagens_combate($chave["tripulacao_1_id"]);
-        $personagens_combate_2 = get_personagens_combate($chave["tripulacao_2_id"]);
+        if ($chave["tripulacao_1_id"] || $chave["tripulacao_2_id"]) {
+            $personagens_combate_1 = get_personagens_combate($chave["tripulacao_1_id"]);
+            $personagens_combate_2 = get_personagens_combate($chave["tripulacao_2_id"]);
 
-        $personagens_1_vivos = filter_personagens_vivos($personagens_combate_1);
-        $personagens_2_vivos = filter_personagens_vivos($personagens_combate_2);
+            $personagens_1_vivos = filter_personagens_vivos($personagens_combate_1);
+            $personagens_2_vivos = filter_personagens_vivos($personagens_combate_2);
 
-        $perdedor_posicao = count($personagens_1_vivos) >= count($personagens_2_vivos) ? "2" : "1";
+            $perdedor_posicao = count($personagens_1_vivos) >= count($personagens_2_vivos) ? "2" : "1";
 
-        $connection->run(
-            "UPDATE tb_combate_personagens SET hp = 0, desistencia = 1 WHERE id = ? AND hp > 0",
-            "i", $chave["tripulacao_" . $perdedor_posicao . "_id"]
-        );
+            $connection->run(
+                "UPDATE tb_combate_personagens SET hp = 0, desistencia = 1 WHERE id = ? AND hp > 0",
+                "i", [$chave["tripulacao_" . $perdedor_posicao . "_id"]]
+            );
+        }
     }
 }
 
