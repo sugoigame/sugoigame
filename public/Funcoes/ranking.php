@@ -231,7 +231,7 @@ function get_patente_nome($faccao, $battle_level)
                     </p>
                     <div class="progress" style="margin: 0">
                         <div class="progress-bar progress-bar-success"
-                            style="width: <?= $famoso[$column] / $mais_forte * 100 ?>%">
+                            style="width: <?= $mais_forte > 0 ? ($famoso[$column] / $mais_forte * 100) : "" ?>%">
                             <span>
                                 <?= mascara_numeros_grandes($famoso[$column]) ?>
                                 <?= $label ?>
