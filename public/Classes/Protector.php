@@ -208,6 +208,7 @@ class Protector
             case "admin-beta":
             case "admin-add-ouro":
             case "admin-add-beries":
+            case "admin-teleporte":
             case "combateAssistirAdm":
                 $this->must_be_gm();
                 break;
