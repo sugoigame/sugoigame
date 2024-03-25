@@ -116,7 +116,7 @@ function can_recruit($img)
             erro = true;
         }
         var lvl = parseInt($('#input_lvl').val(), 10);
-        if (lvl > 1 && !document.getElementById('recrutar-lvl-dobrao').checked && !document.getElementById('recrutar-lvl-gold').checked) {
+        if (lvl > 1 && !document.getElementById('recrutar-lvl-gold').checked) {
             mensagem += "<br>* Você deve selecionar uma forma de pagamento caso queira recrutar um novo tripulante em nível alto";
             erro = true;
         }
@@ -125,11 +125,7 @@ function can_recruit($img)
         } else {
             var nome = document.getElementById("input_nome").value;
             var img = document.getElementById("input_img").value;
-            var tipoLvl = document.getElementById("recrutar-lvl-gold").checked
-                ? 'gold'
-                : document.getElementById("recrutar-lvl-dobrao").checked
-                    ? 'dobrao'
-                    : '';
+            var tipoLvl = document.getElementById("recrutar-lvl-gold").checked ? 'gold' : '';
 
             var obj = {
                 nome: nome,

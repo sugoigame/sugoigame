@@ -14,7 +14,6 @@ function get_current_torneio_poneglyph()
         $id++;
     }
 
-    // todo fix to 20 min
     $limite_inscricao = strtotime('+20 minutes', $inicio);
 
     return [
