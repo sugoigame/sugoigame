@@ -257,7 +257,6 @@ function finaliza_chave_torneio($reputacao, $tipo, $vencedor, $perdedor, $person
         "SELECT * FROM tb_torneio_chave
         WHERE torneio_id = ?
         AND ((tripulacao_1_id = ? AND tripulacao_2_id = ?) OR (tripulacao_1_id = ? AND tripulacao_2_id = ?))
-        AND (em_andamento = 1)
         AND (finalizada IS NULL OR finalizada = 0)",
         "iiiii", [$torneio["id"], $vencedor["id"], $perdedor["id"], $perdedor["id"], $vencedor["id"]]
     );
