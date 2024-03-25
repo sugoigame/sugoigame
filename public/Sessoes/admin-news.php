@@ -2,7 +2,7 @@
     <h3> Noticias </h3>
     </div>
     <div class="panel-body">
-        <form action="../Scripts/Adm/enviar-news.php" method="post">
+        <form class="form-inline ajax_form" action="Adm/enviar-news" method="post">
             <label>Nome:</label>
             <input type="text" name="nome" class="form-control"  ></input>
             <label>texto:</label>

@@ -1944,6 +1944,11 @@ class UserDetails
         $navio = $this->connection->run("SELECT * FROM tb_usuario_navio WHERE id = ?", "i", array($id))->fetch_array();
         return ($item_count + $quant) <= $navio["capacidade_inventario"];
     }
+    public function add_ouro($quant,$id) {
+
+		$this->connection->run("UPDATE tb_conta SET gold = gold + ? WHERE conta_id = ?",
+			"ii", array($quant, $id));
+	}
 
     public function add_equipamento($equipamento)
     {

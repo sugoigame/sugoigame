@@ -39,8 +39,7 @@
       tipo: 15
     - cod: 27
       tipo: 15
-    - cod: 189
-      tipo: 15
+
 
 2:
   id: 2
@@ -68,8 +67,7 @@
       tipo: 15
     - cod: 27
       tipo: 15
-    - cod: 189
-      tipo: 15
+
 
 3:
   id: 3
@@ -97,8 +95,7 @@
       tipo: 15
     - cod: 28
       tipo: 15
-    - cod: 189
-      tipo: 15
+
 4:
   id: 4
   nome: Filhote de Rei dos Mares
@@ -126,8 +123,7 @@
       tipo: 15
     - cod: 29
       tipo: 15
-    - cod: 189
-      tipo: 15
+
 5:
   id: 5
   nome: Rei dos Mares
@@ -155,8 +151,7 @@
       tipo: 15
     - cod: 29
       tipo: 15
-    - cod: 189
-      tipo: 15
+
 6:
   id: 6
   nome: Rei dos Mares Gigante
@@ -184,8 +179,7 @@
       tipo: 15
     - cod: 29
       tipo: 15
-    - cod: 189
-      tipo: 15
+
 7:
   id: 7
   nome: Filhote de Dragão Marítmo
@@ -351,8 +345,7 @@
       tipo: 1
     - cod: 15
       tipo: 1
-    - cod: 189
-      tipo: 15
+
 16:
   id: 16
   nome: Tripulação pirata
@@ -379,8 +372,7 @@
       tipo: 1
     - cod: 1
       tipo: 13
-    - cod: 189
-      tipo: 15
+
 17:
   id: 17
   nome: Tripulação pirata
@@ -411,8 +403,7 @@
       tipo: 0
     - cod: 55
       tipo: 0
-    - cod: 189
-      tipo: 15
+
 18:
   id: 18
   nome: Tripulação pirata
@@ -445,8 +436,7 @@
       tipo: 0
     - cod: 51
       tipo: 15
-    - cod: 189
-      tipo: 15
+
 19:
   id: 19
   nome: Tripulação pirata
@@ -478,8 +468,6 @@
     - cod: 110
       tipo: 0
     - cod: 51
-      tipo: 15
-    - cod: 189
       tipo: 15
 20:
   id: 20
@@ -515,8 +503,7 @@
       tipo: 15
     - cod: 51
       tipo: 15
-    - cod: 189
-      tipo: 15
+
 21:
   id: 21
   nome: Tripulação pirata
@@ -555,8 +542,7 @@
       tipo: 15
     - cod: 56
       tipo: 15
-    - cod: 189
-      tipo: 15
+
 22: # Ilha Dawn
   id: 22
   nome: Higuma
