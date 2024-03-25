@@ -7,7 +7,7 @@ $protector->must_be_out_of_any_kind_of_combat();
 $personagens = array();
 
 foreach ($userDetails->personagens as $pers) {
-    if ($pers["hp"] <= $pers["hp_max"]) {
+    if ($pers["hp"] < $pers["hp_max"]) {
         $personagens[] = $pers;
     }
 }
