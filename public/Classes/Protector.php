@@ -203,6 +203,8 @@ class Protector
             case "admin-combinacaoequips":
             case "admin-batalhas":
             case "admin-reagents":
+            case "admin-inserir-itens":
+            case "admin-inserir-prof":
             case "combateAssistirAdm":
                 $this->must_be_gm();
                 break;
