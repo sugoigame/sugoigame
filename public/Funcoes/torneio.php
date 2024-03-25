@@ -176,8 +176,8 @@ function inicia_torneio($torneio)
 
             $quartas[2]["tripulacao_1_id"] = $inscritos[2]["tripulacao_id"];
             $quartas[2]["tripulacao_2_id"] = $inscritos[3]["tripulacao_id"];
-            $quartas[1]["limite_inicio"] = strtotime($limite_inicio_1_luta, $torneio["limite_inscricao"]);
-            $quartas[1]["limite_fim"] = strtotime($limite_fim_1_luta, $torneio["limite_inscricao"]);
+            $quartas[2]["limite_inicio"] = strtotime($limite_inicio_1_luta, $torneio["limite_inscricao"]);
+            $quartas[2]["limite_fim"] = strtotime($limite_fim_1_luta, $torneio["limite_inscricao"]);
 
             $semi_finais[0]["limite_inicio"] = strtotime($limite_inicio_2_luta, $torneio["limite_inscricao"]);
             $semi_finais[0]["limite_fim"] = strtotime($limite_fim_2_luta, $torneio["limite_inscricao"]);

@@ -1,7 +1,6 @@
  -- IMPORTANTE: HABILITAR NOVAMENTE APOS CRIAR TABELAS
 SET FOREIGN_KEY_CHECKS=0;
-
--- sugoi_v2.chat definition
+-- sugoi.chat definition
 
 CREATE TABLE `chat` (
   `id_message` int NOT NULL AUTO_INCREMENT,
@@ -11,10 +10,10 @@ CREATE TABLE `chat` (
   `canal` varchar(255) DEFAULT NULL,
   `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_message`)
-) ENGINE=InnoDB AUTO_INCREMENT=8211 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=8235 DEFAULT CHARSET=utf8mb3;
 
 
--- sugoi_v2.tb_akuma definition
+-- sugoi.tb_akuma definition
 
 CREATE TABLE `tb_akuma` (
   `cod` int(6) unsigned zerofill NOT NULL,
@@ -29,7 +28,7 @@ CREATE TABLE `tb_akuma` (
 ) ENGINE=InnoDB AUTO_INCREMENT=660 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_alianca definition
+-- sugoi.tb_alianca definition
 
 CREATE TABLE `tb_alianca` (
   `cod_alianca` int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -53,7 +52,7 @@ CREATE TABLE `tb_alianca` (
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_alianca_guerra definition
+-- sugoi.tb_alianca_guerra definition
 
 CREATE TABLE `tb_alianca_guerra` (
   `cod_alianca` int(6) unsigned zerofill NOT NULL,
@@ -64,7 +63,7 @@ CREATE TABLE `tb_alianca_guerra` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_alianca_shop definition
+-- sugoi.tb_alianca_shop definition
 
 CREATE TABLE `tb_alianca_shop` (
   `cod` int unsigned NOT NULL,
@@ -75,14 +74,14 @@ CREATE TABLE `tb_alianca_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ban definition
+-- sugoi.tb_ban definition
 
 CREATE TABLE `tb_ban` (
   `ip` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_boss definition
+-- sugoi.tb_boss definition
 
 CREATE TABLE `tb_boss` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -92,7 +91,7 @@ CREATE TABLE `tb_boss` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_buff_global definition
+-- sugoi.tb_buff_global definition
 
 CREATE TABLE `tb_buff_global` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -102,7 +101,7 @@ CREATE TABLE `tb_buff_global` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_coliseu_itens definition
+-- sugoi.tb_coliseu_itens definition
 
 CREATE TABLE `tb_coliseu_itens` (
   `cod` int(6) unsigned zerofill NOT NULL,
@@ -112,7 +111,7 @@ CREATE TABLE `tb_coliseu_itens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_buff_npc definition
+-- sugoi.tb_combate_buff_npc definition
 
 CREATE TABLE `tb_combate_buff_npc` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -124,7 +123,7 @@ CREATE TABLE `tb_combate_buff_npc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_log_personagem_morto definition
+-- sugoi.tb_combate_log_personagem_morto definition
 
 CREATE TABLE `tb_combate_log_personagem_morto` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -133,10 +132,10 @@ CREATE TABLE `tb_combate_log_personagem_morto` (
   `momento` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `personagem_id` int(10) unsigned zerofill DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29541 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29590 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combinacoes definition
+-- sugoi.tb_combinacoes definition
 
 CREATE TABLE `tb_combinacoes` (
   `1` int NOT NULL,
@@ -161,7 +160,7 @@ CREATE TABLE `tb_combinacoes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combinacoes_artesao definition
+-- sugoi.tb_combinacoes_artesao definition
 
 CREATE TABLE `tb_combinacoes_artesao` (
   `cod_receita` int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -199,7 +198,7 @@ CREATE TABLE `tb_combinacoes_artesao` (
 ) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combinacoes_artesao_aleatorio definition
+-- sugoi.tb_combinacoes_artesao_aleatorio definition
 
 CREATE TABLE `tb_combinacoes_artesao_aleatorio` (
   `receita` int(6) unsigned zerofill NOT NULL,
@@ -209,7 +208,7 @@ CREATE TABLE `tb_combinacoes_artesao_aleatorio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combinacoes_carpinteiro definition
+-- sugoi.tb_combinacoes_carpinteiro definition
 
 CREATE TABLE `tb_combinacoes_carpinteiro` (
   `cod_receita` int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -247,7 +246,7 @@ CREATE TABLE `tb_combinacoes_carpinteiro` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combinacoes_carpinteiro_aleatorio definition
+-- sugoi.tb_combinacoes_carpinteiro_aleatorio definition
 
 CREATE TABLE `tb_combinacoes_carpinteiro_aleatorio` (
   `receita` int(6) unsigned zerofill NOT NULL,
@@ -257,7 +256,7 @@ CREATE TABLE `tb_combinacoes_carpinteiro_aleatorio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combinacoes_forja definition
+-- sugoi.tb_combinacoes_forja definition
 
 CREATE TABLE `tb_combinacoes_forja` (
   `cod_receita` int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -295,7 +294,7 @@ CREATE TABLE `tb_combinacoes_forja` (
 ) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combinacoes_forja_aleatorio definition
+-- sugoi.tb_combinacoes_forja_aleatorio definition
 
 CREATE TABLE `tb_combinacoes_forja_aleatorio` (
   `receita` int(6) unsigned zerofill NOT NULL,
@@ -305,7 +304,7 @@ CREATE TABLE `tb_combinacoes_forja_aleatorio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_conta definition
+-- sugoi.tb_conta definition
 
 CREATE TABLE `tb_conta` (
   `conta_id` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -315,7 +314,7 @@ CREATE TABLE `tb_conta` (
   `senha` mediumtext CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `nome` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `cookie` varchar(32) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `cookie` varchar(32) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `ativacao` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `gold` int unsigned DEFAULT '0',
   `fbid` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
@@ -326,10 +325,10 @@ CREATE TABLE `tb_conta` (
   PRIMARY KEY (`conta_id`),
   UNIQUE KEY `email` (`email`),
   KEY `tripulacao_id` (`tripulacao_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=877 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=901 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_equipamentos definition
+-- sugoi.tb_equipamentos definition
 
 CREATE TABLE `tb_equipamentos` (
   `item` int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -348,7 +347,7 @@ CREATE TABLE `tb_equipamentos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=537 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_era_hall definition
+-- sugoi.tb_era_hall definition
 
 CREATE TABLE `tb_era_hall` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -362,7 +361,7 @@ CREATE TABLE `tb_era_hall` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_forum_categoria definition
+-- sugoi.tb_forum_categoria definition
 
 CREATE TABLE `tb_forum_categoria` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -376,7 +375,7 @@ CREATE TABLE `tb_forum_categoria` (
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_habilidades definition
+-- sugoi.tb_habilidades definition
 
 CREATE TABLE `tb_habilidades` (
   `habilidade_id` int(4) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -402,7 +401,7 @@ CREATE TABLE `tb_habilidades` (
 ) ENGINE=InnoDB AUTO_INCREMENT=398 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ilha_bonus_ativo definition
+-- sugoi.tb_ilha_bonus_ativo definition
 
 CREATE TABLE `tb_ilha_bonus_ativo` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -415,7 +414,7 @@ CREATE TABLE `tb_ilha_bonus_ativo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ilha_itens definition
+-- sugoi.tb_ilha_itens definition
 
 CREATE TABLE `tb_ilha_itens` (
   `ilha` int(4) unsigned zerofill NOT NULL,
@@ -425,7 +424,7 @@ CREATE TABLE `tb_ilha_itens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ilha_mercador definition
+-- sugoi.tb_ilha_mercador definition
 
 CREATE TABLE `tb_ilha_mercador` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -438,7 +437,7 @@ CREATE TABLE `tb_ilha_mercador` (
 ) ENGINE=InnoDB AUTO_INCREMENT=316 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ilha_missoes definition
+-- sugoi.tb_ilha_missoes definition
 
 CREATE TABLE `tb_ilha_missoes` (
   `ilha` int(4) unsigned zerofill NOT NULL,
@@ -448,7 +447,7 @@ CREATE TABLE `tb_ilha_missoes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ilha_mod definition
+-- sugoi.tb_ilha_mod definition
 
 CREATE TABLE `tb_ilha_mod` (
   `ilha` int(4) unsigned zerofill NOT NULL,
@@ -458,7 +457,7 @@ CREATE TABLE `tb_ilha_mod` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ilha_personagens definition
+-- sugoi.tb_ilha_personagens definition
 
 CREATE TABLE `tb_ilha_personagens` (
   `ilha` int(4) unsigned zerofill NOT NULL,
@@ -467,7 +466,7 @@ CREATE TABLE `tb_ilha_personagens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ilha_profissoes definition
+-- sugoi.tb_ilha_profissoes definition
 
 CREATE TABLE `tb_ilha_profissoes` (
   `ilha` int(4) unsigned zerofill NOT NULL,
@@ -477,7 +476,7 @@ CREATE TABLE `tb_ilha_profissoes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ilha_recurso definition
+-- sugoi.tb_ilha_recurso definition
 
 CREATE TABLE `tb_ilha_recurso` (
   `ilha` int unsigned NOT NULL,
@@ -489,7 +488,7 @@ CREATE TABLE `tb_ilha_recurso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ilha_recurso_venda definition
+-- sugoi.tb_ilha_recurso_venda definition
 
 CREATE TABLE `tb_ilha_recurso_venda` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -501,7 +500,7 @@ CREATE TABLE `tb_ilha_recurso_venda` (
 ) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_item_acessorio definition
+-- sugoi.tb_item_acessorio definition
 
 CREATE TABLE `tb_item_acessorio` (
   `cod_acessorio` int(4) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -515,7 +514,7 @@ CREATE TABLE `tb_item_acessorio` (
 ) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_item_comida definition
+-- sugoi.tb_item_comida definition
 
 CREATE TABLE `tb_item_comida` (
   `cod_comida` int NOT NULL AUTO_INCREMENT,
@@ -530,7 +529,7 @@ CREATE TABLE `tb_item_comida` (
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_item_equipamentos definition
+-- sugoi.tb_item_equipamentos definition
 
 CREATE TABLE `tb_item_equipamentos` (
   `item` int(6) unsigned zerofill NOT NULL,
@@ -549,10 +548,10 @@ CREATE TABLE `tb_item_equipamentos` (
   `requisito` int NOT NULL,
   PRIMARY KEY (`cod_equipamento`),
   KEY `item` (`item`)
-) ENGINE=InnoDB AUTO_INCREMENT=30279 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30316 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_item_mapa definition
+-- sugoi.tb_item_mapa definition
 
 CREATE TABLE `tb_item_mapa` (
   `cod_mapa` int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -562,10 +561,10 @@ CREATE TABLE `tb_item_mapa` (
   `desenho` longtext CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
   PRIMARY KEY (`cod_mapa`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=208 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=221 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_item_mapa_visivel definition
+-- sugoi.tb_item_mapa_visivel definition
 
 CREATE TABLE `tb_item_mapa_visivel` (
   `cod_mapa` int(6) unsigned zerofill NOT NULL,
@@ -575,7 +574,7 @@ CREATE TABLE `tb_item_mapa_visivel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_item_missao definition
+-- sugoi.tb_item_missao definition
 
 CREATE TABLE `tb_item_missao` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -589,10 +588,10 @@ CREATE TABLE `tb_item_missao` (
   `method` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `rdm_id` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4365 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4408 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_item_navio_canhao definition
+-- sugoi.tb_item_navio_canhao definition
 
 CREATE TABLE `tb_item_navio_canhao` (
   `cod_canhao` int(4) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -607,7 +606,7 @@ CREATE TABLE `tb_item_navio_canhao` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_item_navio_casco definition
+-- sugoi.tb_item_navio_casco definition
 
 CREATE TABLE `tb_item_navio_casco` (
   `cod_casco` int(4) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -623,7 +622,7 @@ CREATE TABLE `tb_item_navio_casco` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_item_navio_leme definition
+-- sugoi.tb_item_navio_leme definition
 
 CREATE TABLE `tb_item_navio_leme` (
   `cod_leme` int(4) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -638,7 +637,7 @@ CREATE TABLE `tb_item_navio_leme` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_item_navio_velas definition
+-- sugoi.tb_item_navio_velas definition
 
 CREATE TABLE `tb_item_navio_velas` (
   `cod_velas` int(4) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -653,7 +652,7 @@ CREATE TABLE `tb_item_navio_velas` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_item_pose definition
+-- sugoi.tb_item_pose definition
 
 CREATE TABLE `tb_item_pose` (
   `cod_pose` int NOT NULL AUTO_INCREMENT,
@@ -664,7 +663,7 @@ CREATE TABLE `tb_item_pose` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_item_reagents definition
+-- sugoi.tb_item_reagents definition
 
 CREATE TABLE `tb_item_reagents` (
   `cod_reagent` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -682,7 +681,7 @@ CREATE TABLE `tb_item_reagents` (
 ) ENGINE=InnoDB AUTO_INCREMENT=208 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_item_remedio definition
+-- sugoi.tb_item_remedio definition
 
 CREATE TABLE `tb_item_remedio` (
   `cod_remedio` int NOT NULL AUTO_INCREMENT,
@@ -697,7 +696,7 @@ CREATE TABLE `tb_item_remedio` (
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_mapa_rdm definition
+-- sugoi.tb_mapa_rdm definition
 
 CREATE TABLE `tb_mapa_rdm` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -710,7 +709,7 @@ CREATE TABLE `tb_mapa_rdm` (
 ) ENGINE=InnoDB AUTO_INCREMENT=35814 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_mapa_zona_exploracao definition
+-- sugoi.tb_mapa_zona_exploracao definition
 
 CREATE TABLE `tb_mapa_zona_exploracao` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -721,7 +720,7 @@ CREATE TABLE `tb_mapa_zona_exploracao` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_mapa_zona_mergulho definition
+-- sugoi.tb_mapa_zona_mergulho definition
 
 CREATE TABLE `tb_mapa_zona_mergulho` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -732,7 +731,7 @@ CREATE TABLE `tb_mapa_zona_mergulho` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_mapa_zona_rdm definition
+-- sugoi.tb_mapa_zona_rdm definition
 
 CREATE TABLE `tb_mapa_zona_rdm` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -743,7 +742,7 @@ CREATE TABLE `tb_mapa_zona_rdm` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_mensagens_globais definition
+-- sugoi.tb_mensagens_globais definition
 
 CREATE TABLE `tb_mensagens_globais` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -754,7 +753,7 @@ CREATE TABLE `tb_mensagens_globais` (
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_mini_eventos definition
+-- sugoi.tb_mini_eventos definition
 
 CREATE TABLE `tb_mini_eventos` (
   `id` bigint unsigned NOT NULL,
@@ -765,7 +764,7 @@ CREATE TABLE `tb_mini_eventos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_natal definition
+-- sugoi.tb_natal definition
 
 CREATE TABLE `tb_natal` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -774,7 +773,7 @@ CREATE TABLE `tb_natal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_navio definition
+-- sugoi.tb_navio definition
 
 CREATE TABLE `tb_navio` (
   `cod_navio` int(4) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -787,17 +786,17 @@ CREATE TABLE `tb_navio` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_news_coo definition
+-- sugoi.tb_news_coo definition
 
 CREATE TABLE `tb_news_coo` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `msg` varchar(255) NOT NULL,
   `data` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5080 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5083 DEFAULT CHARSET=utf8mb3;
 
 
--- sugoi_v2.tb_noticias definition
+-- sugoi.tb_noticias definition
 
 CREATE TABLE `tb_noticias` (
   `cod_noticia` int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -810,7 +809,7 @@ CREATE TABLE `tb_noticias` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ranking_fa definition
+-- sugoi.tb_ranking_fa definition
 
 CREATE TABLE `tb_ranking_fa` (
   `posicao` int NOT NULL AUTO_INCREMENT,
@@ -825,7 +824,7 @@ CREATE TABLE `tb_ranking_fa` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2620 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ranking_fugas definition
+-- sugoi.tb_ranking_fugas definition
 
 CREATE TABLE `tb_ranking_fugas` (
   `posicao` int NOT NULL,
@@ -839,7 +838,7 @@ CREATE TABLE `tb_ranking_fugas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ranking_reputacao definition
+-- sugoi.tb_ranking_reputacao definition
 
 CREATE TABLE `tb_ranking_reputacao` (
   `posicao` int NOT NULL AUTO_INCREMENT,
@@ -853,7 +852,7 @@ CREATE TABLE `tb_ranking_reputacao` (
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ranking_reputacao_mensal definition
+-- sugoi.tb_ranking_reputacao_mensal definition
 
 CREATE TABLE `tb_ranking_reputacao_mensal` (
   `posicao` int NOT NULL AUTO_INCREMENT,
@@ -867,7 +866,7 @@ CREATE TABLE `tb_ranking_reputacao_mensal` (
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ranking_score_atirador definition
+-- sugoi.tb_ranking_score_atirador definition
 
 CREATE TABLE `tb_ranking_score_atirador` (
   `posicao` int NOT NULL AUTO_INCREMENT,
@@ -882,7 +881,7 @@ CREATE TABLE `tb_ranking_score_atirador` (
 ) ENGINE=InnoDB AUTO_INCREMENT=480 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ranking_score_espadachim definition
+-- sugoi.tb_ranking_score_espadachim definition
 
 CREATE TABLE `tb_ranking_score_espadachim` (
   `posicao` int NOT NULL AUTO_INCREMENT,
@@ -897,7 +896,7 @@ CREATE TABLE `tb_ranking_score_espadachim` (
 ) ENGINE=InnoDB AUTO_INCREMENT=824 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ranking_score_lutador definition
+-- sugoi.tb_ranking_score_lutador definition
 
 CREATE TABLE `tb_ranking_score_lutador` (
   `posicao` int NOT NULL AUTO_INCREMENT,
@@ -912,7 +911,7 @@ CREATE TABLE `tb_ranking_score_lutador` (
 ) ENGINE=InnoDB AUTO_INCREMENT=525 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ranking_vd definition
+-- sugoi.tb_ranking_vd definition
 
 CREATE TABLE `tb_ranking_vd` (
   `posicao` int NOT NULL,
@@ -926,7 +925,7 @@ CREATE TABLE `tb_ranking_vd` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ranking_vitorias definition
+-- sugoi.tb_ranking_vitorias definition
 
 CREATE TABLE `tb_ranking_vitorias` (
   `posicao` int NOT NULL,
@@ -940,7 +939,7 @@ CREATE TABLE `tb_ranking_vitorias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_realizacoes definition
+-- sugoi.tb_realizacoes definition
 
 CREATE TABLE `tb_realizacoes` (
   `cod_realizacao` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -954,7 +953,7 @@ CREATE TABLE `tb_realizacoes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=279 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_recompensa_recebida_incursao definition
+-- sugoi.tb_recompensa_recebida_incursao definition
 
 CREATE TABLE `tb_recompensa_recebida_incursao` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -963,7 +962,7 @@ CREATE TABLE `tb_recompensa_recebida_incursao` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_relatorio definition
+-- sugoi.tb_relatorio definition
 
 CREATE TABLE `tb_relatorio` (
   `combate` bigint(20) unsigned zerofill NOT NULL,
@@ -980,7 +979,7 @@ CREATE TABLE `tb_relatorio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_relatorio_afetados definition
+-- sugoi.tb_relatorio_afetados definition
 
 CREATE TABLE `tb_relatorio_afetados` (
   `combate` bigint(20) unsigned zerofill NOT NULL,
@@ -1002,7 +1001,7 @@ CREATE TABLE `tb_relatorio_afetados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_relatorio_diario definition
+-- sugoi.tb_relatorio_diario definition
 
 CREATE TABLE `tb_relatorio_diario` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -1017,7 +1016,7 @@ CREATE TABLE `tb_relatorio_diario` (
 ) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_relatorio_diario_acesso definition
+-- sugoi.tb_relatorio_diario_acesso definition
 
 CREATE TABLE `tb_relatorio_diario_acesso` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -1027,7 +1026,7 @@ CREATE TABLE `tb_relatorio_diario_acesso` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5772 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_rnk_patente definition
+-- sugoi.tb_rnk_patente definition
 
 CREATE TABLE `tb_rnk_patente` (
   `patente_id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -1041,7 +1040,7 @@ CREATE TABLE `tb_rnk_patente` (
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_titulos definition
+-- sugoi.tb_titulos definition
 
 CREATE TABLE `tb_titulos` (
   `cod_titulo` int(5) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -1054,7 +1053,7 @@ CREATE TABLE `tb_titulos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=251 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_variavel_global definition
+-- sugoi.tb_variavel_global definition
 
 CREATE TABLE `tb_variavel_global` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1065,7 +1064,7 @@ CREATE TABLE `tb_variavel_global` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_vip_compras definition
+-- sugoi.tb_vip_compras definition
 
 CREATE TABLE `tb_vip_compras` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -1078,10 +1077,10 @@ CREATE TABLE `tb_vip_compras` (
   `referencia` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `gateway` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=363 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=381 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_vip_dobro definition
+-- sugoi.tb_vip_dobro definition
 
 CREATE TABLE `tb_vip_dobro` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -1091,7 +1090,7 @@ CREATE TABLE `tb_vip_dobro` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_vip_pagamentos definition
+-- sugoi.tb_vip_pagamentos definition
 
 CREATE TABLE `tb_vip_pagamentos` (
   `id` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -1101,7 +1100,7 @@ CREATE TABLE `tb_vip_pagamentos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_vip_planos definition
+-- sugoi.tb_vip_planos definition
 
 CREATE TABLE `tb_vip_planos` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -1116,7 +1115,7 @@ CREATE TABLE `tb_vip_planos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_afilhados definition
+-- sugoi.tb_afilhados definition
 
 CREATE TABLE `tb_afilhados` (
   `id` int(11) unsigned zerofill NOT NULL,
@@ -1131,7 +1130,7 @@ CREATE TABLE `tb_afilhados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_akuma_skil_atk definition
+-- sugoi.tb_akuma_skil_atk definition
 
 CREATE TABLE `tb_akuma_skil_atk` (
   `cod_akuma` int(6) unsigned zerofill NOT NULL,
@@ -1151,7 +1150,7 @@ CREATE TABLE `tb_akuma_skil_atk` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2004 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_akuma_skil_buff definition
+-- sugoi.tb_akuma_skil_buff definition
 
 CREATE TABLE `tb_akuma_skil_buff` (
   `cod_akuma` int(6) unsigned zerofill NOT NULL,
@@ -1170,7 +1169,7 @@ CREATE TABLE `tb_akuma_skil_buff` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2685 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_akuma_skil_passiva definition
+-- sugoi.tb_akuma_skil_passiva definition
 
 CREATE TABLE `tb_akuma_skil_passiva` (
   `cod_akuma` int(6) unsigned zerofill NOT NULL,
@@ -1184,7 +1183,7 @@ CREATE TABLE `tb_akuma_skil_passiva` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3377 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_alianca_aliados definition
+-- sugoi.tb_alianca_aliados definition
 
 CREATE TABLE `tb_alianca_aliados` (
   `cod_alianca` int(6) unsigned zerofill NOT NULL,
@@ -1196,7 +1195,7 @@ CREATE TABLE `tb_alianca_aliados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_alianca_banco definition
+-- sugoi.tb_alianca_banco definition
 
 CREATE TABLE `tb_alianca_banco` (
   `cod_alianca` int(6) unsigned zerofill NOT NULL,
@@ -1208,7 +1207,7 @@ CREATE TABLE `tb_alianca_banco` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_alianca_banco_log definition
+-- sugoi.tb_alianca_banco_log definition
 
 CREATE TABLE `tb_alianca_banco_log` (
   `cod_alianca` int(6) unsigned zerofill NOT NULL,
@@ -1221,7 +1220,7 @@ CREATE TABLE `tb_alianca_banco_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_alianca_missoes definition
+-- sugoi.tb_alianca_missoes definition
 
 CREATE TABLE `tb_alianca_missoes` (
   `cod_alianca` int(6) unsigned zerofill NOT NULL,
@@ -1233,7 +1232,7 @@ CREATE TABLE `tb_alianca_missoes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_mini_eventos_concluidos definition
+-- sugoi.tb_mini_eventos_concluidos definition
 
 CREATE TABLE `tb_mini_eventos_concluidos` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1247,7 +1246,7 @@ CREATE TABLE `tb_mini_eventos_concluidos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=328 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_missoes definition
+-- sugoi.tb_missoes definition
 
 CREATE TABLE `tb_missoes` (
   `cod_missao` int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -1269,7 +1268,7 @@ CREATE TABLE `tb_missoes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=512 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_reset_senha_token definition
+-- sugoi.tb_reset_senha_token definition
 
 CREATE TABLE `tb_reset_senha_token` (
   `conta_id` int(10) unsigned zerofill NOT NULL,
@@ -1281,7 +1280,7 @@ CREATE TABLE `tb_reset_senha_token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_rota_mercador definition
+-- sugoi.tb_rota_mercador definition
 
 CREATE TABLE `tb_rota_mercador` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1295,7 +1294,7 @@ CREATE TABLE `tb_rota_mercador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_afilhados_recrutados definition
+-- sugoi.tb_afilhados_recrutados definition
 
 CREATE TABLE `tb_afilhados_recrutados` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -1305,7 +1304,7 @@ CREATE TABLE `tb_afilhados_recrutados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_alianca_convite definition
+-- sugoi.tb_alianca_convite definition
 
 CREATE TABLE `tb_alianca_convite` (
   `cod_alianca` int(6) unsigned zerofill NOT NULL,
@@ -1317,7 +1316,7 @@ CREATE TABLE `tb_alianca_convite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_alianca_guerra_ajuda definition
+-- sugoi.tb_alianca_guerra_ajuda definition
 
 CREATE TABLE `tb_alianca_guerra_ajuda` (
   `cod_alianca` int(6) unsigned zerofill NOT NULL,
@@ -1330,7 +1329,7 @@ CREATE TABLE `tb_alianca_guerra_ajuda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_alianca_guerra_pedidos definition
+-- sugoi.tb_alianca_guerra_pedidos definition
 
 CREATE TABLE `tb_alianca_guerra_pedidos` (
   `cod_alianca` int(6) unsigned zerofill NOT NULL,
@@ -1343,7 +1342,7 @@ CREATE TABLE `tb_alianca_guerra_pedidos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_alianca_membros definition
+-- sugoi.tb_alianca_membros definition
 
 CREATE TABLE `tb_alianca_membros` (
   `cod_alianca` int(6) unsigned zerofill NOT NULL,
@@ -1357,7 +1356,7 @@ CREATE TABLE `tb_alianca_membros` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_amigos definition
+-- sugoi.tb_amigos definition
 
 CREATE TABLE `tb_amigos` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -1370,7 +1369,7 @@ CREATE TABLE `tb_amigos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_boss_damage definition
+-- sugoi.tb_boss_damage definition
 
 CREATE TABLE `tb_boss_damage` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -1383,7 +1382,7 @@ CREATE TABLE `tb_boss_damage` (
 ) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_coliseu_cp definition
+-- sugoi.tb_coliseu_cp definition
 
 CREATE TABLE `tb_coliseu_cp` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -1393,7 +1392,7 @@ CREATE TABLE `tb_coliseu_cp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_coliseu_fila definition
+-- sugoi.tb_coliseu_fila definition
 
 CREATE TABLE `tb_coliseu_fila` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -1414,7 +1413,7 @@ CREATE TABLE `tb_coliseu_fila` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_coliseu_ranking definition
+-- sugoi.tb_coliseu_ranking definition
 
 CREATE TABLE `tb_coliseu_ranking` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -1425,19 +1424,19 @@ CREATE TABLE `tb_coliseu_ranking` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate definition
+-- sugoi.tb_combate definition
 
 CREATE TABLE `tb_combate` (
   `combate` bigint(20) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `id_1` int(6) unsigned zerofill NOT NULL,
   `id_2` int(6) unsigned zerofill NOT NULL,
-  `vez` int NOT NULL,
-  `vez_tempo` double NOT NULL,
-  `passe_1` int NOT NULL,
-  `passe_2` int NOT NULL,
-  `move_1` int NOT NULL,
-  `move_2` int NOT NULL,
-  `relatorio` mediumtext CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `vez` int NOT NULL DEFAULT '0',
+  `vez_tempo` double NOT NULL DEFAULT '0',
+  `passe_1` int NOT NULL DEFAULT '0',
+  `passe_2` int NOT NULL DEFAULT '0',
+  `move_1` int NOT NULL DEFAULT '0',
+  `move_2` int NOT NULL DEFAULT '0',
+  `relatorio` mediumtext CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
   `saiu_1` int NOT NULL DEFAULT '0',
   `saiu_2` int NOT NULL DEFAULT '0',
   `recop_1` double NOT NULL DEFAULT '0',
@@ -1457,10 +1456,10 @@ CREATE TABLE `tb_combate` (
   KEY `id_2` (`id_2`),
   CONSTRAINT `tb_combate_ibfk_1` FOREIGN KEY (`id_1`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tb_combate_ibfk_2` FOREIGN KEY (`id_2`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_apostas definition
+-- sugoi.tb_combate_apostas definition
 
 CREATE TABLE `tb_combate_apostas` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1472,10 +1471,10 @@ CREATE TABLE `tb_combate_apostas` (
   KEY `tb_combate_apostas_tb_combate_combate_fk` (`combate_id`),
   CONSTRAINT `tb_combate_apostas_tb_combate_combate_fk` FOREIGN KEY (`combate_id`) REFERENCES `tb_combate` (`combate`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tb_combate_apostas_tb_usuarios_id_fk` FOREIGN KEY (`tripulacao_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_bot definition
+-- sugoi.tb_combate_bot definition
 
 CREATE TABLE `tb_combate_bot` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1496,10 +1495,10 @@ CREATE TABLE `tb_combate_bot` (
   KEY `tb_combate_bot_tb_ilha_mercador_id_fk` (`mercador`),
   CONSTRAINT `tb_combate_bot_tb_ilha_mercador_id_fk` FOREIGN KEY (`mercador`) REFERENCES `tb_ilha_mercador` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tb_combate_bot_tb_usuarios_id_fk` FOREIGN KEY (`tripulacao_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12219 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12551 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_buff definition
+-- sugoi.tb_combate_buff definition
 
 CREATE TABLE `tb_combate_buff` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -1513,7 +1512,7 @@ CREATE TABLE `tb_combate_buff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_buff_bot definition
+-- sugoi.tb_combate_buff_bot definition
 
 CREATE TABLE `tb_combate_buff_bot` (
   `id` bigint unsigned NOT NULL,
@@ -1527,7 +1526,7 @@ CREATE TABLE `tb_combate_buff_bot` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_desafio definition
+-- sugoi.tb_combate_desafio definition
 
 CREATE TABLE `tb_combate_desafio` (
   `desafiante` int(6) unsigned zerofill NOT NULL,
@@ -1540,7 +1539,7 @@ CREATE TABLE `tb_combate_desafio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_log definition
+-- sugoi.tb_combate_log definition
 
 CREATE TABLE `tb_combate_log` (
   `combate` bigint(20) unsigned zerofill NOT NULL,
@@ -1572,7 +1571,7 @@ CREATE TABLE `tb_combate_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_log_npc definition
+-- sugoi.tb_combate_log_npc definition
 
 CREATE TABLE `tb_combate_log_npc` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1583,10 +1582,10 @@ CREATE TABLE `tb_combate_log_npc` (
   PRIMARY KEY (`id`),
   KEY `tb_combate_log_npc_tb_usuarios_id_fk` (`tripulacao_id`),
   CONSTRAINT `tb_combate_log_npc_tb_usuarios_id_fk` FOREIGN KEY (`tripulacao_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=122445 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=122941 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_npc definition
+-- sugoi.tb_combate_npc definition
 
 CREATE TABLE `tb_combate_npc` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -1606,8 +1605,8 @@ CREATE TABLE `tb_combate_npc` (
   `dano` int NOT NULL DEFAULT '0',
   `armadura` int NOT NULL DEFAULT '0',
   `move` int NOT NULL DEFAULT '5',
-  `relatorio` mediumtext CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `buff_npc` mediumtext CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `relatorio` mediumtext CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `buff_npc` mediumtext CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
   `zona` int NOT NULL DEFAULT '2',
   `boss_id` int unsigned DEFAULT NULL,
   `battle_back` int unsigned DEFAULT NULL,
@@ -1622,7 +1621,7 @@ CREATE TABLE `tb_combate_npc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_personagens definition
+-- sugoi.tb_combate_personagens definition
 
 CREATE TABLE `tb_combate_personagens` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -1641,9 +1640,9 @@ CREATE TABLE `tb_combate_personagens` (
   `vit` int NOT NULL,
   `quadro_x` int NOT NULL,
   `quadro_y` int NOT NULL,
-  `haki_esq` int NOT NULL,
-  `haki_cri` int NOT NULL,
-  `haki_blo` int NOT NULL,
+  `haki_esq` int NOT NULL DEFAULT '0',
+  `haki_cri` int NOT NULL DEFAULT '0',
+  `haki_blo` int NOT NULL DEFAULT '0',
   `fa_ganha` bigint unsigned DEFAULT '0',
   `desistencia` tinyint NOT NULL DEFAULT '0',
   `img` int unsigned DEFAULT NULL,
@@ -1657,7 +1656,7 @@ CREATE TABLE `tb_combate_personagens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_personagens_bot definition
+-- sugoi.tb_combate_personagens_bot definition
 
 CREATE TABLE `tb_combate_personagens_bot` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1681,9 +1680,9 @@ CREATE TABLE `tb_combate_personagens_bot` (
   `vit` int NOT NULL,
   `quadro_x` int NOT NULL,
   `quadro_y` int NOT NULL,
-  `haki_esq` int NOT NULL,
-  `haki_cri` int NOT NULL,
-  `haki_blo` int NOT NULL,
+  `haki_esq` int NOT NULL DEFAULT '0',
+  `haki_cri` int NOT NULL DEFAULT '0',
+  `haki_blo` int NOT NULL DEFAULT '0',
   `categoria_akuma` int DEFAULT NULL,
   `titulo` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `classe` int DEFAULT NULL,
@@ -1692,10 +1691,10 @@ CREATE TABLE `tb_combate_personagens_bot` (
   PRIMARY KEY (`id`),
   KEY `tb_combate_personagens_bot_ibfk_1` (`combate_bot_id`),
   CONSTRAINT `tb_combate_personagens_bot_ibfk_1` FOREIGN KEY (`combate_bot_id`) REFERENCES `tb_combate_bot` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=58864 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59696 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_skil_espera definition
+-- sugoi.tb_combate_skil_espera definition
 
 CREATE TABLE `tb_combate_skil_espera` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -1710,7 +1709,7 @@ CREATE TABLE `tb_combate_skil_espera` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combate_special_effect definition
+-- sugoi.tb_combate_special_effect definition
 
 CREATE TABLE `tb_combate_special_effect` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1730,10 +1729,10 @@ CREATE TABLE `tb_combate_special_effect` (
   CONSTRAINT `tb_combate_special_effect_tb_combate_combate_fk` FOREIGN KEY (`combate_id`) REFERENCES `tb_combate` (`combate`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tb_combate_special_effect_tb_personagens_cod_fk` FOREIGN KEY (`personagem_id`) REFERENCES `tb_personagens` (`cod`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tb_combate_special_effect_tb_usuarios_id_fk` FOREIGN KEY (`tripulacao_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=62554 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=63076 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combinacoes_artesao_conhecidas definition
+-- sugoi.tb_combinacoes_artesao_conhecidas definition
 
 CREATE TABLE `tb_combinacoes_artesao_conhecidas` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1747,7 +1746,7 @@ CREATE TABLE `tb_combinacoes_artesao_conhecidas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combinacoes_carpinteiro_conhecidas definition
+-- sugoi.tb_combinacoes_carpinteiro_conhecidas definition
 
 CREATE TABLE `tb_combinacoes_carpinteiro_conhecidas` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1761,7 +1760,7 @@ CREATE TABLE `tb_combinacoes_carpinteiro_conhecidas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_combinacoes_forja_conhecidas definition
+-- sugoi.tb_combinacoes_forja_conhecidas definition
 
 CREATE TABLE `tb_combinacoes_forja_conhecidas` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1775,7 +1774,7 @@ CREATE TABLE `tb_combinacoes_forja_conhecidas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_dobroes_leilao_log definition
+-- sugoi.tb_dobroes_leilao_log definition
 
 CREATE TABLE `tb_dobroes_leilao_log` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -1792,7 +1791,7 @@ CREATE TABLE `tb_dobroes_leilao_log` (
 ) ENGINE=InnoDB AUTO_INCREMENT=726 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_dobroes_log definition
+-- sugoi.tb_dobroes_log definition
 
 CREATE TABLE `tb_dobroes_log` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -1809,7 +1808,7 @@ CREATE TABLE `tb_dobroes_log` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1348 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_dobroes_oferta definition
+-- sugoi.tb_dobroes_oferta definition
 
 CREATE TABLE `tb_dobroes_oferta` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -1823,7 +1822,7 @@ CREATE TABLE `tb_dobroes_oferta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_evento_amizade_brindes definition
+-- sugoi.tb_evento_amizade_brindes definition
 
 CREATE TABLE `tb_evento_amizade_brindes` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1835,7 +1834,7 @@ CREATE TABLE `tb_evento_amizade_brindes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_evento_amizade_recompensa definition
+-- sugoi.tb_evento_amizade_recompensa definition
 
 CREATE TABLE `tb_evento_amizade_recompensa` (
   `tripulacao_id` int(10) unsigned zerofill NOT NULL,
@@ -1845,7 +1844,7 @@ CREATE TABLE `tb_evento_amizade_recompensa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_evento_chefes definition
+-- sugoi.tb_evento_chefes definition
 
 CREATE TABLE `tb_evento_chefes` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1860,7 +1859,7 @@ CREATE TABLE `tb_evento_chefes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_evento_recompensa definition
+-- sugoi.tb_evento_recompensa definition
 
 CREATE TABLE `tb_evento_recompensa` (
   `tripulacao_id` int(10) unsigned zerofill NOT NULL,
@@ -1870,7 +1869,7 @@ CREATE TABLE `tb_evento_recompensa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_forum_likes definition
+-- sugoi.tb_forum_likes definition
 
 CREATE TABLE `tb_forum_likes` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1886,7 +1885,7 @@ CREATE TABLE `tb_forum_likes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_forum_post definition
+-- sugoi.tb_forum_post definition
 
 CREATE TABLE `tb_forum_post` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1903,7 +1902,7 @@ CREATE TABLE `tb_forum_post` (
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_forum_topico definition
+-- sugoi.tb_forum_topico definition
 
 CREATE TABLE `tb_forum_topico` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1921,7 +1920,7 @@ CREATE TABLE `tb_forum_topico` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_forum_topico_lido definition
+-- sugoi.tb_forum_topico_lido definition
 
 CREATE TABLE `tb_forum_topico_lido` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1933,10 +1932,10 @@ CREATE TABLE `tb_forum_topico_lido` (
   KEY `tb_forum_topico_lido_tb_usuarios_id_fk` (`tripulacao_id`),
   CONSTRAINT `tb_forum_topico_lido_tb_forum_topico_id_fk` FOREIGN KEY (`topico_id`) REFERENCES `tb_forum_topico` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tb_forum_topico_lido_tb_usuarios_id_fk` FOREIGN KEY (`tripulacao_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_gold_log definition
+-- sugoi.tb_gold_log definition
 
 CREATE TABLE `tb_gold_log` (
   `id` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -1947,10 +1946,10 @@ CREATE TABLE `tb_gold_log` (
   PRIMARY KEY (`id`),
   KEY `tb_gold_log_tb_usuarios_id_fk` (`user_id`),
   CONSTRAINT `tb_gold_log_tb_usuarios_id_fk` FOREIGN KEY (`user_id`) REFERENCES `tb_usuarios` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5601 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5610 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_haki_treino definition
+-- sugoi.tb_haki_treino definition
 
 CREATE TABLE `tb_haki_treino` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1962,7 +1961,7 @@ CREATE TABLE `tb_haki_treino` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6496 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ilha_disputa definition
+-- sugoi.tb_ilha_disputa definition
 
 CREATE TABLE `tb_ilha_disputa` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1974,10 +1973,10 @@ CREATE TABLE `tb_ilha_disputa` (
   PRIMARY KEY (`id`),
   KEY `tb_ilha_disputa_tb_usuarios_id_fk` (`vencedor_id`),
   CONSTRAINT `tb_ilha_disputa_tb_usuarios_id_fk` FOREIGN KEY (`vencedor_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ilha_disputa_progresso definition
+-- sugoi.tb_ilha_disputa_progresso definition
 
 CREATE TABLE `tb_ilha_disputa_progresso` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -1990,7 +1989,7 @@ CREATE TABLE `tb_ilha_disputa_progresso` (
 ) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ilha_incursao_protecao definition
+-- sugoi.tb_ilha_incursao_protecao definition
 
 CREATE TABLE `tb_ilha_incursao_protecao` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2003,7 +2002,7 @@ CREATE TABLE `tb_ilha_incursao_protecao` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_ilha_mercador_personagem definition
+-- sugoi.tb_ilha_mercador_personagem definition
 
 CREATE TABLE `tb_ilha_mercador_personagem` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2017,7 +2016,7 @@ CREATE TABLE `tb_ilha_mercador_personagem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_incursao_nivel definition
+-- sugoi.tb_incursao_nivel definition
 
 CREATE TABLE `tb_incursao_nivel` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2027,10 +2026,10 @@ CREATE TABLE `tb_incursao_nivel` (
   PRIMARY KEY (`id`),
   KEY `tb_incursao_nivel_tb_usuarios_id_fk` (`tripulacao_id`),
   CONSTRAINT `tb_incursao_nivel_tb_usuarios_id_fk` FOREIGN KEY (`tripulacao_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1793 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1872 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_incursao_personagem definition
+-- sugoi.tb_incursao_personagem definition
 
 CREATE TABLE `tb_incursao_personagem` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2047,7 +2046,7 @@ CREATE TABLE `tb_incursao_personagem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_incursao_pontos definition
+-- sugoi.tb_incursao_pontos definition
 
 CREATE TABLE `tb_incursao_pontos` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2062,7 +2061,7 @@ CREATE TABLE `tb_incursao_pontos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_incursao_progresso definition
+-- sugoi.tb_incursao_progresso definition
 
 CREATE TABLE `tb_incursao_progresso` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2072,10 +2071,10 @@ CREATE TABLE `tb_incursao_progresso` (
   PRIMARY KEY (`id`),
   KEY `tb_incursao_progresso_tb_usuarios_id_fk` (`tripulacao_id`),
   CONSTRAINT `tb_incursao_progresso_tb_usuarios_id_fk` FOREIGN KEY (`tripulacao_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_incursao_recompensa_recebida definition
+-- sugoi.tb_incursao_recompensa_recebida definition
 
 CREATE TABLE `tb_incursao_recompensa_recebida` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2085,10 +2084,10 @@ CREATE TABLE `tb_incursao_recompensa_recebida` (
   PRIMARY KEY (`id`),
   KEY `tb_incursa_recompensa_recebida_tb_usuarios_id_fk` (`tripulacao_id`),
   CONSTRAINT `tb_incursa_recompensa_recebida_tb_usuarios_id_fk` FOREIGN KEY (`tripulacao_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_inimigos definition
+-- sugoi.tb_inimigos definition
 
 CREATE TABLE `tb_inimigos` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -2103,7 +2102,7 @@ CREATE TABLE `tb_inimigos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_jardim_laftel definition
+-- sugoi.tb_jardim_laftel definition
 
 CREATE TABLE `tb_jardim_laftel` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -2113,7 +2112,7 @@ CREATE TABLE `tb_jardim_laftel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_kanban_item definition
+-- sugoi.tb_kanban_item definition
 
 CREATE TABLE `tb_kanban_item` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -2127,7 +2126,7 @@ CREATE TABLE `tb_kanban_item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_kanban_rate definition
+-- sugoi.tb_kanban_rate definition
 
 CREATE TABLE `tb_kanban_rate` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -2142,7 +2141,7 @@ CREATE TABLE `tb_kanban_rate` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_log_acesso definition
+-- sugoi.tb_log_acesso definition
 
 CREATE TABLE `tb_log_acesso` (
   `conta_id` int(10) unsigned zerofill NOT NULL,
@@ -2156,7 +2155,7 @@ CREATE TABLE `tb_log_acesso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_mapa definition
+-- sugoi.tb_mapa definition
 
 CREATE TABLE `tb_mapa` (
   `x` int NOT NULL,
@@ -2184,7 +2183,7 @@ CREATE TABLE `tb_mapa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_mapa_contem definition
+-- sugoi.tb_mapa_contem definition
 
 CREATE TABLE `tb_mapa_contem` (
   `increment_id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2201,7 +2200,7 @@ CREATE TABLE `tb_mapa_contem` (
 ) ENGINE=InnoDB AUTO_INCREMENT=188193 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_marcenaria_reparos definition
+-- sugoi.tb_marcenaria_reparos definition
 
 CREATE TABLE `tb_marcenaria_reparos` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -2212,7 +2211,7 @@ CREATE TABLE `tb_marcenaria_reparos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_mensagens definition
+-- sugoi.tb_mensagens definition
 
 CREATE TABLE `tb_mensagens` (
   `cod_mensagem` int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -2230,7 +2229,7 @@ CREATE TABLE `tb_mensagens` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2621 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_mensagens_globais_lidas definition
+-- sugoi.tb_mensagens_globais_lidas definition
 
 CREATE TABLE `tb_mensagens_globais_lidas` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -2245,7 +2244,7 @@ CREATE TABLE `tb_mensagens_globais_lidas` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_missoes_caca_diario definition
+-- sugoi.tb_missoes_caca_diario definition
 
 CREATE TABLE `tb_missoes_caca_diario` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2257,7 +2256,7 @@ CREATE TABLE `tb_missoes_caca_diario` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_missoes_chefe_ilha definition
+-- sugoi.tb_missoes_chefe_ilha definition
 
 CREATE TABLE `tb_missoes_chefe_ilha` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -2268,10 +2267,10 @@ CREATE TABLE `tb_missoes_chefe_ilha` (
   PRIMARY KEY (`id`),
   KEY `tb_missoes_chefe_ilha_tb_usuarios_id_fk` (`tripulacao_id`),
   CONSTRAINT `tb_missoes_chefe_ilha_tb_usuarios_id_fk` FOREIGN KEY (`tripulacao_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1376 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1468 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_missoes_concluidas definition
+-- sugoi.tb_missoes_concluidas definition
 
 CREATE TABLE `tb_missoes_concluidas` (
   `increment_id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2281,10 +2280,10 @@ CREATE TABLE `tb_missoes_concluidas` (
   KEY `cod_missao` (`cod_missao`),
   KEY `tb_missoes_concluidas_tb_usuarios_id_fk` (`id`),
   CONSTRAINT `tb_missoes_concluidas_tb_usuarios_id_fk` FOREIGN KEY (`id`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13766 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14619 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_missoes_concluidas_dia definition
+-- sugoi.tb_missoes_concluidas_dia definition
 
 CREATE TABLE `tb_missoes_concluidas_dia` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2294,10 +2293,10 @@ CREATE TABLE `tb_missoes_concluidas_dia` (
   PRIMARY KEY (`id`),
   KEY `tb_missoes_concluidas_dia_tb_usuarios_id_fk` (`tripulacao_id`),
   CONSTRAINT `tb_missoes_concluidas_dia_tb_usuarios_id_fk` FOREIGN KEY (`tripulacao_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_missoes_iniciadas definition
+-- sugoi.tb_missoes_iniciadas definition
 
 CREATE TABLE `tb_missoes_iniciadas` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -2314,7 +2313,7 @@ CREATE TABLE `tb_missoes_iniciadas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_missoes_r definition
+-- sugoi.tb_missoes_r definition
 
 CREATE TABLE `tb_missoes_r` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -2327,7 +2326,7 @@ CREATE TABLE `tb_missoes_r` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_missoes_r_dia definition
+-- sugoi.tb_missoes_r_dia definition
 
 CREATE TABLE `tb_missoes_r_dia` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -2338,7 +2337,7 @@ CREATE TABLE `tb_missoes_r_dia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_noticia_comment definition
+-- sugoi.tb_noticia_comment definition
 
 CREATE TABLE `tb_noticia_comment` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2355,7 +2354,7 @@ CREATE TABLE `tb_noticia_comment` (
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_noticia_lida definition
+-- sugoi.tb_noticia_lida definition
 
 CREATE TABLE `tb_noticia_lida` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2370,7 +2369,7 @@ CREATE TABLE `tb_noticia_lida` (
 ) ENGINE=InnoDB AUTO_INCREMENT=408 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_noticia_likes definition
+-- sugoi.tb_noticia_likes definition
 
 CREATE TABLE `tb_noticia_likes` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2386,7 +2385,7 @@ CREATE TABLE `tb_noticia_likes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_obstaculos definition
+-- sugoi.tb_obstaculos definition
 
 CREATE TABLE `tb_obstaculos` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2401,7 +2400,7 @@ CREATE TABLE `tb_obstaculos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2162 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_personagem_equip_treino definition
+-- sugoi.tb_personagem_equip_treino definition
 
 CREATE TABLE `tb_personagem_equip_treino` (
   `cod` int(6) unsigned zerofill NOT NULL,
@@ -2412,7 +2411,7 @@ CREATE TABLE `tb_personagem_equip_treino` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_personagem_equipamentos definition
+-- sugoi.tb_personagem_equipamentos definition
 
 CREATE TABLE `tb_personagem_equipamentos` (
   `cod` int(6) unsigned zerofill NOT NULL,
@@ -2450,7 +2449,7 @@ CREATE TABLE `tb_personagem_equipamentos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_personagem_habilidade definition
+-- sugoi.tb_personagem_habilidade definition
 
 CREATE TABLE `tb_personagem_habilidade` (
   `personagem_habilidade_id` bigint(20) unsigned zerofill NOT NULL AUTO_INCREMENT,
@@ -2467,7 +2466,7 @@ CREATE TABLE `tb_personagem_habilidade` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_personagem_habilidade_pontos definition
+-- sugoi.tb_personagem_habilidade_pontos definition
 
 CREATE TABLE `tb_personagem_habilidade_pontos` (
   `personagem_id` int(6) unsigned zerofill NOT NULL,
@@ -2480,7 +2479,7 @@ CREATE TABLE `tb_personagem_habilidade_pontos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_personagem_titulo definition
+-- sugoi.tb_personagem_titulo definition
 
 CREATE TABLE `tb_personagem_titulo` (
   `cod` int(6) unsigned zerofill NOT NULL,
@@ -2492,7 +2491,7 @@ CREATE TABLE `tb_personagem_titulo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_personagens definition
+-- sugoi.tb_personagens definition
 
 CREATE TABLE `tb_personagens` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -2571,10 +2570,10 @@ CREATE TABLE `tb_personagens` (
   CONSTRAINT `tb_personagens_ibfk_2` FOREIGN KEY (`titulo`) REFERENCES `tb_titulos` (`cod_titulo`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `tb_personagens_ibfk_3` FOREIGN KEY (`akuma`) REFERENCES `tb_akuma` (`cod_akuma`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `tb_personagens_tb_arena_build_id_fk` FOREIGN KEY (`arena_selected_build_id`) REFERENCES `tb_arena_build` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3777 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3886 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_personagens_skil definition
+-- sugoi.tb_personagens_skil definition
 
 CREATE TABLE `tb_personagens_skil` (
   `cod` int(6) unsigned zerofill NOT NULL,
@@ -2596,7 +2595,7 @@ CREATE TABLE `tb_personagens_skil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_pve definition
+-- sugoi.tb_pve definition
 
 CREATE TABLE `tb_pve` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -2607,7 +2606,7 @@ CREATE TABLE `tb_pve` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_pvp_imune definition
+-- sugoi.tb_pvp_imune definition
 
 CREATE TABLE `tb_pvp_imune` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2622,7 +2621,7 @@ CREATE TABLE `tb_pvp_imune` (
 ) ENGINE=InnoDB AUTO_INCREMENT=268 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_realizacoes_concluidas definition
+-- sugoi.tb_realizacoes_concluidas definition
 
 CREATE TABLE `tb_realizacoes_concluidas` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -2639,7 +2638,7 @@ CREATE TABLE `tb_realizacoes_concluidas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_recompensa_recebida_era definition
+-- sugoi.tb_recompensa_recebida_era definition
 
 CREATE TABLE `tb_recompensa_recebida_era` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2650,7 +2649,7 @@ CREATE TABLE `tb_recompensa_recebida_era` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_recompensa_recebida_grandes_poderes definition
+-- sugoi.tb_recompensa_recebida_grandes_poderes definition
 
 CREATE TABLE `tb_recompensa_recebida_grandes_poderes` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2661,7 +2660,7 @@ CREATE TABLE `tb_recompensa_recebida_grandes_poderes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_recompensa_recebida_haki definition
+-- sugoi.tb_recompensa_recebida_haki definition
 
 CREATE TABLE `tb_recompensa_recebida_haki` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2672,7 +2671,7 @@ CREATE TABLE `tb_recompensa_recebida_haki` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_resets definition
+-- sugoi.tb_resets definition
 
 CREATE TABLE `tb_resets` (
   `tipo` int NOT NULL,
@@ -2682,7 +2681,7 @@ CREATE TABLE `tb_resets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_rotas definition
+-- sugoi.tb_rotas definition
 
 CREATE TABLE `tb_rotas` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -2695,7 +2694,7 @@ CREATE TABLE `tb_rotas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_torneio definition
+-- sugoi.tb_torneio definition
 
 CREATE TABLE `tb_torneio` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -2708,10 +2707,10 @@ CREATE TABLE `tb_torneio` (
   PRIMARY KEY (`id`),
   KEY `tb_torneio_tb_usuarios_FK` (`vencedor`),
   CONSTRAINT `tb_torneio_tb_usuarios_FK` FOREIGN KEY (`vencedor`) REFERENCES `tb_usuarios` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=161 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_torneio_chave definition
+-- sugoi.tb_torneio_chave definition
 
 CREATE TABLE `tb_torneio_chave` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -2740,10 +2739,10 @@ CREATE TABLE `tb_torneio_chave` (
   CONSTRAINT `tb_torneio_chave_tb_torneio_FK` FOREIGN KEY (`torneio_id`) REFERENCES `tb_torneio` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tb_torneio_chave_tb_usuarios_FK` FOREIGN KEY (`tripulacao_1_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `tb_torneio_chave_tb_usuarios_FK_1` FOREIGN KEY (`tripulacao_2_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1247 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1597 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_torneio_inscricao definition
+-- sugoi.tb_torneio_inscricao definition
 
 CREATE TABLE `tb_torneio_inscricao` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -2755,10 +2754,10 @@ CREATE TABLE `tb_torneio_inscricao` (
   KEY `tb_torneio_inscricao_tb_usuarios_FK` (`tripulacao_id`),
   CONSTRAINT `tb_torneio_inscricao_tb_torneio_FK` FOREIGN KEY (`torneio_id`) REFERENCES `tb_torneio` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tb_torneio_inscricao_tb_usuarios_FK` FOREIGN KEY (`tripulacao_id`) REFERENCES `tb_usuarios` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_tripulacao_animacoes_skills definition
+-- sugoi.tb_tripulacao_animacoes_skills definition
 
 CREATE TABLE `tb_tripulacao_animacoes_skills` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2771,7 +2770,7 @@ CREATE TABLE `tb_tripulacao_animacoes_skills` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1506 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_tripulacao_bordas definition
+-- sugoi.tb_tripulacao_bordas definition
 
 CREATE TABLE `tb_tripulacao_bordas` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2784,7 +2783,7 @@ CREATE TABLE `tb_tripulacao_bordas` (
 ) ENGINE=InnoDB AUTO_INCREMENT=363 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_tripulacao_buff definition
+-- sugoi.tb_tripulacao_buff definition
 
 CREATE TABLE `tb_tripulacao_buff` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -2797,7 +2796,7 @@ CREATE TABLE `tb_tripulacao_buff` (
 ) ENGINE=InnoDB AUTO_INCREMENT=205 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_tripulacao_formacao definition
+-- sugoi.tb_tripulacao_formacao definition
 
 CREATE TABLE `tb_tripulacao_formacao` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2812,7 +2811,7 @@ CREATE TABLE `tb_tripulacao_formacao` (
 ) ENGINE=InnoDB AUTO_INCREMENT=450 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_tripulacao_skin_navio definition
+-- sugoi.tb_tripulacao_skin_navio definition
 
 CREATE TABLE `tb_tripulacao_skin_navio` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2827,7 +2826,7 @@ CREATE TABLE `tb_tripulacao_skin_navio` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_tripulacao_skins definition
+-- sugoi.tb_tripulacao_skins definition
 
 CREATE TABLE `tb_tripulacao_skins` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -2844,7 +2843,7 @@ CREATE TABLE `tb_tripulacao_skins` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1300 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_usuario_itens definition
+-- sugoi.tb_usuario_itens definition
 
 CREATE TABLE `tb_usuario_itens` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -2856,10 +2855,10 @@ CREATE TABLE `tb_usuario_itens` (
   PRIMARY KEY (`okok`),
   KEY `id` (`id`,`cod_item`,`tipo_item`),
   CONSTRAINT `tb_usuario_itens_ibfk_1` FOREIGN KEY (`id`) REFERENCES `tb_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=118007 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=118553 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_usuario_navio definition
+-- sugoi.tb_usuario_navio definition
 
 CREATE TABLE `tb_usuario_navio` (
   `id` int(6) unsigned zerofill NOT NULL,
@@ -2867,13 +2866,13 @@ CREATE TABLE `tb_usuario_navio` (
   `cod_casco` int unsigned NOT NULL DEFAULT '0',
   `cod_leme` int NOT NULL DEFAULT '0',
   `cod_velas` int NOT NULL DEFAULT '0',
-  `cod_canhao` int(4) unsigned zerofill NOT NULL,
+  `cod_canhao` int(4) unsigned zerofill NOT NULL DEFAULT '0000',
   `hp` int NOT NULL DEFAULT '100',
   `hp_max` int NOT NULL DEFAULT '100',
   `lvl` int NOT NULL DEFAULT '1',
   `reparo` double NOT NULL DEFAULT '0',
-  `reparo_tipo` int NOT NULL,
-  `reparo_quant` int NOT NULL,
+  `reparo_tipo` int DEFAULT NULL,
+  `reparo_quant` int DEFAULT NULL,
   `xp` int NOT NULL DEFAULT '0',
   `xp_max` int NOT NULL DEFAULT '250',
   `capacidade_inventario` int DEFAULT '55',
@@ -2888,30 +2887,30 @@ CREATE TABLE `tb_usuario_navio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_usuarios definition
+-- sugoi.tb_usuarios definition
 
 CREATE TABLE `tb_usuarios` (
   `id` int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `conta_id` int(11) unsigned zerofill NOT NULL,
   `tripulacao` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ultimo_logon` double NOT NULL,
+  `ultimo_logon` double DEFAULT NULL,
   `faccao` int NOT NULL,
-  `reputacao` int NOT NULL DEFAULT '500',
-  `reputacao_mensal` int unsigned NOT NULL DEFAULT '500',
-  `coord_x_navio` int NOT NULL,
-  `coord_y_navio` int NOT NULL,
-  `res_x` int NOT NULL,
-  `res_y` int NOT NULL,
-  `cod_personagem` int(4) unsigned zerofill NOT NULL,
+  `reputacao` int NOT NULL DEFAULT '0',
+  `reputacao_mensal` int unsigned NOT NULL DEFAULT '0',
+  `coord_x_navio` int DEFAULT NULL,
+  `coord_y_navio` int DEFAULT NULL,
+  `res_x` int NOT NULL DEFAULT '0',
+  `res_y` int NOT NULL DEFAULT '0',
+  `cod_personagem` int(4) unsigned zerofill DEFAULT NULL,
   `berries` bigint unsigned NOT NULL DEFAULT '5000',
   `recrutando` double NOT NULL DEFAULT '0',
-  `mergulho` double NOT NULL DEFAULT '0',
-  `mergulho_cod` int(6) unsigned zerofill NOT NULL,
-  `expedicao` double NOT NULL,
-  `expedicao_cod` int(6) unsigned zerofill NOT NULL,
-  `desenho` double NOT NULL,
-  `desenho_cod` int(6) unsigned zerofill NOT NULL,
+  `mergulho` double DEFAULT '0',
+  `mergulho_cod` int(6) unsigned zerofill DEFAULT NULL,
+  `expedicao` double DEFAULT NULL,
+  `expedicao_cod` int(6) unsigned zerofill DEFAULT NULL,
+  `desenho` double DEFAULT NULL,
+  `desenho_cod` int(6) unsigned zerofill DEFAULT NULL,
   `mining` double NOT NULL DEFAULT '0',
   `mining_cod` int(6) unsigned zerofill NOT NULL DEFAULT '000000',
   `madeira` double NOT NULL DEFAULT '0',
@@ -2923,7 +2922,7 @@ CREATE TABLE `tb_usuarios` (
   `fugas` int NOT NULL DEFAULT '0',
   `bandeira` varchar(36) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL DEFAULT '010113046758010128123542010115204020',
   `kai` int NOT NULL DEFAULT '0',
-  `ip` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `ip` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `realizacoes` int NOT NULL DEFAULT '0',
   `disposicao` int NOT NULL DEFAULT '10000',
   `isca` int NOT NULL DEFAULT '0',
@@ -2987,19 +2986,19 @@ CREATE TABLE `tb_usuarios` (
   KEY `tb_usuarios_tb_arena_team_id_fk` (`selected_team_id`),
   CONSTRAINT `tb_usuarios_ibfk_1` FOREIGN KEY (`conta_id`) REFERENCES `tb_conta` (`conta_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tb_usuarios_tb_arena_team_id_fk` FOREIGN KEY (`selected_team_id`) REFERENCES `tb_arena_team` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=736 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_vip definition
+-- sugoi.tb_vip definition
 
 CREATE TABLE `tb_vip` (
   `id` int(6) unsigned zerofill NOT NULL,
   `luneta` int NOT NULL DEFAULT '0',
   `luneta_duracao` double NOT NULL DEFAULT '0',
-  `sense` int NOT NULL,
-  `sense_duracao` double NOT NULL,
-  `tatic` int NOT NULL,
-  `tatic_duracao` double NOT NULL,
+  `sense` int NOT NULL DEFAULT '0',
+  `sense_duracao` double NOT NULL DEFAULT '0',
+  `tatic` int NOT NULL DEFAULT '0',
+  `tatic_duracao` double NOT NULL DEFAULT '0',
   `reset_personagem` int unsigned NOT NULL DEFAULT '0',
   `reset_nome` int unsigned NOT NULL DEFAULT '0',
   `conhecimento` int DEFAULT '0',
@@ -3013,7 +3012,7 @@ CREATE TABLE `tb_vip` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 
--- sugoi_v2.tb_wanted_log definition
+-- sugoi.tb_wanted_log definition
 
 CREATE TABLE `tb_wanted_log` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
@@ -3031,6 +3030,6 @@ CREATE TABLE `tb_wanted_log` (
   KEY `tb_wanted_log_tb_personagens_perdedor_cod_fk` (`perdedor_cod`),
   CONSTRAINT `tb_wanted_log_tb_personagens_perdedor_cod_fk` FOREIGN KEY (`perdedor_cod`) REFERENCES `tb_personagens` (`cod`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tb_wanted_log_tb_personagens_vencedor_cod_fk` FOREIGN KEY (`vencedor_cod`) REFERENCES `tb_personagens` (`cod`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=473739 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=474402 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 SET FOREIGN_KEY_CHECKS=1;
