@@ -4,7 +4,7 @@
 
     </div>
     <div class="panel-body">
-    <form action="../Scripts/Adm/inserir-prof-ilha" method="post">
+    <form class="form-inline ajax_form" action="Adm/inserir-prof-ilha" method="post">
             <label>ID ilha</label>
             <input type="text" name="ilha" class="form-control"  ></input>
             <label>Codigo prof</label>

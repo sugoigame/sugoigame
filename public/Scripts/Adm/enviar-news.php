@@ -18,4 +18,4 @@ $connection->run("INSERT INTO tb_noticias (`nome`, `texto`,`autor`, `criacao`) V
 	nl2br($texto),
     $autor
 ]);
-echo "Mensagem enviada com sucesso!";
+echo "%admin-news";

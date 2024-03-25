@@ -4,7 +4,7 @@
 
     </div>
     <div class="panel-body">
-    <form action="../Scripts/Adm/inserir-itens-ilha.php" method="post">
+    <form class="form-inline ajax_form" action="Adm/inserir-itens-ilha" method="post">
             <label>ID ilha</label>
             <input type="text" name="ilha" class="form-control"  ></input>
             <label>Codigo do item</label>
@@ -12,4 +12,5 @@
             <label>tipo do item</label>
             <input type="text" name="tipo_item" class="form-control"  ></input>
             <button  class="btn btn-success">Enviar</button>
+    </form>
 </div>

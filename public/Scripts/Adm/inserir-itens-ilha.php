@@ -16,4 +16,4 @@ $connection->run("INSERT INTO tb_ilha_itens (`ilha`, `cod_item`, `tipo_item`) VA
 
 
 ]);
-echo "%oceano";
+echo "%inserir-itens-ilha";

@@ -15,4 +15,4 @@ $connection->run("INSERT INTO tb_mensagens_globais (`assunto`, `mensagem`, `data
 	$assunto,
 	nl2br($texto)
 ]);
-echo "Mensagem enviada com sucesso!";
+echo "%admin-mails";
