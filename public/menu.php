@@ -323,6 +323,9 @@ FROM tb_forum_categoria c ",
                     <?= menu_link("admin-reagents", "Reagents do jogo", "fa fa-envelope-o", "") ?>
                     <?= menu_link("admin-inserir-itens", "Inserir itens", "fa fa-envelope-o", "") ?>
                     <?= menu_link("admin-inserir-prof", "Inserir profissoes na ilha", "fa fa-envelope-o", "") ?>
+                    <?= menu_link("admin-add-ouro", "Adicionar ouro", "fa fa-envelope-o", "") ?>
+                    <?= menu_link("admin-beta", "Adicionar usuario beta", "fa fa-envelope-o", "") ?>
+                    <?= menu_link("admin-add-beries", "Adicionar beries", "fa fa-envelope-o", "") ?>
                 </ul>
             </div>
         <?php endif; ?>

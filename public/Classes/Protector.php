@@ -205,6 +205,9 @@ class Protector
             case "admin-reagents":
             case "admin-inserir-itens":
             case "admin-inserir-prof":
+            case "admin-beta":
+            case "admin-add-ouro":
+            case "admin-add-beries":
             case "combateAssistirAdm":
                 $this->must_be_gm();
                 break;
