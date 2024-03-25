@@ -385,6 +385,14 @@ class UserDetails
                     $this->tripulacao['id'],
                     $row['cod']
                 ]);
+            } elseif ($row["respawn_tipo"] != 0 && $row["respawn"] < atual_segundo()) {
+                $this->connection->run("UPDATE tb_personagens
+					SET hp = hp_max, respawn = 0, respawn_tipo = 0
+					WHERE id = ? AND cod = ?", 'ii', [
+                    $this->tripulacao['id'],
+                    $row['cod']
+                ]);
+                $row['hp'] = $row['hp_max'];
             }
 
             $personagens[] = $row;
@@ -1944,11 +1952,12 @@ class UserDetails
         $navio = $this->connection->run("SELECT * FROM tb_usuario_navio WHERE id = ?", "i", array($id))->fetch_array();
         return ($item_count + $quant) <= $navio["capacidade_inventario"];
     }
-    public function add_ouro($quant,$id) {
+    public function add_ouro($quant, $id)
+    {
 
-		$this->connection->run("UPDATE tb_conta SET gold = gold + ? WHERE conta_id = ?",
-			"ii", array($quant, $id));
-	}
+        $this->connection->run("UPDATE tb_conta SET gold = gold + ? WHERE conta_id = ?",
+            "ii", array($quant, $id));
+    }
 
     public function add_equipamento($equipamento)
     {
