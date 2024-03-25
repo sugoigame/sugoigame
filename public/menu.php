@@ -4,6 +4,7 @@ function menu_link($ses, $text, $img, $title, $href_prefix = "./?ses=", $class =
     $sess = $_GET["sessao"];
     global $userDetails;
     global $sistemas_por_sessao;
+    if (isset ($sistemas_por_sessao[$ses]) && ! $userDetails->is_sistema_desbloqueado($sistemas_por_sessao[$ses])) {
     if (isset($sistemas_por_sessao[$ses]) && ! $userDetails->is_sistema_desbloqueado($sistemas_por_sessao[$ses])) {
         return "";
     }
@@ -119,6 +120,7 @@ function super_menu_can_be_active($menu)
                             <?= menu_link("navioSkin", "Aparência", "fa fa-ship", "") ?>
                             <?= menu_link("obstaculos", "Obstáculos do Navio", "glyphicon glyphicon-knight", "") ?>
                             <?php if (! $userDetails->tripulacao["recrutando"] && ! $userDetails->missao) : ?>
+                                <?= menu_link("quartos", "Quartos", "fa fa-bed", "") ?>
                                 <?= menu_link("quartos", "Enfermaria", "fa fa-bed", "") ?>
                                 <?= menu_link("forja", "Forja", "fa fa-fire", "") ?>
                                 <?= menu_link("oficina", "Oficina", "fa fa-gavel", "") ?>
@@ -326,6 +328,7 @@ FROM tb_forum_categoria c ",
                     <?= menu_link("admin-add-ouro", "Adicionar ouro", "fa fa-envelope-o", "") ?>
                     <?= menu_link("admin-beta", "Adicionar usuario beta", "fa fa-envelope-o", "") ?>
                     <?= menu_link("admin-add-beries", "Adicionar beries", "fa fa-envelope-o", "") ?>
+                    <?= menu_link("admin-teleporte", "Teleportar Jogadores", "fa fa-envelope-o", "") ?>
                 </ul>
             </div>
         <?php endif; ?>
