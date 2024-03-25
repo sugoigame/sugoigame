@@ -5,6 +5,7 @@ function menu_link($ses, $text, $img, $title, $href_prefix = "./?ses=", $class =
     global $userDetails;
     global $sistemas_por_sessao;
     if (isset ($sistemas_por_sessao[$ses]) && ! $userDetails->is_sistema_desbloqueado($sistemas_por_sessao[$ses])) {
+    if (isset($sistemas_por_sessao[$ses]) && ! $userDetails->is_sistema_desbloqueado($sistemas_por_sessao[$ses])) {
         return "";
     }
 
@@ -120,6 +121,7 @@ function super_menu_can_be_active($menu)
                             <?= menu_link("obstaculos", "Obstáculos do Navio", "glyphicon glyphicon-knight", "") ?>
                             <?php if (! $userDetails->tripulacao["recrutando"] && ! $userDetails->missao) : ?>
                                 <?= menu_link("quartos", "Quartos", "fa fa-bed", "") ?>
+                                <?= menu_link("quartos", "Enfermaria", "fa fa-bed", "") ?>
                                 <?= menu_link("forja", "Forja", "fa fa-fire", "") ?>
                                 <?= menu_link("oficina", "Oficina", "fa fa-gavel", "") ?>
                             <?php endif; ?>

@@ -63,20 +63,23 @@ function desc_prof($cod)
     }
 }
 
-function calc_preco_tratamento_quartos($personagens)
+function calc_preco_recuperar_tripulantes($personagens)
 {
     $preco = 0;
-
     foreach ($personagens as $pers) {
-        $preco += $pers["lvl"] * 1000;
+        $preco += ($pers["hp_max"] - $pers["hp"]);
     }
     return $preco;
 }
 
-function calc_tempo_tratament_quartos($pers)
+function calc_tempo_recuperar_tripulantes($personagens)
 {
     global $userDetails;
-    return (10 * max(0, $pers["lvl"] - 20)) * (1 - ($userDetails->lvl_medico * 0.05));
+    $tempo = 0;
+    foreach ($personagens as $pers) {
+        $tempo = max($tempo, ($pers["hp_max"] - $pers["hp"]) / 10);
+    }
+    return $tempo * (1 - ($userDetails->lvl_medico * 0.05));
 }
 
 function render_painel_profissao($pers)

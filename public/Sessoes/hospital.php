@@ -1,20 +1,6 @@
-<?php
-function filter_personagem_derrotado($pers) {
-    return ($pers["respawn_tipo"] != RECUPERACAO_TIPO_QUARTOS && $pers["respawn_tipo"] != 0) || ($pers["hp"] < $pers["hp_max"] AND $pers["respawn_tipo"] == 0);
-}
-
-function filter_personagem_pode_iniciar($pers) {
-    return ($pers["hp"] < $pers["hp_max"] && $pers["respawn_tipo"] == 0);
-}
-
-function filter_personagem_pode_finalizar($pers) {
-    return $pers["respawn_tipo"] == RECUPERACAO_TIPO_HOSPITAL && $pers["respawn"] < atual_segundo();
-}
-
-?>
 <div class="panel-heading">
     Hospital
-    <?= ajuda("Hospital", "Aqui você pode curar seus personagens que perderam no combate.") ?>
+    <?= ajuda_tooltip("Aqui você pode curar seus tripulantes que sofreram no combate.") ?>
 </div>
 <script type="text/javascript">
     $(function () {
@@ -31,13 +17,8 @@ function filter_personagem_pode_finalizar($pers) {
                 var tmp = document.getElementById(sec_rest).value - conttmp;
                 document.getElementById(min_rest).innerHTML = transforma_tempo(tmp);
                 if (tmp < 0) {
-                    var nome = $('#nome-' + x).val();
-                    var img = $('#img-' + x).val();
-                    enviarNotificacao('Tratamento concluído!', {
-                        body: 'O tratamento de ' + nome + ' no hospital já foi concluído.',
-                        icon: img
-                    });
                     reloadPagina();
+                    return;
                 }
             }
         }
@@ -45,80 +26,68 @@ function filter_personagem_pode_finalizar($pers) {
     }
 </script>
 <div class="panel-body">
-
-    <?php $personagens = array_filter($userDetails->personagens, "filter_personagem_derrotado"); ?>
-    <div>
-        <?php if (count($personagens)) : ?>
+    <?php $personagens_recuperando = array_filter($userDetails->personagens, function ($pers) {
+        return $pers["respawn_tipo"] == RECUPERACAO_TIPO_HOSPITAL;
+    }); ?>
+    <?php $personagens_machucados = array_filter($userDetails->personagens, function ($pers) {
+        return $pers["hp"] < $pers["hp_max"] && $pers["respawn_tipo"] == 0;
+    }); ?>
+    <?php $personagens = array_merge($personagens_machucados, $personagens_recuperando); ?>
+    <div class="row">
+        <div class="col-xs-12">
+            <?php if (! count($personagens_machucados) && ! count($personagens_recuperando)) : ?>
+                <p>Sua tripulação não precisa de tratamento!</p>
+            <?php endif; ?>
+            <?php if (count($personagens_recuperando)) : ?>
+                <p>Tripulantes em tratamento:</p>
+                <div class="row justify-content-center">
+                    <?php foreach ($personagens_recuperando as $index => $pers) : ?>
+                        <?php $tempo = $pers["respawn"] - atual_segundo(); ?>
+                        <div class="col col-xs-2 mb3">
+                            <img src="Imagens/Personagens/Icons/<?= getImg($pers, "r"); ?>.jpg">
+                            <?php render_personagem_hp_bar($pers); ?>
+                            <div>
+                                <strong>Tempo Restante: </strong>
+                                <span id="tempo_min_rest_<?= $index ?>">
+                                    <?= transforma_tempo_min($tempo); ?>
+                                </span>
+                                <input id="tempo_sec_rest_<?= $index ?>" type="hidden" value="<?= $tempo ?>" />
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+            <?php if (count($personagens_machucados)) : ?>
+                <p>Tripulantes precisando de tratamento:</p>
+                <div class="row justify-content-center">
+                    <?php foreach ($personagens_machucados as $index => $pers) : ?>
+                        <div class="col col-xs-2">
+                            <img src="Imagens/Personagens/Icons/<?= getImg($pers, "r"); ?>.jpg">
+                            <?php render_personagem_hp_bar($pers); ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
             <p>
-                <?php $personagens_iniciar = array_filter($personagens, "filter_personagem_pode_iniciar"); ?>
-                <?php if (count($personagens_iniciar)): ?>
-                    <button class="btn btn-info link_send" href='link_Hospital/hospital_iniciar_recuperacao.php'>
-                        Iniciar o tratamento de toda a tripulação
+                <?php if (count($personagens_machucados)) : ?>
+                    <button class="btn btn-success link_send mr4"
+                        href='link_Hospital/hospital_iniciar_recuperacao_tempo.php'>
+                        Recuperar tripulação de graça<br />
+                        Tempo necessário:
+                        <?= transforma_tempo_min(calc_tempo_recuperar_tripulantes($personagens_machucados)); ?>
                     </button>
                 <?php endif; ?>
-                <?php $personagens_finalizar = array_filter($personagens, "filter_personagem_pode_finalizar"); ?>
-                <?php if (count($personagens_finalizar)): ?>
-                    <button class="btn btn-success link_send" href='link_Hospital/hospital_finalizar_recuperacao.php'>
-                        Finalizar o tratamento de toda a tripulação
+                <?php if (count($personagens_machucados) || count($personagens_recuperando)) : ?>
+                    <?php $preco = calc_preco_recuperar_tripulantes($personagens); ?>
+                    <button class="btn btn-success link_confirm" href='Hospital/hospital_iniciar_recuperacao_berries.php'
+                        data-question="Tem certeza que deseja pagar para recuperar todos os tripulantes imediatamente?"
+                        <?= $userDetails->tripulacao["berries"] < $preco ? "disabled" : ""; ?>>
+                        Recuperar tripulação imediatamente<br />
+                        <img src="Imagens/Icones/Berries.png" alt=" Berries">
+                        <?= mascara_berries($preco); ?>
                     </button>
                 <?php endif; ?>
             </p>
-            <div>
-                <?php render_personagens_pills($personagens); ?>
-            </div>
-        <?php else: ?>
-            <p>Todos os seus personagens estão bens por enquanto.</p>
-        <?php endif; ?>
-    </div>
-    <div class="tab-content">
-        <?php foreach ($personagens as $index => $pers): ?>
-            <?php render_personagem_panel_top($pers, $index) ?>
-            <?php render_personagem_sub_panel_with_img_top($pers); ?>
-            <div class="panel-body">
-                <?php if (!$pers["respawn"]) : ?>
-                    <?php $tempo = max(0, 6 * ($pers["lvl"])); ?>
-                    <p>
-                        <strong>Tempo de espera:</strong>
-                        <?= transforma_tempo_min($tempo) ?>
-                    </p>
-                    <button href='link_Hospital/hospital_iniciar_recuperacao.php?cod=<?= $pers["cod"]; ?>'
-                            class="link_send btn btn-primary">
-                        Iniciar tratamento
-                    </button>
-                <?php elseif ($pers["respawn_tipo"] != RECUPERACAO_TIPO_QUARTOS) : ?>
-                    <?php $tempo = $pers["respawn"] - atual_segundo(); ?>
-
-                    <?php if ($tempo > 0) : ?>
-                        <input type="hidden" id="nome-<?= $index ?>" value="<?= $pers["nome"] ?>">
-                        <input type="hidden" id="img-<?= $index ?>"
-                               value="https://sugoigame.com.br/Imagens/Personagens/Icons/<?= get_img($pers, "r") ?>.jpg">
-                        <p>
-                            <strong>Tempo Restante: </strong>
-                            <span id="tempo_min_rest_<?= $index ?>"><?= transforma_tempo_min($tempo); ?></span>
-                            <input id="tempo_sec_rest_<?= $index ?>" type="hidden" value="<?= $tempo ?>">
-                        </p>
-                        <button href="Hospital/hospital_cancelar_recuperacao.php?cod=<?= $pers["cod"]; ?>"
-                                data-question="Deseja cancelar este tratamento?"
-                                class="link_confirm btn btn-danger">
-                            Cancelar
-                        </button>
-                        <button href="Vip/hospital_finalizar.php?cod=<?= $pers["cod"]; ?>"
-                                data-question="Deseja finalizar este tratamento agora?"
-                                class="link_confirm btn btn-info"
-                            <?= $userDetails->conta["gold"] < PRECO_GOLD_FINALIZAR_TRATAMENTO_HOSPITAL ? "disabled" : "" ?>>
-                            <?= PRECO_GOLD_FINALIZAR_TRATAMENTO_HOSPITAL ?> <img src="Imagens/Icones/Gold.png"/>
-                            Finalizar imediatamente
-                        </button>
-                    <? else : ?>
-                        <button href="link_Hospital/hospital_finalizar_recuperacao.php?cod=<?= $pers["cod"]; ?>"
-                                class="link_send btn btn-success">
-                            Finalizar tratamento
-                        </button>
-                    <?php endif; ?>
-                <?php endif; ?>
-            </div>
-            <?php render_personagem_sub_panel_with_img_bottom(); ?>
-            <?php render_personagem_panel_bottom() ?>
-        <?php endforeach; ?>
+        </div>
     </div>
 </div>
