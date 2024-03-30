@@ -73,8 +73,10 @@ define('ILHA_COLISEU_2', 44);
 
 require_once (dirname(__FILE__) . "/../Funcoes/requires.php");
 require_once (dirname(__FILE__) . "/../Classes/requires.php");
-require_once (dirname(__FILE__) . "/../Cron/cron.php");
+
 
 $userDetails = new UserDetails($connection);
 $response = new Response();
 $protector = new Protector($userDetails, $response);
+
+require_once (dirname(__FILE__) . "/../Cron/cron.php");

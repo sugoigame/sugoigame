@@ -39,7 +39,7 @@ function get_result_joined_mapped_by_type($tabela_origem, $tabela_origem_column,
     global $connection;
     return $connection->run(
         "SELECT * FROM $tabela_origem origem
-        INNER JOIN $tabela_info info ON info.$tabela_info_column = origem.$tabela_origem_column AND origem.$tipo_column=$tipo
+        INNER JOIN $tabela_info info ON info.$tabela_info_column = origem.$tabela_origem_column && origem.$tipo_column=$tipo
         $where", $bind_type, $bind_value
     )->fetch_all_array();
 }
@@ -173,7 +173,7 @@ function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcen
 
     if ($extra) {
         $return .= '<div class="info-item-quantidade">';
-        if (($item["tipo"] == 16 or $item["tipo"] == 17) and ! $incombate) {
+        if (($item["tipo"] == 16 || $item["tipo"] == 17) && ! $incombate) {
             $return .= "<b>Limite:</b> {$userDetails->tripulacao['iscas_usadas']} / " . LIMITE_USOS_ISCA_DIA;
             if ($item["quant"] > 1) {
                 $return .= '<br />';
@@ -186,18 +186,18 @@ function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcen
     }
     $return .= '</div>';
     if ($acao) {
-        if ((isset($item_info["hp_recuperado"]) or isset($item_info["mp_recuperado"])) and ! $incombate) {
+        if ((isset($item_info["hp_recuperado"]) || isset($item_info["mp_recuperado"])) && ! $incombate) {
             $return .= '<p>';
             $return .= '<a title="Usar" data-dismiss="modal"  id="comida=' . $item["cod"] . '&tipo=' . $item["tipo"] . '"
 				class="link_dar_comida noHref btn btn-success" href="#">Usar</a>';
             $return .= '</p>';
         }
-        if (isset($item_info["method"]) and ! $incombate) {
+        if (isset($item_info["method"]) && ! $incombate) {
             $return .= '<p>';
             $return .= '<a title="Usar" data-dismiss="modal" class="link_confirm btn btn-success" data-question="Deseja usar este item?" href="Inventario/usar_item.php?cod=' . $item["cod"] . '&tipo=' . $item["tipo"] . '">Usar</a>';
             $return .= '</p>';
         }
-        if (($item["tipo"] == 16 or $item["tipo"] == 17) and ! $incombate) {
+        if (($item["tipo"] == 16 || $item["tipo"] == 17) && ! $incombate) {
             $return .= '<p>';
             if ($userDetails->tripulacao['iscas_usadas'] < LIMITE_USOS_ISCA_DIA)
                 $return .= '<a title="Usar" data-dismiss="modal" class="link_confirm btn btn-success" data-question="Deseja usar este item?" href="Vip/isca.php?tipo=' . $item["tipo"] . '">Usar</a>';

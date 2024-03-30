@@ -3032,4 +3032,7 @@ CREATE TABLE `tb_wanted_log` (
   CONSTRAINT `tb_wanted_log_tb_personagens_vencedor_cod_fk` FOREIGN KEY (`vencedor_cod`) REFERENCES `tb_personagens` (`cod`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=474402 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
+
+ALTER TABLE tb_usuarios ADD ultimo_reset DATE NULL;
+
 SET FOREIGN_KEY_CHECKS=1;
