@@ -14,7 +14,7 @@ class DataLoader
     }
     public static function filter($map, $func)
     {
-        $data = MapLoader::load($map);
+        $data = DataLoader::load($map);
         return array_filter($data, $func);
     }
     public static function find($map, $search)
