@@ -14,9 +14,9 @@ function recebe_recompensa($recompensa, $pers = null, $exit_error = true)
             $userDetails->xp_for_all($recompensa["quant"]);
             return "Você recebeu " . mascara_berries($recompensa["quant"]) . " Pontos de experiência";
 
-        case "haki":
-            $userDetails->haki_for_all($recompensa["quant"]);
-            return "Sua tripulação recebeu " . $recompensa["quant"] . " pontos de Haki";
+        // case "haki":
+        //     $userDetails->haki_for_all($recompensa["quant"]);
+        //     return "Sua tripulação recebeu " . $recompensa["quant"] . " pontos de Haki";
         case "akuma":
             if (! $userDetails->add_item(get_random_akuma()["cod_akuma"], TIPO_ITEM_AKUMA, 1, true) && $exit_error) {
                 $protector->exit_error("Seu inventário está lotado. Libere espaço antes de pegar sua recompensa");

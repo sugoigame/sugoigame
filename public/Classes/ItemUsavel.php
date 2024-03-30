@@ -329,25 +329,25 @@ class ItemUsavel
 
         if (! $this->userDetails->can_add_item(9)) {
             $this->protector->exit_error("Você precisa de 9 espaços vazios no seu inventário para receber a recopensa");
-        // }
+            // }
 
-        // $this->userDetails->add_equipamento_by_cod(57);
-        // $this->userDetails->add_equipamento_by_cod(58);
-        // $this->userDetails->add_equipamento_by_cod(59);
-        // $this->userDetails->add_equipamento_by_cod(60);
-        // $this->userDetails->add_equipamento_by_cod(61);
-        // $this->userDetails->add_equipamento_by_cod(62);
-        // $this->userDetails->add_equipamento_by_cod(63);
-        // $this->userDetails->add_equipamento_by_cod(64);
+            // $this->userDetails->add_equipamento_by_cod(57);
+            // $this->userDetails->add_equipamento_by_cod(58);
+            // $this->userDetails->add_equipamento_by_cod(59);
+            // $this->userDetails->add_equipamento_by_cod(60);
+            // $this->userDetails->add_equipamento_by_cod(61);
+            // $this->userDetails->add_equipamento_by_cod(62);
+            // $this->userDetails->add_equipamento_by_cod(63);
+            // $this->userDetails->add_equipamento_by_cod(64);
 
-        $this->userDetails->xp_for_all(900);
+            $this->userDetails->xp_for_all(900);
 
-        $this->userDetails->add_berries(1000000);
+            $this->userDetails->add_berries(1000000);
 
-        $this->userDetails->add_item(COD_BAU_INICIANTE_40, TIPO_ITEM_REAGENT, 1);
+            $this->userDetails->add_item(COD_BAU_INICIANTE_40, TIPO_ITEM_REAGENT, 1);
 
-        return "Você recebeu equipamentos e 1 milhão de Berries!";
-    }
+            return "Você recebeu equipamentos e 1 milhão de Berries!";
+        }
     }
     public function abre_pacote_iniciante_40()
     {
@@ -469,7 +469,7 @@ class ItemUsavel
         if (! $this->userDetails->can_add_item()) {
             $this->protector->exit_error("Você precisa de 1 espaço vazio no seu inventário para receber a recopensa");
         }
-        $randxp = rand(500,1500);
+        $randxp = rand(500, 1500);
         $this->userDetails->xp_for_all($randxp);
 
         $rand = rand(1, 100);
@@ -483,20 +483,20 @@ class ItemUsavel
             $this->userDetails->add_item($recompensa["cod_reagent"], TIPO_ITEM_REAGENT, $quant);
 
             return "Você recebeu $quant " . $recompensa["nome"];
-        // } else if ($rand <= 40) {
-        //     $recompensa = $this->connection->run("SELECT * FROM tb_equipamentos WHERE categoria = 1 ORDER BY RAND() LIMIT 1")->fetch_array();
+            // } else if ($rand <= 40) {
+            //     $recompensa = $this->connection->run("SELECT * FROM tb_equipamentos WHERE categoria = 1 ORDER BY RAND() LIMIT 1")->fetch_array();
 
-        //     $this->userDetails->add_equipamento($recompensa);
+            //     $this->userDetails->add_equipamento($recompensa);
 
-        //     return "Você recebeu " . $recompensa["nome"];
-        // } else if ($rand <= 50) {
-        //     $recompensa = $this->connection->run("SELECT * FROM tb_equipamentos WHERE categoria = 2 ORDER BY RAND() LIMIT 1")->fetch_array();
+            //     return "Você recebeu " . $recompensa["nome"];
+            // } else if ($rand <= 50) {
+            //     $recompensa = $this->connection->run("SELECT * FROM tb_equipamentos WHERE categoria = 2 ORDER BY RAND() LIMIT 1")->fetch_array();
 
-        //     $this->userDetails->add_equipamento($recompensa);
+            //     $this->userDetails->add_equipamento($recompensa);
 
-        //     return "Você recebeu " . $recompensa["nome"];
-        // 
-    } else/* if ($rand <= 99)*/ {
+            //     return "Você recebeu " . $recompensa["nome"];
+            //
+        } else/* if ($rand <= 99)*/ {
             $recompensa = rand(100000, 500000);
 
             $this->connection->run("UPDATE tb_usuarios SET berries = berries + ? WHERE id = ?",
@@ -504,10 +504,10 @@ class ItemUsavel
 
             return "Você recebeu " . mascara_berries($recompensa) . " Berries";
         }/* else {
-                 $this->userDetails->add_item(rand(100, 110), rand(8, 10), 1, true);
+                $this->userDetails->add_item(rand(100, 110), rand(8, 10), 1, true);
 
-                 return "Você recebeu uma Akuma no Mi";
-             }*/
+                return "Você recebeu uma Akuma no Mi";
+            }*/
     }
     // public function abre_ovo_carrot()
     // {
@@ -599,7 +599,7 @@ class ItemUsavel
             $this->protector->exit_error("Você precisa de 1 espaço vazio no seu inventário para receber a recopensa");
         }
 
-        $randxp = rand(1000,1900);
+        $randxp = rand(1000, 1900);
         $this->userDetails->xp_for_all($randxp);
 
         $rand = rand(1, 100);
@@ -613,24 +613,24 @@ class ItemUsavel
             $this->userDetails->add_item($recompensa["cod_reagent"], TIPO_ITEM_REAGENT, $quant);
 
             return "Você recebeu $quant " . $recompensa["nome"];
-        } else if ($rand <= 30) {
-            $recompensa = rand(500, 1000);
+            // } else if ($rand <= 30) {
+            //     $recompensa = rand(500, 1000);
 
-            $this->userDetails->haki_for_all($recompensa);
+            //     $this->userDetails->haki_for_all($recompensa);
 
-            return "Você recebeu $recompensa pontos de Haki para distribuir";
-        // } else if ($rand <= 40) {
-        //     $recompensa = $this->connection->run("SELECT * FROM tb_equipamentos WHERE categoria = 1 AND lvl > 40 ORDER BY RAND() LIMIT 1")->fetch_array();
+            //     return "Você recebeu $recompensa pontos de Haki para distribuir";
+            // } else if ($rand <= 40) {
+            //     $recompensa = $this->connection->run("SELECT * FROM tb_equipamentos WHERE categoria = 1 AND lvl > 40 ORDER BY RAND() LIMIT 1")->fetch_array();
 
-        //     $this->userDetails->add_equipamento($recompensa);
+            //     $this->userDetails->add_equipamento($recompensa);
 
-        //     return "Você recebeu " . $recompensa["nome"];
-        // } else if ($rand <= 50) {
-        //     $recompensa = $this->connection->run("SELECT * FROM tb_equipamentos WHERE categoria = 2 AND lvl > 30 ORDER BY RAND() LIMIT 1")->fetch_array();
+            //     return "Você recebeu " . $recompensa["nome"];
+            // } else if ($rand <= 50) {
+            //     $recompensa = $this->connection->run("SELECT * FROM tb_equipamentos WHERE categoria = 2 AND lvl > 30 ORDER BY RAND() LIMIT 1")->fetch_array();
 
-        //     $this->userDetails->add_equipamento($recompensa);
+            //     $this->userDetails->add_equipamento($recompensa);
 
-        //     return "Você recebeu " . $recompensa["nome"];
+            //     return "Você recebeu " . $recompensa["nome"];
         } else/* if ($rand <= 99)*/ {
             // $recompensa = rand(5000000, 10000000);
             $recompensa = rand(100000, 500000);
@@ -640,10 +640,10 @@ class ItemUsavel
 
             return "Você recebeu " . mascara_berries($recompensa) . " Berries";
         }/* else {
-                 $this->userDetails->add_item(rand(100, 110), rand(8, 10), 1, true);
+                $this->userDetails->add_item(rand(100, 110), rand(8, 10), 1, true);
 
-                 return "Você recebeu uma Akuma no Mi";
-             }*/
+                return "Você recebeu uma Akuma no Mi";
+            }*/
     }
 
     public function abre_bau_tesouro_excepcional()
@@ -651,9 +651,9 @@ class ItemUsavel
         if (! $this->userDetails->can_add_item()) {
             $this->protector->exit_error("Você precisa de 1 espaço vazio no seu inventário para receber a recopensa");
         }
-        $randxp = rand(2000,3500);
+        $randxp = rand(2000, 3500);
         $this->userDetails->xp_for_all($randxp);
-        
+
 
         $rand = rand(1, 100);
 
@@ -1019,22 +1019,22 @@ class ItemUsavel
             $this->userDetails->add_item(184, TIPO_ITEM_REAGENT, 1);
 
             return "Você recebeu 1 Carta de Honra ao Mérito";
-        // } else if ($rand <= 90) {
-        //     $this->userDetails->add_item(180, TIPO_ITEM_REAGENT, 1);
+            // } else if ($rand <= 90) {
+            //     $this->userDetails->add_item(180, TIPO_ITEM_REAGENT, 1);
 
-        //     return "Você recebeu 1 Baú de Equipamentos Brancos";
-        // } else if ($rand <= 95) {
-        //     $this->userDetails->add_item(188, TIPO_ITEM_REAGENT, 1);
+            //     return "Você recebeu 1 Baú de Equipamentos Brancos";
+            // } else if ($rand <= 95) {
+            //     $this->userDetails->add_item(188, TIPO_ITEM_REAGENT, 1);
 
-        //     return "Você recebeu 1 Baú de Equipamentos Verdes";
-        // } else if ($rand <= 107) {
-        //     $this->userDetails->add_item(183, TIPO_ITEM_REAGENT, 1);
+            //     return "Você recebeu 1 Baú de Equipamentos Verdes";
+            // } else if ($rand <= 107) {
+            //     $this->userDetails->add_item(183, TIPO_ITEM_REAGENT, 1);
 
-        //     return "Você recebeu 1 Baú de Equipamentos Azuis";
-        // } else if ($rand <= 115) {
-        //     $this->userDetails->add_item(155, TIPO_ITEM_REAGENT, 1);
+            //     return "Você recebeu 1 Baú de Equipamentos Azuis";
+            // } else if ($rand <= 115) {
+            //     $this->userDetails->add_item(155, TIPO_ITEM_REAGENT, 1);
 
-        //     return "Você recebeu 1 Essência Verde";
+            //     return "Você recebeu 1 Essência Verde";
         } else if ($rand <= 125) {
             $this->userDetails->add_berries(5000000);
 
@@ -1094,10 +1094,10 @@ class ItemUsavel
             $this->userDetails->add_item(184, TIPO_ITEM_REAGENT, 1);
 
             return "Você recebeu 1 Carta de Honra ao Mérito";
-        // } else if ($rand <= 90) {
-        //     $this->userDetails->add_item(180, TIPO_ITEM_REAGENT, 1);
+            // } else if ($rand <= 90) {
+            //     $this->userDetails->add_item(180, TIPO_ITEM_REAGENT, 1);
 
-        //     return "Você recebeu 1 Baú de Equipamentos Brancos";
+            //     return "Você recebeu 1 Baú de Equipamentos Brancos";
         } else if ($rand <= 100) {
             $this->userDetails->add_berries(1000000);
 
@@ -1119,10 +1119,10 @@ class ItemUsavel
 
             return "Você recebeu uma Instrução de Combate";
         } /*else {
-            $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
+           $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
 
-            return "Você recebeu uma Akuma no Mi";
-        }*/
+           return "Você recebeu uma Akuma no Mi";
+       }*/
     }
 
     public function abre_decorativo()
@@ -1278,10 +1278,10 @@ class ItemUsavel
 
             return "Você recebeu 7 mil Experiência para toda tripulação.";
         } /*else {
-            $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
+           $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
 
-            return "Você recebeu uma Akuma no Mi";
-        }*/
+           return "Você recebeu uma Akuma no Mi";
+       }*/
     }
 
     public function abre_bau_pvp_prata()
@@ -1323,15 +1323,15 @@ class ItemUsavel
             $this->userDetails->xp_for_all(3000);
 
             return "Você recebeu 1 mil pontos de Experiência para toda tripulação.";
-        } else/* if ($rand <= 120) */{
+        } else/* if ($rand <= 120) */ {
             $this->userDetails->xp_for_all(5000);
 
             return "Você recebeu 5 mil pontos de Experiência para toda tripulação.";
         }/*else {
-            $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
+           $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
 
-            return "Você recebeu uma Akuma no Mi";
-        }*/
+           return "Você recebeu uma Akuma no Mi";
+       }*/
     }
 
     public function abre_contrato_ameaca_fantasma()

@@ -8,7 +8,7 @@ $id = $protector->get_number_or_exit("rec");
 
 $recompensas = DataLoader::load("recompensas_amizade");
 
-if (!isset($recompensas[$id])) {
+if (! isset($recompensas[$id])) {
     $protector->exit_error("Recompensa invalida");
 }
 
@@ -35,12 +35,12 @@ switch ($recompensa["tipo"]) {
         $msg = "Você recebeu " . mascara_berries($recompensa["quant"]) . " Berries";
         break;
 
-    case "haki":
-        $userDetails->haki_for_all($recompensa["quant"]);
-        $msg = "Sua tripulação recebeu " . $recompensa["quant"] . " pontos de Haki";
-        break;
+    // case "haki":
+    //     $userDetails->haki_for_all($recompensa["quant"]);
+    //     $msg = "Sua tripulação recebeu " . $recompensa["quant"] . " pontos de Haki";
+    //     break;
     case "akuma":
-        if (!$userDetails->add_item(rand(100, 110), rand(8, 10), 1, true)) {
+        if (! $userDetails->add_item(rand(100, 110), rand(8, 10), 1, true)) {
             $protector->exit_error("Seu inventário está lotado. Libere espaço antes de pegar sua recompensa");
         }
         $msg = "Você recebeu uma Akuma no Mi";

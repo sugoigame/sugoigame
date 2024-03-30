@@ -34,9 +34,9 @@ if (isset($recompensa["tipo_item"])) {
     }
 }
 
-if (isset($recompensa["haki"])) {
-    $userDetails->haki_for_all($recompensa["haki"]);
-}
+// if (isset($recompensa["haki"])) {
+//     $userDetails->haki_for_all($recompensa["haki"]);
+// }
 
 if (isset($recompensa["xp"])) {
     $userDetails->xp_for_all($recompensa["xp"]);

@@ -7,7 +7,7 @@ $recompensa_id = $protector->get_number_or_exit("rec");
 
 $recompensas = DataLoader::load("recompensas_loja_ano_novo");
 
-if (!isset($recompensas[$recompensa_id])) {
+if (! isset($recompensas[$recompensa_id])) {
     $protector->exit_error("Recompensa inválida");
 }
 
@@ -23,11 +23,11 @@ if ($derrotados < $recompensa["preco"]) {
 if (isset($recompensa["tipo_item"])) {
     $quant = isset($recompensa["quant"]) ? $recompensa["quant"] : 1;
     if ($recompensa["tipo_item"] == TIPO_ITEM_REAGENT || $recompensa["tipo_item"] == TIPO_ITEM_COMIDA) {
-        if (!$userDetails->add_item($recompensa["cod_item"], $recompensa["tipo_item"], $quant)) {
+        if (! $userDetails->add_item($recompensa["cod_item"], $recompensa["tipo_item"], $quant)) {
             $protector->exit_error("Seu inventário está lotado. Libere espaço antes de pegar sua recompensa");
         }
     } elseif ($recompensa["tipo_item"] == TIPO_ITEM_EQUIPAMENTO) {
-        if (!$userDetails->can_add_item()) {
+        if (! $userDetails->can_add_item()) {
             $protector->exit_error("Seu inventário está lotado. Libere espaço antes de pegar sua recompensa");
         }
 
@@ -35,9 +35,9 @@ if (isset($recompensa["tipo_item"])) {
     }
 }
 
-if (isset($recompensa["haki"])) {
-    $userDetails->haki_for_all($recompensa["haki"]);
-}
+// if (isset($recompensa["haki"])) {
+//     $userDetails->haki_for_all($recompensa["haki"]);
+// }
 
 if (isset($recompensa["xp"])) {
     $userDetails->xp_for_all($recompensa["xp"]);
