@@ -8,7 +8,7 @@ $pers_cod = $protector->get_number_or_exit("cod");
 
 $personagem = $userDetails->get_pers_by_cod($pers_cod);
 
-if (!$personagem) {
+if (! $personagem) {
     $protector->exit_error("Personagem não encontrado");
 }
 
@@ -20,16 +20,16 @@ if ($personagem["fama_ameaca"] < $premio_atual["objetivo"]) {
     $protector->exit_error("Você não alcançou seu objetivo para receber a recompensa");
 }
 
-if (!$userDetails->can_add_item(count($premio_atual["recompensas"]))) {
-    $protector->exit_error("Você não possui espaço suficiente no inventário");
+if (! $userDetails->can_add_item(count($premio_atual["recompensas"]))) {
+    $protector->exit_error("Você precisa de " . count($premio_atual["recompensas"]) . " espaços no inventário");
 }
 
 foreach ($premio_atual["recompensas"] as $recompensa) {
-    if (!isset($recompensa["unico"]) || !$userDetails->tripulacao["fa_premio_unico_" . $recompensa["unico"]]) {
+    if (! isset($recompensa["unico"]) || ! $userDetails->tripulacao["fa_premio_unico_" . $recompensa["unico"]]) {
         recebe_recompensa($recompensa, $personagem);
     }
 
-    if (isset($recompensa["unico"]) && !$userDetails->tripulacao["fa_premio_unico_" . $recompensa["unico"]]) {
+    if (isset($recompensa["unico"]) && ! $userDetails->tripulacao["fa_premio_unico_" . $recompensa["unico"]]) {
         $connection->run("UPDATE tb_usuarios SET fa_premio_unico_" . $recompensa["unico"] . " = 1 WHERE id = ?",
             "i", array($userDetails->tripulacao["id"]));
     }

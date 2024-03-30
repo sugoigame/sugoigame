@@ -23,21 +23,24 @@ $items = get_many_results_joined_mapped_by_type("tb_usuario_itens", "cod_item", 
 $result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=?",
     "ii", [$userDetails->tripulacao["id"], TIPO_ITEM_REMEDIO]);
 while ($item = $result->fetch_array()) {
-    $items[] = array_merge($item, MapLoader::find("remedios", ["cod_remedio" => $item["cod_item"]]) || []);
+    $items[] = array_merge($item, MapLoader::find("remedios", ["cod_remedio" => $item["cod_item"]]));
 }
 
 // comidas
 $result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=?",
     "ii", [$userDetails->tripulacao["id"], TIPO_ITEM_COMIDA]);
 while ($item = $result->fetch_array()) {
-    $items[] = array_merge($item, MapLoader::find("comidas", ["cod_comida" => $item["cod_item"]]) || []);
+    if (! MapLoader::find("comidas", ["cod_comida" => $item["cod_item"]])) {
+        var_dump($item["cod_item"]);
+    }
+    $items[] = array_merge($item, MapLoader::find("comidas", ["cod_comida" => $item["cod_item"]]));
 }
 
 // akumas
 $result = $connection->run("SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=?",
     "ii", [$userDetails->tripulacao["id"], TIPO_ITEM_AKUMA]);
 while ($item = $result->fetch_array()) {
-    $items[] = array_merge($item, DataLoader::find("akumas", ["cod_akuma" => $item["cod_item"]]) || []);
+    $items[] = array_merge($item, DataLoader::find("akumas", ["cod_akuma" => $item["cod_item"]]));
 }
 
 // Bala de canhao

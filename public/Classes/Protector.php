@@ -510,7 +510,7 @@ class Protector
     public function must_add_item()
     {
         if (! $this->userDetails->can_add_item()) {
-            $this->exit_error("Não há espaço suficiente no seu inventário.");
+            $this->exit_error("Você precisa de 1 espaço vazio no inventário.");
         }
     }
 

@@ -61,7 +61,7 @@ if ($conect) {
                 echo ("@Comida comprada.");
             } else {
 
-                echo ("#O limite de itens no Iventário é de apenas 10.");
+                echo ("#Você atingiu o limite do inventário.");
             }
         } else {
 

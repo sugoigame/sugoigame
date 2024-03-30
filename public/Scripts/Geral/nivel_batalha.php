@@ -7,8 +7,8 @@ if ($userDetails->tripulacao["battle_points"] < PONTOS_POR_NIVEL_BATALHA) {
     $protector->exit_error("Você não conseguiu experiência de batalha suficiente.");
 }
 
-if (!$userDetails->can_add_item(3)) {
-    $protector->exit_error("Você não tem espaço no inventário para receber sua recompensa.");
+if (! $userDetails->can_add_item(3)) {
+    $protector->exit_error("Você precisa de 3 espaços no inventário para receber sua recompensa.");
 }
 
 $connection->run("UPDATE tb_usuarios SET battle_lvl = battle_lvl + 1, battle_points = battle_points - ? WHERE id = ?",

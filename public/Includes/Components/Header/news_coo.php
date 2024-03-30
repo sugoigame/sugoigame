@@ -1,4 +1,4 @@
-<?php $news = $connection->run("SELECT *, unix_timestamp(data) AS timestamp FROM tb_news_coo ORDER BY data DESC LIMIT 6")->fetch_all_array(); ?>
+<?php $news = $connection->run("SELECT *, unix_timestamp(`data`) AS timestamp FROM tb_news_coo ORDER BY `data` DESC LIMIT 6")->fetch_all_array(); ?>
 <?php if ($news) : ?>
     <li id="div_news_coo" class="div_icon" data-toggle="popover" data-trigger="focus" data-placement="bottom"
         data-html="true" data-content='
@@ -6,7 +6,7 @@
                 <div>
                     •
                     <small>
-                        <?= date("d/m/Y - h:i", $new["timestamp"]); ?>:
+                        <?= date("d/m/Y - H:i", $new["timestamp"]); ?>:
                     </small>
                     <span>
                         <?= $new["msg"]; ?>

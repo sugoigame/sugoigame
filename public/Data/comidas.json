@@ -49,7 +49,6 @@
         "requisito_lvl": 5,
         "mergulho": 1
     },
-
     {
         "cod_comida": 11,
         "nome": "Sushi",
@@ -79,6 +78,16 @@
         "img": 126,
         "requisito_lvl": 8,
         "mergulho": 2
+    },
+    {
+        "cod_comida": 16,
+        "nome": "Hambúrger Vegetariano",
+        "descricao": "Hamburger vegetal, cebola crua, alface, tomate e maionese artesanal.",
+        "hp_recuperado": 750,
+        "mp_recuperado": 0,
+        "img": 392,
+        "requisito_lvl": 10,
+        "mergulho": 0
     },
     {
         "cod_comida": 17,
