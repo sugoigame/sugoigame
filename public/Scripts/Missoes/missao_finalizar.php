@@ -36,7 +36,7 @@ if ($userDetails->missao["venceu"]) {
 
     $concluida = $connection->run("SELECT count(*) AS total FROM tb_missoes_concluidas WHERE id = ? AND cod_missao = ?",
         "ii", array($userDetails->tripulacao["id"], $userDetails->missao["cod_missao"]))->fetch_array()["total"];
-    if (!$concluida) {
+    if (! $concluida) {
         $connection->run("INSERT INTO tb_missoes_concluidas (id, cod_missao) VALUES (?, ?)",
             "ii", array($userDetails->tripulacao["id"], $userDetails->missao["cod_missao"]));
 
@@ -61,4 +61,4 @@ if ($userDetails->missao["venceu"]) {
     }
 }
 
-echo "-Missão concluida";
+echo ":";

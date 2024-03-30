@@ -769,7 +769,7 @@ class Combate
         $relatorio_afetado["skin_r"] = $alvo["skin_r"];
         $relatorio_afetado["tipo"] = 0;
 
-        $dano_habilidade = $habilidade["dano"] * 10;
+        $dano_habilidade = $habilidade["dano"];
 
         $resultado = calc_dano($npc_stats, $alvo, $dano_habilidade);
 
