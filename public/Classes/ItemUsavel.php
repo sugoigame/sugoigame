@@ -178,7 +178,7 @@ class ItemUsavel
             $this->protector->exit_error("Seu inventário está cheio, libere espaço para receber a recompensa");
         }
 
-        $this->userDetails->add_item(rand(100, 110), rand(8, 10), 1, true);
+        $this->userDetails->add_item(get_random_akuma()["cod_akuma"], TIPO_ITEM_AKUMA, 1, true);
 
         return "Você recebeu uma Akuma no Mi";
     }
@@ -193,7 +193,7 @@ class ItemUsavel
             $this->protector->exit_error("Você precisa de 2 espaços vazios no seu inventário para receber a recopensa");
         }
 
-        $this->userDetails->add_item(121, TIPO_ITEM_ACESSORIO, 1, true);
+        //$this->userDetails->add_item(121, TIPO_ITEM_ACESSORIO, 1, true);
 
         $this->userDetails->xp_for_all(300);
 
@@ -359,7 +359,7 @@ class ItemUsavel
             $this->protector->exit_error("Você precisa de 2 espaços vazios no seu inventário para receber a recopensa");
         }
 
-        $this->userDetails->add_item(123, TIPO_ITEM_ACESSORIO, 1, true);
+        //$this->userDetails->add_item(123, TIPO_ITEM_ACESSORIO, 1, true);
 
         $this->userDetails->xp_for_all(1000);
 
@@ -398,7 +398,7 @@ class ItemUsavel
             $this->protector->exit_error("Você precisa de 1 espaço vazio no seu inventário para receber a recopensa");
         }
 
-        $this->userDetails->add_item(rand(100, 110), rand(8, 10), 1, true);
+        $this->userDetails->add_item(get_random_akuma()["cod_akuma"], TIPO_ITEM_AKUMA, 1, true);
 
         $this->userDetails->xp_for_all(1000);
 
@@ -496,18 +496,18 @@ class ItemUsavel
 
             //     return "Você recebeu " . $recompensa["nome"];
             //
-        } else/* if ($rand <= 99)*/ {
+        } elseif ($rand <= 99) {
             $recompensa = rand(100000, 500000);
 
             $this->connection->run("UPDATE tb_usuarios SET berries = berries + ? WHERE id = ?",
                 "ii", array($recompensa, $this->userDetails->tripulacao["id"]));
 
             return "Você recebeu " . mascara_berries($recompensa) . " Berries";
-        }/* else {
-                $this->userDetails->add_item(rand(100, 110), rand(8, 10), 1, true);
+        } else {
+            $this->userDetails->add_item(get_random_akuma()["cod_akuma"], TIPO_ITEM_AKUMA, 1, true);
 
-                return "Você recebeu uma Akuma no Mi";
-            }*/
+            return "Você recebeu uma Akuma no Mi";
+        }
     }
     // public function abre_ovo_carrot()
     // {
@@ -631,7 +631,7 @@ class ItemUsavel
             //     $this->userDetails->add_equipamento($recompensa);
 
             //     return "Você recebeu " . $recompensa["nome"];
-        } else/* if ($rand <= 99)*/ {
+        } elseif ($rand <= 99) {
             // $recompensa = rand(5000000, 10000000);
             $recompensa = rand(100000, 500000);
 
@@ -639,11 +639,11 @@ class ItemUsavel
                 "ii", array($recompensa, $this->userDetails->tripulacao["id"]));
 
             return "Você recebeu " . mascara_berries($recompensa) . " Berries";
-        }/* else {
-                $this->userDetails->add_item(rand(100, 110), rand(8, 10), 1, true);
+        } else {
+            $this->userDetails->add_item(get_random_akuma()["cod_akuma"], TIPO_ITEM_AKUMA, 1, true);
 
-                return "Você recebeu uma Akuma no Mi";
-            }*/
+            return "Você recebeu uma Akuma no Mi";
+        }
     }
 
     public function abre_bau_tesouro_excepcional()
@@ -684,7 +684,7 @@ class ItemUsavel
 
             return "Você recebeu um Pacote de Bordas de Personagem";
         } else {
-            $this->userDetails->add_item(rand(100, 110), rand(8, 10), 1, true);
+            $this->userDetails->add_item(get_random_akuma()["cod_akuma"], TIPO_ITEM_AKUMA, 1, true);
 
             return "Você recebeu uma Akuma no Mi";
         }
@@ -942,7 +942,7 @@ class ItemUsavel
 
             return "Você recebeu 20.000 pontos de XP";
         } else {
-            $this->userDetails->add_item(rand(100, 110), rand(8, 10), 1, true);
+            $this->userDetails->add_item(get_random_akuma()["cod_akuma"], TIPO_ITEM_AKUMA, 1, true);
 
             return "Você recebeu uma Akuma no Mi";
         }
@@ -1119,10 +1119,10 @@ class ItemUsavel
 
             return "Você recebeu uma Instrução de Combate";
         } /*else {
-           $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
+   $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
 
-           return "Você recebeu uma Akuma no Mi";
-       }*/
+   return "Você recebeu uma Akuma no Mi";
+}*/
     }
 
     public function abre_decorativo()
@@ -1278,10 +1278,10 @@ class ItemUsavel
 
             return "Você recebeu 7 mil Experiência para toda tripulação.";
         } /*else {
-           $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
+   $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
 
-           return "Você recebeu uma Akuma no Mi";
-       }*/
+   return "Você recebeu uma Akuma no Mi";
+}*/
     }
 
     public function abre_bau_pvp_prata()
@@ -1328,10 +1328,10 @@ class ItemUsavel
 
             return "Você recebeu 5 mil pontos de Experiência para toda tripulação.";
         }/*else {
-           $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
+   $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
 
-           return "Você recebeu uma Akuma no Mi";
-       }*/
+   return "Você recebeu uma Akuma no Mi";
+}*/
     }
 
     public function abre_contrato_ameaca_fantasma()

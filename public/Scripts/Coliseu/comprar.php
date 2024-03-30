@@ -7,7 +7,8 @@ $protector->must_be_in_ilha();
 $tipo = $protector->get_alphanumeric_or_exit("tipo");
 $item = $protector->get_alphanumeric_or_exit("item");
 
-function get_lvl_query() {
+function get_lvl_query()
+{
     global $userDetails;
 
     if ($userDetails->lvl_mais_forte < 25) {
@@ -33,9 +34,10 @@ if ($cpBase < 100) {
     $cpBase = 100;
 }
 
-function precoCP($porcent) {
+function precoCP($porcent)
+{
     global $cpBase;
-    $total = (int)(($porcent / 100) * $cpBase);
+    $total = (int) (($porcent / 100) * $cpBase);
     return ($total > 1) ? $total : 1;
 }
 
@@ -55,7 +57,7 @@ if ($tipo == "gold") {
 } else {
     $recompensas = DataLoader::load("loja_coliseu");
 
-    if (!isset($recompensas[$item])) {
+    if (! isset($recompensas[$item])) {
         $protector->exit_error("Recompensa invalida");
     }
     $recompensa = $recompensas[$item];
@@ -72,13 +74,13 @@ if ($tipo == "gold") {
             $msg = "Você recebeu " . mascara_berries($recompensa["quant"]) . " Berries";
             break;
         case "akuma":
-            if (!$userDetails->add_item(rand(100, 110), rand(8, 10), 1, true)) {
+            if (! $userDetails->add_item(get_random_akuma()["cod_akuma"], TIPO_ITEM_AKUMA, 1, true)) {
                 $protector->exit_error("Seu inventário está lotado. Libere espaço antes de pegar sua recompensa");
             }
             $msg = "Você recebeu uma Akuma no Mi";
             break;
         case "reagent":
-            if (!$userDetails->can_add_item()) {
+            if (! $userDetails->can_add_item()) {
                 $protector->exit_error("Seu inventário está lotado. Libere espaço antes de pegar sua recompensa");
             }
             $userDetails->add_item($recompensa["cod_item"], TIPO_ITEM_REAGENT, $recompensa["quant"]);

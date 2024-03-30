@@ -7,7 +7,7 @@ $recompensa_id = $protector->get_number_or_exit("rec");
 
 $recompensas = DataLoader::load("loja_recrutamento");
 
-if (!isset($recompensas[$recompensa_id])) {
+if (! isset($recompensas[$recompensa_id])) {
     $protector->exit_error("Recompensa inválida");
 }
 
@@ -18,7 +18,7 @@ if ($userDetails->conta["medalhas_recrutamento"] < $recompensa["preco"]) {
 }
 
 if (isset($recompensa["akuma"])) {
-    if (!$userDetails->add_item(rand(100, 110), rand(8, 10), 1, true)) {
+    if (! $userDetails->add_item(get_random_akuma()["cod_akuma"], TIPO_ITEM_AKUMA, 1, true)) {
         $protector->exit_error("Seu inventário está lotado. Libere espaço antes de pegar sua recompensa");
     }
 }
