@@ -226,6 +226,7 @@ function remove_batalha_npc()
     $connection->run("DELETE FROM tb_combate_skil_espera WHERE id = ?", "i", $userDetails->tripulacao["id"]);
     $connection->run("DELETE FROM tb_combate_buff WHERE id = ?", "i", $userDetails->tripulacao["id"]);
     $connection->run("DELETE FROM tb_combate_buff_npc WHERE tripulacao_id = ?", "i", $userDetails->tripulacao["id"]);
+    $connection->run("DELETE FROM tb_combate_special_effect WHERE tripulacao_id = ?", "i", $userDetails->tripulacao["id"]);
 }
 function remove_batalha_bot()
 {
@@ -239,8 +240,8 @@ function remove_batalha_bot()
     $connection->run("DELETE FROM tb_combate_buff_npc WHERE tripulacao_id = ?", "i", $userDetails->tripulacao["id"]);
     $connection->run("DELETE FROM tb_combate_personagens_bot WHERE combate_bot_id = ?", "i", $userDetails->combate_bot["id"]);
     $connection->run("DELETE FROM tb_combate_buff_bot WHERE id = ?", "i", $userDetails->combate_bot["id"]);
-    $connection->run("DELETE FROM tb_combate_special_effect WHERE combate_id = ?", "i", $userDetails->combate_bot["id"]);
-    $connection->run("DELETE FROM tb_combate_special_effect WHERE combate_id = ?", "i", $userDetails->combate_bot["id"]);
+    $connection->run("DELETE FROM tb_combate_special_effect WHERE bot_id = ?", "i", $userDetails->combate_bot["id"]);
+    $connection->run("DELETE FROM tb_combate_special_effect WHERE tripulacao_id = ?", "i", $userDetails->tripulacao["id"]);
 }
 
 function rouba_carga_mercador()
@@ -733,4 +734,5 @@ function remove_batalha_pvp($vencedor, $perdedor)
     $connection->run("DELETE FROM tb_relatorio WHERE combate = ?", 'i', $userDetails->combate_pvp["combate"]);
     $connection->run("DELETE FROM tb_relatorio_afetados WHERE combate = ?", 'i', $userDetails->combate_pvp["combate"]);
     $connection->run("DELETE FROM tb_combate_apostas WHERE combate_id = ?", 'i', $userDetails->combate_pvp["combate"]);
+    $connection->run("DELETE FROM tb_combate_special_effect WHERE combate_id = ?", 'i', $userDetails->combate_pvp["combate"]);
 }
