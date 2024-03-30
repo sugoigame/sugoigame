@@ -51,6 +51,10 @@
         left: -13vw;
         top: -8vh;
     }
+
+    #fundo .close-session {
+        display: block;
+    }
 </style>
 
 <script type="text/javascript">
@@ -77,7 +81,7 @@
 <div class="panel-body">
     <?php
     $selected_tatics = "A";
-    if (isset ($_GET["tatics"]) && validate_alphanumeric($_GET["tatics"])) {
+    if (isset($_GET["tatics"]) && validate_alphanumeric($_GET["tatics"])) {
         $selected_tatics = $_GET["tatics"];
     }
     ?>
