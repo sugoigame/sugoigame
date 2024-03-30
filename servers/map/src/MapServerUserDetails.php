@@ -155,10 +155,10 @@ class MapServerUserDetails extends UserDetails
             )->fetch_all_array(),
             "map" => array(
                 "fog" => $navigation->get_fog($this->tripulacao["x"], $this->tripulacao["y"]),
-                "chains" => $navigation->get_chains($this->tripulacao["x"], $this->tripulacao["y"], $this->distancia_visao["x"], $this->distancia_visao["y"]),
+                "chains" => $navigation->get_chains($this->tripulacao["x"], $this->tripulacao["y"], $this->distancia_visao["x"], $this->distancia_visao["y"], $this->lvl_navegador),
                 "rdms" => $navigation->get_rdms($this->tripulacao["x"], $this->tripulacao["y"], $this->distancia_visao["x"], $this->distancia_visao["y"]),
                 "swirls" => $navigation->get_swirls($this->tripulacao["x"], $this->tripulacao["y"], $this->distancia_visao["x"], $this->distancia_visao["y"]),
-                "wind" => $navigation->get_wind($this->tripulacao["x"], $this->tripulacao["y"]),
+                "wind" => $navigation->get_navigator_wind($this->tripulacao["x"], $this->tripulacao["y"], $this->lvl_navegador),
                 "islands" => $navigation->get_islands($this->tripulacao["x"], $this->tripulacao["y"], $this->distancia_visao["x"], $this->distancia_visao["y"], $this->connection)
             ),
             "nps" => $navigation->get_npss($this->tripulacao["x"], $this->tripulacao["y"], $this->distancia_visao["x"], $this->distancia_visao["y"])

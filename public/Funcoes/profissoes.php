@@ -127,22 +127,22 @@ function render_painel_profissao($pers)
                 Correntes Identificadas:
                 <?php
                 if ($pers["profissao_lvl"] <= 3)
-                    echo "Rank A";
+                    echo "Apenas correntes muito fracas";
                 else if ($pers["profissao_lvl"] <= 8)
-                    echo "Rank B";
+                    echo "Correntes intermediárias";
                 else
-                    echo "Rank A";
+                    echo "Todos os tipos de correntes";
                 ?>
             </p>
             <p>
                 Ventos Identificados:
                 <?php
                 if ($pers["profissao_lvl"] <= 2)
-                    echo "Rank A";
+                    echo "Apenas ventos muito fracos";
                 else if ($pers["profissao_lvl"] <= 9)
-                    echo "Rank B";
+                    echo "Ventos intermdediários";
                 else
-                    echo "Rank A";
+                    echo "Todos os tipos de ventos";
                 ?>
             </p>
         <?php elseif ($pers["profissao"] == PROFISSAO_CARPINTEIRO) : ?>

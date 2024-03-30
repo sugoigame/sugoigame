@@ -92,7 +92,7 @@ class Navigation
         //     return;
         // }
         // $this->last_hide_players = atual_segundo();
-        // $this->connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = NULL, navegacao_inicio = NULL, navegacao_fim = NULL WHERE ultimo_logon < ?", "i", [
+        // $this->connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = null, navegacao_inicio = null, navegacao_fim = null WHERE ultimo_logon < ?", "i", [
         //     atual_segundo() - (24 * 60 * 60)
         // ]);
     }
@@ -109,7 +109,7 @@ class Navigation
              FROM tb_mapa_contem c
              INNER JOIN tb_ilha_mercador m ON c.mercador_id = m.id
              INNER JOIN tb_mapa mapa ON m.ilha_destino = mapa.ilha
-             WHERE c.mercador_id IS NOT NULL "
+             WHERE c.mercador_id IS NOT null "
         )->fetch_all_array();
 
         foreach ($mercadores as $mercador) {
@@ -176,19 +176,19 @@ class Navigation
                     $x = rand(290, 430);
                     $y = rand(20, 95);
                     $npss = [1, 2, 3, 8];
-                } else if ($mar == 2) {
+                } elseif ($mar == 2) {
                     $x = rand(30, 165);
                     $y = rand(20, 95);
                     $npss = [1, 2, 3, 8];
-                } else if ($mar == 3) {
+                } elseif ($mar == 3) {
                     $x = rand(288, 430);
                     $y = rand(266, 345);
                     $npss = [1, 2, 3, 8];
-                } else if ($mar == 4) {
+                } elseif ($mar == 4) {
                     $x = rand(30, 165);
                     $y = rand(266, 345);
                     $npss = [1, 2, 3, 8];
-                } else if ($mar == 5) {
+                } elseif ($mar == 5) {
                     $x = rand(291, 430);
                     $y = rand(106, 254);
                     $npss = [3, 4, 5, 8];
@@ -450,14 +450,32 @@ class Navigation
 
     function get_wind($x, $y)
     {
-        return isset($this->wind[$x]) && isset($this->wind[$x][$y]) ? $this->wind[$x][$y] : NULL;
+        return isset($this->wind[$x]) && isset($this->wind[$x][$y]) ? $this->wind[$x][$y] : null;
     }
 
-    function get_chains($x, $y, $distance_x, $distance_y, $navegador_lvl = 10)
+    function get_navigator_wind($x, $y, $navegador_lvl = false)
+    {
+        if (! $navegador_lvl) {
+            $navegador_lvl = 1;
+        }
+
+        $wind = isset($this->wind[$x]) && isset($this->wind[$x][$y]) ? $this->wind[$x][$y] : null;
+        if ($wind && ($wind["power"] * 10) <= $navegador_lvl) {
+            return $wind;
+        }
+
+        return null;
+    }
+
+    function get_chains($x, $y, $distance_x, $distance_y, $navegador_lvl = false)
     {
         $chains = array();
         $dx = round($distance_x / 2);
         $dy = round($distance_y / 2);
+
+        if (! $navegador_lvl) {
+            $navegador_lvl = 1;
+        }
 
         for ($px = max(0, $x - $dx); $px <= min(SEA_MAX_X, $x + $dx); $px++) {
             for ($py = max(0, $y - $dy); $py <= min(SEA_MAX_Y, $y + $dy); $py++) {
@@ -466,7 +484,7 @@ class Navigation
                         "x" => $px,
                         "y" => $py
                     ), $this->fixed_chains[$px][$py]);
-                } else if (isset($this->variable_chains[$px]) && isset($this->variable_chains[$px][$py])) {
+                } elseif (isset($this->variable_chains[$px]) && isset($this->variable_chains[$px][$py])) {
                     if (($this->variable_chains[$px][$py]["power"] * 10) <= $navegador_lvl) {
                         $chains[] = array_merge(array(
                             "x" => $px,
@@ -482,7 +500,7 @@ class Navigation
     function get_chain($x, $y)
     {
         return isset($this->fixed_chains[$x]) && isset($this->fixed_chains[$x][$y]) ? $this->fixed_chains[$x][$y] :
-            (isset($this->variable_chains[$x]) && isset($this->variable_chains[$x][$y]) ? $this->variable_chains[$x][$y] : NULL);
+            (isset($this->variable_chains[$x]) && isset($this->variable_chains[$x][$y]) ? $this->variable_chains[$x][$y] : null);
     }
 
     function get_swirls($x, $y, $distance_x, $distance_y)
@@ -498,7 +516,7 @@ class Navigation
                         "x" => $px,
                         "y" => $py
                     );
-                } else if (isset($this->variable_swirls[$px]) && isset($this->variable_swirls[$px][$py])) {
+                } elseif (isset($this->variable_swirls[$px]) && isset($this->variable_swirls[$px][$py])) {
                     $swirls[] = array(
                         "x" => $px,
                         "y" => $py
@@ -512,7 +530,7 @@ class Navigation
     function get_swirl($x, $y)
     {
         return isset($this->fixed_swirls[$x]) && isset($this->fixed_swirls[$x][$y]) ? $this->fixed_swirls[$x][$y] :
-            (isset($this->variable_swirls[$x]) && isset($this->variable_swirls[$x][$y]) ? $this->variable_swirls[$x][$y] : NULL);
+            (isset($this->variable_swirls[$x]) && isset($this->variable_swirls[$x][$y]) ? $this->variable_swirls[$x][$y] : null);
     }
 
     function get_rdms($x, $y, $distance_x, $distance_y)
@@ -537,7 +555,7 @@ class Navigation
 
     function get_rdm($x, $y)
     {
-        return isset($this->rdms[$x]) && isset($this->rdms[$x][$y]) ? $this->rdms[$x][$y] : NULL;
+        return isset($this->rdms[$x]) && isset($this->rdms[$x][$y]) ? $this->rdms[$x][$y] : null;
     }
 
     function get_npss($x, $y, $distance_x, $distance_y)
@@ -562,7 +580,7 @@ class Navigation
 
     function get_nps($x, $y)
     {
-        return isset($this->nps[$x]) && isset($this->nps[$x][$y]) ? $this->nps[$x][$y] : NULL;
+        return isset($this->nps[$x]) && isset($this->nps[$x][$y]) ? $this->nps[$x][$y] : null;
     }
 
     function clear_nps($x, $y)
@@ -604,6 +622,6 @@ class Navigation
 
     function get_island($x, $y)
     {
-        return isset($this->islands[$x]) && isset($this->islands[$x][$y]) ? $this->islands[$x][$y] : NULL;
+        return isset($this->islands[$x]) && isset($this->islands[$x][$y]) ? $this->islands[$x][$y] : null;
     }
 }
