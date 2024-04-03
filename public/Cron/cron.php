@@ -7,6 +7,7 @@ include_once (dirname(__FILE__) . "/evento_periodico_cron.php");
 include_once (dirname(__FILE__) . "/disputa_ilha_cron.php");
 include_once (dirname(__FILE__) . "/torneio_poneglyph_cron.php");
 include_once (dirname(__FILE__) . "/reset_diario_cron.php");
+include_once (dirname(__FILE__) . "/boss_cron.php");
 
 $eventos_ativos = [
     "eraDosPiratas" => get_current_era(),
