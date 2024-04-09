@@ -65,6 +65,7 @@ if ($plano['bonus'] > 0) {
 // Handle the event
 switch ($event->type) {
     case 'checkout.session.async_payment_succeeded':
+    case 'checkout.session.completed':
         if ($compra['status'] != 'paid') {
             $connection->run("UPDATE tb_conta SET gold = gold + ? WHERE conta_id = ? LIMIT 1", 'ii', [
                 $golds,

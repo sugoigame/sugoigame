@@ -1,4 +1,4 @@
-<?php //if ($userDetails->tripulacao['adm']) {                         ?>
+<?php //if ($userDetails->tripulacao['adm']) {                          ?>
 <div class="panel-heading">Faça uma doação</div>
 <div class="panel-body">
     <div class="panel text-left">
@@ -121,5 +121,5 @@
             </div>
         <?php } ?>
     </div>
-    <?php //}                         ?>
+    <?php //}                          ?>
 
