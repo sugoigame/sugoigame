@@ -60,16 +60,17 @@ switch ($opcao) {
         break;
 }
 
-$query = "INSERT INTO tb_missoes_r (id, x, y, fim, modif) 
+$query = "INSERT INTO tb_missoes_r (id, x, y, fim, modif)
 	VALUES ('" . $usuario["id"] . "', '" . $usuario["x"] . "', '" . $usuario["y"] . "', '$tempo', '$opcao')";
 $connection->run($query) or die("Nao foi possivel iniciar missao");
 
-$query = "INSERT INTO tb_missoes_r_dia (id, x, y) 
-	VALUES ('" . $usuario["id"] . "', '" . $usuario["x"] . "', '" . $usuario["y"] . "')";
+$query = "INSERT INTO tb_missoes_r_dia (id, x, y)
+	VALUES ('" . $usuario["id"] . "', '" . $usuario["x"] . "', '" . $usuario["y"] . "')
+    ON DUPLICATE KEY UPDATE dia = NOW()";
 $connection->run($query) or die("Nao foi possivel iniciar missao");
 
 
 echo ("-Missão iniciada");
 exit();
-?>
+
 

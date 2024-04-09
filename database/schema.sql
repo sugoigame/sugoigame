@@ -3039,4 +3039,6 @@ ALTER TABLE tb_vip_planos ADD stripe_checkout_url_brl varchar(255) NULL;
 ALTER TABLE tb_vip_planos ADD stripe_checkout_url_usd varchar(255) NULL;
 ALTER TABLE tb_vip_planos ADD stripe_checkout_url_eur varchar(255) NULL;
 
+ALTER TABLE tb_missoes_r_dia ADD dia DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL;
+
 SET FOREIGN_KEY_CHECKS=1;
