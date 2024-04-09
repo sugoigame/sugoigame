@@ -368,19 +368,16 @@ class Combate
                 $hp_recuperado = $habilidade["hp_recuperado"] * 10;
                 $alvo["hp"] = min($alvo["hp_max"], $alvo["hp"] + $hp_recuperado);
 
-                $mp_recuperado = $habilidade["mp_recuperado"];
-                $alvo["mp"] = min($alvo["mp_max"], $alvo["mp"] + $mp_recuperado);
-
                 $relatorio_afetado["tipo"] = 2;
                 $relatorio_afetado["cura_h"] = $hp_recuperado;
-                $relatorio_afetado["cura_m"] = $mp_recuperado;
+                $relatorio_afetado["cura_m"] = 0;
 
                 if ($alvo["id"] == "bot") {
-                    $this->connection->run("UPDATE tb_combate_personagens_bot SET hp = ?, mp = ? WHERE id = ?",
-                        "iii", array($alvo["hp"], $alvo["mp"], $alvo["bot_id"]));
+                    $this->connection->run("UPDATE tb_combate_personagens_bot SET hp = ? WHERE id = ?",
+                        "ii", array($alvo["hp"], $alvo["bot_id"]));
                 } else {
-                    $this->connection->run("UPDATE tb_combate_personagens SET hp = ?, mp = ? WHERE cod = ?",
-                        "iii", array($alvo["hp"], $alvo["mp"], $alvo["cod"]));
+                    $this->connection->run("UPDATE tb_combate_personagens SET hp = ? WHERE cod = ?",
+                        "ii", array($alvo["hp"], $alvo["cod"]));
                 }
                 $this->userDetails->reduz_item($habilidade["cod_remedio"], TIPO_ITEM_REMEDIO, 1);
             } else {
