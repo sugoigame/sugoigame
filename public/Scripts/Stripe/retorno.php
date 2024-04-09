@@ -72,11 +72,13 @@ switch ($event->type) {
                 $compra['conta_id']
             ]);
         }
+        break;
     case 'refund.created':
         $connection->run("UPDATE tb_conta SET gold = gold - ? WHERE conta_id = ? LIMIT 1", 'ii', [
             $golds,
             $compra['conta_id']
         ]);
+        break;
     default:
         echo 'Received unknown event type ' . $event->type;
 }
