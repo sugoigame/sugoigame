@@ -2,6 +2,7 @@
 require "../../Includes/conectdb.php";
 
 $protector->need_conta();
+$protector->must_be_gm();
 
 $idPlano = $protector->get_number_or_exit('plano');
 $currency = $protector->get_enum_or_exit('currency', ["brl", "usd", "eur"]);
