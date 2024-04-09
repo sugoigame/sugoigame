@@ -17,7 +17,7 @@
         <a href="#" class="noHref">
             <span class="hidden-sm hidden-xs hidden-md">
                 <small>
-                    <?= date("d/m/Y - h:i", $news[0]["timestamp"]); ?>:
+                    <?= date("d/m/Y - H:i", $news[0]["timestamp"]); ?>:
                 </small>
                 <?= $news[0]["msg"] ?>
             </span>
