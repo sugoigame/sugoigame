@@ -32,11 +32,11 @@ try {
 } catch (\UnexpectedValueException $e) {
     // Invalid payload
     http_response_code(400);
-    exit();
+    exit($e->getMessage());
 } catch (\Stripe\Exception\SignatureVerificationException $e) {
     // Invalid signature
     http_response_code(400);
-    exit();
+    exit($e->getMessage());
 }
 $pagamentoItem = $event->data->object->client_reference_id;
 $pagamentoStatus = $event->data->object->payment_status;
