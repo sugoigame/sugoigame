@@ -3035,4 +3035,8 @@ CREATE TABLE `tb_wanted_log` (
 
 ALTER TABLE tb_usuarios ADD ultimo_reset DATE NULL;
 
+ALTER TABLE tb_vip_planos ADD stripe_checkout_url_brl varchar(255) NULL;
+ALTER TABLE tb_vip_planos ADD stripe_checkout_url_usd varchar(255) NULL;
+ALTER TABLE tb_vip_planos ADD stripe_checkout_url_eur varchar(255) NULL;
+
 SET FOREIGN_KEY_CHECKS=1;

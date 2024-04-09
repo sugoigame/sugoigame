@@ -1,4 +1,4 @@
-<?php //if ($userDetails->tripulacao['adm']) {       ?>
+<?php //if ($userDetails->tripulacao['adm']) {                         ?>
 <div class="panel-heading">Faça uma doação</div>
 <div class="panel-body">
     <div class="panel text-left">
@@ -25,10 +25,16 @@
                 <li>Todas as tripulações de sua conta podem usufruir das Moedas de Ouro.</li>
                 <li>Estará colaborando com a manutenção e evolução do jogo</li>
             </ul>
-            <p>Com a opção PagSeguro, você poderá adquirir moedas com todos os <u>Cartões de Crédito</u>, <b>PIX</b> e
-                <u>Boleto Bancário</u>.
+            <p>Utilizamos a Stripe como serviço de pagamentos, você poderá adquirir moedas com todos os
+                <b>Cartões de Crédito</b>, <b>PIX</b> e
+                <b>Boleto Bancário</b>.
                 Ao fazer uma doação por <b>Boleto Bancário</b>, fique ciente que pode demorar <b>até 3 dias úteis</b>
                 para a doação ser processada!
+            </p>
+            <p>
+                <strong>IMPORTANTE:</strong>
+                O pagamento via PIX está em desenvolvimento, se quiser realizar uma doação via PIX procure algum GM no
+                nosso Discord.
             </p>
         </div>
     </div>
@@ -36,22 +42,22 @@
     <ul class="nav nav-pills nav-justified" id="methods-details-tabs">
         <?php
         $methods = [
-            'pagseguro' => 'BRL',
-            'paypal_eur' => 'EUR',
-            'paypal_usd' => 'USD',
+            'brasil' => 'brl',
+            'united_states' => 'usd',
+            'europe' => 'eur',
             // 'paypal_brl'	=> 'BRL'
         ];
         $symbols = [
-            'BRL' => 'R$',
-            'EUR' => '€',
-            'USD' => '$'
+            'brl' => 'R$',
+            'eur' => '€',
+            'usd' => '$'
         ];
         ?>
         <?php $i = 1;
         foreach ($methods as $method => $currency) { ?>
             <li class="<?php echo $i == 1 ? 'active' : ''; ?>">
                 <a href="#method-<?= $method ?>-list" role="tab" data-toggle="tab">
-                    <img src="Imagens/<?= $method . ".png"; ?>" width="147" />
+                    <img src="Imagens/<?= $method . ".png"; ?>" height="40" />
                 </a>
             </li>
             <?php $i++;
@@ -101,15 +107,10 @@
                                     </span>
                                 </h4>
                                 <h4><strong>
-                                        <?= ($symbols[$currency] . ' ' . number_format($plano['valor_' . strtolower($currency)], 2, ',', '.')); ?>
+                                        <?= ($symbols[$currency] . ' ' . number_format($plano['valor_' . $currency], 2, ',', '.')); ?>
                                     </strong></h4>
-                                <?php if ($method == 'pagseguro') { ?>
-                                    <a href="Scripts/Vip/adquirirPS.php?plano=<?= base64_encode($plano['id']); ?>" target="_blank"
-                                        class="btn btn-success">Fazer doação</a>
-                                <?php } else { ?>
-                                    <a href="Scripts/Vip/adquirirPP.php?plano=<?= base64_encode($plano['id']); ?>&method=<?php echo $method ?>"
-                                        target="_blank" class="btn btn-success">Fazer doação</a>
-                                <?php } ?>
+                                <a href="Scripts/Vip/adquirir_stripe.php?plano=<?= $plano['id']; ?>&currency=<?= $currency; ?>"
+                                    target="_blank" class="btn btn-success">Fazer doação</a>
                             </div>
                         </div>
                         <?php
@@ -120,5 +121,5 @@
             </div>
         <?php } ?>
     </div>
-    <?php //}       ?>
+    <?php //}                         ?>
 
