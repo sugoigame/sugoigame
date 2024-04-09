@@ -201,7 +201,7 @@ class Navigation
                 if (! $this->collide(array("x" => $x, "y" => $y))) {
                     $nps = $nps_data[$npss[array_rand($npss)]];
                     $this->nps[$x][$y] = array(
-                        "id" => $i + $mar * $total,
+                        "id" => (atual_segundo() * 1000) + $i,
                         "x" => $x,
                         "y" => $y,
                         "icon" => $nps["icon"],
