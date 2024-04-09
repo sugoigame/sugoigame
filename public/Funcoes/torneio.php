@@ -309,7 +309,7 @@ function set_vencedor_torneio($torneio, $inscrito)
     );
 
     $connection->run(
-        "UPDATE tb_usuarios SET reputao_mensal = reputacao_mensal + 1 WHERE id = ?",
+        "UPDATE tb_usuarios SET reputacao_mensal = reputacao_mensal + 1 WHERE id = ?",
         "i", [$inscrito["tripulacao_id"]]
     );
 }
