@@ -26,13 +26,6 @@
     <h3>Você possui
         <?= $derrotados ?> <img src="Imagens/Itens/345.jpg"> Doces de Haloween
     </h3>
-
-    <p>
-        <a href="./?ses=calendario" class="link_content">
-            Confira o calendário do jogo para acompanhar a duração do evento
-        </a>
-    </p>
-
     <?php
     $recompensas = DataLoader::load("recompensas_halloween");
 

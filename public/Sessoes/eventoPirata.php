@@ -14,11 +14,5 @@
 
     <h3>Até agora você já derrotou <?= $derrotados ?> Tripulações Piratas</h3>
 
-    <p>
-        <a href="./?ses=calendario" class="link_content">
-            Confira o calendário do jogo para acompanhar a duração do evento
-        </a>
-    </p>
-
     <?php render_recompensas(DataLoader::load("recompensas_piratas"), $derrotados, "Derrote", "Tripulações Piratas", "Eventos/piratas.php", "tb_evento_recompensa"); ?>
 </div>

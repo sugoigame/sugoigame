@@ -7,10 +7,10 @@
 
     <?php $chefe = $connection->run("SELECT * FROM tb_evento_chefes ec INNER JOIN tb_personagens p ON ec.personagem_id = p.cod WHERE ec.ilha = ?",
         "i", array($userDetails->ilha["ilha"])); ?>
-    <?php if ($chefe->count()): ?>
+    <?php if ($chefe->count()) : ?>
         <?php $chefe = $chefe->fetch_array(); ?>
         <h3><?= $chefe["nome"] ?> é o Chefe Especial dessa ilha</h3>
-    <?php elseif ($userDetails->ilha["ilha"]): ?>
+    <?php elseif ($userDetails->ilha["ilha"]) : ?>
         <?php $chefes = DataLoader::load("chefes_ilha"); ?>
         <?php $chefe = $chefes[$userDetails->ilha["ilha"]]; ?>
         <?php $rdms = DataLoader::load("rdm"); ?>
@@ -31,12 +31,6 @@
         "i", $userDetails->tripulacao["id"])->fetch_array()["total"]; ?>
 
     <h3>Até agora você já derrotou <?= $derrotados ?> Chefes Especiais</h3>
-
-    <p>
-        <a href="./?ses=calendario" class="link_content">
-            Confira o calendário do jogo para acompanhar a duração do evento
-        </a>
-    </p>
 
     <?php render_recompensas(DataLoader::load("recompensas_chefes_ilhas"), $derrotados, "Derrote", "Chefes Especiais", "Eventos/chefes_ilhas.php", "tb_evento_recompensa"); ?>
 

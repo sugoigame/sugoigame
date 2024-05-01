@@ -12,11 +12,5 @@
 
     <h3>Até agora você já derrotou <?= $derrotados ?> Adversários de incursões</h3>
 
-    <p>
-        <a href="./?ses=calendario" class="link_content">
-            Confira o calendário do jogo para acompanhar a duração do evento
-        </a>
-    </p>
-
     <?php render_recompensas(DataLoader::load("recompensas_independencia"), $derrotados, "Derrote", "Adversários de Incursões", "Eventos/independencia.php", "tb_evento_amizade_recompensa"); ?>
 </div>

@@ -1,10 +1,12 @@
 <?php
-function isset_and_true($var, $key) {
+function isset_and_true($var, $key)
+{
     return isset($var[$key]) && $var[$key];
 }
 
-function get_super_menu($sess = null) {
-    if (!$sess) {
+function get_super_menu($sess = null)
+{
+    if (! $sess) {
         $sess = $_GET["sessao"];
     }
     switch ($sess) {
@@ -23,7 +25,6 @@ function get_super_menu($sess = null) {
         case "cadastro":
         case "cadastrosuccess":
         case "seltrip":
-        case "calendario":
         case "recrutamento":
         case "torneio":
         case "recuperarSenha":

@@ -13,12 +13,6 @@
         atentos.
     </p>
 
-    <p>
-        <a href="./?ses=calendario" class="link_content">
-            Confira o calendário do jogo para acompanhar a duração do evento
-        </a>
-    </p>
-
     <?php $recompensas = DataLoader::load("recompensas_ano_novo"); ?>
     <?php
     $derrotados = [];
@@ -51,12 +45,6 @@
     <h3>Você possui
         <?= $derrotados ?> <img src="Imagens/Itens/349.jpg"> Taças de Champanhe
     </h3>
-
-    <p>
-        <a href="./?ses=calendario" class="link_content">
-            Confira o calendário do jogo para acompanhar a duração do evento
-        </a>
-    </p>
 
     <?php
     $recompensas = DataLoader::load("recompensas_loja_ano_novo");

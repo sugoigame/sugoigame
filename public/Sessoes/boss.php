@@ -29,11 +29,5 @@
         <?= mascara_berries($dano) ?>
     </h3>
 
-    <p>
-        <a href="./?ses=calendario" class="link_content">
-            Confira o calendário do jogo para acompanhar a duração do evento
-        </a>
-    </p>
-
     <?php render_recompensas(DataLoader::load("recompensas_boss"), $dano, "Cause ", " pontos de dano a $boss", "Eventos/chefao.php", "tb_evento_recompensa"); ?>
 </div>
