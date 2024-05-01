@@ -282,9 +282,22 @@ function atualiza_disputa_ilha()
             if ($result->count()) {
                 $progresso = $result->fetch_array();
                 if ($progresso["progresso"] == 2 && ! $disputa["vencedor_id"]) {
+                    $msg = $userDetails->tripulacao["tripulacao"] . " concluiu a incursão pelo controle de " . nome_ilha($userDetails->ilha["ilha"]);
+                    $connection->run(
+                        "INSERT INTO tb_news_coo (msg) VALUE (?)",
+                        "s", array($msg)
+                    );
+
                     if ($userDetails->ilha["ilha_dono"]) {
                         $connection->run("UPDATE tb_ilha_disputa SET vencedor_id = ? WHERE ilha = ?",
                             "ii", array($userDetails->tripulacao["id"], $userDetails->ilha["ilha"]));
+
+                        $hora = "às ";
+                        $hora .= date("H:i", time());
+                        $hora .= " do dia ";
+                        $hora .= date("d/m/Y", time());
+                        $connection->run("INSERT INTO tb_mensagens (remetente, destinatario, assunto, texto, hora) VALUE (?, ?, ?, ?, ?)",
+                            "iisss", array($userDetails->tripulacao["id"], $userDetails->ilha["ilha_dono"], "Estão atacando sua ilha!", $msg, $hora));
                     } else {
                         $connection->run("UPDATE tb_mapa SET ilha_dono = ? WHERE ilha = ?",
                             "ii", array($userDetails->tripulacao["id"], $userDetails->ilha["ilha"]));
@@ -298,17 +311,6 @@ function atualiza_disputa_ilha()
                         $connection->run("DELETE FROM tb_ilha_disputa_progresso WHERE  ilha = ?",
                             "i", array($userDetails->ilha["ilha"]));
                     }
-                    $msg = $userDetails->tripulacao["tripulacao"] . " concluiu a incursão pelo controle de " . nome_ilha($userDetails->ilha["ilha"]);
-                    $connection->run(
-                        "INSERT INTO tb_news_coo (msg) VALUE (?)",
-                        "s", array($msg)
-                    );
-                    $hora = "às ";
-                    $hora .= date("H:i", time());
-                    $hora .= " do dia ";
-                    $hora .= date("d/m/Y", time());
-                    $connection->run("INSERT INTO tb_mensagens (remetente, destinatario, assunto, texto, hora) VALUE (?, ?, ?, ?, ?)",
-                        "iisss", array($userDetails->tripulacao["id"], $userDetails->ilha["ilha_dono"], "Estão atacando sua ilha!", $msg, $hora));
                 }
 
                 $connection->run("UPDATE tb_ilha_disputa_progresso SET progresso = progresso + 1 WHERE ilha = ? AND tripulacao_id = ?",
