@@ -1323,12 +1323,16 @@ function inicia_combate($alvo, $tipo, $chave = null)
     </div>
 <?php } ?>
 
-<?php function render_battle_heading()
+<?php function render_battle_heading($combate = null, $tripulacoes = null, $id_blue = null)
 {
     global $userDetails, $personagens_combate, $personagens_combate_bot; ?>
     <div class="battle-heading">
-        <?php if ($userDetails->combate_pvp) : ?>
-            <?php render_combate_pvp_header($userDetails->combate_pvp, $userDetails->tripulacoes_pvp); ?>
+        <?php if ($userDetails->combate_pvp || $combate) : ?>
+            <?php render_combate_pvp_header(
+                $combate != null ? $combate : $userDetails->combate_pvp,
+                $tripulacoes != null ? $tripulacoes : $userDetails->tripulacoes_pvp,
+                $id_blue
+            ); ?>
         <?php elseif ($userDetails->combate_pve) : ?>
             <div class="battle-heading-details">
                 <span class="battle-player text-right">

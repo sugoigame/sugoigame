@@ -3,8 +3,8 @@
 $personagens_combate["1"] = get_pers_in_combate($combate["id_1"]);
 $personagens_combate["2"] = get_pers_in_combate($combate["id_2"]);
 
-$venceu_1 = TRUE;
-$venceu_2 = TRUE;
+$venceu_1 = true;
+$venceu_2 = true;
 
 $tabuleiro = [];
 
@@ -22,13 +22,13 @@ foreach ($obstaculos as $obstaculo) {
 
 foreach ($personagens_combate["1"] as $pers) {
     if ($pers["hp"]) {
-        $venceu_2 = FALSE;
+        $venceu_2 = false;
         $tabuleiro[$pers["quadro_x"]][$pers["quadro_y"]] = $pers;
     }
 }
 foreach ($personagens_combate["2"] as $pers) {
     if ($pers["hp"]) {
-        $venceu_1 = FALSE;
+        $venceu_1 = false;
         $tabuleiro[$pers["quadro_x"]][$pers["quadro_y"]] = $pers;
     }
 }
@@ -37,8 +37,27 @@ $special_effects = get_special_effects($combate["id_1"], $combate["id_2"]);
 $id_blue = $combate["id_1"];
 ?>
 
-<?php render_battle_heading(); ?>
+<?php render_battle_heading($combate, $tripulacao, $id_blue); ?>
+<style type="text/css">
+    #voltar {
+        position: fixed;
+        top: 5vh;
+        left: 5vw;
+        color: rgba(255, 255, 255, 0.8);
+        z-index: 100000;
+        background: transparent;
+        border: none;
+        font-weight: bold;
+        text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000,
+            -1px -1px #000, 1px -1px #000, -1px 1px #000;
+    }
+</style>
 <div id="navio_batalha">
+    <a class="link_content" id="voltar" href="./?ses=home">
+        <i class="fa fa-arrow-left" />
+        Voltar
+    </a>
+
     <?php if ($venceu_1) : ?>
         <div id="fim_batalha">
             <h2>
