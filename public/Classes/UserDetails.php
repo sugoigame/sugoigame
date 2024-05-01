@@ -327,6 +327,10 @@ class UserDetails
         return ($this->tripulacoes = $result->fetch_all_array());
     }
 
+    public function reload_personagems(){
+        $this->_load_personagens();
+    }
+
     private function _load_personagens()
     {
         if (! $this->tripulacao) {
@@ -393,6 +397,8 @@ class UserDetails
                     $row['cod']
                 ]);
                 $row['hp'] = $row['hp_max'];
+                $row['respawn'] = 0;
+                $row['respawn_tipo'] = 0;
             }
 
             $personagens[] = $row;

@@ -690,6 +690,9 @@ function atacar_rdm($rdm_id, $details = null, $conn = null)
     $connection->run("UPDATE tb_usuarios SET mar_visivel = 0, navegacao_destino = null, navegacao_inicio = null, navegacao_fim = null WHERE id = ?",
         "i", array($userDetails->tripulacao["id"]));
 
+    // força o update caso invocada do map server
+    $userDetails->reload_personagems();
+
     insert_personagens_combate($userDetails->tripulacao["id"], $userDetails->personagens, $userDetails->vip, "tatic_p", 0, 4, array(), false, $userDetails, $connection);
 }
 
