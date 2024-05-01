@@ -38,8 +38,7 @@ function cron_atualiza_evento_periodico()
         set_value_varchar_variavel_global(VARIAVEL_EVENTO_PERIODICO_ATIVO, $evento["id"]);
 
         $connection->run("DELETE FROM tb_evento_recompensa WHERE 1=1");
-        $connection->run("DELETE FROM tb_pve WHERE zona = 73");
-        $connection->run("DELETE FROM tb_pve WHERE zona >=15 AND zona <=21");
+        $connection->run("DELETE FROM tb_pve WHERE zona = 73 OR zona = 9998 OR (zona >=15 AND zona <=21)");
         $connection->run("DELETE FROM tb_evento_chefes WHERE 1=1");
         $connection->run("DELETE FROM tb_boss_damage WHERE real_boss_id = 10");
     }
