@@ -529,7 +529,7 @@ function atualiza_reputacao($vencedor, $perdedor)
 {
     global $userDetails;
     global $connection;
-    if ($userDetails->combate_pvp["tipo"] == TIPO_ATAQUE && $perdedor["reputacao"] > 0) {
+    if ($userDetails->combate_pvp["tipo"] == TIPO_ATAQUE && $perdedor["reputacao_mensal"] > 0) {
         $vencedor["reputacao_mensal"] += 1;
         $perdedor["reputacao_mensal"] -= 1;
 
