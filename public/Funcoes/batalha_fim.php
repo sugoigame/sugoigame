@@ -533,11 +533,11 @@ function atualiza_reputacao($vencedor, $perdedor)
 
         $connection->run(
             "UPDATE tb_usuarios SET reputacao_mensal = ? WHERE id = ?",
-            "ii", $vencedor["reputacao_mensal"], $vencedor["id"]
+            "ii", [$vencedor["reputacao_mensal"], $vencedor["id"]]
         );
         $connection->run(
             "UPDATE tb_usuarios SET reputacao_mensal = ? WHERE id = ?",
-            "ii", $perdedor["reputacao_mensal"], $perdedor["id"]
+            "ii", [$perdedor["reputacao_mensal"], $perdedor["id"]]
         );
 
         return [
