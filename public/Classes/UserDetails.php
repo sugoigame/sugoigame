@@ -1779,14 +1779,14 @@ class UserDetails
     public function get_progress_info()
     {
         if (! $this->tripulacao) {
-            return NULL;
+            return null;
         }
 
         $all_progress_info = $this->get_all_progress_info();
         if (isset($all_progress_info[$this->tripulacao["progress"]])) {
             return $all_progress_info[$this->tripulacao["progress"]];
         } else {
-            return NULL;
+            return null;
         }
     }
 
@@ -1796,7 +1796,7 @@ class UserDetails
         if (isset($all_progress_info[$this->tripulacao["progress"]])) {
             return $all_progress_info[$this->tripulacao["progress"]]["rewards"];
         } else {
-            return NULL;
+            return null;
         }
     }
 
@@ -1843,14 +1843,14 @@ class UserDetails
     public function get_next_progress()
     {
         if (! $this->tripulacao) {
-            return NULL;
+            return null;
         }
 
         $all_progress_info = $this->get_all_progress_info();
         if (isset($all_progress_info[$this->tripulacao["progress"]])) {
             return $all_progress_info[$this->tripulacao["progress"]]["next"];
         } else {
-            return NULL;
+            return null;
         }
     }
 
@@ -1868,7 +1868,7 @@ class UserDetails
 
             return $result->count() ? $result->fetch_array() : null;
         }
-        return NULL;
+        return null;
     }
 
     public function xp_for_all($quant)
@@ -1987,7 +1987,7 @@ class UserDetails
         }
         $exist = $this->connection->run("SELECT * FROM tb_usuario_itens WHERE tipo_item = ? AND cod_item = ? AND id = ?",
             "iii", array($tipo_item, $cod_item, $id));
-        return $exist->count() ? $exist->fetch_array() : NULL;
+        return $exist->count() ? $exist->fetch_array() : null;
     }
 
     public function add_item($cod_item, $tipo_item, $quant, $unique = false, $id = null)

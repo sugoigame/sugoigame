@@ -28,7 +28,7 @@
             <li><img src="Imagens/Icones/Berries.png">
                 <?= mascara_berries($missao["berries"]) ?>
             </li>
-            <?php if (isset ($missao["recompensas"])) : ?>
+            <?php if (isset($missao["recompensas"])) : ?>
                 <?php foreach ($missao["recompensas"] as $recompensa) : ?>
                     <li>
                         <?php render_recompensa($recompensa, $reagents, $equipamentos); ?>
@@ -36,7 +36,7 @@
                 <?php endforeach; ?>
             <?php endif; ?>
         </ul>
-        <?php if (isset ($missao["boss"]) && $missao["boss"]) : ?>
+        <?php if (isset($missao["boss"]) && $missao["boss"]) : ?>
             <h5>Essa criatura pode ser encontrada nas seguintes coordenadas:</h5>
             <?php $zonas = $connection->run("SELECT x, y FROM tb_mapa_rdm WHERE rdm_id = ?", "i", $missao["objetivo"]); ?>
             <?php while ($quadro = $zonas->fetch_array()) : ?>
@@ -78,7 +78,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <?= $missao["nome"]; ?>
-                        <?= isset ($missao["diario"]) && $missao["diario"] ? "(Diária)" : "" ?>
+                        <?= isset($missao["diario"]) && $missao["diario"] ? "(Diária)" : "" ?>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -98,7 +98,7 @@
                                         <img src="Imagens/Icones/Berries.png">
                                         <?= mascara_berries($missao["berries"]) ?>
                                     </li>
-                                    <?php if (isset ($missao["recompensas"])) : ?>
+                                    <?php if (isset($missao["recompensas"])) : ?>
                                         <?php foreach ($missao["recompensas"] as $recompensa) : ?>
                                             <li>
                                                 <?php render_recompensa($recompensa, $reagents, $equipamentos); ?>
@@ -109,8 +109,8 @@
                             </div>
                         </div>
                         <div>
-                            <?php if (isset ($missao["diario"]) && $missao["diario"]) : ?>
-                                <?php $completa = $connection->run("SELECT * FROM tb_missoes_caca_diario WHERE tripulacao_id = ? AND missao_caca_id = ?",
+                            <?php if (isset($missao["diario"]) && $missao["diario"]) : ?>
+                                <?php $completa = $connection->run("SELECT * FROM tb_missoes_caca_diario WHERE tripulacao_id = ? AND missao_caca_id = ? AND cast(inicio as date) = CURRENT_DATE()",
                                     "ii", array($userDetails->tripulacao["id"], $id))->count(); ?>
                                 <?php if (! $completa) : ?>
                                     <button href="MissaoCaca/missao_caca_iniciar.php?cod=<?= $id ?>"

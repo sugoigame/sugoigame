@@ -374,7 +374,7 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
                                 </div>
                                 <div>
                                     <?php if (isset($missao["diario"]) && $missao["diario"]) : ?>
-                                        <?php $completa = $connection->run("SELECT * FROM tb_missoes_caca_diario WHERE tripulacao_id = ? AND missao_caca_id = ?",
+                                        <?php $completa = $connection->run("SELECT * FROM tb_missoes_caca_diario WHERE tripulacao_id = ? AND missao_caca_id = ? AND cast(inicio as date) = CURRENT_DATE()",
                                             "ii", array($userDetails->tripulacao["id"], $id))->count(); ?>
                                         <?php if (! $completa) : ?>
                                             <button href="MissaoCaca/missao_caca_iniciar.php?cod=<?= $id ?>"

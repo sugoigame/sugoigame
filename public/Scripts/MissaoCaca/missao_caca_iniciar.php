@@ -13,7 +13,7 @@ if (!isset($missoes[$missao_id])) {
 }
 $missao = $missoes[$missao_id];
 if (isset($missao["diario"]) && $missao["diario"]) {
-    $completa = $connection->run("SELECT * FROM tb_missoes_caca_diario WHERE tripulacao_id = ? AND missao_caca_id = ?",
+    $completa = $connection->run("SELECT * FROM tb_missoes_caca_diario WHERE tripulacao_id = ? AND missao_caca_id = ? AND cast(inicio as date) = CURRENT_DATE()",
         "ii", array($userDetails->tripulacao["id"], $missao_id))->count();
     if ($completa) {
         $protector->exit_error("Você já concluiu essa missão hoje");
