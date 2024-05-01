@@ -67,7 +67,7 @@ $connection->run(
         $pers["cod"],
         $cod_skill,
         $tipo_skill,
-        $habilidade["nome"],
+        mb_strimwidth($habilidade["nome"], 0, 20),
         $habilidade["descricao"],
         $icon
     ]);

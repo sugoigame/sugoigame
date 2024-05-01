@@ -4,7 +4,7 @@ require "../../Includes/conectdb.php";
 $protector->need_tripulacao();
 
 $tipo = $protector->get_enum_or_exit("tipo", array("gold"));
-$protector->need_gold_or_dobrao($tipo, PRECO_GOLD_RESET_CLASSE, PRECO_DOBRAO_RESET_CLASSE);
+$protector->need_gold(PRECO_GOLD_RESET_CLASSE,);
 
 $pers = $protector->get_tripulante_or_exit("cod");
 
@@ -28,6 +28,6 @@ $connection->run(
 
 $userDetails->remove_skills_classe($pers);
 
-$userDetails->reduz_gold_or_dobrao($tipo, PRECO_GOLD_RESET_CLASSE, PRECO_DOBRAO_RESET_CLASSE, "resetar_classe");
+$userDetails->reduz_gold(PRECO_GOLD_RESET_CLASSE, "resetar_classe");
 
-echo("-Classe resetada!");
+echo ("-Classe resetada!");

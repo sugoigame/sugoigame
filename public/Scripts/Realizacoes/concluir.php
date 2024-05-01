@@ -57,7 +57,7 @@ if ($realizacao["tipo"] == 1) {
 }
 
 $x = 0;
-$query = "SELECT tipo FROM tb_realizacoes_concluidas 
+$query = "SELECT tipo FROM tb_realizacoes_concluidas
 	WHERE id='" . $usuario["id"] . "' AND cod_realizacao='" . $realizacao["cod_realizacao"] . "' AND tipo='" . $realizacao["tipo"] . "'";
 if ($realizacao["tipo"] == 1) {
     $query .= " AND personagem='$person'";
@@ -80,7 +80,7 @@ if ($status["status"]["status"] != 2) {
 
 if ($realizacao["titulo"] != 0) {
     $person = $realizacao["tipo"] == 1 ? $person : $userDetails->capitao["cod"];
-    $query = "INSERT INTO tb_personagem_titulo (cod, titulo)
+    $query = "INSERT IGNORE INTO tb_personagem_titulo (cod, titulo)
 		VALUES ('$person', '" . $realizacao["titulo"] . "')";
     $connection->run($query);
 }

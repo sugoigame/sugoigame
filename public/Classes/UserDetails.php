@@ -119,7 +119,7 @@ class UserDetails
         }
 
         $this->connection->run("UPDATE tb_usuarios SET ip = ?, ultimo_logon = ?, ultima_pagina = ? WHERE id=?",
-            "sssi", array($this->get_user_ip(), $this->get_time_now(), $_SERVER["REQUEST_URI"], $this->tripulacao["id"]));
+            "sssi", array($this->get_user_ip(), $this->get_time_now(), mb_strimwidth($_SERVER["REQUEST_URI"], 0, 255), $this->tripulacao["id"]));
 
     }
 
@@ -2056,18 +2056,6 @@ class UserDetails
             "UPDATE tb_conta SET gold = gold - ? WHERE conta_id = ?",
             "ii", array($quant, $this->conta["conta_id"])
         );
-
-        //        $gasto = $this->connection->run("SELECT sum(quant) AS total FROM tb_gold_log WHERE user_id = ? AND quando > '2017-11-23 00:00:00' AND quando <'2017-11-25 00:00:00'",
-//            "i", array($this->tripulacao["id"]))->fetch_array()["total"];
-//
-//        $gasto = $gasto % 50;
-//
-//        $bonus = floor(($gasto + $quant) / 50);
-//
-//        if ($bonus) {
-//            $this->connection->run("UPDATE tb_usuarios SET free_reset_atributos = free_reset_atributos + ? WHERE id = ?",
-//                "ii", array($bonus, $this->tripulacao["id"]));
-//        }
 
         $this->connection->run(
             "INSERT INTO tb_gold_log (user_id, quant, script) VALUES (?, ? ,?)",
