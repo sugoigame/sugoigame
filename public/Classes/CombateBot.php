@@ -240,8 +240,7 @@ class CombateBot
             }
         }
 
-        $movimento_index = array_rand($movimentos_maior_dist_min);
-        if (! $movimento_index) {
+        if (! count($movimentos_maior_dist_min) || ! ($movimento_index = array_rand($movimentos_maior_dist_min))) {
             // encerra os movimentos
             $this->connection->run("UPDATE tb_combate_bot SET move = 0 WHERE id = ?",
                 "i", array($this->userDetails->combate_bot["id"]));

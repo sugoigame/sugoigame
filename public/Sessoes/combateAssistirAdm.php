@@ -1,13 +1,12 @@
 <?php
-if (!validate_number($_GET["combate"])) {
-    echo "Batalha não encontrada ou finalizada<br/><a href='ses?=home' class='link_content'>Voltar a página inicial</a>";
-    exit();
-}
-$combate_id = $_GET["combate"];
+
+$protector->must_be_gm();
+
+$combate_id = $protector->get_number_or_exit("combate");
 
 $result = $connection->run("SELECT * FROM tb_combate_log WHERE combate = ?", "i", $combate_id);
 
-if (!$result->count()) {
+if (! $result->count()) {
     echo "Batalha não encontrada ou já finalizada";
     exit();
 }
@@ -21,7 +20,7 @@ $id_blue = $tripulacao["1"]["id"];
 
 $pode_assistir = $userDetails->tripulacao["adm"];
 
-if (!$pode_assistir) {
+if (! $pode_assistir) {
     echo "<i class=\"fa fa-thumbs-down\"></i> Os jogadores não permitiram que essa batalha seja assistida<br/><a href='ses?=home' class='link_content'>Voltar a página inicial</a>";
     exit();
 }

@@ -35,6 +35,6 @@ $habilidade = habilidade_random();
 $icon = rand(1, SKILLS_ICONS_MAX);
 
 $connection->run("INSERT INTO tb_personagens_skil (cod, cod_skil, tipo, nome, descricao, icon) VALUE (?,?,?,?,?,?)",
-    "iiissi", array($pers["cod"], $cod_skill, $tipo_skill, $habilidade["nome"], $habilidade["descricao"], $icon));
+    "iiissi", array($pers["cod"], $cod_skill, $tipo_skill, mb_strimwidth($habilidade["nome"], 0, 20), $habilidade["descricao"], $icon));
 
 echo ":";

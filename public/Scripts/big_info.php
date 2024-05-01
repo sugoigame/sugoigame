@@ -4,12 +4,12 @@ require "../Includes/conectdb.php";
 
 $cod = $protector->get_number_or_exit("cod");
 
-$query = "SELECT * FROM tb_usuarios INNER JOIN tb_personagens ON tb_usuarios.cod_personagem=tb_personagens.cod 
+$query = "SELECT * FROM tb_usuarios INNER JOIN tb_personagens ON tb_usuarios.cod_personagem=tb_personagens.cod
 	WHERE tb_usuarios.id= ?";
 $result = $connection->run($query, "i", $cod);
-$personagem = $result->fetch_array($result);
+$personagem = $result->fetch_array();
 
-$query = "SELECT * FROM tb_alianca INNER JOIN tb_alianca_membros ON tb_alianca.cod_alianca=tb_alianca_membros.cod_alianca 
+$query = "SELECT * FROM tb_alianca INNER JOIN tb_alianca_membros ON tb_alianca.cod_alianca=tb_alianca_membros.cod_alianca
 	WHERE tb_alianca_membros.id= ?";
 $result = $connection->run($query, "i", $cod);
 if ($result->count() != 0)
@@ -53,7 +53,7 @@ if ($result->count() != 0)
         Tripulantes:
         <?php
         $query = "SELECT * FROM tb_personagens WHERE id=? AND ativo = 1";
-        $result = $connection->run($query, "i", $personagem["id"]);
+        $result = $connection->run($query, "i", [$personagem["id"]]);
         echo $result->count();
         $rec = 0;
         while ($personagem_ = $result->fetch_array()) {

@@ -10,7 +10,7 @@ $email = $_GET["email"];
 
 $result = $connection->run("SELECT conta_id, email FROM tb_conta WHERE email = ?", "s", $email);
 
-if (!$result->count()) {
+if (! $result->count()) {
     $protector->redirect_error("Não existe conta cadastrada para o email informado");
 }
 
@@ -19,7 +19,7 @@ $conta = $result->fetch_array();
 $token = md5(time());
 
 $connection->run(
-    "INSERT INTO tb_reset_senha_token (conta_id, token, expiration) VALUE (?, ?, adddate(now(), '2 days'))",
+    "INSERT INTO tb_reset_senha_token (conta_id, token, expiration) VALUE (?, ?, date_add(now(), interval 2 day))",
     "is", array($conta["conta_id"], $token)
 );
 
@@ -38,7 +38,7 @@ $mail->msgHTML('<div style="margin: 0 auto; background: #F5F5F5; border-radius: 
             <a href="' . $url . '" target="_blank">' . $url . '</a>
         </div></td></tr>
         <tr><td align="center"><div style="background: rgba(0, 0, 0, .5); margin-top: 10px; padding: 5px; font-size: 12px; font-family: Arial, Helvetica, sans-serif;">
-            <b style="color: #FFF;">&copy; 2017 - ' . date("Y"). ' - Sugoi Game | Todos os direitos reservados.</b>
+            <b style="color: #FFF;">&copy; 2017 - ' . date("Y") . ' - Sugoi Game | Todos os direitos reservados.</b>
         </div></td></tr>
     </table>
 </div>');
