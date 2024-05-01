@@ -28,7 +28,7 @@ $preco = ceil(($userDetails->tripulacao["expedicao"] - atual_segundo()) / $tempo
 if ($userDetails->tripulacao["expedicao"] > atual_segundo()) {
     if ($tipo == "gold") {
         $protector->need_gold($preco);
-    } else if ($tipo == "dobroes") {
+    } elseif ($tipo == "dobroes") {
         $preco = ceil($preco * 1.2);
         $protector->need_dobroes($preco);
     } else {
@@ -38,11 +38,11 @@ if ($userDetails->tripulacao["expedicao"] > atual_segundo()) {
 
 if ($userDetails->ilha["mar"] <= 4) {
     $mar = 1;
-} else if ($userDetails->ilha["mar"] == 5) {
+} elseif ($userDetails->ilha["mar"] == 5) {
     $mar = "2' OR mergulho='1";
-} else if ($userDetails->ilha["mar"] == 6) {
+} elseif ($userDetails->ilha["mar"] == 6) {
     $mar = "3' OR mergulho='2' OR mergulho='1";
-} else if ($userDetails->ilha["mar"] == 7) {
+} elseif ($userDetails->ilha["mar"] == 7) {
     $mar = "4' OR mergulho='3' OR mergulho='2' OR mergulho='1";
 }
 
@@ -58,25 +58,13 @@ for ($x = 1; $x <= $quant; $x++) {
         $userDetails->add_item($item["cod_comida"], TIPO_ITEM_COMIDA, 1);
 
         $recompensas[] = $item["nome"];
-    } else if ($rand <= 27) {
+    } elseif ($rand <= 27) {
         $item = $connection->run("SELECT nome, cod_casco FROM tb_item_navio_casco WHERE mergulho='$mar' ORDER BY RAND() LIMIT 1")->fetch_array();
 
         $userDetails->add_item($item["cod_casco"], TIPO_ITEM_CASCO, 1);
 
         $recompensas[] = $item["nome"];
-    } else if ($rand <= 30) {
-        $item = $connection->run("SELECT nome, cod_leme FROM tb_item_navio_leme WHERE mergulho='$mar' ORDER BY RAND() LIMIT 1")->fetch_array();
-
-        $userDetails->add_item($item["cod_leme"], TIPO_ITEM_LEME, 1);
-
-        $recompensas[] = $item["nome"];
-    } else if ($rand <= 33) {
-        $item = $connection->run("SELECT nome, cod_velas FROM tb_item_navio_velas WHERE mergulho='$mar' ORDER BY RAND() LIMIT 1")->fetch_array();
-
-        $userDetails->add_item($item["cod_velas"], TIPO_ITEM_VELAS, 1);
-
-        $recompensas[] = $item["nome"];
-    } else if ($rand <= 45) {
+    } elseif ($rand <= 40) {
         $remedios = MapLoader::filter("remedios", function ($remedio) use ($mar) {
             return $remedio["mergulho"] == $mar;
         });
@@ -85,12 +73,12 @@ for ($x = 1; $x <= $quant; $x++) {
         $userDetails->add_item($item["cod_remedio"], TIPO_ITEM_REMEDIO, 1);
 
         $recompensas[] = $item["nome"];
-    } else if ($rand <= 57) {
+    } elseif ($rand <= 57) {
         $berries = round(($userDetails->lvl_arqueologo * 300000) * (rand(50, 100) / 100));
         $connection->run("UPDATE tb_usuarios SET berries = berries + ? WHERE id = ?",
             "ii", array($berries, $userDetails->tripulacao["id"]));
         $recompensas[] = mascara_berries($berries) . " Berries";
-    } else if ($rand <= 99) {
+    } elseif ($rand <= 99) {
         $item = $connection->run("SELECT nome, cod_reagent FROM tb_item_reagents WHERE mergulho='$mar' ORDER BY RAND() LIMIT 1")->fetch_array();
 
         $userDetails->add_item($item["cod_reagent"], TIPO_ITEM_REAGENT, 1);

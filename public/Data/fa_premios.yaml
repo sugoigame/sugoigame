@@ -48,7 +48,6 @@
 5:
   objetivo: 300000000
   recompensas:
-      tipo: reagent
     - tipo_item: 15
       cod_item: 147
       quant: 1

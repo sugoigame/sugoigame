@@ -657,7 +657,7 @@ function atacar_rdm($rdm_id, $details = null, $conn = null)
 
     $rdm = $rdms[$rdm_id];
 
-    if (! isset ($rdm["boss"])) {
+    if (! isset($rdm["boss"])) {
         $rdm["boss"] = null;
     }
 
@@ -677,13 +677,13 @@ function atacar_rdm($rdm_id, $details = null, $conn = null)
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         "iisiiiiiiiiiiiiiiii", array(
             $userDetails->tripulacao["id"],
-            isset ($rdm["img"]) ? $rdm["img"] : rand($rdm["img_rand_min"], $rdm["img_rand_max"]),
+            isset($rdm["img"]) ? $rdm["img"] : rand($rdm["img_rand_min"], $rdm["img_rand_max"]),
             $rdm["nome"],
             $rdm["hp"], $rdm["hp"],
             1, 0,
             $rdm["atk"], $rdm["def"], $rdm["agl"], $rdm["res"], $rdm["pre"], $rdm["dex"], $rdm["con"],
             0, 0,
-            $rdm["id"], $rdm["boss"], isset ($rdm["battle_back"]) ? $rdm["battle_back"] : null
+            $rdm["id"], $rdm["boss"], isset($rdm["battle_back"]) ? $rdm["battle_back"] : null
         )
     );
 
@@ -1018,15 +1018,15 @@ function inicia_combate($alvo, $tipo, $chave = null)
                     <?php endif; ?>
                 </td>
                 <?php for ($y = 0; $y < 20; $y++) : ?>
-                    <td id="<?= isset ($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>"
-                        class="<?= $x . "_" . $y; ?> <?= isset ($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "personagem-aliado" : "personagem-inimigo") : "" ?>">
-                        <?php if (isset ($tabuleiro[$x][$y])) : ?>
+                    <td id="<?= isset($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>"
+                        class="<?= $x . "_" . $y; ?> <?= isset($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "personagem-aliado" : "personagem-inimigo") : "" ?>">
+                        <?php if (isset($tabuleiro[$x][$y])) : ?>
                             <div class="progress progress-red">
                                 <div class="progress-bar progress-bar-success"
                                     style="width: <?= $tabuleiro[$x][$y]["hp"] / $tabuleiro[$x][$y]["hp_max"] * 100 ?>%">
                                 </div>
                             </div>
-                            <img class="<?= (isset ($special_effects[$tabuleiro[$x][$y]["cod"]])) ? get_special_effect_classes($special_effects[$tabuleiro[$x][$y]["cod"]]) : "" ?>"
+                            <img class="<?= (isset($special_effects[$tabuleiro[$x][$y]["cod"]])) ? get_special_effect_classes($special_effects[$tabuleiro[$x][$y]["cod"]]) : "" ?>"
                                 src="Imagens/Personagens/Icons/<?= getImg($tabuleiro[$x][$y], "r") ?>.jpg">
                         <?php endif; ?>
                     </td>
@@ -1041,9 +1041,9 @@ function inicia_combate($alvo, $tipo, $chave = null)
                 </td>
                 <?php for ($y = 0; $y < 20; $y++) : ?>
                     <td id="<?= $x . "_" . $y; ?>"
-                        class="selecionavel td-selecao <?= isset ($tabuleiro[$x][$y]) ? "personagem" : "" ?> <?= isset ($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "aliado" : "inimigo") : "" ?>"
+                        class="selecionavel td-selecao <?= isset($tabuleiro[$x][$y]) ? "personagem" : "" ?> <?= isset($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "aliado" : "inimigo") : "" ?>"
                         data-x="<?= $x ?>" data-y="<?= $y ?>"
-                        data-cod="<?= isset ($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>">
+                        data-cod="<?= isset($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>">
                         <img src="Imagens/Icones/selecao.png" />
                     </td>
                 <?php endfor; ?>
@@ -1069,7 +1069,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-6">
-                                <?= big_pers_skin($pers["img"], $pers["skin_c"], isset ($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="100%"') ?>
+                                <?= big_pers_skin($pers["img"], $pers["skin_c"], isset($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="100%"') ?>
                                 <br />
                                 <?php if (($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]) : ?>
                                     <?php if ($pers["akuma"]) : ?>
@@ -1101,7 +1101,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
 
                                 <?php render_personagem_hp_bar($pers); ?>
 
-                                <?php if (isset ($buffs[$pers["cod"]])) : ?>
+                                <?php if (isset($buffs[$pers["cod"]])) : ?>
                                     <h4>Buffs</h4>
                                     <?php foreach ($buffs[$pers["cod"]] as $buff) : ?>
                                         <div class="text-center">
@@ -1113,7 +1113,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
-                                <?php if (isset ($special_effects[$pers["cod"]])) : ?>
+                                <?php if (isset($special_effects[$pers["cod"]])) : ?>
                                     <h4>Estado</h4>
                                     <?php foreach ($special_effects[$pers["cod"]] as $effect) : ?>
                                         <div class="text-center">
@@ -1204,14 +1204,14 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                 <?php if ($afetado["tipo"] == 0) : ?>
                                     <?php if ($afetado["esq"] == 1) : ?>
                                         <span class="esquiva">Se esquivou</span>
-                                        <?php if ($avancado && isset ($afetado["resultado"])) : ?>
+                                        <?php if ($avancado && isset($afetado["resultado"])) : ?>
                                             <span class="text-success">Rolou no dado
                                                 <?= $afetado["resultado"]["dado_esquivou"] ?>/100 com chance de
                                                 <?= $afetado["resultado"]["chance_esquiva"] ?>%
                                             </span>
                                         <?php endif; ?>
                                     <?php else : ?>
-                                        <?php if ($avancado && isset ($afetado["resultado"])) : ?>
+                                        <?php if ($avancado && isset($afetado["resultado"])) : ?>
                                             <span>Tentou esquivar, mas rolou no dado
                                                 <?= $afetado["resultado"]["dado_esquivou"] ?>/100 com chance de
                                                 <?= $afetado["resultado"]["chance_esquiva"] ?>%
@@ -1219,14 +1219,14 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                         <?php endif; ?>
                                         <?php if ($afetado["bloq"] == 1) : ?>
                                             <span class="bloqueio">Bloqueou</span>
-                                            <?php if ($avancado && isset ($afetado["resultado"])) : ?>
+                                            <?php if ($avancado && isset($afetado["resultado"])) : ?>
                                                 <span class="text-info">Rolou no dado
                                                     <?= $afetado["resultado"]["dado_bloqueou"] ?>/100 com chance de
                                                     <?= $afetado["resultado"]["chance_bloqueio"] ?>%
                                                 </span>
                                             <?php endif; ?>
                                         <?php else : ?>
-                                            <?php if ($avancado && isset ($afetado["resultado"])) : ?>
+                                            <?php if ($avancado && isset($afetado["resultado"])) : ?>
                                                 <span>Tentou bloquear mas rolou no dado
                                                     <?= $afetado["resultado"]["dado_bloqueou"] ?>/100 com chance de
                                                     <?= $afetado["resultado"]["chance_bloqueio"] ?>%
@@ -1237,14 +1237,14 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                         <?= $afetado["efeito"] ?> pontos de vida
                                         <?php if ($afetado["cri"] == 1) : ?>
                                             <span class="critico">Ataque crítico</span>
-                                            <?php if ($avancado && isset ($afetado["resultado"])) : ?>
+                                            <?php if ($avancado && isset($afetado["resultado"])) : ?>
                                                 <span class="text-danger">Rolou no dado
                                                     <?= $afetado["resultado"]["dado_critou"] ?>/100 com chance de
                                                     <?= $afetado["resultado"]["chance_critico"] ?>%
                                                 </span>
                                             <?php endif; ?>
                                         <?php else : ?>
-                                            <?php if ($avancado && isset ($afetado["resultado"])) : ?>
+                                            <?php if ($avancado && isset($afetado["resultado"])) : ?>
                                                 <span>O ataque crítico falhou pois rolou no dado
                                                     <?= $afetado["resultado"]["dado_critou"] ?>/100 com chance de
                                                     <?= $afetado["resultado"]["chance_critico"] ?>%
@@ -1260,11 +1260,11 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                     <?= $afetado["efeito"] ?> pontos em
                                     <?= nome_atributo($afetado["atributo"]) ?>
                                 <?php elseif ($afetado["tipo"] == 2) : ?>
-                                    <?php if (! empty ($afetado["cura_h"])) : ?>
+                                    <?php if (! empty($afetado["cura_h"])) : ?>
                                         recebeu
                                         <?= $afetado["cura_h"] ?> pontos de vida
                                     <?php endif; ?>
-                                    <?php if (! empty ($afetado["cura_m"])) : ?>
+                                    <?php if (! empty($afetado["cura_m"])) : ?>
                                         recebeu
                                         <?= $afetado["cura_m"] ?> pontos de energia
                                     <?php endif; ?>
@@ -1296,15 +1296,19 @@ function inicia_combate($alvo, $tipo, $chave = null)
             <img class="personagem-<?= $tripulacao["1"]["id"] == $id_blue ? "aliado" : "inimigo" ?>"
                 src="Imagens/Bandeiras/img.php?cod=<?= $tripulacao["1"]["bandeira"] ?>&f=<?= $tripulacao["1"]["faccao"] ?>">
         </span>
-        <?php render_vontade($personagens_combate["1"][0]["mp"]) ?>
-        <span class="placar text-<?= $tripulacao["1"]["id"] == $id_blue ? "info" : "danger" ?>">
-            <?= count($personagens_combate["1"]) ?>
-        </span>
+        <?php if ($personagens_combate["1"]) : ?>
+            <?php render_vontade($personagens_combate["1"][0]["mp"]) ?>
+            <span class="placar text-<?= $tripulacao["1"]["id"] == $id_blue ? "info" : "danger" ?>">
+                <?= count($personagens_combate["1"]) ?>
+            </span>
+        <?php endif; ?>
         <img src="Imagens/Batalha/vs.png" />
-        <span class="placar text-<?= $tripulacao["2"]["id"] == $id_blue ? "info" : "danger" ?>">
-            <?= count($personagens_combate["2"]) ?>
-        </span>
-        <?php render_vontade($personagens_combate["2"][0]["mp"]) ?>
+        <?php if ($personagens_combate["2"]) : ?>
+            <span class="placar text-<?= $tripulacao["2"]["id"] == $id_blue ? "info" : "danger" ?>">
+                <?= count($personagens_combate["2"]) ?>
+            </span>
+            <?php render_vontade($personagens_combate["2"][0]["mp"]) ?>
+        <?php endif; ?>
         <span class="battle-player text-left">
             <img class="personagem-<?= $tripulacao["2"]["id"] == $id_blue ? "aliado" : "inimigo" ?>"
                 src="Imagens/Bandeiras/img.php?cod=<?= $tripulacao["2"]["bandeira"] ?>&f=<?= $tripulacao["2"]["faccao"] ?>">
