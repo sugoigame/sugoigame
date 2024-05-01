@@ -521,17 +521,6 @@
     - AB:def,res
     - Dano
     - AB:atk
-- nome: Hito Hito no Mi
-  descricao: Permite que seu usuário se transforme em um híbrido de humano e um ser humano completo à vontade.
-  img_format: jpg
-  img: 21
-  cod_akuma: 52
-  tipo: zoan
-  categoria: tatica
-  arquetipos:
-    - Dano
-    - Alcance
-    - Area
 - nome: Tori Tori no Mi, Modelo Falcão
   descricao: Permite o usuário se transformar em um híbrido metade homem metade falcão ou em um falcão completo.
   img_format: jpg
@@ -920,3 +909,14 @@
     - Area
     - Alcance
     - AB:def,res
+- nome: Hito Hito no Mi
+  descricao: Permite que seu usuário se transforme em um híbrido de humano e um ser humano completo à vontade.
+  img_format: jpg
+  img: 21
+  cod_akuma: 85
+  tipo: zoan
+  categoria: tatica
+  arquetipos:
+    - Dano
+    - Alcance
+    - Area

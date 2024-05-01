@@ -5689,8 +5689,8 @@
         "espera": 0
     },
     {
-        "cod_skil": 5211,
-        "cod_akuma": 52,
+        "cod_skil": 8511,
+        "cod_akuma": 85,
         "description": "Hito Hito no Mi - 101 Dano",
         "consumo": 12,
         "requisito_lvl": 10,
@@ -5704,8 +5704,8 @@
         "espera": 0
     },
     {
-        "cod_skil": 5212,
-        "cod_akuma": 52,
+        "cod_skil": 8512,
+        "cod_akuma": 85,
         "description": "Hito Hito no Mi - 102 Alcance",
         "consumo": 12,
         "requisito_lvl": 10,
@@ -5719,8 +5719,8 @@
         "espera": 0
     },
     {
-        "cod_skil": 5221,
-        "cod_akuma": 52,
+        "cod_skil": 8521,
+        "cod_akuma": 85,
         "description": "Hito Hito no Mi - 201 Dano",
         "consumo": 20,
         "requisito_lvl": 20,
@@ -5734,8 +5734,8 @@
         "espera": 0
     },
     {
-        "cod_skil": 5222,
-        "cod_akuma": 52,
+        "cod_skil": 8522,
+        "cod_akuma": 85,
         "description": "Hito Hito no Mi - 202 Area",
         "consumo": 20,
         "requisito_lvl": 20,
@@ -5749,8 +5749,8 @@
         "espera": 0
     },
     {
-        "cod_skil": 5231,
-        "cod_akuma": 52,
+        "cod_skil": 8531,
+        "cod_akuma": 85,
         "description": "Hito Hito no Mi - 301 Dano",
         "consumo": 28,
         "requisito_lvl": 30,
@@ -5764,8 +5764,8 @@
         "espera": 0
     },
     {
-        "cod_skil": 5232,
-        "cod_akuma": 52,
+        "cod_skil": 8532,
+        "cod_akuma": 85,
         "description": "Hito Hito no Mi - 302 Alcance",
         "consumo": 28,
         "requisito_lvl": 30,
@@ -5779,8 +5779,8 @@
         "espera": 0
     },
     {
-        "cod_skil": 5241,
-        "cod_akuma": 52,
+        "cod_skil": 8541,
+        "cod_akuma": 85,
         "description": "Hito Hito no Mi - 401 Dano",
         "consumo": 45,
         "requisito_lvl": 40,
@@ -5794,8 +5794,8 @@
         "espera": 0
     },
     {
-        "cod_skil": 5242,
-        "cod_akuma": 52,
+        "cod_skil": 8542,
+        "cod_akuma": 85,
         "description": "Hito Hito no Mi - 402 Area",
         "consumo": 45,
         "requisito_lvl": 40,
@@ -5809,8 +5809,8 @@
         "espera": 0
     },
     {
-        "cod_skil": 5251,
-        "cod_akuma": 52,
+        "cod_skil": 8551,
+        "cod_akuma": 85,
         "description": "Hito Hito no Mi - 501 Dano",
         "consumo": 50,
         "requisito_lvl": 50,
@@ -5824,8 +5824,8 @@
         "espera": 0
     },
     {
-        "cod_skil": 5252,
-        "cod_akuma": 52,
+        "cod_skil": 8552,
+        "cod_akuma": 85,
         "description": "Hito Hito no Mi - 502 Alcance",
         "consumo": 50,
         "requisito_lvl": 50,
