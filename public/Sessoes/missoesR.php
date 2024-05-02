@@ -69,7 +69,7 @@
             </button>
         <?php endif; ?>
     <?php else : ?>
-        <?php $missao_r_dia = $connection->run("SELECT * FROM tb_missoes_r_dia WHERE id = ? AND x = ? AND y = ? AND cast(dia as date) <> CURDATE()",
+        <?php $missao_r_dia = $connection->run("SELECT * FROM tb_missoes_r_dia WHERE id = ? AND x = ? AND y = ? AND cast(dia as date) = CURDATE()",
             "iii", array($userDetails->tripulacao["id"], $userDetails->tripulacao["x"], $userDetails->tripulacao["y"])); ?>
 
         <?php if ($missao_r_dia->count()) : ?>
