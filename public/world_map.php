@@ -473,7 +473,7 @@ require_once "Includes/conectdb.php";
                             .append(
                                 $('<DIV>')
                                     .append('<div>' + ship.data.tripulacao + ' Nível ' + ship.data.lvl_mais_forte + '</div>')
-                                    .append(ship.data.reputacao ? ('<small>Poneglyphs: ' + ship.data.reputacao + '</small>') : '')
+                                    .append(ship.data.reputacao_mensal ? ('<small>Poneglyphs: ' + ship.data.reputacao_mensal + '</small>') : '')
                             )
                     )
                     .append(
@@ -1146,7 +1146,7 @@ require_once "Includes/conectdb.php";
             return;
         }
 
-        if (this.player.data.reputacao) {
+        if (this.player.data.reputacao_mensal) {
             this.player.showFloatingText('Você não pode desativar o PvP se possuir um Poneglyph.', {
                 font: '15px',
                 fill: '#ff0000',

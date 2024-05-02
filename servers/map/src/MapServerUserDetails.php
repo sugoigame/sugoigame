@@ -660,7 +660,7 @@ class MapServerUserDetails extends UserDetails
     {
         $data = $this->get_public_data();
 
-        if ($data["reputacao"] || ! $data["ilha"]) {
+        if ($data["reputacao_mensal"] || ! $data["ilha"]) {
             return;
         }
 
