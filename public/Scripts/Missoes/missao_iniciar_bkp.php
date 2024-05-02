@@ -28,7 +28,7 @@ if (! $result->count()) {
 $concluida = $connection->run("SELECT count(*) AS total FROM tb_missoes_concluidas WHERE id = ? AND cod_missao = ?",
     "ii", array($userDetails->tripulacao["id"], $cod))->fetch_array()["total"];
 if ($concluida) {
-    $result = $connection->run("SELECT quant FROM tb_missoes_concluidas_dia WHERE tripulacao_id = ? AND ilha = ?",
+    $result = $connection->run("SELECT quant FROM tb_missoes_concluidas_dia WHERE tripulacao_id = ? AND ilha = ? AND cast(dia as date) = CURDATE()",
         "ii", array($userDetails->tripulacao["id"], $userDetails->ilha["ilha"]));
 
     $total_concluido_hoje = $result->count() ? $result->fetch_array()["quant"] : 0;

@@ -134,7 +134,7 @@
             </a>
         </p>
 
-        <?php $result = $connection->run("SELECT quant FROM tb_missoes_concluidas_dia WHERE tripulacao_id = ? AND ilha = ?",
+        <?php $result = $connection->run("SELECT quant FROM tb_missoes_concluidas_dia WHERE tripulacao_id = ? AND ilha = ? AND cast(dia as date) = CURDATE()",
             "ii", array($userDetails->tripulacao["id"], $userDetails->ilha["ilha"]));
 
         $total_concluido_hoje = $result->count() ? $result->fetch_array()["quant"] : 0; ?>

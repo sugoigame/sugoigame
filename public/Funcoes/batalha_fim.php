@@ -400,13 +400,13 @@ function atualiza_missao()
 
             $userDetails->xp_for_all($userDetails->missao["recompensa_xp"]);
         } else {
-            $result = $connection->run("SELECT quant FROM tb_missoes_concluidas_dia WHERE tripulacao_id = ? AND ilha = ?",
+            $result = $connection->run("SELECT quant FROM tb_missoes_concluidas_dia WHERE tripulacao_id = ? AND ilha = ? AND cast(dia as date) = CURDATE()",
                 "ii", array($userDetails->tripulacao["id"], $userDetails->ilha["ilha"]));
 
             $total_concluido_hoje = $result->count() ? $result->fetch_array()["quant"] : 0;
 
             if ($total_concluido_hoje) {
-                $connection->run("UPDATE tb_missoes_concluidas_dia SET quant = quant + 1 WHERE tripulacao_id = ? AND ilha = ?",
+                $connection->run("UPDATE tb_missoes_concluidas_dia SET quant = quant + 1 WHERE tripulacao_id = ? AND ilha = ? AND cast(dia as date) = CURDATE()",
                     "ii", array($userDetails->tripulacao["id"], $userDetails->ilha["ilha"]));
             } else {
                 $connection->run("INSERT INTO tb_missoes_concluidas_dia (tripulacao_id, ilha, quant) VALUE (?,?,1)",
