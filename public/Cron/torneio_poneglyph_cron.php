@@ -14,8 +14,7 @@ function get_current_torneio_poneglyph()
         $id++;
     }
 
-    // $limite_inscricao = strtotime('+20 minutes', $inicio);
-    $limite_inscricao = strtotime('+180 minutes', $inicio);
+    $limite_inscricao = strtotime('+20 minutes', $inicio);
 
     return [
         "start" => $inicio,
