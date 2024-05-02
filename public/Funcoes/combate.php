@@ -1290,10 +1290,10 @@ function inicia_combate($alvo, $tipo, $chave = null)
 <?php function render_combate_pvp_header($combate, $tripulacao, $id_blue = null)
 { ?>
     <?php global $userDetails, $personagens_combate; ?>
-    <?php $esconder_vontade = false; ?>
+    <?php $esconder_vontade = true; ?>
     <?php if ($id_blue === null) {
         $id_blue = $userDetails->tripulacao["id"];
-        $esconder_vontade = true;
+        $esconder_vontade = false;
     } ?>
     <div class="battle-heading-details">
         <span class="battle-player text-right">
