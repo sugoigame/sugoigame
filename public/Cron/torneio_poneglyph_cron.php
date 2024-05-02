@@ -14,7 +14,8 @@ function get_current_torneio_poneglyph()
         $id++;
     }
 
-    $limite_inscricao = strtotime('+20 minutes', $inicio);
+    // $limite_inscricao = strtotime('+20 minutes', $inicio);
+    $limite_inscricao = strtotime('+180 minutes', $inicio);
 
     return [
         "start" => $inicio,
@@ -77,7 +78,8 @@ function cron_finaliza_chave_tripulacao_nao_pronta()
     while ($chave = $result->fetch_array()) {
         $vencedor = null;
         $perdedor = null;
-        if ($chave["tripulacao_1_pronto"] && ! $chave["tripulacao_2_pronto"]) {
+        if (($chave["tripulacao_1_pronto"] && ! $chave["tripulacao_2_pronto"])
+            || (! $chave["tripulacao_1_pronto"] && ! $chave["tripulacao_2_pronto"])) {
             $vencedor = $chave["tripulacao_1_id"];
             $perdedor = $chave["tripulacao_2_id"];
         } elseif (! $chave["tripulacao_1_pronto"] && $chave["tripulacao_2_pronto"]) {
@@ -85,7 +87,7 @@ function cron_finaliza_chave_tripulacao_nao_pronta()
             $perdedor = $chave["tripulacao_1_id"];
         }
 
-        if ($chave["tripulacao_1_pronto"] || $chave["tripulacao_2_pronto"]) {
+        if (! $chave["tripulacao_1_pronto"] || ! $chave["tripulacao_2_pronto"]) {
             finaliza_chave_torneio(
                 ["vencedor_rep_mensal" => 0],
                 TIPO_TORNEIO,

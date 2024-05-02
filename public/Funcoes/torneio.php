@@ -8,7 +8,75 @@ function attack_torneio()
     return false;
 }
 
+
 function inicia_torneio($torneio)
+{
+    global $connection;
+
+    $inscritos = get_inscritos_torneio_poneglyph($torneio);
+    $count_inscritos = count($inscritos);
+
+    if ($count_inscritos > 0 && $count_inscritos % 2 != 0) {
+        $vencedor = array_shift($inscritos);
+        set_vencedor_torneio($torneio, $vencedor);
+
+        $count_inscritos -= 1;
+    }
+
+    if (! $count_inscritos) {
+        $connection->run("UPDATE tb_torneio SET `status` = ? WHERE id = ?",
+            "ii", [TORNEIO_STATUS_FINALIZADO, $torneio["id"]]);
+        return;
+    }
+
+    $connection->run("UPDATE tb_torneio SET `status` = ? WHERE id = ?",
+        "ii", [TORNEIO_STATUS_ANDAMENTO, $torneio["id"]]);
+
+    $id = $torneio["id"] * 1000;
+
+    // criar algoritmo para selecionar adversarios melhores
+    shuffle($inscritos);
+
+    $chaves = [];
+    while (count($inscritos) > 0) {
+        $inscrito1 = array_shift($inscritos);
+        $inscrito2 = array_shift($inscritos);
+
+        $tripulacao_1 = $inscrito1["data_inscricao"] < $inscrito2["data_inscricao"] ? $inscrito1 : $inscrito2;
+        $tripulacao_2 = $inscrito1["tripulacao_id"] == $tripulacao_1["tripulacao_id"] ? $inscrito2 : $inscrito1;
+
+        $chaves[] = [
+            "id" => $id + count($chaves),
+            "torneio_id" => $torneio["id"],
+            "proxima_chave" => null,
+            "tripulacao_1_id" => $tripulacao_1["tripulacao_id"],
+            "tripulacao_2_id" => $tripulacao_2["tripulacao_id"],
+            "limite_inicio" => strtotime("+5 minutes", $torneio["limite_inscricao"]),
+            "limite_fim" => strtotime("-5 minutes", $torneio["end"]),
+        ];
+    }
+
+    $query = "INSERT INTO tb_torneio_chave
+        (id, tripulacao_1_id, tripulacao_2_id, limite_inicio, limite_fim, proxima_chave, torneio_id)
+        VALUES ";
+
+    $query_parts = [];
+    foreach ($chaves as $chave) {
+        $query_parts[] = "(" .
+            $chave["id"] . "," .
+            ($chave["tripulacao_1_id"] ? $chave["tripulacao_1_id"] : "null") . "," .
+            ($chave["tripulacao_2_id"] ? $chave["tripulacao_2_id"] : "null") . "," .
+            "from_unixtime(" . $chave["limite_inicio"] . ")," .
+            "from_unixtime(" . $chave["limite_fim"] . ")," .
+            ($chave["proxima_chave"] ? $chave["proxima_chave"] : "null") . "," .
+            $chave["torneio_id"] .
+            ")";
+    }
+
+    $connection->run($query . implode($query_parts, ","));
+}
+
+function inicia_torneio_bkp($torneio)
 {
     global $connection;
 
@@ -290,10 +358,10 @@ function finaliza_chave_torneio($reputacao, $tipo, $vencedor, $perdedor, $person
         );
         $reputacao["vencedor_rep_mensal"] += 1;
 
-        $connection->run(
-            "UPDATE tb_torneio SET `status` = ?, vencedor = ? WHERE id = ?",
-            "iii", [TORNEIO_STATUS_FINALIZADO, $vencedor["id"], $chave["torneio_id"]]
-        );
+        // $connection->run(
+        //     "UPDATE tb_torneio SET `status` = ?, vencedor = ? WHERE id = ?",
+        //     "iii", [TORNEIO_STATUS_FINALIZADO, $vencedor["id"], $chave["torneio_id"]]
+        // );
     }
 
     return $reputacao;
@@ -303,10 +371,10 @@ function set_vencedor_torneio($torneio, $inscrito)
 {
     global $connection;
 
-    $connection->run(
-        "UPDATE tb_torneio SET `status` = ?, vencedor = ? WHERE id = ?",
-        "iii", [TORNEIO_STATUS_FINALIZADO, $inscrito["tripulacao_id"], $torneio["id"]]
-    );
+    // $connection->run(
+    //     "UPDATE tb_torneio SET `status` = ?, vencedor = ? WHERE id = ?",
+    //     "iii", [TORNEIO_STATUS_FINALIZADO, $inscrito["tripulacao_id"], $torneio["id"]]
+    // );
 
     $connection->run(
         "UPDATE tb_usuarios SET reputacao_mensal = reputacao_mensal + 1 WHERE id = ?",

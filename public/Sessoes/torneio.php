@@ -216,40 +216,12 @@
                 $chaves[$key]["tripulacao_1"] = array_find($tripulacoes, ["id" => $chave["tripulacao_1_id"]]);
                 $chaves[$key]["tripulacao_2"] = array_find($tripulacoes, ["id" => $chave["tripulacao_2_id"]]);
             }
-
             ?>
-            <?php $final = array_find($chaves, ["proxima_chave" => null]); ?>
-            <?php $semi_finais = array_filter($chaves, function ($chave) use ($final) {
-                return $chave["proxima_chave"] == $final["id"];
-            }); ?>
-            <?php $quartas = array_filter($chaves, function ($chave) use ($semi_finais) {
-                return array_find($semi_finais, ["id" => $chave["proxima_chave"]]);
-            }); ?>
 
             <div class="row">
-                <div class="col-xs-4">
-                </div>
-                <div class="col-xs-4">
-                    <?php render_chave_torneio($final); ?>
-                </div>
-            </div>
-
-            <div class="row">
-                <?php foreach ($semi_finais as $semi_final) : ?>
-                    <div class="col-xs-1" style="width: 12.5%">
-                    </div>
-                    <div class="col-xs-3">
-                        <?php render_chave_torneio($semi_final); ?>
-                    </div>
-                    <div class="col-xs-1" style="width: 12.5%">
-                    </div>
-                <?php endforeach; ?>
-            </div>
-
-            <div class="row">
-                <?php foreach ($quartas as $quarta) : ?>
-                    <div class="col-xs-3">
-                        <?php render_chave_torneio($quarta); ?>
+                <?php foreach ($chaves as $chave) : ?>
+                    <div class="col-xs-4">
+                        <?php render_chave_torneio($chave); ?>
                     </div>
                 <?php endforeach; ?>
             </div>
