@@ -1290,8 +1290,10 @@ function inicia_combate($alvo, $tipo, $chave = null)
 <?php function render_combate_pvp_header($combate, $tripulacao, $id_blue = null)
 { ?>
     <?php global $userDetails, $personagens_combate; ?>
+    <?php $esconder_vontade = false; ?>
     <?php if ($id_blue === null) {
         $id_blue = $userDetails->tripulacao["id"];
+        $esconder_vontade = true;
     } ?>
     <div class="battle-heading-details">
         <span class="battle-player text-right">
@@ -1300,7 +1302,9 @@ function inicia_combate($alvo, $tipo, $chave = null)
                 src="Imagens/Bandeiras/img.php?cod=<?= $tripulacao["1"]["bandeira"] ?>&f=<?= $tripulacao["1"]["faccao"] ?>">
         </span>
         <?php if ($personagens_combate["1"]) : ?>
-            <?php render_vontade($personagens_combate["1"][0]["mp"]) ?>
+            <?php if (! $esconder_vontade) : ?>
+                <?php render_vontade($personagens_combate["1"][0]["mp"]) ?>
+            <?php endif; ?>
             <span class="placar text-<?= $tripulacao["1"]["id"] == $id_blue ? "info" : "danger" ?>">
                 <?= count($personagens_combate["1"]) ?>
             </span>
@@ -1310,7 +1314,9 @@ function inicia_combate($alvo, $tipo, $chave = null)
             <span class="placar text-<?= $tripulacao["2"]["id"] == $id_blue ? "info" : "danger" ?>">
                 <?= count($personagens_combate["2"]) ?>
             </span>
-            <?php render_vontade($personagens_combate["2"][0]["mp"]) ?>
+            <?php if (! $esconder_vontade) : ?>
+                <?php render_vontade($personagens_combate["2"][0]["mp"]) ?>
+            <?php endif; ?>
         <?php endif; ?>
         <span class="battle-player text-left">
             <img class="personagem-<?= $tripulacao["2"]["id"] == $id_blue ? "aliado" : "inimigo" ?>"
