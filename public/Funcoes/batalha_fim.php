@@ -546,7 +546,7 @@ function atualiza_reputacao($vencedor, $perdedor)
             "vencedor_rep" => 0,
             "vencedor_rep_mensal" => 1,
             "perdedor_rep" => 0,
-            "perdedor_rep_mensal" => -1
+            "perdedor_rep_mensal" => 1
         ];
     }
 
