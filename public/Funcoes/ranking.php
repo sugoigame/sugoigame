@@ -186,7 +186,7 @@ function get_patente_nome($faccao, $battle_level)
 { ?>
     <?php global $connection; ?>
     <?php $rep_mais_forte = $connection->run(
-        "SELECT max($coluna_reputacao) AS total FROM tb_usuarios WHERE faccao IN (" . implode(",", $faccoes) . ") AND usr.adm='0'"
+        "SELECT max($coluna_reputacao) AS total FROM tb_usuarios WHERE faccao IN (" . implode(",", $faccoes) . ") AND adm='0'"
     )->fetch_array()["total"]; ?>
     <?php $result = $connection->run(
         "SELECT usr.id, usr.$coluna_reputacao AS reputacao, usr.faccao, usr.bandeira, usr.tripulacao, pers.img, pers.nome, pers.skin_r
