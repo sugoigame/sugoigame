@@ -55,7 +55,7 @@
         "descricao": "Forte composição química que restaura o HP do paciente.",
         "hp_recuperado": 350,
         "mp_recuperado": 0,
-        "img": 96,
+        "img": 97,
         "requisito_lvl": 6,
         "mergulho": 0
     },
