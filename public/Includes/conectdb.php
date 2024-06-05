@@ -32,9 +32,9 @@ define('BONUS_GOLD_ATIVACAO', 300);
 
 define('PONTOS_INICIAIS', 69);
 define('PONTOS_POR_NIVEL', 4);
-define('HP_INICIAL', 2500);
-define('HP_POR_NIVEL', 100);
-define('HP_POR_VITALIDADE', 30);
+define('HP_INICIAL', 5300);
+define('HP_POR_NIVEL', 300);
+define('HP_POR_VITALIDADE', 50);
 
 define('FACCAO_MARINHA', 0);
 define('FACCAO_PIRATA', 1);

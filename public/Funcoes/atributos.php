@@ -94,15 +94,15 @@ function descricao_atributo($att)
         case 3:
             return "Cada ponto aumenta sua chance de se esquivar do ataque inimigo em 1%.<br><b>obs: A porcentagem de chance máxima de se esquivar é de 50%;</b>";
         case 4:
-            return "Cada ponto aumenta sua chance de bloquear o ataque inimgo em 1% e a quantidade de dano absorvido em 1%.<br><b>obs:A porcentagem de chance máxima de bloqueio é de 50%, e a porcentagem máxima de dano absorvido é de 90%.</b>";
+            return "Cada ponto aumenta sua chance de bloquear o ataque inimgo em 1%. Um bloqueio bem sucedido reduz o dano sofrido em 90%.<br><b>obs:A porcentagem de chance máxima de bloqueio é de 50%.</b>";
         case 5:
-            return "Cada ponto reduz a chance do inimigo se esquivar ou bloquear seu ataque em 1%.";
+            return "Cada ponto reduz a chance do inimigo se esquivar seu ataque em 1%.";
         case 6:
             return "Cada ponto aumenta sua chance de acertar um ataque crítico em 1% e o dano causado por ataques críticos em 1%.<br><b>obs: A porcentagem de chance máxima de acertar um ataque crítico é de 50%, e o dano máximo causado por ataque crítico é de 90%.</b>";
         case 7:
-            return "Cada ponto reduz a chance do inimigo te acertar um ataque crítico em 1% e o dano causado por ataques críticos em 1%.";
+            return "Cada ponto reduz a chance do inimigo te acertar um ataque crítico em 1%, reduz o dano causado por ataques críticos em 1% e também reduz a chance do inimigo bloquear seu ataque em 1%.";
         case 8:
-            return "Cada ponto aumenta seu HP em 30 pontos e sua Energia em 7 pontos.<br><b>obs: O bonus de HP e Energia ganho por acréximo de vitalidade por meio de itens ou habilidades só é calculado durante combates.</b>";
+            return "Cada ponto aumenta seu HP em 50 pontos.<br><b>obs: O bonus de HP ganho por acréximo de vitalidade por meio de itens ou habilidades só é calculado durante combates.</b>";
         default:
             return "";
     }

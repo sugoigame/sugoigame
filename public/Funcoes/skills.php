@@ -304,7 +304,7 @@ function aprende_habilidade_random($pers, $cod_skill, $tipo_skill)
                 </p>
             <?php endif; ?>
             <div class="text-left">
-                <?php render_skill_efeitos($skill) ?>
+                <?php render_skill_efeitos($skill, $pers) ?>
             </div>
         </div>
         <div class="panel-footer">
@@ -338,7 +338,7 @@ function aprende_habilidade_random($pers, $cod_skill, $tipo_skill)
                         <?= $skill["tipo"] ?> <img src="Imagens/Skils/Tipo/<?= $skill["tipo"] ?>.png" width="15vw">
                     </div>
                     <div class="text-left">
-                        <?php render_skill_efeitos($skill) ?>
+                        <?php render_skill_efeitos($skill, $pers) ?>
                     </div>
                     <div>
                         <div>Requisitos:</div>
@@ -397,14 +397,15 @@ function aprende_habilidade_random($pers, $cod_skill, $tipo_skill)
         <?php endif; ?>
     </div>
 <?php } ?>
-<?php function render_skill_efeitos($skill)
+<?php function render_skill_efeitos($skill, $pers = ["atk" => 0])
 { ?>
     <ul>
         <?php if (! empty($skill["dano"])) : ?>
+            <?php $dano_final = $skill["dano"] + ($pers["atk"] * 10); ?>
             <li>
                 Dano:
-                <?= $skill["dano"] * 100 ?>%
-                <?= ajuda_tooltip("Causa dano equivalente à " . ($skill["dano"] * 100) . "% dos pontos de Ataque do tripulante. Garante um dano mínimo de " . ($skill["dano"] * 400) . " pontos de dano.") ?>
+                <?= mascara_numeros_grandes($dano_final) ?>
+                <?= ajuda_tooltip("Garante um dano mínimo de " . mascara_numeros_grandes($dano_final * 0.3) . " pontos de dano. O bonus de dano ganho por meio de itens ou habilidades só é calculado durante combates.") ?>
             </li>
         <?php endif; ?>
         <?php if (! empty($skill["bonus_atr"])) : ?>
@@ -461,33 +462,6 @@ function aprende_habilidade_random($pers, $cod_skill, $tipo_skill)
                     nome_special_effect($skill["special_effect"]) . ":" .
                     descricao_special_effect($skill["special_effect"], $skill["consumo"])
                 ) ?>
-            </li>
-        <?php endif; ?>
-    </ul>
-<?php } ?>
-<?php function render_skill_efeitos_resumidos($skill)
-{ ?>
-    <ul class="text-left">
-        <?php if (! empty($skill["dano"])) : ?>
-            <li>Dano
-                <?= $skill["dano"] * 10 ?>
-            </li>
-        <?php endif; ?>
-        <?php if (! empty($skill["bonus_atr"])) : ?>
-            <li>
-                <?= nome_atributo($skill["bonus_atr"]) ?>
-                <?= $skill["bonus_atr_qnt"] > 0 ? "+" : "" ?>
-                <?= $skill["bonus_atr_qnt"] ?>
-            </li>
-        <?php endif; ?>
-        <?php if (! empty($skill["alcance"]) && $skill["alcance"] > 1) : ?>
-            <li> Alcance
-                <?= $skill["alcance"] ?>
-            </li>
-        <?php endif; ?>
-        <?php if (! empty($skill["area"]) && $skill["area"] > 1) : ?>
-            <li>Área
-                <?= $skill["area"] ?>
             </li>
         <?php endif; ?>
     </ul>

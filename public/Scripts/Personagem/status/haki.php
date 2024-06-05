@@ -58,7 +58,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                     </p>
                     <div class="text-left">
                         <div>No próximo nível, o Haoshoku será uma habilidade com os seguintes efeitos:</div>
-                        <?php render_skill_efeitos($hdr); ?>
+                        <?php render_skill_efeitos($hdr, $pers); ?>
                     </div>
                 </div>
             </div>

@@ -52,7 +52,7 @@ if (!$pers) {
                 </h4>
             </div>
             <div class="text-left">
-                <?php render_skill_efeitos($skill); ?>
+                <?php render_skill_efeitos($skill, $pers); ?>
             </div>
             <?php if (has_animacao($skill)): ?>
                 <p>

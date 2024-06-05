@@ -517,30 +517,15 @@ function dano_crit($pers, $alvo)
 function chance_bloq($pers, $alvo)
 {
     $res = $alvo["res"];
-    $pre = $pers["pre"];
+    $per = $pers["con"];
 
     $bloq_haki = max(0, $alvo["haki_cri"] - $pers["haki_cri"]);
 
-    $chance_bloq = min_max($res - $pre, 0, 50) + $bloq_haki;
+    $chance_bloq = min_max($res - $per, 0, 50) + $bloq_haki;
 
     return round($chance_bloq);
 }
 
-function dano_bloq($pers, $alvo)
-{
-    $res = $alvo["res"];
-    $pre = $pers["pre"];
-
-    return (float) min_max($res - $pre, 50, 90) / 100;
-}
-
-function dano_por_atributo($pers, $alvo)
-{
-    $atk = get_atk_combate($pers);
-    $def = get_def_combate($alvo);
-
-    return max(0, ($atk - $def));
-}
 function get_atk_combate($pers)
 {
     $atk = $pers["atk"];
@@ -576,7 +561,7 @@ function calc_dano($pers, $alvo, $dano_hab = 0)
     if ($retorno["dado_esquivou"] <= $esquiva) {
         $retorno["esquivou"] = true;
     } else {
-        $dano = (dano_por_atributo($pers, $alvo) * $dano_hab) + ($dano_hab * 400);
+        $dano = max($dano_hab * 0.3, ($pers["atk"] * 10) + $dano_hab - ($alvo["def"] * 10));
 
         $chance_crit = chance_crit($pers, $alvo);
 
@@ -595,7 +580,7 @@ function calc_dano($pers, $alvo, $dano_hab = 0)
         if ($retorno["dado_bloqueou"] <= $chance_bloq) {
             $retorno["bloqueou"] = true;
 
-            $retorno["bloqueio"] = dano_bloq($pers, $alvo);
+            $retorno["bloqueio"] = 0.9;
         }
 
         $dano_crit = $retorno["critico"] * $dano;
@@ -605,7 +590,7 @@ function calc_dano($pers, $alvo, $dano_hab = 0)
         // dano bloqueado é calculado em cima do dano já critado
         $dano_bloq = $retorno["bloqueio"] * $dano;
 
-        $retorno["dano"] = max(1, (int) ($dano - $dano_bloq));
+        $retorno["dano"] = max(1, round($dano - $dano_bloq));
     }
 
     return $retorno;

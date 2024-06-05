@@ -48,7 +48,7 @@ usort($skills, function ($a, $b) {
                         <img src="Imagens/Skils/Tipo/<?= nome_tipo_skill($skill) ?>.png" width="15vw" />
                     </div>
                     <div class="text-left clearfix">
-                        <?php render_skill_efeitos($skill) ?>
+                        <?php render_skill_efeitos($skill, $pers) ?>
                     </div>
                 </div>
                 <div class="panel-footer">
