@@ -2,9 +2,9 @@
   img: 297
   skin: 0
   nome: Bandido
-  titulo:
-  hp: 2500
-  hp_max: 2500
+  titulo: null
+  hp: 5300
+  hp_max: 5300
   mp: 100
   mp_max: 100
   lvl: 1
@@ -27,9 +27,9 @@
   img: 298
   skin: 0
   nome: Bandido
-  titulo:
-  hp: 2500
-  hp_max: 2500
+  titulo: null
+  hp: 5300
+  hp_max: 5300
   mp: 100
   mp_max: 100
   lvl: 1
@@ -52,9 +52,9 @@
   img: 296
   skin: 0
   nome: Bandido
-  titulo:
-  hp: 2800
-  hp_max: 2800
+  titulo: null
+  hp: 6200
+  hp_max: 6200
   mp: 121
   mp_max: 121
   lvl: 4
@@ -77,9 +77,9 @@
   img: 299
   skin: 0
   nome: Marinheiro Inadiplente
-  titulo:
-  hp: 2500
-  hp_max: 2500
+  titulo: null
+  hp: 5300
+  hp_max: 5300
   mp: 100
   mp_max: 100
   lvl: 1
@@ -102,9 +102,9 @@
   img: 300
   skin: 0
   nome: Marinheiro Inadiplente
-  titulo:
-  hp: 2500
-  hp_max: 2500
+  titulo: null
+  hp: 5300
+  hp_max: 5300
   mp: 100
   mp_max: 100
   lvl: 1
@@ -127,9 +127,9 @@
   img: 301
   skin: 0
   nome: Marinheiro Inadiplente
-  titulo:
-  hp: 2500
-  hp_max: 2500
+  titulo: null
+  hp: 5300
+  hp_max: 5300
   mp: 100
   mp_max: 100
   lvl: 1
@@ -152,9 +152,9 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 2500
-  hp_max: 2500
+  titulo: null
+  hp: 5300
+  hp_max: 5300
   mp: 100
   mp_max: 100
   lvl: 1
@@ -177,9 +177,9 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 2620
-  hp_max: 2620
+  titulo: null
+  hp: 5500
+  hp_max: 5500
   mp: 128
   mp_max: 128
   lvl: 1
@@ -202,9 +202,9 @@
   img: 143
   skin: 0
   nome: Richie
-  titulo:
-  hp: 2720
-  hp_max: 2720
+  titulo: null
+  hp: 5800
+  hp_max: 5800
   mp: 135
   mp_max: 135
   lvl: 2
@@ -227,9 +227,9 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 2790
-  hp_max: 2790
+  titulo: null
+  hp: 6050
+  hp_max: 6050
   mp: 135
   mp_max: 135
   lvl: 3
@@ -252,9 +252,9 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3060
-  hp_max: 3060
+  titulo: null
+  hp: 6500
+  hp_max: 6500
   mp: 198
   mp_max: 198
   lvl: 3
@@ -278,8 +278,8 @@
   skin: 0
   nome: Morgan
   titulo: Mão de Machado
-  hp: 2800
-  hp_max: 2800
+  hp: 6200
+  hp_max: 6200
   mp: 121
   mp_max: 121
   lvl: 4
@@ -303,8 +303,8 @@
   skin: 0
   nome: Buggy
   titulo: O Palhaço
-  hp: 2800
-  hp_max: 2800
+  hp: 6200
+  hp_max: 6200
   mp: 121
   mp_max: 121
   lvl: 4
@@ -327,9 +327,9 @@
   img: 124
   skin: 0
   nome: Mohji
-  titulo:
-  hp: 3040
-  hp_max: 3040
+  titulo: null
+  hp: 6600
+  hp_max: 6600
   mp: 177
   mp_max: 177
   lvl: 4
@@ -352,9 +352,9 @@
   img: 207
   skin: 0
   nome: Cabaji
-  titulo:
-  hp: 2800
-  hp_max: 2800
+  titulo: null
+  hp: 6200
+  hp_max: 6200
   mp: 121
   mp_max: 121
   lvl: 4
@@ -377,9 +377,9 @@
   img: 40
   skin: 0
   nome: Jango
-  titulo:
-  hp: 3320
-  hp_max: 3320
+  titulo: null
+  hp: 7200
+  hp_max: 7200
   mp: 226
   mp_max: 226
   lvl: 5
@@ -403,8 +403,8 @@
   skin: 0
   nome: Kuro
   titulo: Capitão
-  hp: 2900
-  hp_max: 2900
+  hp: 6500
+  hp_max: 6500
   mp: 128
   mp_max: 128
   lvl: 5
@@ -427,9 +427,9 @@
   img: 120
   skin: 0
   nome: Gin
-  titulo:
-  hp: 3240
-  hp_max: 3240
+  titulo: null
+  hp: 7200
+  hp_max: 7200
   mp: 191
   mp_max: 191
   lvl: 6
@@ -453,8 +453,8 @@
   skin: 0
   nome: Pearl
   titulo: do Muro de Ferro
-  hp: 3870
-  hp_max: 3870
+  hp: 8250
+  hp_max: 8250
   mp: 338
   mp_max: 338
   lvl: 6
@@ -477,9 +477,9 @@
   img: 83
   skin: 0
   nome: Don Krieg
-  titulo:
-  hp: 3270
-  hp_max: 3270
+  titulo: null
+  hp: 7250
+  hp_max: 7250
   mp: 198
   mp_max: 198
   lvl: 6
@@ -502,9 +502,9 @@
   img: 154
   skin: 0
   nome: Kuroobi
-  titulo:
-  hp: 3300
-  hp_max: 3300
+  titulo: null
+  hp: 7300
+  hp_max: 7300
   mp: 205
   mp_max: 205
   lvl: 6
@@ -527,9 +527,9 @@
   img: 116
   skin: 0
   nome: Hatchan
-  titulo:
-  hp: 3000
-  hp_max: 3000
+  titulo: null
+  hp: 6800
+  hp_max: 6800
   mp: 135
   mp_max: 135
   lvl: 6
@@ -552,9 +552,9 @@
   img: 304
   skin: 0
   nome: Chew
-  titulo:
-  hp: 3000
-  hp_max: 3000
+  titulo: null
+  hp: 6800
+  hp_max: 6800
   mp: 135
   mp_max: 135
   lvl: 6
@@ -577,9 +577,9 @@
   img: 305
   skin: 0
   nome: Pisaro
-  titulo:
-  hp: 3000
-  hp_max: 3000
+  titulo: null
+  hp: 6800
+  hp_max: 6800
   mp: 135
   mp_max: 135
   lvl: 6
@@ -602,9 +602,9 @@
   img: 16
   skin: 0
   nome: Arlong
-  titulo:
-  hp: 4020
-  hp_max: 4020
+  titulo: null
+  hp: 8900
+  hp_max: 8900
   mp: 324
   mp_max: 324
   lvl: 9
@@ -628,8 +628,8 @@
   skin: 1
   nome: Buggy
   titulo: O Palhaço
-  hp: 3720
-  hp_max: 3720
+  hp: 8400
+  hp_max: 8400
   mp: 254
   mp_max: 254
   lvl: 9
@@ -653,8 +653,8 @@
   skin: 1
   nome: Alvida
   titulo: Clava de Ferro
-  hp: 3300
-  hp_max: 3300
+  hp: 7700
+  hp_max: 7700
   mp: 156
   mp_max: 156
   lvl: 9
@@ -677,9 +677,9 @@
   img: 207
   skin: 1
   nome: Cabaji
-  titulo:
-  hp: 3570
-  hp_max: 3570
+  titulo: null
+  hp: 8150
+  hp_max: 8150
   mp: 219
   mp_max: 219
   lvl: 9
@@ -702,9 +702,9 @@
   img: 124
   skin: 0
   nome: Mohji
-  titulo:
-  hp: 3810
-  hp_max: 3810
+  titulo: null
+  hp: 8550
+  hp_max: 8550
   mp: 275
   mp_max: 275
   lvl: 9
@@ -727,9 +727,9 @@
   img: 143
   skin: 1
   nome: Richie
-  titulo:
-  hp: 3600
-  hp_max: 3600
+  titulo: null
+  hp: 8200
+  hp_max: 8200
   mp: 226
   mp_max: 226
   lvl: 9
@@ -752,9 +752,9 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3900
-  hp_max: 3900
+  titulo: null
+  hp: 8700
+  hp_max: 8700
   mp: 296
   mp_max: 296
   lvl: 9
@@ -777,9 +777,9 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3300
-  hp_max: 3300
+  titulo: null
+  hp: 7700
+  hp_max: 7700
   mp: 156
   mp_max: 156
   lvl: 9
@@ -802,9 +802,9 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3400
-  hp_max: 3400
+  titulo: null
+  hp: 8000
+  hp_max: 8000
   mp: 163
   mp_max: 163
   lvl: 10
@@ -827,9 +827,9 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3400
-  hp_max: 3400
+  titulo: null
+  hp: 8000
+  hp_max: 8000
   mp: 163
   mp_max: 163
   lvl: 10
@@ -852,9 +852,9 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3970
-  hp_max: 3970
+  titulo: null
+  hp: 8950
+  hp_max: 8950
   mp: 296
   mp_max: 296
   lvl: 10
@@ -877,9 +877,9 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3400
-  hp_max: 3400
+  titulo: null
+  hp: 8000
+  hp_max: 8000
   mp: 163
   mp_max: 163
   lvl: 10
@@ -902,9 +902,9 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3820
-  hp_max: 3820
+  titulo: null
+  hp: 8700
+  hp_max: 8700
   mp: 261
   mp_max: 261
   lvl: 10
@@ -927,9 +927,9 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3400
-  hp_max: 3400
+  titulo: null
+  hp: 8000
+  hp_max: 8000
   mp: 163
   mp_max: 163
   lvl: 10
@@ -952,9 +952,9 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 5680
-  hp_max: 5680
+  titulo: null
+  hp: 11800
+  hp_max: 11800
   mp: 695
   mp_max: 695
   lvl: 10
@@ -977,9 +977,9 @@
   img: 297
   skin: 0
   nome: Caçador de Recompensas
-  titulo:
-  hp: 3500
-  hp_max: 3500
+  titulo: null
+  hp: 8300
+  hp_max: 8300
   mp: 170
   mp_max: 170
   lvl: 11
@@ -1002,9 +1002,9 @@
   img: 298
   skin: 0
   nome: Caçador de Recompensas
-  titulo:
-  hp: 3500
-  hp_max: 3500
+  titulo: null
+  hp: 8300
+  hp_max: 8300
   mp: 170
   mp_max: 170
   lvl: 11
@@ -1027,9 +1027,9 @@
   img: 302
   skin: 0
   nome: Caçador de Recompensas
-  titulo:
-  hp: 4070
-  hp_max: 4070
+  titulo: null
+  hp: 9250
+  hp_max: 9250
   mp: 303
   mp_max: 303
   lvl: 11
@@ -1052,9 +1052,9 @@
   img: 303
   skin: 0
   nome: Caçador de Recompensas
-  titulo:
-  hp: 3500
-  hp_max: 3500
+  titulo: null
+  hp: 8300
+  hp_max: 8300
   mp: 170
   mp_max: 170
   lvl: 11
@@ -1077,9 +1077,9 @@
   img: 306
   skin: 0
   nome: Caçador de Recompensas
-  titulo:
-  hp: 3500
-  hp_max: 3500
+  titulo: null
+  hp: 8300
+  hp_max: 8300
   mp: 170
   mp_max: 170
   lvl: 11
@@ -1102,9 +1102,9 @@
   img: 307
   skin: 0
   nome: Caçador de Recompensas
-  titulo:
-  hp: 4400
-  hp_max: 4400
+  titulo: null
+  hp: 9800
+  hp_max: 9800
   mp: 380
   mp_max: 380
   lvl: 11
@@ -1127,9 +1127,9 @@
   img: 308
   skin: 0
   nome: Caçador de Recompensas
-  titulo:
-  hp: 4160
-  hp_max: 4160
+  titulo: null
+  hp: 9400
+  hp_max: 9400
   mp: 324
   mp_max: 324
   lvl: 11
@@ -1152,9 +1152,9 @@
   img: 45
   skin: 0
   nome: Miss Wednesday
-  titulo:
-  hp: 4170
-  hp_max: 4170
+  titulo: null
+  hp: 9550
+  hp_max: 9550
   mp: 310
   mp_max: 310
   lvl: 12
@@ -1177,9 +1177,9 @@
   img: 44
   skin: 0
   nome: Mr. 3
-  titulo:
-  hp: 4170
-  hp_max: 4170
+  titulo: null
+  hp: 9550
+  hp_max: 9550
   mp: 310
   mp_max: 310
   lvl: 12
@@ -1202,9 +1202,9 @@
   img: 41
   skin: 0
   nome: Mr. 2
-  titulo:
-  hp: 3600
-  hp_max: 3600
+  titulo: null
+  hp: 8600
+  hp_max: 8600
   mp: 177
   mp_max: 177
   lvl: 12
@@ -1227,9 +1227,9 @@
   img: 42
   skin: 0
   nome: Mr. 5
-  titulo:
-  hp: 4890
-  hp_max: 4890
+  titulo: null
+  hp: 10750
+  hp_max: 10750
   mp: 478
   mp_max: 478
   lvl: 12
@@ -1252,9 +1252,9 @@
   img: 43
   skin: 0
   nome: Mr. 1
-  titulo:
-  hp: 3600
-  hp_max: 3600
+  titulo: null
+  hp: 8600
+  hp_max: 8600
   mp: 177
   mp_max: 177
   lvl: 12
@@ -1277,9 +1277,9 @@
   img: 202
   skin: 0
   nome: Miss Fathers Day
-  titulo:
-  hp: 3600
-  hp_max: 3600
+  titulo: null
+  hp: 8600
+  hp_max: 8600
   mp: 177
   mp_max: 177
   lvl: 12
@@ -1302,9 +1302,9 @@
   img: 181
   skin: 0
   nome: Miss Merry Christmas
-  titulo:
-  hp: 3600
-  hp_max: 3600
+  titulo: null
+  hp: 8600
+  hp_max: 8600
   mp: 177
   mp_max: 177
   lvl: 12
@@ -1327,9 +1327,9 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 4870
-  hp_max: 4870
+  titulo: null
+  hp: 10850
+  hp_max: 10850
   mp: 457
   mp_max: 457
   lvl: 13
@@ -1352,9 +1352,9 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 4330
-  hp_max: 4330
+  titulo: null
+  hp: 9950
+  hp_max: 9950
   mp: 331
   mp_max: 331
   lvl: 13
@@ -1377,9 +1377,9 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 4270
-  hp_max: 4270
+  titulo: null
+  hp: 9850
+  hp_max: 9850
   mp: 317
   mp_max: 317
   lvl: 13
@@ -1402,9 +1402,9 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 4270
-  hp_max: 4270
+  titulo: null
+  hp: 9850
+  hp_max: 9850
   mp: 317
   mp_max: 317
   lvl: 13
@@ -1427,9 +1427,9 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3700
-  hp_max: 3700
+  titulo: null
+  hp: 8900
+  hp_max: 8900
   mp: 184
   mp_max: 184
   lvl: 13
@@ -1452,9 +1452,9 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3700
-  hp_max: 3700
+  titulo: null
+  hp: 8900
+  hp_max: 8900
   mp: 184
   mp_max: 184
   lvl: 13
@@ -1477,9 +1477,9 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3700
-  hp_max: 3700
+  titulo: null
+  hp: 8900
+  hp_max: 8900
   mp: 184
   mp_max: 184
   lvl: 13
@@ -1502,9 +1502,9 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3700
-  hp_max: 3700
+  titulo: null
+  hp: 8900
+  hp_max: 8900
   mp: 184
   mp_max: 184
   lvl: 13
@@ -1527,9 +1527,9 @@
   img: 310
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 5170
-  hp_max: 5170
+  titulo: null
+  hp: 11350
+  hp_max: 11350
   mp: 527
   mp_max: 527
   lvl: 13
@@ -1552,9 +1552,9 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 4040
-  hp_max: 4040
+  titulo: null
+  hp: 9600
+  hp_max: 9600
   mp: 247
   mp_max: 247
   lvl: 14
@@ -1577,9 +1577,9 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 5660
-  hp_max: 5660
+  titulo: null
+  hp: 12300
+  hp_max: 12300
   mp: 625
   mp_max: 625
   lvl: 14
@@ -1602,9 +1602,9 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 4220
-  hp_max: 4220
+  titulo: null
+  hp: 9900
+  hp_max: 9900
   mp: 289
   mp_max: 289
   lvl: 14
@@ -1627,9 +1627,9 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3800
-  hp_max: 3800
+  titulo: null
+  hp: 9200
+  hp_max: 9200
   mp: 191
   mp_max: 191
   lvl: 14
@@ -1652,9 +1652,9 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3800
-  hp_max: 3800
+  titulo: null
+  hp: 9200
+  hp_max: 9200
   mp: 191
   mp_max: 191
   lvl: 14
@@ -1677,9 +1677,9 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 4190
-  hp_max: 4190
+  titulo: null
+  hp: 9850
+  hp_max: 9850
   mp: 282
   mp_max: 282
   lvl: 14
@@ -1702,9 +1702,9 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3800
-  hp_max: 3800
+  titulo: null
+  hp: 9200
+  hp_max: 9200
   mp: 191
   mp_max: 191
   lvl: 14
@@ -1727,9 +1727,9 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3800
-  hp_max: 3800
+  titulo: null
+  hp: 9200
+  hp_max: 9200
   mp: 191
   mp_max: 191
   lvl: 14
@@ -1752,9 +1752,9 @@
   img: 310
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 4220
-  hp_max: 4220
+  titulo: null
+  hp: 9900
+  hp_max: 9900
   mp: 289
   mp_max: 289
   lvl: 14
@@ -1777,9 +1777,9 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 4860
-  hp_max: 4860
+  titulo: null
+  hp: 11100
+  hp_max: 11100
   mp: 422
   mp_max: 422
   lvl: 15
@@ -1802,9 +1802,9 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 5760
-  hp_max: 5760
+  titulo: null
+  hp: 12600
+  hp_max: 12600
   mp: 632
   mp_max: 632
   lvl: 15
@@ -1827,9 +1827,9 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 5550
-  hp_max: 5550
+  titulo: null
+  hp: 12250
+  hp_max: 12250
   mp: 583
   mp_max: 583
   lvl: 15
@@ -1852,9 +1852,9 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3900
-  hp_max: 3900
+  titulo: null
+  hp: 9500
+  hp_max: 9500
   mp: 198
   mp_max: 198
   lvl: 15
@@ -1877,9 +1877,9 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 4350
-  hp_max: 4350
+  titulo: null
+  hp: 10250
+  hp_max: 10250
   mp: 303
   mp_max: 303
   lvl: 15
@@ -1902,9 +1902,9 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3900
-  hp_max: 3900
+  titulo: null
+  hp: 9500
+  hp_max: 9500
   mp: 198
   mp_max: 198
   lvl: 15
@@ -1927,9 +1927,9 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3900
-  hp_max: 3900
+  titulo: null
+  hp: 9500
+  hp_max: 9500
   mp: 198
   mp_max: 198
   lvl: 15
@@ -1952,9 +1952,9 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 3900
-  hp_max: 3900
+  titulo: null
+  hp: 9500
+  hp_max: 9500
   mp: 198
   mp_max: 198
   lvl: 15
@@ -1977,9 +1977,9 @@
   img: 172
   skin: 0
   nome: Kuromarimo
-  titulo:
-  hp: 3900
-  hp_max: 3900
+  titulo: null
+  hp: 9500
+  hp_max: 9500
   mp: 198
   mp_max: 198
   lvl: 15
@@ -2002,9 +2002,9 @@
   img: 113
   skin: 0
   nome: Wapol
-  titulo:
-  hp: 4000
-  hp_max: 4000
+  titulo: null
+  hp: 9800
+  hp_max: 9800
   mp: 205
   mp_max: 205
   lvl: 16
@@ -2027,9 +2027,9 @@
   img: 171
   skin: 0
   nome: Miss Valentine
-  titulo:
-  hp: 4200
-  hp_max: 4200
+  titulo: null
+  hp: 10400
+  hp_max: 10400
   mp: 219
   mp_max: 219
   lvl: 18
@@ -2052,9 +2052,9 @@
   img: 44
   skin: 0
   nome: Mr. 3
-  titulo:
-  hp: 4200
-  hp_max: 4200
+  titulo: null
+  hp: 10400
+  hp_max: 10400
   mp: 219
   mp_max: 219
   lvl: 18
@@ -2077,9 +2077,9 @@
   img: 41
   skin: 0
   nome: Mr. 2
-  titulo:
-  hp: 4770
-  hp_max: 4770
+  titulo: null
+  hp: 11350
+  hp_max: 11350
   mp: 352
   mp_max: 352
   lvl: 18
@@ -2102,9 +2102,9 @@
   img: 42
   skin: 0
   nome: Mr. 5
-  titulo:
-  hp: 4200
-  hp_max: 4200
+  titulo: null
+  hp: 10400
+  hp_max: 10400
   mp: 219
   mp_max: 219
   lvl: 18
@@ -2127,9 +2127,9 @@
   img: 43
   skin: 0
   nome: Mr. 1
-  titulo:
-  hp: 5850
-  hp_max: 5850
+  titulo: null
+  hp: 13150
+  hp_max: 13150
   mp: 604
   mp_max: 604
   lvl: 18
@@ -2152,9 +2152,9 @@
   img: 202
   skin: 0
   nome: Miss Fathers Day
-  titulo:
-  hp: 4500
-  hp_max: 4500
+  titulo: null
+  hp: 10900
+  hp_max: 10900
   mp: 289
   mp_max: 289
   lvl: 18
@@ -2177,9 +2177,9 @@
   img: 181
   skin: 0
   nome: Miss Merry Christmas
-  titulo:
-  hp: 4500
-  hp_max: 4500
+  titulo: null
+  hp: 10900
+  hp_max: 10900
   mp: 289
   mp_max: 289
   lvl: 18
@@ -2202,9 +2202,9 @@
   img: 177
   skin: 0
   nome: Miss Goldenweek
-  titulo:
-  hp: 4200
-  hp_max: 4200
+  titulo: null
+  hp: 10400
+  hp_max: 10400
   mp: 219
   mp_max: 219
   lvl: 18
@@ -2227,9 +2227,9 @@
   img: 193
   skin: 0
   nome: Lassoo
-  titulo:
-  hp: 4300
-  hp_max: 4300
+  titulo: null
+  hp: 10700
+  hp_max: 10700
   mp: 226
   mp_max: 226
   lvl: 19
@@ -2252,9 +2252,9 @@
   img: 229
   skin: 0
   nome: Mr. 9
-  titulo:
-  hp: 6280
-  hp_max: 6280
+  titulo: null
+  hp: 14000
+  hp_max: 14000
   mp: 688
   mp_max: 688
   lvl: 19
@@ -2277,9 +2277,9 @@
   img: 81
   skin: 0
   nome: Mr. 4
-  titulo:
-  hp: 6220
-  hp_max: 6220
+  titulo: null
+  hp: 13900
+  hp_max: 13900
   mp: 674
   mp_max: 674
   lvl: 19
@@ -2302,9 +2302,9 @@
   img: 67
   skin: 0
   nome: Miss Doublefinger
-  titulo:
-  hp: 4300
-  hp_max: 4300
+  titulo: null
+  hp: 10700
+  hp_max: 10700
   mp: 226
   mp_max: 226
   lvl: 19
@@ -2327,9 +2327,9 @@
   img: 21
   skin: 0
   nome: Crocodile
-  titulo:
-  hp: 4400
-  hp_max: 4400
+  titulo: null
+  hp: 11000
+  hp_max: 11000
   mp: 233
   mp_max: 233
   lvl: 20
@@ -2352,9 +2352,9 @@
   img: 51
   skin: 0
   nome: Bellamy
-  titulo:
-  hp: 7770
-  hp_max: 7770
+  titulo: null
+  hp: 17950
+  hp_max: 17950
   mp: 856
   mp_max: 856
   lvl: 30
@@ -2377,9 +2377,9 @@
   img: 311
   skin: 0
   nome: Sarkies
-  titulo:
-  hp: 6390
-  hp_max: 6390
+  titulo: null
+  hp: 15650
+  hp_max: 15650
   mp: 534
   mp_max: 534
   lvl: 30
@@ -2402,9 +2402,9 @@
   img: 310
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 6570
-  hp_max: 6570
+  titulo: null
+  hp: 15950
+  hp_max: 15950
   mp: 576
   mp_max: 576
   lvl: 30
@@ -2427,9 +2427,9 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 5400
-  hp_max: 5400
+  titulo: null
+  hp: 14000
+  hp_max: 14000
   mp: 303
   mp_max: 303
   lvl: 30
@@ -2452,9 +2452,9 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 5400
-  hp_max: 5400
+  titulo: null
+  hp: 14000
+  hp_max: 14000
   mp: 303
   mp_max: 303
   lvl: 30
@@ -2477,9 +2477,9 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 5400
-  hp_max: 5400
+  titulo: null
+  hp: 14000
+  hp_max: 14000
   mp: 303
   mp_max: 303
   lvl: 30
@@ -2502,9 +2502,9 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 5400
-  hp_max: 5400
+  titulo: null
+  hp: 14000
+  hp_max: 14000
   mp: 303
   mp_max: 303
   lvl: 30
@@ -2527,9 +2527,9 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 5400
-  hp_max: 5400
+  titulo: null
+  hp: 14000
+  hp_max: 14000
   mp: 303
   mp_max: 303
   lvl: 30
@@ -2552,9 +2552,9 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 5400
-  hp_max: 5400
+  titulo: null
+  hp: 14000
+  hp_max: 14000
   mp: 303
   mp_max: 303
   lvl: 30
@@ -2577,9 +2577,9 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 5400
-  hp_max: 5400
+  titulo: null
+  hp: 14000
+  hp_max: 14000
   mp: 303
   mp_max: 303
   lvl: 30
@@ -2600,11 +2600,11 @@
   pack_habilidade_id: 1
 613:
   img: 298
-  skin:
+  skin: null
   nome: Pirata
-  titulo:
-  hp: 5400
-  hp_max: 5400
+  titulo: null
+  hp: 14000
+  hp_max: 14000
   mp: 303
   mp_max: 303
   lvl: 30
@@ -2627,9 +2627,9 @@
   img: 320
   skin: 0
   nome: Gina
-  titulo:
-  hp: 5600
-  hp_max: 5600
+  titulo: null
+  hp: 14600
+  hp_max: 14600
   mp: 317
   mp_max: 317
   lvl: 32
@@ -2652,9 +2652,9 @@
   img: 319
   skin: 0
   nome: Big Pan
-  titulo:
-  hp: 5600
-  hp_max: 5600
+  titulo: null
+  hp: 14600
+  hp_max: 14600
   mp: 317
   mp_max: 317
   lvl: 32
@@ -2677,9 +2677,9 @@
   img: 318
   skin: 0
   nome: Pickles
-  titulo:
-  hp: 5600
-  hp_max: 5600
+  titulo: null
+  hp: 14600
+  hp_max: 14600
   mp: 317
   mp_max: 317
   lvl: 32
@@ -2702,9 +2702,9 @@
   img: 317
   skin: 0
   nome: Monda
-  titulo:
-  hp: 5600
-  hp_max: 5600
+  titulo: null
+  hp: 14600
+  hp_max: 14600
   mp: 317
   mp_max: 317
   lvl: 32
@@ -2727,9 +2727,9 @@
   img: 316
   skin: 0
   nome: Capote
-  titulo:
-  hp: 5810
-  hp_max: 5810
+  titulo: null
+  hp: 14950
+  hp_max: 14950
   mp: 366
   mp_max: 366
   lvl: 32
@@ -2752,9 +2752,9 @@
   img: 315
   skin: 0
   nome: Chuchun
-  titulo:
-  hp: 6980
-  hp_max: 6980
+  titulo: null
+  hp: 16900
+  hp_max: 16900
   mp: 639
   mp_max: 639
   lvl: 32
@@ -2777,9 +2777,9 @@
   img: 158
   skin: 0
   nome: Itomimizu
-  titulo:
-  hp: 5700
-  hp_max: 5700
+  titulo: null
+  hp: 14900
+  hp_max: 14900
   mp: 324
   mp_max: 324
   lvl: 33
@@ -2802,9 +2802,9 @@
   img: 314
   skin: 0
   nome: Kibagaeru
-  titulo:
-  hp: 5700
-  hp_max: 5700
+  titulo: null
+  hp: 14900
+  hp_max: 14900
   mp: 324
   mp_max: 324
   lvl: 33
@@ -2827,9 +2827,9 @@
   img: 313
   skin: 0
   nome: Hamburg
-  titulo:
-  hp: 5700
-  hp_max: 5700
+  titulo: null
+  hp: 14900
+  hp_max: 14900
   mp: 324
   mp_max: 324
   lvl: 33
@@ -2852,9 +2852,9 @@
   img: 312
   skin: 0
   nome: Porche
-  titulo:
-  hp: 5700
-  hp_max: 5700
+  titulo: null
+  hp: 14900
+  hp_max: 14900
   mp: 324
   mp_max: 324
   lvl: 33
@@ -2878,8 +2878,8 @@
   skin: 0
   nome: Foxy
   titulo: A Raposa Prateada
-  hp: 5700
-  hp_max: 5700
+  hp: 14900
+  hp_max: 14900
   mp: 324
   mp_max: 324
   lvl: 33
@@ -2902,9 +2902,9 @@
   img: 325
   skin: 0
   nome: Cerberus
-  titulo:
-  hp: 5800
-  hp_max: 5800
+  titulo: null
+  hp: 15200
+  hp_max: 15200
   mp: 331
   mp_max: 331
   lvl: 34
@@ -2927,9 +2927,9 @@
   img: 234
   skin: 0
   nome: Tararan
-  titulo:
-  hp: 5800
-  hp_max: 5800
+  titulo: null
+  hp: 15200
+  hp_max: 15200
   mp: 331
   mp_max: 331
   lvl: 34
@@ -2952,9 +2952,9 @@
   img: 323
   skin: 0
   nome: Hildon
-  titulo:
-  hp: 5800
-  hp_max: 5800
+  titulo: null
+  hp: 15200
+  hp_max: 15200
   mp: 331
   mp_max: 331
   lvl: 34
@@ -2977,9 +2977,9 @@
   img: 322
   skin: 0
   nome: Absalom
-  titulo:
-  hp: 5800
-  hp_max: 5800
+  titulo: null
+  hp: 15200
+  hp_max: 15200
   mp: 331
   mp_max: 331
   lvl: 34
@@ -3002,9 +3002,9 @@
   img: 194
   skin: 0
   nome: Kumashi
-  titulo:
-  hp: 5950
-  hp_max: 5950
+  titulo: null
+  hp: 15450
+  hp_max: 15450
   mp: 366
   mp_max: 366
   lvl: 34
@@ -3027,9 +3027,9 @@
   img: 192
   skin: 0
   nome: Lola
-  titulo:
-  hp: 5800
-  hp_max: 5800
+  titulo: null
+  hp: 15200
+  hp_max: 15200
   mp: 331
   mp_max: 331
   lvl: 34
@@ -3052,9 +3052,9 @@
   img: 156
   skin: 0
   nome: Victoria Cindry
-  titulo:
-  hp: 7120
-  hp_max: 7120
+  titulo: null
+  hp: 17400
+  hp_max: 17400
   mp: 639
   mp_max: 639
   lvl: 34
@@ -3077,9 +3077,9 @@
   img: 149
   skin: 0
   nome: Oars
-  titulo:
-  hp: 7420
-  hp_max: 7420
+  titulo: null
+  hp: 17900
+  hp_max: 17900
   mp: 709
   mp_max: 709
   lvl: 34
@@ -3102,9 +3102,9 @@
   img: 108
   skin: 0
   nome: Ryuma
-  titulo:
-  hp: 5800
-  hp_max: 5800
+  titulo: null
+  hp: 15200
+  hp_max: 15200
   mp: 331
   mp_max: 331
   lvl: 34
@@ -3127,9 +3127,9 @@
   img: 107
   skin: 0
   nome: Perona
-  titulo:
-  hp: 5800
-  hp_max: 5800
+  titulo: null
+  hp: 15200
+  hp_max: 15200
   mp: 331
   mp_max: 331
   lvl: 34
@@ -3152,9 +3152,9 @@
   img: 25
   skin: 0
   nome: Hogback
-  titulo:
-  hp: 5800
-  hp_max: 5800
+  titulo: null
+  hp: 15200
+  hp_max: 15200
   mp: 331
   mp_max: 331
   lvl: 34
@@ -3177,9 +3177,9 @@
   img: 20
   skin: 0
   nome: Gekko Moriah
-  titulo:
-  hp: 5800
-  hp_max: 5800
+  titulo: null
+  hp: 15200
+  hp_max: 15200
   mp: 331
   mp_max: 331
   lvl: 34
@@ -3202,9 +3202,9 @@
   img: 333
   skin: 0
   nome: Kairiki Destroyer
-  titulo:
-  hp: 6570
-  hp_max: 6570
+  titulo: null
+  hp: 16750
+  hp_max: 16750
   mp: 478
   mp_max: 478
   lvl: 36
@@ -3227,9 +3227,9 @@
   img: 332
   skin: 0
   nome: Kairiki Destroyer
-  titulo:
-  hp: 8070
-  hp_max: 8070
+  titulo: null
+  hp: 19250
+  hp_max: 19250
   mp: 828
   mp_max: 828
   lvl: 36
@@ -3252,9 +3252,9 @@
   img: 331
   skin: 0
   nome: Kairiki Destroyer
-  titulo:
-  hp: 6000
-  hp_max: 6000
+  titulo: null
+  hp: 15800
+  hp_max: 15800
   mp: 345
   mp_max: 345
   lvl: 36
@@ -3277,9 +3277,9 @@
   img: 330
   skin: 0
   nome: Zanbai
-  titulo:
-  hp: 6000
-  hp_max: 6000
+  titulo: null
+  hp: 15800
+  hp_max: 15800
   mp: 345
   mp_max: 345
   lvl: 36
@@ -3302,9 +3302,9 @@
   img: 329
   skin: 0
   nome: Kop
-  titulo:
-  hp: 6000
-  hp_max: 6000
+  titulo: null
+  hp: 15800
+  hp_max: 15800
   mp: 345
   mp_max: 345
   lvl: 36
@@ -3327,9 +3327,9 @@
   img: 328
   skin: 0
   nome: Schollzo
-  titulo:
-  hp: 6100
-  hp_max: 6100
+  titulo: null
+  hp: 16100
+  hp_max: 16100
   mp: 352
   mp_max: 352
   lvl: 37
@@ -3352,9 +3352,9 @@
   img: 327
   skin: 0
   nome: Kiev
-  titulo:
-  hp: 6100
-  hp_max: 6100
+  titulo: null
+  hp: 16100
+  hp_max: 16100
   mp: 352
   mp_max: 352
   lvl: 37
@@ -3377,9 +3377,9 @@
   img: 326
   skin: 0
   nome: Tamagon
-  titulo:
-  hp: 6970
-  hp_max: 6970
+  titulo: null
+  hp: 17550
+  hp_max: 17550
   mp: 555
   mp_max: 555
   lvl: 37
@@ -3402,9 +3402,9 @@
   img: 159
   skin: 0
   nome: Mozu
-  titulo:
-  hp: 6100
-  hp_max: 6100
+  titulo: null
+  hp: 16100
+  hp_max: 16100
   mp: 352
   mp_max: 352
   lvl: 37
@@ -3427,9 +3427,9 @@
   img: 203
   skin: 0
   nome: Kiwi
-  titulo:
-  hp: 6200
-  hp_max: 6200
+  titulo: null
+  hp: 16400
+  hp_max: 16400
   mp: 359
   mp_max: 359
   lvl: 38
@@ -3452,9 +3452,9 @@
   img: 9
   skin: 0
   nome: Franky
-  titulo:
-  hp: 6200
-  hp_max: 6200
+  titulo: null
+  hp: 16400
+  hp_max: 16400
   mp: 359
   mp_max: 359
   lvl: 38
@@ -3477,9 +3477,9 @@
   img: 273
   skin: 0
   nome: Urouge
-  titulo:
-  hp: 6600
-  hp_max: 6600
+  titulo: null
+  hp: 17600
+  hp_max: 17600
   mp: 387
   mp_max: 387
   lvl: 42
@@ -3502,9 +3502,9 @@
   img: 180
   skin: 0
   nome: Capone Bege
-  titulo:
-  hp: 6600
-  hp_max: 6600
+  titulo: null
+  hp: 17600
+  hp_max: 17600
   mp: 387
   mp_max: 387
   lvl: 42
@@ -3528,8 +3528,8 @@
   skin: 0
   nome: Jewelry Bonney
   titulo: A Devoradora
-  hp: 7170
-  hp_max: 7170
+  hp: 18550
+  hp_max: 18550
   mp: 520
   mp_max: 520
   lvl: 42
@@ -3552,9 +3552,9 @@
   img: 123
   skin: 0
   nome: Killer
-  titulo:
-  hp: 6870
-  hp_max: 6870
+  titulo: null
+  hp: 18050
+  hp_max: 18050
   mp: 450
   mp_max: 450
   lvl: 42
@@ -3577,9 +3577,9 @@
   img: 334
   skin: 0
   nome: Apoo
-  titulo:
-  hp: 6600
-  hp_max: 6600
+  titulo: null
+  hp: 17600
+  hp_max: 17600
   mp: 387
   mp_max: 387
   lvl: 42
@@ -3602,9 +3602,9 @@
   img: 84
   skin: 0
   nome: X Drake
-  titulo:
-  hp: 7420
-  hp_max: 7420
+  titulo: null
+  hp: 19100
+  hp_max: 19100
   mp: 562
   mp_max: 562
   lvl: 43
@@ -3628,8 +3628,8 @@
   skin: 0
   nome: Basil Hawkins
   titulo: O Mago
-  hp: 9190
-  hp_max: 9190
+  hp: 22050
+  hp_max: 22050
   mp: 975
   mp_max: 975
   lvl: 43
@@ -3652,9 +3652,9 @@
   img: 87
   skin: 0
   nome: Eustass Kid
-  titulo:
-  hp: 6820
-  hp_max: 6820
+  titulo: null
+  hp: 18100
+  hp_max: 18100
   mp: 422
   mp_max: 422
   lvl: 43
@@ -3678,8 +3678,8 @@
   skin: 0
   nome: Trafalgar Law
   titulo: Cirurgião da Morte
-  hp: 6700
-  hp_max: 6700
+  hp: 17900
+  hp_max: 17900
   mp: 394
   mp_max: 394
   lvl: 43
@@ -3703,8 +3703,8 @@
   skin: 0
   nome: Roronoa Zoro
   titulo: O Caçador de Piratas
-  hp: 6700
-  hp_max: 6700
+  hp: 17900
+  hp_max: 17900
   mp: 394
   mp_max: 394
   lvl: 43
@@ -3728,8 +3728,8 @@
   skin: 0
   nome: Luffy
   titulo: Do Chapéu de Palha
-  hp: 7220
-  hp_max: 7220
+  hp: 18900
+  hp_max: 18900
   mp: 499
   mp_max: 499
   lvl: 44
@@ -3752,9 +3752,9 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7370
-  hp_max: 7370
+  titulo: null
+  hp: 19150
+  hp_max: 19150
   mp: 534
   mp_max: 534
   lvl: 44
@@ -3777,9 +3777,9 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7170
-  hp_max: 7170
+  titulo: null
+  hp: 18950
+  hp_max: 18950
   mp: 471
   mp_max: 471
   lvl: 45
@@ -3802,9 +3802,9 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7020
-  hp_max: 7020
+  titulo: null
+  hp: 18700
+  hp_max: 18700
   mp: 436
   mp_max: 436
   lvl: 45
@@ -3827,9 +3827,9 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7500
-  hp_max: 7500
+  titulo: null
+  hp: 19500
+  hp_max: 19500
   mp: 548
   mp_max: 548
   lvl: 45
@@ -3852,9 +3852,9 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7320
-  hp_max: 7320
+  titulo: null
+  hp: 19200
+  hp_max: 19200
   mp: 506
   mp_max: 506
   lvl: 45
@@ -3877,9 +3877,9 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 6900
-  hp_max: 6900
+  titulo: null
+  hp: 18500
+  hp_max: 18500
   mp: 408
   mp_max: 408
   lvl: 45
@@ -3902,9 +3902,9 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7570
-  hp_max: 7570
+  titulo: null
+  hp: 19750
+  hp_max: 19750
   mp: 548
   mp_max: 548
   lvl: 46
@@ -3927,9 +3927,9 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 8470
-  hp_max: 8470
+  titulo: null
+  hp: 21250
+  hp_max: 21250
   mp: 758
   mp_max: 758
   lvl: 46
@@ -3952,9 +3952,9 @@
   img: 310
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 8470
-  hp_max: 8470
+  titulo: null
+  hp: 21250
+  hp_max: 21250
   mp: 758
   mp_max: 758
   lvl: 46
@@ -3977,9 +3977,9 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7570
-  hp_max: 7570
+  titulo: null
+  hp: 19750
+  hp_max: 19750
   mp: 548
   mp_max: 548
   lvl: 46
@@ -4002,9 +4002,9 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7420
-  hp_max: 7420
+  titulo: null
+  hp: 19500
+  hp_max: 19500
   mp: 513
   mp_max: 513
   lvl: 46
@@ -4027,9 +4027,9 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7270
-  hp_max: 7270
+  titulo: null
+  hp: 19250
+  hp_max: 19250
   mp: 478
   mp_max: 478
   lvl: 46
@@ -4052,9 +4052,9 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4077,9 +4077,9 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4102,9 +4102,9 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 10010
-  hp_max: 10010
+  titulo: null
+  hp: 24350
+  hp_max: 24350
   mp: 1052
   mp_max: 1052
   lvl: 50
@@ -4127,9 +4127,9 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 10010
-  hp_max: 10010
+  titulo: null
+  hp: 24350
+  hp_max: 24350
   mp: 2298
   mp_max: 2298
   lvl: 50
@@ -4152,9 +4152,9 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4177,9 +4177,9 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4202,9 +4202,9 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4227,9 +4227,9 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4252,9 +4252,9 @@
   img: 310
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4277,9 +4277,9 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4302,9 +4302,9 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4327,9 +4327,9 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4352,9 +4352,9 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4377,9 +4377,9 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4402,9 +4402,9 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo:
-  hp: 10010
-  hp_max: 10010
+  titulo: null
+  hp: 24350
+  hp_max: 24350
   mp: 1052
   mp_max: 1052
   lvl: 50
@@ -4423,16 +4423,13 @@
   akuma: 0
   tatic_d: 0
   pack_habilidade_id: null
-
-# ===== Incursao Alabasta
-# ----- Aninais
 794:
   img: 193
   skin: 0
   nome: Lassoo
-  titulo:
-  hp: 8570
-  hp_max: 8570
+  titulo: null
+  hp: 21950
+  hp_max: 21950
   mp: 716
   mp_max: 716
   lvl: 50
@@ -4455,9 +4452,9 @@
   img: 335
   skin: 0
   nome: Banchi
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4476,15 +4473,13 @@
   akuma: 0
   tatic_d: 0
   pack_habilidade_id: null
-
-# ----- Figurantes
 796:
   img: 336
   skin: 0
   nome: Mr. Beans
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4507,9 +4502,9 @@
   img: 337
   skin: 0
   nome: Miss Catherine
-  titulo:
-  hp: 9290
-  hp_max: 9290
+  titulo: null
+  hp: 23150
+  hp_max: 23150
   mp: 884
   mp_max: 884
   lvl: 50
@@ -4532,9 +4527,9 @@
   img: 338
   skin: 0
   nome: Geronimo
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4557,9 +4552,9 @@
   img: 339
   skin: 0
   nome: Mr. Love
-  titulo:
-  hp: 7430
-  hp_max: 7430
+  titulo: null
+  hp: 20050
+  hp_max: 20050
   mp: 450
   mp_max: 450
   lvl: 50
@@ -4582,9 +4577,9 @@
   img: 340
   skin: 0
   nome: Mr. Mellow
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4607,9 +4602,9 @@
   img: 341
   skin: 0
   nome: Akumai
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4628,15 +4623,13 @@
   akuma: 0
   tatic_d: 0
   pack_habilidade_id: null
-
-# ----- Unluckies
 802:
   img: 342
   skin: 0
   nome: Mr. 13
-  titulo:
-  hp: 10010
-  hp_max: 10010
+  titulo: null
+  hp: 24350
+  hp_max: 24350
   mp: 1052
   mp_max: 1052
   lvl: 50
@@ -4659,9 +4652,9 @@
   img: 343
   skin: 0
   nome: Miss Friday
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4680,15 +4673,13 @@
   akuma: 0
   tatic_d: 0
   pack_habilidade_id: null
-
-# ----- Agentes de Fronteira
 804:
   img: 344
   skin: 0
   nome: Mr. 11
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4711,9 +4702,9 @@
   img: 345
   skin: 0
   nome: Miss Monday
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4736,9 +4727,9 @@
   img: 202
   skin: 0
   nome: Miss Fathers Day
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4761,9 +4752,9 @@
   img: 229
   skin: 0
   nome: Mr. 9
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4786,9 +4777,9 @@
   img: 169
   skin: 0
   nome: Mr. 7
-  titulo:
-  hp: 9170
-  hp_max: 9170
+  titulo: null
+  hp: 22950
+  hp_max: 22950
   mp: 856
   mp_max: 856
   lvl: 50
@@ -4807,15 +4798,13 @@
   akuma: 0
   tatic_d: 0
   pack_habilidade_id: null
-
-# ----- Agentes Oficiais
 809:
   img: 171
   skin: 0
   nome: Miss Valentine
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4838,9 +4827,9 @@
   img: 181
   skin: 0
   nome: Miss Merry Christimas
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4863,9 +4852,9 @@
   img: 177
   skin: 0
   nome: Miss Goldenweek
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4888,9 +4877,9 @@
   img: 67
   skin: 0
   nome: Miss Doublefinger
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4913,9 +4902,9 @@
   img: 42
   skin: 0
   nome: Mr. 5
-  titulo:
-  hp: 9170
-  hp_max: 9170
+  titulo: null
+  hp: 22950
+  hp_max: 22950
   mp: 856
   mp_max: 856
   lvl: 50
@@ -4938,9 +4927,9 @@
   img: 81
   skin: 0
   nome: Mr. 4
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4963,9 +4952,9 @@
   img: 44
   skin: 0
   nome: Mr. 3
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -4988,9 +4977,9 @@
   img: 41
   skin: 0
   nome: Mr. 2
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5013,9 +5002,9 @@
   img: 43
   skin: 0
   nome: Mr. 1
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5034,14 +5023,13 @@
   akuma: 0
   tatic_d: 0
   pack_habilidade_id: null
-# ----- Membros Top
 818:
   img: 21
   skin: 0
   nome: Crocodile
-  titulo:
-  hp: 9170
-  hp_max: 9170
+  titulo: null
+  hp: 22950
+  hp_max: 22950
   mp: 856
   mp_max: 856
   lvl: 50
@@ -5060,15 +5048,13 @@
   akuma: 0
   tatic_d: 0
   pack_habilidade_id: null
-
-# ----- Impel Down
 819:
   img: 351
   skin: 1
   nome: Blugori
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5091,9 +5077,9 @@
   img: 351
   skin: 0
   nome: Blugori
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5116,9 +5102,9 @@
   img: 350
   skin: 1
   nome: Manticora
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5141,9 +5127,9 @@
   img: 350
   skin: 0
   nome: Manticora
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5166,9 +5152,9 @@
   img: 349
   skin: 0
   nome: Sphinx
-  titulo:
-  hp: 9170
-  hp_max: 9170
+  titulo: null
+  hp: 22950
+  hp_max: 22950
   mp: 856
   mp_max: 856
   lvl: 50
@@ -5191,9 +5177,9 @@
   img: 348
   skin: 0
   nome: Basilisk
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5216,9 +5202,9 @@
   img: 182
   skin: 0
   nome: Minozebra
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5241,9 +5227,9 @@
   img: 184
   skin: 0
   nome: Minokoala
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5266,9 +5252,9 @@
   img: 178
   skin: 0
   nome: Minorhinoceros
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5291,9 +5277,9 @@
   img: 183
   skin: 0
   nome: Minotauros
-  titulo:
-  hp: 9170
-  hp_max: 9170
+  titulo: null
+  hp: 22950
+  hp_max: 22950
   mp: 856
   mp_max: 856
   lvl: 50
@@ -5317,8 +5303,8 @@
   skin: 0
   nome: Domino
   titulo: Carcereira-Chefe
-  hp: 7400
-  hp_max: 7400
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5342,8 +5328,8 @@
   skin: 0
   nome: Sadi-chan
   titulo: Guarda-Chefe
-  hp: 7400
-  hp_max: 7400
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5367,8 +5353,8 @@
   skin: 0
   nome: Saldeath
   titulo: Guarda-Chefe
-  hp: 7400
-  hp_max: 7400
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5392,8 +5378,8 @@
   skin: 0
   nome: Hannyabal
   titulo: Diretor
-  hp: 7400
-  hp_max: 7400
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5417,8 +5403,8 @@
   skin: 0
   nome: Magellan
   titulo: Vice-Diretor
-  hp: 9170
-  hp_max: 9170
+  hp: 22950
+  hp_max: 22950
   mp: 856
   mp_max: 856
   lvl: 50
@@ -5437,15 +5423,13 @@
   akuma: 0
   tatic_d: 0
   pack_habilidade_id: null
-
-# Enies Lobby
 834:
   img: 357
   skin: 0
   nome: Kashi
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5468,9 +5452,9 @@
   img: 299
   skin: 0
   nome: Marinheiro
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5493,9 +5477,9 @@
   img: 301
   skin: 0
   nome: Marinheiro
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5518,9 +5502,9 @@
   img: 300
   skin: 0
   nome: Marinheiro
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5543,9 +5527,9 @@
   img: 280
   skin: 0
   nome: Strawberry
-  titulo:
-  hp: 9170
-  hp_max: 9170
+  titulo: null
+  hp: 22950
+  hp_max: 22950
   mp: 856
   mp_max: 856
   lvl: 50
@@ -5568,9 +5552,9 @@
   img: 28
   skin: 0
   nome: Fukuro
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5593,9 +5577,9 @@
   img: 279
   skin: 0
   nome: Doberman
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5618,9 +5602,9 @@
   img: 29
   skin: 0
   nome: Kumadori
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5643,9 +5627,9 @@
   img: 278
   skin: 0
   nome: Onigumo
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5668,9 +5652,9 @@
   img: 30
   skin: 1
   nome: Kalifa
-  titulo:
-  hp: 9170
-  hp_max: 9170
+  titulo: null
+  hp: 22950
+  hp_max: 22950
   mp: 856
   mp_max: 856
   lvl: 50
@@ -5693,9 +5677,9 @@
   img: 33
   skin: 1
   nome: Blueno
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5718,9 +5702,9 @@
   img: 31
   skin: 0
   nome: Jabra
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5743,9 +5727,9 @@
   img: 26
   skin: 1
   nome: Kaku
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5768,9 +5752,9 @@
   img: 32
   skin: 0
   nome: Spandam
-  titulo:
-  hp: 7400
-  hp_max: 7400
+  titulo: null
+  hp: 20000
+  hp_max: 20000
   mp: 443
   mp_max: 443
   lvl: 50
@@ -5793,9 +5777,9 @@
   img: 27
   skin: 2
   nome: Rob Lucci
-  titulo:
-  hp: 9170
-  hp_max: 9170
+  titulo: null
+  hp: 22950
+  hp_max: 22950
   mp: 856
   mp_max: 856
   lvl: 50
