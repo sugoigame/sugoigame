@@ -100,7 +100,7 @@ if (! $userDetails->conta &&
     <script type="text/javascript" src="JS/reconnecting-websocket.min.js"></script>
     <script type="text/javascript" src="JS/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="JS/phaser.min.js"></script>
-    <script type="text/javascript" src="JS/jquery.bracket.js"></script>
+    <!-- <script type="text/javascript" src="JS/jquery.bracket.min.js"></script> -->
     <script type="text/javascript" src="JS/library.js?ver=1.0.0"></script>
     <script type="text/javascript" src="JS/main.js?ver=1.0.0"></script>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script> -->
