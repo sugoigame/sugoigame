@@ -100,11 +100,6 @@ if (! $userDetails->conta &&
     <script type="text/javascript" src="JS/reconnecting-websocket.min.js"></script>
     <script type="text/javascript" src="JS/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="JS/phaser.min.js"></script>
-<<<<<<< HEAD
-    <!-- <script type="text/javascript" src="JS/jquery.bracket.min.js"></script> -->
-=======
-    <script type="text/javascript" src="JS/jquery.bracket.min.js"></script>
->>>>>>> parent of c581373e (atualizações - F servidor)
     <script type="text/javascript" src="JS/library.js?ver=1.0.0"></script>
     <script type="text/javascript" src="JS/main.js?ver=1.0.0"></script>
 
