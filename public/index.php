@@ -93,16 +93,18 @@ if (! $userDetails->conta &&
     </div>
 
     <script type="text/javascript" src="JS/jquery-2.2.2.min.js"></script>
-    <script type="text/javascript" src="JS/bootstrap.min.js"></script>
+    <script type="text/javascript" src="CSS/js_v5/bootstrap.min.js"></script>
     <script type="text/javascript" src="JS/bootbox.min.js"></script>
-    <script type="text/javascript" src="JS/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="CSS/js_v5/bootstrap-select.min.js"></script>
     <script type="text/javascript" src="JS/progressbar.min.js"></script>
     <script type="text/javascript" src="JS/reconnecting-websocket.min.js"></script>
     <script type="text/javascript" src="JS/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="JS/phaser.min.js"></script>
-    <script type="text/javascript" src="JS/jquery.bracket.min.js"></script>
+    <script type="text/javascript" src="JS/jquery.bracket.js"></script>
     <script type="text/javascript" src="JS/library.js?ver=1.0.0"></script>
     <script type="text/javascript" src="JS/main.js?ver=1.0.0"></script>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script> -->
+    
 
     <script src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.9"></script>
 </body>
