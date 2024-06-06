@@ -32,7 +32,7 @@ function super_menu_link($href, $href_toggle, $text, $super_menu, $icon, $sistem
     }
 
     return $ativo ? "<div class=\"nav navbar-nav text-left\">
-				<a type=\"button\" href=\"#$href_toggle\" class=\"" . super_menu_active($super_menu) . "\" data-bs-toggle=\"collapse\" data-parent=\"#vertical-menu\">
+				<a href=\"#$href_toggle\" class=\"" . super_menu_active($super_menu) . "\" data-toggle=\"collapse\" data-parent=\"#vertical-menu\">
 					<img src=\"Imagens/Icones/Sessoes/$icon.png\"/>
 					<span class='super-menu-text'>$text</span>
 					" . ($userDetails->has_super_alert($super_menu) ? get_alert("pull-right") : "") . "
@@ -206,7 +206,7 @@ function super_menu_can_be_active($menu)
                     </ul>
                 </div>
             <?php endif; ?>
-            <?= super_menu_link(
+            <!-- <?= super_menu_link(
                 "aliancaLista",
                 "menu-alianca",
                 $userDetails->tripulacao["faccao"] == FACCAO_PIRATA
@@ -233,7 +233,7 @@ function super_menu_can_be_active($menu)
                     <?php endif; ?>
                     <?= menu_link("aliancaLista", "Frotas e Alianças", "fa fa-th-list", "") ?>
                 </ul>
-            </div>
+            </div> -->
 
             <?= super_menu_link("lojaEvento", "menu-events", "Eventos", "eventos", "eventos", [SISTEMA_EVENTOS]) ?>
             <div id="menu-events" class="collapse <?= super_menu_in_out("eventos") ?>">

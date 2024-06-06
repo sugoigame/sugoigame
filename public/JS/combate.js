@@ -387,7 +387,7 @@ function ataqueCom(pers) {
                 bancandoEspertinho(retorno.substr(0, retorno.length));
             } else {
                 $("#skills-personagem").html(retorno);
-                $('[data-bs-toggle="popover"]').popover({});
+                $('[data-toggle="popover"]').popover({});
                 $("#skills-modal").modal();
             }
         },
