@@ -30,7 +30,7 @@ if (! $userDetails->conta &&
     <link rel="manifest" href="manifest.json" />
     <link rel="shortcut icon" type="image/png" href="Imagens/favicon.png" />
 
-    <link rel="stylesheet" type="text/css" href="CSS/bootstrap-organize.min.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="CSS/theme.css?ver=1.0.4" />
     <link rel="stylesheet" type="text/css" href="CSS/bootstrap-select.min.css" />
     <link rel="stylesheet" type="text/css" href="CSS/font-awesome.min.css" />
