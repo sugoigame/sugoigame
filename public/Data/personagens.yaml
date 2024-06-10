@@ -2,7 +2,7 @@
   img: 297
   skin: 0
   nome: Bandido
-  titulo: null
+  titulo:
   hp: 5300
   hp_max: 5300
   mp: 100
@@ -27,7 +27,7 @@
   img: 298
   skin: 0
   nome: Bandido
-  titulo: null
+  titulo:
   hp: 5300
   hp_max: 5300
   mp: 100
@@ -52,7 +52,7 @@
   img: 296
   skin: 0
   nome: Bandido
-  titulo: null
+  titulo:
   hp: 6200
   hp_max: 6200
   mp: 121
@@ -77,7 +77,7 @@
   img: 299
   skin: 0
   nome: Marinheiro Inadiplente
-  titulo: null
+  titulo:
   hp: 5300
   hp_max: 5300
   mp: 100
@@ -102,7 +102,7 @@
   img: 300
   skin: 0
   nome: Marinheiro Inadiplente
-  titulo: null
+  titulo:
   hp: 5300
   hp_max: 5300
   mp: 100
@@ -127,7 +127,7 @@
   img: 301
   skin: 0
   nome: Marinheiro Inadiplente
-  titulo: null
+  titulo:
   hp: 5300
   hp_max: 5300
   mp: 100
@@ -152,7 +152,7 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 5300
   hp_max: 5300
   mp: 100
@@ -177,7 +177,7 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 5500
   hp_max: 5500
   mp: 128
@@ -202,7 +202,7 @@
   img: 143
   skin: 0
   nome: Richie
-  titulo: null
+  titulo:
   hp: 5800
   hp_max: 5800
   mp: 135
@@ -227,7 +227,7 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 6050
   hp_max: 6050
   mp: 135
@@ -252,7 +252,7 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 6500
   hp_max: 6500
   mp: 198
@@ -327,7 +327,7 @@
   img: 124
   skin: 0
   nome: Mohji
-  titulo: null
+  titulo:
   hp: 6600
   hp_max: 6600
   mp: 177
@@ -352,7 +352,7 @@
   img: 207
   skin: 0
   nome: Cabaji
-  titulo: null
+  titulo:
   hp: 6200
   hp_max: 6200
   mp: 121
@@ -377,7 +377,7 @@
   img: 40
   skin: 0
   nome: Jango
-  titulo: null
+  titulo:
   hp: 7200
   hp_max: 7200
   mp: 226
@@ -427,7 +427,7 @@
   img: 120
   skin: 0
   nome: Gin
-  titulo: null
+  titulo:
   hp: 7200
   hp_max: 7200
   mp: 191
@@ -477,7 +477,7 @@
   img: 83
   skin: 0
   nome: Don Krieg
-  titulo: null
+  titulo:
   hp: 7250
   hp_max: 7250
   mp: 198
@@ -502,7 +502,7 @@
   img: 154
   skin: 0
   nome: Kuroobi
-  titulo: null
+  titulo:
   hp: 7300
   hp_max: 7300
   mp: 205
@@ -527,7 +527,7 @@
   img: 116
   skin: 0
   nome: Hatchan
-  titulo: null
+  titulo:
   hp: 6800
   hp_max: 6800
   mp: 135
@@ -552,7 +552,7 @@
   img: 304
   skin: 0
   nome: Chew
-  titulo: null
+  titulo:
   hp: 6800
   hp_max: 6800
   mp: 135
@@ -577,7 +577,7 @@
   img: 305
   skin: 0
   nome: Pisaro
-  titulo: null
+  titulo:
   hp: 6800
   hp_max: 6800
   mp: 135
@@ -602,7 +602,7 @@
   img: 16
   skin: 0
   nome: Arlong
-  titulo: null
+  titulo:
   hp: 8900
   hp_max: 8900
   mp: 324
@@ -677,7 +677,7 @@
   img: 207
   skin: 1
   nome: Cabaji
-  titulo: null
+  titulo:
   hp: 8150
   hp_max: 8150
   mp: 219
@@ -702,7 +702,7 @@
   img: 124
   skin: 0
   nome: Mohji
-  titulo: null
+  titulo:
   hp: 8550
   hp_max: 8550
   mp: 275
@@ -727,7 +727,7 @@
   img: 143
   skin: 1
   nome: Richie
-  titulo: null
+  titulo:
   hp: 8200
   hp_max: 8200
   mp: 226
@@ -752,7 +752,7 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 8700
   hp_max: 8700
   mp: 296
@@ -777,7 +777,7 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 7700
   hp_max: 7700
   mp: 156
@@ -802,7 +802,7 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 8000
   hp_max: 8000
   mp: 163
@@ -827,7 +827,7 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 8000
   hp_max: 8000
   mp: 163
@@ -852,7 +852,7 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 8950
   hp_max: 8950
   mp: 296
@@ -877,7 +877,7 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 8000
   hp_max: 8000
   mp: 163
@@ -902,7 +902,7 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 8700
   hp_max: 8700
   mp: 261
@@ -927,7 +927,7 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 8000
   hp_max: 8000
   mp: 163
@@ -952,7 +952,7 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 11800
   hp_max: 11800
   mp: 695
@@ -977,7 +977,7 @@
   img: 297
   skin: 0
   nome: Caçador de Recompensas
-  titulo: null
+  titulo:
   hp: 8300
   hp_max: 8300
   mp: 170
@@ -1002,7 +1002,7 @@
   img: 298
   skin: 0
   nome: Caçador de Recompensas
-  titulo: null
+  titulo:
   hp: 8300
   hp_max: 8300
   mp: 170
@@ -1027,7 +1027,7 @@
   img: 302
   skin: 0
   nome: Caçador de Recompensas
-  titulo: null
+  titulo:
   hp: 9250
   hp_max: 9250
   mp: 303
@@ -1052,7 +1052,7 @@
   img: 303
   skin: 0
   nome: Caçador de Recompensas
-  titulo: null
+  titulo:
   hp: 8300
   hp_max: 8300
   mp: 170
@@ -1077,7 +1077,7 @@
   img: 306
   skin: 0
   nome: Caçador de Recompensas
-  titulo: null
+  titulo:
   hp: 8300
   hp_max: 8300
   mp: 170
@@ -1102,7 +1102,7 @@
   img: 307
   skin: 0
   nome: Caçador de Recompensas
-  titulo: null
+  titulo:
   hp: 9800
   hp_max: 9800
   mp: 380
@@ -1127,7 +1127,7 @@
   img: 308
   skin: 0
   nome: Caçador de Recompensas
-  titulo: null
+  titulo:
   hp: 9400
   hp_max: 9400
   mp: 324
@@ -1152,7 +1152,7 @@
   img: 45
   skin: 0
   nome: Miss Wednesday
-  titulo: null
+  titulo:
   hp: 9550
   hp_max: 9550
   mp: 310
@@ -1177,7 +1177,7 @@
   img: 44
   skin: 0
   nome: Mr. 3
-  titulo: null
+  titulo:
   hp: 9550
   hp_max: 9550
   mp: 310
@@ -1202,7 +1202,7 @@
   img: 41
   skin: 0
   nome: Mr. 2
-  titulo: null
+  titulo:
   hp: 8600
   hp_max: 8600
   mp: 177
@@ -1227,7 +1227,7 @@
   img: 42
   skin: 0
   nome: Mr. 5
-  titulo: null
+  titulo:
   hp: 10750
   hp_max: 10750
   mp: 478
@@ -1252,7 +1252,7 @@
   img: 43
   skin: 0
   nome: Mr. 1
-  titulo: null
+  titulo:
   hp: 8600
   hp_max: 8600
   mp: 177
@@ -1277,7 +1277,7 @@
   img: 202
   skin: 0
   nome: Miss Fathers Day
-  titulo: null
+  titulo:
   hp: 8600
   hp_max: 8600
   mp: 177
@@ -1302,7 +1302,7 @@
   img: 181
   skin: 0
   nome: Miss Merry Christmas
-  titulo: null
+  titulo:
   hp: 8600
   hp_max: 8600
   mp: 177
@@ -1327,7 +1327,7 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 10850
   hp_max: 10850
   mp: 457
@@ -1352,7 +1352,7 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9950
   hp_max: 9950
   mp: 331
@@ -1377,7 +1377,7 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9850
   hp_max: 9850
   mp: 317
@@ -1402,7 +1402,7 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9850
   hp_max: 9850
   mp: 317
@@ -1427,7 +1427,7 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 8900
   hp_max: 8900
   mp: 184
@@ -1452,7 +1452,7 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 8900
   hp_max: 8900
   mp: 184
@@ -1477,7 +1477,7 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 8900
   hp_max: 8900
   mp: 184
@@ -1502,7 +1502,7 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 8900
   hp_max: 8900
   mp: 184
@@ -1527,7 +1527,7 @@
   img: 310
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 11350
   hp_max: 11350
   mp: 527
@@ -1552,7 +1552,7 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9600
   hp_max: 9600
   mp: 247
@@ -1577,7 +1577,7 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 12300
   hp_max: 12300
   mp: 625
@@ -1602,7 +1602,7 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9900
   hp_max: 9900
   mp: 289
@@ -1627,7 +1627,7 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9200
   hp_max: 9200
   mp: 191
@@ -1652,7 +1652,7 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9200
   hp_max: 9200
   mp: 191
@@ -1677,7 +1677,7 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9850
   hp_max: 9850
   mp: 282
@@ -1702,7 +1702,7 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9200
   hp_max: 9200
   mp: 191
@@ -1727,7 +1727,7 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9200
   hp_max: 9200
   mp: 191
@@ -1752,7 +1752,7 @@
   img: 310
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9900
   hp_max: 9900
   mp: 289
@@ -1777,7 +1777,7 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 11100
   hp_max: 11100
   mp: 422
@@ -1802,7 +1802,7 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 12600
   hp_max: 12600
   mp: 632
@@ -1827,7 +1827,7 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 12250
   hp_max: 12250
   mp: 583
@@ -1852,7 +1852,7 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9500
   hp_max: 9500
   mp: 198
@@ -1877,7 +1877,7 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 10250
   hp_max: 10250
   mp: 303
@@ -1902,7 +1902,7 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9500
   hp_max: 9500
   mp: 198
@@ -1927,7 +1927,7 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9500
   hp_max: 9500
   mp: 198
@@ -1952,7 +1952,7 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 9500
   hp_max: 9500
   mp: 198
@@ -1977,7 +1977,7 @@
   img: 172
   skin: 0
   nome: Kuromarimo
-  titulo: null
+  titulo:
   hp: 9500
   hp_max: 9500
   mp: 198
@@ -2002,7 +2002,7 @@
   img: 113
   skin: 0
   nome: Wapol
-  titulo: null
+  titulo:
   hp: 9800
   hp_max: 9800
   mp: 205
@@ -2027,7 +2027,7 @@
   img: 171
   skin: 0
   nome: Miss Valentine
-  titulo: null
+  titulo:
   hp: 10400
   hp_max: 10400
   mp: 219
@@ -2052,7 +2052,7 @@
   img: 44
   skin: 0
   nome: Mr. 3
-  titulo: null
+  titulo:
   hp: 10400
   hp_max: 10400
   mp: 219
@@ -2077,7 +2077,7 @@
   img: 41
   skin: 0
   nome: Mr. 2
-  titulo: null
+  titulo:
   hp: 11350
   hp_max: 11350
   mp: 352
@@ -2102,7 +2102,7 @@
   img: 42
   skin: 0
   nome: Mr. 5
-  titulo: null
+  titulo:
   hp: 10400
   hp_max: 10400
   mp: 219
@@ -2127,7 +2127,7 @@
   img: 43
   skin: 0
   nome: Mr. 1
-  titulo: null
+  titulo:
   hp: 13150
   hp_max: 13150
   mp: 604
@@ -2152,7 +2152,7 @@
   img: 202
   skin: 0
   nome: Miss Fathers Day
-  titulo: null
+  titulo:
   hp: 10900
   hp_max: 10900
   mp: 289
@@ -2177,7 +2177,7 @@
   img: 181
   skin: 0
   nome: Miss Merry Christmas
-  titulo: null
+  titulo:
   hp: 10900
   hp_max: 10900
   mp: 289
@@ -2202,7 +2202,7 @@
   img: 177
   skin: 0
   nome: Miss Goldenweek
-  titulo: null
+  titulo:
   hp: 10400
   hp_max: 10400
   mp: 219
@@ -2227,7 +2227,7 @@
   img: 193
   skin: 0
   nome: Lassoo
-  titulo: null
+  titulo:
   hp: 10700
   hp_max: 10700
   mp: 226
@@ -2252,7 +2252,7 @@
   img: 229
   skin: 0
   nome: Mr. 9
-  titulo: null
+  titulo:
   hp: 14000
   hp_max: 14000
   mp: 688
@@ -2277,7 +2277,7 @@
   img: 81
   skin: 0
   nome: Mr. 4
-  titulo: null
+  titulo:
   hp: 13900
   hp_max: 13900
   mp: 674
@@ -2302,7 +2302,7 @@
   img: 67
   skin: 0
   nome: Miss Doublefinger
-  titulo: null
+  titulo:
   hp: 10700
   hp_max: 10700
   mp: 226
@@ -2327,7 +2327,7 @@
   img: 21
   skin: 0
   nome: Crocodile
-  titulo: null
+  titulo:
   hp: 11000
   hp_max: 11000
   mp: 233
@@ -2352,7 +2352,7 @@
   img: 51
   skin: 0
   nome: Bellamy
-  titulo: null
+  titulo:
   hp: 17950
   hp_max: 17950
   mp: 856
@@ -2377,7 +2377,7 @@
   img: 311
   skin: 0
   nome: Sarkies
-  titulo: null
+  titulo:
   hp: 15650
   hp_max: 15650
   mp: 534
@@ -2402,7 +2402,7 @@
   img: 310
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 15950
   hp_max: 15950
   mp: 576
@@ -2427,7 +2427,7 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 14000
   hp_max: 14000
   mp: 303
@@ -2452,7 +2452,7 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 14000
   hp_max: 14000
   mp: 303
@@ -2477,7 +2477,7 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 14000
   hp_max: 14000
   mp: 303
@@ -2502,7 +2502,7 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 14000
   hp_max: 14000
   mp: 303
@@ -2527,7 +2527,7 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 14000
   hp_max: 14000
   mp: 303
@@ -2552,7 +2552,7 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 14000
   hp_max: 14000
   mp: 303
@@ -2577,7 +2577,7 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 14000
   hp_max: 14000
   mp: 303
@@ -2602,7 +2602,7 @@
   img: 298
   skin: null
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 14000
   hp_max: 14000
   mp: 303
@@ -2627,7 +2627,7 @@
   img: 320
   skin: 0
   nome: Gina
-  titulo: null
+  titulo:
   hp: 14600
   hp_max: 14600
   mp: 317
@@ -2652,7 +2652,7 @@
   img: 319
   skin: 0
   nome: Big Pan
-  titulo: null
+  titulo:
   hp: 14600
   hp_max: 14600
   mp: 317
@@ -2677,7 +2677,7 @@
   img: 318
   skin: 0
   nome: Pickles
-  titulo: null
+  titulo:
   hp: 14600
   hp_max: 14600
   mp: 317
@@ -2702,7 +2702,7 @@
   img: 317
   skin: 0
   nome: Monda
-  titulo: null
+  titulo:
   hp: 14600
   hp_max: 14600
   mp: 317
@@ -2727,7 +2727,7 @@
   img: 316
   skin: 0
   nome: Capote
-  titulo: null
+  titulo:
   hp: 14950
   hp_max: 14950
   mp: 366
@@ -2752,7 +2752,7 @@
   img: 315
   skin: 0
   nome: Chuchun
-  titulo: null
+  titulo:
   hp: 16900
   hp_max: 16900
   mp: 639
@@ -2777,7 +2777,7 @@
   img: 158
   skin: 0
   nome: Itomimizu
-  titulo: null
+  titulo:
   hp: 14900
   hp_max: 14900
   mp: 324
@@ -2802,7 +2802,7 @@
   img: 314
   skin: 0
   nome: Kibagaeru
-  titulo: null
+  titulo:
   hp: 14900
   hp_max: 14900
   mp: 324
@@ -2827,7 +2827,7 @@
   img: 313
   skin: 0
   nome: Hamburg
-  titulo: null
+  titulo:
   hp: 14900
   hp_max: 14900
   mp: 324
@@ -2852,7 +2852,7 @@
   img: 312
   skin: 0
   nome: Porche
-  titulo: null
+  titulo:
   hp: 14900
   hp_max: 14900
   mp: 324
@@ -2902,7 +2902,7 @@
   img: 325
   skin: 0
   nome: Cerberus
-  titulo: null
+  titulo:
   hp: 15200
   hp_max: 15200
   mp: 331
@@ -2927,7 +2927,7 @@
   img: 234
   skin: 0
   nome: Tararan
-  titulo: null
+  titulo:
   hp: 15200
   hp_max: 15200
   mp: 331
@@ -2952,7 +2952,7 @@
   img: 323
   skin: 0
   nome: Hildon
-  titulo: null
+  titulo:
   hp: 15200
   hp_max: 15200
   mp: 331
@@ -2977,7 +2977,7 @@
   img: 322
   skin: 0
   nome: Absalom
-  titulo: null
+  titulo:
   hp: 15200
   hp_max: 15200
   mp: 331
@@ -3002,7 +3002,7 @@
   img: 194
   skin: 0
   nome: Kumashi
-  titulo: null
+  titulo:
   hp: 15450
   hp_max: 15450
   mp: 366
@@ -3027,7 +3027,7 @@
   img: 192
   skin: 0
   nome: Lola
-  titulo: null
+  titulo:
   hp: 15200
   hp_max: 15200
   mp: 331
@@ -3052,7 +3052,7 @@
   img: 156
   skin: 0
   nome: Victoria Cindry
-  titulo: null
+  titulo:
   hp: 17400
   hp_max: 17400
   mp: 639
@@ -3077,7 +3077,7 @@
   img: 149
   skin: 0
   nome: Oars
-  titulo: null
+  titulo:
   hp: 17900
   hp_max: 17900
   mp: 709
@@ -3102,7 +3102,7 @@
   img: 108
   skin: 0
   nome: Ryuma
-  titulo: null
+  titulo:
   hp: 15200
   hp_max: 15200
   mp: 331
@@ -3127,7 +3127,7 @@
   img: 107
   skin: 0
   nome: Perona
-  titulo: null
+  titulo:
   hp: 15200
   hp_max: 15200
   mp: 331
@@ -3152,7 +3152,7 @@
   img: 25
   skin: 0
   nome: Hogback
-  titulo: null
+  titulo:
   hp: 15200
   hp_max: 15200
   mp: 331
@@ -3177,7 +3177,7 @@
   img: 20
   skin: 0
   nome: Gekko Moriah
-  titulo: null
+  titulo:
   hp: 15200
   hp_max: 15200
   mp: 331
@@ -3202,7 +3202,7 @@
   img: 333
   skin: 0
   nome: Kairiki Destroyer
-  titulo: null
+  titulo:
   hp: 16750
   hp_max: 16750
   mp: 478
@@ -3227,7 +3227,7 @@
   img: 332
   skin: 0
   nome: Kairiki Destroyer
-  titulo: null
+  titulo:
   hp: 19250
   hp_max: 19250
   mp: 828
@@ -3252,7 +3252,7 @@
   img: 331
   skin: 0
   nome: Kairiki Destroyer
-  titulo: null
+  titulo:
   hp: 15800
   hp_max: 15800
   mp: 345
@@ -3277,7 +3277,7 @@
   img: 330
   skin: 0
   nome: Zanbai
-  titulo: null
+  titulo:
   hp: 15800
   hp_max: 15800
   mp: 345
@@ -3302,7 +3302,7 @@
   img: 329
   skin: 0
   nome: Kop
-  titulo: null
+  titulo:
   hp: 15800
   hp_max: 15800
   mp: 345
@@ -3327,7 +3327,7 @@
   img: 328
   skin: 0
   nome: Schollzo
-  titulo: null
+  titulo:
   hp: 16100
   hp_max: 16100
   mp: 352
@@ -3352,7 +3352,7 @@
   img: 327
   skin: 0
   nome: Kiev
-  titulo: null
+  titulo:
   hp: 16100
   hp_max: 16100
   mp: 352
@@ -3377,7 +3377,7 @@
   img: 326
   skin: 0
   nome: Tamagon
-  titulo: null
+  titulo:
   hp: 17550
   hp_max: 17550
   mp: 555
@@ -3402,7 +3402,7 @@
   img: 159
   skin: 0
   nome: Mozu
-  titulo: null
+  titulo:
   hp: 16100
   hp_max: 16100
   mp: 352
@@ -3427,7 +3427,7 @@
   img: 203
   skin: 0
   nome: Kiwi
-  titulo: null
+  titulo:
   hp: 16400
   hp_max: 16400
   mp: 359
@@ -3452,7 +3452,7 @@
   img: 9
   skin: 0
   nome: Franky
-  titulo: null
+  titulo:
   hp: 16400
   hp_max: 16400
   mp: 359
@@ -3477,7 +3477,7 @@
   img: 273
   skin: 0
   nome: Urouge
-  titulo: null
+  titulo:
   hp: 17600
   hp_max: 17600
   mp: 387
@@ -3502,7 +3502,7 @@
   img: 180
   skin: 0
   nome: Capone Bege
-  titulo: null
+  titulo:
   hp: 17600
   hp_max: 17600
   mp: 387
@@ -3552,7 +3552,7 @@
   img: 123
   skin: 0
   nome: Killer
-  titulo: null
+  titulo:
   hp: 18050
   hp_max: 18050
   mp: 450
@@ -3577,7 +3577,7 @@
   img: 334
   skin: 0
   nome: Apoo
-  titulo: null
+  titulo:
   hp: 17600
   hp_max: 17600
   mp: 387
@@ -3602,7 +3602,7 @@
   img: 84
   skin: 0
   nome: X Drake
-  titulo: null
+  titulo:
   hp: 19100
   hp_max: 19100
   mp: 562
@@ -3652,7 +3652,7 @@
   img: 87
   skin: 0
   nome: Eustass Kid
-  titulo: null
+  titulo:
   hp: 18100
   hp_max: 18100
   mp: 422
@@ -3752,7 +3752,7 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 19150
   hp_max: 19150
   mp: 534
@@ -3777,7 +3777,7 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 18950
   hp_max: 18950
   mp: 471
@@ -3802,7 +3802,7 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 18700
   hp_max: 18700
   mp: 436
@@ -3827,7 +3827,7 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 19500
   hp_max: 19500
   mp: 548
@@ -3852,7 +3852,7 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 19200
   hp_max: 19200
   mp: 506
@@ -3877,7 +3877,7 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 18500
   hp_max: 18500
   mp: 408
@@ -3902,7 +3902,7 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 19750
   hp_max: 19750
   mp: 548
@@ -3927,7 +3927,7 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 21250
   hp_max: 21250
   mp: 758
@@ -3952,7 +3952,7 @@
   img: 310
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 21250
   hp_max: 21250
   mp: 758
@@ -3977,7 +3977,7 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 19750
   hp_max: 19750
   mp: 548
@@ -4002,7 +4002,7 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 19500
   hp_max: 19500
   mp: 513
@@ -4027,7 +4027,7 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 19250
   hp_max: 19250
   mp: 478
@@ -4052,7 +4052,7 @@
   img: 297
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4077,7 +4077,7 @@
   img: 298
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4102,7 +4102,7 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 24350
   hp_max: 24350
   mp: 1052
@@ -4127,7 +4127,7 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 24350
   hp_max: 24350
   mp: 2298
@@ -4152,7 +4152,7 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4177,7 +4177,7 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4202,7 +4202,7 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4227,7 +4227,7 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4252,7 +4252,7 @@
   img: 310
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4277,7 +4277,7 @@
   img: 309
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4302,7 +4302,7 @@
   img: 308
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4327,7 +4327,7 @@
   img: 307
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4352,7 +4352,7 @@
   img: 306
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4377,7 +4377,7 @@
   img: 303
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4402,7 +4402,7 @@
   img: 302
   skin: 0
   nome: Pirata
-  titulo: null
+  titulo:
   hp: 24350
   hp_max: 24350
   mp: 1052
@@ -4427,7 +4427,7 @@
   img: 193
   skin: 0
   nome: Lassoo
-  titulo: null
+  titulo:
   hp: 21950
   hp_max: 21950
   mp: 716
@@ -4452,7 +4452,7 @@
   img: 335
   skin: 0
   nome: Banchi
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4477,7 +4477,7 @@
   img: 336
   skin: 0
   nome: Mr. Beans
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4502,7 +4502,7 @@
   img: 337
   skin: 0
   nome: Miss Catherine
-  titulo: null
+  titulo:
   hp: 23150
   hp_max: 23150
   mp: 884
@@ -4527,7 +4527,7 @@
   img: 338
   skin: 0
   nome: Geronimo
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4552,7 +4552,7 @@
   img: 339
   skin: 0
   nome: Mr. Love
-  titulo: null
+  titulo:
   hp: 20050
   hp_max: 20050
   mp: 450
@@ -4577,7 +4577,7 @@
   img: 340
   skin: 0
   nome: Mr. Mellow
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4602,7 +4602,7 @@
   img: 341
   skin: 0
   nome: Akumai
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4627,7 +4627,7 @@
   img: 342
   skin: 0
   nome: Mr. 13
-  titulo: null
+  titulo:
   hp: 24350
   hp_max: 24350
   mp: 1052
@@ -4652,7 +4652,7 @@
   img: 343
   skin: 0
   nome: Miss Friday
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4677,7 +4677,7 @@
   img: 344
   skin: 0
   nome: Mr. 11
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4702,7 +4702,7 @@
   img: 345
   skin: 0
   nome: Miss Monday
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4727,7 +4727,7 @@
   img: 202
   skin: 0
   nome: Miss Fathers Day
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4752,7 +4752,7 @@
   img: 229
   skin: 0
   nome: Mr. 9
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4777,7 +4777,7 @@
   img: 169
   skin: 0
   nome: Mr. 7
-  titulo: null
+  titulo:
   hp: 22950
   hp_max: 22950
   mp: 856
@@ -4802,7 +4802,7 @@
   img: 171
   skin: 0
   nome: Miss Valentine
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4827,7 +4827,7 @@
   img: 181
   skin: 0
   nome: Miss Merry Christimas
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4852,7 +4852,7 @@
   img: 177
   skin: 0
   nome: Miss Goldenweek
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4877,7 +4877,7 @@
   img: 67
   skin: 0
   nome: Miss Doublefinger
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4902,7 +4902,7 @@
   img: 42
   skin: 0
   nome: Mr. 5
-  titulo: null
+  titulo:
   hp: 22950
   hp_max: 22950
   mp: 856
@@ -4927,7 +4927,7 @@
   img: 81
   skin: 0
   nome: Mr. 4
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4952,7 +4952,7 @@
   img: 44
   skin: 0
   nome: Mr. 3
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -4977,7 +4977,7 @@
   img: 41
   skin: 0
   nome: Mr. 2
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5002,7 +5002,7 @@
   img: 43
   skin: 0
   nome: Mr. 1
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5027,7 +5027,7 @@
   img: 21
   skin: 0
   nome: Crocodile
-  titulo: null
+  titulo:
   hp: 22950
   hp_max: 22950
   mp: 856
@@ -5052,7 +5052,7 @@
   img: 351
   skin: 1
   nome: Blugori
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5077,7 +5077,7 @@
   img: 351
   skin: 0
   nome: Blugori
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5102,7 +5102,7 @@
   img: 350
   skin: 1
   nome: Manticora
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5127,7 +5127,7 @@
   img: 350
   skin: 0
   nome: Manticora
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5152,7 +5152,7 @@
   img: 349
   skin: 0
   nome: Sphinx
-  titulo: null
+  titulo:
   hp: 22950
   hp_max: 22950
   mp: 856
@@ -5177,7 +5177,7 @@
   img: 348
   skin: 0
   nome: Basilisk
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5202,7 +5202,7 @@
   img: 182
   skin: 0
   nome: Minozebra
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5227,7 +5227,7 @@
   img: 184
   skin: 0
   nome: Minokoala
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5252,7 +5252,7 @@
   img: 178
   skin: 0
   nome: Minorhinoceros
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5277,7 +5277,7 @@
   img: 183
   skin: 0
   nome: Minotauros
-  titulo: null
+  titulo:
   hp: 22950
   hp_max: 22950
   mp: 856
@@ -5427,7 +5427,7 @@
   img: 357
   skin: 0
   nome: Kashi
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5452,7 +5452,7 @@
   img: 299
   skin: 0
   nome: Marinheiro
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5477,7 +5477,7 @@
   img: 301
   skin: 0
   nome: Marinheiro
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5502,7 +5502,7 @@
   img: 300
   skin: 0
   nome: Marinheiro
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5527,7 +5527,7 @@
   img: 280
   skin: 0
   nome: Strawberry
-  titulo: null
+  titulo:
   hp: 22950
   hp_max: 22950
   mp: 856
@@ -5552,7 +5552,7 @@
   img: 28
   skin: 0
   nome: Fukuro
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5577,7 +5577,7 @@
   img: 279
   skin: 0
   nome: Doberman
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5602,7 +5602,7 @@
   img: 29
   skin: 0
   nome: Kumadori
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5627,7 +5627,7 @@
   img: 278
   skin: 0
   nome: Onigumo
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5652,7 +5652,7 @@
   img: 30
   skin: 1
   nome: Kalifa
-  titulo: null
+  titulo:
   hp: 22950
   hp_max: 22950
   mp: 856
@@ -5677,7 +5677,7 @@
   img: 33
   skin: 1
   nome: Blueno
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5702,7 +5702,7 @@
   img: 31
   skin: 0
   nome: Jabra
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5727,7 +5727,7 @@
   img: 26
   skin: 1
   nome: Kaku
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5752,7 +5752,7 @@
   img: 32
   skin: 0
   nome: Spandam
-  titulo: null
+  titulo:
   hp: 20000
   hp_max: 20000
   mp: 443
@@ -5777,7 +5777,7 @@
   img: 27
   skin: 2
   nome: Rob Lucci
-  titulo: null
+  titulo:
   hp: 22950
   hp_max: 22950
   mp: 856
