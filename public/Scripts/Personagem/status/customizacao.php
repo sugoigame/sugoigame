@@ -131,7 +131,7 @@ if ($pers["titulo"]) {
 
 </script>
 <div class="row">
-    <div class="col-md-3 col-xs-12">
+    <div class="col-md-5 col-xs-12">
         <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "hidden-sm hidden-xs") ?>
         <button class="btn btn-info trocar-personagem" data-pers="<?= $pers["cod"] ?>" data-tipo="gold"
             <?= $userDetails->conta["gold"] >= PRECO_GOLD_TROCAR_PERSONAGEM ? "" : "disabled" ?>>
@@ -140,7 +140,7 @@ if ($pers["titulo"]) {
             Trocar Personagem
         </button>
     </div>
-    <div class="col-md-9 col-xs-12">
+    <div class="col-md-4 col-xs-12">
         <h4>
             Alcunha:
             <?php if (count($titulos)) : ?>
@@ -185,7 +185,7 @@ if ($pers["titulo"]) {
 <div class="row">
     <?php for ($skin = 0; $skin <= $skins_pers; $skin++) : ?>
         <?php if ($skin == 0 || substr($skins[$pers["img"]][$skin], 0, 2) != "ID" || $skins[$pers["img"]][$skin] == "ID" . $userDetails->tripulacao["id"]) : ?>
-            <div class="col-xs-3 col-md-2">
+            <div class="col-xs-3 col-md-4">
                 <div class="panel panel-default py1">
                     <?php $tem_skin = $skin == 0 || (isset($minhas_skins[$pers["img"]]) && in_array($skin, $minhas_skins[$pers["img"]])); ?>
                     <img class="<?= $pers["skin_r"] == $skin ? "skin-ativa" : "skin-nao-ativa" ?> <?= $tem_skin ? "link_send" : "" ?>"

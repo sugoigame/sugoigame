@@ -189,10 +189,10 @@
                         <img
                             src="Imagens/Personagens/Icons/<?= get_img(array("img" => $recompensa["img"], "skin_r" => $recompensa["skin"]), "r") ?>.jpg">
                     </p>
-                    <p>
+                    <div>
                         <img
-                            src="Imagens/Personagens/Big/<?= get_img(array("img" => $recompensa["img"], "skin_c" => $recompensa["skin"]), "c") ?>.jpg">
-                    </p>
+                            src="Imagens/Personagens/Big/<?= get_img(array("img" => $recompensa["img"], "skin_c" => $recompensa["skin"]), "c") ?>.png" width="100%">
+                    </div>
                 <?php endif; ?>
                 <?php if (isset($recompensa["skin_navio"])) : ?>
                     <p>Aparência de navio exclusiva</p>

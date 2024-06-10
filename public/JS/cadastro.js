@@ -36,7 +36,7 @@ $(function () {
         var img = $(this).data("img");
         $('.capitao-selectable-img').css('border', 'none');
         $(this).css('border', '4px solid #870000');
-        $("#img_capitao").attr("src", "Imagens/Personagens/Big/" + img + "(0).jpg");
+        $("#img_capitao").attr("src", "Imagens/Personagens/Big/" + img + "(0).png");
         $("#icon_capitao").val(img);
     });
 

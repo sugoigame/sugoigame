@@ -30,12 +30,12 @@ function render_maior_do_mundo($tipo)
                     Melhor
                     <?= ucfirst($tipo); ?>
                 </div>
-                <div class="pane-body">
+                <div class="panel-body">
                     <?php $famoso = $result->fetch_array(); ?>
                     <div class="div-top">
                         <?php render_top_player($famoso, "O maior $tipo do mundo"); ?>
                     </div>
-                    <img src="Imagens/Bandeiras/img.php?cod=<?= $famoso["bandeira"]; ?>&f=<?= $famoso["faccao"]; ?>" />
+                    <img src="Imagens/Bandeiras/img.php?cod=<?= $famoso["bandeira"]; ?>&f=<?= $famoso["faccao"]; ?>" width="65" height="45" />
                 </div>
             </div>
         <?php endif; ?>
@@ -110,7 +110,7 @@ function render_maior_do_mundo($tipo)
     <?php $almirante = explode(",", get_value_varchar_variavel_global(VARIAVEL_ALMIRANTES)); ?>
     <?php $incursao = explode(",", get_value_varchar_variavel_global(VARIAVEL_VENCEDORES_INCURSAO)); ?>
     <?php if ($userDetails->tripulacao) : ?>
-        <div class="row">
+        <!-- <div class="row">
             <?php if (count($userDetails->personagens) < 15) : ?>
                 <?php render_progress(
                     "progress-tripulantes",
@@ -192,7 +192,7 @@ function render_maior_do_mundo($tipo)
                 "#c04000",
                 "missoes"
             ); ?>
-        </div>
+        </div> -->
 
         <?php $is_dbl = $connection->run("SELECT `id`,`data_inicio`,`data_fim` FROM tb_vip_dobro WHERE NOW() BETWEEN data_inicio AND data_fim LIMIT 1"); ?>
         <?php if ($is_dbl->count()) { ?>

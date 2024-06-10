@@ -226,10 +226,10 @@ function preco_selo_exp($pers)
 <?php function render_personagem_sub_panel_with_img_top($pers)
 { ?>
     <div class="row">
-        <div class="col-md-3 hidden-sm hidden-xs">
-            <img src="Imagens/Personagens/Big/<?= getImg($pers, "c") ?>.jpg">
+        <div class="col-md-5 hidden-sm hidden-xs">
+            <img src="Imagens/Personagens/Big/<?= getImg($pers, "c") ?>.png" style="width: 100%">
         </div>
-        <div class="col-md-9 col-xs-12">
+        <div class="col-md-7 col-xs-12">
             <div class="panel panel-default">
             <?php } ?>
             <?php function render_personagem_sub_panel_with_img_bottom()

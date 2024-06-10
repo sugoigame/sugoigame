@@ -1072,7 +1072,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-6" style="width: 100%">
-                                <?= big_pers_skin($pers["img"], $pers["skin_c"], isset($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="60%"') ?>
+                                <?= big_pers_skin($pers["img"], $pers["skin_c"], isset($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="100%"') ?>
                                 <br />
                                 <?php if (($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]) : ?>
                                     <?php if ($pers["akuma"]) : ?>

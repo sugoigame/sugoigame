@@ -105,17 +105,17 @@ function get_patente_nome($faccao, $battle_level)
     <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "", 'style="max-width: 100%"') ?>
     <div class="texto-top">
         <!-- <p class="texto-top-cargo"><?= $titulo ?></p> -->
-        <p class="texto-top-nome">
+        <div class="texto-top-nome">
             <?= $famoso["nome"] ?>
-        </p>
+        </div>
         <?php if (isset($famoso["titulo_nome"]) && $titulo != $famoso["titulo_nome"]) : ?>
-            <p class="texto-top-alcunha">
+            <div class="texto-top-alcunha">
                 <?= $famoso["titulo_nome"] ?>
-            </p>
+            </div>
         <?php endif; ?>
-        <p class="texto-top-alcunha">
+        <div class="texto-top-alcunha">
             <?= $famoso["tripulacao"] ?>
-        </p>
+        </div>
     </div>
 <?php } ?>
 <?php function render_painel_yonkou($id1, $id2, $id3, $id4)

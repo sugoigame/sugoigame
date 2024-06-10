@@ -34,6 +34,89 @@
     </h3>
 </div>
 <div class="panel-body">
+<div class="row">
+            <?php if (count($userDetails->personagens) < 15) : ?>
+                <?php render_progress(
+                    "progress-tripulantes",
+                    count($userDetails->personagens) / 15,
+                    count($userDetails->personagens),
+                    count($userDetails->personagens) . " de 15 tripulantes recrutados",
+                    "#45859a",
+                    "recrutar"
+                ); ?>
+            <?php endif; ?>
+
+            <?php if ($userDetails->lvl_mais_forte < 50) : ?>
+                <?php render_progress(
+                    "progress-mais-forte",
+                    $userDetails->lvl_mais_forte / 50,
+                    $userDetails->lvl_mais_forte,
+                    "Personagem mais forte no nível " . $userDetails->lvl_mais_forte . " de 50",
+                    "#c04000",
+                    "status"
+                ); ?>
+            <?php endif; ?>
+
+            <?php $rep_mais_forte = $connection->run(
+                "SELECT max(reputacao) AS total FROM tb_usuarios"
+            )->fetch_array()["total"]; ?>
+            <?php if (count($userDetails->personagens) >= 15) : ?>
+                <?php render_progress(
+                    "progress-reputacao",
+                    $userDetails->tripulacao["reputacao"] / $rep_mais_forte,
+                    mascara_numeros_grandes($userDetails->tripulacao["reputacao"]),
+                    mascara_numeros_grandes($userDetails->tripulacao["reputacao"]) . " pontos de reputação",
+                    "#62c462",
+                    "ranking"
+                ); ?>
+            <?php endif; ?>
+
+            <?php if ($userDetails->lvl_mais_forte >= 50) : ?>
+                <?php $fa_mais_forte = $connection->run(
+                    "SELECT max(fama_ameaca) AS total FROM tb_personagens"
+                )->fetch_array()["total"]; ?>
+                <?php render_progress(
+                    "progress-wanted",
+                    $userDetails->fa_mais_alta / $fa_mais_forte,
+                    abrevia_numero_grande(calc_recompensa($userDetails->fa_mais_alta)),
+                    "Recompensa mais alta de " . abrevia_numero_grande(calc_recompensa($userDetails->fa_mais_alta)),
+                    "#ee5f5b",
+                    "ranking&rank=fa"
+                ); ?>
+            <?php endif; ?>
+
+            <?php $missoes_concluidas = $connection->run(
+                "SELECT count(conc.cod_missao) AS total
+                                        FROM tb_missoes_concluidas conc
+                                        WHERE conc.id = ?",
+                "i", array($userDetails->tripulacao["id"])
+            )->fetch_array()["total"]; ?>
+            <?php $missoes_total = 176 ?>
+            <?php render_progress(
+                "progress-missoes",
+                $missoes_concluidas / $missoes_total,
+                $missoes_concluidas,
+                "$missoes_concluidas missões concluídas na ilha",
+                "#45859a",
+                "missoes"
+            ); ?>
+
+            <?php $chefes_derrotados = $connection->run(
+                "SELECT count(conc.tripulacao_id) AS total
+                                        FROM tb_missoes_chefe_ilha conc
+                                        WHERE conc.tripulacao_id = ?",
+                "i", array($userDetails->tripulacao["id"])
+            )->fetch_array()["total"]; ?>
+            <?php $chefes_total = 47 ?>
+            <?php render_progress(
+                "progress-chefes",
+                $chefes_derrotados / $chefes_total,
+                $chefes_derrotados,
+                "$chefes_derrotados de $chefes_total Chefes das Ilhas derrotados",
+                "#c04000",
+                "missoes"
+            ); ?>
+        </div>
     <div class="row">
         <div class="col col-xs-3">
             <?php

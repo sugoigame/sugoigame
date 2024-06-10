@@ -114,7 +114,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
 <div class="row pt1">
     <div class="col-xs-5">
         <div>
-            <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "", 'width="60%"') ?>
+            <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "", 'width="100%"') ?>
             <?php if ($pers["xp"] >= $pers["xp_max"] and $pers["lvl"] < 50) : ?>
                 <button id="status_evoluir" href="link_Personagem/personagem_evoluir.php?cod=<?= $pers["cod"] ?>"
                     class="link_send btn btn-info">
