@@ -341,8 +341,8 @@ function preco_selo_exp($pers)
 <?php function render_cartaz_procurado($famoso, $faccao)
 { ?>
     <div class="cartaz_procurado tripulante_quadro <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>">
-        <img class="tripulante_quadro_img  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>"
-            src="Imagens/Personagens/Icons/<?= getImg($famoso, "r"); ?>.jpg">
+            <img class="tripulante_quadro_img  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>"
+                src="Imagens/Personagens/Icons/<?= getImg($famoso, "r"); ?>.jpg">
         <div class="recompensa_text  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>">
             <?php if ($faccao == FACCAO_MARINHA) : ?>
                 <div class="recompensa_stars">
