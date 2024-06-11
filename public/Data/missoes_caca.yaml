@@ -1,5 +1,5 @@
 1:
-  nome: Caça aos Golfinhos
+  nome: Caça aos Jacarés
   objetivo: 1
   mares:
     - 1
@@ -30,7 +30,7 @@
   quant: 15
   berries: 10000
 4:
-  nome: Caça aos Filhotes de Reis dos Mares
+  nome: Caça aos Filhotes de Tartaruga Marítima
   objetivo: 4
   mares:
     - 5
@@ -51,14 +51,14 @@
   quant: 15
   berries: 50000
 7:
-  nome: Caça aos Filhotes de Dragão Marítimos
+  nome: Caça aos Filhotes de Foca Kung-Fu
   objetivo: 7
   mares:
     - 6
   quant: 15
   berries: 60000
 8:
-  nome: Caça aos Dragões Marítimos
+  nome: Caça aos Grupos de Foca Kung-Fu
   objetivo: 8
   mares:
     - 6
@@ -79,7 +79,7 @@
   diario: 1
 
 10:
-  nome: Derrote o Kraken
+  nome: Derrote o Kraken Boxeador
   objetivo: 10
   boss: true
   mares:
@@ -89,7 +89,7 @@
   diario: 1
 
 11:
-  nome: Derrote o Peixe Cavalo
+  nome: Derrote o Cavalo Marinho
   objetivo: 12
   boss: true
   mares:
@@ -109,7 +109,7 @@
   diario: 1
 
 13:
-  nome: Derrote o Peixe Coelho
+  nome: Derrote o Homem-Peixe Fugitivo
   objetivo: 14
   boss: true
   mares:

@@ -1,6 +1,6 @@
 0:
   id: 0
-  nome: Grupo de Reis dos Mares
+  nome: Guardião do Calm Belt
   img: 17
   atk: 900
   def: 900
@@ -15,7 +15,7 @@
   xp: 0
 1:
   id: 1
-  nome: Golfinho
+  nome: Jacaré do Alto Mar
   img: 12
   atk: 5
   def: 5
@@ -98,7 +98,7 @@
 
 4:
   id: 4
-  nome: Filhote de Rei dos Mares
+  nome: Filhote de Tartaruga Marítima
   img_rand_min: 5
   img_rand_max: 7
   atk: 20
@@ -182,7 +182,7 @@
 
 7:
   id: 7
-  nome: Filhote de Dragão Marítmo
+  nome: Foca Kung-Fu Solitária 
   img: 14
   atk: 50
   def: 50
@@ -206,7 +206,7 @@
       tipo: 15
 8:
   id: 8
-  nome: Dragão Marítmo
+  nome: Grupo de Foca Kung-Fu
   img: 15
   atk: 60
   def: 60
@@ -245,7 +245,7 @@
   xp: 500
 10:
   id: 10
-  nome: Kraken
+  nome: Kraken Boxeador
   img: 18
   atk: 110
   def: 10
@@ -260,7 +260,7 @@
   xp: 500
 11:
   id: 11
-  nome: Fígaro
+  nome: Coelhaço
   img: 8
   atk: 190
   def: 30
@@ -276,7 +276,7 @@
   boss: 1
 12:
   id: 12
-  nome: Peixe Cavalo
+  nome: Cavalo Marinho
   img: 9
   atk: 100
   def: 30
@@ -306,7 +306,7 @@
   xp: 1000
 14:
   id: 14
-  nome: Peixe Coelho
+  nome: Homem-Peixe Fugitivo
   img: 11
   atk: 100
   def: 30
@@ -787,7 +787,7 @@
 
 36: # Baterilla
   id: 36
-  nome: Chuchun
+  nome: Formiga do Mar
   img: 36
   atk: 80
   def: 7
@@ -1435,7 +1435,7 @@
       tipo: 15
 74:
   id: 74
-  nome: Mori Dako
+  nome: Surume
   img: 72
   atk: 1
   def: 200
@@ -1503,7 +1503,7 @@
       tipo: 15
 78:
   id: 78
-  nome: Crocoré
+  nome: Crocoré Faminto
   img: 76
   atk: 1
   def: 200
@@ -1680,7 +1680,7 @@
       tipo: 15
 91:
   id: 91
-  nome: Girafales
+  nome: Senhor Dragonesco
   img: 90
   atk: 1
   def: 200
@@ -1907,7 +1907,7 @@
   mini_evento: true
 102:
   id: 102
-  nome: Nariz de Gaivota
+  nome: Lula Gigante
   lvl: 3
   img: 2
   atk: 15
@@ -1924,9 +1924,9 @@
   mini_evento: true
 103:
   id: 103
-  nome: Peixão Douradão
+  nome: Lula Gigante
   lvl: 3
-  img: 3
+  img: 2
   atk: 15
   def: 110
   agl: 15
@@ -1941,7 +1941,7 @@
   mini_evento: true
 104:
   id: 104
-  nome: Lula Polvusco
+  nome: Gato Marinho Monstruoso
   lvl: 3
   img: 4
   atk: 15
@@ -2026,7 +2026,7 @@
   mini_evento: true
 109:
   id: 109
-  nome: Filhote de Kraken
+  nome: Filhote de Kraken Boxeador
   lvl: 3
   img: 18
   atk: 15
@@ -2043,7 +2043,7 @@
   mini_evento: true
 110:
   id: 110
-  nome: Peixe Cascudo
+  nome: Coelho Marítimo Perverso
   lvl: 3
   img: 8
   atk: 15
@@ -2060,7 +2060,7 @@
   mini_evento: true
 111:
   id: 111
-  nome: Pocotó do Mar
+  nome: Cavalo do Mar
   lvl: 3
   img: 9
   atk: 15
@@ -2077,7 +2077,7 @@
   mini_evento: true
 112:
   id: 112
-  nome: Pardal
+  nome: Formiga Gigante do Mar
   lvl: 3
   img: 36
   atk: 15
