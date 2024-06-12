@@ -950,7 +950,7 @@ class ItemUsavel
 
     public function abre_bau_aparencia()
     {
-        $aparencias = DataLoader::load("skins");
+        $aparencias = DataLoader::load("skins_bau_disponivel");
 
         do {
             do {
@@ -961,7 +961,7 @@ class ItemUsavel
                     $skin = array_rand($aparencias[$img]);
                     $preco = $aparencias[$img][$skin];
                     $tentativas++;
-                } while (substr($preco, 0, 2) == "ID" && $tentativas <= 3);
+                } while (substr($preco, 0, 2) == "10" && $tentativas <= 3);
 
             } while ($tentativas > 3);
 

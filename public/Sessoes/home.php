@@ -30,7 +30,7 @@ function render_maior_do_mundo($tipo)
                     Melhor
                     <?= ucfirst($tipo); ?>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" style="padding: 0;">
                     <?php $famoso = $result->fetch_array(); ?>
                     <div class="div-top">
                         <?php render_top_player($famoso, "O maior $tipo do mundo"); ?>
@@ -286,27 +286,29 @@ function render_maior_do_mundo($tipo)
 
     <!-- <div class="row">
         <div class="col-sm-6 col-md-6">
-                <?php// render_painel_rdp($rdp[0]); ?>
+                </?php// render_painel_rdp($rdp[0]); ?>
         </div>
         <div class="col-sm-6 col-md-6">
-                <?php// render_painel_adf($adf[0]); ?>
+                </?php// render_painel_adf($adf[0]); ?>
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
-            <?php// render_painel_yonkou($yonkou[0], $yonkou[1], $yonkou[2], $yonkou[3]); ?>
+            </?php// render_painel_yonkou($yonkou[0], $yonkou[1], $yonkou[2], $yonkou[3]); ?>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
-            <?php// render_painel_almirante($almirante[0], $almirante[1], $almirante[2], $almirante[3]); ?> 
+            </?php// render_painel_almirante($almirante[0], $almirante[1], $almirante[2], $almirante[3]); ?> 
         </div>
     </div> -->
     <div class="row">
         <div class="col-md-12 col-lg-8">
                 <div class="row">
-                    <?php render_maior_do_mundo("espadachim"); ?>
-                    <?php render_maior_do_mundo("lutador"); ?>
-                    <?php render_maior_do_mundo("atirador"); ?>
+                    <div class="col-md-12">
+                        <?php render_maior_do_mundo("espadachim"); ?>
+                        <?php render_maior_do_mundo("lutador"); ?>
+                        <?php render_maior_do_mundo("atirador"); ?>
+                    </div>
                 </div>
             </div>
         <div class="col-md-12 col-xs-12 col-lg-4">
@@ -504,24 +506,24 @@ function render_maior_do_mundo($tipo)
             <div class="list-group" style="margin-top: 5px">
             <?php while ($combate = $result->fetch_array()) : ?>
                 <div class="list-group-item col-sm-6 col-md-4" style="display: flex; flex-direction: column; padding: 0;">
-                        <?php if ($userDetails->tripulacao["adm"] || $combate["andamento"]) : ?>
-                            <a href="./?ses=combateAssistir&combate=<?= $combate["combate_id"]; ?>" class="link_content"
-                                title="Assista essa partida">
-                                <p>Assistir</p>
-                            </a>
-                        <?php endif; ?>
-                    <div class="row" style="display: flex; justify-content: center; align-items: center;">
-                        <div class="col-xs-3" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                    <div class="row" style="display: flex; justify-content: center; align-items: center; padding: 4px;">
+                        <div class="col-xs-3 col-md-3" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
                         <span style="font-size: 0.9rem;"><?= $combate["tripulacao_1"] ?></span>
                             <?= $combate["vencedor"] == $combate["id_1"] ? "<span class='text-vitoria'>Vitória</span>" : "<span class='text-derrota'>Derrota</span>" ?>
                             <img src="Imagens/Bandeiras/img.php?cod=<?= $combate["bandeira_1"] ?>&f=<?= $combate["faccao_1"] ?>"
                                 style="width:100%; max-width: 75px;" />
                         </div>
-                        <div class="col-xs-4" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        <div class="col-xs-4 col-md-3" style="display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 0;">
+                        <?php if ($userDetails->tripulacao["adm"] || $combate["andamento"]) : ?>
+                            <a style="font-size: 1.2em; " href="./?ses=combateAssistir&combate=<?= $combate["combate_id"]; ?>" class="link_content"
+                                title="Assista essa partida">
+                                Assistir
+                            </a>
+                        <?php endif; ?>
                             <span style="font-size: 1.2rem; margin-top: 10px"><?= ucwords(nome_tipo_combate($combate["tipo"])) ?></span>
-                            <img src="./Imagens/vs.png" alt="" width="100%">
+                            <img src="./Imagens/batalha/vs.png" alt="" width="30%">
                         </div>
-                        <div class="col-xs-4" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        <div class="col-xs-3 col-md-3" style="display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 0;">
                             <span style="font-size: 0.9rem;"><?= $combate["tripulacao_2"] ?></span>
                             <?= $combate["vencedor"] == $combate["id_2"] ? "<span class='text-vitoria'>Vitória</span>" : "<span class='text-derrota'>Derrota</span>" ?>
                             <img src="Imagens/Bandeiras/img.php?cod=<?= $combate["bandeira_2"] ?>&f=<?= $combate["faccao_2"] ?>"
@@ -532,39 +534,41 @@ function render_maior_do_mundo($tipo)
                 </div>
             <?php endwhile; ?>
         </div>
-            <div class="list-group">
+            <div class="col-md-12">
 
             <?php while ($combate = $result->fetch_array()) : ?>
-                <div class="list-group-item col-sm-6 col-md-4">
-                    <p>
+                <div class="list-group-item col-sm-6 col-md-6">
+                    <div class="row">
                         <?php if ($userDetails->tripulacao["adm"] || $combate["andamento"]) : ?>
                             <a href="./?ses=combateAssistir&combate=<?= $combate["combate_id"]; ?>" class="link_content"
                                 title="Assista essa partida">
+                                <div>
                                 Assistir
+                                </div>
                             </a>
                         <?php endif; ?>
-                    </p>
+                    </div>
                     <div class="row">
-                        <div class="col-xs-5" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        <div class="col-xs-4" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
                             <?= $combate["tripulacao_1"] ?><br />
                             <?= $combate["vencedor"] == $combate["id_1"] ? "<span class='text-warning'>Vencedor</span>" : "--" ?>
                         </div>
-                        <div class="col-xs-2">
+                        <div class="col-xs-4">
                             VS
                         </div>
-                        <div class="col-xs-5" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        <div class="col-xs-4" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
                             <?= $combate["tripulacao_2"] ?><br />
                             <?= $combate["vencedor"] == $combate["id_2"] ? "<span class='text-warning'>Vencedor</span>" : "--" ?>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-5">
+                        <div class="col-xs-4">
                             <img src="Imagens/Bandeiras/img.php?cod=<?= $combate["bandeira_1"] ?>&f=<?= $combate["faccao_1"] ?>"
                                 style="width:100%; max-width: 95px;" />
                         </div>
-                        <div class="col-xs-2">
+                        <div class="col-xs-4">
                         </div>
-                        <div class="col-xs-5">
+                        <div class="col-xs-4">
                             <img src="Imagens/Bandeiras/img.php?cod=<?= $combate["bandeira_2"] ?>&f=<?= $combate["faccao_2"] ?>"
                                 style="width:100%; max-width: 95px;" />
                         </div>

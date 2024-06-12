@@ -102,7 +102,7 @@ function get_patente_nome($faccao, $battle_level)
 <?php } ?>
 <?php function render_top_player($famoso, $titulo)
 { ?>
-    <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "", 'style="max-width: 100%"') ?>
+    <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "", 'style="max-width: 100%; padding: 0;"') ?>
     <div class="texto-top">
         <!-- <p class="texto-top-cargo"><?= $titulo ?></p> -->
         <div class="texto-top-nome">
@@ -144,7 +144,7 @@ function get_patente_nome($faccao, $battle_level)
             );
             if ($result->count() > 0) :
                 $famoso = $result->fetch_array(); ?>
-                <div class="col-md-12" style="display: flex; justify-content: center; align-items: center;">
+                <div class="col-md-12" style="display: flex; justify-content: center; align-items: center; padding: 0;">
                     <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "", 'style="max-width: 80%"') ?>
                     <div>
                         <div class="texto-top">
