@@ -749,8 +749,8 @@ function pauseAudio(elementId) {
 
 function setAudioEnableButtonAparence() {
     var content = audioEnable
-        ? '<i class="glyphicon glyphicon-volume-up fa-fw"></i> Som Ligado'
-        : '<i class="glyphicon glyphicon-volume-off fa-fw"></i> Som Desligado';
+        ? '<i class="fa fa-volume-up" aria-hidden="true"></i> Som Ligado'
+        : '<i class="fa fa-volume-off" aria-hidden="true"></i> Som Desligado';
     $("#audio-toggle").html(content);
 }
 

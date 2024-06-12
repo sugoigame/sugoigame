@@ -35,7 +35,7 @@ class Response
     {
         global $userDetails;
         $imgUrl = "./Imagens/Backgrounds/realizacao2.php?m=" . base64_encode($msg) . "&id=" . $userDetails->tripulacao["id"];
-        return $this->share_msg("<img style='width:100%' src='$imgUrl' />", $imgUrl);
+        return $this->share_msg("<img style='width:100%;' src='$imgUrl' />", $imgUrl);
     }
 
     public function share_msg($msg, $urlToShare = "https://sugoigame.com.br")

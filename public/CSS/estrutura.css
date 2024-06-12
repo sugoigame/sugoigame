@@ -261,12 +261,33 @@ table tr td {
 #fundo.fundo-window {
     top: 10vh;
     height: 75vh;
-    width: 75vw;
+    width: 76vw !important;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 5px;
 }
 
+@media (max-width: 992px) {
+ #fundo.fundo-window {
+    top: 10vh;
+    height: 75vh;
+    width: 76vw !important;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    }
+
+    #torneio-poneglyph {
+        right: 12vw !important;
+        top: 10vh;
+        width: 5vw !important;
+        position: fixed;
+        z-index: 1;
+        text-align: left;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+    }
+}
 .fundo-container {
     padding: 0;
     height: 100%;
@@ -278,6 +299,9 @@ table tr td {
     top: 0;
     font-size: min(4vw, 32px);
     z-index: 500;
+    padding: 5px 10px;
+    background-color: #000;
+    border-radius: 3px;;
 }
 #fundo.fundo-full-wide > .close-session {
     top: 7vh;
@@ -1072,7 +1096,7 @@ a.list-group-item .list-group-item-text {
     z-index: 1;
     right: 12vw;
     top: 10vh;
-    width: 13vw;
+    width: 4vw;
     text-align: left;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 5px;

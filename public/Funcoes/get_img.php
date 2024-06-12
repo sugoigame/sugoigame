@@ -19,7 +19,7 @@ function big_pers_skin($img, $skin, $borda = 0, $class = "", $attr = "")
 
 function icon_pers_skin($img, $skin, $class = "", $attr = "")
 {
-    return '<img class="' . $class . '" src="Imagens/Personagens/Icons/' . sprintf("%04d", $img) . '(' . $skin . ').jpg" ' . $attr . ' />';
+    return '<img class="icon-pers-skin"' . $class . '" src="Imagens/Personagens/Icons/' . sprintf("%04d", $img) . '(' . $skin . ').jpg" ' . $attr . ' />';
 }
 
 function img_bandeira($tripulacao)

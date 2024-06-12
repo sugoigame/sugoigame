@@ -961,7 +961,7 @@ class ItemUsavel
                     $skin = array_rand($aparencias[$img]);
                     $preco = $aparencias[$img][$skin];
                     $tentativas++;
-                } while (substr($preco, 0, 2) == "10" && $tentativas <= 3);
+                } while (substr($preco, 0, 1) == "ID" && $tentativas <= 3);
 
             } while ($tentativas > 3);
 
@@ -972,8 +972,28 @@ class ItemUsavel
         $this->connection->run("INSERT INTO tb_tripulacao_skins (tripulacao_id, img, skin, conta_id) VALUE (?,?,?,?)",
             "iiii", array($this->userDetails->tripulacao["id"], $img, $skin, $this->userDetails->tripulacao["conta_id"]));
 
-        echo icon_pers_skin($img, $skin) . "<br/>";
+        echo '<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; position: absolute; top: 0; left: 0;">';
+        echo "<style>
+
+            .bootbox-body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .bootbox-body .big-pers-skin {
+                width: 60%;
+            }
+            .bootbox-body .icon-pers-skin {
+                width: 75px;
+            }
+        
+        </style>" 
+        . 
+        icon_pers_skin($img, $skin) . "<br/>";
         echo big_pers_skin($img, $skin) . "<br/>";
+        echo "</div>";
 
         return "Você recebeu uma Aparência de Personagem!";
     }

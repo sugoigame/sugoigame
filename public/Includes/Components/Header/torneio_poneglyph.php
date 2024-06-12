@@ -29,9 +29,11 @@
                     </div>
                 </div>
             <?php else : ?>
-                <div>
-                    O próximo Poneglyph aparecerá às
-                    <?= date("H:i", $torneio["end"]) ?>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <img src="./Imagens/Icones/poneglyph.png" width="35" alt="">
+                    <div>
+                        <?= date("H:i", $torneio["end"]) ?>
+                    </div>
                 </div>
             <?php endif; ?>
         </a>

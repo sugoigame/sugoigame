@@ -5971,7 +5971,7 @@ button.close {
 @media (min-width: 768px) {
   .modal-dialog {
     width: 600px;
-    margin: 30px auto;
+    margin: 5px auto;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
@@ -5983,7 +5983,7 @@ button.close {
 }
 @media (min-width: 992px) {
   .modal-lg {
-    width: 900px;
+    width: 1010px;
   }
 }
 .tooltip {

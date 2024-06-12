@@ -120,5 +120,17 @@ foreach ($personagens_combate as $pers) {
             <?php $combate_logger = new CombateLogger($connection, $userDetails); ?>
             <?php render_relatorio_data($combate_logger->get_relatorio_combate_pve(), $userDetails->tripulacao["id"]); ?>
         </div>
+        <?php if ($userDetails->conta) : ?>
+            <div style="position: absolute; top: 3%; left: 5%; z-index: 100;">
+                <button class="btn btn-primary btn-blocks" id="audio-toggle">
+                <script>
+                        var content = audioEnable
+                        ? '<i class="fa fa-volume-up" aria-hidden="true"></i> Som Ligado'
+                        : '<i class="fa fa-volume-off" aria-hidden="true"></i> Som Desligado';
+                    $("#audio-toggle").html(content);
+                </script>
+                </button>
+            </div>
+        <?php endif; ?>
     <?php endif; ?>
 </div>

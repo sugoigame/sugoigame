@@ -1,8 +1,19 @@
 <?php function render_vantagem($img, $titulo, $descricao, $duracao, $preco_gold, $link_gold)
 { ?>
     <?php global $userDetails; ?>
-    <li class="list-group-item">
-        <div class="row">
+    <li class="col-xs-12 col-md-4 panel panel-default" style="margin: 0.1em 0.1em;">
+        <style>
+                @media (min-width: 992px) {
+                    #colunaloja {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .col-md-4 {
+                        max-width: 24vw;
+                    }
+                }
+        </style>
+        <div class="row" style="justify-content: center; align-items: center;"  id="colunaloja">
             <div class="col-xs-2 col-md-2">
                 <img src="Imagens/Vip/<?= $img ?>" height="60px" />
             </div>
@@ -38,7 +49,7 @@
                     <button href="<?= $link_gold ?>" class="link_confirm btn btn-success"
                         data-question="Deseja adquirir essa vantagem?" <?= $userDetails->conta["gold"] < $preco_gold ? "disabled" : "" ?>>
                         <?= $preco_gold ?> <img src="Imagens/Icones/Gold.png" />
-                        <?= $duracao !== FALSE && ($duracao >= atual_segundo()) ? "Extender" : "Comprar" ?>
+                        <?= $duracao !== FALSE && ($duracao >= atual_segundo()) ? "" : "" ?>
                     </button>
                 </p>
                 <p>
@@ -67,7 +78,7 @@
 </script>
 <div class="panel-body">
 
-    <ul class="list-group">
+    <ul class="row" style="list-style-type: none; padding: 0 0.1rem; justify-content: center;">
         <?php render_vantagem(
             "tatics.png",
             "Táticas",
@@ -104,11 +115,10 @@
             "Vip/coup_de_burst_comprar.php?tipo=gold"
         ); ?>
 
-
-        <li class="list-group-item">
-            <div class="row">
+        <li class="col-xs-12 col-md-4 panel panel-default">
+            <div class="row" style="display: flex; justify-content: center; align-items: center;" id="colunaloja">
                 <div class="col-xs-2 col-md-2">
-                    <img src="Imagens/Vip/renomear.png" />
+                    <img src="Imagens/Vip/renomear.png"  />
                 </div>
                 <div class="col-xs-7 col-md-7">
                     <h4>Renomear tripulação</h4>
@@ -120,15 +130,15 @@
                 <div class="col-xs-3 col-md-3">
                     <p>
                         <button id="renomeia_trip" class="btn btn-success" <?= $userDetails->conta["gold"] < PRECO_GOLD_RENOMEAR_TRIPULACAO ? "disabled" : "" ?>>
-                            <?= PRECO_GOLD_RENOMEAR_TRIPULACAO ?> <img src="Imagens/Icones/Gold.png" /> Comprar
+                            <?= PRECO_GOLD_RENOMEAR_TRIPULACAO ?> <img src="Imagens/Icones/Gold.png" />
                         </button>
                     </p>
 
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
-            <div class="row">
+        <li class="col-xs-12 col-md-4 panel panel-default">
+            <div class="row" style="justify-content: center; align-items: center;" id="colunaloja">
                 <div class="col-xs-2 col-md-2">
                     <img src="Imagens/Vip/faccao.png" />
                 </div>
@@ -146,7 +156,7 @@
                         <button href="Vip/faccao_trocar.php" data-question="Deseja trocar de facção?"
                             class="link_confirm btn btn-success" <?= $userDetails->ally
                                 || $userDetails->conta["gold"] < PRECO_GOLD_TROCAR_FACCAO ? "disabled" : "" ?>>
-                            <?= PRECO_GOLD_TROCAR_FACCAO ?> <img src="Imagens/Icones/Gold.png" /> Comprar
+                            <?= PRECO_GOLD_TROCAR_FACCAO ?> <img src="Imagens/Icones/Gold.png" />
                         </button>
                     </p>
 

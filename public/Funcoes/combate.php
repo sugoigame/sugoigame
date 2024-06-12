@@ -1063,7 +1063,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
     <?php foreach ($personagens_combate as $pers) : ?>
         <?php if ($pers["hp"]) : ?>
             <?php $pers["id"] = $pers["tripulacao_id"]; ?>
-            <div class="personagem-info container hidden" id="personagem-info-<?= $pers["cod"] ?>">
+            <div class="personagem-info container" id="personagem-info-<?= $pers["cod"] ?>">
                 <div class="panel panel-<?= $pers["tripulacao_id"] == $id_blue ? "info" : "danger" ?>">
                     <div class="panel-heading">
                         <?= $pers["nome"]; ?>,
@@ -1128,6 +1128,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
 
                                 <?php if (($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]) : ?>
                                     <?php render_personagem_haki_bars($pers); ?>
+                                    <div style="display: flex; justify-content: center;">
                                     <?php render_row_atributo("atk", "Ataque", $pers); ?>
                                     <?php render_row_atributo("def", "Defesa", $pers); ?>
                                     <?php render_row_atributo("pre", "Precisao", $pers); ?>
@@ -1136,6 +1137,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                     <?php render_row_atributo("con", "Conviccao", $pers); ?>
                                     <?php render_row_atributo("dex", "Dextreza", $pers); ?>
                                     <?php render_row_atributo("vit", "Vitalidade", $pers); ?>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -1147,9 +1149,9 @@ function inicia_combate($alvo, $tipo, $chave = null)
 <?php } ?>
 <?php function render_row_atributo($abr, $img, $pers)
 { ?>
-    <div>
+    <div style="display: flex; justify-content: center; align-items: center;flex-wrap: wrap; margin: 3px 2px; padding: 2px; background-color: #000; opacity: 0.8;">
         <img src="Imagens/Icones/<?= $img ?>.png" width="25px">
-        <div class="text-center" style="display: inline-block; width:30px">
+        <div class="text-left" style="display: inline-block; color: white; margin: 0 2px;">
             <?= $pers[$abr]; ?>
         </div>
     </div>

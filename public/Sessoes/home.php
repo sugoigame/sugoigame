@@ -525,7 +525,7 @@ function render_maior_do_mundo($tipo)
                         </div>
                         <div class="col-xs-3 col-md-3" style="display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 0;">
                             <span style="font-size: 0.9rem;"><?= $combate["tripulacao_2"] ?></span>
-                            <?= $combate["vencedor"] == $combate["id_2"] ? "<span class='text-vitoria'>Vitória</span>" : "<span class='text-derrota'>Derrota</span>" ?>
+                            <?= $combate["vencedor"] == $combate["id_2"] ? "<span class='text-vitoria'>Vitória</span>" : "<span class='text-derrota'>Derrota</span>"?>
                             <img src="Imagens/Bandeiras/img.php?cod=<?= $combate["bandeira_2"] ?>&f=<?= $combate["faccao_2"] ?>"
                                 style="width:100%; max-width: 75px;" />
                         </div>
