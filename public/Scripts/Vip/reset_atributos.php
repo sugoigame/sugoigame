@@ -3,7 +3,7 @@ require "../../Includes/conectdb.php";
 
 $protector->need_tripulacao();
 
-$tipo = $protector->get_enum_or_exit("tipo", array("gold",  "free"));
+$tipo = $protector->get_enum_or_exit("tipo", array("gold", "free"));
 if ($tipo == "free") {
     if (! $userDetails->tripulacao["free_reset_atributos"]) {
         $protector->exit_error("você não pode resetar seus atributos gratuitamente");
@@ -37,9 +37,7 @@ $connection->run("UPDATE tb_personagens
         vit     = ?,
         pts     = ?,
         hp      = ?,
-        hp_max  = ?,
-        mp_max  = ?,
-        mp      = ?
+        hp_max  = ?
 	WHERE cod = ?", "iiiiiiiiiiiiii", [
     1 + $bonus["atk"],
     1 + $bonus["def"],
@@ -52,8 +50,6 @@ $connection->run("UPDATE tb_personagens
     $att,
     $hp,
     $hp,
-    $mp,
-    $mp,
     $personagem
 ]
 );
