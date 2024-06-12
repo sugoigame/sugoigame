@@ -112,9 +112,9 @@ $pers = $protector->get_tripulante_or_exit("cod");
 
 <?php $bonus = calc_bonus($pers); ?>
 <div class="row pt1">
-    <div class="col-xs-3">
+    <div class="col-xs-5">
         <div>
-            <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "", 'width="100%"') ?>
+            <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "", 'width="60%"') ?>
             <?php if ($pers["xp"] >= $pers["xp_max"] and $pers["lvl"] < 50) : ?>
                 <button id="status_evoluir" href="link_Personagem/personagem_evoluir.php?cod=<?= $pers["cod"] ?>"
                     class="link_send btn btn-info">
@@ -138,7 +138,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
         </div>
         <?php render_personagem_status_bars($pers); ?>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-4">
         <!--- Menu de modo de criacao de atributos -->
         <ul class="nav nav-pills nav-justified mb">
             <li class="<?= ! isset($_GET["buildtype"]) || $_GET["buildtype"] == "simples" ? "active" : "" ?>">
@@ -173,11 +173,11 @@ $pers = $protector->get_tripulante_or_exit("cod");
                         No modo simples você pode escolher uma das seguintes builds:
                     </p>
                     <?php for ($i = 1; $i <= 8; $i++) : ?>
-                        <div class="text-left">
+                        <div class="text-left" style="margin: 0.5rem 0; font-size: 1rem;">
                             <a class="link_send"
                                 href="link_Personagem/atributo_build_simples.php?cod=<?= $pers["cod"] ?>&atr=<?= $i ?>"
                                 v-on:click="buildAutomatica(atrKey)">
-                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="20vw"
+                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="25vw"
                                     style="max-width: 100%;" class="atributo-icon" />
                                 Usar build baseada em
                                 <?= nome_atributo($i) ?>
@@ -248,14 +248,18 @@ $pers = $protector->get_tripulante_or_exit("cod");
                         value="<?= get_total_atributos($pers) ?>" />
                     <?php for ($i = 1; $i <= 8; $i++) : ?>
                         <div class="text-left">
-                            <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="20vw" class="atributo-icon" />
-                            <input data-atr="<?= $i ?>" data-cod="<?= $pers["cod"] ?>" class="atr-input atributo"
-                                type="range" step="1" min="1" value="<?= $pers[nome_atributo_tabela($i)] ?>"
-                                oninput="$(this.nextElementSibling).html($(this).val())"
-                                max="<?= $pers[nome_atributo_tabela($i)] + $pers["pts"] ?>">
-                            <span>
-                                <?= $pers[nome_atributo_tabela($i)] ?>
-                            </span>
+                            <div style="display: flex; align-items: center; margin-bottom: 0.8em;">
+                                    <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="25vw" height="25vw" class="atributo-icon" style="margin-right: 1em;" />
+                                <div style="width: 100%">
+                                    <input data-atr="<?= $i ?>" data-cod="<?= $pers["cod"] ?>" class="atr-input atributo"
+                                        type="range" step="1" min="1" value="<?= $pers[nome_atributo_tabela($i)] ?>"
+                                        oninput="$(this.nextElementSibling).html($(this).val())"
+                                        max="<?= $pers[nome_atributo_tabela($i)] + $pers["pts"] ?>">
+                                </div>
+                                <span style="font-size: 1.1rem; margin-left: 0.5em;">
+                                    <?= $pers[nome_atributo_tabela($i)] ?>
+                                </span>
+                            </div>
                         </div>
                     <?php endfor; ?>
                 </div>

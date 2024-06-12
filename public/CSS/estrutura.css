@@ -1245,7 +1245,7 @@ a.list-group-item .list-group-item-text {
 
 input[type="range"] {
     -webkit-appearance: none;
-    width: 100%;
+    width: 100% !important;
     margin: 4.55px 0;
 }
 

@@ -1056,8 +1056,8 @@ function inicia_combate($alvo, $tipo, $chave = null)
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-xs-6">
-                                <?= big_pers_skin($pers["img"], $pers["skin_c"], isset($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="100%"') ?>
+                            <div class="col-xs-6" style="width: 100%">
+                                <?= big_pers_skin($pers["img"], $pers["skin_c"], isset($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="60%"') ?>
                                 <br />
                                 <?php if (($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]) : ?>
                                     <?php if ($pers["akuma"]) : ?>
@@ -1080,15 +1080,14 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                         </div>
                                     <?php endif; ?>
                                 <?php endif; ?>
-                            </div>
-                            <div class="col-xs-6">
                                 <?php if ($pers["tripulacao_id"] == $userDetails->tripulacao["id"] || $userDetails->tripulacao["adm"]) : ?>
                                     Nível
                                     <?= $pers["lvl"] ?>
                                 <?php endif; ?>
 
                                 <?php render_personagem_hp_bar($pers); ?>
-
+                            </div>
+                            <div class="col-xs-6" style="width: 100%">
                                 <?php if (isset($buffs[$pers["cod"]])) : ?>
                                     <h4>Buffs</h4>
                                     <?php foreach ($buffs[$pers["cod"]] as $buff) : ?>

@@ -79,45 +79,45 @@ $pers = $protector->get_tripulante_or_exit("cod");
                     <?= $pers["haki_esq"] . "/" . MAX_POINTS_MANTRA; ?>:
                     <?= ajuda_tooltip("Cada ponto aumenta em 1% de chance do tripulante se esquivar de um ataque."); ?>
                 </div>
-                <p>
+                <div style="display: flex; align-items: center;">
                     <input data-haki="haki_esq" data-cod="<?= $pers["cod"] ?>" class="atr-input haki input-success"
                         type="range" step="1" min="0" value="<?= $pers["haki_esq"] ?>"
                         oninput="$(this.nextElementSibling).html($(this).val())"
                         max="<?= min(MAX_POINTS_MANTRA, $pers["haki_esq"] + $pers["haki_pts"]) ?>">
-                    <span>
+                    <span style="margin: 0 0.5em;">
                         <?= $pers["haki_esq"] ?>
                     </span>
-                </p>
+                </div>
 
                 <div>
                     Haki do Armamento
                     <?= $pers["haki_cri"] . "/" . MAX_POINTS_ARMAMENTO; ?>:
                     <?= ajuda_tooltip("Cada ponto aumenta em 1% a chance do tripulante bloquear um ataque e em 1% a chance de acertar um ataque crítico."); ?>
                 </div>
-                <p>
+                <div style="display: flex; align-items: center;">
                     <input data-haki="haki_cri" data-cod="<?= $pers["cod"] ?>" class="atr-input haki input-danger"
                         type="range" step="1" min="0" value="<?= $pers["haki_cri"] ?>"
                         oninput="$(this.nextElementSibling).html($(this).val())"
                         max="<?= min(MAX_POINTS_ARMAMENTO, $pers["haki_cri"] + $pers["haki_pts"]) ?>">
-                    <span>
+                    <span style="margin: 0 0.5em;">
                         <?= $pers["haki_cri"] ?>
                     </span>
-                </p>
+                </div>
 
                 <div>
                     Haki Avançado
                     <?= $pers["haki_blo"] . "/" . MAX_POINTS_HAKI_AVANCADO; ?>:
                     <?= ajuda_tooltip("Cada ponto aumenta o Ataque do tripulante em 2."); ?>
                 </div>
-                <p>
+                <div style="display: flex; align-items: center;">
                     <input data-haki="haki_blo" data-cod="<?= $pers["cod"] ?>" class="atr-input haki input-warning"
                         type="range" step="1" min="0" value="<?= $pers["haki_blo"] ?>"
                         oninput="$(this.nextElementSibling).html($(this).val())"
                         max="<?= min(MAX_POINTS_HAKI_AVANCADO, $pers["haki_blo"] + $pers["haki_pts"]) ?>">
-                    <span>
+                    <span style="margin: 0 0.5em;">
                         <?= $pers["haki_blo"] ?>
                     </span>
-                </p>
+                </div>
 
                 <?php if ($pers["cod"] == $userDetails->capitao["cod"]) : ?>
                     <div>
@@ -125,12 +125,12 @@ $pers = $protector->get_tripulante_or_exit("cod");
                         <?= $pers["haki_hdr"] . "/" . MAX_POINTS_HDR; ?>:
                         <?= ajuda_tooltip("Cada ponto fortalece a habilidade do Haki do Rei."); ?>
                     </div>
-                    <div>
+                    <div style="display: flex; align-items: center;">
                         <input data-haki="haki_hdr" data-cod="<?= $pers["cod"] ?>" class="atr-input haki" type="range"
                             step="1" min="0" value="<?= $pers["haki_hdr"] ?>"
                             oninput="$(this.nextElementSibling).html($(this).val())"
                             max="<?= min(MAX_POINTS_HDR, $pers["haki_hdr"] + $pers["haki_pts"]) ?>">
-                        <span>
+                        <span style="margin: 0 0.5em;">
                             <?= $pers["haki_hdr"] ?>
                         </span>
                     </div>
