@@ -6,9 +6,9 @@ $protector->must_be_in_any_kind_of_combat();
 
 $combate = new Combate($connection, $userDetails, $protector);
 
-$combate->pre_turn();
+$combate->pre_ataque();
 
-$combate->pos_turn();
+$combate->pos_ataque();
 
 if ($userDetails->combate_pve) {
     $combate->processa_turno_npc($combate->load_tabuleiro($userDetails->tripulacao["id"]));

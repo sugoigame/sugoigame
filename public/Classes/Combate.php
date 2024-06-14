@@ -45,7 +45,7 @@ class Combate
         return $this->userDetails->tripulacao["id"] == $this->userDetails->combate_pvp["id_1"] ? 2 : 1;
     }
 
-    public function pre_turn(&$personagem_combate = null, $habilidade = null, $cod_skil = null, $tipo_skil = null)
+    public function pre_ataque(&$personagem_combate = null, $habilidade = null, $cod_skil = null, $tipo_skil = null)
     {
         if ($personagem_combate) {
             $this->aplica_buffs($personagem_combate);
@@ -90,7 +90,7 @@ class Combate
         }
     }
 
-    public function pos_turn()
+    public function pos_ataque()
     {
         $this->apply_sangramento();
         $this->apply_veneno();

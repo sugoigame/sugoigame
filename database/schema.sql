@@ -3043,4 +3043,10 @@ ALTER TABLE tb_missoes_r_dia ADD dia DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
 ALTER TABLE tb_missoes_caca_diario ADD inicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL;
 ALTER TABLE tb_missoes_concluidas_dia ADD dia TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL;
 
+
+ALTER TABLE tb_combate_personagens ADD efeitos json NULL;
+ALTER TABLE tb_combate_npc ADD efeitos json NULL;
+ALTER TABLE tb_combate_personagens_bot ADD efeitos json NULL;
+
+
 SET FOREIGN_KEY_CHECKS=1;

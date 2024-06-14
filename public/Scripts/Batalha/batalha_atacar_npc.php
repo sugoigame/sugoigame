@@ -24,7 +24,7 @@ if (! $userDetails->combate_pve["hp_npc"]) {
     $protector->exit_error("Seu adversário já foi derrotado");
 }
 
-$combate->pre_turn($personagem_combate, $habilidade, $cod_skil, $tipo_skil);
+$combate->pre_ataque($personagem_combate, $habilidade, $cod_skil, $tipo_skil);
 
 $relatorio = array();
 

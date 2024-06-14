@@ -73,7 +73,7 @@ class CombateBot
         }
     }
 
-    public function pos_turn()
+    public function pos_ataque()
     {
         $this->apply_sangramento();
         $this->apply_veneno();
@@ -430,7 +430,7 @@ class CombateBot
 
         $habilidade = $this->get_habilidade($bot["lvl"], $bot["mp"], $alvo);
 
-        $this->pre_turn($bot);
+        $this->pre_ataque($bot);
 
         $relatorio["tipo"] = 1;
         $relatorio["nome"] = $bot["nome"];
@@ -497,7 +497,7 @@ class CombateBot
         $relatorio["afetados"] = $relatorio_afetado;
         $relatorio["id"] = atual_segundo();
 
-        $this->pos_turn();
+        $this->pos_ataque();
 
         $this->combate->logger->registra_turno_combate_bot($relatorio);
     }
@@ -585,10 +585,10 @@ class CombateBot
 
     function passa_vez()
     {
-        $this->pre_turn();
+        $this->pre_ataque();
     }
 
-    function pre_turn(&$bot = null)
+    function pre_ataque(&$bot = null)
     {
         if ($bot) {
             $this->aplica_buffs($bot);

@@ -1,0 +1,191 @@
+schema:
+  cod: codigo da habilidade, precisa ser unico, não podem haver duas habilidades com o mesmo código
+  dano: padrao 1; multiplicador de dano em cima da formula baseada em vontade
+  alcance: padrao 1; zero significa em si mesmo
+  area: padrao 1; precisa ser maior ou igual a 1
+  vontade: padrao 1; precisa ser maior ou igual a 1
+  recarga: padrao 0; 0 significa que pode ser usada o tempo todo
+  recarga_universal: true | false; indica se a recarga vai ser compartilhada entre todos os personagens que podem utiliza-la
+  requisito_lvl:
+    padrao 1; pode ter significado diferentes dependendo do contexto,
+    para classes o requisito_lvl é o nivel do personagem para profissoes e o nivel da profissao e
+    para haki e o nivel do HDR
+  efeitos: # efeitos da habilidade
+    pre_ataque: # array de efeitos aplicados com 100% de chance antes de calcular o hit
+      - cod: gerado pelo jogo no momento em que o efeito e aplicado
+        tipo: POSITIVO | NEGATIVO; padrao POSITIVO
+        tipo_alvo:
+          ATACANTE | ALVO | ALIADO_MENOR_VIDA | INIMIGO_MENOR_VIDA | ALIADO_MAIOR_VIDA | INIMIGO_MAIOR_VIDA | ALIADO_ALEATORIO | INIMIGO_ALEATORIO |
+          ALIADO_COM_EFEITO_NEGATIVO | INIMIGO_COM_EFEITO_NEGATIVO | ALIADO_COM_EFEITO_POSITIVO | INIMIGO_COM_EFEITO_POSITIVO | TODOS | TODOS_ALIADOS | TODOS_IMIMIGOS
+          padrao SELF
+        quant_alvo: padrao 1;
+        duracao:
+          obrigatorio; duracao zero significa que o efeito sera removido no final do turno de aplicacao; duracao negativa significa que o efeito
+          é permanente durante toda a batalha
+        bonus: # obrigatorio
+          atr: ATRIBUTOS BASICOS >
+            atk, def, pre, agl, per, des, res
+            ATRIBUTOS AVANCADOS >
+            SANGRAMENTO(dano), VENENO(dano), IMOBILIZACAO, REMOCAO_SANGRAMENTO(cod_efeito)
+          value:
+            pode significar coisas diferentes dependendo do atributo, atributos basicos serao incrementados ou reduzidos nessa quantidade, atributos
+            avancados podem depender de estruturas mais complexas para terem seu comportamento alterado
+    acerto: # array de efeitos que só são aplicados se o golpe não for esquivado nem bloqueado
+      - # repete do pre ataque
+        tipo_alvo: padrao TARGET
+    pos_ataque: # array de efeitos aplicados com 100% de chance após calcular o hit
+      -  # repete do pre ataque
+    passivos: # array de efeitos aplicados no comeco da partida que vao turar a partida inteira
+      -  # repete do pre ataque
+
+padrao:
+  - # soco
+    cod: 1
+haki:
+  - cod: 3
+    vontade: 2
+    espera: 1
+  - cod: 4
+    requisito_lvl: 2
+    vontade: 2
+    area: 2
+    espera: 2
+  - cod: 5
+    requisito_lvl: 3
+    vontade: 2
+    area: 3
+    espera: 3
+  - cod: 6
+    requisito_lvl: 4
+    vontade: 2
+    area: 4
+    espera: 4
+  - cod: 7
+    requisito_lvl: 5
+    vontade: 2
+    area: 5
+    espera: 5
+  - cod: 8
+    requisito_lvl: 6
+    vontade: 2
+    area: 6
+    espera: 6
+  - cod: 9
+    requisito_lvl: 7
+    vontade: 2
+    area: 7
+    espera: 7
+  - cod: 10
+    requisito_lvl: 8
+    vontade: 2
+    area: 8
+    espera: 8
+  - cod: 11
+    requisito_lvl: 9
+    vontade: 2
+    area: 9
+    espera: 9
+  - cod: 12
+    requisito_lvl: 10
+    vontade: 2
+    area: 10
+    espera: 10
+  - cod: 13
+    requisito_lvl: 11
+    vontade: 2
+    area: 11
+    espera: 11
+  - cod: 14
+    requisito_lvl: 12
+    vontade: 2
+    area: 12
+    espera: 12
+classes:
+  1: # Itoryu
+    nome: Ittoryu
+    habilidades:
+      - cod: 10101
+        alcance: 5
+        dano: 1.1
+        area: 1
+      - cod: 10102
+        dano: 0
+        alcance: 0
+        requisito_lvl: 5
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: pre
+                value: 0.3
+      - cod: 10103
+        alcance: 5
+        vontade: 8
+        recarga: 4
+        requisito_lvl: 10
+        efeitos:
+          acerto:
+            - tipo: NEGATIVO
+              duracao: 3
+              bonus:
+                atr: agl
+                value: -0.3
+      - cod: 10104
+        dano: 0
+        alcance: 0
+        requisito_lvl: 20
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: ATACANTE_ACERTO_CRITICO
+                value:
+                  dano: 0
+                  alcance: 0
+                  efeitos:
+                    pos_ataque:
+                      - duracao: 2
+                        bonus:
+                          atr: pre
+                          value: 0.1
+      - cod: 10105
+        alcance: 5
+        vontade: 24
+        recarga: 4
+        requisito_lvl: 30
+        efeitos:
+          acerto:
+            - tipo_alvo: ATACANTE
+              duracao: 3
+              bonus:
+                atr: pre
+                value: 0.3
+      - cod: 10106
+        dano: 0
+        alcance: 0
+        requisito_lvl: 40
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: ATACANTE_ACERTO_CRITICO
+                value:
+                  dano: 0
+                  alcance: 0
+                  efeitos:
+                    acerto:
+                      - duracao: 2
+                        bonus:
+                          atr: agl
+                          value: -0.1
+      - cod: 10106
+        alcance: 5
+        vontade: 40
+        recarga: 6
+        requisito_lvl: 50
+        efeitos:
+          pre_ataque:
+            - duracao: 0
+              bonus:
+                atr: des
+                value: 0.5

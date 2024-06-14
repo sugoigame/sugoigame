@@ -41,7 +41,7 @@ if ($tipo_skil == TIPO_SKILL_MEDICAMENTO && ! $personagem_combate["medico_usado"
     }
 }
 
-$combate->pre_turn($personagem_combate, $habilidade, $cod_skil, $tipo_skil);
+$combate->pre_ataque($personagem_combate, $habilidade, $cod_skil, $tipo_skil);
 
 //relatorio
 if ($tipo_skil != TIPO_SKILL_MEDICAMENTO) {
@@ -70,7 +70,7 @@ foreach ($quadros as $x => $quadro) {
     $relatorio_afetado[$x]["quadro"] = $quadro["x"] . "_" . $quadro["y"];
 }
 
-$combate->pos_turn();
+$combate->pos_ataque();
 
 $vivos_1 = $connection->run("SELECT count(cod) AS total FROM tb_combate_personagens WHERE id = ? AND hp > 0"
 , "i", $userDetails->combate_pvp["id_1"])->fetch_array()["total"];
