@@ -17,6 +17,7 @@ $(function () {
                 .removeClass("hidden");
         }
     });
+    
     $(document).on("mouseleave", ".personagem", function () {
         $(".personagem-info").addClass("hidden");
     });

@@ -8,7 +8,9 @@ $combate_id = $_GET["combate"];
 $result = $connection->run("SELECT * FROM tb_combate WHERE combate = ?", "i", $combate_id);
 
 if (! $result->count()) {
-    echo "Batalha não encontrada ou já finalizada";
+    echo '<div style="modal-dialog modal-lg">';
+    echo 'Batalha não encontrada ou já finalizada';
+    echo '</div';
     exit();
 }
 

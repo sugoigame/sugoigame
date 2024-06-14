@@ -102,8 +102,8 @@
         width: 70% !important;
     }
 
-    .header-skin {
-        width: 2vw;
+    .icon-pers-skin {
+        width: 4vw;
     }
 </style>
 
@@ -176,7 +176,7 @@
                     </ul>
 
                     <div class="w-100">
-                        <div class="list-group-item">
+                        <div class="panel panel-default" id="header-info">
                             <strong>
                                 <?= icon_pers_skin($pers["img"], $pers["skin_r"], "header-skin") ?>
                                 <?= $pers["nome"]; ?>

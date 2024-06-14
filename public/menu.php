@@ -335,7 +335,7 @@ FROM tb_forum_categoria c ",
 </div>
 
 <?php if ($userDetails->conta) : ?>
-    <div style="position: absolute; top: 91%; left: 71%;">
+    <div id="audio-position">
         <button class="btn btn-primary btn-blocks" id="audio-toggle">
         <script>
                 var content = audioEnable

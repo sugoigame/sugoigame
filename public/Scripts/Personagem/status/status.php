@@ -80,6 +80,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
         position: relative;
         z-index: 1;
     }
+
 </style>
 
 <script type="text/javascript">
@@ -111,8 +112,8 @@ $pers = $protector->get_tripulante_or_exit("cod");
 </script>
 
 <?php $bonus = calc_bonus($pers); ?>
-<div class="row pt1">
-    <div class="col-xs-5">
+<div class="row">
+    <div class="col-xs-4 col-md-5">
         <div>
             <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "", 'width="100%"') ?>
             <?php if ($pers["xp"] >= $pers["xp_max"] and $pers["lvl"] < 50) : ?>
@@ -125,7 +126,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
         </div>
     </div>
 
-    <div class="col-xs-3">
+    <div class="col-xs-3 col-md-3">
         <div class="row mx0">
             <?php for ($i = 1; $i <= 8; $i++) : ?>
                 <?php row_atributo(
@@ -138,7 +139,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
         </div>
         <?php render_personagem_status_bars($pers); ?>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-5 col-md-4">
         <!--- Menu de modo de criacao de atributos -->
         <ul class="nav nav-pills nav-justified mb">
             <li class="<?= ! isset($_GET["buildtype"]) || $_GET["buildtype"] == "simples" ? "active" : "" ?>">

@@ -81,28 +81,28 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
     <div>
         <ul class="nav nav-pills nav-justified">
             <li class="active">
-                <a href="#calendar-tab-presentes" data-toggle="tab">
+                <a href="#calendar-tab-presentes" data-toggle="tab" id="daily-text">
                     Presentes Diários
                     <?= ! $userDetails->tripulacao["presente_diario_obtido"] ? '<span class="label label-danger">1</span>' : ""; ?>
                 </a>
             </li>
             <li>
-                <a href="#calendar-tab-eventos" data-toggle="tab">
+                <a href="#calendar-tab-eventos" data-toggle="tab" id="daily-text">
                     Eventos Ativos
                 </a>
             </li>
             <li>
-                <a href="#calendar-tab-pvp" data-toggle="tab">
+                <a href="#calendar-tab-pvp" data-toggle="tab" id="daily-text">
                     Calendário PvP
                 </a>
             </li>
             <li>
-                <a href="#calendar-tab-missoes-diarias" data-toggle="tab">
+                <a href="#calendar-tab-missoes-diarias" data-toggle="tab" id="daily-text">
                     Missões diárias
                 </a>
             </li>
             <li>
-                <a href="#calendar-tab-mini-eventos" data-toggle="tab">
+                <a href="#calendar-tab-mini-eventos" data-toggle="tab" id="daily-text">
                     Mini eventos
                     <?= $novos_mini_eventos ? ('<span class="label label-danger">' . $novos_mini_eventos . '</span>') : ""; ?>
                 </a>
@@ -113,30 +113,30 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
     <div class="tab-content">
         <div class="tab-pane active" id="calendar-tab-presentes">
             <h4>Conecte-se ao Sugoi Game diariamente para ganhar um novo presente a cada dia</h4>
-            <div class="row">
+            <div class="row" id="row-daily">
                 <?php foreach ($recompensas as $day => $recompensa) : ?>
-                    <div class="list-group-item col-md-3 <?= $userDetails->tripulacao["presente_diario_count"] > $day ? "text-muted" : "" ?>"
-                        style="height: 200px">
+                    <div class="panel panel-default col-md-3 <?= $userDetails->tripulacao["presente_diario_count"] > $day ? "text-muted" : "" ?>"
+                        id="daily-reward">
                         <h4><i class="fa fa-gift"></i>
                             <?= $day + 1 ?>º dia
                         </h4>
-                        <p>
+                        <p id="daily-text">
                             <img src="Imagens/Icones/Berries.png">
                             <?= mascara_berries($recompensa["berries"]) ?>
                         </p>
                         <?php if (isset($recompensa["haki"])) : ?>
-                            <p>
+                            <p id="daily-text">
                                 <i class="fa fa-certificate"></i>
                                 <?= $recompensa["haki"] ?> pontos de Haki para toda a tripulação
                             </p>
                         <?php endif; ?>
                         <?php if (isset($recompensa["xp"])) : ?>
-                            <p>
+                            <p id="daily-text">
                                 <?= $recompensa["xp"] ?> pontos de experiência para toda a tripulação
                             </p>
                         <?php endif; ?>
                         <?php if (isset($recompensa["dobroes"])) : ?>
-                            <p>
+                            <p id="daily-text">
                                 <?= $recompensa["dobroes"] ?> <img src="Imagens/Icones/Dobrao.png">
                             </p>
                         <?php endif; ?>
@@ -144,7 +144,7 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
                             <div class="equipamentos_classe_6 pull-left">
                                 <img src="Imagens/Itens/100.png">
                             </div>
-                            <p>
+                            <p id="daily-text">
                                 Akuma no Mi aleatória
                             </p>
                         <?php endif; ?>
@@ -153,7 +153,7 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
                                 <div class="equipamentos_classe_1 pull-left">
                                     <?= get_img_item($reagents[$recompensa["cod_item"]]) ?>
                                 </div>
-                                <p>
+                                <p id="daily-text">
                                     <?= $reagents[$recompensa["cod_item"]]["nome"] ?>
                                     x
                                     <?= $recompensa["quant"] ?>
@@ -163,14 +163,14 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
                                     class="equipamentos_classe_<?= $equipamentos[$recompensa["cod_item"]]["categoria"] ?> pull-left">
                                     <img src="Imagens/Itens/<?= $equipamentos[$recompensa["cod_item"]]["img"] ?>.png">
                                 </div>
-                                <p>
+                                <p id="daily-text">
                                     <?= $equipamentos[$recompensa["cod_item"]]["nome"] ?>
                                 </p>
                             <?php elseif ($recompensa["tipo_item"] == TIPO_ITEM_COMIDA) : ?>
                                 <div class="equipamentos_classe_1 pull-left">
                                     <img src="Imagens/Itens/<?= $comidas[$recompensa["cod_item"]]["img"] ?>.png">
                                 </div>
-                                <p>
+                                <p id="daily-text">
                                     <?= $comidas[$recompensa["cod_item"]]["nome"] ?>
                                     x
                                     <?= $recompensa["quant"] ?>
@@ -178,7 +178,7 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
                             <?php endif; ?>
                         <?php endif; ?>
                         <?php if (isset($recompensa["reputacao"])) : ?>
-                            <p>
+                            <p id="daily-text">
                                 <?= $recompensa["reputacao"] ?> pontos de reputação.
                             </p>
                         <?php endif; ?>
@@ -400,8 +400,18 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
             <?php endif; ?>
         </div>
         <div class="tab-pane" id="calendar-tab-mini-eventos">
-            <h4>Mini Eventos Ativos:</h4>
-            <div class="row">
+            <h4>Mini Eventos em andamento:</h4>
+            <div>
+                <ul class="nav nav-pills nav-justified">
+                    <li class="active"><a class="noHref" href="#" id="daily-text">East Blue</a></li>
+                    <li><a class="noHref" href="#" id="daily-text">North Blue</a></li>
+                    <li><a class="noHref" href="#" id="daily-text">West Blue</a></li>
+                    <li><a class="noHref" href="#" id="daily-text">South Blue</a></li>
+                    <li><a class="noHref" href="#" id="daily-text">Grand Line</a></li>
+                    <li><a class="noHref" href="#" id="daily-text">Novo Mundo</a></li>
+                </ul>
+            </div>
+            <div class="row" id="row-eventos">
                 <?php $events_details = DataLoader::load("mini_eventos"); ?>
                 <?php $events = $connection->run(
                     "SELECT *, (unix_timestamp(fim) - unix_timestamp()) AS restante, (unix_timestamp() - unix_timestamp(inicio)) AS desde_inicio
@@ -410,10 +420,54 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
 						 ORDER BY m.fim, m.id",
                     "i", array($userDetails->tripulacao["id"])
                 )->fetch_all_array(); ?>
+
+                <script type="text/javascript">
+                    $(function () {
+                        timeOuts["atualiza_tempo_evento"] = setTimeout("atualiza_tempo_evento()", 1000);
+                    });
+                    var start = new Date().getTime();
+                    function atualiza_tempo_evento() {
+                        timeOuts["atualiza_tempo_evento"] = setTimeout("atualiza_tempo_evento()", 1000);
+                        const now = new Date().getTime();
+                        for (let sec_rest of document.getElementsByClassName('tempo_sec')) {
+                            const min_rest = document.getElementById("tempo_min_rest_" + sec_rest.getAttribute('data-ref'));
+                            var tmp = parseFloat(sec_rest.value) - Math.round((now - start) / 1000);
+                            min_rest.innerHTML = transforma_tempo(tmp);
+                            if (tmp < 0) {
+                                reloadPagina();
+                                return;
+                            }
+                        }
+                    }
+                </script>
+
+                <!-- <script type="text/javascript">
+                            $(function () {
+                                timeOuts["atualiza_tempo_evento"] = setTimeout("atualiza_tempo_evento()", 1000);
+                            });
+                            var conttmp = 0;
+
+                            function atualiza_tempo_evento() {
+                                timeOuts["atualiza_tempo_evento"] = setTimeout("atualiza_tempo_evento()", 1000);
+                                for (var x = 0; x < 20; x++) {
+                                    var sec_rest = "tempo_sec_rest_" + x;
+                                    var min_rest = "tempo_min_rest_" + x;
+                                    if (document.getElementById(sec_rest) != null) {
+                                        var tmp = document.getElementById(sec_rest).value - conttmp;
+                                        document.getElementById(min_rest).innerHTML = transforma_tempo(tmp);
+                                        if (tmp < 0) {
+                                            reloadPagina();
+                                            return;
+                                        }
+                                    }
+                                }
+                                conttmp += 1;
+                            }
+                        </script> -->
                 <?php foreach ($events as $event) : ?>
                     <?php $event_detail = $events_details[$event["id"]]; ?>
                     <?php $coordenadas = $connection->run("SELECT * FROM tb_mapa_rdm WHERE rdm_id IN (" . implode(",", $event_detail["zonas"]) . ")"); ?>
-                    <div class="list-group-item col-md-4">
+                    <div class="panel pane-default col-md-5 col-xs-12" id="eventos">
                         <h4>
                             <?= $event_detail["nome"] ?>
                             <?php if ($event["desde_inicio"] < 300) : ?>
@@ -422,7 +476,7 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
                         </h4>
                         <h5>Essa criatura pode ser encontrada em:</h5>
                         <?php while ($quadro = $coordenadas->fetch_array()) : ?>
-                            <p>
+                            <p id="daily-text">
                                 <?= get_human_location($quadro["x"], $quadro["y"]) ?>
                                 -
                                 <?= nome_mar(get_mar($quadro["x"], $quadro["y"])) ?>
@@ -430,15 +484,23 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
                         <?php endwhile; ?>
                         <h5>Recompensas:</h5>
                         <?php foreach ($event_detail["recompensas"][$event["pack_recompensa"]] as $recompensa) : ?>
-                            <div>
+                            <div id="daily-text">
                                 <?php render_recompensa($recompensa, $reagents, $equipamentos); ?>
                             </div>
                         <?php endforeach; ?>
-                        <h5>Tempo restante:
-                            <?= transforma_tempo_min($event["restante"]) ?>
+                        <!-- <h5>Tempo restante:
+                            </?= transforma_tempo_min($event["restante"])?> -->
+                            
+                            <div>
+                                <strong style="font-size: 1.2rem;">Tempo Restante: </strong>
+                                <span style="font-size: 1.2rem;" id="tempo_min_rest_<?= $event["id"] ?>">
+                                    <?= transforma_tempo_min($event["restante"]); ?>
+                                </span>
+                                <input class="tempo_sec" data-ref="<?= $event["id"] ?>" id="tempo_sec_rest_<?= $event["id"] ?>" type="hidden" value="<?= $event["restante"] ?>" />
+                            </div>
                         </h5>
                         <?php if ($event["momento"]) : ?>
-                            <p class="text-success">
+                            <p class="text-success" id="daily-text">
                                 <i class="fa fa-check"></i>
                                 Você já concluiu esse evento!
                             </p>

@@ -1063,7 +1063,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
     <?php foreach ($personagens_combate as $pers) : ?>
         <?php if ($pers["hp"]) : ?>
             <?php $pers["id"] = $pers["tripulacao_id"]; ?>
-            <div class="personagem-info container" id="personagem-info-<?= $pers["cod"] ?>">
+            <div class="personagem-info container hidden" id="personagem-info-<?= $pers["cod"] ?>">
                 <div class="panel panel-<?= $pers["tripulacao_id"] == $id_blue ? "info" : "danger" ?>">
                     <div class="panel-heading">
                         <?= $pers["nome"]; ?>,
