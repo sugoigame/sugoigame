@@ -4,7 +4,7 @@ $protector->need_tripulacao();
 
 $pers = $protector->get_tripulante_or_exit("cod");
 ?>
-<?php function get_atributo_max($pers, $bonus)
+<?php function get_atributo_max($pers)
 {
     $max = 1;
     for ($x = 1; $x <= 8; $x++) {
@@ -21,7 +21,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
 <?php function row_atributo($abr, $nome, $img, $desc, $pers, $bonus)
 { ?>
     <?php $total = $pers[$abr]; ?>
-    <?php $max = get_atributo_max($pers, $bonus); ?>
+    <?php $max = get_atributo_max($pers); ?>
     <div class="col-xs-3 mb attribute-box" data-toggle="tooltip" data-html="true" data-placement="bottom"
         data-container="body" title="<strong><?= $nome ?></strong><br/> <?= $desc ?>">
         <div class="attribute-progress-bar-bg" style="height: 100%"> </div>
@@ -115,7 +115,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
     <div class="col-xs-5">
         <div>
             <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "", 'width="60%"') ?>
-            <?php if ($pers["xp"] >= $pers["xp_max"] and $pers["lvl"] < 50) : ?>
+            <?php if ($pers["xp"] >= $pers["xp_max"] && $pers["lvl"] < 50) : ?>
                 <button id="status_evoluir" href="link_Personagem/personagem_evoluir.php?cod=<?= $pers["cod"] ?>"
                     class="link_send btn btn-info">
                     Evoluir <i class="fa fa-arrow-up"></i>
@@ -249,7 +249,8 @@ $pers = $protector->get_tripulante_or_exit("cod");
                     <?php for ($i = 1; $i <= 8; $i++) : ?>
                         <div class="text-left">
                             <div style="display: flex; align-items: center; margin-bottom: 0.8em;">
-                                    <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="25vw" height="25vw" class="atributo-icon" style="margin-right: 1em;" />
+                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="25vw" height="25vw"
+                                    class="atributo-icon" style="margin-right: 1em;" />
                                 <div style="width: 100%">
                                     <input data-atr="<?= $i ?>" data-cod="<?= $pers["cod"] ?>" class="atr-input atributo"
                                         type="range" step="1" min="1" value="<?= $pers[nome_atributo_tabela($i)] ?>"

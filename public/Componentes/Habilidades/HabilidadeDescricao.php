@@ -50,7 +50,7 @@ class HabilidadeDescricao
                     <span><?= $habilidade["alcance"] ?></span>
                 </div>
             <?php endif; ?>
-            <?php if ($habilidade["dano"] != 1) : ?>
+            <?php if ($habilidade["dano"] && $habilidade["dano"] != 1) : ?>
                 <div>
                     <span>Dano adicional:</span>
                     <span><?= ($habilidade["dano"] - 1) * 100; ?>%</span>

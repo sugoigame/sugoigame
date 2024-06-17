@@ -16,33 +16,26 @@ if (! $pers) {
     $protector->exit_error("Personagem inválido");
 }
 
+if (! get_habilidade_by_cod($cod_skill)) {
+    $protector->exit_error("Habilidade inválida");
+}
+
+$protector->need_gold(PRECO_GOLD_CUSTOMIZAR_SKILL);
 
 $skill = $connection->run("SELECT * FROM tb_personagens_skil WHERE cod_pers = ? AND cod_skil = ?",
     "ii", array($cod_pers, $cod_skill));
 
-if (! $skill->count()) {
-    $protector->exit_error("Habilidade não encontrada");
+if ($skill->count()) {
+    $connection->run(
+        "UPDATE tb_personagens_skil SET nome = ?, descricao = ?, icone = ?, editado = 1
+          WHERE cod_pers = ? AND cod_skil = ?",
+        "ssiii", array($nome, $descricao, $icon, $cod_pers, $cod_skill));
+} else {
+    $connection->run(
+        "INSERT INTO tb_personagens_skil SET nome = ?, descricao = ?, icone = ?, editado = 1, cod_pers = ?, cod_skil = ?",
+        "ssiii", array($nome, $descricao, $icon, $cod_pers, $cod_skill));
 }
 
-$skill = $skill->fetch_array();
-
-$tipo = $protector->post_enum_or_exit("tipo_pagamento", array("gold"));
-
-if ($tipo == "gold") {
-    $protector->need_gold(PRECO_GOLD_CUSTOMIZAR_SKILL);
-}
-$connection->run(
-    "UPDATE tb_personagens_skil SET nome = ?, descricao = ?, icone = ?, editado = 1
-      WHERE cod_pers = ? AND cod_skil = ?",
-    "ssiii", array($nome, $descricao, $icon, $cod_pers, $cod_skill));
-
-
-if ($skill["editado"]) {
-    $tipo = $protector->post_enum_or_exit("tipo_pagamento", array("gold"));
-
-    if ($tipo == "gold") {
-        $userDetails->reduz_gold(PRECO_GOLD_CUSTOMIZAR_SKILL, "customizar_skill");
-    }
-}
+$userDetails->reduz_gold(PRECO_GOLD_CUSTOMIZAR_SKILL, "customizar_skill");
 
 echo "-Habilidade modificada!";

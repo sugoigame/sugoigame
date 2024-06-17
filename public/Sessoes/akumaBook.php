@@ -95,9 +95,6 @@
                                     <div class="row panel-body py0">
                                         <?php for ($categoria = 1; $categoria <= 2; $categoria++) : ?>
                                             <div class="col-xs-6 p0">
-                                                <?php render_one_skill_info($skills[$categoria][$lvl], [], null, function () {
-                                                    return false;
-                                                }, [], false); ?>
                                             </div>
                                         <?php endfor; ?>
                                     </div>

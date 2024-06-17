@@ -3047,7 +3047,7 @@ ALTER TABLE tb_missoes_concluidas_dia ADD dia TIMESTAMP DEFAULT CURRENT_TIMESTAM
 ALTER TABLE tb_combate_personagens ADD efeitos json NULL;
 ALTER TABLE tb_combate_npc ADD efeitos json NULL;
 ALTER TABLE tb_combate_personagens_bot ADD efeitos json NULL;
-DELETE FROM tb_personagens_skil WHERE cod_skil > 14 or tipo <> 1;
+DELETE FROM tb_personagens_skil WHERE cod_skil > 14 or cod_skil = 1 or tipo <> 1;
 ALTER TABLE tb_personagens_skil DROP COLUMN tipo;
 ALTER TABLE tb_personagens_skil CHANGE effect animacao varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT 'Atingir fisicamente' NULL;
 ALTER TABLE tb_personagens_skil DROP COLUMN special_effect;

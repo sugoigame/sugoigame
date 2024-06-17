@@ -81,35 +81,11 @@ class CombateBot
 
     public function apply_sangramento()
     {
-        $sangrando = $this->connection->run(
-            "SELECT * FROM tb_combate_special_effect e
-			INNER JOIN tb_combate_personagens_bot p ON e.personagem_bot_id = p.id
-			WHERE e.bot_id = ? AND e.special_effect = ? AND p.hp > 0",
-            "ii", array($this->userDetails->combate_bot["id"], SPECIAL_EFFECT_SANGRAMENTO)
-        )->fetch_all_array();
 
-        foreach ($sangrando as $alvo) {
-            $nhp = max(1, $alvo["hp"] - ceil($alvo["hp_max"] * dano_special_effect(SPECIAL_EFFECT_SANGRAMENTO, $sangrando["vontade"]) / 100.0));
-            $this->connection->run("UPDATE tb_combate_personagens_bot SET hp = ? WHERE id = ?",
-                "ii", array($nhp, $alvo["personagem_bot_id"]));
-        }
     }
 
     public function apply_veneno()
     {
-
-        $sangrando = $this->connection->run(
-            "SELECT * FROM tb_combate_special_effect e
-			INNER JOIN tb_combate_personagens_bot p ON e.personagem_bot_id = p.id
-			WHERE e.bot_id = ? AND e.special_effect = ? AND p.hp > 0",
-            "ii", array($this->userDetails->combate_bot["id"], SPECIAL_EFFECT_VENENO)
-        )->fetch_all_array();
-
-        foreach ($sangrando as $alvo) {
-            $nhp = max(1, $alvo["hp"] - ceil($alvo["hp_max"] * dano_special_effect(SPECIAL_EFFECT_VENENO, $sangrando["vontade"]) / 100.0));
-            $this->connection->run("UPDATE tb_combate_personagens_bot SET hp = ? WHERE id = ?",
-                "ii", array($nhp, $alvo["personagem_bot_id"]));
-        }
     }
 
     function get_personagens_proximos($quadro_x, $quadro_y, $dist = 1)

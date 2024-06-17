@@ -971,13 +971,6 @@ class UserDetails
                 $alerts["status.haki." . $pers["cod"]] = true;
                 $alerts["trip_sem_distribuir_haki." . $pers["cod"]] = true;
             }
-            if ($this->is_sistema_desbloqueado(SISTEMA_ACADEMIA)
-                && $this->alerts->has_alert_nova_habilidade_classe($pers)) {
-                $alerts["status"] = true;
-                $alerts["status." . $pers["cod"]] = true;
-                $alerts["status.classe." . $pers["cod"]] = true;
-                $alerts["nova_habilidade_classe." . $pers["cod"]] = true;
-            }
             if ($this->alerts->has_alert_nova_habilidade_akuma($pers)) {
                 $alerts["status"] = true;
                 $alerts["status&nav=akuma"] = true;

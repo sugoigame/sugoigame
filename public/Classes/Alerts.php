@@ -59,15 +59,6 @@ class Alerts
     }
 
     // TODO refactor
-    public function has_alert_nova_habilidade_classe($pers)
-    {
-        global $COD_HAOSHOKU_LVL;
-        return $pers["classe"] && $this->connection->run(
-            "SELECT count(*) AS total FROM tb_personagens_skil WHERE cod_pers = ? AND cod_skil <> 1 AND cod_skil NOT IN (" . implode(',', $COD_HAOSHOKU_LVL) . ")",
-            "i", array($pers["cod"]))->fetch_array()["total"] < $this->_habilidades_classe_por_lvl($pers["lvl"]);
-    }
-
-    // TODO refactor
     public function has_alert_nova_habilidade_akuma($pers)
     {
         return $pers["akuma"] && $this->connection->run(

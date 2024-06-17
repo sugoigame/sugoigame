@@ -52,12 +52,13 @@ if (! $pers) {
             <?php foreach ($lvls as $key => $lvl) : ?>
                 <tr>
                     <?php foreach ($habilidades["classes"] as $cod_classe => $classe) : ?>
-                        <?php $habilidades_lvl = array_filter($classe["habilidades"], function ($habilidade) use ($lvl) {
+                        <?php $habilidades_classe = habilidades_default_values($classe["habilidades"]) ?>
+                        <?php $habilidades_lvl = array_filter($habilidades_classe, function ($habilidade) use ($lvl) {
                             return ($habilidade["requisito_lvl"] ?: 1) == $lvl;
                         }); ?>
                         <td class="border-none">
                             <?php foreach ($habilidades_lvl as $index => $habilidade) : ?>
-                                <?php $habilidade = habilidade_default_values(array_merge($habilidade, $aprendidas[$habilidade["cod"]] ?: [])) ?>
+                                <?php $habilidade = array_merge($habilidade, $aprendidas[$habilidade["cod"]] ?: []) ?>
                                 <div>
                                     <?php Componentes\Habilidades\HabilidadeIcone::render($habilidade) ?>
                                 </div>

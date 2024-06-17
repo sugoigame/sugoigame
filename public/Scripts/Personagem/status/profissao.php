@@ -55,16 +55,7 @@ if (! $pers) {
 <?php render_personagem_sub_panel_with_img_bottom(); ?>
 
 <?php if ($pers["profissao"] == PROFISSAO_MUSICO || $pers["profissao"] == PROFISSAO_COMBATENTE) : ?>
-    <?php $skills = get_basic_skills("requisito_prof", $pers["profissao"], 3); ?>
-    <?php $pode_aprender_func = function ($pers, $skill) {
-        global $userDetails;
-        return $pers["profissao_lvl"] >= $skill["requisito_lvl"]
-            && $userDetails->tripulacao["berries"] >= $skill["requisito_berries"]
-            && $pers["profissao"] == $skill["requisito_prof"];
-    }; ?>
-    <div class="row">
-        <?php render_habilidades_tab($skills, $pers, "Profissao/aprender_skil_prof.php", $pode_aprender_func) ?>
-    </div>
+    
 <?php endif; ?>
 
 <?php if ($pers["profissao"] == PROFISSAO_MEDICO) : ?>

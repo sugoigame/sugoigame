@@ -1100,16 +1100,6 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
-                                <?php if (isset($special_effects[$pers["cod"]])) : ?>
-                                    <h4>Estado</h4>
-                                    <?php foreach ($special_effects[$pers["cod"]] as $effect) : ?>
-                                        <div class="text-center">
-                                            <?= nome_special_effect($effect["special_effect"]) ?>
-                                            (
-                                            <?= $effect["duracao"] ?>)
-                                        </div>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
 
                                 <?php if (($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]) : ?>
                                     <?php render_personagem_haki_bars($pers); ?>

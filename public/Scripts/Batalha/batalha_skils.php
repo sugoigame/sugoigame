@@ -21,7 +21,7 @@ if (! $result->count()) {
 }
 $pers = $result->fetch_array();
 
-$skills = get_all_skills($pers);
+$skills = get_todas_habilidades_pers($pers);
 
 usort($skills, function ($a, $b) {
     return $a["consumo"] - $b["consumo"];
@@ -45,10 +45,8 @@ usort($skills, function ($a, $b) {
                     <div>
                         <img src="Imagens/Skils/<?= $skill["icon"] ?>.jpg" width="15vw">
                         <?= str_replace("'", "&rsquo;", $skill["nome"]) ?>
-                        <img src="Imagens/Skils/Tipo/<?= nome_tipo_skill($skill) ?>.png" width="15vw" />
                     </div>
                     <div class="text-left clearfix">
-                        <?php render_skill_efeitos($skill, $pers) ?>
                     </div>
                 </div>
                 <div class="panel-footer">

@@ -117,57 +117,15 @@ class Combate
 
     public function apply_sangramento($id = null)
     {
-        if (! $id) {
-            $id = $this->userDetails->tripulacao["id"];
-        }
-
-        $sangrando = $this->connection->run(
-            "SELECT * FROM tb_combate_special_effect e
-			INNER JOIN tb_combate_personagens p ON e.personagem_id = p.cod
-			WHERE e.tripulacao_id = ? AND e.special_effect = ? AND p.hp > 0",
-            "ii", array($id, SPECIAL_EFFECT_SANGRAMENTO)
-        )->fetch_all_array();
-
-        foreach ($sangrando as $alvo) {
-            $nhp = max(1, $alvo["hp"] - ceil($alvo["hp_max"] * dano_special_effect(SPECIAL_EFFECT_SANGRAMENTO, $sangrando["vontade"]) / 100.0));
-            $this->connection->run("UPDATE tb_combate_personagens SET hp = ? WHERE cod = ?",
-                "ii", array($nhp, $alvo["cod"]));
-        }
     }
 
     public function apply_veneno($id = null)
     {
-        if (! $id) {
-            $id = $this->userDetails->tripulacao["id"];
-        }
-
-        $sangrando = $this->connection->run(
-            "SELECT * FROM tb_combate_special_effect e
-			INNER JOIN tb_combate_personagens p ON e.personagem_id = p.cod
-			WHERE e.tripulacao_id = ? AND e.special_effect = ? AND p.hp > 0",
-            "ii", array($id, SPECIAL_EFFECT_VENENO)
-        )->fetch_all_array();
-
-        foreach ($sangrando as $alvo) {
-            $nhp = max(1, $alvo["hp"] - ceil($alvo["hp_max"] * dano_special_effect(SPECIAL_EFFECT_VENENO, $sangrando["vontade"]) / 100.0));
-            $this->connection->run("UPDATE tb_combate_personagens SET hp = ? WHERE cod = ?",
-                "ii", array($nhp, $alvo["cod"]));
-        }
+        
     }
 
     public function remove_special_effect($personagem_combate, $habilidade)
     {
-        if ($personagem_combate["id"] == "bot") {
-            $this->connection->run("DELETE FROM tb_combate_special_effect WHERE personagem_bot_id = ? AND special_effect = ?",
-                "ii", array($personagem_combate["bot_id"], -$habilidade["special_effect"]));
-            $this->connection->run("DELETE FROM tb_combate_special_effect WHERE personagem_bot_id = ? AND special_effect = ? ORDER BY duracao DESC LIMIT 1",
-                "ii", array($personagem_combate["bot_id"], $habilidade["special_effect"]));
-        } else {
-            $this->connection->run("DELETE FROM tb_combate_special_effect WHERE personagem_id = ? AND special_effect = ?",
-                "ii", array($personagem_combate["cod"], -$habilidade["special_effect"]));
-            $this->connection->run("DELETE FROM tb_combate_special_effect WHERE personagem_id = ? AND special_effect = ? ORDER BY duracao DESC LIMIT 1",
-                "ii", array($personagem_combate["cod"], $habilidade["special_effect"]));
-        }
     }
 
     public function aplica_imunidade_special_effect($personagem_combate, $habilidade)
@@ -400,33 +358,6 @@ class Combate
 
     public function apply_special_effect(&$alvo, $habilidade)
     {
-        if ($alvo["id"] == "bot") {
-            $imune = $this->connection->run("SELECT * FROM tb_combate_special_effect WHERE personagem_bot_id = ? AND special_effect = ?",
-                "ii", array($alvo["bot_id"], -$habilidade["special_effect"]));
-            $ativo = $this->connection->run("SELECT * FROM tb_combate_special_effect WHERE personagem_bot_id = ? AND special_effect = ?",
-                "ii", array($alvo["bot_id"], $habilidade["special_effect"]));
-            if (! $imune->count() && $ativo->count() < 2) {
-                if ($habilidade["special_effect"] == SPECIAL_EFFECT_PONTO_FRACO) {
-                    $alvo["def"] = ceil($alvo["def"] * 0.5);
-                } else {
-                    $this->connection->run("INSERT INTO tb_combate_special_effect (bot_id, personagem_bot_id, special_effect, duracao, vontade) VALUE (?,?,?,?,?)",
-                        "iiiii", [$this->userDetails->combate_bot["id"], $alvo["bot_id"], intval($habilidade["special_effect"]), duracao_special_effect($habilidade["special_effect"]), $habilidade["consumo"]]);
-                }
-            }
-        } else {
-            $imune = $this->connection->run("SELECT * FROM tb_combate_special_effect WHERE personagem_id = ? AND special_effect = ?",
-                "ii", array($alvo["cod"], -$habilidade["special_effect"]));
-            $ativo = $this->connection->run("SELECT * FROM tb_combate_special_effect WHERE personagem_id = ? AND special_effect = ?",
-                "ii", array($alvo["cod"], $habilidade["special_effect"]));
-            if (! $imune->count() && $ativo->count() < 2) {
-                if ($habilidade["special_effect"] == SPECIAL_EFFECT_PONTO_FRACO) {
-                    $alvo["def"] = ceil($alvo["def"] * 0.5);
-                } else {
-                    $this->connection->run("INSERT INTO tb_combate_special_effect (combate_id, tripulacao_id, personagem_id, special_effect, duracao, vontade) VALUE (?,?,?,?,?,?)",
-                        "iiiiii", [$this->userDetails->combate_pvp["combate"], $alvo["id"], $alvo["cod"], intval($habilidade["special_effect"]), duracao_special_effect($habilidade["special_effect"]), $habilidade["consumo"]]);
-                }
-            }
-        }
     }
 
     public function aumenta_fa_esq_bloq(&$alvo, &$personagem_combate)
@@ -705,7 +636,7 @@ class Combate
         $alvo = $alvo_mira["alvo"];
 
         //sorteia uma skil
-        $habilidade = get_random_skill_with_level($alvo);
+        $habilidade = get_habilidade_aleatoria_nivel($alvo);
 
         $x = 0;
         $relatorio_afetado[$x] = $this->recebe_dano_npc($npc_stats, $habilidade, $alvo);

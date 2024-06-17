@@ -21,13 +21,14 @@ schema:
         tipo: POSITIVO | NEGATIVO; padrao POSITIVO
         tipo_alvo:
           ATACANTE | ALVO | ALIADO_MENOR_VIDA | INIMIGO_MENOR_VIDA | ALIADO_MAIOR_VIDA | INIMIGO_MAIOR_VIDA | ALIADO_ALEATORIO | INIMIGO_ALEATORIO |
-          ALIADO_COM_EFEITO_NEGATIVO | INIMIGO_COM_EFEITO_NEGATIVO | ALIADO_COM_EFEITO_POSITIVO | INIMIGO_COM_EFEITO_POSITIVO | TODOS | TODOS_ALIADOS | TODOS_IMIMIGOS
+          ALIADO_COM_EFEITO_NEGATIVO | INIMIGO_COM_EFEITO_NEGATIVO | ALIADO_COM_EFEITO_POSITIVO | INIMIGO_COM_EFEITO_POSITIVO | TODOS | TODOS_ALIADOS |
+          TODOS_IMIMIGOS | TABULEIRO
           padrao ATACANTE
         quant_alvo: padrao 1;
         duracao:
           obrigatorio; duracao zero significa que o efeito sera removido no final do turno de aplicacao; duracao negativa significa que o efeito
           é permanente durante toda a batalha
-        bonus: # obrigatorio
+        bonus:
           atr: ATRIBUTOS BASICOS >
             atk, def, pre, agl, per, des, res
             ATRIBUTOS AVANCADOS >
@@ -181,7 +182,7 @@ classes:
           passivos:
             - duracao: -1
               bonus:
-                atr: pre
+                atr: pre_porcentagem
                 valor: 0.3
       - cod: 10103
         icone: 16
@@ -197,7 +198,7 @@ classes:
             - tipo: NEGATIVO
               duracao: 3
               bonus:
-                atr: agl
+                atr: agl_porcentagem
                 valor: -0.3
       - cod: 10104
         icone: 17
@@ -219,7 +220,7 @@ classes:
                     pos_ataque:
                       - duracao: 2
                         bonus:
-                          atr: pre
+                          atr: pre_porcentagem
                           valor: 0.1
       - cod: 10105
         icone: 18
@@ -235,7 +236,7 @@ classes:
             - tipo_alvo: ATACANTE
               duracao: 0
               bonus:
-                atr: pre
+                atr: pre_porcentagem
                 valor: 0.3
       - cod: 10106
         icone: 19
@@ -257,7 +258,7 @@ classes:
                     acerto:
                       - duracao: 2
                         bonus:
-                          atr: agl
+                          atr: agl_porcentagem
                           valor: -0.1
       - cod: 10107
         icone: 20
@@ -272,7 +273,7 @@ classes:
           pre_ataque:
             - duracao: 0
               bonus:
-                atr: des
+                atr: des_porcentagem
                 valor: 0.5
   2: # Itoryu
     nome: Punho
@@ -298,7 +299,7 @@ classes:
           passivos:
             - duracao: -1
               bonus:
-                atr: pre
+                atr: pre_porcentagem
                 valor: 0.3
       - cod: 10203
         icone: 42
@@ -314,7 +315,7 @@ classes:
             - tipo: NEGATIVO
               duracao: 3
               bonus:
-                atr: agl
+                atr: agl_porcentagem
                 valor: -0.3
       - cod: 10204
         icone: 43
@@ -336,7 +337,7 @@ classes:
                     pos_ataque:
                       - duracao: 2
                         bonus:
-                          atr: pre
+                          atr: pre_porcentagem
                           valor: 0.1
       - cod: 10205
         icone: 44
@@ -352,7 +353,7 @@ classes:
             - tipo_alvo: ATACANTE
               duracao: 0
               bonus:
-                atr: pre
+                atr: pre_porcentagem
                 valor: 0.3
       - cod: 10206
         icone: 45
@@ -374,7 +375,7 @@ classes:
                     acerto:
                       - duracao: 2
                         bonus:
-                          atr: agl
+                          atr: agl_porcentagem
                           valor: -0.1
       - cod: 10207
         icone: 46
@@ -389,7 +390,7 @@ classes:
           pre_ataque:
             - duracao: 0
               bonus:
-                atr: des
+                atr: des_porcentagem
                 valor: 0.5
   3: # Itoryu
     nome: Chute
@@ -415,7 +416,7 @@ classes:
           passivos:
             - duracao: -1
               bonus:
-                atr: pre
+                atr: pre_porcentagem
                 valor: 0.3
       - cod: 10303
         icone: 23
@@ -431,7 +432,7 @@ classes:
             - tipo: NEGATIVO
               duracao: 3
               bonus:
-                atr: agl
+                atr: agl_porcentagem
                 valor: -0.3
       - cod: 10304
         icone: 24
@@ -453,7 +454,7 @@ classes:
                     pos_ataque:
                       - duracao: 2
                         bonus:
-                          atr: pre
+                          atr: pre_porcentagem
                           valor: 0.1
       - cod: 10305
         icone: 25
@@ -469,7 +470,7 @@ classes:
             - tipo_alvo: ATACANTE
               duracao: 0
               bonus:
-                atr: pre
+                atr: pre_porcentagem
                 valor: 0.3
       - cod: 10306
         icone: 26
@@ -491,7 +492,7 @@ classes:
                     acerto:
                       - duracao: 2
                         bonus:
-                          atr: agl
+                          atr: agl_porcentagem
                           valor: -0.1
       - cod: 10306
         icone: 27
@@ -506,5 +507,5 @@ classes:
           pre_ataque:
             - duracao: 0
               bonus:
-                atr: des
+                atr: des_porcentagem
                 valor: 0.5
