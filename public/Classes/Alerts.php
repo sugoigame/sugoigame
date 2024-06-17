@@ -58,27 +58,30 @@ class Alerts
         )->fetch_array()["total"];
     }
 
+    // TODO refactor
     public function has_alert_nova_habilidade_classe($pers)
     {
         global $COD_HAOSHOKU_LVL;
         return $pers["classe"] && $this->connection->run(
-            "SELECT count(*) AS total FROM tb_personagens_skil WHERE cod = ? AND tipo IN (?,?,?) AND cod_skil <> 1 AND cod_skil NOT IN (" . implode(',', $COD_HAOSHOKU_LVL) . ")",
-            "iiii", array($pers["cod"], TIPO_SKILL_ATAQUE_CLASSE, TIPO_SKILL_BUFF_CLASSE, TIPO_SKILL_PASSIVA_CLASSE))->fetch_array()["total"] < $this->_habilidades_classe_por_lvl($pers["lvl"]);
+            "SELECT count(*) AS total FROM tb_personagens_skil WHERE cod_pers = ? AND cod_skil <> 1 AND cod_skil NOT IN (" . implode(',', $COD_HAOSHOKU_LVL) . ")",
+            "i", array($pers["cod"]))->fetch_array()["total"] < $this->_habilidades_classe_por_lvl($pers["lvl"]);
     }
 
+    // TODO refactor
     public function has_alert_nova_habilidade_akuma($pers)
     {
         return $pers["akuma"] && $this->connection->run(
-            "SELECT count(*) AS total FROM tb_personagens_skil WHERE cod = ? AND tipo IN (?,?,?)",
-            "iiii", array($pers["cod"], TIPO_SKILL_ATAQUE_AKUMA, TIPO_SKILL_BUFF_AKUMA, TIPO_SKILL_PASSIVA_AKUMA))->fetch_array()["total"] < $this->_habilidades_akuma_por_lvl($pers["lvl"]);
+            "SELECT count(*) AS total FROM tb_personagens_skil WHERE cod_pers = ?",
+            "i", array($pers["cod"]))->fetch_array()["total"] < $this->_habilidades_akuma_por_lvl($pers["lvl"]);
     }
 
+    // TODO refactor
     public function has_alert_nova_habilidade_profissao($pers)
     {
         return ($pers["profissao"] == PROFISSAO_MUSICO || $pers["profissao"] == PROFISSAO_COMBATENTE)
             && $this->connection->run(
-                "SELECT count(*) AS total FROM tb_personagens_skil WHERE cod = ? AND tipo IN (?,?,?)",
-                "iiii", array($pers["cod"], TIPO_SKILL_ATAQUE_PROFISSAO, TIPO_SKILL_BUFF_PROFISSAO, TIPO_SKILL_PASSIVA_PROFISSAO))->fetch_array()["total"] < $this->_habilidades_profissao_por_lvl($pers["profissao"], $pers["profissao_lvl"]);
+                "SELECT count(*) AS total FROM tb_personagens_skil WHERE cod_pers = ?",
+                "i", array($pers["cod"]))->fetch_array()["total"] < $this->_habilidades_profissao_por_lvl($pers["profissao"], $pers["profissao_lvl"]);
     }
 
     public function has_alert_sem_equipamento($pers)

@@ -1083,8 +1083,10 @@ body {
     color: #303030;
     background-color: #f0f0f0;
 }
-body > tr,thead,tbody{
-    color: rgb(230, 222, 222) !important;
+body > tr,
+thead,
+tbody {
+    color: rgb(27, 27, 27) !important;
 }
 input,
 button,
@@ -2336,7 +2338,7 @@ pre code {
     }
 }
 table {
-    background-color: #2e3338;
+    background-color: transparent;
 }
 caption {
     padding-top: 8px;
@@ -2345,7 +2347,7 @@ caption {
     text-align: left;
 }
 th {
-    text-align: left;
+    text-align: inherit;
 }
 .table {
     width: 100%;
@@ -7311,7 +7313,7 @@ button.close {
     border-color: #1c1e22;
 }
 .table-responsive > .table {
-    background-color: #2e3338;
+    background-color: transparent;
 }
 input,
 textarea {
@@ -7640,5 +7642,3 @@ a.thumbnail.active {
 .panel-info .panel-heading {
     border-color: #000;
 }
-
-

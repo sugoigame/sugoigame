@@ -327,7 +327,8 @@ class UserDetails
         return ($this->tripulacoes = $result->fetch_all_array());
     }
 
-    public function reload_personagems(){
+    public function reload_personagems()
+    {
         $this->_load_personagens();
     }
 
@@ -1046,7 +1047,7 @@ class UserDetails
         global $COD_HAOSHOKU_LVL;
         $skils_nao_resetaveis = array_merge($COD_HAOSHOKU_LVL, array(1, 2));
 
-        $this->restaura_effects($pers, "((tipo='1' AND cod_skil NOT IN (" . implode(",", $skils_nao_resetaveis) . ")) OR tipo='2' OR tipo='3')");
+        $this->restaura_animacoes($pers, "((tipo='1' AND cod_skil NOT IN (" . implode(",", $skils_nao_resetaveis) . ")) OR tipo='2' OR tipo='3')");
 
         $this->connection->run(
             "DELETE FROM tb_personagens_skil
@@ -1058,7 +1059,7 @@ class UserDetails
     public function remove_hdr($pers)
     {
         global $COD_HAOSHOKU_LVL;
-        $this->restaura_effects($pers, "(tipo = 1 AND cod_skil IN (" . implode(',', $COD_HAOSHOKU_LVL) . "))");
+        $this->restaura_animacoes($pers, "(cod_skil IN (" . implode(',', $COD_HAOSHOKU_LVL) . "))");
 
         $this->connection->run("DELETE FROM tb_personagens_skil WHERE cod = ? AND tipo = ? AND cod_skil IN (" . implode(',', $COD_HAOSHOKU_LVL) . ")",
             "ii", array($pers["cod"], TIPO_SKILL_ATAQUE_CLASSE));
@@ -1066,7 +1067,7 @@ class UserDetails
 
     public function remove_skills_profissao($pers)
     {
-        $this->restaura_effects($pers, "(tipo IN (4,5,6))");
+        $this->restaura_animacoes($pers, "(tipo IN (4,5,6))");
 
         $this->connection->run(
             "DELETE FROM tb_personagens_skil
@@ -1075,12 +1076,12 @@ class UserDetails
         );
     }
 
-    public function restaura_effects($pers, $where)
+    public function restaura_animacoes($pers, $where)
     {
         $effects = $this->connection->run(
-            "SELECT effect, count(*) AS quant FROM tb_personagens_skil
-			WHERE cod = ? AND effect <> 'Atingir fisicamente' AND $where
-			GROUP BY effect",
+            "SELECT animacao, count(*) AS quant FROM tb_personagens_skil
+			WHERE cod = ? AND animacao <> 'Atingir fisicamente' AND $where
+			GROUP BY animacao",
             "i", array($pers["cod"]));
 
         while ($effect = $effects->fetch_array()) {

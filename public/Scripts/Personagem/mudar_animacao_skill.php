@@ -6,21 +6,20 @@ $protector->need_tripulacao();
 $pers = $protector->post_number_or_exit("pers");
 $effect = $protector->post_value_or_exit("effect");
 $cod_skil = $protector->post_number_or_exit("cod_skil");
-$tipo = $protector->post_number_or_exit("tipo");
 
-if (!$userDetails->get_pers_by_cod($pers)) {
+if (! $userDetails->get_pers_by_cod($pers)) {
     $protector->exit_error("Personagem Invalido");
 }
 
 $animacao = $connection->run("SELECT * FROM tb_tripulacao_animacoes_skills WHERE tripulacao_id = ? AND effect = ?",
     "is", array($userDetails->tripulacao["id"], $effect));
 
-if (!$animacao->count()) {
+if (! $animacao->count()) {
     $protector->exit_error("Você não possui essa animação");
 }
 
-$connection->run("UPDATE tb_personagens_skil SET effect = ? WHERE cod = ? AND cod_skil = ? AND tipo = ?",
-    "siii", array($effect, $pers, $cod_skil, $tipo));
+$connection->run("UPDATE tb_personagens_skil SET animacao = ? WHERE cod_pers = ? AND cod_skil = ?",
+    "sii", array($effect, $pers, $cod_skil));
 
 $n_quant = $animacao->fetch_array()["quant"] - 1;
 

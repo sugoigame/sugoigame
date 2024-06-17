@@ -172,7 +172,7 @@ hr {
 }
 
 table tr td {
-    text-align: left;
+    text-align: inherit;
 }
 
 .text-left {
@@ -909,6 +909,16 @@ body:fullscreen #fullscreen {
 
 .selecao_img img {
     border: 1px solid #000;
+}
+
+.habilidade-icone {
+    display: inline-block;
+    position: relative;
+}
+
+.icone-atributo {
+    border-radius: 3px;
+    background-color: #000;
 }
 
 /* theme overlay */

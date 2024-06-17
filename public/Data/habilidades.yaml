@@ -1,5 +1,10 @@
 schema:
   cod: codigo da habilidade, precisa ser unico, não podem haver duas habilidades com o mesmo código
+  nome: Nome padrao quando o personagem aprender a habilidade
+  descricao: descricao padrao quando o personagem aprender a habilidade
+  explicacao: Mensagem que vai aparecer para o jogador entender como a habilidade funciona
+  icone: padrao 1; icone padrao quando o personagem aprender a habilidade
+  animacao: padrao Atingir fisicamente; animacao padrao quando o personagem aprender a habilidade
   dano: padrao 1; multiplicador de dano em cima da formula baseada em vontade
   alcance: padrao 1; zero significa em si mesmo
   area: padrao 1; precisa ser maior ou igual a 1
@@ -17,7 +22,7 @@ schema:
         tipo_alvo:
           ATACANTE | ALVO | ALIADO_MENOR_VIDA | INIMIGO_MENOR_VIDA | ALIADO_MAIOR_VIDA | INIMIGO_MAIOR_VIDA | ALIADO_ALEATORIO | INIMIGO_ALEATORIO |
           ALIADO_COM_EFEITO_NEGATIVO | INIMIGO_COM_EFEITO_NEGATIVO | ALIADO_COM_EFEITO_POSITIVO | INIMIGO_COM_EFEITO_POSITIVO | TODOS | TODOS_ALIADOS | TODOS_IMIMIGOS
-          padrao SELF
+          padrao ATACANTE
         quant_alvo: padrao 1;
         duracao:
           obrigatorio; duracao zero significa que o efeito sera removido no final do turno de aplicacao; duracao negativa significa que o efeito
@@ -27,7 +32,7 @@ schema:
             atk, def, pre, agl, per, des, res
             ATRIBUTOS AVANCADOS >
             SANGRAMENTO(dano), VENENO(dano), IMOBILIZACAO, REMOCAO_SANGRAMENTO(cod_efeito)
-          value:
+          valor:
             pode significar coisas diferentes dependendo do atributo, atributos basicos serao incrementados ou reduzidos nessa quantidade, atributos
             avancados podem depender de estruturas mais complexas para terem seu comportamento alterado
     acerto: # array de efeitos que só são aplicados se o golpe não for esquivado nem bloqueado
@@ -39,63 +44,114 @@ schema:
       -  # repete do pre ataque
 
 padrao:
-  - # soco
-    cod: 1
+  - cod: 1
+    nome: Soco
+    descricao: Tenta acertar um soco no adversário
+    icone: 1
+    animacao: Atingir fisicamente
 haki:
   - cod: 3
+    nome: Haoshoku Haki nível 1
+    descricao:
+    icone: 900
+    animacao: Atingir fisicamente
     vontade: 2
     espera: 1
   - cod: 4
+    nome: Haoshoku Haki nível 2
+    descricao:
+    icone: 900
+    animacao: Atingir fisicamente
     requisito_lvl: 2
     vontade: 2
     area: 2
     espera: 2
   - cod: 5
+    nome: Haoshoku Haki nível 3
+    descricao:
+    icone: 900
+    animacao: Atingir fisicamente
     requisito_lvl: 3
     vontade: 2
     area: 3
     espera: 3
   - cod: 6
+    nome: Haoshoku Haki nível 4
+    descricao:
+    icone: 900
+    animacao: Atingir fisicamente
     requisito_lvl: 4
     vontade: 2
     area: 4
     espera: 4
   - cod: 7
+    nome: Haoshoku Haki nível 5
+    descricao:
+    icone: 900
+    animacao: Atingir fisicamente
     requisito_lvl: 5
     vontade: 2
     area: 5
     espera: 5
   - cod: 8
+    nome: Haoshoku Haki nível 6
+    descricao:
+    icone: 900
+    animacao: Atingir fisicamente
     requisito_lvl: 6
     vontade: 2
     area: 6
     espera: 6
   - cod: 9
+    nome: Haoshoku Haki nível 7
+    descricao:
+    icone: 900
+    animacao: Atingir fisicamente
     requisito_lvl: 7
     vontade: 2
     area: 7
     espera: 7
   - cod: 10
+    nome: Haoshoku Haki nível 8
+    descricao:
+    icone: 900
+    animacao: Atingir fisicamente
     requisito_lvl: 8
     vontade: 2
     area: 8
     espera: 8
   - cod: 11
+    nome: Haoshoku Haki nível 9
+    descricao:
+    icone: 900
+    animacao: Atingir fisicamente
     requisito_lvl: 9
     vontade: 2
     area: 9
     espera: 9
   - cod: 12
+    nome: Haoshoku Haki nível 10
+    descricao:
+    icone: 900
+    animacao: Atingir fisicamente
     requisito_lvl: 10
     vontade: 2
     area: 10
     espera: 10
   - cod: 13
+    nome: Haoshoku Haki nível 11
+    descricao:
+    icone: 900
+    animacao: Atingir fisicamente
     requisito_lvl: 11
     vontade: 2
     area: 11
     espera: 11
   - cod: 14
+    nome: Haoshoku Haki nível 12
+    descricao:
+    icone: 900
+    animacao: Atingir fisicamente
     requisito_lvl: 12
     vontade: 2
     area: 12
@@ -105,10 +161,19 @@ classes:
     nome: Ittoryu
     habilidades:
       - cod: 10101
+        icone: 14
+        nome: Nome
+        descricao: Descrição
+        explicacao: "Causa dano no alvo atingido. O dano aumenta conforme a vontade da tripulação."
         alcance: 5
+        vontade: 2
         dano: 1.1
         area: 1
       - cod: 10102
+        icone: 15
+        nome: Nome
+        descricao: Descrição
+        explicacao: "Efeito passivo: {PRE} + 30%"
         dano: 0
         alcance: 0
         requisito_lvl: 5
@@ -117,8 +182,12 @@ classes:
             - duracao: -1
               bonus:
                 atr: pre
-                value: 0.3
+                valor: 0.3
       - cod: 10103
+        icone: 16
+        nome: Nome
+        descricao: Descrição
+        explicacao: "Causa dano e aplica debuff de -30% de {AGL} por 3 turnos no alvo atingido."
         alcance: 5
         vontade: 8
         recarga: 4
@@ -129,8 +198,12 @@ classes:
               duracao: 3
               bonus:
                 atr: agl
-                value: -0.3
+                valor: -0.3
       - cod: 10104
+        icone: 17
+        nome: Nome
+        descricao: Descrição
+        explicacao: "Efeito passivo: Sempre que acertar um ataque crítico recebe um buff de +10% de {PRE} por 2 turnos"
         dano: 0
         alcance: 0
         requisito_lvl: 20
@@ -139,7 +212,7 @@ classes:
             - duracao: -1
               bonus:
                 atr: ATACANTE_ACERTO_CRITICO
-                value:
+                valor:
                   dano: 0
                   alcance: 0
                   efeitos:
@@ -147,20 +220,28 @@ classes:
                       - duracao: 2
                         bonus:
                           atr: pre
-                          value: 0.1
+                          valor: 0.1
       - cod: 10105
+        icone: 18
+        nome: Nome
+        descricao: Descrição
+        explicacao: Causa dano com {PRE} adicional de 30%
         alcance: 5
         vontade: 24
         recarga: 4
         requisito_lvl: 30
         efeitos:
-          acerto:
+          pre_ataque:
             - tipo_alvo: ATACANTE
-              duracao: 3
+              duracao: 0
               bonus:
                 atr: pre
-                value: 0.3
+                valor: 0.3
       - cod: 10106
+        icone: 19
+        nome: Nome
+        descricao: Descrição
+        explicacao: Sempre que acertar um ataque crítico, o alvo recebe um debuff de -10% de {AGL} por 2 turnos.
         dano: 0
         alcance: 0
         requisito_lvl: 40
@@ -169,7 +250,7 @@ classes:
             - duracao: -1
               bonus:
                 atr: ATACANTE_ACERTO_CRITICO
-                value:
+                valor:
                   dano: 0
                   alcance: 0
                   efeitos:
@@ -177,8 +258,12 @@ classes:
                       - duracao: 2
                         bonus:
                           atr: agl
-                          value: -0.1
-      - cod: 10106
+                          valor: -0.1
+      - cod: 10107
+        icone: 20
+        nome: Nome
+        descricao: Descrição
+        explicacao: Causa dano com {DEX} adicional de 50%
         alcance: 5
         vontade: 40
         recarga: 6
@@ -188,4 +273,238 @@ classes:
             - duracao: 0
               bonus:
                 atr: des
-                value: 0.5
+                valor: 0.5
+  2: # Itoryu
+    nome: Punho
+    habilidades:
+      - cod: 10201
+        icone: 40
+        nome: Nome
+        descricao: Descrição
+        explicacao: "Causa dano no alvo atingido. O dano aumenta conforme a vontade da tripulação."
+        alcance: 5
+        vontade: 2
+        dano: 1.1
+        area: 1
+      - cod: 10202
+        icone: 41
+        nome: Nome
+        descricao: Descrição
+        explicacao: "Efeito passivo: {PRE} + 30%"
+        dano: 0
+        alcance: 0
+        requisito_lvl: 5
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: pre
+                valor: 0.3
+      - cod: 10203
+        icone: 42
+        nome: Nome
+        descricao: Descrição
+        explicacao: "Causa dano e aplica debuff de -30% de {AGL} por 3 turnos no alvo atingido."
+        alcance: 5
+        vontade: 8
+        recarga: 4
+        requisito_lvl: 10
+        efeitos:
+          acerto:
+            - tipo: NEGATIVO
+              duracao: 3
+              bonus:
+                atr: agl
+                valor: -0.3
+      - cod: 10204
+        icone: 43
+        nome: Nome
+        descricao: Descrição
+        explicacao: "Efeito passivo: Sempre que acertar um ataque crítico recebe um buff de +10% de {PRE} por 2 turnos"
+        dano: 0
+        alcance: 0
+        requisito_lvl: 20
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: ATACANTE_ACERTO_CRITICO
+                valor:
+                  dano: 0
+                  alcance: 0
+                  efeitos:
+                    pos_ataque:
+                      - duracao: 2
+                        bonus:
+                          atr: pre
+                          valor: 0.1
+      - cod: 10205
+        icone: 44
+        nome: Nome
+        descricao: Descrição
+        explicacao: Causa dano com {PRE} adicional de 30%
+        alcance: 5
+        vontade: 24
+        recarga: 4
+        requisito_lvl: 30
+        efeitos:
+          pre_ataque:
+            - tipo_alvo: ATACANTE
+              duracao: 0
+              bonus:
+                atr: pre
+                valor: 0.3
+      - cod: 10206
+        icone: 45
+        nome: Nome
+        descricao: Descrição
+        explicacao: Sempre que acertar um ataque crítico, o alvo recebe um debuff de -10% de {AGL} por 2 turnos.
+        dano: 0
+        alcance: 0
+        requisito_lvl: 40
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: ATACANTE_ACERTO_CRITICO
+                valor:
+                  dano: 0
+                  alcance: 0
+                  efeitos:
+                    acerto:
+                      - duracao: 2
+                        bonus:
+                          atr: agl
+                          valor: -0.1
+      - cod: 10207
+        icone: 46
+        nome: Nome
+        descricao: Descrição
+        explicacao: Causa dano com {DEX} adicional de 50%
+        alcance: 5
+        vontade: 40
+        recarga: 6
+        requisito_lvl: 50
+        efeitos:
+          pre_ataque:
+            - duracao: 0
+              bonus:
+                atr: des
+                valor: 0.5
+  3: # Itoryu
+    nome: Chute
+    habilidades:
+      - cod: 10301
+        icone: 21
+        nome: Nome
+        descricao: Descrição
+        explicacao: "Causa dano no alvo atingido. O dano aumenta conforme a vontade da tripulação."
+        alcance: 5
+        vontade: 2
+        dano: 1.1
+        area: 1
+      - cod: 10302
+        icone: 21
+        nome: Nome
+        descricao: Descrição
+        explicacao: "Efeito passivo: {PRE} + 30%"
+        dano: 0
+        alcance: 0
+        requisito_lvl: 5
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: pre
+                valor: 0.3
+      - cod: 10303
+        icone: 23
+        nome: Nome
+        descricao: Descrição
+        explicacao: "Causa dano e aplica debuff de -30% de {AGL} por 3 turnos no alvo atingido."
+        alcance: 5
+        vontade: 8
+        recarga: 4
+        requisito_lvl: 10
+        efeitos:
+          acerto:
+            - tipo: NEGATIVO
+              duracao: 3
+              bonus:
+                atr: agl
+                valor: -0.3
+      - cod: 10304
+        icone: 24
+        nome: Nome
+        descricao: Descrição
+        explicacao: "Efeito passivo: Sempre que acertar um ataque crítico recebe um buff de +10% de {PRE} por 2 turnos"
+        dano: 0
+        alcance: 0
+        requisito_lvl: 20
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: ATACANTE_ACERTO_CRITICO
+                valor:
+                  dano: 0
+                  alcance: 0
+                  efeitos:
+                    pos_ataque:
+                      - duracao: 2
+                        bonus:
+                          atr: pre
+                          valor: 0.1
+      - cod: 10305
+        icone: 25
+        nome: Nome
+        descricao: Descrição
+        explicacao: Causa dano com {PRE} adicional de 30%
+        alcance: 5
+        vontade: 24
+        recarga: 4
+        requisito_lvl: 30
+        efeitos:
+          pre_ataque:
+            - tipo_alvo: ATACANTE
+              duracao: 0
+              bonus:
+                atr: pre
+                valor: 0.3
+      - cod: 10306
+        icone: 26
+        nome: Nome
+        descricao: Descrição
+        explicacao: Sempre que acertar um ataque crítico, o alvo recebe um debuff de -10% de {AGL} por 2 turnos.
+        dano: 0
+        alcance: 0
+        requisito_lvl: 40
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: ATACANTE_ACERTO_CRITICO
+                valor:
+                  dano: 0
+                  alcance: 0
+                  efeitos:
+                    acerto:
+                      - duracao: 2
+                        bonus:
+                          atr: agl
+                          valor: -0.1
+      - cod: 10306
+        icone: 27
+        nome: Nome
+        descricao: Descrição
+        explicacao: Causa dano com {DEX} adicional de 50%
+        alcance: 5
+        vontade: 40
+        recarga: 6
+        requisito_lvl: 50
+        efeitos:
+          pre_ataque:
+            - duracao: 0
+              bonus:
+                atr: des
+                valor: 0.5

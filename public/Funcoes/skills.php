@@ -1,5 +1,63 @@
 <?php
 
+function habilidade_default_values($habilidade)
+{
+    $habilidade["icone"] = $habilidade["icone"] ?: 1;
+    $habilidade["animacao"] = $habilidade["animacao"] ?: "Atingir fisicamente";
+    $habilidade["dano"] = $habilidade["dano"] ?: 1;
+    $habilidade["alcance"] = $habilidade["alcance"] ?: 1;
+    $habilidade["area"] = $habilidade["area"] ?: 1;
+    $habilidade["vontade"] = $habilidade["vontade"] ?: 1;
+    $habilidade["recarga"] = $habilidade["recarga"] ?: 0;
+    $habilidade["recarga_universal"] = $habilidade["recarga_universal"] ?: false;
+    $habilidade["requisito_lvl"] = $habilidade["requisito_lvl"] ?: 1;
+
+    if (isset($habilidade["efeitos"])) {
+        if (isset($habilidade["efeitos"]["pre_ataque"])) {
+            foreach ($habilidade["efeitos"]["pre_ataque"] as $index => $efeito) {
+                $habilidade["efeitos"]["pre_ataque"][$index] = efeito_default_values($efeito);
+            }
+        }
+        if (isset($habilidade["efeitos"]["acerto"])) {
+            foreach ($habilidade["efeitos"]["acerto"] as $index => $efeito) {
+                $habilidade["efeitos"]["acerto"][$index] = efeito_default_values($efeito, TIPO_ALVO_EFEITO_ALVO);
+            }
+        }
+        if (isset($habilidade["efeitos"]["pos_ataque"])) {
+            foreach ($habilidade["efeitos"]["pos_ataque"] as $index => $efeito) {
+                $habilidade["efeitos"]["pos_ataque"][$index] = efeito_default_values($efeito);
+            }
+        }
+        if (isset($habilidade["efeitos"]["passivos"])) {
+            foreach ($habilidade["efeitos"]["passivos"] as $index => $efeito) {
+                $habilidade["efeitos"]["passivos"][$index] = efeito_default_values($efeito);
+            }
+        }
+    }
+    return $habilidade;
+}
+
+function efeito_default_values($efeito, $tipo_alvo_padrao = TIPO_ALVO_EFEITO_ATACANTE)
+{
+
+    $efeito["tipo"] = $efeito["tipo"] ?: TIPO_EFEITO_POSITIVO;
+    $efeito["tipo_alvo"] = $efeito["tipo_alvo"] ?: $tipo_alvo_padrao;
+    $efeito["quant_alvo"] = $efeito["quant_alvo"] ?: 1;
+
+    if (is_efeito_valor_habilidade($efeito["bonus"]["atr"])) {
+        $efeito["bonus"]["valor"] = habilidade_default_values($efeito["bonus"]["valor"]);
+    }
+    return $efeito;
+}
+
+function is_efeito_valor_habilidade($atributo)
+{
+    if ($atributo == ATRIBUTO_ATACANTE_ACERTO_CRITICO) {
+        return true;
+    }
+    return false;
+}
+
 function get_skill_table($tipo)
 {
     switch ($tipo) {
@@ -61,8 +119,7 @@ function has_animacao($skill)
 function is_editavel($skill)
 {
     global $COD_HAOSHOKU_LVL;
-    return ($skill["tipo"] != TIPO_SKILL_ATAQUE_CLASSE || $skill["cod_skil"] != 1)
-        && ($skill["tipo"] != TIPO_SKILL_ATAQUE_CLASSE || ! in_array($skill["cod_skil"], $COD_HAOSHOKU_LVL));
+    return $skill["cod_skil"] != 1 && ! in_array($skill["cod_skil"], $COD_HAOSHOKU_LVL);
 }
 
 function nome_tipo_skill($skill)
@@ -243,34 +300,7 @@ function aprende_habilidade_random($pers, $cod_skill, $tipo_skill)
         "iiissi", array($pers["cod"], $cod_skill, $tipo_skill, $habilidade["nome"], $habilidade["descricao"], $icon));
 }
 ?>
-<?php function render_habilidades_classe_tab($skills, $pers, $form_url, $pode_aprender_func, $lvls = array(1, 5, 10, 20, 30, 40, 50), $categorias = 3)
-{ ?>
-    <?php global $connection; ?>
-    <?php $categorias_size = [1 => 12, 2 => 6, 3 => 4, 4 => 3] ?>
-    <?php foreach ($lvls as $linha => $lvl) : ?>
-        <div class="panel panel-default p0">
-            <div class="panel-heading">
-                Habilidades de Nível
-                <?= $lvl ?>
-            </div>
-            <div class="row panel-body py0">
-                <?php $aprendidas = array(
-                    1 => $connection->run("SELECT * FROM tb_personagens_skil WHERE cod = ? AND cod_skil = ? AND tipo = ?",
-                        "iii", array($pers["cod"], $skills[1][$linha]["cod_skil"], $skills[1][$linha]["tiponum"]))->fetch_array(),
-                    2 => $connection->run("SELECT * FROM tb_personagens_skil WHERE cod = ? AND cod_skil = ? AND tipo = ?",
-                        "iii", array($pers["cod"], $skills[2][$linha]["cod_skil"], $skills[2][$linha]["tiponum"]))->fetch_array(),
-                    3 => $connection->run("SELECT * FROM tb_personagens_skil WHERE cod = ? AND cod_skil = ? AND tipo = ?",
-                        "iii", array($pers["cod"], $skills[3][$linha]["cod_skil"], $skills[3][$linha]["tiponum"]))->fetch_array()
-                ); ?>
-                <?php for ($categoria = 1; $categoria <= $categorias; $categoria++) : ?>
-                    <div class="col-xs-<?= $categorias_size[$categorias] ?> p0">
-                        <?php render_one_skill_info($skills[$categoria][$linha], $pers, $form_url, $pode_aprender_func, $aprendidas, false) ?>
-                    </div>
-                <?php endfor; ?>
-            </div>
-        </div>
-    <?php endforeach; ?>
-<?php } ?>
+
 <?php function render_one_skill_info($skill, $pers, $form_url, $pode_aprender_func, $aprendidas = [], $requisitos = true)
 { ?>
     <?php
