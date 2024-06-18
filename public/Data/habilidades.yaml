@@ -18,6 +18,7 @@ schema:
   efeitos: # efeitos da habilidade
     pre_ataque: # array de efeitos aplicados com 100% de chance antes de calcular o hit
       - cod: gerado pelo jogo no momento em que o efeito e aplicado
+        explicacao: Mensagem que vai aparecer para o jogador entender como o efeito funciona
         tipo: POSITIVO | NEGATIVO; padrao POSITIVO
         tipo_alvo:
           ATACANTE | ALVO | ALIADO_MENOR_VIDA | INIMIGO_MENOR_VIDA | ALIADO_MAIOR_VIDA | INIMIGO_MAIOR_VIDA | ALIADO_ALEATORIO | INIMIGO_ALEATORIO |
@@ -196,6 +197,7 @@ classes:
         efeitos:
           acerto:
             - tipo: NEGATIVO
+              explicacao: -30% de {AGL}
               duracao: 3
               bonus:
                 atr: agl_porcentagem
@@ -234,6 +236,7 @@ classes:
         efeitos:
           pre_ataque:
             - tipo_alvo: ATACANTE
+              explicacao: "{PRE} adicional de 30%"
               duracao: 0
               bonus:
                 atr: pre_porcentagem
@@ -272,6 +275,7 @@ classes:
         efeitos:
           pre_ataque:
             - duracao: 0
+              explicacao: "{DEX} adicional de 50%"
               bonus:
                 atr: des_porcentagem
                 valor: 0.5

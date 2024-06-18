@@ -59,7 +59,7 @@ function habilidade_default_values($habilidade)
 {
     $habilidade["icone"] = $habilidade["icone"] ?: 1;
     $habilidade["animacao"] = $habilidade["animacao"] ?: "Atingir fisicamente";
-    $habilidade["dano"] = $habilidade["dano"] ?: 1;
+    $habilidade["dano"] = isset($habilidade["dano"]) ? $habilidade["dano"] : 1;
     $habilidade["alcance"] = $habilidade["alcance"] ?: 1;
     $habilidade["area"] = $habilidade["area"] ?: 1;
     $habilidade["vontade"] = $habilidade["vontade"] ?: 1;
@@ -70,34 +70,34 @@ function habilidade_default_values($habilidade)
     if (isset($habilidade["efeitos"])) {
         if (isset($habilidade["efeitos"]["pre_ataque"])) {
             foreach ($habilidade["efeitos"]["pre_ataque"] as $index => $efeito) {
-                $habilidade["efeitos"]["pre_ataque"][$index] = efeito_default_values($efeito);
+                $habilidade["efeitos"]["pre_ataque"][$index] = efeito_default_values($habilidade, $efeito);
             }
         }
         if (isset($habilidade["efeitos"]["acerto"])) {
             foreach ($habilidade["efeitos"]["acerto"] as $index => $efeito) {
-                $habilidade["efeitos"]["acerto"][$index] = efeito_default_values($efeito, TIPO_ALVO_EFEITO_ALVO);
+                $habilidade["efeitos"]["acerto"][$index] = efeito_default_values($habilidade, $efeito, TIPO_ALVO_EFEITO_ALVO);
             }
         }
         if (isset($habilidade["efeitos"]["pos_ataque"])) {
             foreach ($habilidade["efeitos"]["pos_ataque"] as $index => $efeito) {
-                $habilidade["efeitos"]["pos_ataque"][$index] = efeito_default_values($efeito);
+                $habilidade["efeitos"]["pos_ataque"][$index] = efeito_default_values($habilidade, $efeito);
             }
         }
         if (isset($habilidade["efeitos"]["passivos"])) {
             foreach ($habilidade["efeitos"]["passivos"] as $index => $efeito) {
-                $habilidade["efeitos"]["passivos"][$index] = efeito_default_values($efeito);
+                $habilidade["efeitos"]["passivos"][$index] = efeito_default_values($habilidade, $efeito);
             }
         }
     }
     return $habilidade;
 }
 
-function efeito_default_values($efeito, $tipo_alvo_padrao = TIPO_ALVO_EFEITO_ATACANTE)
+function efeito_default_values($habilidade, $efeito, $tipo_alvo_padrao = TIPO_ALVO_EFEITO_ATACANTE)
 {
-
     $efeito["tipo"] = $efeito["tipo"] ?: TIPO_EFEITO_POSITIVO;
     $efeito["tipo_alvo"] = $efeito["tipo_alvo"] ?: $tipo_alvo_padrao;
     $efeito["quant_alvo"] = $efeito["quant_alvo"] ?: 1;
+    $efeito["explicacao"] = $efeito["explicacao"] ?: $habilidade["explicacao"];
 
     if (is_efeito_valor_habilidade($efeito["bonus"]["atr"])) {
         $efeito["bonus"]["valor"] = habilidade_default_values($efeito["bonus"]["valor"]);
@@ -111,6 +111,11 @@ function is_efeito_valor_habilidade($atributo)
         return true;
     }
     return false;
+}
+
+function is_usavel_batalha($habilidade)
+{
+    return $habilidade["dano"] != 0 || isset($habilidade["efeitos"]["pre_ataque"]) || isset($habilidade["efeitos"]["acerto"]) || isset($habilidade["efeitos"]["pos_ataque"]);
 }
 
 function get_skill_table($tipo)

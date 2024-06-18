@@ -21,98 +21,43 @@ if (! $result->count()) {
 }
 $pers = $result->fetch_array();
 
-$skills = get_todas_habilidades_pers($pers);
+$habilidades = get_todas_habilidades_pers($pers);
 
-usort($skills, function ($a, $b) {
-    return $a["consumo"] - $b["consumo"];
-});
+$skill_espera = $connection->run(
+    "SELECT *
+     FROM tb_combate_skil_espera
+     WHERE cod = ?",
+    "i", array($cod)
+)->fetch_all_array();
 
 ?>
 <div class="row">
-    <?php foreach ($skills as $skill) : ?>
-        <?php
-        $result = $connection->run(
-            "SELECT *
-             FROM tb_combate_skil_espera
-			 WHERE cod = ? AND cod_skil = ? AND tipo = ?",
-            "iii", array($cod, $skill["cod_skil"], $skill["tipo"])
-        );
-        $espera = $result->count() ? $result->fetch_array() : array("espera" => 0);
-        ?>
-        <div class="col-md-2 col-sm-3 col-xs-4 p0 h-100">
-            <div class="panel panel-default m0 h-100">
-                <div class="panel-body">
-                    <div>
-                        <img src="Imagens/Skils/<?= $skill["icon"] ?>.jpg" width="15vw">
-                        <?= str_replace("'", "&rsquo;", $skill["nome"]) ?>
-                    </div>
-                    <div class="text-left clearfix">
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    <?php if ($espera["espera"]) : ?>
-                        <p>
-                            <?= $espera["espera"] ?> turno(s)
-                        </p>
-                    <?php elseif ($pers["mp"] < $skill["consumo"]) : ?>
-                        <p>Vontade insuficiente</p>
-                    <?php elseif (! $espera["espera"] && $pers["mp"] >= $skill["consumo"]) : ?>
-                        <button class="btn btn-success" data-dismiss="modal"
-                            onclick="usaSkil('<?= $skill["cod_skil"]; ?>','<?= $pers["cod"]; ?>','<?= $skill["alcance"]; ?>', '<?= $skill["tipo"]; ?>','<?= $skill["area"]; ?>')">
-                            Usar
-                        </button>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
-    <?php if ($pers["profissao"] == PROFISSAO_MEDICO) : ?>
-
-        <?php $items = $connection->run(
-            "SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=?",
-            "ii", [$userDetails->tripulacao["id"], TIPO_ITEM_REMEDIO])
-            ->fetch_all_array(); ?>
-        <?php foreach ($items as $key => $item) {
-            $items[$key] = array_merge($item, MapLoader::find("remedios", ["cod_remedio" => $item["cod_item"]]));
-        } ?>
-        <?php foreach ($items as $item) : ?>
-            <?php
-            $result = $connection->run(
-                "SELECT *
-                 FROM tb_combate_skil_espera
-                 WHERE id = ? AND tipo = ?",
-                "ii", array($userDetails->tripulacao["id"], 10)
-            );
-            $espera = $result->count() ? $result->fetch_array() : array("espera" => 0);
-            $consumo = ($item["requisito_lvl"] * 4)
-                ?>
-
-            <div class="col-md-2 col-sm-3 col-xs-4 p0 h-100">
+    <?php foreach ($habilidades as $habilidade) : ?>
+        <?php if (is_usavel_batalha($habilidade)) : ?>
+            <?php $espera = array_find($skill_espera, ["cod_skil" => $habilidade["cod"]]) ?: []; ?>
+            <div class="col-md-2 col-sm-2 col-xs-2 p0 h-100">
                 <div class="panel panel-default m0 h-100">
                     <div class="panel-body">
-                        <?= info_item($item, $item, false, false, false) ?>
-                    </div>
-                    <div class="panel-footer">
                         <div>
-                            <?php if ($espera["espera"]) : ?>
-                                <div>
+                            <?php Componentes\Habilidades\HabilidadeIcone::render($habilidade) ?>
+                        </div>
+                        <div>
+                            <?php if (isset($espera["espera"])) : ?>
+                                <p>
                                     <?= $espera["espera"] ?> turno(s)
-                                </div>
-                            <?php elseif ($pers["profissao_lvl"] < $item["requisito_lvl"]) : ?>
-                                <div>Nível Baixo</div>
-                            <?php elseif ($pers["mp"] < $consumo) : ?>
-                                <div>Vontade insuficiente</div>
-                            <?php elseif (! $espera["espera"] && $pers["mp"] >= $consumo && $pers["profissao_lvl"] >= $item["requisito_lvl"]) : ?>
+                                </p>
+                            <?php elseif ($pers["mp"] < $habilidade["vontade"]) : ?>
+                                <p>Vontade insuficiente</p>
+                            <?php elseif (! $espera["espera"] && $pers["mp"] >= $habilidade["vontade"]) : ?>
                                 <button class="btn btn-success" data-dismiss="modal"
-                                    onclick="usaSkil('<?= $item["cod_remedio"]; ?>','<?= $pers["cod"]; ?>','1', '10','1')">
+                                    onclick="usaSkil('<?= $habilidade["cod"]; ?>','<?= $pers["cod"]; ?>','<?= $habilidade["alcance"]; ?>', '1','<?= $habilidade["area"]; ?>')">
                                     Usar
                                 </button>
                             <?php endif; ?>
                         </div>
                     </div>
                 </div>
-
             </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
 </div>

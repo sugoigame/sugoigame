@@ -3060,5 +3060,10 @@ ALTER TABLE tb_personagens_skil MODIFY COLUMN cod_skil int(4) unsigned NOT NULL;
 ALTER TABLE tb_personagens_skil CHANGE icon icone int unsigned DEFAULT 1 NOT NULL;
 ALTER TABLE tb_personagens_skil CHANGE cod cod_pers int(6) unsigned zerofill NOT NULL;
 CREATE UNIQUE INDEX tb_personagens_skil_cod_IDX USING BTREE ON tb_personagens_skil (cod,cod_skil);
+ALTER TABLE tb_combate_skil_espera ADD CONSTRAINT tb_combate_skil_espera_unique UNIQUE KEY (cod,cod_skil,id);
+ALTER TABLE tb_combate_skil_espera DROP PRIMARY KEY;
+ALTER TABLE tb_combate_skil_espera DROP COLUMN tipo;
+ALTER TABLE tb_combate_skil_espera ADD CONSTRAINT tb_combate_skil_espera_pk PRIMARY KEY (cod,cod_skil);
+
 
 SET FOREIGN_KEY_CHECKS=1;

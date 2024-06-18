@@ -1046,6 +1046,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
         $id_blue = $userDetails->tripulacao["id"];
     } ?>
     <?php foreach ($personagens_combate as $pers) : ?>
+        <?php $info_avancado = ($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]; ?>
         <?php if ($pers["hp"]) : ?>
             <?php $pers["id"] = $pers["tripulacao_id"]; ?>
             <div class="personagem-info container hidden" id="personagem-info-<?= $pers["cod"] ?>">
@@ -1059,7 +1060,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                             <div class="col-xs-6" style="width: 100%">
                                 <?= big_pers_skin($pers["img"], $pers["skin_c"], isset($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="60%"') ?>
                                 <br />
-                                <?php if (($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]) : ?>
+                                <?php if ($info_avancado) : ?>
                                     <?php if ($pers["akuma"]) : ?>
                                         <div>
                                             Akuma no Mi:
@@ -1088,20 +1089,16 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                 <?php render_personagem_hp_bar($pers); ?>
                             </div>
                             <div class="col-xs-6" style="width: 100%">
-                                <?php if (isset($buffs[$pers["cod"]])) : ?>
+                                <?php if (isset($pers["efeitos"])) : ?>
                                     <h4>Buffs</h4>
-                                    <?php foreach ($buffs[$pers["cod"]] as $buff) : ?>
+                                    <?php foreach ($pers["efeitos"] as $efeito) : ?>
                                         <div class="text-center">
-                                            <img class="buff-atributo-icon" src="Imagens/Icones/<?= nome_atributo_img($buff["atr"]) ?>.png"
-                                                width="20vw">
-                                            <?= $buff["efeito"] > 0 ? "+" : "" ?>
-                                            <?= $buff["efeito"]; ?>
-                                            <?= "(" . $buff["espera"] . ")" ?>
+                                            <?= Componentes\Habilidades\HabilidadeDescricao::formata_explicacao($efeito["explicacao"]); ?>
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
 
-                                <?php if (($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]) : ?>
+                                <?php if ($info_avancado) : ?>
                                     <?php render_personagem_haki_bars($pers); ?>
                                     <?php render_row_atributo("atk", "Ataque", $pers); ?>
                                     <?php render_row_atributo("def", "Defesa", $pers); ?>
