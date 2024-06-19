@@ -23,17 +23,20 @@ function get_todas_habilidades_pers($pers)
 
     $habilidades = DataLoader::load("habilidades");
 
-    $habilidades_pers = $habilidades["padrao"];
+    $habilidades_pers = habilidades_default_values($habilidades["padrao"]);
 
     if ($pers["classe"]) {
-        $habilidades_pers = array_merge($habilidades_pers, $habilidades["classes"][$pers["classe"]]["habilidades"]);
+        $habilidades_pers = array_merge($habilidades_pers, habilidades_default_values(
+            array_filter($habilidades["classes"][$pers["classe"]]["habilidades"], function ($habilidade) use ($pers) {
+                return $habilidade["requisito_lvl"] <= $pers["lvl"];
+            })));
     }
     if ($pers["haki_hdr"]) {
-        $habilidades_pers[] = array_find($habilidades["haki"], ["cod" => $COD_HAOSHOKU_LVL[$pers["haki_hdr"]]]);
+        $habilidades_pers[] = habilidade_default_values(array_find($habilidades["haki"], ["cod" => $COD_HAOSHOKU_LVL[$pers["haki_hdr"]]]));
     }
 
     foreach ($habilidades_pers as $key => $habilidade) {
-        $habilidades_pers[$key] = array_merge(habilidade_default_values($habilidade), array_find($habilidades_db, ["cod_skil" => $habilidade["cod"]]) ?: []);
+        $habilidades_pers[$key] = array_merge($habilidade, array_find($habilidades_db, ["cod_skil" => $habilidade["cod"]]) ?: []);
     }
 
     usort($habilidades_pers, function ($a, $b) {

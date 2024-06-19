@@ -1130,7 +1130,7 @@ class UserDetails
                 "goal" => "Complete mais uma missão na ilha",
                 "link" => "missoes",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [SISTEMA_ACADEMIA],
+                "unlock" => [SISTEMA_VISAO_GERAL_TRIPULACAO],
                 "next" => 3,
                 "check_progress" => function () use ($primeira_ilha) {
                     return check_progress_missoes_realizadas($primeira_ilha, 2);
@@ -1138,9 +1138,9 @@ class UserDetails
             ),
             3 => array(
                 "goal" => "Escolha a classe do capitão",
-                "link" => "academia",
+                "link" => "status&nav=classe",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [SISTEMA_VISAO_GERAL_TRIPULACAO],
+                "unlock" => [],
                 "next" => 4,
                 "check_progress" => function () {
                     return check_progress_personagem_com_classe($this->capitao);
@@ -1157,16 +1157,6 @@ class UserDetails
                 }
             ),
             5 => array(
-                "goal" => "Escolha uma habilidade para o capitão",
-                "link" => "academia",
-                "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [],
-                "next" => 6,
-                "check_progress" => function () {
-                    return check_progress_personagem_com_habilidade($this->capitao["cod"]);
-                }
-            ),
-            6 => array(
                 "goal" => "Complete mais uma missão na ilha",
                 "link" => "missoes",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
@@ -1208,7 +1198,7 @@ class UserDetails
             ),
             11 => array(
                 "goal" => "Escolha a classe do novo tripulante",
-                "link" => "academia",
+                "link" => "status&nav=classe",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 12,
@@ -1227,16 +1217,6 @@ class UserDetails
                 }
             ),
             13 => array(
-                "goal" => "Escolha uma habilidade para o novo tripulante",
-                "link" => "academia",
-                "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [],
-                "next" => 14,
-                "check_progress" => function () {
-                    return check_progress_personagem_com_habilidade($this->personagens[1]["cod"]);
-                }
-            ),
-            14 => array(
                 "goal" => "Recrute mais um tripulante",
                 "link" => "recrutar",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
@@ -1248,7 +1228,7 @@ class UserDetails
             ),
             15 => array(
                 "goal" => "Escolha a classe do novo tripulante",
-                "link" => "academia",
+                "link" => "status&nav=classe",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 16,
@@ -1267,16 +1247,6 @@ class UserDetails
                 }
             ),
             17 => array(
-                "goal" => "Escolha uma habilidade para o novo tripulante",
-                "link" => "academia",
-                "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [],
-                "next" => 18,
-                "check_progress" => function () {
-                    return check_progress_personagem_com_habilidade($this->personagens[2]["cod"]);
-                }
-            ),
-            18 => array(
                 "goal" => "Complete todas as missões da ilha",
                 "link" => "missoes",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
