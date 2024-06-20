@@ -235,6 +235,7 @@ function get_pers_in_combate($id)
     global $connection;
     return $connection->run(
         "SELECT
+        pers.cod as cod_pers,
         pers.id AS id,
         pers.id AS tripulacao_id,
         pers.nome AS nome,
@@ -271,7 +272,8 @@ function get_pers_in_combate($id)
         cbtpers.con AS con,
         cbtpers.vit AS vit,
         cbtpers.fa_ganha AS fa_ganha,
-        usr.cod_personagem AS cod_capitao
+        usr.cod_personagem AS cod_capitao,
+        cbtpers.efeitos as efeitos
         FROM tb_combate_personagens cbtpers
         INNER JOIN tb_personagens pers ON cbtpers.cod = pers.cod
         INNER JOIN tb_usuarios usr ON usr.id = pers.id
@@ -1093,7 +1095,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                     <h4>Buffs</h4>
                                     <?php foreach ($pers["efeitos"] as $efeito) : ?>
                                         <div class="text-center">
-                                            <?= Componentes\Habilidades\HabilidadeDescricao::formata_explicacao($efeito["explicacao"]); ?>
+                                            <?= Componentes\Habilidades\HabilidadeExplicacao::render($efeito["explicacao"]); ?>
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>

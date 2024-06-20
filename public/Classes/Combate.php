@@ -49,13 +49,9 @@ class Combate
     {
         if ($personagem_combate) {
             $this->aplica_buffs($personagem_combate);
-            $this->connection->run("UPDATE tb_personagens SET maestria = maestria + 1 WHERE cod = ?",
-                "i", array($personagem_combate["cod"]));
         }
 
         $this->remove_buffs();
-
-        $this->remove_special_effects();
 
         $this->remove_espera();
 
@@ -77,24 +73,11 @@ class Combate
         } else if ($this->userDetails->combate_bot) {
             $this->muda_vez_bot();
         }
-
-        if ($this->has_special_effect($habilidade)) {
-            if ($habilidade["special_target"] == SPECIAL_TARGET_SELF) {
-                if ($habilidade["special_apply_type"] == SPECIAL_APPLY_TYPE_REMOVE) {
-                    $this->remove_special_effect($personagem_combate, $habilidade);
-                    $this->aplica_imunidade_special_effect($personagem_combate, $habilidade);
-                } else {
-                    $this->apply_special_effect($personagem_combate, $habilidade);
-                }
-            }
-        }
     }
 
     public function pos_ataque()
     {
-        $this->apply_sangramento();
-        $this->apply_veneno();
-        //$this->aplly_fadiga();
+
     }
 
     public function aplly_fadiga()
@@ -115,28 +98,9 @@ class Combate
         }
     }
 
-    public function apply_sangramento($id = null)
-    {
-    }
-
-    public function apply_veneno($id = null)
-    {
-        
-    }
-
-    public function remove_special_effect($personagem_combate, $habilidade)
-    {
-    }
 
     public function aplica_imunidade_special_effect($personagem_combate, $habilidade)
     {
-        if ($personagem_combate["id"] == "bot") {
-            $this->connection->run("INSERT INTO tb_combate_special_effect (bot_id, personagem_bot_id, special_effect, duracao, vontade) VALUE (?,?,?,?, ?)",
-                "iiiii", array($this->userDetails->combate_bot["id"], $personagem_combate["bot_id"], -$habilidade["special_effect"], 1, $habilidade["consumo"]));
-        } else {
-            $this->connection->run("INSERT INTO tb_combate_special_effect (combate_id, tripulacao_id, personagem_id, special_effect, duracao, vontade) VALUE (?,?,?,?,?,?)",
-                "iiiiii", array($this->userDetails->combate_pvp["combate"], $this->userDetails->tripulacao["id"], $personagem_combate["cod"], -$habilidade["special_effect"], 1, $habilidade["consumo"]));
-        }
     }
 
     public function has_special_effect($habilidade)
@@ -174,16 +138,6 @@ class Combate
         $relatorio_afetado["img"] = $alvo["img"];
         $relatorio_afetado["skin_r"] = $alvo["skin_r"];
 
-        if (! isset($alvo["obstaculo"]) && $this->has_special_effect($habilidade)) {
-            if ($habilidade["special_target"] == SPECIAL_TARGET_TARGET) {
-                if ($habilidade["special_apply_type"] == SPECIAL_APPLY_TYPE_REMOVE) {
-                    $this->remove_special_effect($alvo, $habilidade);
-                    $this->aplica_imunidade_special_effect($alvo, $habilidade);
-                } elseif ($habilidade["special_effect"] == SPECIAL_EFFECT_PONTO_FRACO) {
-                    $this->apply_special_effect($alvo, $habilidade);
-                }
-            }
-        }
 
         if ($tipo_skil == TIPO_SKILL_ATAQUE_CLASSE
             || $tipo_skil == TIPO_SKILL_ATAQUE_PROFISSAO
@@ -200,17 +154,6 @@ class Combate
                     $this->aumenta_fa_esq_bloq($alvo, $personagem_combate);
                 }
             } else {
-                if (! isset($alvo["obstaculo"]) && $this->has_special_effect($habilidade)) {
-                    if ($habilidade["special_target"] == SPECIAL_TARGET_TARGET) {
-                        if ($habilidade["special_apply_type"] == SPECIAL_APPLY_TYPE_APPLY
-                            && $habilidade["special_effect"] != SPECIAL_EFFECT_PONTO_FRACO
-                            && ! $resultado["bloqueou"]
-                        ) {
-                            $this->apply_special_effect($alvo, $habilidade);
-                        }
-                    }
-                }
-
                 if ($resultado["chance_esquiva"] - $alvo["haki_esq"] < 40
                     && $this->vale_fa($alvo)) {
                     $this->aumenta_fa_acerto_sem_agl($personagem_combate, $alvo);
@@ -248,32 +191,22 @@ class Combate
                 //novo hp do alvo
                 $nhp = max(0, $alvo["hp"] - $dano);
 
-                if (! isset($alvo["obstaculo"])) {
-                    if ($alvo["id"] == "bot") {
-                        $this->connection->run("UPDATE tb_combate_personagens_bot SET hp = ? WHERE id = ?",
-                            "ii", array($nhp, $alvo["bot_id"]));
-                    } else {
-                        $this->connection->run("UPDATE tb_combate_personagens SET hp = ? WHERE cod = ?",
-                            "ii", array($nhp, $alvo["cod"]));
-                    }
-                    if ($nhp <= 0) {
-                        if ($alvo["id"] == "bot") {
-                            $this->regen_mp_personagens_bot();
-                        } else {
-                            $this->regen_mp_personagens($alvo["id"]);
-                        }
-
-                        if ($this->userDetails->combate_pvp) {
-                            $this->log_derrotado($alvo);
-                        }
-                    }
+                if ($alvo["id"] == "bot") {
+                    $this->connection->run("UPDATE tb_combate_personagens_bot SET hp = ? WHERE id = ?",
+                        "ii", array($nhp, $alvo["bot_id"]));
                 } else {
-                    if ($nhp <= 0) {
-                        $this->connection->run("DELETE FROM tb_obstaculos WHERE id = ?",
-                            "i", array($alvo["obstaculo"]));
+                    $this->connection->run("UPDATE tb_combate_personagens SET hp = ? WHERE cod = ?",
+                        "ii", array($nhp, $alvo["cod"]));
+                }
+                if ($nhp <= 0) {
+                    if ($alvo["id"] == "bot") {
+                        $this->regen_mp_personagens_bot();
                     } else {
-                        $this->connection->run("UPDATE tb_obstaculos SET hp = ? WHERE id = ?",
-                            "ii", array($nhp, $alvo["obstaculo"]));
+                        $this->regen_mp_personagens($alvo["id"]);
+                    }
+
+                    if ($this->userDetails->combate_pvp) {
+                        $this->log_derrotado($alvo);
                     }
                 }
 
@@ -354,10 +287,6 @@ class Combate
             $this->connection->run("INSERT INTO tb_combate_log_personagem_morto (combate, tripulacao_id, personagem_id) VALUE (?,?,?)",
                 "iii", array($this->userDetails->combate_pvp["combate"], $pers["id"], $pers["cod"]));
         }
-    }
-
-    public function apply_special_effect(&$alvo, $habilidade)
-    {
     }
 
     public function aumenta_fa_esq_bloq(&$alvo, &$personagem_combate)
@@ -956,10 +885,6 @@ class Combate
                 "i", array($this->userDetails->combate_pvp["combate"]));
 
 
-            $id = $this->userDetails->combate_pvp["id_" . $this->get_enemy_id_index_in_pvp()];
-            $this->apply_sangramento($id);
-            $this->apply_veneno($id);
-
             $this->muda_vez_pvp();
         }
     }
@@ -1043,15 +968,6 @@ class Combate
             "i", $this->userDetails->tripulacao["id"]);
 
         $this->connection->run("DELETE FROM tb_combate_buff WHERE espera <= 0 AND id = ?",
-            "i", $this->userDetails->tripulacao["id"]);
-    }
-
-    public function remove_special_effects()
-    {
-        $this->connection->run("UPDATE tb_combate_special_effect SET duracao = duracao - 1 WHERE tripulacao_id = ?",
-            "i", $this->userDetails->tripulacao["id"]);
-
-        $this->connection->run("DELETE FROM tb_combate_special_effect WHERE duracao <= 0 AND tripulacao_id = ?",
             "i", $this->userDetails->tripulacao["id"]);
     }
 

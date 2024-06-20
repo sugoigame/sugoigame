@@ -17,7 +17,7 @@ class HabilidadeDescricao
             </div>
             <?php if (isset($habilidade["explicacao"])) : ?>
                 <div>
-                    <span><?= HabilidadeDescricao::formata_explicacao($habilidade["explicacao"]) ?></span>
+                    <span><?= HabilidadeExplicacao::render($habilidade["explicacao"]) ?></span>
                 </div>
             <?php endif; ?>
             <div>
@@ -59,22 +59,5 @@ class HabilidadeDescricao
 
         </div>
         <?php
-    }
-
-    public static function formata_explicacao($descricao)
-    {
-        $descricao = str_replace("{ATK}", HabilidadeDescricao::icone_atr("atk"), $descricao);
-        $descricao = str_replace("{DEF}", HabilidadeDescricao::icone_atr("def"), $descricao);
-        $descricao = str_replace("{AGL}", HabilidadeDescricao::icone_atr("agl"), $descricao);
-        $descricao = str_replace("{PRE}", HabilidadeDescricao::icone_atr("pre"), $descricao);
-        $descricao = str_replace("{RES}", HabilidadeDescricao::icone_atr("res"), $descricao);
-        $descricao = str_replace("{DEX}", HabilidadeDescricao::icone_atr("dex"), $descricao);
-        $descricao = str_replace("{PER}", HabilidadeDescricao::icone_atr("con"), $descricao);
-
-        return $descricao;
-    }
-    public static function icone_atr($atr)
-    {
-        return '<img class="icone-atributo" src="Imagens/Icones/' . $atr . '.png" height="20rem" />';
     }
 }

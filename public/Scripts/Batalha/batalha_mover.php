@@ -13,7 +13,7 @@ if (! $personagem) {
     $protector->exit_error("Personagem invalido");
 }
 
-$machucado_joelho = $connection->run("SELECT * FROM tb_combate_special_effect WHERE personagem_id = ? AND special_effect = ?",
+$machucado_joelho = $connection->run("SELECT * FROM tb_combate_special_effect WHERE personagem_id = ? && special_effect = ?",
     "ii", array($pers_cod, SPECIAL_EFFECT_MACHUCADO_JOELHO));
 
 if ($machucado_joelho->count()) {
@@ -43,27 +43,27 @@ if ($userDetails->combate_pve) {
     if ($userDetails->combate_pve["move"] < $custo_movimento) {
         $protector->exit_error("Nessa batalha contra NPC seus movimentos acabaram");
     }
-} else if ($userDetails->combate_pvp) {
+} elseif ($userDetails->combate_pvp) {
     if ($userDetails->combate_pvp["id_1"] == $userDetails->tripulacao["id"]) {
         if ($userDetails->combate_pvp["move_1"] < $custo_movimento) {
             $protector->exit_error("Você não pode se movimentar");
         }
-    } else if ($userDetails->combate_pvp["id_2"] == $userDetails->tripulacao["id"]) {
+    } elseif ($userDetails->combate_pvp["id_2"] == $userDetails->tripulacao["id"]) {
         if ($userDetails->combate_pvp["move_2"] < $custo_movimento) {
             $protector->exit_error("Seus movimentos acabaram, você não pode se movimentar");
         }
     }
-} else if ($userDetails->combate_bot) {
+} elseif ($userDetails->combate_bot) {
     if ($userDetails->combate_bot["vez"] != 1 || $userDetails->combate_bot["move"] < $custo_movimento) {
         $protector->exit_error("Nessa batalha contra Bot seus movimentos acabaram");
     }
 }
 
 if ($userDetails->combate_pvp) {
-    $result = $connection->run("SELECT * FROM tb_combate_personagens WHERE quadro_x = ? AND quadro_y = ? AND (id = ? OR id = ?)",
+    $result = $connection->run("SELECT * FROM tb_combate_personagens WHERE quadro_x = ? && quadro_y = ? && (id = ? OR id = ?)",
         "iiii", array($quadro_x, $quadro_y, $userDetails->combate_pvp["id_1"], $userDetails->combate_pvp["id_2"]));
 } else {
-    $result = $connection->run("SELECT * FROM tb_combate_personagens WHERE quadro_x = ? AND quadro_y = ? AND id = ?",
+    $result = $connection->run("SELECT * FROM tb_combate_personagens WHERE quadro_x = ? && quadro_y = ? && id = ?",
         "iii", array($quadro_x, $quadro_y, $userDetails->tripulacao["id"]));
 }
 
@@ -75,7 +75,7 @@ if ($result->count()) {
 }
 
 if ($userDetails->combate_bot) {
-    $result = $connection->run("SELECT * FROM tb_combate_personagens_bot WHERE quadro_x = ? AND quadro_y = ? AND id = ?",
+    $result = $connection->run("SELECT * FROM tb_combate_personagens_bot WHERE quadro_x = ? && quadro_y = ? && id = ?",
         "iii", array($quadro_x, $quadro_y, $userDetails->combate_bot["id"]));
 
     if ($result->count()) {
@@ -87,22 +87,22 @@ if ($userDetails->combate_bot) {
 }
 
 if ($userDetails->combate_pve) {
-    if ($quadro_x < 5 and $quadro_x >= 0 and $quadro_y < 20 and $quadro_y >= 0) {
+    if ($quadro_x < 5 && $quadro_x >= 0 && $quadro_y < 20 && $quadro_y >= 0) {
         $connection->run("UPDATE tb_combate_personagens SET quadro_x = ?, quadro_y = ? WHERE cod =?",
             "iii", array($quadro_x, $quadro_y, $pers_cod));
 
         $connection->run("UPDATE tb_combate_npc SET move = move - $custo_movimento WHERE id = ?",
             "i", array($userDetails->tripulacao["id"]));
     }
-} else if ($userDetails->combate_pvp) {
-    if ($quadro_x < 10 and $quadro_x >= 0 and $quadro_y < 20 and $quadro_y >= 0) {
+} elseif ($userDetails->combate_pvp) {
+    if ($quadro_x < 10 && $quadro_x >= 0 && $quadro_y < 20 && $quadro_y >= 0) {
         $connection->run("UPDATE tb_combate_personagens SET quadro_x = ?, quadro_y = ? WHERE cod =?",
             "iii", array($quadro_x, $quadro_y, $pers_cod));
 
         if ($userDetails->combate_pvp["id_1"] == $userDetails->tripulacao["id"]) {
             $connection->run("UPDATE tb_combate SET move_1 = move_1 - $custo_movimento WHERE combate = ?",
                 "i", array($userDetails->combate_pvp["combate"]));
-        } else if ($userDetails->combate_pvp["id_2"] == $userDetails->tripulacao["id"]) {
+        } elseif ($userDetails->combate_pvp["id_2"] == $userDetails->tripulacao["id"]) {
             $connection->run("UPDATE tb_combate SET move_2 = move_2 - $custo_movimento WHERE combate = ?",
                 "i", array($userDetails->combate_pvp["combate"]));
         }
@@ -125,8 +125,8 @@ if ($userDetails->combate_pve) {
 				'" . $relatorio["img_skil"] . "', '" . $relatorio["descricao_skil"] . "')";
         $connection->run($query) or die("nao foi possivel inserir o relatorio");
     }
-} else if ($userDetails->combate_bot) {
-    if ($quadro_x < 10 and $quadro_x >= 0 and $quadro_y < 20 and $quadro_y >= 0) {
+} elseif ($userDetails->combate_bot) {
+    if ($quadro_x < 10 && $quadro_x >= 0 && $quadro_y < 20 && $quadro_y >= 0) {
         $connection->run("UPDATE tb_combate_personagens SET quadro_x = ?, quadro_y = ? WHERE cod =?",
             "iii", array($quadro_x, $quadro_y, $pers_cod));
 

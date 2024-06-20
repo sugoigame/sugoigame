@@ -1,0 +1,88 @@
+<?php
+namespace Regras\Combate;
+
+class Tabuleiro
+{
+
+    /**
+     * @var Combate
+     */
+    public $combate;
+
+    /**
+     * @var Personagem[]
+     */
+    public $personagens;
+
+    /**
+     * @var Quadro[][]
+     */
+    public $quadros;
+
+    /**
+     * @param Combate
+     */
+    public function __construct($combate)
+    {
+        $this->combate = $combate;
+
+        $this->quadros["npc"]["npc"] = new Quadro("npc", "npc");
+        for ($x = 0; $x < 10; $x++) {
+            for ($y = 0; $y < 20; $y++) {
+                $this->quadros[$x][$y] = new Quadro($x, $y);
+            }
+        }
+
+        $this->personagens = [];
+        foreach ($this->combate->tripulacoes as $tripulacao) {
+            foreach ($tripulacao->personagens as $personagem) {
+                if ($personagem->estado["hp"] > 0) {
+                    $this->personagens[] = $personagem;
+                    $posicao = $personagem->get_posicao_tabuleiro();
+                    $this->quadros[$posicao["x"]][$posicao["y"]]->personagem = $personagem;
+                }
+            }
+        }
+    }
+
+    /**
+     * @param string
+     * @return Quadro[]
+     */
+    public function get_quadros($quadros)
+    {
+        $quadros = explode(";", $quadros);
+
+        foreach ($quadros as $index => $quadro) {
+            if ($quadro == "npc") {
+                $quadros[$index] = $this->quadros["npc"]["npc"];
+            } else {
+                $xy = explode("_", $quadro);
+                $quadros[$index] = $this->quadros[$xy[0]][$xy[1]];
+            }
+        }
+
+        if (! $this->is_area_valida($quadros)) {
+            $this->combate->protector->exit_error("Área inválida");
+        }
+
+        return $quadros;
+    }
+
+    /**
+     * @param Quadro[]
+     */
+    public function is_area_valida($quadros)
+    {
+        for ($i = 1; $i < count($quadros); $i++) {
+            $quadro = $quadros[$i];
+            $quadro_anterior = $quadros[$i - 1];
+
+            if (sqrt(pow($quadro->x - $quadro_anterior->x, 2) + pow($quadro->y - $quadro_anterior->y, 2)) > 1.5) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+}
