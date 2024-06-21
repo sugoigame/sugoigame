@@ -20,11 +20,6 @@ abstract class Personagem
     public $tripulacao;
 
     /**
-     * @var Habilidade[]
-     */
-    protected $habilidades;
-
-    /**
      * @param Combate
      * @param Tripulacao
      * @param array
@@ -38,7 +33,7 @@ abstract class Personagem
     }
     abstract protected function init();
 
-    abstract protected function load_habilidades();
+    abstract protected function get_habilidades();
 
     /**
      * @return [x: int, y: int]
@@ -46,21 +41,34 @@ abstract class Personagem
     abstract protected function get_posicao_tabuleiro();
 
     /**
+     * @return Akuma | null
+     */
+    abstract protected function get_akuma();
+
+    /**
      * @param int
      * @param string
      */
     public function atacar($cod_habilidade, $quadros)
     {
-        $this->load_habilidades();
-        if (! isset($this->habilidades[$cod_habilidade])) {
+        $habilidades = $this->get_habilidades();
+        if (! isset($habilidades[$cod_habilidade])) {
             $this->combate->protector->exit_error("Habilidade inválida");
         }
 
-        $this->habilidades[$cod_habilidade]->atacar($quadros);
+        $habilidades[$cod_habilidade]->atacar($quadros);
     }
 
     public function mover()
     {
         //todo
+    }
+
+    /**
+     * @return mixed
+     */
+    public function get_valor_atributo($atributo)
+    {
+        return 1;
     }
 }

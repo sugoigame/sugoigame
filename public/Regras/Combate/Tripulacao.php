@@ -20,16 +20,26 @@ abstract class Tripulacao
     public $personagens;
 
     /**
+     * @var string
+     */
+    public $indice;
+
+    /**
      * @param Combate
      */
-    public function __construct($combate, $estado)
+    public function __construct($combate, $estado, $indice)
     {
         $this->combate = $combate;
         $this->estado = $estado;
+        $this->indice = $indice;
         $this->init();
     }
 
     abstract protected function init();
+
+    abstract protected function get_vontade();
+
+    abstract protected function get_efeito($efeito);
 
     /**
      * @param int

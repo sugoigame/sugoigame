@@ -1,6 +1,6 @@
 {{-- $habilidade --}}
 @php
-    $habilidade = habilidade_default_values($habilidade);
+    $habilidade = \Regras\Habilidades::habilidade_default_values($habilidade);
 @endphp
 
 <a class="noHref"

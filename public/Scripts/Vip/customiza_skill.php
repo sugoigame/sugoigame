@@ -16,7 +16,7 @@ if (! $pers) {
     $protector->exit_error("Personagem inválido");
 }
 
-if (! get_habilidade_by_cod($cod_skill)) {
+if (! \Regras\Habilidades::get_habilidade_by_cod($cod_skill)) {
     $protector->exit_error("Habilidade inválida");
 }
 

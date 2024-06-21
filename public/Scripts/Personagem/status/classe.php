@@ -52,7 +52,7 @@ if (! $pers) {
             <?php foreach ($lvls as $key => $lvl) : ?>
                 <tr>
                     <?php foreach ($habilidades["classes"] as $cod_classe => $classe) : ?>
-                        <?php $habilidades_classe = habilidades_default_values($classe["habilidades"]) ?>
+                        <?php $habilidades_classe = \Regras\Habilidades::habilidades_default_values($classe["habilidades"]) ?>
                         <?php $habilidades_lvl = array_filter($habilidades_classe, function ($habilidade) use ($lvl) {
                             return ($habilidade["requisito_lvl"] ?: 1) == $lvl;
                         }); ?>

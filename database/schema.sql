@@ -3064,6 +3064,8 @@ ALTER TABLE tb_combate_skil_espera ADD CONSTRAINT tb_combate_skil_espera_unique 
 ALTER TABLE tb_combate_skil_espera DROP PRIMARY KEY;
 ALTER TABLE tb_combate_skil_espera DROP COLUMN tipo;
 ALTER TABLE tb_combate_skil_espera ADD CONSTRAINT tb_combate_skil_espera_pk PRIMARY KEY (cod,cod_skil);
+ALTER TABLE tb_combate ADD vontade_1 INT DEFAULT 1 NOT NULL;
+ALTER TABLE tb_combate ADD vontade_2 INT DEFAULT 1 NOT NULL;
 
 
 SET FOREIGN_KEY_CHECKS=1;

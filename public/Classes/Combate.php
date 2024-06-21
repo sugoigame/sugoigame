@@ -115,13 +115,6 @@ class Combate
         return $this->userDetails->combate_pvp;
     }
 
-    public function vale_fa($alvo)
-    {
-        return $this->userDetails->combate_pvp
-            && $this->userDetails->combate_pvp["tipo"] != TIPO_AMIGAVEL
-            && $this->userDetails->combate_pvp["tipo"] != TIPO_LOCALIZADOR_CASUAL
-            && ! isset($alvo["obstaculo"]);
-    }
 
     public function ataca_quadro(&$personagem_combate, $habilidade, $tipo_skil, &$alvo)
     {
@@ -287,99 +280,6 @@ class Combate
             $this->connection->run("INSERT INTO tb_combate_log_personagem_morto (combate, tripulacao_id, personagem_id) VALUE (?,?,?)",
                 "iii", array($this->userDetails->combate_pvp["combate"], $pers["id"], $pers["cod"]));
         }
-    }
-
-    public function aumenta_fa_esq_bloq(&$alvo, &$personagem_combate)
-    {
-        $this->aumenta_fa($personagem_combate["lvl"] * 1000, $alvo, $personagem_combate);
-    }
-
-    public function aumenta_fa_crit(&$personagem_combate, &$alvo)
-    {
-        $this->aumenta_fa($alvo["lvl"] * 1000, $personagem_combate, $alvo);
-    }
-
-    public function aumenta_fa_acerto_sem_agl(&$personagem_combate, &$alvo)
-    {
-        $this->aumenta_fa($alvo["lvl"] * 200, $personagem_combate, $alvo);
-    }
-
-    public function aumenta_fa_erro_crit(&$alvo, &$personagem_combate)
-    {
-        $this->aumenta_fa($personagem_combate["lvl"] * 200, $alvo, $personagem_combate);
-    }
-
-    public function aumenta_fa_dano($dano, &$personagem_combate, &$alvo)
-    {
-        $fa_ganha = floor($dano / 1000) * 100000;
-        if ($fa_ganha > 0) {
-            $this->aumenta_fa($fa_ganha, $personagem_combate, $alvo);
-        }
-    }
-
-    public function aumenta_fa_absorv($absorv, &$alvo, &$personagem_combate)
-    {
-        $fa_ganha = floor($absorv / 1000) * 70000;
-        if ($fa_ganha > 0) {
-            $this->aumenta_fa($fa_ganha, $alvo, $personagem_combate);
-        }
-    }
-
-    public function aumenta_fa($fa_ganha, &$personagem_combate, &$alvo)
-    {
-        $max_fa = $this->userDetails->combate_pvp["tipo"] == TIPO_COLISEU ? MAX_FA_COMBATE_COLISEU : MAX_FA_COMBATE;
-
-        if ($personagem_combate["cod_capitao"] == $personagem_combate["cod"]) {
-            $max_fa *= 2;
-        }
-
-        if ($personagem_combate["fa_ganha"] >= $max_fa || $personagem_combate["id"] == $alvo["id"]) {
-            return;
-        }
-
-        if ($personagem_combate["cod_capitao"] == $personagem_combate["cod"]) {
-            $fa_ganha += round($fa_ganha * 0.2);
-        }
-
-        $personagem_combate["fama_ameaca"] += $fa_ganha;
-        $this->connection->run("UPDATE tb_personagens SET fama_ameaca = ?  WHERE cod = ?",
-            "ii", array($personagem_combate["fama_ameaca"], $personagem_combate["cod"]));
-
-        $personagem_combate["fa_ganha"] += $fa_ganha;
-        $this->connection->run("UPDATE tb_combate_personagens SET fa_ganha = ?  WHERE cod = ?",
-            "ii", array($personagem_combate["fa_ganha"], $personagem_combate["cod"]));
-
-        $this->connection->run(
-            "INSERT INTO tb_wanted_log (vencedor_cod, perdedor_cod, fa_ganha, fa_perdida, vencedor_lvl, perdedor_lvl)
-							 VALUES (?, ?, ?, ?, ?, ?)",
-            "iiiiii", array($personagem_combate["cod"], $alvo["cod"], $fa_ganha, 0, $personagem_combate["lvl"], $alvo["lvl"])
-        );
-    }
-
-    public function get_mod_akuma($personagem_combate, $alvo)
-    {
-        if (! isset($personagem_combate["akuma"])) {
-            $personagem_combate["akuma"] = null;
-        }
-        if (! isset($alvo["akuma"])) {
-            $alvo["akuma"] = null;
-        }
-
-        if (! $personagem_combate["akuma"]
-            || ! $alvo["akuma"]
-            || $this->userDetails->buffs->get_efeito("anula_efeito_akuma")
-            || $this->userDetails->buffs->get_efeito_from_tripulacao("anula_efeito_akuma", $alvo["id"])
-        ) {
-            $mod_akuma = 1;
-        } elseif ($personagem_combate["akuma"] && $alvo["akuma"]) {
-            $mod_akuma = categoria_akuma(
-                DataLoader::find("akumas", ["cod_akuma" => $personagem_combate["akuma"]]),
-                DataLoader::find("akumas", ["cod_akuma" => $alvo["akuma"]])
-            );
-        } else {
-            $mod_akuma = 1;
-        }
-        return $mod_akuma;
     }
 
     public function get_npc_status()
@@ -565,7 +465,7 @@ class Combate
         $alvo = $alvo_mira["alvo"];
 
         //sorteia uma skil
-        $habilidade = get_habilidade_aleatoria_nivel($alvo);
+        $habilidade = \Regras\Habilidades::get_habilidade_aleatoria_nivel($alvo);
 
         $x = 0;
         $relatorio_afetado[$x] = $this->recebe_dano_npc($npc_stats, $habilidade, $alvo);

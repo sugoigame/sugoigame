@@ -7,11 +7,16 @@ class PersonagemNpc extends Personagem
     {
     }
 
-    protected function load_habilidades()
+    protected function get_habilidades()
     {
     }
 
     protected function get_posicao_tabuleiro()
     {
+    }
+
+    protected function get_akuma()
+    {
+        return null;
     }
 }

@@ -13,4 +13,14 @@ class TripulacaoJogador extends Tripulacao
             $this->personagens[$estado["cod_pers"]] = new PersonagemJogador($this->combate, $this, $estado);
         }
     }
+
+    protected function get_vontade()
+    {
+        return $this->combate->userDetails->combate_pvp["vontade_" . $this->indice];
+    }
+
+    protected function get_efeito($efeito)
+    {
+
+    }
 }

@@ -19,9 +19,9 @@ class Quadro
     public $personagem;
 
     /**
-     * @var Efeito[]
+     * @var array
      */
-    public $efeitos = [];
+    public $estado = ["efeitos" => []];
 
     public function __construct($x, $y)
     {

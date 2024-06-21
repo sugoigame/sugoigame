@@ -40,17 +40,25 @@ class Habilidade
         $this->pre_atacar($quadros);
 
         foreach ($quadros as $quadro) {
+            if ($quadro->personagem) {
+                $dano = Formulas\Ataque::calc_dano($this->personagem, $quadro->personagem, $this);
 
+                Formulas\Recompensa::atualiza_recompensa($this->personagem, $quadro->personagem, $dano);
+            }
         }
 
         $this->pos_atacar($quadros);
     }
+
 
     /**
      * @param Quadro[]
      */
     public function pre_atacar($quadros)
     {
+        if (isset($this->estado["efeitos"]) && isset($this->estado["efeitos"]["pre_ataque"])) {
+            $this->aplica_efeitos($this->estado["efeitos"]["pre_ataque"], $quadros);
+        }
     }
 
     /**
@@ -58,5 +66,43 @@ class Habilidade
      */
     public function pos_atacar($quadros)
     {
+        if (isset($this->estado["efeitos"]) && isset($this->estado["efeitos"]["pos_ataque"])) {
+            $this->aplica_efeitos($this->estado["efeitos"]["pos_ataque"], $quadros);
+        }
+    }
+
+    /**
+     * @param array
+     * @param Quadro[]
+     */
+    public function aplica_efeitos($efeitos, $quadros)
+    {
+        foreach ($efeitos as $efeito) {
+            $alvos = $this->resolver_alvos($efeito["tipo_alvo"], $quadros);
+            foreach ($alvos as $alvo) {
+                $alvo->estado["efeitos"][] = $efeito;
+            }
+        }
+    }
+
+    /**
+     * @param TIPO_ALVO
+     * @param Quadro[]
+     * @return Quadro[] | Personagem[]
+     */
+    public function resolver_alvos($tipo_alvo, array $quadros)
+    {
+        if ($tipo_alvo == TIPO_ALVO_EFEITO_ATACANTE) {
+            return [$this->personagem];
+        } elseif ($tipo_alvo == TIPO_ALVO_EFEITO_ALVO) {
+            return array_filter(array_map(function ($quadro) {
+                return $quadro->personagem;
+            }, $quadros), function ($pers) {
+                return $pers;
+            });
+        } else {
+            //todo implementar outros tipos
+            return [];
+        }
     }
 }

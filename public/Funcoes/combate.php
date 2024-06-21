@@ -233,7 +233,7 @@ function ao_lado($content)
 function get_pers_in_combate($id)
 {
     global $connection;
-    return $connection->run(
+    $personagens = $connection->run(
         "SELECT
         pers.cod as cod_pers,
         pers.id AS id,
@@ -282,6 +282,14 @@ function get_pers_in_combate($id)
         WHERE cbtpers.id = ? AND cbtpers.hp > 0",
         "i", $id
     )->fetch_all_array();
+
+    foreach ($personagens as $key => $pers) {
+        if ($pers["efeitos"]) {
+            $personagens[$key]["efeitos"] = json_decode($pers["efeitos"], true);
+        }
+    }
+
+    return $personagens;
 }
 
 function get_pers_bot_in_combate($id)
@@ -471,148 +479,6 @@ function get_cross_guild_stars($reward)
     }
 
     return $ret;
-}
-
-function min_max($value, $min, $max)
-{
-    if ($value < $min) {
-        $value = $min;
-    }
-    if ($value > $max) {
-        $value = $max;
-    }
-    return $value;
-}
-
-function chance_esquiva($pers, $alvo)
-{
-    $pre = $pers["pre"];
-    $agl = $alvo["agl"];
-
-    $esquiva_haki = max(0, $alvo["haki_esq"] - $pers["haki_esq"]);
-
-    $esquiva = min_max($agl - $pre, 0, 50) + $esquiva_haki;
-
-    return round($esquiva);
-}
-
-function chance_crit($pers, $alvo)
-{
-    $dex = $pers["dex"];
-    $con = $alvo["con"];
-
-    $crit_haki = max(0, $pers["haki_cri"] - $alvo["haki_cri"]);
-
-    $chance_crit = min_max($dex - $con, 0, 50) + $crit_haki;
-
-    return round($chance_crit);
-}
-
-function dano_crit($pers, $alvo)
-{
-    $dex = $pers["dex"];
-    $con = $alvo["con"];
-
-    return (float) min_max($dex - $con, 25, 90) / 100;
-}
-
-function chance_bloq($pers, $alvo)
-{
-    $res = $alvo["res"];
-    $per = $pers["con"];
-
-    $bloq_haki = max(0, $alvo["haki_cri"] - $pers["haki_cri"]);
-
-    $chance_bloq = min_max($res - $per, 0, 50) + $bloq_haki;
-
-    return round($chance_bloq);
-}
-
-function get_atk_combate($pers)
-{
-    $atk = $pers["atk"];
-
-    return $atk * 10;
-}
-function get_def_combate($pers)
-{
-    $def = $pers["def"];
-
-    return $def * 10;
-}
-
-function calc_dano($pers, $alvo, $dano_hab = 0)
-{
-    $retorno = [
-        'esquivou' => false,
-        'dado_esquivou' => 0,
-        'critou' => false,
-        'dado_critou' => 0,
-        'critico' => 0,
-        'bloqueou' => false,
-        'dado_bloqueou' => 0,
-        'bloqueio' => 0,
-        'dano' => 0
-    ];
-
-    $esquiva = chance_esquiva($pers, $alvo);
-
-    $retorno["chance_esquiva"] = $esquiva;
-    $retorno["dado_esquivou"] = rand(1, 1000) / 10;
-
-    if ($retorno["dado_esquivou"] <= $esquiva) {
-        $retorno["esquivou"] = true;
-    } else {
-        $dano = max($dano_hab * 0.3, ($pers["atk"] * 10) + $dano_hab - ($alvo["def"] * 10));
-
-        $chance_crit = chance_crit($pers, $alvo);
-
-        $retorno["chance_critico"] = $chance_crit;
-        $retorno["dado_critou"] = rand(1, 1000) / 10;
-        if ($retorno["dado_critou"] <= $chance_crit) {
-            $retorno["critou"] = true;
-
-            $retorno["critico"] = dano_crit($pers, $alvo);
-        }
-
-        $chance_bloq = chance_bloq($pers, $alvo);
-
-        $retorno["chance_bloqueio"] = $chance_bloq;
-        $retorno["dado_bloqueou"] = rand(1, 1000) / 10;
-        if ($retorno["dado_bloqueou"] <= $chance_bloq) {
-            $retorno["bloqueou"] = true;
-
-            $retorno["bloqueio"] = 0.9;
-        }
-
-        $dano_crit = $retorno["critico"] * $dano;
-
-        $dano += $dano_crit;
-
-        // dano bloqueado é calculado em cima do dano já critado
-        $dano_bloq = $retorno["bloqueio"] * $dano;
-
-        $retorno["dano"] = max(1, round($dano - $dano_bloq));
-    }
-
-    return $retorno;
-}
-
-function get_categoria_akuma($cod_akuma)
-{
-    return DataLoader::find("akumas", ["cod_akuma" => $cod_akuma])["categoria"];
-}
-
-function calc_mod_akuma_for_cbt($pers, $alvo)
-{
-    if ($pers["akuma"] && $alvo["akuma"]) {
-        return categoria_akuma(
-            DataLoader::find("akumas", ["cod_akuma" => $pers["akuma"]]),
-            DataLoader::find("akumas", ["cod_akuma" => $alvo["akuma"]])
-        );
-    } else {
-        return 1;
-    }
 }
 
 function get_special_effect_classes($special_effects)
@@ -1095,7 +961,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                     <h4>Buffs</h4>
                                     <?php foreach ($pers["efeitos"] as $efeito) : ?>
                                         <div class="text-center">
-                                            <?= Componentes\Habilidades\HabilidadeExplicacao::render($efeito["explicacao"]); ?>
+                                            <?= Componentes::render("Habilidades.Explicacao", ["explicacao" => $efeito["explicacao"]]); ?>
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>

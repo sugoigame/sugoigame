@@ -24,11 +24,6 @@ abstract class Combate
     public $minhaTripulacao;
 
     /**
-     * @var string
-     */
-    public $minhaTripulacaoIndex;
-
-    /**
      * @var Tripulacao[]
      */
     public $tripulacoes;
@@ -100,7 +95,12 @@ abstract class Combate
     /**
      * @return string
      */
-    abstract protected function vez_de_quem();
+    abstract public function vez_de_quem();
+
+    /**
+     * @return int
+     */
+    abstract public function vale_quanta_recompensa();
 
     /**
      * @param int
@@ -109,11 +109,13 @@ abstract class Combate
      */
     public function atacar($cod_pers, $cod_habilidade, $quadros)
     {
-        if ($this->minhaTripulacaoIndex != $this->vez_de_quem()) {
+        if ($this->minhaTripulacao->indice != $this->vez_de_quem()) {
             $this->protector->exit_error("Não é a sua vez");
         }
 
         $this->minhaTripulacao->atacar($cod_pers, $cod_habilidade, $quadros);
+
+
     }
 
     public function mover()

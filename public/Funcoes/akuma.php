@@ -19,29 +19,6 @@ function get_random_akuma()
     return $akumas[array_rand($akumas)];
 }
 
-function categoria_akuma($atacante_akuma, $alvo_akuma)
-{
-    $atacante = $atacante_akuma["categoria"];
-    $alvo = $alvo_akuma["categoria"];
-    if (($atacante == "ofensiva" && $alvo == "tatica")
-        || ($atacante == "tatica" && $alvo == "defensiva")
-        || ($atacante == "defensiva" && $alvo == "ofensiva")
-        || ($atacante == "mitica" && $alvo == "ancestral")
-        || ($atacante == "ancestral" && $alvo == "mitica")) {
-        return 1.2;
-    }
-
-    if (isset($atacante_akuma["vantagens"])) {
-        foreach ($atacante_akuma["vantagens"] as $vantagem) {
-            if ($vantagem == $alvo_akuma["cod_akuma"]) {
-                return 1.2;
-            }
-        }
-    }
-
-    return 1;
-}
-
 function nome_categoria_akuma($categoria)
 {
     switch ($categoria) {

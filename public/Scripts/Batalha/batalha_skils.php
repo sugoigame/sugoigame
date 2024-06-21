@@ -21,7 +21,7 @@ if (! $result->count()) {
 }
 $pers = $result->fetch_array();
 
-$habilidades = get_todas_habilidades_pers($pers);
+$habilidades = \Regras\Habilidades::get_todas_habilidades_pers($pers);
 
 $skill_espera = $connection->run(
     "SELECT *
@@ -33,7 +33,7 @@ $skill_espera = $connection->run(
 ?>
 <div class="row">
     <?php foreach ($habilidades as $habilidade) : ?>
-        <?php if (is_usavel_batalha($habilidade)) : ?>
+        <?php if (\Regras\Habilidades::is_usavel_batalha($habilidade)) : ?>
             <?php $espera = array_find($skill_espera, ["cod_skil" => $habilidade["cod"]]) ?: []; ?>
             <div class="col-md-2 col-sm-2 col-xs-2 p0 h-100">
                 <div class="panel panel-default m0 h-100">

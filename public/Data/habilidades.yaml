@@ -39,7 +39,7 @@ schema:
             avancados podem depender de estruturas mais complexas para terem seu comportamento alterado
     acerto: # array de efeitos que só são aplicados se o golpe não for esquivado nem bloqueado
       - # repete do pre ataque
-        tipo_alvo: padrao TARGET
+        tipo_alvo: padrao ALVO
     pos_ataque: # array de efeitos aplicados com 100% de chance após calcular o hit
       -  # repete do pre ataque
     passivos: # array de efeitos aplicados no comeco da partida que vao turar a partida inteira

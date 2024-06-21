@@ -12,4 +12,9 @@ class CombateNpc extends Combate
     {
 
     }
+
+    public function vale_quanta_recompensa()
+    {
+        return 0;
+    }
 }

@@ -8,7 +8,13 @@ class CombateBot extends Combate
 
     }
 
-    public function vez_de_quem(){
+    public function vez_de_quem()
+    {
 
+    }
+
+    public function vale_quanta_recompensa()
+    {
+        return 0;
     }
 }

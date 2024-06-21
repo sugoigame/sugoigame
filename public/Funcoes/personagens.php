@@ -14,7 +14,7 @@
         }
     }
 
-    $habilidades = get_todas_habilidades_pers($pers);
+    $habilidades = \Regras\Habilidades::get_todas_habilidades_pers($pers);
     foreach ($habilidades as $habilidade) {
         if (isset($habilidade["efeitos"]) && isset($habilidade["efeitos"]["passivos"])) {
             foreach ($habilidade["efeitos"]["passivos"] as $passiva) {

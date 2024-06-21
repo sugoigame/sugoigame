@@ -29,7 +29,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    @if (is_editavel($habilidade))
+                    @if (\Regras\Habilidades::is_editavel($habilidade))
                         <div class="col-md-6">
                             <form action="Vip/customiza_skill"
                                 class="ajax_form"
