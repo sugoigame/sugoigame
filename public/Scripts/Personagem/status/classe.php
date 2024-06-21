@@ -60,11 +60,11 @@ if (! $pers) {
                             <?php foreach ($habilidades_lvl as $index => $habilidade) : ?>
                                 <?php $habilidade = array_merge($habilidade, $aprendidas[$habilidade["cod"]] ?: []) ?>
                                 <div>
-                                    <?php Componentes\Habilidades\HabilidadeIcone::render($habilidade) ?>
+                                    <?= Componentes::render("Habilidades.Icone", ["habilidade" => $habilidade]) ?>
                                 </div>
                                 <?php if ($pers["classe"] == $cod_classe) : ?>
                                     <?php if ($habilidade["requisito_lvl"] <= $pers["lvl"]) : ?>
-                                        <?php Componentes\Habilidades\HabilidadeBotaoCustomizar::render($pers, $habilidade, $animacoes); ?>
+                                        <?= Componentes::render("Habilidades.BotaoCustomizar", ["pers" => $pers, "habilidade" => $habilidade, "animacoes" => $animacoes]); ?>
                                     <?php else : ?>
                                         <button class="btn btn-sm btn-primary" disabled>
                                             Nível <?= $habilidade["requisito_lvl"]; ?>

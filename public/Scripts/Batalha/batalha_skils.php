@@ -39,7 +39,7 @@ $skill_espera = $connection->run(
                 <div class="panel panel-default m0 h-100">
                     <div class="panel-body">
                         <div>
-                            <?php Componentes\Habilidades\HabilidadeIcone::render($habilidade) ?>
+                            <?= Componentes::render('Habilidades.Icone', ["habilidade" => $habilidade]) ?>
                         </div>
                         <div>
                             <?php if (isset($espera["espera"])) : ?>
