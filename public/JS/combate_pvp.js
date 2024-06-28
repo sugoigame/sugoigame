@@ -51,5 +51,5 @@ function tempo_batalha() {
 }
 
 function getUrlAtacar() {
-    return "Scripts/Batalha/batalha_atacar_pvp.php";
+    return "Scripts/Batalha/batalha_atacar.php";
 }

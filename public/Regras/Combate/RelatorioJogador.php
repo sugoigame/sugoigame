@@ -15,10 +15,9 @@ class RelatorioJogador extends Relatorio
 
         $log_file = fopen(dirname(dirname(__FILE__)) . "/Logs/PvP/" . $this->combate->userDetails->combate_pvp["combate"] . ".log", "a+");
 
-        fwrite($log_file, json_encode([
-            "ataque" => $this->ataque,
-            "consequencias" => $this->consequencias,
-        ]) . "\n");
+        $acao = $this->acao;
+        $acao["consequencias"] = $this->consequencias;
+        fwrite($log_file, json_encode($acao) . "\n");
 
         fclose($log_file);
     }

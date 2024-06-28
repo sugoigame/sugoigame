@@ -12,14 +12,20 @@ class Ataque
         $dano_hab = self::calc_dano_habilidade($habilidade);
 
         $retorno = [
-            'esquivou' => false,
+            'chance_esquiva' => self::chance_esquiva($pers, $alvo),
             'dado_esquivou' => 0,
-            'critou' => false,
+            'esquivou' => false,
+
+            'chance_critico' => self::chance_crit($pers, $alvo),
             'dado_critou' => 0,
+            'critou' => false,
             'critico' => 0,
+
+            'chance_bloqueio' => self::chance_bloq($pers, $alvo),
             'bloqueou' => false,
             'dado_bloqueou' => 0,
             'bloqueio' => 0,
+
             'dano' => 0,
             'nova_hp' => $alvo->estado["hp"]
         ];
@@ -29,32 +35,23 @@ class Ataque
             return $retorno;
         }
 
-        $esquiva = self::chance_esquiva($pers, $alvo);
-
-        $retorno["chance_esquiva"] = $esquiva;
         $retorno["dado_esquivou"] = rand(1, 1000) / 10;
 
-        if ($retorno["dado_esquivou"] <= $esquiva) {
+        if ($retorno["dado_esquivou"] <= $retorno["chance_esquiva"]) {
             $retorno["esquivou"] = true;
             $pers->combate->gatilhos->dispara(Gatilhos::ESQUIVOU, $alvo, $pers);
         } else {
             $dano = max($dano_hab * 0.3, self::get_atk_combate($pers) + $dano_hab - self::get_def_combate($alvo));
 
-            $chance_crit = self::chance_crit($pers, $alvo);
-
-            $retorno["chance_critico"] = $chance_crit;
             $retorno["dado_critou"] = rand(1, 1000) / 10;
-            if ($retorno["dado_critou"] <= $chance_crit) {
+            if ($retorno["dado_critou"] <= $retorno["chance_critico"]) {
                 $retorno["critou"] = true;
                 $retorno["critico"] = self::dano_crit($pers, $alvo);
                 $pers->combate->gatilhos->dispara(Gatilhos::CRITOU, $pers, $alvo);
             }
 
-            $chance_bloq = self::chance_bloq($pers, $alvo);
-
-            $retorno["chance_bloqueio"] = $chance_bloq;
             $retorno["dado_bloqueou"] = rand(1, 1000) / 10;
-            if ($retorno["dado_bloqueou"] <= $chance_bloq) {
+            if ($retorno["dado_bloqueou"] <= $retorno["chance_bloqueio"]) {
                 $retorno["bloqueou"] = true;
                 $retorno["bloqueio"] = 0.9;
                 $pers->combate->gatilhos->dispara(Gatilhos::BLOQUEOU, $alvo, $pers);

@@ -51,11 +51,13 @@ class Habilidade
 
                 Formulas\Recompensa::atualiza_recompensa($this->personagem, $quadro->personagem, $dano);
 
-                $this->combate->relatorio->registra_dano($this->personagem, $quadro->personagem, $dano);
+                $this->combate->relatorio->registra_dano($this->personagem, $quadro, $dano);
 
                 if ($dano["nova_hp"] <= 0) {
                     $quadro->personagem->tripulacao->incrementa_vontade();
                 }
+            } else {
+                $this->combate->relatorio->registra_dano($this->personagem, $quadro, []);
             }
         }
 

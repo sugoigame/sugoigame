@@ -11,7 +11,7 @@ abstract class Relatorio
     /**
      * @var array
      */
-    protected $ataque = [];
+    protected $acao = [];
 
     /**
      * @var array
@@ -28,8 +28,9 @@ abstract class Relatorio
 
     public function registra_ataque(Personagem $atacante, Habilidade $habilidade)
     {
-        $this->ataque = [
-            "atacante" => [
+        $this->acao = [
+            "tipo" => "ataque",
+            "personagem" => [
                 "nome" => $atacante->estado["nome"],
                 "cod" => $atacante->estado["cod"],
                 "tripulacao_id" => $atacante->estado["tripulacao_id"],
@@ -40,15 +41,19 @@ abstract class Relatorio
         ];
     }
 
-    public function registra_dano(Personagem $atacante, Personagem $defensor, $dano)
+    public function registra_dano(Personagem $atacante, Quadro $quadro, $dano)
     {
         $this->consequencias[] = [
-            "alvo" => [
-                "nome" => $defensor->estado["nome"],
-                "cod" => $defensor->estado["cod"],
-                "tripulacao_id" => $defensor->estado["tripulacao_id"],
-                "img" => $defensor->estado["img"],
-                "skin_r" => $defensor->estado["skin_r"],
+            "alvo" => $quadro->personagem ? [
+                "nome" => $quadro->personagem->estado["nome"],
+                "cod" => $quadro->personagem->estado["cod"],
+                "tripulacao_id" => $quadro->personagem->estado["tripulacao_id"],
+                "img" => $quadro->personagem->estado["img"],
+                "skin_r" => $quadro->personagem->estado["skin_r"],
+            ] : null,
+            "quadro" => [
+                "x" => $quadro->x,
+                "y" => $quadro->y
             ],
             "dano" => $dano
         ];
@@ -63,6 +68,7 @@ abstract class Relatorio
                 "img" => $pers->estado["img"],
                 "skin_r" => $pers->estado["skin_r"],
             ],
+            "quadro" => $pers->get_posicao_tabuleiro(),
             "cura" => $quantidade
         ];
     }

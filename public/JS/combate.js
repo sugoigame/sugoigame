@@ -96,124 +96,132 @@ function toggleTurn(vez) {
             bindDefaultAction();
         }
 
-        var origemGolpe = $(
-            "#relatorio-combate-content .relatorio-origem-meta-data"
+        const relatorio = $(
+            "#relatorio-combate-content .relatorio-meta-data"
         ).data("log");
 
-        $("#relatorio-combate-content .relatorio-meta-data").each(function () {
-            var log = $(this).data("log");
-            var offset = $("#" + log.quadro).offset();
+        const origemOffset = $(
+            '.selecionavel[data-cod="' + relatorio.personagem?.cod + '"]'
+        ).offset();
 
-            var origemOffset = $(
-                '.selecionavel[data-cod="' + origemGolpe.cod + '"]'
-            ).offset();
+        const animacao =
+            relatorio.habilidade?.animacao || "Atingir fisicamente";
 
-            var effect = origemGolpe.effect;
-            if (log.tipo == 2) {
-                effect = "Cura 1";
-            }
+        if (relatorio.habilidade) {
+            for (let consequencia of relatorio.consequencias) {
+                const offset = $(
+                    "#" + consequencia.quadro.x + "_" + consequencia.quadro.y
+                ).offset();
 
-            var animation = new Animation(effect || "Atingir fisicamente");
+                const animation = new Animation(animacao);
 
-            $("body").append(
-                $("<DIV>")
-                    .css("position", "absolute")
-                    .css("top", origemOffset.top)
-                    .css("left", origemOffset.left)
-                    .html(
-                        '<img src="Imagens/Skils/' +
-                            origemGolpe.img_skil +
-                            '.jpg" width="35px" />'
-                    )
-                    .animate(
-                        {
-                            top: offset.top,
-                            left: offset.left,
-                        },
-                        500,
-                        function () {
-                            $(this).remove();
-                            animation.play({
-                                top: offset.top + 20,
-                                left: offset.left + 20,
-                                callback: function () {
-                                    if (log.tipo || log.tipo === 0) {
-                                        var $danoDiv = $("<DIV>")
-                                            .css("position", "absolute")
-                                            .css("top", offset.top)
-                                            .css("left", offset.left)
-                                            .css("color", "#E00")
-                                            .css("font-weight", "800")
-                                            .css("padding", "1px 3px")
-                                            .css("border-radius", "3px")
-                                            .css("z-index", "1000")
-                                            .css(
-                                                "text-shadow",
-                                                "1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000,  -1px -1px #000, 1px -1px #000, -1px 1px #000"
-                                            )
-                                            .html(log.efeito)
-                                            .animate(
-                                                {
-                                                    top: offset.top - 20,
-                                                },
-                                                3000,
-                                                function () {
-                                                    $(this).remove();
+                $("body").append(
+                    $("<DIV>")
+                        .css("position", "absolute")
+                        .css("top", origemOffset.top)
+                        .css("left", origemOffset.left)
+                        .css("z-index", 1000000)
+                        .html(
+                            '<img src="Imagens/Skils/' +
+                                relatorio.habilidade.icone +
+                                '.jpg" width="35px" />'
+                        )
+                        .animate(
+                            {
+                                top: offset.top,
+                                left: offset.left,
+                            },
+                            500,
+                            function () {
+                                $(this).remove();
+                                animation.play({
+                                    top: offset.top + 20,
+                                    left: offset.left + 20,
+                                    callback: function () {
+                                        if (
+                                            consequencia.dano ||
+                                            typeof consequencia.cura !==
+                                                "undefined"
+                                        ) {
+                                            const $danoDiv = $("<DIV>")
+                                                .css("position", "absolute")
+                                                .css("top", offset.top)
+                                                .css("left", offset.left)
+                                                .css("color", "#E00")
+                                                .css("font-weight", "800")
+                                                .css("padding", "1px 3px")
+                                                .css("border-radius", "3px")
+                                                .css("z-index", "1000")
+                                                .css(
+                                                    "text-shadow",
+                                                    "1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000,  -1px -1px #000, 1px -1px #000, -1px 1px #000"
+                                                )
+                                                .html(
+                                                    typeof consequencia.cura !==
+                                                        "undefined"
+                                                        ? consequencia.cura
+                                                        : consequenciaconsequencia
+                                                              .dano?.dano
+                                                )
+                                                .animate(
+                                                    {
+                                                        top: offset.top - 20,
+                                                    },
+                                                    3000,
+                                                    function () {
+                                                        $(this).remove();
+                                                    }
+                                                );
+
+                                            if (consequencia.dano) {
+                                                if (consequencia.dano.critou) {
+                                                    $danoDiv
+                                                        .addClass("critico")
+                                                        .css("color", "#fff");
                                                 }
-                                            );
 
-                                        if (log.tipo == 0) {
-                                            if (log.cri) {
-                                                $danoDiv
-                                                    .addClass("critico")
-                                                    .css("color", "#fff");
+                                                if (
+                                                    consequencia.dano.bloqueou
+                                                ) {
+                                                    $danoDiv
+                                                        .removeClass("critico")
+                                                        .addClass("bloqueio")
+                                                        .css("color", "#fff");
+                                                }
+
+                                                if (
+                                                    consequencia.dano.esquivou
+                                                ) {
+                                                    $danoDiv
+                                                        .addClass("esquiva")
+                                                        .css(
+                                                            "font-weight",
+                                                            "normal"
+                                                        )
+                                                        .css(
+                                                            "font-size",
+                                                            "10px"
+                                                        )
+                                                        .css("color", "#fff")
+                                                        .css(
+                                                            "padding",
+                                                            "1px 1px"
+                                                        )
+                                                        .html("esquivou");
+                                                }
+                                            } else {
+                                                $danoDiv.css("color", "#0F0");
                                             }
 
-                                            if (log.bloq) {
-                                                $danoDiv
-                                                    .removeClass("critico")
-                                                    .addClass("bloqueio")
-                                                    .css("color", "#fff");
-                                            }
-
-                                            if (log.esq) {
-                                                $danoDiv
-                                                    .addClass("esquiva")
-                                                    .css(
-                                                        "font-weight",
-                                                        "normal"
-                                                    )
-                                                    .css("font-size", "10px")
-                                                    .css("color", "#fff")
-                                                    .css("padding", "1px 1px")
-                                                    .html("esquivou");
-                                            }
-                                        } else if (log.tipo == 1) {
-                                            $danoDiv
-                                                .css("color", "#FF0")
-                                                .html(
-                                                    log.efeito > 0
-                                                        ? "+" + log.efeito
-                                                        : log.efeito
-                                                );
-                                        } else if (log.tipo == 2) {
-                                            $danoDiv
-                                                .css("color", "#0F0")
-                                                .html(
-                                                    log.cura_h +
-                                                        ", " +
-                                                        log.cura_m
-                                                );
+                                            $("body").append($danoDiv);
                                         }
-
-                                        $("body").append($danoDiv);
-                                    }
-                                },
-                            });
-                        }
-                    )
-            );
-        });
+                                    },
+                                });
+                            }
+                        )
+                );
+            }
+        }
     }
 }
 
