@@ -12,11 +12,21 @@ class CombateJogador extends Combate
 
         $minha_tripulacao_index = $this->userDetails->tripulacao["id"] == $this->userDetails->combate_pvp["id_1"] ? "1" : "2";
         $this->minhaTripulacao = $this->tripulacoes[$minha_tripulacao_index];
+
+        $this->relatorio = new RelatorioJogador($this);
     }
 
     public function vez_de_quem()
     {
         return $this->userDetails->combate_pvp["vez"];
+    }
+
+    public function muda_vez()
+    {
+        $vez = $this->userDetails->combate_pvp["vez"] == 1 ? 2 : 1;
+        $tempo = atual_segundo() + ($this->userDetails->combate_pvp["passe_$vez"] >= 3 ? 30 : 90);
+        $this->connection->run("UPDATE tb_combate SET vez = ?, vez_tempo = ?, move_1 = ?, move_2 = ? WHERE combate = ?",
+            "iiiii", array($vez, $tempo, 5, 5, $this->userDetails->combate_pvp["combate"]));
     }
 
     public function vale_quanta_recompensa()

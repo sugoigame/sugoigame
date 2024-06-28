@@ -31,7 +31,7 @@ schema:
           é permanente durante toda a batalha
         bonus:
           atr: ATRIBUTOS BASICOS >
-            atk, def, pre, agl, per, des, res
+            atk, def, pre, agl, con, des, res
             ATRIBUTOS AVANCADOS >
             SANGRAMENTO(dano), VENENO(dano), IMOBILIZACAO, REMOCAO_SANGRAMENTO(cod_efeito)
           valor:

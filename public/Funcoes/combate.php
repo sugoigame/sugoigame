@@ -248,6 +248,7 @@ function get_pers_in_combate($id)
         pers.haki_cri AS haki_cri,
         pers.fama_ameaca AS fama_ameaca,
         pers.akuma AS akuma,
+        pers.xp AS xp,
         akuma.categoria AS categoria_akuma,
         pers.profissao AS profissao,
         pers.profissao_xp AS profissao_xp,

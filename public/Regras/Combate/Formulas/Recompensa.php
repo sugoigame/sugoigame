@@ -101,6 +101,9 @@ class Recompensa
 							 VALUES (?, ?, ?, ?, ?, ?)",
             "iiiiii", array($pers->estado["cod"], $outro->estado["cod"], $quantidade, 0, $pers->estado["lvl"], $outro->estado["lvl"])
         );
+
+        $pers->estado["fa_ganha"] += $quantidade;
+        $pers->estado["fama_ameaca"] += $quantidade;
     }
 
 }

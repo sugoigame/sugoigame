@@ -19,4 +19,8 @@ class PersonagemNpc extends Personagem
     {
         return null;
     }
+    protected function registrar_espera_habilidade(Habilidade $habilidade)
+    {
+
+    }
 }

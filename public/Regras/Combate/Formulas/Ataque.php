@@ -1,6 +1,7 @@
 <?php
 namespace Regras\Combate\Formulas;
 
+use Regras\Combate\Gatilhos;
 use Regras\Combate\Personagem;
 use Regras\Combate\Habilidade;
 
@@ -35,6 +36,7 @@ class Ataque
 
         if ($retorno["dado_esquivou"] <= $esquiva) {
             $retorno["esquivou"] = true;
+            $pers->combate->gatilhos->dispara(Gatilhos::ESQUIVOU, $alvo, $pers);
         } else {
             $dano = max($dano_hab * 0.3, self::get_atk_combate($pers) + $dano_hab - self::get_def_combate($alvo));
 
@@ -45,6 +47,7 @@ class Ataque
             if ($retorno["dado_critou"] <= $chance_crit) {
                 $retorno["critou"] = true;
                 $retorno["critico"] = self::dano_crit($pers, $alvo);
+                $pers->combate->gatilhos->dispara(Gatilhos::CRITOU, $pers, $alvo);
             }
 
             $chance_bloq = self::chance_bloq($pers, $alvo);
@@ -54,6 +57,7 @@ class Ataque
             if ($retorno["dado_bloqueou"] <= $chance_bloq) {
                 $retorno["bloqueou"] = true;
                 $retorno["bloqueio"] = 0.9;
+                $pers->combate->gatilhos->dispara(Gatilhos::BLOQUEOU, $alvo, $pers);
             }
 
             $dano_crit = $retorno["critico"] * $dano;
@@ -68,6 +72,12 @@ class Ataque
             $alvo->estado["hp"] = max(0, $alvo->estado["hp"] - $dano);
             $retorno["nova_hp"] = $alvo->estado["hp"];
 
+            $pers->combate->gatilhos->dispara(Gatilhos::ACERTOU, $pers, $alvo);
+
+            if ($retorno["nova_hp"] <= 0) {
+                $pers->combate->gatilhos->dispara(Gatilhos::MORREU, $alvo, $pers);
+                $pers->combate->gatilhos->dispara(Gatilhos::MATOU, $pers, $alvo);
+            }
         }
 
         return $retorno;

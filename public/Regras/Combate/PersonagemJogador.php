@@ -19,14 +19,50 @@ class PersonagemJogador extends Personagem
         // do nothing
     }
 
+    public function atacar($cod_habilidade, $quadros)
+    {
+        parent::atacar($cod_habilidade, $quadros);
+
+        $this->estado["xp"] += 40;
+
+        if (($this->estado["profissao"] == PROFISSAO_COMBATENTE || $this->estado["profissao"] == PROFISSAO_MUSICO)
+            && $this->estado["profissao_xp"] < $this->estado["profissao_xp_max"]) {
+            $this->estado["profissao_xp"] += 1;
+        }
+    }
+
+    protected function registrar_espera_habilidade(Habilidade $habilidade)
+    {
+        if ($habilidade->estado["recarga"]) {
+            $this->combate->connection->run("INSERT INTO tb_combate_skil_espera (id, cod, cod_skil, espera) VALUES (?,?,?,?)", "iiii", [
+                $this->tripulacao->estado["id"],
+                $this->estado["cod"],
+                $habilidade->estado["cod"],
+                $habilidade->estado["recarga"]
+            ]);
+        }
+    }
+
     protected function get_habilidades()
     {
         if (! $this->habilidades) {
             $habilidades = \Regras\Habilidades::get_todas_habilidades_pers($this->estado["cod_pers"]);
 
+            $habilidades_recarga = $this->combate->connection->run("SELECT * FROM tb_combate_skil_espera WHERE id = ?",
+                "i", [$this->tripulacao->estado["id"]]
+            )->fetch_all_array();
+
             $this->habilidades = [];
             foreach ($habilidades as $habilidade) {
-                $this->habilidades[$habilidade["cod"]] = new Habilidade($this->combate, $this, $habilidade);
+                if ($habilidade["vontade"] <= $this->tripulacao->get_vontade()) {
+                    $filtro = ["cod_skil" => $habilidade["cod"]];
+                    if (! $habilidade["recarga_universal"]) {
+                        $filtro["cod"] = $this->estado["cod"];
+                    }
+                    if (! array_find($habilidades_recarga, $filtro)) {
+                        $this->habilidades[$habilidade["cod"]] = new Habilidade($this->combate, $this, $habilidade);
+                    }
+                }
             }
         }
 
@@ -52,4 +88,5 @@ class PersonagemJogador extends Personagem
         }
         return $this->akuma;
     }
+
 }

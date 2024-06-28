@@ -35,6 +35,8 @@ class Habilidade
      */
     public function atacar($quadros)
     {
+        $this->combate->relatorio->registra_ataque($this->personagem, $this);
+
         $quadros = $this->combate->tabuleiro->get_quadros($quadros);
 
         $this->pre_atacar($quadros);
@@ -43,9 +45,17 @@ class Habilidade
             if ($quadro->personagem) {
                 $dano = Formulas\Ataque::aplica_dano($this->personagem, $quadro->personagem, $this);
 
+                if (! $dano["esquivou"] && ! $dano["bloqueou"] && isset($this->estado["efeitos"]) && isset($this->estado["efeitos"]["acerto"])) {
+                    $this->aplica_efeitos($this->estado["efeitos"]["acerto"], [$quadro]);
+                }
+
                 Formulas\Recompensa::atualiza_recompensa($this->personagem, $quadro->personagem, $dano);
 
                 $this->combate->relatorio->registra_dano($this->personagem, $quadro->personagem, $dano);
+
+                if ($dano["nova_hp"] <= 0) {
+                    $quadro->personagem->tripulacao->incrementa_vontade();
+                }
             }
         }
 

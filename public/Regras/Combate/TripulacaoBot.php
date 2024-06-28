@@ -12,6 +12,9 @@ class TripulacaoBot extends Tripulacao
     {
 
     }
+    protected function incrementa_vontade()
+    {
+    }
 
     protected function get_efeito($efeito)
     {
@@ -19,6 +22,10 @@ class TripulacaoBot extends Tripulacao
     }
 
     protected function salvar()
+    {
+
+    }
+    protected function reduzir_espera_habilidades()
     {
 
     }

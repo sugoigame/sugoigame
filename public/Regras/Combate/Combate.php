@@ -39,6 +39,11 @@ abstract class Combate
     public $relatorio;
 
     /**
+     * @var Gatilhos
+     */
+    public $gatilhos;
+
+    /**
      * @var Apostas
      */
     public $apostas;
@@ -83,7 +88,7 @@ abstract class Combate
         $this->userDetails = $userDetails;
         $this->protector = $protector;
         $this->apostas = new Apostas($this);
-        $this->relatorio = new Relatorio($this);
+        $this->gatilhos = new Gatilhos($this);
         $this->estado = $estado;
         $this->init();
 
@@ -96,6 +101,8 @@ abstract class Combate
      * @return string
      */
     abstract public function vez_de_quem();
+
+    abstract public function muda_vez();
 
     /**
      * @return int
@@ -121,8 +128,11 @@ abstract class Combate
         $this->relatorio->salvar();
 
         foreach ($this->tripulacoes as $tripulacao) {
+            $tripulacao->incrementa_vontade();
             $tripulacao->salvar();
         }
+
+        $this->muda_vez();
     }
 
     public function mover()
