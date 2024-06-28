@@ -93,6 +93,8 @@ if ($userDetails->combate_pve) {
 
         atualiza_xp_pvp($vencedor, $perdedor, $personagens_vencedor, $personagens_perdedor);
 
+        reduz_recompensa_tripulantes($perdedor["id"], $personagens_perdedor);
+
         atualiza_controle_ilha_pvp($vencedor);
 
         envia_noticia_pvp($vencedor, $perdedor);
@@ -139,7 +141,7 @@ if ($userDetails->combate_pve) {
 }
 
 if ($venceu) {
-    if ($userDetails->combate_pve && isset ($rdm['haki'])) {
+    if ($userDetails->combate_pve && isset($rdm['haki'])) {
         echo ("%haki");
     } elseif ($userDetails->combate_bot && $userDetails->combate_bot["incursao"]) {
         echo ("%incursao");

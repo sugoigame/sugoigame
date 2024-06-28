@@ -87,7 +87,7 @@
     <!-- <br /> -->
     <h3>Recompensas por Karma Mau:</h3>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <!-- <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="box-item" style="min-height: 290px">
                 <p><img src="Imagens/Icones/bonus_3.jpg"></p>
                 <h4>Saqueador Experiente</h4>
@@ -100,7 +100,7 @@
                 </p>
                 <?php render_buy_buttom(PRECO_KARMA_BONUS_1, 6, "mau"); ?>
             </div>
-        </div>
+        </div> -->
         <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="box-item" style="min-height: 290px">
                 <p><img src="Imagens/Icones/bonus_3.jpg"></p>
@@ -108,9 +108,8 @@
                 <p>Seus atos tem influenciado as autoridades locais, elas estão mais sujeitas a aumentar a recompensa
                     pela
                     sua cabeça</p>
-                <p>Nas próximas 24 horas, toda vez que um de seus tripulantes derrotar um tripulante inimigo, o preço de
-                    sua
-                    recompensa será aumentado com um bônus de 20%</p>
+                <p>Nas próximas 24 horas, a recompensa dos seus tripulantes será aumentado com um bônus de 20% em
+                    batalhas</p>
                 <p>Preço:
                     <?= PRECO_KARMA_BONUS_2 ?> pontos de Karma Mau
                 </p>
@@ -124,8 +123,8 @@
                 <p>O seu nome já é conhecido por essas bandas, as autoridades não querem mais abaixar a recompensa pela
                     sua
                     cabeça.</p>
-                <p>Nas próximas 24 horas, toda vez que um de seus tripulantes for derrotado por um tripulante inimigo, o
-                    preço de sua recompensa terá uma redução 20% menor do que teria normalmente.</p>
+                <p>Nas próximas 24 horas, a recompensa dos seus tripulantes terá uma redução 20% menor do que teria
+                    normalmente em batalhas.</p>
                 <p>Preço:
                     <?= PRECO_KARMA_BONUS_3 ?> pontos de Karma Mau
                 </p>

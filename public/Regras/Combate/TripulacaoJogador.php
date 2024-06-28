@@ -21,6 +21,11 @@ class TripulacaoJogador extends Tripulacao
 
     protected function get_efeito($efeito)
     {
+        return $this->combate->userDetails->buffs->get_efeito_from_tripulacao($efeito, $this->estado["id"]);
+    }
+
+    protected function salvar()
+    {
 
     }
 }

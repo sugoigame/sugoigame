@@ -54,6 +54,24 @@ function zera_hp_tripulantes($personagens_in_combate)
     }
 }
 
+function reduz_recompensa_tripulantes($tripulacao_id, $personagens_in_combate)
+{
+    global $connection;
+    global $userDetails;
+    $cods = [];
+    foreach ($personagens_in_combate as $pers) {
+        $cods[] = $pers["cod"];
+    }
+
+    $reducao = 1000000;
+    $bonus = $reducao * $userDetails->buffs->get_efeito_from_tripulacao("reducao_perda_fa", $tripulacao_id);
+    $reducao -= $bonus;
+
+    if (count($cods)) {
+        $connection->run("UPDATE tb_personagens SET fama_ameaca = fama_ameaca - $reducao WHERE cod IN (" . (implode(",", $cods)) . ") AND fama_ameaca > 10000000");
+    }
+}
+
 function atualiza_hp_tripulantes($personagens_in_combate)
 {
     global $connection;

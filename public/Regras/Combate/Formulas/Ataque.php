@@ -6,7 +6,7 @@ use Regras\Combate\Habilidade;
 
 class Ataque
 {
-    public static function calc_dano(Personagem $pers, Personagem $alvo, Habilidade $habilidade)
+    public static function aplica_dano(Personagem $pers, Personagem $alvo, Habilidade $habilidade)
     {
         $dano_hab = self::calc_dano_habilidade($habilidade);
 

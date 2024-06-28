@@ -17,4 +17,9 @@ class TripulacaoBot extends Tripulacao
     {
 
     }
+
+    protected function salvar()
+    {
+
+    }
 }

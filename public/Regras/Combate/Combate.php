@@ -115,7 +115,14 @@ abstract class Combate
 
         $this->minhaTripulacao->atacar($cod_pers, $cod_habilidade, $quadros);
 
+        $this->tabuleiro->resolve_efeitos();
+        $this->tabuleiro->reduz_duracao_efeitos();
 
+        $this->relatorio->salvar();
+
+        foreach ($this->tripulacoes as $tripulacao) {
+            $tripulacao->salvar();
+        }
     }
 
     public function mover()

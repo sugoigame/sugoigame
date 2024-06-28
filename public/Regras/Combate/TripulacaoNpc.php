@@ -17,4 +17,9 @@ class TripulacaoNpc extends Tripulacao
     {
 
     }
+
+    protected function salvar()
+    {
+
+    }
 }

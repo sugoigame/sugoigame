@@ -41,9 +41,11 @@ class Habilidade
 
         foreach ($quadros as $quadro) {
             if ($quadro->personagem) {
-                $dano = Formulas\Ataque::calc_dano($this->personagem, $quadro->personagem, $this);
+                $dano = Formulas\Ataque::aplica_dano($this->personagem, $quadro->personagem, $this);
 
                 Formulas\Recompensa::atualiza_recompensa($this->personagem, $quadro->personagem, $dano);
+
+                $this->combate->relatorio->registra_dano($this->personagem, $quadro->personagem, $dano);
             }
         }
 

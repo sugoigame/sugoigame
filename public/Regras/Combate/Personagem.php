@@ -59,6 +59,16 @@ abstract class Personagem
         $habilidades[$cod_habilidade]->atacar($quadros);
     }
 
+    public function resolve_efeitos()
+    {
+
+    }
+
+    public function reduz_duracao_efeitos()
+    {
+
+    }
+
     public function mover()
     {
         //todo

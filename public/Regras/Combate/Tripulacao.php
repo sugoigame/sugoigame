@@ -41,6 +41,8 @@ abstract class Tripulacao
 
     abstract protected function get_efeito($efeito);
 
+    abstract protected function salvar();
+
     /**
      * @param int
      * @param int
@@ -53,6 +55,15 @@ abstract class Tripulacao
         }
 
         $this->personagens[$cod_pers]->atacar($cod_habilidade, $quadros);
+
+        foreach ($this->personagens as $pers) {
+            $pers->resolve_efeitos();
+        }
+
+        // precisa reduzir depois de resolver tudo
+        foreach ($this->personagens as $pers) {
+            $pers->reduz_duracao_efeitos();
+        }
     }
 
     public function mover()

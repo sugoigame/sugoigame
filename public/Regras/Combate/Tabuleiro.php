@@ -91,4 +91,15 @@ class Tabuleiro
         return true;
     }
 
+
+    public function resolve_efeitos()
+    {
+
+    }
+
+    public function reduz_duracao_efeitos()
+    {
+
+    }
+
 }

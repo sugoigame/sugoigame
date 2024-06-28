@@ -16,4 +16,13 @@ class Relatorio
         $this->combate = $combate;
     }
 
+    public function registra_dano(Personagem $atacante, Personagem $defensor, $dano)
+    {
+        return null;
+    }
+
+    public function salvar()
+    {
+
+    }
 }

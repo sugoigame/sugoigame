@@ -77,7 +77,7 @@ class Recompensa
         }
     }
 
-    public static function aumenta($fa_ganha, Personagem $pers, Personagem $outro)
+    public static function aumenta($quantidade, Personagem $pers, Personagem $outro)
     {
         $max_fa = $pers->combate->vale_quanta_recompensa();
 
@@ -90,13 +90,16 @@ class Recompensa
         }
 
         if ($pers->estado["cod_capitao"] == $pers->estado["cod"]) {
-            $fa_ganha += round($fa_ganha * 0.2);
+            $quantidade += round($quantidade * 0.2);
         }
+
+        $bonus = $pers->tripulacao->get_efeito("aumento_ganho_fa") * $quantidade;
+        $quantidade += $bonus;
 
         $pers->combate->connection->run(
             "INSERT INTO tb_wanted_log (vencedor_cod, perdedor_cod, fa_ganha, fa_perdida, vencedor_lvl, perdedor_lvl)
 							 VALUES (?, ?, ?, ?, ?, ?)",
-            "iiiiii", array($pers->estado["cod"], $outro->estado["cod"], $fa_ganha, 0, $pers->estado["lvl"], $outro->estado["lvl"])
+            "iiiiii", array($pers->estado["cod"], $outro->estado["cod"], $quantidade, 0, $pers->estado["lvl"], $outro->estado["lvl"])
         );
     }
 

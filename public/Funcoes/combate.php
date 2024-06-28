@@ -235,6 +235,7 @@ function get_pers_in_combate($id)
     global $connection;
     $personagens = $connection->run(
         "SELECT
+        pers.cod as cod,
         pers.cod as cod_pers,
         pers.id AS id,
         pers.id AS tripulacao_id,
