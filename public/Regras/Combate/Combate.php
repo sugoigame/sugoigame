@@ -133,6 +133,8 @@ abstract class Combate
         }
 
         $this->muda_vez();
+
+        $this->apostas->checa_fim_apostas();
     }
 
     public function mover()
