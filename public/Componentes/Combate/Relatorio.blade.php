@@ -7,13 +7,19 @@
         @if ($index <= 5)
             <li class="list-group-item">
                 <h4>
-                    @component('Combate.Relatorio.IconePersonagem', ['log' => $log['personagem'], 'id_azul' => $id_azul])
-                    @endcomponent
+                    @if (isset($log['personagem']))
+                        @component('Combate.Relatorio.IconePersonagem', ['personagem' => $log['personagem'], 'id_azul' => $id_azul])
+                        @endcomponent
+                    @elseif (isset($log['tripulacao']))
+                        {{ $log['tripulacao']['nome'] }}
+                    @endif
                     {{ $log['nome'] }}
                     @if ($log['tipo'] == 'movimento')
                         se movimentou
                     @elseif ($log['tipo'] == 'passe')
                         passou a vez
+                    @elseif ($log['tipo'] == 'perder_vez')
+                        perdeu a vez
                     @else
                         usou: <img src="Imagens/Skils/{{ $log['habilidade']['icone'] }}.jpg" />
                         {{ $log['habilidade']['nome'] }}
@@ -30,7 +36,11 @@
                             @if (!$consequencia['alvo'])
                                 Acertou um quadrado vazio
                             @else
-                                @component('Combate.Relatorio.IconePersonagem', ['log' => $consequencia['alvo'], 'id_azul' => $id_azul])
+                                @component('Combate.Relatorio.IconePersonagem', [
+                                    'personagem' => $consequencia['alvo'],
+                                    'id_azul' => $id_azul,
+                                    'height' => '32px',
+                                ])
                                 @endcomponent
                                 {{ $consequencia['alvo']['nome'] }}
                                 @if (isset($consequencia['dano']))
@@ -66,7 +76,8 @@
                                             @endif
                                         @endif
                                         perdeu
-                                        {{ $consequencia['dano']['dano'] }} pontos de vida
+                                        <strong>{{ $consequencia['dano']['dano'] }}</strong>
+                                        pontos de vida
                                         @if ($consequencia['dano']['critou'])
                                             <span class="critico">Ataque crítico</span>
                                             @if ($avancado)
@@ -89,7 +100,8 @@
                                     @endif
                                 @elseif (isset($consequencia['cura']))
                                     recebeu
-                                    {{ $consequencia['cura'] }} pontos de vida
+                                    <strong>{{ $consequencia['cura'] }}</strong>
+                                    pontos de vida
                                 @endif
                             @endif
                         </p>

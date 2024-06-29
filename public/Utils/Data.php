@@ -1,15 +1,13 @@
 <?php
 namespace Utils;
 
-require_once str_replace(__DIR__, "Utils", "") . "Classes/Spyc.php";
-
 class Data
 {
     private static $cache = array();
 
     public static function load($data)
     {
-        if (! isset(DataLoader::$cache[$data])) {
+        if (! isset(self::$cache[$data])) {
             $file_name = dirname(__FILE__) . "/../Data/" . $data;
             $file_yaml = $file_name . ".yaml";
             $file_json = $file_name . ".json";
@@ -25,7 +23,7 @@ class Data
 
     private static function load_yaml($file_name)
     {
-        return \Spyc::YAMLLoad($file_name);
+        return \Classes\Spyc::YAMLLoad($file_name);
     }
 
     private static function load_json($file_name)

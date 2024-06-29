@@ -288,6 +288,8 @@ function get_pers_in_combate($id)
     foreach ($personagens as $key => $pers) {
         if ($pers["efeitos"]) {
             $personagens[$key]["efeitos"] = json_decode($pers["efeitos"], true);
+        } else {
+            $personagens[$key]["efeitos"] = [];
         }
     }
 
@@ -959,11 +961,12 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                 <?php render_personagem_hp_bar($pers); ?>
                             </div>
                             <div class="col-xs-6" style="width: 100%">
-                                <?php if (isset($pers["efeitos"])) : ?>
+                                <?php if (isset($pers["efeitos"]) && count($pers["efeitos"])) : ?>
                                     <h4>Buffs</h4>
                                     <?php foreach ($pers["efeitos"] as $efeito) : ?>
                                         <div class="text-center">
                                             <?= Componentes::render("Habilidades.Explicacao", ["explicacao" => $efeito["explicacao"]]); ?>
+                                            (<?= $efeito["duracao"]; ?>)
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
@@ -1144,7 +1147,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
         </span>
         <?php if ($personagens_combate["1"]) : ?>
             <?php if (! $esconder_vontade) : ?>
-                <?php render_vontade($personagens_combate["1"][0]["mp"]) ?>
+                <?php render_vontade($combate["vontade_1"]) ?>
             <?php endif; ?>
             <span class="placar text-<?= $tripulacao["1"]["id"] == $id_blue ? "info" : "danger" ?>">
                 <?= count($personagens_combate["1"]) ?>
@@ -1156,7 +1159,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                 <?= count($personagens_combate["2"]) ?>
             </span>
             <?php if (! $esconder_vontade) : ?>
-                <?php render_vontade($personagens_combate["2"][0]["mp"]) ?>
+                <?php render_vontade($combate["vontade_2"]) ?>
             <?php endif; ?>
         <?php endif; ?>
         <span class="battle-player text-left">

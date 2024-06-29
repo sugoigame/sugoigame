@@ -5,6 +5,8 @@ require "../../Includes/conectdb.php";
 $protector->need_tripulacao();
 $protector->must_be_in_any_kind_of_combat();
 
+$combate = Regras\Combate\Combate::build($connection, $userDetails, $protector);
+
 $cod = $protector->get_number_or_exit("cod");
 
 $result = $connection->run(
@@ -46,9 +48,9 @@ $skill_espera = $connection->run(
                                 <p>
                                     <?= $espera["espera"] ?> turno(s)
                                 </p>
-                            <?php elseif ($pers["mp"] < $habilidade["vontade"]) : ?>
+                            <?php elseif ($combate->minhaTripulacao->get_vontade() < $habilidade["vontade"]) : ?>
                                 <p>Vontade insuficiente</p>
-                            <?php elseif (! $espera["espera"] && $pers["mp"] >= $habilidade["vontade"]) : ?>
+                            <?php elseif (! $espera["espera"] && $combate->minhaTripulacao->get_vontade() >= $habilidade["vontade"]) : ?>
                                 <button class="btn btn-success" data-dismiss="modal"
                                     onclick="usaSkil('<?= $habilidade["cod"]; ?>','<?= $pers["cod"]; ?>','<?= $habilidade["alcance"]; ?>', '1','<?= $habilidade["area"]; ?>')">
                                     Usar

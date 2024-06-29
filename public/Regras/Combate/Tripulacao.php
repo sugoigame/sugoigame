@@ -37,15 +37,15 @@ abstract class Tripulacao
 
     abstract protected function init();
 
-    abstract protected function get_vontade();
+    abstract public function get_vontade();
 
-    abstract protected function incrementa_vontade();
+    abstract public function incrementa_vontade();
 
-    abstract protected function get_efeito($efeito);
+    abstract public function get_efeito($efeito);
 
-    abstract protected function salvar();
+    abstract public function salvar();
 
-    abstract protected function reduzir_espera_habilidades();
+    abstract public function reduzir_espera_habilidades();
 
     /**
      * @param int
@@ -60,6 +60,11 @@ abstract class Tripulacao
 
         $this->personagens[$cod_pers]->atacar($cod_habilidade, $quadros);
 
+        $this->fim_turno();
+    }
+
+    public function fim_turno()
+    {
         foreach ($this->personagens as $pers) {
             if ($pers->estado["hp"] > 0) {
                 $pers->resolve_efeitos();
@@ -80,11 +85,16 @@ abstract class Tripulacao
     {
         //todo
     }
-
     public function perder_vez()
     {
-        //todo
+        $this->combate->relatorio->perder_vez($this);
+
+        $this->aplica_penalidade_perder_vez();
+
+        $this->fim_turno();
     }
+
+    abstract public function aplica_penalidade_perder_vez();
 
     public function passar_vez()
     {

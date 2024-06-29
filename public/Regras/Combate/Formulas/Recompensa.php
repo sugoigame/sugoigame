@@ -32,7 +32,7 @@ class Recompensa
                 self::aumenta_por_erro_critico($pers, $alvo);
             }
 
-            self::aumenta_por_dano($dano, $pers, $alvo);
+            self::aumenta_por_dano($dano["dano"], $pers, $alvo);
             self::aumenta_por_absorcao(
                 ($pers->get_valor_atributo("atk") > $alvo->get_valor_atributo("def") ? $alvo->get_valor_atributo("def") : $pers->get_valor_atributo("atk")) * 10,
                 $pers,

@@ -73,5 +73,25 @@ abstract class Relatorio
         ];
     }
 
+    public function perder_vez(Tripulacao $tripulacao)
+    {
+        $this->acao = [
+            "tipo" => "perder_vez",
+            "tripulacao" => [
+                "nome" => $tripulacao->estado["tripulacao"],
+            ],
+        ];
+    }
+
+    public function passar_vez(Tripulacao $tripulacao)
+    {
+        $this->acao = [
+            "tipo" => "passe",
+            "tripulacao" => [
+                "nome" => $tripulacao->estado["tripulacao"],
+            ],
+        ];
+    }
+
     abstract public function salvar();
 }

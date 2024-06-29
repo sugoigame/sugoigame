@@ -14,23 +14,23 @@ class TripulacaoJogador extends Tripulacao
         }
     }
 
-    protected function get_vontade()
+    public function get_vontade()
     {
         return $this->combate->userDetails->combate_pvp["vontade_" . $this->indice];
     }
 
-    protected function incrementa_vontade()
+    public function incrementa_vontade()
     {
         $this->combate->connection->run("UPDATE tb_combate SET vontade_" . $this->indice . " = vontade_" . $this->indice . " + 1 WHERE combate = ?",
             "i", [$this->combate->userDetails->combate_pvp["combate"]]
         );
     }
 
-    protected function get_efeito($efeito)
+    public function get_efeito($efeito)
     {
         return $this->combate->userDetails->buffs->get_efeito_from_tripulacao($efeito, $this->estado["id"]);
     }
-    protected function reduzir_espera_habilidades()
+    public function reduzir_espera_habilidades()
     {
         $this->combate->connection->run("DELETE FROM tb_combate_skil_espera WHERE id = ? AND espera <= 0",
             "i", [$this->estado["id"]]
@@ -41,7 +41,14 @@ class TripulacaoJogador extends Tripulacao
         );
     }
 
-    protected function salvar()
+    public function aplica_penalidade_perder_vez()
+    {
+        $passe = "passe_" . $this->combate->userDetails->combate_pvp["vez"];
+        $this->combate->connection->run("UPDATE tb_combate SET $passe = $passe + 1 WHERE combate = ?",
+            "i", [$this->combate->userDetails->combate_pvp["combate"]]);
+    }
+
+    public function salvar()
     {
         foreach ($this->personagens as $pers) {
             $this->combate->connection->run("UPDATE tb_combate_personagens SET hp = ?, hp_max = ?, quadro_x = ?, quadro_y = ?, fa_ganha = ?, efeitos = ? WHERE cod = ?",

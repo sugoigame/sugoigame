@@ -12,8 +12,11 @@ class RelatorioJogador extends Relatorio
             }
         }
 
+        $fixed_dir = str_replace('/', DIRECTORY_SEPARATOR, str_replace('\\', DIRECTORY_SEPARATOR, __DIR__));
+        $search = str_replace('/', DIRECTORY_SEPARATOR, "Regras/Combate");
+        $sub_path = str_replace('/', DIRECTORY_SEPARATOR, "Logs/PvP/");
 
-        $log_file = fopen(dirname(dirname(__FILE__)) . "/Logs/PvP/" . $this->combate->userDetails->combate_pvp["combate"] . ".log", "a+");
+        $log_file = @fopen(str_replace($search, "", $fixed_dir) . $sub_path . $this->combate->userDetails->combate_pvp["combate"] . ".log", "a+");
 
         $acao = $this->acao;
         $acao["consequencias"] = $this->consequencias;

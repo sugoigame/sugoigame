@@ -31,7 +31,7 @@ class PersonagemJogador extends Personagem
         }
     }
 
-    protected function registrar_espera_habilidade(Habilidade $habilidade)
+    public function registrar_espera_habilidade(Habilidade $habilidade)
     {
         if ($habilidade->estado["recarga"]) {
             $this->combate->connection->run("INSERT INTO tb_combate_skil_espera (id, cod, cod_skil, espera) VALUES (?,?,?,?)", "iiii", [
@@ -43,10 +43,10 @@ class PersonagemJogador extends Personagem
         }
     }
 
-    protected function get_habilidades()
+    public function get_habilidades()
     {
         if (! $this->habilidades) {
-            $habilidades = \Regras\Habilidades::get_todas_habilidades_pers($this->estado["cod_pers"]);
+            $habilidades = \Regras\Habilidades::get_todas_habilidades_pers($this->estado);
 
             $habilidades_recarga = $this->combate->connection->run("SELECT * FROM tb_combate_skil_espera WHERE id = ?",
                 "i", [$this->tripulacao->estado["id"]]
@@ -69,7 +69,7 @@ class PersonagemJogador extends Personagem
         return $this->habilidades;
     }
 
-    protected function get_posicao_tabuleiro()
+    public function get_posicao_tabuleiro()
     {
         return [
             "x" => $this->estado["quadro_x"],
@@ -77,7 +77,7 @@ class PersonagemJogador extends Personagem
         ];
     }
 
-    protected function get_akuma()
+    public function get_akuma()
     {
         if (! $this->estado["akuma"]) {
             return null;

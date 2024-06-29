@@ -1,12 +1,12 @@
-{{-- $personagem, $id_azul --}}
+{{-- $personagem, $id_azul, $height = '55px' --}}
 @php
     $classe = $personagem['tripulacao_id'] == $id_azul ? 'personagem-aliado' : 'personagem-inimigo';
     $url =
-        $personagem['skin_r'] == 'npc'
+        $personagem['skin_r'] === 'npc'
             ? 'Imagens/Batalha/Npc/' . $personagem['img'] . '.png'
-            : 'Imagens/Personagens/Icons/' . get_img($personagem, 'r') . '.png';
+            : 'Imagens/Personagens/Icons/' . get_img($personagem, 'r') . '.jpg';
 @endphp
 <img src="{{ $url }}"
-    height="55px"
-    alt="Atacante"
+    height="{{ $height ?: '55px' }}"
+    alt=""
     class="{{ $classe }}" />

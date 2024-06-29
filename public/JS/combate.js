@@ -101,13 +101,13 @@ function toggleTurn(vez) {
         ).data("log");
 
         const origemOffset = $(
-            '.selecionavel[data-cod="' + relatorio.personagem?.cod + '"]'
+            '.selecionavel[data-cod="' + relatorio?.personagem?.cod + '"]'
         ).offset();
 
         const animacao =
-            relatorio.habilidade?.animacao || "Atingir fisicamente";
+            relatorio?.habilidade?.animacao || "Atingir fisicamente";
 
-        if (relatorio.habilidade) {
+        if (relatorio?.habilidade) {
             for (let consequencia of relatorio.consequencias) {
                 const offset = $(
                     "#" + consequencia.quadro.x + "_" + consequencia.quadro.y
@@ -160,8 +160,8 @@ function toggleTurn(vez) {
                                                     typeof consequencia.cura !==
                                                         "undefined"
                                                         ? consequencia.cura
-                                                        : consequenciaconsequencia
-                                                              .dano?.dano
+                                                        : consequencia.dano
+                                                              ?.dano
                                                 )
                                                 .animate(
                                                     {

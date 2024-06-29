@@ -21,6 +21,11 @@ class CombateJogador extends Combate
         return $this->userDetails->combate_pvp["vez"];
     }
 
+    public function perdeu_vez()
+    {
+        return $this->userDetails->combate_pvp["vez_tempo"] < atual_segundo();
+    }
+
     public function muda_vez()
     {
         $vez = $this->userDetails->combate_pvp["vez"] == 1 ? 2 : 1;

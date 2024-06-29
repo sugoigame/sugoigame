@@ -105,6 +105,11 @@ abstract class Combate
     abstract public function muda_vez();
 
     /**
+     * @return bool
+     */
+    abstract public function perdeu_vez();
+
+    /**
      * @return int
      */
     abstract public function vale_quanta_recompensa();
@@ -122,6 +127,11 @@ abstract class Combate
 
         $this->minhaTripulacao->atacar($cod_pers, $cod_habilidade, $quadros);
 
+        $this->fim_turno();
+    }
+
+    public function fim_turno()
+    {
         $this->tabuleiro->resolve_efeitos();
         $this->tabuleiro->reduz_duracao_efeitos();
 
@@ -144,12 +154,22 @@ abstract class Combate
 
     public function perder_vez()
     {
-        //todo
+        if ($this->perdeu_vez()) {
+            $this->tripulacoes[$this->vez_de_quem()]->perder_vez();
+
+            $this->fim_turno();
+        }
     }
 
     public function passar_vez()
     {
-        //todo
+        if ($this->minhaTripulacao->indice != $this->vez_de_quem()) {
+            $this->protector->exit_error("Não é a sua vez");
+        }
+
+        $this->relatorio->passar_vez($this->minhaTripulacao);
+
+        $this->fim_turno();
     }
 
     public function desistir()

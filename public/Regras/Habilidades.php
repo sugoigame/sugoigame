@@ -22,7 +22,7 @@ class Habilidades
         global $COD_HAOSHOKU_LVL;
         $habilidades_db = $connection->run(
             "SELECT * FROM tb_personagens_skil WHERE cod_pers = ?",
-            "i", $pers["cod"]
+            "i", [$pers["cod"]]
         )->fetch_all_array();
 
         $habilidades = \Utils\Data::load("habilidades");

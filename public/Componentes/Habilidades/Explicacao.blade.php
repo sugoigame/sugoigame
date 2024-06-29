@@ -9,4 +9,4 @@
     $explicacao = str_replace('{PER}', Componentes::render('Habilidades.IconeAtributo', ['atr' => 'per']), $explicacao);
 @endphp
 
-{{ $explicacao }}
+{!! $explicacao !!}

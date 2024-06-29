@@ -18,6 +18,10 @@ class CombateBot extends Combate
 
     }
 
+    public function perdeu_vez()
+    {
+    }
+
     public function vale_quanta_recompensa()
     {
         return 0;

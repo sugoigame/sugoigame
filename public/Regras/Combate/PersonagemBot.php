@@ -7,19 +7,19 @@ class PersonagemBot extends Personagem
     {
     }
 
-    protected function get_habilidades()
+    public function get_habilidades()
     {
     }
 
-    protected function get_posicao_tabuleiro()
+    public function get_posicao_tabuleiro()
     {
     }
 
-    protected function get_akuma()
+    public function get_akuma()
     {
         return null;
     }
-    protected function registrar_espera_habilidade(Habilidade $habilidade)
+    public function registrar_espera_habilidade(Habilidade $habilidade)
     {
 
     }

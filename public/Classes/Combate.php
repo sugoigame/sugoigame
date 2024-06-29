@@ -781,7 +781,7 @@ class Combate
     {
         if ($this->userDetails->combate_pvp["vez_tempo"] < atual_segundo()) {
             $passe = "passe_" . $this->userDetails->combate_pvp["vez"];
-            $this->connection->run("UPDATE tb_combate SET $passe = $passe + 1 WHERE combate = ?",
+            $this->connection->run("UPDATE tb_combate SET $passe = $passe + 1, vontade_1 = vontade_1 + 1, vontade_2 = vontade_2 + 1 WHERE combate = ?",
                 "i", array($this->userDetails->combate_pvp["combate"]));
 
 

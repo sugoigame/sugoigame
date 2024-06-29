@@ -1,6 +1,17 @@
 <?php
 $_SERVER["HTTP_HOST"] = isset($argv[1]) ? $argv[1] : "sugoigame.com.br";
 
+// Permite importar classes automaticamente com uso de namespaces
+spl_autoload_register(function ($class) {
+    $class_path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
+
+    $file = str_replace("servers" . DIRECTORY_SEPARATOR . "map", "public" . DIRECTORY_SEPARATOR, __DIR__) . $class_path . '.php';
+
+    if (file_exists($file)) {
+        require_once $file;
+    }
+});
+
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/../../public/Includes/database/mywrap.php';
 require __DIR__ . '/../../public/Classes/requires.php';

@@ -2,16 +2,9 @@
 require "../../Includes/conectdb.php";
 
 $protector->need_tripulacao();
-$protector->must_be_in_any_kind_of_combat();
 
-$combate = new Combate($connection, $userDetails, $protector);
+$combate = Regras\Combate\Combate::build($connection, $userDetails, $protector);
 
-$combate->pre_ataque();
-
-$combate->pos_ataque();
-
-if ($userDetails->combate_pve) {
-    $combate->processa_turno_npc($combate->load_tabuleiro($userDetails->tripulacao["id"]));
-}
+$combate->passar_vez();
 
 echo "Você passou a vez";

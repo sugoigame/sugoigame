@@ -33,19 +33,19 @@ abstract class Personagem
     }
     abstract protected function init();
 
-    abstract protected function get_habilidades();
+    abstract public function get_habilidades();
 
     /**
      * @return [x: int, y: int]
      */
-    abstract protected function get_posicao_tabuleiro();
+    abstract public function get_posicao_tabuleiro();
 
     /**
      * @return Akuma | null
      */
-    abstract protected function get_akuma();
+    abstract public function get_akuma();
 
-    abstract protected function registrar_espera_habilidade(Habilidade $habilidade);
+    abstract public function registrar_espera_habilidade(Habilidade $habilidade);
 
     /**
      * @param int
