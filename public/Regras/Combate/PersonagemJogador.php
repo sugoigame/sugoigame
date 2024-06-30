@@ -89,4 +89,16 @@ class PersonagemJogador extends Personagem
         return $this->akuma;
     }
 
+
+    public function mover(Quadro $destino)
+    {
+        $this->estado["quadro_x"] = $destino->x;
+        $this->estado["quadro_y"] = $destino->y;
+        $this->combate->connection->run("UPDATE tb_combate_personagens SET quadro_x = ?, quadro_y = ? WHERE cod = ?",
+            "iii", [
+                $this->estado["quadro_x"],
+                $this->estado["quadro_y"],
+                $this->estado["cod"],
+            ]);
+    }
 }

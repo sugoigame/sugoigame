@@ -71,4 +71,16 @@ class TripulacaoJogador extends Tripulacao
                 ]);
         }
     }
+
+    public function pode_mover($custo)
+    {
+        return $this->combate->estado["move_" . $this->indice] >= $custo;
+    }
+
+    public function consome_movimentos($custo)
+    {
+        $coluna = "move_" . $this->indice;
+        $this->combate->connection->run("UPDATE tb_combate SET $coluna = $coluna - $custo WHERE combate = ?",
+            "i", [$this->combate->estado["combate"]]);
+    }
 }

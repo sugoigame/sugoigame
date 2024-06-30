@@ -41,9 +41,16 @@ class Habilidade
 
         $this->pre_atacar($quadros);
 
+        $personagens_atingidos = 0;
         foreach ($quadros as $quadro) {
             if ($quadro->personagem) {
-                $dano = Formulas\Ataque::aplica_dano($this->personagem, $quadro->personagem, $this);
+                $personagens_atingidos++;
+            }
+        }
+
+        foreach ($quadros as $quadro) {
+            if ($quadro->personagem) {
+                $dano = Formulas\Ataque::aplica_dano($this->personagem, $quadro->personagem, $this, $personagens_atingidos);
 
                 if (! $dano["esquivou"] && ! $dano["bloqueou"] && isset($this->estado["efeitos"]) && isset($this->estado["efeitos"]["acerto"])) {
                     $this->aplica_efeitos($this->estado["efeitos"]["acerto"], [$quadro]);

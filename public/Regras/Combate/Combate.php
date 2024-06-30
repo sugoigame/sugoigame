@@ -147,9 +147,20 @@ abstract class Combate
         $this->apostas->checa_fim_apostas();
     }
 
-    public function mover()
+    public function mover($cod_pers, $destino)
     {
-        //todo
+        if ($this->minhaTripulacao->indice != $this->vez_de_quem()) {
+            $this->protector->exit_error("Não é a sua vez");
+        }
+
+        $destino = $this->tabuleiro->get_quadro($destino);
+        if ($destino->personagem) {
+            $this->protector->exit_error("Quadro ocupado");
+        }
+
+        $this->minhaTripulacao->mover($cod_pers, $destino);
+
+        $this->relatorio->salvar();
     }
 
     public function perder_vez()

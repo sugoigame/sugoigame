@@ -87,10 +87,7 @@ abstract class Personagem
         $this->estado["efeitos"] = $novos_efeitos;
     }
 
-    public function mover()
-    {
-        //todo
-    }
+    abstract public function mover(Quadro $destino);
 
     /**
      * @return mixed

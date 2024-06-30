@@ -23,4 +23,8 @@ class PersonagemNpc extends Personagem
     {
 
     }
+    public function mover(Quadro $destino)
+    {
+
+    }
 }

@@ -93,5 +93,23 @@ abstract class Relatorio
         ];
     }
 
+    public function registra_movimento(Personagem $pers, Quadro $destino)
+    {
+        $this->acao = [
+            "tipo" => "movimento",
+            "personagem" => [
+                "nome" => $pers->estado["nome"],
+                "cod" => $pers->estado["cod"],
+                "tripulacao_id" => $pers->estado["tripulacao_id"],
+                "img" => $pers->estado["img"],
+                "skin_r" => $pers->estado["skin_r"],
+            ],
+            "destino" => [
+                "x" => $destino->x,
+                "y" => $destino->y,
+            ]
+        ];
+    }
+
     abstract public function salvar();
 }

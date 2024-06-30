@@ -7,7 +7,7 @@ use Regras\Combate\Habilidade;
 
 class Ataque
 {
-    public static function aplica_dano(Personagem $pers, Personagem $alvo, Habilidade $habilidade)
+    public static function aplica_dano(Personagem $pers, Personagem $alvo, Habilidade $habilidade, int $personagens_atingidos)
     {
         $dano_hab = self::calc_dano_habilidade($habilidade);
 
@@ -41,7 +41,12 @@ class Ataque
             $retorno["esquivou"] = true;
             $pers->combate->gatilhos->dispara(Gatilhos::ESQUIVOU, $alvo, $pers);
         } else {
-            $dano = max($dano_hab * 0.3, self::get_atk_combate($pers) + $dano_hab - self::get_def_combate($alvo));
+            $quadro_alvo = $pers->combate->tabuleiro->get_quadro_personagem($alvo);
+            $distancia = $pers->combate->tabuleiro->get_quadro_personagem($pers)->get_ditancia($quadro_alvo);
+            $reducao_distancia = 1.0 - max(0, $distancia - 1.5) * 0.03;
+
+            $dano = ((self::get_atk_combate($pers) + $dano_hab) / $personagens_atingidos) * $reducao_distancia;
+            $dano = max($dano_hab * 0.3, $dano - self::get_def_combate($alvo));
 
             $retorno["dado_critou"] = rand(1, 1000) / 10;
             if ($retorno["dado_critou"] <= $retorno["chance_critico"]) {

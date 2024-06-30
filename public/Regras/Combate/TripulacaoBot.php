@@ -34,4 +34,14 @@ class TripulacaoBot extends Tripulacao
     {
 
     }
+
+    public function pode_mover($custo)
+    {
+
+    }
+
+    public function consome_movimentos($custo)
+    {
+
+    }
 }

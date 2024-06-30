@@ -23,4 +23,8 @@ class PersonagemBot extends Personagem
     {
 
     }
+    public function mover(Quadro $destino)
+    {
+
+    }
 }

@@ -47,6 +47,15 @@ class Tabuleiro
 
     /**
      * @param string
+     * @return Quadro
+     */
+    public function get_quadro($quadro)
+    {
+        return $this->get_quadros($quadro)[0];
+    }
+
+    /**
+     * @param string
      * @return Quadro[]
      */
     public function get_quadros($quadros)
@@ -89,6 +98,13 @@ class Tabuleiro
             }
         }
         return true;
+    }
+
+
+    public function get_custo_movimento(Personagem $pers, Quadro $destino) : int
+    {
+        $origem = $pers->get_posicao_tabuleiro();
+        return max(abs($origem["x"] - $destino->x), abs($origem["y"] - $destino->y));
     }
 
 

@@ -47,6 +47,10 @@ abstract class Tripulacao
 
     abstract public function reduzir_espera_habilidades();
 
+    abstract public function pode_mover($custo);
+
+    abstract public function consome_movimentos($custo);
+
     /**
      * @param int
      * @param int
@@ -81,9 +85,23 @@ abstract class Tripulacao
         $this->reduzir_espera_habilidades();
     }
 
-    public function mover()
+    public function mover($cod_pers, Quadro $destino)
     {
-        //todo
+        if (! isset($this->personagens[$cod_pers])) {
+            $this->combate->protector->exit_error("Personagem invalido");
+        }
+
+        $pers = $this->personagens[$cod_pers];
+        $custo = $this->combate->tabuleiro->get_custo_movimento($pers, $destino);
+        if (! $this->pode_mover($custo)) {
+            $this->combate->protector->exit_error("Você não pode se movimentar tanto");
+        }
+
+        $pers->mover($destino);
+
+        $this->consome_movimentos($custo);
+
+        $this->combate->relatorio->registra_movimento($pers, $destino);
     }
     public function perder_vez()
     {
