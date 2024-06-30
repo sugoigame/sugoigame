@@ -44,4 +44,37 @@ class CombateJogador extends Combate
 
         return 0;
     }
+
+
+    public function get_vontade(Tripulacao $tripulacao)
+    {
+        return $this->estado["vontade_" . $tripulacao->indice];
+    }
+
+    public function incrementa_vontade(Tripulacao $tripulacao)
+    {
+        $coluna = "vontade_" . $tripulacao->indice;
+        $this->connection->run("UPDATE tb_combate SET $coluna = $coluna + 1 WHERE combate = ?",
+            "i", [$this->estado["combate"]]
+        );
+    }
+
+    public function get_movimentos_restantes(Tripulacao $tripulacao, $custo)
+    {
+        return max(0, $this->estado["move_" . $tripulacao->indice] - $custo);
+    }
+
+    public function consome_movimentos(Tripulacao $tripulacao, $custo)
+    {
+        $coluna = "move_" . $tripulacao->indice;
+        $this->connection->run("UPDATE tb_combate SET $coluna = $coluna - $custo WHERE combate = ?",
+            "i", [$this->estado["combate"]]);
+    }
+
+    public function aplica_penalidade_perder_vez(Tripulacao $tripulacao)
+    {
+        $passe = "passe_" . $this->estado["vez"];
+        $this->connection->run("UPDATE tb_combate SET $passe = $passe + 1 WHERE combate = ?",
+            "i", [$this->estado["combate"]]);
+    }
 }

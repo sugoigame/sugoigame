@@ -62,12 +62,12 @@ abstract class Combate
      */
     public static function build($connection, $userDetails, $protector)
     {
-        if ($userDetails->combate_pvp) {
-            $combate = new CombateJogador($connection, $userDetails, $protector, $userDetails->combate_pvp);
+        if ($userDetails->combate_bot) {
+            $combate = new CombateBot($connection, $userDetails, $protector, $userDetails->combate_bot);
         } elseif ($userDetails->combate_pve) {
             $combate = new CombateNpc($connection, $userDetails, $protector, $userDetails->combate_pve);
-        } elseif ($userDetails->combate_bot) {
-            $combate = new CombateBot($connection, $userDetails, $protector, $userDetails->combate_bot);
+        } elseif ($userDetails->combate_pvp) {
+            $combate = new CombateJogador($connection, $userDetails, $protector, $userDetails->combate_pvp);
         } else {
             $protector->exit_error("Não está em combate");
         }
@@ -113,6 +113,17 @@ abstract class Combate
      * @return int
      */
     abstract public function vale_quanta_recompensa();
+
+
+    abstract public function get_vontade(Tripulacao $tripulacao);
+
+    abstract public function incrementa_vontade(Tripulacao $tripulacao);
+
+    abstract public function get_movimentos_restantes(Tripulacao $tripulacao, $custo);
+
+    abstract public function consome_movimentos(Tripulacao $tripulacao, $custo);
+
+    abstract public function aplica_penalidade_perder_vez(Tripulacao $tripulacao);
 
     /**
      * @param int

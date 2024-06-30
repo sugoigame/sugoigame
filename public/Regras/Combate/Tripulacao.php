@@ -37,19 +37,36 @@ abstract class Tripulacao
 
     abstract protected function init();
 
-    abstract public function get_vontade();
+    public function get_vontade()
+    {
+        return $this->combate->get_vontade($this);
+    }
 
-    abstract public function incrementa_vontade();
+    public function incrementa_vontade()
+    {
+        return $this->combate->incrementa_vontade($this);
+    }
+
+    public function get_movimentos_restantes($custo = 0)
+    {
+        return $this->combate->get_movimentos_restantes($this, $custo);
+    }
+
+    public function consome_movimentos($custo)
+    {
+        return $this->combate->consome_movimentos($this, $custo);
+    }
+
+    public function aplica_penalidade_perder_vez()
+    {
+        return $this->combate->aplica_penalidade_perder_vez($this);
+    }
 
     abstract public function get_efeito($efeito);
 
     abstract public function salvar();
 
     abstract public function reduzir_espera_habilidades();
-
-    abstract public function pode_mover($custo);
-
-    abstract public function consome_movimentos($custo);
 
     /**
      * @param int
@@ -93,7 +110,7 @@ abstract class Tripulacao
 
         $pers = $this->personagens[$cod_pers];
         $custo = $this->combate->tabuleiro->get_custo_movimento($pers, $destino);
-        if (! $this->pode_mover($custo)) {
+        if (! $this->get_movimentos_restantes($custo - 1)) {
             $this->combate->protector->exit_error("Você não pode se movimentar tanto");
         }
 
@@ -112,7 +129,6 @@ abstract class Tripulacao
         $this->fim_turno();
     }
 
-    abstract public function aplica_penalidade_perder_vez();
 
     public function passar_vez()
     {

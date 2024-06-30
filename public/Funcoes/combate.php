@@ -246,6 +246,7 @@ function get_pers_in_combate($id)
         pers.id AS tripulacao_id,
         pers.haki_esq AS haki_esq,
         pers.haki_cri AS haki_cri,
+        pers.haki_hdr as haki_hdr,
         pers.fama_ameaca AS fama_ameaca,
         pers.akuma AS akuma,
         pers.xp AS xp,
@@ -258,8 +259,6 @@ function get_pers_in_combate($id)
         cbtpers.quadro_y AS quadro_y,
         cbtpers.hp AS hp,
         cbtpers.hp_max AS hp_max,
-        cbtpers.mp AS mp,
-        cbtpers.mp_max AS mp_max,
         IFnull(cbtpers.img, pers.img) AS img,
         IFnull(cbtpers.skin_c, pers.skin_c) AS skin_c,
         IFnull(cbtpers.skin_r, pers.skin_r) AS skin_r,
@@ -282,15 +281,11 @@ function get_pers_in_combate($id)
         LEFT JOIN tb_titulos titulo ON pers.titulo = titulo.cod_titulo
         LEFT JOIN tb_akuma akuma ON pers.akuma = akuma.cod_akuma
         WHERE cbtpers.id = ? AND cbtpers.hp > 0",
-        "i", $id
+        "i", [$id]
     )->fetch_all_array();
 
     foreach ($personagens as $key => $pers) {
-        if ($pers["efeitos"]) {
-            $personagens[$key]["efeitos"] = json_decode($pers["efeitos"], true);
-        } else {
-            $personagens[$key]["efeitos"] = [];
-        }
+        $personagens[$key]["efeitos"] = $pers["efeitos"] ? json_decode($pers["efeitos"], true) : [];
     }
 
     return $personagens;
@@ -299,17 +294,24 @@ function get_pers_in_combate($id)
 function get_pers_bot_in_combate($id)
 {
     global $connection;
-    return $connection->run(
+    $personagens = $connection->run(
         "SELECT
         concat('bot_', cbtpers.id) AS cod,
+        concat('bot_', cbtpers.id) as cod_pers,
         cbtpers.id AS bot_id,
         'bot' AS id,
         'bot' AS tripulacao_id,
         cbtpers.*
         FROM tb_combate_personagens_bot cbtpers
         WHERE cbtpers.combate_bot_id = ? AND hp > 0",
-        "i", array($id)
+        "i", [$id]
     )->fetch_all_array();
+
+    foreach ($personagens as $key => $pers) {
+        $personagens[$key]["efeitos"] = $pers["efeitos"] ? json_decode($pers["efeitos"], true) : [];
+    }
+
+    return $personagens;
 }
 
 function get_buffs_combate($id_1, $id_2 = null)
@@ -1190,7 +1192,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                     <img
                         src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->tripulacao["bandeira"] ?>&f=<?= $userDetails->tripulacao["faccao"] ?>">
                 </span>
-                <?php render_vontade($personagens_combate[0]["mp"]) ?>
+                <?php render_vontade($combate[0]["mp"]) ?>
                 <span class="placar">
                     <?= count($personagens_combate) ?>
                 </span>
@@ -1211,7 +1213,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                     <img
                         src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->tripulacao["bandeira"] ?>&f=<?= $userDetails->tripulacao["faccao"] ?>">
                 </span>
-                <?php render_vontade($personagens_combate[0]["mp"]) ?>
+                <?php render_vontade($userDetails->combate_bot["vontade_1"]) ?>
                 <span class="placar text-info">
                     <?= count($personagens_combate) ?>
                 </span>
@@ -1219,7 +1221,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                 <span class="placar text-danger">
                     <?= count($personagens_combate_bot) ?>
                 </span>
-                <?php render_vontade($personagens_combate_bot[0]["mp"]) ?>
+                <?php render_vontade($userDetails->combate_bot["vontade_2"]) ?>
                 <span class="battle-player text-left">
                     <img
                         src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->combate_bot["bandeira_inimiga"] ?>&f=<?= $userDetails->combate_bot["faccao_inimiga"] ?>">

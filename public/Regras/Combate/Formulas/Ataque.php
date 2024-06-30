@@ -42,7 +42,7 @@ class Ataque
             $pers->combate->gatilhos->dispara(Gatilhos::ESQUIVOU, $alvo, $pers);
         } else {
             $quadro_alvo = $pers->combate->tabuleiro->get_quadro_personagem($alvo);
-            $distancia = $pers->combate->tabuleiro->get_quadro_personagem($pers)->get_ditancia($quadro_alvo);
+            $distancia = $pers->combate->tabuleiro->get_quadro_personagem($pers)->get_distancia($quadro_alvo);
             $reducao_distancia = 1.0 - max(0, $distancia - 1.5) * 0.03;
 
             $dano = ((self::get_atk_combate($pers) + $dano_hab) / $personagens_atingidos) * $reducao_distancia;

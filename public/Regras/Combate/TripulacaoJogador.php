@@ -14,17 +14,6 @@ class TripulacaoJogador extends Tripulacao
         }
     }
 
-    public function get_vontade()
-    {
-        return $this->combate->userDetails->combate_pvp["vontade_" . $this->indice];
-    }
-
-    public function incrementa_vontade()
-    {
-        $this->combate->connection->run("UPDATE tb_combate SET vontade_" . $this->indice . " = vontade_" . $this->indice . " + 1 WHERE combate = ?",
-            "i", [$this->combate->userDetails->combate_pvp["combate"]]
-        );
-    }
 
     public function get_efeito($efeito)
     {
@@ -41,12 +30,6 @@ class TripulacaoJogador extends Tripulacao
         );
     }
 
-    public function aplica_penalidade_perder_vez()
-    {
-        $passe = "passe_" . $this->combate->userDetails->combate_pvp["vez"];
-        $this->combate->connection->run("UPDATE tb_combate SET $passe = $passe + 1 WHERE combate = ?",
-            "i", [$this->combate->userDetails->combate_pvp["combate"]]);
-    }
 
     public function salvar()
     {
@@ -70,17 +53,5 @@ class TripulacaoJogador extends Tripulacao
                     $pers->estado["cod"]
                 ]);
         }
-    }
-
-    public function pode_mover($custo)
-    {
-        return $this->combate->estado["move_" . $this->indice] >= $custo;
-    }
-
-    public function consome_movimentos($custo)
-    {
-        $coluna = "move_" . $this->indice;
-        $this->combate->connection->run("UPDATE tb_combate SET $coluna = $coluna - $custo WHERE combate = ?",
-            "i", [$this->combate->estado["combate"]]);
     }
 }

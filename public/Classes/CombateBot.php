@@ -73,20 +73,6 @@ class CombateBot
         }
     }
 
-    public function pos_ataque()
-    {
-        $this->apply_sangramento();
-        $this->apply_veneno();
-    }
-
-    public function apply_sangramento()
-    {
-
-    }
-
-    public function apply_veneno()
-    {
-    }
 
     function get_personagens_proximos($quadro_x, $quadro_y, $dist = 1)
     {
@@ -472,8 +458,6 @@ class CombateBot
 
         $relatorio["afetados"] = $relatorio_afetado;
         $relatorio["id"] = atual_segundo();
-
-        $this->pos_ataque();
 
         $this->combate->logger->registra_turno_combate_bot($relatorio);
     }

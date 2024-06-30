@@ -24,4 +24,26 @@ class CombateNpc extends Combate
     {
         return 0;
     }
+
+    public function get_vontade(Tripulacao $tripulacao)
+    {
+
+    }
+    public function incrementa_vontade(Tripulacao $tripulacao)
+    {
+    }
+
+    public function get_movimentos_restantes(Tripulacao $tripulacao, $custo)
+    {
+
+    }
+
+    public function consome_movimentos(Tripulacao $tripulacao, $custo)
+    {
+
+    }
+
+    public function aplica_penalidade_perder_vez(Tripulacao $tripulacao)
+    {
+    }
 }

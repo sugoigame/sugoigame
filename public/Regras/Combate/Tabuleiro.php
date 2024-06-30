@@ -78,7 +78,7 @@ class Tabuleiro
         return $quadros;
     }
 
-    public function get_quadro_personagem(Personagem $personagem)
+    public function get_quadro_personagem(Personagem $personagem) : Quadro
     {
         $posicao = $personagem->get_posicao_tabuleiro();
         return $this->quadros[$posicao["x"]][$posicao["y"]];

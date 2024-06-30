@@ -8,22 +8,9 @@ class TripulacaoNpc extends Tripulacao
     {
     }
 
-    public function get_vontade()
-    {
-
-    }
-    public function incrementa_vontade()
-    {
-    }
-
     public function get_efeito($efeito)
     {
 
-    }
-
-    public function aplica_penalidade_perder_vez()
-    {
-        $this->fim_turno();
     }
 
     public function reduzir_espera_habilidades()
@@ -31,16 +18,6 @@ class TripulacaoNpc extends Tripulacao
 
     }
     public function salvar()
-    {
-
-    }
-
-    public function pode_mover($custo)
-    {
-
-    }
-
-    public function consome_movimentos($custo)
     {
 
     }
