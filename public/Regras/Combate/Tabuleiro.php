@@ -84,6 +84,17 @@ class Tabuleiro
         return $this->quadros[$posicao["x"]][$posicao["y"]];
     }
 
+    public function get_personagens_linha(int $x) : array
+    {
+        $personagens = [];
+        foreach ($this->quadros[$x] as $quadro) {
+            if ($quadro->personagem) {
+                $personagens[] = $quadro->personagem;
+            }
+        }
+        return $personagens;
+    }
+
     /**
      * @param Quadro[]
      */
@@ -93,7 +104,7 @@ class Tabuleiro
             $quadro = $quadros[$i];
             $quadro_anterior = $quadros[$i - 1];
 
-            if (sqrt(pow($quadro->x - $quadro_anterior->x, 2) + pow($quadro->y - $quadro_anterior->y, 2)) > 1.5) {
+            if (($quadro->x == "npc" && $quadro_anterior->x != 0) || sqrt(pow($quadro->x - $quadro_anterior->x, 2) + pow($quadro->y - $quadro_anterior->y, 2)) > 1.5) {
                 return false;
             }
         }

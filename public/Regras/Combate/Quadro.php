@@ -31,6 +31,9 @@ class Quadro
 
     public function get_distancia(Quadro $quadro) : float
     {
+        if ($this->x == "npc" || $quadro->x == "npc") {
+            return 1;
+        }
         return sqrt(pow($this->x - $quadro->x, 2) + pow($this->y - $quadro->y, 2));
     }
 }

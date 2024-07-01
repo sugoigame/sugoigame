@@ -100,18 +100,29 @@ function toggleTurn(vez) {
             "#relatorio-combate-content .relatorio-meta-data"
         ).data("log");
 
-        const origemOffset = $(
+        const origem = $(
             '.selecionavel[data-cod="' + relatorio?.personagem?.cod + '"]'
-        ).offset();
+        );
+        const origemOffset = origem.offset();
+        origemOffset.top += origem.height() / 2 - 20;
+        origemOffset.left += origem.width() / 2 - 20;
 
         const animacao =
             relatorio?.habilidade?.animacao || "Atingir fisicamente";
 
         if (relatorio?.habilidade) {
             for (let consequencia of relatorio.consequencias) {
-                const offset = $(
-                    "#" + consequencia.quadro.x + "_" + consequencia.quadro.y
-                ).offset();
+                const target = $(
+                    consequencia.quadro.x == "npc"
+                        ? "#npc"
+                        : "#" +
+                              consequencia.quadro.x +
+                              "_" +
+                              consequencia.quadro.y
+                );
+                const offset = target.offset();
+                offset.top += target.height() / 2 - 20;
+                offset.left += target.width() / 2 - 20;
 
                 const animation = new Animation(animacao);
 

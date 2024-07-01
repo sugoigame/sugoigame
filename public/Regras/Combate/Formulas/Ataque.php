@@ -48,6 +48,12 @@ class Ataque
             $dano = ((self::get_atk_combate($pers) + $dano_hab) / $personagens_atingidos) * $reducao_distancia;
             $dano = max($dano_hab * 0.3, $dano - self::get_def_combate($alvo));
 
+            $dano *= self::get_mod_akuma($pers, $alvo);
+
+            if ($alvo->estado["cod"] == "npc" && $aumento = $pers->tripulacao->get_efeito("aumento_dano_causado_npc")) {
+                $dano += round($aumento * $dano);
+            }
+
             $retorno["dado_critou"] = rand(1, 1000) / 10;
             if ($retorno["dado_critou"] <= $retorno["chance_critico"]) {
                 $retorno["critou"] = true;
@@ -69,7 +75,7 @@ class Ataque
             // dano bloqueado é calculado em cima do dano já critado
             $dano_bloq = $retorno["bloqueio"] * $dano;
 
-            $retorno["dano"] = max(1, round($dano - $dano_bloq)) * self::get_mod_akuma($pers, $alvo);
+            $retorno["dano"] = max(1, round($dano - $dano_bloq));
 
             $alvo->estado["hp"] = max(0, $alvo->estado["hp"] - $dano);
             $retorno["nova_hp"] = $alvo->estado["hp"];
