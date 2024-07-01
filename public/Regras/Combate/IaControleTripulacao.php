@@ -41,11 +41,11 @@ class IaControleTripulacao
             return;
         }
 
-        $posicao_atual = $movimento_escolhido["pers"]->get_posicao_tabuleiro();
-        $score_atual = $this->calc_score_posicao($movimento_escolhido["pers"], $posicao_atual["x"], $posicao_atual["y"]);
-        $novo_score = $this->calc_score_posicao($movimento_escolhido["pers"], $movimento_escolhido["x"], $movimento_escolhido["y"]);
+        $atacante_escolhido = $this->escolhe_ataque();
 
-        if ($score_atual >= $novo_score) {
+        $alvos_proximos = $this->get_inimigos_proximos($atacante_escolhido["x"], $atacante_escolhido["y"], 1);
+
+        if (count($alvos_proximos)) {
             $this->tripulacao->consome_movimentos($this->tripulacao->get_movimentos_restantes());
             return;
         }
@@ -90,25 +90,25 @@ class IaControleTripulacao
 
     public function ataca_inimigo_escolhido()
     {
-        $movimento_escolhido = $this->escolhe_ataque();
+        $atacante_escolhido = $this->escolhe_ataque();
 
-        $alvos_proximos = $this->get_inimigos_proximos($movimento_escolhido["x"], $movimento_escolhido["y"], 4);
+        $alvos_proximos = $this->get_inimigos_proximos($atacante_escolhido["x"], $atacante_escolhido["y"], 10);
 
         if (count($alvos_proximos)) {
             $distancia_minima = 999999999999;
             $alvo_escolhido = null;
             foreach ($alvos_proximos as $alvo) {
-                if (($distancia = $movimento_escolhido["quadro"]->get_distancia($alvo)) < $distancia_minima) {
+                if (($distancia = $atacante_escolhido["quadro"]->get_distancia($alvo)) < $distancia_minima) {
                     $distancia_minima = $distancia;
                     $alvo_escolhido = $alvo;
                 }
             }
 
-            $hablidades = array_filter($movimento_escolhido["pers"]->get_habilidades(), function ($habilidade) {
+            $hablidades = array_filter($atacante_escolhido["pers"]->get_habilidades(), function ($habilidade) {
                 return $habilidade->estado["dano"] > 0;
             });
             $habilidade = $hablidades[array_rand($hablidades)];
-            $this->combate->atacar($movimento_escolhido["pers"]->estado["cod_pers"], $habilidade->estado["cod"], $alvo_escolhido->x . "_" . $alvo_escolhido->y);
+            $this->combate->atacar($atacante_escolhido["pers"]->estado["cod_pers"], $habilidade->estado["cod"], $alvo_escolhido->x . "_" . $alvo_escolhido->y);
         } else {
             $this->combate->passar_vez();
         }
@@ -161,8 +161,8 @@ class IaControleTripulacao
     public function calc_score_posicao(Personagem $pers, $x, $y)
     {
         $inimigo = $this->get_inimigo_escolhido();
-        $distancia = $this->combate->tabuleiro->get_quadro_personagem($inimigo)->get_distancia(new Quadro($x, $y));
-        return (-$distancia) + count($this->get_inimigos_proximos($x, $y)) - count($this->get_aliados_proximos($x, $y, 1));
+        $distancia = $this->combate->tabuleiro->get_quadro_personagem($inimigo)->get_distancia(new Quadro($x, $y)) * 2;
+        return (-$distancia) + count($this->get_inimigos_proximos($x, $y, 1)) - count($this->get_aliados_proximos($x, $y, 1));
     }
 
     public function get_inimigos_proximos($x, $y, $dist = 1)

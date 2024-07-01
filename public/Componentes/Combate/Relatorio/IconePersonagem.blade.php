@@ -2,7 +2,7 @@
 @php
     $classe = $personagem['tripulacao_id'] == $id_azul ? 'personagem-aliado' : 'personagem-inimigo';
     $url =
-        $personagem['skin_r'] === 'npc'
+        $personagem['cod'] === 'npc'
             ? 'Imagens/Batalha/Npc/' . $personagem['img'] . '.png'
             : 'Imagens/Personagens/Icons/' . get_img($personagem, 'r') . '.jpg';
 @endphp

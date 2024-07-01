@@ -104,8 +104,10 @@ function toggleTurn(vez) {
             '.selecionavel[data-cod="' + relatorio?.personagem?.cod + '"]'
         );
         const origemOffset = origem.offset();
-        origemOffset.top += origem.height() / 2 - 20;
-        origemOffset.left += origem.width() / 2 - 20;
+        if (origemOffset) {
+            origemOffset.top += origem.height() / 2 - 20;
+            origemOffset.left += origem.width() / 2 - 20;
+        }
 
         const animacao =
             relatorio?.habilidade?.animacao || "Atingir fisicamente";
@@ -121,8 +123,10 @@ function toggleTurn(vez) {
                               consequencia.quadro.y
                 );
                 const offset = target.offset();
-                offset.top += target.height() / 2 - 20;
-                offset.left += target.width() / 2 - 20;
+                if (offset) {
+                    offset.top += target.height() / 2 - 20;
+                    offset.left += target.width() / 2 - 20;
+                }
 
                 const animation = new Animation(animacao);
 

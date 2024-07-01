@@ -1190,7 +1190,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                     <img
                         src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->tripulacao["bandeira"] ?>&f=<?= $userDetails->tripulacao["faccao"] ?>">
                 </span>
-                <?php render_vontade($combate[0]["mp"]) ?>
+                <?php render_vontade($userDetails->combate_pve["vontade_1"]) ?>
                 <span class="placar">
                     <?= count($personagens_combate) ?>
                 </span>
@@ -1198,7 +1198,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                 <span class="placar">
                     <?= $userDetails->combate_pve["hp_npc"] ? "1" : "0" ?>
                 </span>
-                <?php render_vontade($userDetails->combate_pve["mp_npc"]) ?>
+                <?php render_vontade($userDetails->combate_pve["vontade_npc"]) ?>
                 <span class="battle-player text-left">
                     <img src="Imagens/Batalha/npc.jpg" />
                     <?= $userDetails->combate_pve["nome_npc"] ?>
