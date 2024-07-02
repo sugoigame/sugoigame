@@ -676,6 +676,8 @@ function geraImgsSkill(list, input, img, totalImg) {
             listElem.append(
                 $("<IMG>")
                     .attr("src", "Imagens/Skils/" + x + ".jpg")
+                    .css("width", "50px")
+                    .css("height", "50px")
                     .on("click", function () {
                         imgElem.attr("src", $(this).attr("src"));
                         inputElem.val(x);

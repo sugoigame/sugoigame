@@ -60,7 +60,7 @@ if (! $pers) {
                             <?php foreach ($habilidades_lvl as $index => $habilidade) : ?>
                                 <?php $habilidade = array_merge($habilidade, $aprendidas[$habilidade["cod"]] ?: []) ?>
                                 <div>
-                                    <?= Componentes::render("Habilidades.Icone", ["habilidade" => $habilidade]) ?>
+                                    <?= Componentes::render("Habilidades.Icone", ["habilidade" => $habilidade, "vontade" => $habilidade["vontade"]]) ?>
                                 </div>
                                 <?php if ($pers["classe"] == $cod_classe) : ?>
                                     <?php if ($habilidade["requisito_lvl"] <= $pers["lvl"]) : ?>

@@ -52,7 +52,7 @@ define('FACCAO_PIRATA', 1);
 
 define('COD_CASCO_KAIROUSEKI', 2);
 
-define('SKILLS_ICONS_MAX', 512);
+define('SKILLS_ICONS_MAX', 515);
 
 define('PERSONAGENS_MAX', 369);
 

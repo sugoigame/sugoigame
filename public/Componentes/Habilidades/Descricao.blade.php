@@ -1,4 +1,4 @@
-{{-- $habilidade --}}
+{{-- $habilidade, $vontade --}}
 
 <div class="habilidade-descricao">
     <div>
@@ -10,7 +10,11 @@
     @isset($habilidade['explicacao'])
         <div>
             <span>
-                @component('Habilidades.Explicacao', ['explicacao' => $habilidade['explicacao']])
+                @component('Habilidades.Explicacao', [
+                    'explicacao' => $habilidade['explicacao'],
+                    'vontade' => $vontade,
+                    'dano' => $habilidade['dano'],
+                ])
                 @endcomponent
         </div>
     @endisset
@@ -26,6 +30,16 @@
                 height="20rem" />
         </div>
     @endif
+    @if (!isset($habilidade['efeitos']) || !isset($habilidade['efeitos']['passivos']))
+        <div>
+            <span>Alcance:</span>
+            <span>{{ $habilidade['alcance'] }}</span>
+        </div>
+        <div>
+            <span>Área:</span>
+            <span>{{ $habilidade['area'] }}</span>
+        </div>
+    @endif
     @if ($habilidade['recarga'])
         <div>
             <span>Recarga:</span>
@@ -33,22 +47,6 @@
                 <span>Universal -</span>
             @endif
             <span>{{ $habilidade['recarga'] }} turno(s)</span>
-        </div>
-    @endif
-    @if (!isset($habilidade['efeitos']) && !isset($habilidade['efeitos']['passivo']))
-        <div>
-            <span>Área:</span>
-            <span>{{ $habilidade['area'] }}</span>
-        </div>
-        <div>
-            <span>Alcance:</span>
-            <span>{{ $habilidade['alcance'] }}</span>
-        </div>
-    @endif
-    @if ($habilidade['dano'] && $habilidade['dano'] != 1)
-        <div>
-            <span>Dano adicional:</span>
-            <span>{{ ($habilidade['dano'] - 1) * 100 }}%</span>
         </div>
     @endif
 

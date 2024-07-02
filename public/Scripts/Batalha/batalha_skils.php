@@ -41,7 +41,7 @@ $skill_espera = $connection->run(
                 <div class="panel panel-default m0 h-100">
                     <div class="panel-body">
                         <div>
-                            <?= Componentes::render('Habilidades.Icone', ["habilidade" => $habilidade]) ?>
+                            <?= Componentes::render('Habilidades.Icone', ["habilidade" => $habilidade, "vontade" => max($habilidade["vontade"], $combate->minhaTripulacao->get_vontade())]) ?>
                         </div>
                         <div>
                             <?php if (isset($espera["espera"])) : ?>

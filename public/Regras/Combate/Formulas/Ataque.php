@@ -110,14 +110,18 @@ class Ataque
 
     public static function calc_dano_habilidade(Habilidade $habilidade)
     {
-        $vontade = $habilidade->personagem->tripulacao->get_vontade();
+        return self::calc_dano_vontade($habilidade->personagem->tripulacao->get_vontade(), $habilidade->estado["dano"]);
+    }
+
+    public static function calc_dano_vontade(int $vontade, float $multiplicador)
+    {
         if ($vontade <= 40) {
             $dano = 500 + $vontade * 150;
         } else {
             $dano = 6500 * pow(1.03, $vontade - 40);
         }
 
-        return $dano * $habilidade->estado["dano"];
+        return $dano * $multiplicador;
     }
 
     public static function chance_esquiva(Personagem $pers, Personagem $alvo)

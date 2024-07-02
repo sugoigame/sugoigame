@@ -159,10 +159,127 @@ haki:
     area: 12
     espera: 12
 classes:
-  1: # Itoryu
-    nome: Ittoryu
+  1:
+    nome: Pugilista
     habilidades:
       - cod: 10101
+        icone: 515
+        nome: Punho do Amor
+        descricao: Um soco simples, mas poderoso que atinge na cabeça.
+        animacao: Varredura
+        explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
+        vontade: 2
+        dano: 1.2
+        area: 2
+      - cod: 10102
+        icone: 517
+        nome: Agilidade
+        descricao: Pugilistas precisam se movimentar rápido.
+        explicacao: "Efeito passivo: {AGL} +10"
+        dano: 0
+        alcance: 0
+        requisito_lvl: 5
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: agl
+                valor: 10
+      - cod: 10103
+        icone: 524
+        nome: Galaxy Impact
+        descricao: Dá um soco que cria uma onda de choque extremamente poderosa que circunda um raio enorme, devastando qualquer coisa em seu alcance.
+        animacao: Bodyslam
+        explicacao: "Causa {DANO} com adicional de {ATK} +20% e {DEX} + 20% dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
+        vontade: 8
+        area: 3
+        recarga: 4
+        requisito_lvl: 10
+        efeitos:
+          pre_ataque:
+            - duracao: 0
+              tipo_alvo: ATACANTE
+              bonus:
+                atr: atk_porcentagem
+                valor: 0.2
+            - duracao: 0
+              tipo_alvo: ATACANTE
+              bonus:
+                atr: dex_porcentagem
+                valor: 0.2
+      - cod: 10104
+        icone: 519
+        nome: Defesa
+        descricao: Pugilistas precisam ter casca grossa e aguentar porrada.
+        explicacao: "Efeito passivo: {DEF} +10"
+        dano: 0
+        alcance: 0
+        requisito_lvl: 20
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: def
+                valor: 10
+      - cod: 10105
+        icone: 525
+        nome: Galaxy Divide
+        descricao: Dá um poderoso soco gera uma onda de choque que cria uma fissura vertical em seu alvo.
+        animacao: Especial físico 2
+        explicacao: Causa {DANO} com adicional de {ATK} +30% e {PRE} +30%. O dano aumenta conforme a vontade da tripulação.
+        alcance: 1
+        vontade: 24
+        recarga: 4
+        requisito_lvl: 30
+        efeitos:
+          pre_ataque:
+            - tipo_alvo: ATACANTE
+              duracao: 0
+              bonus:
+                atr: atk_porcentagem
+                valor: 0.3
+            - tipo_alvo: ATACANTE
+              duracao: 0
+              bonus:
+                atr: pre_porcentagem
+                valor: 0.3
+      - cod: 10106
+        icone: 517
+        nome: Agilidade
+        descricao: Pugilistas precisam se movimentar rápido.
+        explicacao: "Efeito passivo: {AGL} +10"
+        dano: 0
+        alcance: 0
+        requisito_lvl: 40
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: agl
+                valor: 10
+      - cod: 10107
+        icone: 526
+        nome: Blue Hole
+        descricao: Agarra o oponente pelo rosto e o arremessa para baixo, criando um buraco enorme e profundo no chão enquanto ele cai.
+        animacao: Perfuração do gelo
+        explicacao: Causa {DANO} com {ATK} adicional de 50% dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação.
+        alcance: 1
+        vontade: 40
+        recarga: 6
+        requisito_lvl: 50
+        efeitos:
+          pre_ataque:
+            - duracao: 0
+              tipo_alvo: ATACANTE
+              bonus:
+                atr: atk_porcentagem
+                valor: 0.5
+  2:
+    nome: Santoryu
+    habilidades:
+      - cod: 10201
         icone: 14
         nome: Nome
         descricao: Descrição
@@ -171,7 +288,7 @@ classes:
         vontade: 2
         dano: 1.1
         area: 1
-      - cod: 10102
+      - cod: 10202
         icone: 15
         nome: Nome
         descricao: Descrição
@@ -185,7 +302,7 @@ classes:
               bonus:
                 atr: pre_porcentagem
                 valor: 0.3
-      - cod: 10103
+      - cod: 10203
         icone: 16
         nome: Nome
         descricao: Descrição
@@ -202,7 +319,7 @@ classes:
               bonus:
                 atr: agl_porcentagem
                 valor: -0.3
-      - cod: 10104
+      - cod: 10204
         icone: 17
         nome: Nome
         descricao: Descrição
@@ -224,7 +341,7 @@ classes:
                         bonus:
                           atr: pre_porcentagem
                           valor: 0.1
-      - cod: 10105
+      - cod: 10205
         icone: 18
         nome: Nome
         descricao: Descrição
@@ -241,7 +358,7 @@ classes:
               bonus:
                 atr: pre_porcentagem
                 valor: 0.3
-      - cod: 10106
+      - cod: 10206
         icone: 19
         nome: Nome
         descricao: Descrição
@@ -263,7 +380,7 @@ classes:
                         bonus:
                           atr: agl_porcentagem
                           valor: -0.1
-      - cod: 10107
+      - cod: 10207
         icone: 20
         nome: Nome
         descricao: Descrição
@@ -279,10 +396,10 @@ classes:
               bonus:
                 atr: des_porcentagem
                 valor: 0.5
-  2: # Itoryu
-    nome: Punho
+  3:
+    nome: Perna negra
     habilidades:
-      - cod: 10201
+      - cod: 10301
         icone: 40
         nome: Nome
         descricao: Descrição
@@ -291,7 +408,7 @@ classes:
         vontade: 2
         dano: 1.1
         area: 1
-      - cod: 10202
+      - cod: 10302
         icone: 41
         nome: Nome
         descricao: Descrição
@@ -305,7 +422,7 @@ classes:
               bonus:
                 atr: pre_porcentagem
                 valor: 0.3
-      - cod: 10203
+      - cod: 10303
         icone: 42
         nome: Nome
         descricao: Descrição
@@ -321,7 +438,7 @@ classes:
               bonus:
                 atr: agl_porcentagem
                 valor: -0.3
-      - cod: 10204
+      - cod: 10304
         icone: 43
         nome: Nome
         descricao: Descrição
@@ -343,7 +460,7 @@ classes:
                         bonus:
                           atr: pre_porcentagem
                           valor: 0.1
-      - cod: 10205
+      - cod: 10305
         icone: 44
         nome: Nome
         descricao: Descrição
@@ -359,7 +476,7 @@ classes:
               bonus:
                 atr: pre_porcentagem
                 valor: 0.3
-      - cod: 10206
+      - cod: 10306
         icone: 45
         nome: Nome
         descricao: Descrição
@@ -381,7 +498,7 @@ classes:
                         bonus:
                           atr: agl_porcentagem
                           valor: -0.1
-      - cod: 10207
+      - cod: 10307
         icone: 46
         nome: Nome
         descricao: Descrição
@@ -396,10 +513,10 @@ classes:
               bonus:
                 atr: des_porcentagem
                 valor: 0.5
-  3: # Itoryu
-    nome: Chute
+  4:
+    nome: Atirador
     habilidades:
-      - cod: 10301
+      - cod: 10401
         icone: 21
         nome: Nome
         descricao: Descrição
@@ -408,7 +525,7 @@ classes:
         vontade: 2
         dano: 1.1
         area: 1
-      - cod: 10302
+      - cod: 10402
         icone: 21
         nome: Nome
         descricao: Descrição
@@ -422,7 +539,7 @@ classes:
               bonus:
                 atr: pre_porcentagem
                 valor: 0.3
-      - cod: 10303
+      - cod: 10403
         icone: 23
         nome: Nome
         descricao: Descrição
@@ -438,7 +555,7 @@ classes:
               bonus:
                 atr: agl_porcentagem
                 valor: -0.3
-      - cod: 10304
+      - cod: 10404
         icone: 24
         nome: Nome
         descricao: Descrição
@@ -460,7 +577,7 @@ classes:
                         bonus:
                           atr: pre_porcentagem
                           valor: 0.1
-      - cod: 10305
+      - cod: 10405
         icone: 25
         nome: Nome
         descricao: Descrição
@@ -476,7 +593,7 @@ classes:
               bonus:
                 atr: pre_porcentagem
                 valor: 0.3
-      - cod: 10306
+      - cod: 10406
         icone: 26
         nome: Nome
         descricao: Descrição
@@ -498,7 +615,7 @@ classes:
                         bonus:
                           atr: agl_porcentagem
                           valor: -0.1
-      - cod: 10306
+      - cod: 10407
         icone: 27
         nome: Nome
         descricao: Descrição

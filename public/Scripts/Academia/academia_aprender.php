@@ -7,7 +7,7 @@ $protector->must_be_out_of_missao();
 $class = $protector->get_enum_or_exit("class", [CLASSE_ITORYU, CLASSE_PUNHO, CLASSE_CHUTE]);
 $personagem = $protector->get_tripulante_or_exit("cod");
 
-// $habilidades = DataLoader::load("habilidades")["classes"][$class]["habilidades"];
+$classe = DataLoader::load("habilidades")["classes"][$class];
 // $query = "INSERT IGNORE INTO tb_personagens_skil (cod_pers, cod_skil, nome, descricao, icone, animacao) VALUES ";
 // $queries = [];
 // $values = [];
@@ -30,4 +30,4 @@ $personagem = $protector->get_tripulante_or_exit("cod");
 
 $query = "UPDATE tb_personagens SET classe='$class' WHERE cod='" . $personagem["cod"] . "'";
 $connection->run($query);
-$response->send_conquista_pers($personagem, $personagem["nome"] . " se tornou um " . nome_classe($class) . "!");
+$response->send_conquista_pers($personagem, $personagem["nome"] . " se tornou um " . $classe["nome"] . "!");

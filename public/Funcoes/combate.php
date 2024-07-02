@@ -602,9 +602,6 @@ function cria_crianca($id)
 
     $cod = $result->last_id();
 
-    $connection->run("INSERT INTO tb_personagens_skil (cod, cod_skil, tipo, nome, descricao, icon)
-    VALUES ('$cod', '" . COD_SKILL_SOCO . "', '" . TIPO_SKILL_ATAQUE_CLASSE . "', 'Soco', 'Tenta acerta um soco no oponente.', '1')");
-
     return $connection->run("SELECT * FROM tb_personagens WHERE cod = ?",
         "i", array($cod))->fetch_array();
 }

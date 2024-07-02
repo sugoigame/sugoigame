@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="JS/jquery.js"></script>
+        <script src="JS/library.js"></script>
+        <script>
+            function playAnimacao(effect) {
+                const animation = new Animation(effect);
+                animation.play({
+                    fixed: true,
+                    left: $(window).width() / 2,
+                    top: $(window).height() / 2,
+                });
+            }
+
+            var animations;
+            $(function () {
+                $.ajax({
+                    url: "Imagens/Skils/Animacoes/Animations.json",
+                    success: function (response) {
+                        animations = response;
+                        console.log(animations);
+                        for (let animacao of animations) {
+                            if (animacao) {
+                                $("#animacoes").append(
+                                    $("<button>")
+                                        .on("click", () =>
+                                            playAnimacao(animacao.name)
+                                        )
+                                        .html(animacao.name)
+                                );
+                            }
+                        }
+                    },
+                });
+            });
+        </script>
+        <div id="animacoes"></div>
+    </body>
+</html>
