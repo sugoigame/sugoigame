@@ -6,17 +6,17 @@ abstract class Relatorio
     /**
      * @var Combate
      */
-    protected $combate;
+    public $combate;
 
     /**
      * @var array
      */
-    protected $acao = [];
+    public $acao = [];
 
     /**
      * @var array
      */
-    protected $consequencias = [];
+    public $consequencias = [];
 
     /**
      * @param Combate

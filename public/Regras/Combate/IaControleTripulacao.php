@@ -61,7 +61,7 @@ class IaControleTripulacao
             $posicao = $pers->get_posicao_tabuleiro();
             for ($x = $posicao["x"] - 1; $x <= $posicao["x"] + 1; $x++) {
                 for ($y = $posicao["y"] - 1; $y <= $posicao["y"] + 1; $y++) {
-                    if (($x != $posicao["x"] || $y != $posicao["y"]) && $x >= 0 && $x <= 9 && $y >= 0 && $y <= 19) {
+                    if (($x != $posicao["x"] || $y != $posicao["y"]) && $x >= 0 && $x <= Tabuleiro::MAX_TABULEIRO_X && $y >= 0 && $y <= Tabuleiro::MAX_TABULEIRO_Y) {
                         $quadro = $this->combate->tabuleiro->get_quadro($x . "_" . $y);
                         if (! $quadro->personagem) {
                             $movimentos[] = [
@@ -194,7 +194,7 @@ class IaControleTripulacao
         $quadros = [];
         for ($x = $quadro_x - $dist; $x <= $quadro_x + $dist; $x++) {
             for ($y = $quadro_y - $dist; $y <= $quadro_y + $dist; $y++) {
-                if (($x != $quadro_x || $y != $quadro_y) && $x >= 0 && $x <= 9 && $y >= 0 && $y <= 19) {
+                if (($x != $quadro_x || $y != $quadro_y) && $x >= 0 && $x <= Tabuleiro::MAX_TABULEIRO_X && $y >= 0 && $y <= Tabuleiro::MAX_TABULEIRO_Y) {
                     $quadro = $this->combate->tabuleiro->get_quadro($x . "_" . $y);
                     if ($quadro && $quadro->personagem) {
                         $quadros[] = $quadro;

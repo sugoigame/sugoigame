@@ -116,13 +116,28 @@ abstract class Personagem
         foreach ($this->estado["efeitos"] as $efeito) {
             if ($efeito["bonus"]["atr"] == $atributo) {
                 if (is_numeric($efeito["bonus"]["valor"])) {
-
                     $valor += $efeito["bonus"]["valor"];
                 } else {
                     return $efeito["bonus"]["valor"];
                 }
             }
         }
+
+        $habilidades = $this->get_habilidades();
+        foreach ($habilidades as $habilidade) {
+            if (isset($habilidade->estado["efeitos"]) && isset($habilidade->estado["efeitos"]["passivos"])) {
+                foreach ($habilidade->estado["efeitos"]["passivos"] as $efeito) {
+                    if ($efeito["bonus"]["atr"] == $atributo) {
+                        if (is_numeric($efeito["bonus"]["valor"])) {
+                            $valor += $efeito["bonus"]["valor"];
+                        } else {
+                            return $efeito["bonus"]["valor"];
+                        }
+                    }
+                }
+            }
+        }
+
         return $valor;
     }
 }

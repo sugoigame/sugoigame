@@ -3,6 +3,8 @@ namespace Regras\Combate;
 
 class Tabuleiro
 {
+    public const MAX_TABULEIRO_X = 9;
+    public const MAX_TABULEIRO_Y = 19;
 
     /**
      * @var Combate

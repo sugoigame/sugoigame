@@ -94,45 +94,47 @@
                                 </button>
                             </form>
                         </div>
-                        <div class="col-md-6">
-                            <h3>Animação ativa:</h3>
-                            <p>
-                                <button data-effect="{{ $habilidade['animacao'] }}"
-                                    class="play-effect btn btn-primary">
-                                    {{ $habilidade['animacao'] }} <i class="fa fa-play"></i>
-                                </button>
-                            </p>
-                            <h4>Animações disponíveis:</h4>
-                            @if (count($animacoes))
-                                <form class="ajax_form"
-                                    method="post"
-                                    action="Personagem/mudar_animacao_skill"
-                                    onsubmit="$('#modal-edit-skill-{{ $modal_id }}').modal('hide');"
-                                    data-question="Você consumirá uma unidade da animação para aplica-la a essa habilidade. Deseja continuar?">
-                                    <input type="hidden"
-                                        name="pers"
-                                        value="{{ $pers['cod'] }}" />
-                                    <input type="hidden"
-                                        name="cod_skil"
-                                        value="{{ $habilidade['cod_skil'] }}" />
-                                    <div class="form-group">
-                                        <select class="form-control"
-                                            name="effect"
-                                            required>
-                                            @foreach ($animacoes as $animacao)
-                                                <option value="{{ $animacao['effect'] }}">
-                                                    {{ $animacao['effect'] }} x{{ $animacao['quant'] }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <button type="submit"
-                                        class="btn btn-info">
-                                        Mudar Animação
+                        @if (!isset($habilidade['efeitos']) || !isset($habilidade['efeitos']['passivos']))
+                            <div class="col-md-6">
+                                <h3>Animação ativa:</h3>
+                                <p>
+                                    <button data-effect="{{ $habilidade['animacao'] }}"
+                                        class="play-effect btn btn-primary">
+                                        {{ $habilidade['animacao'] }} <i class="fa fa-play"></i>
                                     </button>
-                                </form>
-                            @endif
-                        </div>
+                                </p>
+                                <h4>Animações disponíveis:</h4>
+                                @if (count($animacoes))
+                                    <form class="ajax_form"
+                                        method="post"
+                                        action="Personagem/mudar_animacao_skill"
+                                        onsubmit="$('#modal-edit-skill-{{ $modal_id }}').modal('hide');"
+                                        data-question="Você consumirá uma unidade da animação para aplica-la a essa habilidade. Deseja continuar?">
+                                        <input type="hidden"
+                                            name="pers"
+                                            value="{{ $pers['cod'] }}" />
+                                        <input type="hidden"
+                                            name="cod_skil"
+                                            value="{{ $habilidade['cod_skil'] }}" />
+                                        <div class="form-group">
+                                            <select class="form-control"
+                                                name="effect"
+                                                required>
+                                                @foreach ($animacoes as $animacao)
+                                                    <option value="{{ $animacao['effect'] }}">
+                                                        {{ $animacao['effect'] }} x{{ $animacao['quant'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <button type="submit"
+                                            class="btn btn-info">
+                                            Mudar Animação
+                                        </button>
+                                    </form>
+                                @endif
+                            </div>
+                        @endif
                     @endif
                 </div>
             </div>

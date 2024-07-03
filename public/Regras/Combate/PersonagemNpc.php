@@ -20,9 +20,9 @@ class PersonagemNpc extends Personagem
 
             $habilidades_pers = \Regras\Habilidades::habilidades_default_values($habilidades["padrao"]);
 
-            for ($classe = 1; $classe <= 3; $classe++) {
+            foreach ($habilidades["classes"] as $classe) {
                 $habilidades_pers = array_merge($habilidades_pers,
-                    \Regras\Habilidades::habilidades_default_values($habilidades["classes"]["$classe"]["habilidades"]));
+                    \Regras\Habilidades::habilidades_default_values($classe["habilidades"]));
             }
 
             $this->habilidades = [];
