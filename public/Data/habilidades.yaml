@@ -431,14 +431,25 @@ classes:
     nome: Perna negra
     habilidades:
       - cod: 10301
-        icone: 40
-        nome: Nome
-        descricao: Descrição
-        explicacao: "Causa dano no alvo atingido. O dano aumenta conforme a vontade da tripulação."
-        alcance: 5
+        icone: 534
+        nome: Collier
+        animacao: Atingir fisicamente
+        descricao: Um pontapé no pescoço.
+        explicacao: "Causa {DANO} com adicional de {PRE} +20% e {PER} +20% dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
         vontade: 2
-        dano: 1.1
-        area: 1
+        dano: 1
+        area: 3
+        efeitos:
+          pre_ataque:
+            - duracao: 0
+              bonus:
+                atr: pre_porcentagem
+                valor: 0.2
+            - duracao: 0
+              bonus:
+                atr: con_porcentagem
+                valor: 0.2
       - cod: 10302
         icone: 521
         nome: Resistência
@@ -454,21 +465,26 @@ classes:
                 atr: res
                 valor: 10
       - cod: 10303
-        icone: 42
-        nome: Nome
-        descricao: Descrição
-        explicacao: "Causa dano e aplica debuff de -30% de {AGL} por 3 turnos no alvo atingido."
-        alcance: 5
+        icone: 533
+        nome: Quasi
+        animacao: Slash físico
+        descricao: Apoia as mãos no chão enquanto gira e utiliza do impulso para chutar vários adversários.
+        explicacao: "Causa {DANO} com adicional de {PRE} +40% e {PER} +40% dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
+        area: 5
         vontade: 8
         recarga: 4
         requisito_lvl: 10
         efeitos:
-          acerto:
-            - tipo: NEGATIVO
-              duracao: 3
+          pre_ataque:
+            - duracao: 0
               bonus:
-                atr: agl_porcentagem
-                valor: -0.3
+                atr: pre_porcentagem
+                valor: 0.4
+            - duracao: 0
+              bonus:
+                atr: con_porcentagem
+                valor: 0.4
       - cod: 10304
         icone: 520
         nome: Destreza
@@ -484,21 +500,25 @@ classes:
                 atr: dex
                 valor: 10
       - cod: 10305
-        icone: 44
-        nome: Nome
-        descricao: Descrição
-        explicacao: Causa dano com {PRE} adicional de 30%
-        alcance: 5
+        icone: 532
+        nome: Sky Walk
+        animacao: Ventanear 2
+        descricao: Chuta o ar para saltar mais alto, dando a aparência de voo.
+        explicacao: Causa {DANO} dividido entre os alvos atingidos enquanto ativa um buff de {AGL} +20% em si mesmo com duração de 3 turnos. O dano aumenta conforme a vontade da tripulação.
+        alcance: 1
+        area: 5
         vontade: 24
         recarga: 4
         requisito_lvl: 30
         efeitos:
-          pre_ataque:
-            - tipo_alvo: ATACANTE
-              duracao: 0
+          pos_ataque:
+            - explicacao: "{AGL} +20%"
+              tipo: POSITIVO
+              tipo_alvo: ATACANTE
+              duracao: 3
               bonus:
-                atr: pre_porcentagem
-                valor: 0.3
+                atr: agl_porcentagem
+                valor: 0.2
       - cod: 10306
         icone: 521
         nome: Resistência
@@ -514,20 +534,25 @@ classes:
                 atr: res
                 valor: 10
       - cod: 10307
-        icone: 46
-        nome: Nome
-        descricao: Descrição
-        explicacao: Causa dano com {DEX} adicional de 50%
-        alcance: 5
+        icone: 531
+        nome: Diable Jambe
+        animacao: Incendiar 2
+        descricao: Aquece a perna, acrescentando um calor extremo ao impacto de seus chutes.
+        explicacao: Causa {DANO} dividido entre os alvos atingidos enquanto ativa um buff de {ATK} +30% em si mesmo com duração de 3 turnos. O dano aumenta conforme a vontade da tripulação.
+        alcance: 1
+        area: 1
         vontade: 40
         recarga: 6
         requisito_lvl: 50
         efeitos:
-          pre_ataque:
-            - duracao: 0
+          pos_ataque:
+            - explicacao: "{ATK} +30%"
+              tipo: POSITIVO
+              tipo_alvo: ATACANTE
+              duracao: 3
               bonus:
-                atr: des_porcentagem
-                valor: 0.5
+                atr: atk_porcentagem
+                valor: 0.3
   4:
     nome: Atirador
     habilidades:
