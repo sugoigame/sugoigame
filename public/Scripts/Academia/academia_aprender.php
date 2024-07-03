@@ -4,10 +4,12 @@ include "../../Includes/verifica_login_sem_pers.php";
 
 $protector->must_be_out_of_missao();
 
-$class = $protector->get_enum_or_exit("class", [CLASSE_ITORYU, CLASSE_PUNHO, CLASSE_CHUTE]);
+$classes = DataLoader::load("habilidades")["classes"];
+
+$class = $protector->get_enum_or_exit("class", array_keys($classes));
 $personagem = $protector->get_tripulante_or_exit("cod");
 
-$classe = DataLoader::load("habilidades")["classes"][$class];
+$classe = $classes[$class];
 // $query = "INSERT IGNORE INTO tb_personagens_skil (cod_pers, cod_skil, nome, descricao, icone, animacao) VALUES ";
 // $queries = [];
 // $values = [];
@@ -30,4 +32,4 @@ $classe = DataLoader::load("habilidades")["classes"][$class];
 
 $query = "UPDATE tb_personagens SET classe='$class' WHERE cod='" . $personagem["cod"] . "'";
 $connection->run($query);
-$response->send_conquista_pers($personagem, $personagem["nome"] . " se tornou um " . $classe["nome"] . "!");
+$response->send_conquista_pers($personagem, $personagem["nome"] . " aprendeu o estilo " . $classe["nome"] . "!");
