@@ -29,21 +29,21 @@ if ($tipo == "haki_hdr") {
 
     if (! $old_hdr_lvl) {
         $connection->run(
-            "INSERT INTO tb_personagens_skil (cod, cod_skil, tipo, nome, descricao, icon)
-            VALUES (?, ?, '1', 'Haoshoku Haki',
+            "INSERT INTO tb_personagens_skil (cod_pers, cod_skil, nome, descricao, icone)
+            VALUES (?, ?, 'Haoshoku Haki',
             'Uma forma rara de Haki que não pode ser alcançado por meio de treinamento
              e apenas um em um milhão de pessoas a transportar.', '900')",
             "ii", array($pers["cod"], $COD_HAOSHOKU_LVL[$pers["haki_hdr"]])
         );
     } elseif (! $pers["haki_hdr"]) {
         $connection->run(
-            "DELETE FROM tb_personagens_skil WHERE cod = ? AND cod_skil = ? AND tipo = ?",
-            "iii", array($pers["cod"], $COD_HAOSHOKU_LVL[$old_hdr_lvl], TIPO_SKILL_ATAQUE_CLASSE)
+            "DELETE FROM tb_personagens_skil WHERE cod_pers = ? AND cod_skil = ?",
+            "ii", array($pers["cod"], $COD_HAOSHOKU_LVL[$old_hdr_lvl])
         );
     } else {
         $connection->run(
-            "UPDATE tb_personagens_skil SET cod_skil = ? WHERE cod = ? AND cod_skil = ? AND tipo = ?",
-            "iiii", array($COD_HAOSHOKU_LVL[$pers["haki_hdr"]], $pers["cod"], $COD_HAOSHOKU_LVL[$old_hdr_lvl], TIPO_SKILL_ATAQUE_CLASSE)
+            "UPDATE tb_personagens_skil SET cod_skil = ? WHERE cod_pers = ? AND cod_skil = ?",
+            "iii", array($COD_HAOSHOKU_LVL[$pers["haki_hdr"]], $pers["cod"], $COD_HAOSHOKU_LVL[$old_hdr_lvl])
         );
     }
 }

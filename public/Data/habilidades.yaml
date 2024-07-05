@@ -54,6 +54,7 @@ padrao:
 haki:
   - cod: 3
     nome: Haoshoku Haki nível 1
+    explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
     descricao:
     icone: 900
     animacao: Trovejar todos 3
@@ -61,6 +62,7 @@ haki:
     recarga: 1
   - cod: 4
     nome: Haoshoku Haki nível 2
+    explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
     descricao:
     icone: 900
     animacao: Trovejar todos 3
@@ -70,6 +72,7 @@ haki:
     recarga: 2
   - cod: 5
     nome: Haoshoku Haki nível 3
+    explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
     descricao:
     icone: 900
     animacao: Trovejar todos 3
@@ -79,6 +82,7 @@ haki:
     recarga: 3
   - cod: 6
     nome: Haoshoku Haki nível 4
+    explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
     descricao:
     icone: 900
     animacao: Trovejar todos 3
@@ -88,6 +92,7 @@ haki:
     recarga: 4
   - cod: 7
     nome: Haoshoku Haki nível 5
+    explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
     descricao:
     icone: 900
     animacao: Trovejar todos 3
@@ -97,6 +102,7 @@ haki:
     recarga: 5
   - cod: 8
     nome: Haoshoku Haki nível 6
+    explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
     descricao:
     icone: 900
     animacao: Trovejar todos 3
@@ -106,6 +112,7 @@ haki:
     recarga: 6
   - cod: 9
     nome: Haoshoku Haki nível 7
+    explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
     descricao:
     icone: 900
     animacao: Trovejar todos 3
@@ -115,6 +122,7 @@ haki:
     recarga: 7
   - cod: 10
     nome: Haoshoku Haki nível 8
+    explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
     descricao:
     icone: 900
     animacao: Trovejar todos 3
@@ -124,6 +132,7 @@ haki:
     recarga: 8
   - cod: 11
     nome: Haoshoku Haki nível 9
+    explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
     descricao:
     icone: 900
     animacao: Trovejar todos 3
@@ -133,6 +142,7 @@ haki:
     recarga: 9
   - cod: 12
     nome: Haoshoku Haki nível 10
+    explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
     descricao:
     icone: 900
     animacao: Trovejar todos 3
@@ -142,6 +152,7 @@ haki:
     recarga: 10
   - cod: 13
     nome: Haoshoku Haki nível 11
+    explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
     descricao:
     icone: 900
     animacao: Trovejar todos 3
@@ -151,6 +162,7 @@ haki:
     recarga: 11
   - cod: 14
     nome: Haoshoku Haki nível 12
+    explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
     descricao:
     icone: 900
     animacao: Trovejar todos 3
