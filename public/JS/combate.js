@@ -308,11 +308,15 @@ function moveCom(pers) {
     var perm = pers.id.split("_");
     var permx = parseInt(perm[0], 10);
     var permy = parseInt(perm[1], 10);
-    var $quadro;
     var quadro;
     var alcance = parseInt($("#moves_remain").val(), 10);
     var x;
     var y;
+
+    if ($(pers).hasClass("efeito-IMOBILIZACAO")) {
+        return;
+    }
+
     for (var dirX = -1; dirX <= 1; dirX++) {
         for (var dirY = -1; dirY <= 1; dirY++) {
             if (dirX != 0 || dirY != 0) {
@@ -334,17 +338,6 @@ function moveCom(pers) {
             }
         }
     }
-    // for (var x = (permx - 1); x <= (permx + 1); x++) {
-    //     for (var y = (permy - 1); y <= (permy + 1); y++) {
-    //         $quadro = $('#' + x + '_' + y);
-    //         if (!$quadro.hasClass('personagem')) {
-    //             addSelectors($quadro, 'rgba(0,50,50,0.7');
-    //             $quadro.click(function () {
-    //                 movePara(this, pers.id);
-    //             });
-    //         }
-    //     }
-    // }
 }
 
 function movePara(quadro, origem) {

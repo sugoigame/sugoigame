@@ -10,7 +10,7 @@
     if ($vontade != null && $dano != null) {
         $explicacao = str_replace(
             '{DANO}',
-            \Regras\Combate\Formulas\Ataque::calc_dano_vontade($vontade, $dano) . ' pontos de dano',
+            round(\Regras\Combate\Formulas\Ataque::calc_dano_vontade($vontade, $dano)) . ' pontos de dano',
             $explicacao,
         );
     }

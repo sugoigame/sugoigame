@@ -485,17 +485,6 @@ function get_cross_guild_stars($reward)
     return $ret;
 }
 
-function get_special_effect_classes($special_effects)
-{
-    $effects = [];
-
-    foreach ($special_effects as $effect) {
-        $effects[] = "special-effect-" . $effect["special_effect"];
-    }
-
-    return implode(" ", $effects);
-}
-
 function atacar_rdm($rdm_id, $details = null, $conn = null)
 {
     if (! $conn) {
@@ -883,8 +872,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                     style="width: <?= $tabuleiro[$x][$y]["hp"] / $tabuleiro[$x][$y]["hp_max"] * 100 ?>%">
                                 </div>
                             </div>
-                            <img class="<?= (isset($special_effects[$tabuleiro[$x][$y]["cod"]])) ? get_special_effect_classes($special_effects[$tabuleiro[$x][$y]["cod"]]) : "" ?>"
-                                src="Imagens/Personagens/Icons/<?= getImg($tabuleiro[$x][$y], "r") ?>.jpg">
+                            <img src="Imagens/Personagens/Icons/<?= getImg($tabuleiro[$x][$y], "r") ?>.jpg">
                         <?php endif; ?>
                     </td>
                 <?php endfor; ?>
@@ -897,8 +885,23 @@ function inicia_combate($alvo, $tipo, $chave = null)
                 <td class="td-mira">
                 </td>
                 <?php for ($y = 0; $y < 20; $y++) : ?>
+                    <?php
+                    $efeitos = [];
+                    if (isset($tabuleiro[$x][$y])) {
+                        $pers = $tabuleiro[$x][$y];
+                        if (isset($pers["efeitos"]) && count($pers["efeitos"])) {
+                            foreach ($pers["efeitos"] as $efeito) {
+                                if (isset($efeito["bonus"]) && isset($efeito["bonus"]["atr"])) {
+                                    $efeitos[] = "efeito-" . $efeito["bonus"]["atr"];
+                                }
+                            }
+                        }
+                    }
+                    $efeitos = implode(" ", $efeitos);
+                    ?>
+
                     <td id="<?= $x . "_" . $y; ?>"
-                        class="selecionavel td-selecao <?= isset($tabuleiro[$x][$y]) ? "personagem" : "" ?> <?= isset($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "aliado" : "inimigo") : "" ?>"
+                        class="selecionavel td-selecao <?= $efeitos ?> <?= isset($tabuleiro[$x][$y]) ? "personagem" : "" ?> <?= isset($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "aliado" : "inimigo") : "" ?>"
                         data-x="<?= $x ?>" data-y="<?= $y ?>"
                         data-cod="<?= isset($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>">
                         <img src="Imagens/Icones/selecao.png" />

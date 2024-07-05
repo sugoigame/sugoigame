@@ -557,14 +557,30 @@ classes:
     nome: Atirador
     habilidades:
       - cod: 10401
-        icone: 21
-        nome: Nome
-        descricao: Descrição
-        explicacao: "Causa dano no alvo atingido. O dano aumenta conforme a vontade da tripulação."
-        alcance: 5
+        icone: 535
+        nome: Namari Boshi
+        animacao: Disparo normal
+        descricao: Dispara uma pequena esfera de chumbo ou bola de pachinko com seu estilingue.
+        explicacao: "Causa {DANO} com adicional de {PRE} +20% empurrando o alvo atingido um quadro para trás. O dano aumenta conforme a vontade da tripulação."
+        alcance: 10
         vontade: 2
-        dano: 1.1
+        dano: 1
         area: 1
+        efeitos:
+          pre_ataque:
+            - explicacao: "{PRE} +20%"
+              tipo: POSITIVO
+              tipo_alvo: ATACANTE
+              duracao: 0
+              bonus:
+                atr: pre_porcentagem
+                valor: 0.2
+          acerto:
+            - duracao: 0
+              tipo_alvo: ATACANTE
+              bonus:
+                atr: Empurrar
+                valor: 1
       - cod: 10402
         icone: 522
         nome: Precisão
@@ -580,21 +596,24 @@ classes:
                 atr: pre
                 valor: 10
       - cod: 10403
-        icone: 23
-        nome: Nome
-        descricao: Descrição
-        explicacao: "Causa dano e aplica debuff de -30% de {AGL} por 3 turnos no alvo atingido."
-        alcance: 5
+        icone: 537
+        nome: Tokusei Tabasco Boshi
+        animacao: Incendiar 2
+        descricao: Dispara uma bala contendo molho de pimenta nos olhos ou na boca do alvo.
+        explicacao: "Causa {DANO} dividido entre os alvos atingidos e aplica queimadura por 6 turnos. O dano aumenta conforme a vontade da tripulação. Personagens envenenados perdem vida a cada turno."
+        alcance: 3
+        area: 5
         vontade: 8
         recarga: 4
         requisito_lvl: 10
         efeitos:
           acerto:
-            - tipo: NEGATIVO
-              duracao: 3
+            - duracao: 6
+              explicacao: "Queimadura: Perde 250 pontos de vida a cada turno."
+              tipo: NEGATIVO
               bonus:
-                atr: agl_porcentagem
-                valor: -0.3
+                atr: Queimadura
+                valor: 250
       - cod: 10404
         icone: 522
         nome: Precisão
@@ -610,21 +629,24 @@ classes:
                 atr: pre
                 valor: 10
       - cod: 10405
-        icone: 25
-        nome: Nome
-        descricao: Descrição
-        explicacao: Causa dano com {PRE} adicional de 30%
-        alcance: 5
+        icone: 536
+        nome: "Midori Boshi: Devil"
+        animacao: Vincular
+        descricao: Cria uma grande planta que ataca seus inimigos. Além de poder comer os inimigos com sua boca grande, pode enredar quem estiver próximo com suas vinhas.
+        explicacao: "Causa {DANO} dividido entre os alvos atingidos e aplica imobilização por 3 turnos. O dano aumenta conforme a vontade da tripulação. Personagens imobilizados não podem se mover."
+        alcance: 3
+        area: 5
         vontade: 24
         recarga: 4
         requisito_lvl: 30
         efeitos:
-          pre_ataque:
-            - tipo_alvo: ATACANTE
-              duracao: 0
+          acerto:
+            - tipo: NEGATIVO
+              explicacao: "Imobilização: Não pode se mover"
+              duracao: 3
               bonus:
-                atr: pre_porcentagem
-                valor: 0.3
+                atr: IMOBILIZACAO
+                valor: 1
       - cod: 10406
         icone: 522
         nome: Precisão
@@ -640,17 +662,23 @@ classes:
                 atr: pre
                 valor: 10
       - cod: 10407
-        icone: 27
-        nome: Nome
-        descricao: Descrição
-        explicacao: Causa dano com {DEX} adicional de 50%
-        alcance: 5
+        icone: 538
+        nome: Bagworm
+        animacao: Disparo especial
+        descricao: Uma técnica de longo alcance extremo projetada para incapacitar um oponente.
+        explicacao: "Causa {DANO} com adicional de {PRE} +25% e {DEX} +25% dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 100
+        area: 1
         vontade: 40
-        recarga: 6
+        recarga: 3
         requisito_lvl: 50
         efeitos:
           pre_ataque:
             - duracao: 0
               bonus:
                 atr: des_porcentagem
-                valor: 0.5
+                valor: 0.25
+            - duracao: 0
+              bonus:
+                atr: pre_porcentagem
+                valor: 0.25

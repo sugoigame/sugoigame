@@ -29,8 +29,8 @@ class Tabuleiro
         $this->combate = $combate;
 
         $this->quadros["npc"]["npc"] = new Quadro("npc", "npc");
-        for ($x = 0; $x < 10; $x++) {
-            for ($y = 0; $y < 20; $y++) {
+        for ($x = 0; $x <= self::MAX_TABULEIRO_X; $x++) {
+            for ($y = 0; $y <= self::MAX_TABULEIRO_Y; $y++) {
                 $this->quadros[$x][$y] = new Quadro($x, $y);
             }
         }

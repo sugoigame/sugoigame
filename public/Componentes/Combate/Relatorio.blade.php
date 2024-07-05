@@ -21,7 +21,9 @@
                     @elseif ($log['tipo'] == 'perder_vez')
                         perdeu a vez
                     @else
-                        usou: <img src="Imagens/Skils/{{ $log['habilidade']['icone'] }}.jpg" />
+                        usou: <img src="Imagens/Skils/{{ $log['habilidade']['icone'] }}.jpg"
+                            alt=""
+                            width="50px" />
                         {{ $log['habilidade']['nome'] }}
                     @endif
                 </h4>

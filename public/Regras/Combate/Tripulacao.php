@@ -114,7 +114,9 @@ abstract class Tripulacao
             $this->combate->protector->exit_error("Você não pode se movimentar tanto");
         }
 
-        $pers->mover($destino);
+        if (! $pers->get_valor_atributo("IMOBILIZACAO")) {
+            $pers->mover($destino);
+        }
 
         $this->consome_movimentos($custo);
 
