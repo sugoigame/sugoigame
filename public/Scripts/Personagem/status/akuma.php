@@ -64,6 +64,39 @@ if (! $pers) {
                 <?php render_vantagens_akuma($akuma); ?>
             </li>
         </ul>
+
+        <?php $habilidades = \Regras\Habilidades::get_todas_habilidades_akuma($akuma["cod_akuma"]); ?>
+        <?php $aprendidas_db = $connection->run("SELECT * FROM tb_personagens_skil WHERE cod_pers = ?", "i", array($pers["cod"]))->fetch_all_array(); ?>
+
+        <?php $animacoes = $connection->run(
+            "SELECT * FROM tb_tripulacao_animacoes_skills WHERE tripulacao_id = ?",
+            "i", array($userDetails->tripulacao["id"])
+        )->fetch_all_array() ?>
+
+        <?php $aprendidas = []; ?>
+        <?php foreach ($aprendidas_db as $aprendida) : ?>
+            <?php $aprendidas[$aprendida["cod_skil"]] = $aprendida; ?>
+        <?php endforeach; ?>
+        <h5>
+            Habilidades
+        </h5>
+        <div class="row align-items-center justify-content-center mb4">
+            <?php foreach ($habilidades as $habilidade) : ?>
+                <?php $habilidade = array_merge($habilidade, $aprendidas[$habilidade["cod"]] ?: []) ?>
+                <div class="d-inline-block mx2">
+                    <div>
+                        <?= \Componentes::render("Habilidades.Icone", ["habilidade" => $habilidade, "vontade" => $habilidade["vontade"]]); ?>
+                    </div>
+                    <?php if ($habilidade["requisito_lvl"] <= $pers["lvl"]) : ?>
+                        <?= Componentes::render("Habilidades.BotaoCustomizar", ["pers" => $pers, "habilidade" => $habilidade, "animacoes" => $animacoes]); ?>
+                    <?php else : ?>
+                        <button class="btn btn-sm btn-primary" disabled>
+                            Nível <?= $habilidade["requisito_lvl"]; ?>
+                        </button>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
         <div>
             <button class="link_confirm btn btn-info" data-question="Deseja remover a Akuma no Mi desse personagem?"
                 href="Vip/reset_akuma.php?cod=<?= $pers["cod"] ?>" <?= $userDetails->conta["gold"] < PRECO_GOLD_RESET_AKUMA ? "disabled" : "" ?>>
@@ -74,26 +107,5 @@ if (! $pers) {
     <?php endif; ?>
 </div>
 <?php render_personagem_sub_panel_with_img_bottom(); ?>
-
-<?php if ($pers["akuma"]) : ?>
-    <?php
-    $skills = MapLoader::filter("skil_akuma", function ($skill) use ($pers) {
-        return $skill["cod_akuma"] == $pers["akuma"];
-    });
-
-    $lvls = array(10, 20, 30, 40, 50);
-
-    $skills_ordenadas = [];
-    foreach ($skills as $key => $skill) {
-        $skill["tiponum"] = $skill["tipo"];
-        $skill["tipo"] = isset($skill["bonus_atr"]) ? "Buff" : "Ataque";
-        $skills_ordenadas[$skill["categoria"]][array_search($skill["requisito_lvl"], $lvls)] = $skill;
-    }
-    ?>
-
-    <?php render_habilidades_classe_tab($skills_ordenadas, $pers, "Akuma/aprender_akuma_skil.php", function ($pers, $skill) {
-        return $pers["lvl"] >= $skill["requisito_lvl"];
-    }, $lvls, 2); ?>
-<?php endif; ?>
 <?php render_personagem_panel_bottom() ?>
 

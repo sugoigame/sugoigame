@@ -41,6 +41,11 @@ class Habilidades
         if ($pers["haki_hdr"]) {
             $habilidades_pers[] = self::habilidade_default_values(array_find($habilidades["haki"], ["cod" => $COD_HAOSHOKU_LVL[$pers["haki_hdr"]]]));
         }
+        if ($pers["akuma"]) {
+            $habilidades_pers = array_merge($habilidades_pers, array_filter(self::get_todas_habilidades_akuma($pers["akuma"]), function ($habilidade) use ($pers) {
+                return $habilidade["requisito_lvl"] <= $pers["lvl"];
+            }));
+        }
 
         foreach ($habilidades_pers as $key => $habilidade) {
             $habilidades_pers[$key] = array_merge($habilidade, array_find($habilidades_db, ["cod_skil" => $habilidade["cod"]]) ?: []);
@@ -51,6 +56,12 @@ class Habilidades
         });
 
         return $habilidades_pers;
+    }
+
+    public static function get_todas_habilidades_akuma($cod_akuma)
+    {
+        $habilidades = \Utils\Data::load("habilidades");
+        return self::habilidades_default_values($habilidades["akumas"][$cod_akuma]["habilidades"]);
     }
 
     public static function get_habilidade_by_cod($cod)

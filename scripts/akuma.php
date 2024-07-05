@@ -259,5 +259,8 @@ foreach ($akumas as $akuma) {
     ];
 }
 
-MapLoader::save_full_path($skills, "../public/Data/skil_akuma.json");
+$yml = \Classes\Spyc::YAMLDump($skills, );
 
+$file = fopen("../public/Data/skil_akuma.yaml", "w");
+fwrite($file, $yml);
+fclose($file);

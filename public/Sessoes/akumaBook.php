@@ -64,47 +64,21 @@
                         <?php render_vantagens_akuma($akuma); ?>
                     </div>
                     <div class="panel-footer">
-                        <button class="btn btn-info" data-toggle="modal" data-container="body"
-                            data-target="#modal-akuma-<?= $akuma["cod_akuma"] ?>">
-                            Ver habilidades
-                        </button>
-                    </div>
-                </div>
-            </div>
 
-            <div class="modal fade" id="modal-akuma-<?= $akuma["cod_akuma"] ?>">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="modal-buttons">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                    data-parent="body">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div>O usuário dessa Akuma no Mi poderá escolher uma habilidade de cada nível:</div>
-                        </div>
-                        <div class="modal-body">
-                            <?php $lvls = [10, 20, 30, 40, 50]; ?>
-                            <?php foreach ($lvls as $linha => $lvl) : ?>
-                                <div class="panel panel-default p0">
-                                    <div class="panel-heading">
-                                        Habilidades de Nível
-                                        <?= $lvl ?>
-                                    </div>
-                                    <div class="row panel-body py0">
-                                        <?php for ($categoria = 1; $categoria <= 2; $categoria++) : ?>
-                                            <div class="col-xs-6 p0">
-                                            </div>
-                                        <?php endfor; ?>
-                                    </div>
+                        <?php $habilidades = \Regras\Habilidades::get_todas_habilidades_akuma($akuma["cod_akuma"]); ?>
+                        <?php foreach ($habilidades as $habilidade) : ?>
+                            <div class="d-inline-block">
+                                <div>
+                                    <?= \Componentes::render("Habilidades.Icone", ["habilidade" => $habilidade, "vontade" => $habilidade["vontade"]]); ?>
                                 </div>
-                            <?php endforeach; ?>
-                        </div>
+                                <div>
+                                    <?= $habilidade["requisito_lvl"] ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
-
         <?php endforeach; ?>
     </div>
     <?php $p /= 10; ?>
