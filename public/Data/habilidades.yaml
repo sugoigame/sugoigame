@@ -56,14 +56,14 @@ haki:
     nome: Haoshoku Haki nível 1
     descricao:
     icone: 900
-    animacao: Atingir fisicamente
+    animacao: Trovejar todos 3
     vontade: 2
     recarga: 1
   - cod: 4
     nome: Haoshoku Haki nível 2
     descricao:
     icone: 900
-    animacao: Atingir fisicamente
+    animacao: Trovejar todos 3
     requisito_lvl: 2
     vontade: 2
     area: 2
@@ -72,7 +72,7 @@ haki:
     nome: Haoshoku Haki nível 3
     descricao:
     icone: 900
-    animacao: Atingir fisicamente
+    animacao: Trovejar todos 3
     requisito_lvl: 3
     vontade: 2
     area: 3
@@ -81,7 +81,7 @@ haki:
     nome: Haoshoku Haki nível 4
     descricao:
     icone: 900
-    animacao: Atingir fisicamente
+    animacao: Trovejar todos 3
     requisito_lvl: 4
     vontade: 2
     area: 4
@@ -90,7 +90,7 @@ haki:
     nome: Haoshoku Haki nível 5
     descricao:
     icone: 900
-    animacao: Atingir fisicamente
+    animacao: Trovejar todos 3
     requisito_lvl: 5
     vontade: 2
     area: 5
@@ -99,7 +99,7 @@ haki:
     nome: Haoshoku Haki nível 6
     descricao:
     icone: 900
-    animacao: Atingir fisicamente
+    animacao: Trovejar todos 3
     requisito_lvl: 6
     vontade: 2
     area: 6
@@ -108,7 +108,7 @@ haki:
     nome: Haoshoku Haki nível 7
     descricao:
     icone: 900
-    animacao: Atingir fisicamente
+    animacao: Trovejar todos 3
     requisito_lvl: 7
     vontade: 2
     area: 7
@@ -117,7 +117,7 @@ haki:
     nome: Haoshoku Haki nível 8
     descricao:
     icone: 900
-    animacao: Atingir fisicamente
+    animacao: Trovejar todos 3
     requisito_lvl: 8
     vontade: 2
     area: 8
@@ -126,7 +126,7 @@ haki:
     nome: Haoshoku Haki nível 9
     descricao:
     icone: 900
-    animacao: Atingir fisicamente
+    animacao: Trovejar todos 3
     requisito_lvl: 9
     vontade: 2
     area: 9
@@ -135,7 +135,7 @@ haki:
     nome: Haoshoku Haki nível 10
     descricao:
     icone: 900
-    animacao: Atingir fisicamente
+    animacao: Trovejar todos 3
     requisito_lvl: 10
     vontade: 2
     area: 10
@@ -144,7 +144,7 @@ haki:
     nome: Haoshoku Haki nível 11
     descricao:
     icone: 900
-    animacao: Atingir fisicamente
+    animacao: Trovejar todos 3
     requisito_lvl: 11
     vontade: 2
     area: 11
@@ -153,7 +153,7 @@ haki:
     nome: Haoshoku Haki nível 12
     descricao:
     icone: 900
-    animacao: Atingir fisicamente
+    animacao: Trovejar todos 3
     requisito_lvl: 12
     vontade: 2
     area: 12

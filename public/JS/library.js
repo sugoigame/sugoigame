@@ -1244,6 +1244,12 @@ function n_puru(hidePopover) {
                 var tile = item[0];
                 var background =
                     tile > 99 ? this.background2 : this.background1;
+
+                var hue =
+                    tile > 99
+                        ? this.animation.animation2Hue
+                        : this.animation.animation1Hue;
+
                 if (tile > 99) {
                     tile -= 100;
                 }
@@ -1261,6 +1267,7 @@ function n_puru(hidePopover) {
                             "background-position",
                             -displaceLeft + "px " + -displaceTop + "px"
                         )
+                        .css("filter", "hue-rotate(" + hue + "deg)")
                         .css("opacity", item[6] / 255)
                         .css("left", item[1] / 2)
                         .css("top", item[2] / 2)
