@@ -13,7 +13,7 @@ function big_pers_skin($img, $skin, $borda = 0, $class = "", $attr = "")
 {
     return '<div class="big-pers-skin">'
         . ($borda ? '<img class="big-pers-borda" src="Imagens/Personagens/Bordas/' . $borda . '.png" ' . $attr . '/>' : "")
-        . '<img style="width: 100%" class="' . $class . '" src="Imagens/Personagens/Big/' . sprintf("%04d", $img) . '(' . $skin . ').png" ' . $attr . ' />'
+        . '<img style="width: 60%" class="' . $class . '" src="Imagens/Personagens/Big/' . sprintf("%04d", $img) . '(' . $skin . ').jpg" ' . $attr . ' />'
         . '</div>';
 }
 
