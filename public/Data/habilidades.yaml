@@ -58,7 +58,7 @@ haki:
     icone: 900
     animacao: Atingir fisicamente
     vontade: 2
-    espera: 1
+    recarga: 1
   - cod: 4
     nome: Haoshoku Haki nível 2
     descricao:
@@ -67,7 +67,7 @@ haki:
     requisito_lvl: 2
     vontade: 2
     area: 2
-    espera: 2
+    recarga: 2
   - cod: 5
     nome: Haoshoku Haki nível 3
     descricao:
@@ -76,7 +76,7 @@ haki:
     requisito_lvl: 3
     vontade: 2
     area: 3
-    espera: 3
+    recarga: 3
   - cod: 6
     nome: Haoshoku Haki nível 4
     descricao:
@@ -85,7 +85,7 @@ haki:
     requisito_lvl: 4
     vontade: 2
     area: 4
-    espera: 4
+    recarga: 4
   - cod: 7
     nome: Haoshoku Haki nível 5
     descricao:
@@ -94,7 +94,7 @@ haki:
     requisito_lvl: 5
     vontade: 2
     area: 5
-    espera: 5
+    recarga: 5
   - cod: 8
     nome: Haoshoku Haki nível 6
     descricao:
@@ -103,7 +103,7 @@ haki:
     requisito_lvl: 6
     vontade: 2
     area: 6
-    espera: 6
+    recarga: 6
   - cod: 9
     nome: Haoshoku Haki nível 7
     descricao:
@@ -112,7 +112,7 @@ haki:
     requisito_lvl: 7
     vontade: 2
     area: 7
-    espera: 7
+    recarga: 7
   - cod: 10
     nome: Haoshoku Haki nível 8
     descricao:
@@ -121,7 +121,7 @@ haki:
     requisito_lvl: 8
     vontade: 2
     area: 8
-    espera: 8
+    recarga: 8
   - cod: 11
     nome: Haoshoku Haki nível 9
     descricao:
@@ -130,7 +130,7 @@ haki:
     requisito_lvl: 9
     vontade: 2
     area: 9
-    espera: 9
+    recarga: 9
   - cod: 12
     nome: Haoshoku Haki nível 10
     descricao:
@@ -139,7 +139,7 @@ haki:
     requisito_lvl: 10
     vontade: 2
     area: 10
-    espera: 10
+    recarga: 10
   - cod: 13
     nome: Haoshoku Haki nível 11
     descricao:
@@ -148,7 +148,7 @@ haki:
     requisito_lvl: 11
     vontade: 2
     area: 11
-    espera: 11
+    recarga: 11
   - cod: 14
     nome: Haoshoku Haki nível 12
     descricao:
@@ -157,7 +157,7 @@ haki:
     requisito_lvl: 12
     vontade: 2
     area: 12
-    espera: 12
+    recarga: 12
 classes:
   1:
     nome: Pugilista
