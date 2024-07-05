@@ -4,6 +4,7 @@ namespace Regras\Combate\Formulas;
 use Regras\Combate\Gatilhos;
 use Regras\Combate\Personagem;
 use Regras\Combate\Habilidade;
+use Regras\Habilidades;
 
 class Ataque
 {
@@ -33,6 +34,16 @@ class Ataque
         if (! $dano_hab) {
             // dano zero nao precisa fazer nada
             return $retorno;
+        }
+
+        if ($habilidade->estado["filtro_dano"] == Habilidades::FILTRO_ALVO_ALIADO && $pers->tripulacao->indice != $alvo->tripulacao->indice) {
+            // so pode causar dano em aliado
+            return;
+        }
+
+        if ($habilidade->estado["filtro_dano"] == Habilidades::FILTRO_ALVO_INIMIGO && $pers->tripulacao->indice == $alvo->tripulacao->indice) {
+            // so pode causar dano em inimigo
+            return;
         }
 
         $retorno["dado_esquivou"] = rand(1, 1000) / 10;

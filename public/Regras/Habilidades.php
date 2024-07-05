@@ -3,6 +3,9 @@ namespace Regras;
 
 class Habilidades
 {
+    public const FILTRO_ALVO_ALIADO = "ALIADO";
+    public const FILTRO_ALVO_INIMIGO = "INIMIGO";
+    public const FILTRO_ALVO_TODOS = "TODOS";
 
     public static function get_todas_habilidades()
     {
@@ -67,12 +70,15 @@ class Habilidades
         $habilidade["icone"] = $habilidade["icone"] ?: 1;
         $habilidade["animacao"] = $habilidade["animacao"] ?: "Atingir fisicamente";
         $habilidade["dano"] = isset($habilidade["dano"]) ? $habilidade["dano"] : 1;
+        $habilidade["filtro_dano"] = $habilidade["filtro_dano"] ?: self::FILTRO_ALVO_INIMIGO;
         $habilidade["alcance"] = $habilidade["alcance"] ?: 1;
         $habilidade["area"] = $habilidade["area"] ?: 1;
         $habilidade["vontade"] = $habilidade["vontade"] ?: 1;
         $habilidade["recarga"] = $habilidade["recarga"] ?: 0;
         $habilidade["recarga_universal"] = $habilidade["recarga_universal"] ?: false;
         $habilidade["requisito_lvl"] = $habilidade["requisito_lvl"] ?: 1;
+
+
 
         if (isset($habilidade["efeitos"])) {
             if (isset($habilidade["efeitos"]["pre_ataque"])) {
@@ -102,6 +108,7 @@ class Habilidades
     public static function efeito_default_values($habilidade, $efeito, $tipo_alvo_padrao = TIPO_ALVO_EFEITO_ATACANTE)
     {
         $efeito["tipo"] = $efeito["tipo"] ?: TIPO_EFEITO_POSITIVO;
+        $efeito["filtro_alvo"] = $efeito["filtro_alvo"] ?: self::FILTRO_ALVO_TODOS;
         $efeito["tipo_alvo"] = $efeito["tipo_alvo"] ?: $tipo_alvo_padrao;
         $efeito["quant_alvo"] = $efeito["quant_alvo"] ?: 1;
         $efeito["explicacao"] = $efeito["explicacao"] ?: $habilidade["explicacao"];

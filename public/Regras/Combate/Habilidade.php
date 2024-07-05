@@ -1,6 +1,8 @@
 <?php
 namespace Regras\Combate;
 
+use Regras\Habilidades;
+
 class Habilidade
 {
 
@@ -99,7 +101,7 @@ class Habilidade
     public function aplica_efeitos($efeitos, $quadros)
     {
         foreach ($efeitos as $efeito) {
-            $alvos = $this->resolver_alvos($efeito["tipo_alvo"], $quadros);
+            $alvos = $this->resolver_alvos($efeito["tipo_alvo"], $efeito["filtro_alvo"], $quadros);
             foreach ($alvos as $alvo) {
                 $alvo->estado["efeitos"][] = $efeito;
             }
@@ -108,15 +110,30 @@ class Habilidade
 
     /**
      * @param TIPO_ALVO
+     * @param FILTRO_ALVO
      * @param Quadro[]
      * @return Quadro[] | Personagem[]
      */
-    public function resolver_alvos($tipo_alvo, array $quadros)
+    public function resolver_alvos($tipo_alvo, $filtro_alvo, array $quadros)
     {
         if ($tipo_alvo == TIPO_ALVO_EFEITO_ATACANTE) {
-            return [$this->personagem];
+            return $filtro_alvo == Habilidades::FILTRO_ALVO_ALIADO || $filtro_alvo == Habilidades::FILTRO_ALVO_TODOS ? [$this->personagem] : [];
         } elseif ($tipo_alvo == TIPO_ALVO_EFEITO_ALVO) {
-            return array_filter(array_map(function ($quadro) {
+            return array_filter(array_map(function ($quadro) use ($filtro_alvo) {
+                if (! $quadro->personagem) {
+                    return null;
+                }
+
+                if ($filtro_alvo == Habilidades::FILTRO_ALVO_ALIADO && $this->personagem->tripulacao->indice != $quadro->personagem->tripulacao->indice) {
+                    // so pode causar dano em aliado
+                    return null;
+                }
+
+                if ($filtro_alvo == Habilidades::FILTRO_ALVO_INIMIGO && $this->personagem->tripulacao->indice == $quadro->personagem->tripulacao->indice) {
+                    // so pode causar dano em inimigo
+                    return null;
+                }
+
                 return $quadro->personagem;
             }, $quadros), function ($pers) {
                 return $pers;
