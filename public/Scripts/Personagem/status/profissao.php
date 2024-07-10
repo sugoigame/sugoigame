@@ -54,10 +54,6 @@ if (! $pers) {
 </div>
 <?php render_personagem_sub_panel_with_img_bottom(); ?>
 
-<?php if ($pers["profissao"] == PROFISSAO_MUSICO || $pers["profissao"] == PROFISSAO_COMBATENTE) : ?>
-    
-<?php endif; ?>
-
 <?php if ($pers["profissao"] == PROFISSAO_MEDICO) : ?>
     <?php $items = MapLoader::filter("remedios", function ($remedio) {
         return $remedio["requisito_lvl"] != 0;

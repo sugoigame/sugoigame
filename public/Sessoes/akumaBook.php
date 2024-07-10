@@ -22,7 +22,6 @@
 
     $akumas = DataLoader::load("akumas");
 
-    $habilidades = MapLoader::load("skil_akuma");
 
     $total = count($akumas);
 
@@ -31,15 +30,6 @@
 
     <div class="row">
         <? foreach ($page as $akuma) : ?>
-            <?php
-            $habilidades_akuma = array_filter($habilidades, function ($habilidade) use ($akuma) {
-                return $habilidade["cod_akuma"] == $akuma["cod_akuma"];
-            });
-            $skills = [];
-            foreach ($habilidades_akuma as $habilidade) {
-                $skills[$habilidade["categoria"]][$habilidade["requisito_lvl"]] = $habilidade;
-            }
-            ?>
             <div class="col col-xs-4 h-100">
                 <div class="panel panel-default h-100">
                     <div class="panel-body">

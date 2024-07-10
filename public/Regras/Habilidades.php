@@ -46,6 +46,11 @@ class Habilidades
                 return $habilidade["requisito_lvl"] <= $pers["lvl"];
             }));
         }
+        if ($pers["profissao"]) {
+            $habilidades_pers = array_merge($habilidades_pers, array_filter(self::get_todas_habilidades_profisao($pers["profissao"]), function ($habilidade) use ($pers) {
+                return $habilidade["requisito_lvl"] <= $pers["profissao_lvl"];
+            }));
+        }
 
         foreach ($habilidades_pers as $key => $habilidade) {
             $habilidades_pers[$key] = array_merge($habilidade, array_find($habilidades_db, ["cod_skil" => $habilidade["cod"]]) ?: []);
@@ -62,6 +67,16 @@ class Habilidades
     {
         $habilidades = \Utils\Data::load("habilidades");
         return self::habilidades_default_values($habilidades["akumas"][$cod_akuma]["habilidades"]);
+    }
+
+    public static function get_todas_habilidades_profisao($cod_profissao)
+    {
+        $habilidades = \Utils\Data::load("habilidades");
+        if ($cod_profissao && isset($habilidades["profissoes"][$cod_profissao]) && isset($habilidades["profissoes"][$cod_profissao]["habilidades"])) {
+            return self::habilidades_default_values($habilidades["profissoes"][$cod_profissao]["habilidades"]);
+        } else {
+            return [];
+        }
     }
 
     public static function get_habilidade_by_cod($cod)

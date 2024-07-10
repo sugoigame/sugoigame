@@ -971,21 +971,6 @@ class UserDetails
                 $alerts["status.haki." . $pers["cod"]] = true;
                 $alerts["trip_sem_distribuir_haki." . $pers["cod"]] = true;
             }
-            if ($this->alerts->has_alert_nova_habilidade_akuma($pers)) {
-                $alerts["status"] = true;
-                $alerts["status&nav=akuma"] = true;
-                $alerts["status." . $pers["cod"]] = true;
-                $alerts["status.akuma." . $pers["cod"]] = true;
-                $alerts["nova_habilidade_akuma." . $pers["cod"]] = true;
-            }
-            if ($this->is_sistema_desbloqueado(SISTEMA_PROFISSOES)
-                && $this->alerts->has_alert_nova_habilidade_profissao($pers)) {
-                $alerts["status"] = true;
-                $alerts["status&nav=profissao"] = true;
-                $alerts["status." . $pers["cod"]] = true;
-                $alerts["status.profissao." . $pers["cod"]] = true;
-                $alerts["nova_habilidade_profissao." . $pers["cod"]] = true;
-            }
             if ($this->is_sistema_desbloqueado(SISTEMA_EQUIPAMENTOS)
                 && $this->alerts->has_alert_sem_equipamento($pers)) {
                 $alerts["status"] = true;
@@ -1032,53 +1017,6 @@ class UserDetails
         } else {
             $this->connection->run("INSERT INTO tb_tripulacao_animacoes_skills (tripulacao_id, effect, quant) VALUE (?,?,?)",
                 "isi", array($this->tripulacao["id"], $effect, $quant));
-        }
-    }
-
-    public function remove_skills_classe($pers)
-    {
-        global $COD_HAOSHOKU_LVL;
-        $skils_nao_resetaveis = array_merge($COD_HAOSHOKU_LVL, array(1, 2));
-
-        $this->restaura_animacoes($pers, "((tipo='1' AND cod_skil NOT IN (" . implode(",", $skils_nao_resetaveis) . ")) OR tipo='2' OR tipo='3')");
-
-        $this->connection->run(
-            "DELETE FROM tb_personagens_skil
-			WHERE cod= ? AND  ((tipo='1' AND cod_skil NOT IN (" . implode(",", $skils_nao_resetaveis) . ")) OR tipo='2' OR tipo='3')",
-            "i", array($pers["cod"])
-        );
-    }
-
-    public function remove_hdr($pers)
-    {
-        global $COD_HAOSHOKU_LVL;
-        $this->restaura_animacoes($pers, "(cod_skil IN (" . implode(',', $COD_HAOSHOKU_LVL) . "))");
-
-        $this->connection->run("DELETE FROM tb_personagens_skil WHERE cod = ? AND tipo = ? AND cod_skil IN (" . implode(',', $COD_HAOSHOKU_LVL) . ")",
-            "ii", array($pers["cod"], TIPO_SKILL_ATAQUE_CLASSE));
-    }
-
-    public function remove_skills_profissao($pers)
-    {
-        $this->restaura_animacoes($pers, "(tipo IN (4,5,6))");
-
-        $this->connection->run(
-            "DELETE FROM tb_personagens_skil
-			WHERE cod=? AND tipo IN (4,5,6)",
-            "i", array($pers["cod"])
-        );
-    }
-
-    public function restaura_animacoes($pers, $where)
-    {
-        $effects = $this->connection->run(
-            "SELECT animacao, count(*) AS quant FROM tb_personagens_skil
-			WHERE cod = ? AND animacao <> 'Atingir fisicamente' AND $where
-			GROUP BY animacao",
-            "i", array($pers["cod"]));
-
-        while ($effect = $effects->fetch_array()) {
-            $this->add_effect($effect["effect"], $effect["quant"]);
         }
     }
 

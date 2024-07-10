@@ -697,7 +697,434 @@ classes:
                 atr: pre_porcentagem
                 valor: 0.25
 
----
+profissoes:
+  8:
+    nome: Músico
+    habilidades:
+      - cod: 20801
+        icone: 523
+        nome: "Canção de percepção"
+        animacao: Canção
+        descricao:
+        vontade: 8
+        requisito_lvl: 1
+        recarga: 4
+        explicacao: "Causa {DANO} dividido entre os inimigos atingidos aplicando um debuff de {PER} -30% por 3 turnos. Se acertar um aliado, aplica um buff de {PER} +30% por 3 turnos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
+        area: 3
+        efeitos:
+          acerto:
+            - tipo_alvo: ALVO
+              filtro_alvo: INIMIGO
+              tipo: NEGATIVO
+              duracao: 3
+              bonus:
+                atr: con_porcentagem
+                valor: -0.3
+            - tipo_alvo: ALVO
+              filtro_alvo: ALIADO
+              duracao: 3
+              bonus:
+                atr: con_porcentagem
+                valor: 0.3
+      - cod: 20802
+        icone: 521
+        nome: "Canção de resistência"
+        animacao: Canção
+        descricao:
+        vontade: 8
+        requisito_lvl: 2
+        recarga: 4
+        explicacao: "Causa {DANO} dividido entre os inimigos atingidos aplicando um debuff de {RES} -30% por 3 turnos. Se acertar um aliado, aplica um buff de {RES} +30% por 3 turnos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
+        area: 3
+        efeitos:
+          acerto:
+            - tipo_alvo: ALVO
+              filtro_alvo: INIMIGO
+              tipo: NEGATIVO
+              duracao: 3
+              bonus:
+                atr: res_porcentagem
+                valor: -0.3
+            - tipo_alvo: ALVO
+              filtro_alvo: ALIADO
+              duracao: 3
+              bonus:
+                atr: res_porcentagem
+                valor: 0.3
+      - cod: 20803
+        icone: 519
+        nome: "Canção de defesa"
+        animacao: Canção
+        descricao:
+        vontade: 8
+        requisito_lvl: 3
+        recarga: 4
+        explicacao: "Causa {DANO} dividido entre os inimigos atingidos aplicando um debuff de {DEF} -30% por 3 turnos. Se acertar um aliado, aplica um buff de {DEF} +30% por 3 turnos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
+        area: 3
+        efeitos:
+          acerto:
+            - tipo_alvo: ALVO
+              filtro_alvo: INIMIGO
+              tipo: NEGATIVO
+              duracao: 3
+              bonus:
+                atr: def_porcentagem
+                valor: -0.3
+            - tipo_alvo: ALVO
+              filtro_alvo: ALIADO
+              duracao: 3
+              bonus:
+                atr: def_porcentagem
+                valor: 0.3
+      - cod: 20804
+        icone: 522
+        nome: "Canção de precisão"
+        animacao: Canção
+        descricao:
+        vontade: 8
+        requisito_lvl: 4
+        recarga: 4
+        explicacao: "Causa {DANO} dividido entre os inimigos atingidos aplicando um debuff de {PRE} -30% por 3 turnos. Se acertar um aliado, aplica um buff de {PRE} +30% por 3 turnos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
+        area: 3
+        efeitos:
+          acerto:
+            - tipo_alvo: ALVO
+              filtro_alvo: INIMIGO
+              tipo: NEGATIVO
+              duracao: 3
+              bonus:
+                atr: pre_porcentagem
+                valor: -0.3
+            - tipo_alvo: ALVO
+              filtro_alvo: ALIADO
+              duracao: 3
+              bonus:
+                atr: pre_porcentagem
+                valor: 0.3
+      - cod: 20805
+        icone: 520
+        nome: "Canção de destreza"
+        animacao: Canção
+        descricao:
+        vontade: 8
+        requisito_lvl: 5
+        recarga: 4
+        explicacao: "Causa {DANO} dividido entre os inimigos atingidos aplicando um debuff de {DEX} -30% por 3 turnos. Se acertar um aliado, aplica um buff de {DEX} +30% por 3 turnos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
+        area: 3
+        efeitos:
+          acerto:
+            - tipo_alvo: ALVO
+              filtro_alvo: INIMIGO
+              tipo: NEGATIVO
+              duracao: 3
+              bonus:
+                atr: dex_porcentagem
+                valor: -0.3
+            - tipo_alvo: ALVO
+              filtro_alvo: ALIADO
+              duracao: 3
+              bonus:
+                atr: dex_porcentagem
+                valor: 0.3
+      - cod: 20806
+        icone: 517
+        nome: "Canção de agilidade"
+        animacao: Canção
+        descricao:
+        vontade: 8
+        requisito_lvl: 6
+        recarga: 4
+        explicacao: "Causa {DANO} dividido entre os inimigos atingidos aplicando um debuff de {AGL} -30% por 3 turnos. Se acertar um aliado, aplica um buff de {AGL} +30% por 3 turnos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
+        area: 3
+        efeitos:
+          acerto:
+            - tipo_alvo: ALVO
+              filtro_alvo: INIMIGO
+              tipo: NEGATIVO
+              duracao: 3
+              bonus:
+                atr: agl_porcentagem
+                valor: -0.3
+            - tipo_alvo: ALVO
+              filtro_alvo: ALIADO
+              duracao: 3
+              bonus:
+                atr: agl_porcentagem
+                valor: 0.3
+      - cod: 20807
+        icone: 518
+        nome: "Canção de ataque"
+        animacao: Canção
+        descricao:
+        vontade: 8
+        requisito_lvl: 7
+        recarga: 4
+        explicacao: "Causa {DANO} dividido entre os inimigos atingidos aplicando um debuff de {ATK} -30% por 3 turnos. Se acertar um aliado, aplica um buff de {ATK} +30% por 3 turnos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
+        area: 3
+        efeitos:
+          acerto:
+            - tipo_alvo: ALVO
+              filtro_alvo: INIMIGO
+              tipo: NEGATIVO
+              duracao: 3
+              bonus:
+                atr: atk_porcentagem
+                valor: -0.3
+            - tipo_alvo: ALVO
+              filtro_alvo: ALIADO
+              duracao: 3
+              bonus:
+                atr: atk_porcentagem
+                valor: 0.3
+      - cod: 20808
+        icone: 522
+        nome: "Canção de precisão aprimorada"
+        animacao: Canção
+        descricao:
+        vontade: 25
+        requisito_lvl: 8
+        recarga: 4
+        explicacao: "Causa {DANO} dividido entre os inimigos atingidos aplicando um debuff de {PRE} -50% por 3 turnos. Se acertar um aliado, aplica um buff de {PRE} +50% por 3 turnos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
+        area: 3
+        efeitos:
+          acerto:
+            - tipo_alvo: ALVO
+              filtro_alvo: INIMIGO
+              tipo: NEGATIVO
+              duracao: 3
+              bonus:
+                atr: pre_porcentagem
+                valor: -0.5
+            - tipo_alvo: ALVO
+              filtro_alvo: ALIADO
+              duracao: 3
+              bonus:
+                atr: pre_porcentagem
+                valor: 0.5
+      - cod: 20809
+        icone: 520
+        nome: "Canção de destreza aprimorada"
+        animacao: Canção
+        descricao:
+        vontade: 25
+        requisito_lvl: 9
+        recarga: 4
+        explicacao: "Causa {DANO} dividido entre os inimigos atingidos aplicando um debuff de {DEX} -50% por 3 turnos. Se acertar um aliado, aplica um buff de {DEX} +50% por 3 turnos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
+        area: 3
+        efeitos:
+          acerto:
+            - tipo_alvo: ALVO
+              filtro_alvo: INIMIGO
+              tipo: NEGATIVO
+              duracao: 3
+              bonus:
+                atr: dex_porcentagem
+                valor: -0.5
+            - tipo_alvo: ALVO
+              filtro_alvo: ALIADO
+              duracao: 3
+              bonus:
+                atr: dex_porcentagem
+                valor: 0.5
+      - cod: 20810
+        icone: 518
+        nome: "Canção de ataque aprimorada"
+        animacao: Canção
+        descricao:
+        vontade: 25
+        requisito_lvl: 10
+        recarga: 4
+        explicacao: "Causa {DANO} dividido entre os inimigos atingidos aplicando um debuff de {ATK} -50% por 3 turnos. Se acertar um aliado, aplica um buff de {ATK} +50% por 3 turnos. O dano aumenta conforme a vontade da tripulação."
+        alcance: 1
+        area: 3
+        efeitos:
+          acerto:
+            - tipo_alvo: ALVO
+              filtro_alvo: INIMIGO
+              tipo: NEGATIVO
+              duracao: 3
+              bonus:
+                atr: atk_porcentagem
+                valor: -0.5
+            - tipo_alvo: ALVO
+              filtro_alvo: ALIADO
+              duracao: 3
+              bonus:
+                atr: atk_porcentagem
+                valor: 0.5
+  9:
+    nome: Combatente
+    habilidades:
+      - cod: 20901
+        icone: 523
+        nome: "Passiva de percepção"
+        descricao:
+        vontade: 1
+        requisito_lvl: 1
+        recarga: 1
+        explicacao: "Efeito passivo: {PER} +1."
+        dano: 0
+        alcance: 0
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: con
+                valor: 1
+      - cod: 20902
+        icone: 521
+        nome: "Passiva de resistência"
+        descricao:
+        vontade: 1
+        requisito_lvl: 2
+        recarga: 1
+        explicacao: "Efeito passivo: {RES} +1."
+        dano: 0
+        alcance: 0
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: res
+                valor: 1
+      - cod: 20903
+        icone: 519
+        nome: "Passiva de defesa"
+        descricao:
+        vontade: 1
+        requisito_lvl: 3
+        recarga: 1
+        explicacao: "Efeito passivo: {DEF} +1."
+        dano: 0
+        alcance: 0
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: def
+                valor: 1
+      - cod: 20904
+        icone: 522
+        nome: "Passiva de precisão"
+        descricao:
+        vontade: 1
+        requisito_lvl: 4
+        recarga: 1
+        explicacao: "Efeito passivo: {PRE} +3."
+        dano: 0
+        alcance: 0
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: pre
+                valor: 3
+      - cod: 20905
+        icone: 523
+        nome: "Passiva de percepção"
+        descricao:
+        vontade: 1
+        requisito_lvl: 5
+        recarga: 1
+        explicacao: "Efeito passivo: {PER} +2."
+        dano: 0
+        alcance: 0
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: con
+                valor: 2
+      - cod: 20906
+        icone: 517
+        nome: "Passiva de agilidade"
+        descricao:
+        vontade: 1
+        requisito_lvl: 6
+        recarga: 1
+        explicacao: "Efeito passivo: {AGL} +3."
+        dano: 0
+        alcance: 0
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: agl
+                valor: 3
+      - cod: 20907
+        icone: 521
+        nome: "Passiva de resistência"
+        descricao:
+        vontade: 1
+        requisito_lvl: 7
+        recarga: 1
+        explicacao: "Efeito passivo: {RES} +2."
+        dano: 0
+        alcance: 0
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: res
+                valor: 2
+      - cod: 20908
+        icone: 520
+        nome: "Passiva de destreza"
+        descricao:
+        vontade: 1
+        requisito_lvl: 8
+        recarga: 1
+        explicacao: "Efeito passivo: {DEX} +3."
+        dano: 0
+        alcance: 0
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: dex
+                valor: 3
+      - cod: 20909
+        icone: 519
+        nome: "Passiva de defesa"
+        descricao:
+        vontade: 1
+        requisito_lvl: 9
+        recarga: 1
+        explicacao: "Efeito passivo: {DEF} +2."
+        dano: 0
+        alcance: 0
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: def
+                valor: 2
+      - cod: 20910
+        icone: 518
+        nome: "Passiva de ataque"
+        descricao:
+        vontade: 1
+        requisito_lvl: 10
+        recarga: 1
+        explicacao: "Efeito passivo: {ATK} +3."
+        dano: 0
+        alcance: 0
+        efeitos:
+          passivos:
+            - duracao: -1
+              bonus:
+                atr: atk
+                valor: 3
+
 akumas:
   1:
     nome: Gomu Gomu no Mi

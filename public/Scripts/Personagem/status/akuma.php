@@ -66,37 +66,9 @@ if (! $pers) {
         </ul>
 
         <?php $habilidades = \Regras\Habilidades::get_todas_habilidades_akuma($akuma["cod_akuma"]); ?>
-        <?php $aprendidas_db = $connection->run("SELECT * FROM tb_personagens_skil WHERE cod_pers = ?", "i", array($pers["cod"]))->fetch_all_array(); ?>
 
-        <?php $animacoes = $connection->run(
-            "SELECT * FROM tb_tripulacao_animacoes_skills WHERE tripulacao_id = ?",
-            "i", array($userDetails->tripulacao["id"])
-        )->fetch_all_array() ?>
+        <?= \Componentes::render('Habilidades.Lista', ["pers" => $pers, "habilidades" => $habilidades]); ?>
 
-        <?php $aprendidas = []; ?>
-        <?php foreach ($aprendidas_db as $aprendida) : ?>
-            <?php $aprendidas[$aprendida["cod_skil"]] = $aprendida; ?>
-        <?php endforeach; ?>
-        <h5>
-            Habilidades
-        </h5>
-        <div class="row align-items-center justify-content-center mb4">
-            <?php foreach ($habilidades as $habilidade) : ?>
-                <?php $habilidade = array_merge($habilidade, $aprendidas[$habilidade["cod"]] ?: []) ?>
-                <div class="d-inline-block mx2">
-                    <div>
-                        <?= \Componentes::render("Habilidades.Icone", ["habilidade" => $habilidade, "vontade" => $habilidade["vontade"]]); ?>
-                    </div>
-                    <?php if ($habilidade["requisito_lvl"] <= $pers["lvl"]) : ?>
-                        <?= Componentes::render("Habilidades.BotaoCustomizar", ["pers" => $pers, "habilidade" => $habilidade, "animacoes" => $animacoes]); ?>
-                    <?php else : ?>
-                        <button class="btn btn-sm btn-primary" disabled>
-                            Nível <?= $habilidade["requisito_lvl"]; ?>
-                        </button>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
-        </div>
         <div>
             <button class="link_confirm btn btn-info" data-question="Deseja remover a Akuma no Mi desse personagem?"
                 href="Vip/reset_akuma.php?cod=<?= $pers["cod"] ?>" <?= $userDetails->conta["gold"] < PRECO_GOLD_RESET_AKUMA ? "disabled" : "" ?>>
