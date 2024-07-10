@@ -15,6 +15,14 @@ class Habilidades
         foreach ($habilidades["classes"] as $classe) {
             $todas = array_merge($todas, $classe["habilidades"]);
         }
+        foreach ($habilidades["profissoes"] as $profissao) {
+            $todas = array_merge($todas, $profissao["habilidades"]);
+        }
+        foreach ($habilidades["akumas"] as $akuma) {
+            $todas = array_merge($todas, $akuma["habilidades"]);
+        }
+        $todas = array_merge($todas, $habilidades["itens"]);
+
         return self::habilidades_default_values($todas);
     }
 

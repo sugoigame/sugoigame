@@ -6683,7 +6683,7 @@ akumas:
 
 itens:
   - cod: 1000001
-    icone: 523
+    icone: 539
     nome: "Bandagens"
     animacao: Cura 2
     descricao:
@@ -6703,7 +6703,7 @@ itens:
             atr: Cura
             valor: 300
   - cod: 1000002
-    icone: 523
+    icone: 540
     nome: "Anestesia"
     animacao: Flash
     descricao:
@@ -6724,7 +6724,7 @@ itens:
             atr: ATORDOAMENTO
             valor: 1
   - cod: 1000003
-    icone: 523
+    icone: 541
     nome: "Kit de primeiros socorros"
     animacao: Cura 5
     descricao:
@@ -6744,7 +6744,7 @@ itens:
             atr: Cura
             valor: 7000
   - cod: 1000004
-    icone: 523
+    icone: 542
     nome: "Rumble ball"
     animacao: Cura 8
     descricao:
@@ -6770,7 +6770,7 @@ itens:
             atr: Sangramento
             valor: 2000
   - cod: 1000005
-    icone: 523
+    icone: 543
     nome: "Água do herói"
     animacao: Cura 7
     descricao:
@@ -6796,7 +6796,7 @@ itens:
             atr: Sangramento
             valor: 10000
   - cod: 1000006
-    icone: 523
+    icone: 544
     nome: "NHC10"
     animacao: Cura 7
     descricao:
@@ -6822,7 +6822,7 @@ itens:
             atr: Sangramento
             valor: 1000
   - cod: 1000007
-    icone: 523
+    icone: 545
     nome: "SIQ"
     animacao: Cura 1
     descricao:
@@ -6848,7 +6848,7 @@ itens:
             atr: Sangramento
             valor: 2000
   - cod: 1000008
-    icone: 523
+    icone: 546
     nome: "Energy steroid"
     animacao: Energizar 1
     descricao:
@@ -6874,7 +6874,7 @@ itens:
             atr: Sangramento
             valor: 10000
   - cod: 1000009
-    icone: 523
+    icone: 547
     nome: "Recuperação instantânea de Zou"
     animacao: Reviver 1
     descricao:
@@ -6900,7 +6900,7 @@ itens:
             atr: Sangramento
             valor: 3000
   - cod: 1000010
-    icone: 523
+    icone: 548
     nome: "Rumble ball aprimorada"
     animacao: Energizar 2
     descricao:

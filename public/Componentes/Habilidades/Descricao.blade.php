@@ -1,4 +1,7 @@
 {{-- $habilidade, $vontade --}}
+@php
+    $vontade = $vontade ?: $habilidade['vontade'];
+@endphp
 
 <div class="habilidade-descricao">
     <div>
@@ -43,10 +46,10 @@
     @if ($habilidade['recarga'])
         <div>
             <span>Recarga:</span>
-            @if ($habilidade['recarga_universal'])
-                <span>Universal -</span>
-            @endif
             <span>{{ $habilidade['recarga'] }} turno(s)</span>
+            @if ($habilidade['recarga_universal'])
+                <span>Universal</span>
+            @endif
         </div>
     @endif
 
