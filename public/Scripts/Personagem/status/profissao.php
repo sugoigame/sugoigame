@@ -61,7 +61,7 @@ if (! $pers) {
 
     <div class="row">
         <?php foreach ($items as $item) : ?>
-            <?php $preco = (($item["hp_recuperado"] + $item["mp_recuperado"]) * 60) * (1 - $pers["profissao_lvl"] * 0.05); ?>
+            <?php $preco = $item["requisito_lvl"] * 5000; ?>
             <div class="panel panel-default col-xs-4 h-100 m0">
                 <div class="panel-body">
                     <?= info_item_with_img($item, $item, FALSE, FALSE, FALSE) ?>

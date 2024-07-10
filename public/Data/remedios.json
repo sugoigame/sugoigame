@@ -1,20 +1,16 @@
 [
     {
         "cod_remedio": 2,
-        "nome": "Xarope Restaurador",
-        "descricao": "Feito com ervas medicinais, restaura o HP do paciente.",
-        "hp_recuperado": 100,
-        "mp_recuperado": 0,
+        "cod_habilidade": 1000001,
+        "nome": "Bandagens",
+        "descricao": "Cura 300 pontos de vida por turno durante 5 turnos.",
         "img": 112,
-        "requisito_lvl": 1,
-        "mergulho": 1
+        "requisito_lvl": 1
     },
     {
         "cod_remedio": 3,
         "nome": "Xarope Restaurador Reforçado",
         "descricao": "Feito com ervas medicinais, restaura o HP do paciente.",
-        "hp_recuperado": 150,
-        "mp_recuperado": 0,
         "img": 114,
         "requisito_lvl": 2,
         "mergulho": 0
@@ -23,8 +19,6 @@
         "cod_remedio": 5,
         "nome": "Comprimido Restaurador",
         "descricao": "Composto químico que restaura o HP do paciente",
-        "hp_recuperado": 200,
-        "mp_recuperado": 0,
         "img": 98,
         "requisito_lvl": 3,
         "mergulho": 1
@@ -33,8 +27,6 @@
         "cod_remedio": 6,
         "nome": "Comprimido Restaurador Reforçado",
         "descricao": "Composto químico que restaura o HP do paciente",
-        "hp_recuperado": 250,
-        "mp_recuperado": 0,
         "img": 111,
         "requisito_lvl": 4,
         "mergulho": 0
@@ -43,8 +35,6 @@
         "cod_remedio": 8,
         "nome": "Cápsula Restauradora Genérica",
         "descricao": "Forte composição química que restaura o HP do paciente.",
-        "hp_recuperado": 300,
-        "mp_recuperado": 0,
         "img": 94,
         "requisito_lvl": 5,
         "mergulho": 2
@@ -53,8 +43,6 @@
         "cod_remedio": 9,
         "nome": "Cápsula Restauradora Genérica Reforçada",
         "descricao": "Forte composição química que restaura o HP do paciente.",
-        "hp_recuperado": 350,
-        "mp_recuperado": 0,
         "img": 96,
         "requisito_lvl": 6,
         "mergulho": 0
@@ -63,8 +51,6 @@
         "cod_remedio": 11,
         "nome": "Cápsula Restauradora",
         "descricao": "Forte composição química que restaura o HP do paciente.",
-        "hp_recuperado": 400,
-        "mp_recuperado": 0,
         "img": 115,
         "requisito_lvl": 7,
         "mergulho": 2
@@ -73,8 +59,6 @@
         "cod_remedio": 12,
         "nome": "Cápsula Restauradora Reforçada",
         "descricao": "Forte composição química que restaura o HP do paciente.",
-        "hp_recuperado": 450,
-        "mp_recuperado": 0,
         "img": 117,
         "requisito_lvl": 8,
         "mergulho": 0
@@ -83,8 +67,6 @@
         "cod_remedio": 14,
         "nome": "Restoration Ball",
         "descricao": "Remédio concentrado que restaura o HP do paciente",
-        "hp_recuperado": 500,
-        "mp_recuperado": 0,
         "img": 67,
         "requisito_lvl": 9,
         "mergulho": 3
@@ -93,8 +75,6 @@
         "cod_remedio": 16,
         "nome": "Super Cápsula Restauradora",
         "descricao": "Composição quimica extra forte que restaura o HP do paciente.",
-        "hp_recuperado": 700,
-        "mp_recuperado": 0,
         "img": 393,
         "requisito_lvl": 10,
         "mergulho": 0

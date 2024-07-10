@@ -48,6 +48,8 @@ $skill_espera = $connection->run(
                                 <p>
                                     <?= $espera["espera"] ?> turno(s)
                                 </p>
+                            <?php elseif ($combate->minhaTripulacao->personagens[$pers["cod"]]->get_valor_atributo("ATORDOAMENTO")) : ?>
+                                <p>Tripulante artodoado</p>
                             <?php elseif ($combate->minhaTripulacao->get_vontade() < $habilidade["vontade"]) : ?>
                                 <p>Vontade insuficiente</p>
                             <?php elseif (! $espera["espera"] && $combate->minhaTripulacao->get_vontade() >= $habilidade["vontade"]) : ?>

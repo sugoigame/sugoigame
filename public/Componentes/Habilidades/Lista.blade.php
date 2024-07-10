@@ -21,32 +21,35 @@
         $aprendidas[$aprendida['cod_skil']] = $aprendida;
     }
 @endphp
-<h5>
-    Habilidades:
-</h5>
-<div class="row align-items-center justify-content-center mb2">
-    @foreach ($habilidades as $habilidade)
-        @php
-            $habilidade = array_merge($habilidade, $aprendidas[$habilidade['cod']] ?: []);
-        @endphp
-        <div class="d-inline-block mx2 mb2">
-            <div>
-                @component('Habilidades.Icone', ['habilidade' => $habilidade, 'vontade' => $habilidade['vontade']])
-                @endcomponent
+
+@if (count($habilidades))
+    <h5>
+        Habilidades:
+    </h5>
+    <div class="row align-items-center justify-content-center mb2">
+        @foreach ($habilidades as $habilidade)
+            @php
+                $habilidade = array_merge($habilidade, $aprendidas[$habilidade['cod']] ?: []);
+            @endphp
+            <div class="d-inline-block mx2 mb2">
+                <div>
+                    @component('Habilidades.Icone', ['habilidade' => $habilidade, 'vontade' => $habilidade['vontade']])
+                    @endcomponent
+                </div>
+                @if ($habilidade['requisito_lvl'] <= $pers[$lvl_field])
+                    @component('Habilidades.BotaoCustomizar', [
+                        'pers' => $pers,
+                        'habilidade' => $habilidade,
+                        'animacoes' => $animacoes,
+                    ])
+                    @endcomponent
+                @else
+                    <button class="btn btn-sm btn-primary"
+                        disabled>
+                        Nível {{ $habilidade['requisito_lvl'] }}
+                    </button>
+                @endif
             </div>
-            @if ($habilidade['requisito_lvl'] <= $pers[$lvl_field])
-                @component('Habilidades.BotaoCustomizar', [
-                    'pers' => $pers,
-                    'habilidade' => $habilidade,
-                    'animacoes' => $animacoes,
-                ])
-                @endcomponent
-            @else
-                <button class="btn btn-sm btn-primary"
-                    disabled>
-                    Nível {{ $habilidade['requisito_lvl'] }}
-                </button>
-            @endif
-        </div>
-    @endforeach
-</div>
+        @endforeach
+    </div>
+@endif

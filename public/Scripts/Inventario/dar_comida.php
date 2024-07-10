@@ -6,7 +6,7 @@ $protector->must_be_out_of_any_kind_of_combat();
 
 $pers = $protector->get_number_or_exit("pers");
 $cod_comida = $protector->get_number_or_exit("comida");
-$tipo = $protector->get_number_or_exit("tipo");
+$tipo = $protector->get_enum_or_exit("tipo", [TIPO_ITEM_COMIDA]);
 
 $quant = 1;
 
@@ -29,15 +29,6 @@ if ($tipo == TIPO_ITEM_COMIDA) {
     }
 
     $comida = array_merge($comida->fetch_array(), MapLoader::find("comidas", ["cod_comida" => $cod_comida]));
-} else {
-    $comida = $connection->run(
-        "SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=? AND cod_item=?",
-        "iii", [$userDetails->tripulacao["id"], TIPO_ITEM_REMEDIO, $cod_comida]);
-    if (! $comida->count()) {
-        $protector->exit_error("O item acabou");
-    }
-
-    $comida = array_merge($comida->fetch_array(), MapLoader::find("remedios", ["cod_remedio" => $cod_comida]));
 }
 
 

@@ -313,7 +313,10 @@ function moveCom(pers) {
     var x;
     var y;
 
-    if ($(pers).hasClass("efeito-IMOBILIZACAO")) {
+    if (
+        $(pers).hasClass("efeito-IMOBILIZACAO") ||
+        $(pers).hasClass("efeito-ATORDOAMENTO")
+    ) {
         return;
     }
 
@@ -375,6 +378,9 @@ function atacar($elem) {
 }
 
 function atacarWithOne($elem) {
+    if ($(elem).hasClass("efeito-ATORDOAMENTO")) {
+        return;
+    }
     addSelectorsPersonagem("rgba(255,100,100,0.5)", $elem).click(function () {
         unbindClicks();
         removeSelectors();

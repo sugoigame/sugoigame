@@ -716,6 +716,7 @@ profissoes:
           acerto:
             - tipo_alvo: ALVO
               filtro_alvo: INIMIGO
+              explicacao: "{PER} -30%"
               tipo: NEGATIVO
               duracao: 3
               bonus:
@@ -723,6 +724,7 @@ profissoes:
                 valor: -0.3
             - tipo_alvo: ALVO
               filtro_alvo: ALIADO
+              explicacao: "{PER} +30%"
               duracao: 3
               bonus:
                 atr: con_porcentagem
@@ -743,12 +745,14 @@ profissoes:
             - tipo_alvo: ALVO
               filtro_alvo: INIMIGO
               tipo: NEGATIVO
+              explicacao: "{RES} -30%"
               duracao: 3
               bonus:
                 atr: res_porcentagem
                 valor: -0.3
             - tipo_alvo: ALVO
               filtro_alvo: ALIADO
+              explicacao: "{RES} +30%"
               duracao: 3
               bonus:
                 atr: res_porcentagem
@@ -768,6 +772,7 @@ profissoes:
           acerto:
             - tipo_alvo: ALVO
               filtro_alvo: INIMIGO
+              explicacao: "{DEF} -30%"
               tipo: NEGATIVO
               duracao: 3
               bonus:
@@ -775,6 +780,7 @@ profissoes:
                 valor: -0.3
             - tipo_alvo: ALVO
               filtro_alvo: ALIADO
+              explicacao: "{DEF} +30%"
               duracao: 3
               bonus:
                 atr: def_porcentagem
@@ -794,6 +800,7 @@ profissoes:
           acerto:
             - tipo_alvo: ALVO
               filtro_alvo: INIMIGO
+              explicacao: "{PRE} -30%"
               tipo: NEGATIVO
               duracao: 3
               bonus:
@@ -801,6 +808,7 @@ profissoes:
                 valor: -0.3
             - tipo_alvo: ALVO
               filtro_alvo: ALIADO
+              explicacao: "{PRE} +30%"
               duracao: 3
               bonus:
                 atr: pre_porcentagem
@@ -820,6 +828,7 @@ profissoes:
           acerto:
             - tipo_alvo: ALVO
               filtro_alvo: INIMIGO
+              explicacao: "{DEX} -30%"
               tipo: NEGATIVO
               duracao: 3
               bonus:
@@ -827,6 +836,7 @@ profissoes:
                 valor: -0.3
             - tipo_alvo: ALVO
               filtro_alvo: ALIADO
+              explicacao: "{DEX} +30%"
               duracao: 3
               bonus:
                 atr: dex_porcentagem
@@ -846,6 +856,7 @@ profissoes:
           acerto:
             - tipo_alvo: ALVO
               filtro_alvo: INIMIGO
+              explicacao: "{AGL} -30%"
               tipo: NEGATIVO
               duracao: 3
               bonus:
@@ -853,6 +864,7 @@ profissoes:
                 valor: -0.3
             - tipo_alvo: ALVO
               filtro_alvo: ALIADO
+              explicacao: "{AGL} +30%"
               duracao: 3
               bonus:
                 atr: agl_porcentagem
@@ -873,12 +885,14 @@ profissoes:
             - tipo_alvo: ALVO
               filtro_alvo: INIMIGO
               tipo: NEGATIVO
+              explicacao: "{ATK} -30%"
               duracao: 3
               bonus:
                 atr: atk_porcentagem
                 valor: -0.3
             - tipo_alvo: ALVO
               filtro_alvo: ALIADO
+              explicacao: "{ATK} +30%"
               duracao: 3
               bonus:
                 atr: atk_porcentagem
@@ -899,12 +913,14 @@ profissoes:
             - tipo_alvo: ALVO
               filtro_alvo: INIMIGO
               tipo: NEGATIVO
+              explicacao: "{PRE} -50%"
               duracao: 3
               bonus:
                 atr: pre_porcentagem
                 valor: -0.5
             - tipo_alvo: ALVO
               filtro_alvo: ALIADO
+              explicacao: "{PRE} +50%"
               duracao: 3
               bonus:
                 atr: pre_porcentagem
@@ -925,12 +941,14 @@ profissoes:
             - tipo_alvo: ALVO
               filtro_alvo: INIMIGO
               tipo: NEGATIVO
+              explicacao: "{DEX} -50%"
               duracao: 3
               bonus:
                 atr: dex_porcentagem
                 valor: -0.5
             - tipo_alvo: ALVO
               filtro_alvo: ALIADO
+              explicacao: "{DEX} +50%"
               duracao: 3
               bonus:
                 atr: dex_porcentagem
@@ -951,12 +969,14 @@ profissoes:
             - tipo_alvo: ALVO
               filtro_alvo: INIMIGO
               tipo: NEGATIVO
+              explicacao: "{ATK} -50%"
               duracao: 3
               bonus:
                 atr: atk_porcentagem
                 valor: -0.5
             - tipo_alvo: ALVO
               filtro_alvo: ALIADO
+              explicacao: "{ATK} +50%"
               duracao: 3
               bonus:
                 atr: atk_porcentagem
@@ -6660,3 +6680,248 @@ akumas:
         explicacao: "Causa {DANO} dividido entre os alvos atingidos. O dano aumenta conforme a vontade da tripulação."
         alcance: 2
         area: 5
+
+itens:
+  - cod: 1000001
+    icone: 523
+    nome: "Bandagens"
+    animacao: Cura 2
+    descricao:
+    vontade: 6
+    requisito_lvl: 1
+    recarga: 20
+    recarga_universal: true
+    explicacao: "Cura 300 pontos de vida por turno durante 5 turnos."
+    alcance: 1
+    area: 1
+    dano: 0
+    efeitos:
+      acerto:
+        - duracao: 5
+          explicacao: "Cura 300 pontos de vida por turno"
+          bonus:
+            atr: Cura
+            valor: 300
+  - cod: 1000002
+    icone: 523
+    nome: "Anestesia"
+    animacao: Flash
+    descricao:
+    vontade: 6
+    requisito_lvl: 2
+    recarga: 20
+    recarga_universal: true
+    explicacao: "Causa {DANO} e atordoa o alvo por dois turnos. Alvos atordoados não podem se mover nem atacar."
+    alcance: 1
+    area: 1
+    dano: 0
+    efeitos:
+      acerto:
+        - tipo: NEGATIVO
+          explicacao: "Atordoado: Não pode atacar nem se mover"
+          duracao: 2
+          bonus:
+            atr: ATORDOAMENTO
+            valor: 1
+  - cod: 1000003
+    icone: 523
+    nome: "Kit de primeiros socorros"
+    animacao: Cura 5
+    descricao:
+    vontade: 30
+    requisito_lvl: 3
+    recarga: 20
+    recarga_universal: true
+    explicacao: "Recupera 7.000 pontos de vida"
+    alcance: 1
+    area: 1
+    dano: 0
+    efeitos:
+      acerto:
+        - duracao: 0
+          explicacao: "Cura 7.000 pontos de vida"
+          bonus:
+            atr: Cura
+            valor: 7000
+  - cod: 1000004
+    icone: 523
+    nome: "Rumble ball"
+    animacao: Cura 8
+    descricao:
+    vontade: 20
+    requisito_lvl: 4
+    recarga: 20
+    recarga_universal: true
+    explicacao: "Dobra o {ATK} do alvo por 1 turno mas faz ele sofrer 2.000 de dano por turno durante 5 turnos."
+    alcance: 1
+    area: 1
+    dano: 0
+    efeitos:
+      acerto:
+        - duracao: 1
+          explicacao: "{ATK} +100%"
+          bonus:
+            atr: atk_porcentagem
+            valor: 1.0
+        - duracao: 5
+          tipo: NEGATIVO
+          explicacao: "Sofre 2.000 pontos de dano por turno"
+          bonus:
+            atr: Sangramento
+            valor: 2000
+  - cod: 1000005
+    icone: 523
+    nome: "Água do herói"
+    animacao: Cura 7
+    descricao:
+    vontade: 20
+    requisito_lvl: 5
+    recarga: 20
+    recarga_universal: true
+    explicacao: "Dobra o {ATK} do alvo por 3 turnos mas faz ele sofrer 10.000 de dano por turno durante 5 turnos."
+    alcance: 1
+    area: 1
+    dano: 0
+    efeitos:
+      acerto:
+        - duracao: 3
+          explicacao: "{ATK} +100%"
+          bonus:
+            atr: atk_porcentagem
+            valor: 1.0
+        - duracao: 5
+          tipo: NEGATIVO
+          explicacao: "Sofre 10.000 pontos de dano por turno"
+          bonus:
+            atr: Sangramento
+            valor: 10000
+  - cod: 1000006
+    icone: 523
+    nome: "NHC10"
+    animacao: Cura 7
+    descricao:
+    vontade: 10
+    requisito_lvl: 6
+    recarga: 20
+    recarga_universal: true
+    explicacao: "Recupera 10.000 pontos de vida do alvo mas faz ele sofrer 1.000 de dano por turno durante 10 turnos."
+    alcance: 1
+    area: 1
+    dano: 0
+    efeitos:
+      acerto:
+        - duracao: 0
+          explicacao: "Recupera 10.000 pontos de vida"
+          bonus:
+            atr: Cura
+            valor: 10000
+        - duracao: 10
+          tipo: NEGATIVO
+          explicacao: "Sofre 1.000 pontos de dano por turno"
+          bonus:
+            atr: Sangramento
+            valor: 1000
+  - cod: 1000007
+    icone: 523
+    nome: "SIQ"
+    animacao: Cura 1
+    descricao:
+    vontade: 20
+    requisito_lvl: 7
+    recarga: 20
+    recarga_universal: true
+    explicacao: "Dobra a {AGL} do alvo por 10 turnos mas faz ele sofrer 2.000 de dano por turno durante 10 turnos."
+    alcance: 1
+    area: 1
+    dano: 0
+    efeitos:
+      acerto:
+        - duracao: 10
+          explicacao: "{AGL} +100%"
+          bonus:
+            atr: agl_porcentagem
+            valor: 1.0
+        - duracao: 10
+          tipo: NEGATIVO
+          explicacao: "Sofre 2.000 pontos de dano por turno"
+          bonus:
+            atr: Sangramento
+            valor: 2000
+  - cod: 1000008
+    icone: 523
+    nome: "Energy steroid"
+    animacao: Energizar 1
+    descricao:
+    vontade: 20
+    requisito_lvl: 7
+    recarga: 20
+    recarga_universal: true
+    explicacao: "Dobra a {DEX} do alvo por 3 turnos mas faz ele sofrer 10.000 de dano por turno durante 5 turnos."
+    alcance: 1
+    area: 1
+    dano: 0
+    efeitos:
+      acerto:
+        - duracao: 3
+          explicacao: "{DEX} +100%"
+          bonus:
+            atr: dex_porcentagem
+            valor: 1.0
+        - duracao: 5
+          tipo: NEGATIVO
+          explicacao: "Sofre 10.000 pontos de dano por turno"
+          bonus:
+            atr: Sangramento
+            valor: 10000
+  - cod: 1000009
+    icone: 523
+    nome: "Recuperação instantânea de Zou"
+    animacao: Reviver 1
+    descricao:
+    vontade: 10
+    requisito_lvl: 9
+    recarga: 20
+    recarga_universal: true
+    explicacao: "Recupera 20.000 pontos de vida do alvo mas faz ele sofrer 3.000 de dano por turno durante 10 turnos."
+    alcance: 1
+    area: 1
+    dano: 0
+    efeitos:
+      acerto:
+        - duracao: 0
+          explicacao: "Recupera 20.000 pontos de vida"
+          bonus:
+            atr: Cura
+            valor: 20000
+        - duracao: 10
+          tipo: NEGATIVO
+          explicacao: "Sofre 3.000 pontos de dano por turno"
+          bonus:
+            atr: Sangramento
+            valor: 3000
+  - cod: 1000010
+    icone: 523
+    nome: "Rumble ball aprimorada"
+    animacao: Energizar 2
+    descricao:
+    vontade: 30
+    requisito_lvl: 10
+    recarga: 20
+    recarga_universal: true
+    explicacao: "Dobra o {ATK} do alvo por 3 turnos mas faz ele sofrer 2.000 de dano por turno durante 5 turnos."
+    alcance: 1
+    area: 1
+    dano: 0
+    efeitos:
+      acerto:
+        - duracao: 3
+          explicacao: "{ATK} +100%"
+          bonus:
+            atr: atk_porcentagem
+            valor: 1.0
+        - duracao: 5
+          tipo: NEGATIVO
+          explicacao: "Sofre 2.000 pontos de dano por turno"
+          bonus:
+            atr: Sangramento
+            valor: 2000
