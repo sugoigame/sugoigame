@@ -11,7 +11,7 @@ class MapLoader
         return MapLoader::$cache[$data];
     }
 
-    private static function load_file($file_name)
+    public static function load_file($file_name)
     {
         $file = fopen($file_name, "r");
         $lines = "";

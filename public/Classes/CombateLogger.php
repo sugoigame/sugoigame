@@ -6,93 +6,106 @@
  * Date: 08/08/2017
  * Time: 12:21
  */
-class CombateLogger {
-	/**
-	 * @var mywrap_con
-	 */
-	private $connection;
+class CombateLogger
+{
+    /**
+     * @var mywrap_con
+     */
+    private $connection;
 
-	/**
-	 * @var UserDetails
-	 */
-	private $userDetails;
+    /**
+     * @var UserDetails
+     */
+    private $userDetails;
 
-	/**
-	 * Combate constructor.
-	 * @param $connection mywrap_con
-	 * @param $userDetails UserDetails
-	 */
-	public function __construct($connection, $userDetails) {
-		$this->connection = $connection;
-		$this->userDetails = $userDetails;
-	}
+    /**
+     * Combate constructor.
+     * @param $connection mywrap_con
+     * @param $userDetails UserDetails
+     */
+    public function __construct($connection, $userDetails)
+    {
+        $this->connection = $connection;
+        $this->userDetails = $userDetails;
+    }
 
-	public function get_relatorio_combate_bot() {
-		return $this->userDetails->combate_bot["relatorio"] && strlen($this->userDetails->combate_bot["relatorio"])
-			? json_decode($this->userDetails->combate_bot["relatorio"], true)
-			: array();
-	}
+    public function get_relatorio_combate_bot()
+    {
+        return $this->userDetails->combate_bot["relatorio"] && strlen($this->userDetails->combate_bot["relatorio"])
+            ? json_decode($this->userDetails->combate_bot["relatorio"], true)
+            : array();
+    }
 
-	public function get_relatorio_combate_pve() {
-		return $this->userDetails->combate_pve["relatorio"] && strlen($this->userDetails->combate_pve["relatorio"])
-			? json_decode($this->userDetails->combate_pve["relatorio"], true)
-			: array();
-	}
+    public function get_relatorio_combate_pve()
+    {
+        return $this->userDetails->combate_pve["relatorio"] && strlen($this->userDetails->combate_pve["relatorio"])
+            ? json_decode($this->userDetails->combate_pve["relatorio"], true)
+            : array();
+    }
 
-	public function get_relatorio_combate_pvp($combate) {
-		$log_file = @fopen(dirname(dirname(__FILE__)) . "/Logs/PvP/" . $combate . ".log", "r");
+    public function get_relatorio_combate_pvp($combate)
+    {
 
-		$logs = array();
-		if ($log_file) {
-			while ($line = fgets($log_file)) {
-				array_unshift($logs, json_decode($line, true));
+        $fixed_dir = str_replace('/', DIRECTORY_SEPARATOR, str_replace('\\', DIRECTORY_SEPARATOR, __DIR__));
+        $search = str_replace('/', DIRECTORY_SEPARATOR, "Classes");
+        $sub_path = str_replace('/', DIRECTORY_SEPARATOR, "Logs/PvP/");
 
-				if (count($logs) > 10) {
-					array_pop($logs);
-				}
-			}
+        $log_file = @fopen(str_replace($search, "", $fixed_dir) . $sub_path . $combate . ".log", "r");
 
-			fclose($log_file);
-		}
-		return $logs;
-	}
+        $logs = array();
+        if ($log_file) {
+            while ($line = fgets($log_file)) {
+                array_unshift($logs, json_decode($line, true));
 
-	public function registra_turno_combate_bot($relatorio) {
-		$relatorio_antigo = $this->userDetails->combate_bot["relatorio"] && strlen($this->userDetails->combate_bot["relatorio"])
-			? json_decode($this->userDetails->combate_bot["relatorio"], true)
-			: array();
+                if (count($logs) > 10) {
+                    array_pop($logs);
+                }
+            }
 
-		$relatorio_antigo = array_slice($relatorio_antigo, 0, 10);
-		array_unshift($relatorio_antigo, $relatorio);
-		$novo_relatorio = json_encode($relatorio_antigo);
+            fclose($log_file);
+        }
+        return $logs;
+    }
 
-		$this->connection->run("UPDATE tb_combate_bot SET relatorio = ? WHERE tripulacao_id = ?",
-			"si", array($novo_relatorio ? $novo_relatorio : "", $this->userDetails->tripulacao["id"]));
-	}
+    public function registra_turno_combate_bot($relatorio)
+    {
+        $relatorio_antigo = $this->userDetails->combate_bot["relatorio"] && strlen($this->userDetails->combate_bot["relatorio"])
+            ? json_decode($this->userDetails->combate_bot["relatorio"], true)
+            : array();
 
-	public function registra_turno_combate_pve($relatorio) {
-		$relatorio_antigo = $this->userDetails->combate_pve["relatorio"] && strlen($this->userDetails->combate_pve["relatorio"])
-			? json_decode($this->userDetails->combate_pve["relatorio"], true)
-			: array();
+        $relatorio_antigo = array_slice($relatorio_antigo, 0, 10);
+        array_unshift($relatorio_antigo, $relatorio);
+        $novo_relatorio = json_encode($relatorio_antigo);
 
-		$relatorio_antigo = array_slice($relatorio_antigo, 0, 10);
-		if (!$relatorio_antigo) {
-			$relatorio_antigo = array();
-		}
-		array_unshift($relatorio_antigo, $relatorio);
-		$novo_relatorio = json_encode($relatorio_antigo);
+        $this->connection->run("UPDATE tb_combate_bot SET relatorio = ? WHERE tripulacao_id = ?",
+            "si", array($novo_relatorio ? $novo_relatorio : "", $this->userDetails->tripulacao["id"]));
+    }
 
-		$this->connection->run("UPDATE tb_combate_npc SET relatorio = ? WHERE id = ?",
-			"si", array($novo_relatorio ? $novo_relatorio : "", $this->userDetails->tripulacao["id"]));
+    public function registra_turno_combate_pve($relatorio)
+    {
+        $relatorio_antigo = $this->userDetails->combate_pve["relatorio"] && strlen($this->userDetails->combate_pve["relatorio"])
+            ? json_decode($this->userDetails->combate_pve["relatorio"], true)
+            : array();
 
-		$this->userDetails->combate_pve["relatorio"] = $novo_relatorio;
-	}
+        $relatorio_antigo = array_slice($relatorio_antigo, 0, 10);
+        if (! $relatorio_antigo) {
+            $relatorio_antigo = array();
+        }
+        array_unshift($relatorio_antigo, $relatorio);
+        $novo_relatorio = json_encode($relatorio_antigo);
 
-	public function registra_turno_combate_pvp($relatorio) {
-		$log_file = fopen(dirname(dirname(__FILE__)) . "/Logs/PvP/" . $this->userDetails->combate_pvp["combate"] . ".log", "a+");
+        $this->connection->run("UPDATE tb_combate_npc SET relatorio = ? WHERE id = ?",
+            "si", array($novo_relatorio ? $novo_relatorio : "", $this->userDetails->tripulacao["id"]));
 
-		fwrite($log_file, json_encode($relatorio) . "\n");
+        $this->userDetails->combate_pve["relatorio"] = $novo_relatorio;
+    }
 
-		fclose($log_file);
-	}
+    public function registra_turno_combate_pvp($relatorio)
+    {
+        $log_file = fopen(dirname(dirname(__FILE__)) . "/Logs/PvP/" . $this->userDetails->combate_pvp["combate"] . ".log", "a+");
+
+        fwrite($log_file, json_encode($relatorio) . "\n");
+
+        fclose($log_file);
+    }
 }

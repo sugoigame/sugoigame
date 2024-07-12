@@ -15,10 +15,10 @@ function ajuda($title, $content, $collapse = true, $id = "help-box")
         </div>";
 }
 
-function ajuda_tooltip($text)
+function ajuda_tooltip($text, $tag = "a")
 {
-    return '<a href="#" class="noHref" data-toggle="tooltip" data-placement="bottom" data-container="body"
+    return '<' . $tag . ' href="#" class="noHref" data-toggle="tooltip" data-placement="bottom" data-container="body"
         title="' . $text . '">
         <i class="fa fa-question"></i>
-    </a>';
+    </' . $tag . '>';
 }

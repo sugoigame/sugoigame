@@ -1,0 +1,25 @@
+{
+    "php.version": "7.4",
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "localhost",
+            "username": "root",
+            "database": "sugoi_v2",
+            "password": ""
+        }
+    ],
+    "laravel_goto_view.folders": {
+        "default": "/public/Componentes",
+        "js": "/resources/js/Pages",
+        "vendor": "/resources/views/vendor"
+    },
+    "laravel_goto_view.regex": "(?<=view\\(['\"]|Componentes::render\\(['\"]|markdown\\(['\"]|assertViewIs\\(['\"]|\\(view:.['\"]|View::make\\(['\"]|@include\\(['\"]|@extends\\(['\"]|@component\\(['\"]|Inertia::(?:render|modal)\\(['\"]|\\(component:.['\"]|<)(?:x-|livewire:|[^'\"\\s/>]+(?:\\/[^'\"\\s/>]+)*)"
+}

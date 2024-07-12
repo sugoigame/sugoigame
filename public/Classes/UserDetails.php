@@ -327,7 +327,8 @@ class UserDetails
         return ($this->tripulacoes = $result->fetch_all_array());
     }
 
-    public function reload_personagems(){
+    public function reload_personagems()
+    {
         $this->_load_personagens();
     }
 
@@ -970,28 +971,6 @@ class UserDetails
                 $alerts["status.haki." . $pers["cod"]] = true;
                 $alerts["trip_sem_distribuir_haki." . $pers["cod"]] = true;
             }
-            if ($this->is_sistema_desbloqueado(SISTEMA_ACADEMIA)
-                && $this->alerts->has_alert_nova_habilidade_classe($pers)) {
-                $alerts["status"] = true;
-                $alerts["status." . $pers["cod"]] = true;
-                $alerts["status.classe." . $pers["cod"]] = true;
-                $alerts["nova_habilidade_classe." . $pers["cod"]] = true;
-            }
-            if ($this->alerts->has_alert_nova_habilidade_akuma($pers)) {
-                $alerts["status"] = true;
-                $alerts["status&nav=akuma"] = true;
-                $alerts["status." . $pers["cod"]] = true;
-                $alerts["status.akuma." . $pers["cod"]] = true;
-                $alerts["nova_habilidade_akuma." . $pers["cod"]] = true;
-            }
-            if ($this->is_sistema_desbloqueado(SISTEMA_PROFISSOES)
-                && $this->alerts->has_alert_nova_habilidade_profissao($pers)) {
-                $alerts["status"] = true;
-                $alerts["status&nav=profissao"] = true;
-                $alerts["status." . $pers["cod"]] = true;
-                $alerts["status.profissao." . $pers["cod"]] = true;
-                $alerts["nova_habilidade_profissao." . $pers["cod"]] = true;
-            }
             if ($this->is_sistema_desbloqueado(SISTEMA_EQUIPAMENTOS)
                 && $this->alerts->has_alert_sem_equipamento($pers)) {
                 $alerts["status"] = true;
@@ -1038,53 +1017,6 @@ class UserDetails
         } else {
             $this->connection->run("INSERT INTO tb_tripulacao_animacoes_skills (tripulacao_id, effect, quant) VALUE (?,?,?)",
                 "isi", array($this->tripulacao["id"], $effect, $quant));
-        }
-    }
-
-    public function remove_skills_classe($pers)
-    {
-        global $COD_HAOSHOKU_LVL;
-        $skils_nao_resetaveis = array_merge($COD_HAOSHOKU_LVL, array(1, 2));
-
-        $this->restaura_effects($pers, "((tipo='1' AND cod_skil NOT IN (" . implode(",", $skils_nao_resetaveis) . ")) OR tipo='2' OR tipo='3')");
-
-        $this->connection->run(
-            "DELETE FROM tb_personagens_skil
-			WHERE cod= ? AND  ((tipo='1' AND cod_skil NOT IN (" . implode(",", $skils_nao_resetaveis) . ")) OR tipo='2' OR tipo='3')",
-            "i", array($pers["cod"])
-        );
-    }
-
-    public function remove_hdr($pers)
-    {
-        global $COD_HAOSHOKU_LVL;
-        $this->restaura_effects($pers, "(tipo = 1 AND cod_skil IN (" . implode(',', $COD_HAOSHOKU_LVL) . "))");
-
-        $this->connection->run("DELETE FROM tb_personagens_skil WHERE cod = ? AND tipo = ? AND cod_skil IN (" . implode(',', $COD_HAOSHOKU_LVL) . ")",
-            "ii", array($pers["cod"], TIPO_SKILL_ATAQUE_CLASSE));
-    }
-
-    public function remove_skills_profissao($pers)
-    {
-        $this->restaura_effects($pers, "(tipo IN (4,5,6))");
-
-        $this->connection->run(
-            "DELETE FROM tb_personagens_skil
-			WHERE cod=? AND tipo IN (4,5,6)",
-            "i", array($pers["cod"])
-        );
-    }
-
-    public function restaura_effects($pers, $where)
-    {
-        $effects = $this->connection->run(
-            "SELECT effect, count(*) AS quant FROM tb_personagens_skil
-			WHERE cod = ? AND effect <> 'Atingir fisicamente' AND $where
-			GROUP BY effect",
-            "i", array($pers["cod"]));
-
-        while ($effect = $effects->fetch_array()) {
-            $this->add_effect($effect["effect"], $effect["quant"]);
         }
     }
 
@@ -1136,7 +1068,7 @@ class UserDetails
                 "goal" => "Complete mais uma missão na ilha",
                 "link" => "missoes",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [SISTEMA_ACADEMIA],
+                "unlock" => [SISTEMA_VISAO_GERAL_TRIPULACAO],
                 "next" => 3,
                 "check_progress" => function () use ($primeira_ilha) {
                     return check_progress_missoes_realizadas($primeira_ilha, 2);
@@ -1144,9 +1076,9 @@ class UserDetails
             ),
             3 => array(
                 "goal" => "Escolha a classe do capitão",
-                "link" => "academia",
+                "link" => "status&nav=classe",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [SISTEMA_VISAO_GERAL_TRIPULACAO],
+                "unlock" => [],
                 "next" => 4,
                 "check_progress" => function () {
                     return check_progress_personagem_com_classe($this->capitao);
@@ -1163,16 +1095,6 @@ class UserDetails
                 }
             ),
             5 => array(
-                "goal" => "Escolha uma habilidade para o capitão",
-                "link" => "academia",
-                "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [],
-                "next" => 6,
-                "check_progress" => function () {
-                    return check_progress_personagem_com_habilidade($this->capitao["cod"]);
-                }
-            ),
-            6 => array(
                 "goal" => "Complete mais uma missão na ilha",
                 "link" => "missoes",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
@@ -1214,7 +1136,7 @@ class UserDetails
             ),
             11 => array(
                 "goal" => "Escolha a classe do novo tripulante",
-                "link" => "academia",
+                "link" => "status&nav=classe",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 12,
@@ -1233,16 +1155,6 @@ class UserDetails
                 }
             ),
             13 => array(
-                "goal" => "Escolha uma habilidade para o novo tripulante",
-                "link" => "academia",
-                "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [],
-                "next" => 14,
-                "check_progress" => function () {
-                    return check_progress_personagem_com_habilidade($this->personagens[1]["cod"]);
-                }
-            ),
-            14 => array(
                 "goal" => "Recrute mais um tripulante",
                 "link" => "recrutar",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
@@ -1254,7 +1166,7 @@ class UserDetails
             ),
             15 => array(
                 "goal" => "Escolha a classe do novo tripulante",
-                "link" => "academia",
+                "link" => "status&nav=classe",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 16,
@@ -1273,16 +1185,6 @@ class UserDetails
                 }
             ),
             17 => array(
-                "goal" => "Escolha uma habilidade para o novo tripulante",
-                "link" => "academia",
-                "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [],
-                "next" => 18,
-                "check_progress" => function () {
-                    return check_progress_personagem_com_habilidade($this->personagens[2]["cod"]);
-                }
-            ),
-            18 => array(
                 "goal" => "Complete todas as missões da ilha",
                 "link" => "missoes",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),

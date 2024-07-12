@@ -168,7 +168,6 @@
                         <?php if ($userDetails->is_sistema_desbloqueado(SISTEMA_PROFISSOES)) : ?>
                             <?php render_nav("profissao", "Profissão", "fa fa-gavel", $nav, $pers) ?>
                         <?php endif; ?>
-                        <?php render_nav("habilidades", "Habilidades", "fa fa-star", $nav, $pers) ?>
                         <?php if ($userDetails->is_sistema_desbloqueado(SISTEMA_EQUIPAMENTOS)) : ?>
                             <?php render_nav("equipamentos", "Equipamentos", "fa fa-shield", $nav, $pers) ?>
                         <?php endif; ?>

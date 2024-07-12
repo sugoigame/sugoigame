@@ -172,7 +172,7 @@ hr {
 }
 
 table tr td {
-    text-align: left;
+    text-align: inherit;
 }
 
 .text-left {
@@ -687,6 +687,9 @@ table tr td {
     width: 100%;
     z-index: 200;
 }
+.habilidade-icone {
+    position: relative;
+}
 .inventario-items {
     text-align: left;
 }
@@ -699,7 +702,8 @@ table tr td {
     position: relative;
 }
 
-.inventario-item .badge {
+.inventario-item .badge,
+.habilidade-icone .badge {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -916,6 +920,16 @@ body:fullscreen #fullscreen {
 
 .selecao_img img {
     border: 1px solid #000;
+}
+
+.habilidade-icone {
+    display: inline-block;
+    position: relative;
+}
+
+.icone-atributo {
+    border-radius: 3px;
+    background-color: #000;
 }
 
 /* theme overlay */

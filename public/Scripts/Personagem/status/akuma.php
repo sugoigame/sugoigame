@@ -64,6 +64,11 @@ if (! $pers) {
                 <?php render_vantagens_akuma($akuma); ?>
             </li>
         </ul>
+
+        <?php $habilidades = \Regras\Habilidades::get_todas_habilidades_akuma($akuma["cod_akuma"]); ?>
+
+        <?= \Componentes::render('Habilidades.Lista', ["pers" => $pers, "habilidades" => $habilidades]); ?>
+
         <div>
             <button class="link_confirm btn btn-info" data-question="Deseja remover a Akuma no Mi desse personagem?"
                 href="Vip/reset_akuma.php?cod=<?= $pers["cod"] ?>" <?= $userDetails->conta["gold"] < PRECO_GOLD_RESET_AKUMA ? "disabled" : "" ?>>
@@ -74,26 +79,5 @@ if (! $pers) {
     <?php endif; ?>
 </div>
 <?php render_personagem_sub_panel_with_img_bottom(); ?>
-
-<?php if ($pers["akuma"]) : ?>
-    <?php
-    $skills = MapLoader::filter("skil_akuma", function ($skill) use ($pers) {
-        return $skill["cod_akuma"] == $pers["akuma"];
-    });
-
-    $lvls = array(10, 20, 30, 40, 50);
-
-    $skills_ordenadas = [];
-    foreach ($skills as $key => $skill) {
-        $skill["tiponum"] = $skill["tipo"];
-        $skill["tipo"] = isset($skill["bonus_atr"]) ? "Buff" : "Ataque";
-        $skills_ordenadas[$skill["categoria"]][array_search($skill["requisito_lvl"], $lvls)] = $skill;
-    }
-    ?>
-
-    <?php render_habilidades_classe_tab($skills_ordenadas, $pers, "Akuma/aprender_akuma_skil.php", function ($pers, $skill) {
-        return $pers["lvl"] >= $skill["requisito_lvl"];
-    }, $lvls, 2); ?>
-<?php endif; ?>
 <?php render_personagem_panel_bottom() ?>
 

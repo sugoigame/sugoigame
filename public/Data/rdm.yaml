@@ -10,7 +10,7 @@
   dex: 900
   con: 900
   vit: 900
-  hp: 1000000
+  hp: 2700000
   zona: 0
   xp: 0
 1:
@@ -25,22 +25,20 @@
   dex: 5
   con: 5
   vit: 5
-  hp: 700
+  hp: 1890
   zona: 3
   xp: 260
   loot:
-    - cod: 15
-      tipo: 15
-    - cod: 20
-      tipo: 15
-    - cod: 21
-      tipo: 15
-    - cod: 30
-      tipo: 15
-    - cod: 27
-      tipo: 15
-
-
+  - cod: 15
+    tipo: 15
+  - cod: 20
+    tipo: 15
+  - cod: 21
+    tipo: 15
+  - cod: 30
+    tipo: 15
+  - cod: 27
+    tipo: 15
 2:
   id: 2
   nome: Baleia
@@ -53,22 +51,20 @@
   dex: 10
   con: 10
   vit: 10
-  hp: 1000
+  hp: 2700
   zona: 3
   xp: 260
   loot:
-    - cod: 15
-      tipo: 15
-    - cod: 20
-      tipo: 15
-    - cod: 21
-      tipo: 15
-    - cod: 30
-      tipo: 15
-    - cod: 27
-      tipo: 15
-
-
+  - cod: 15
+    tipo: 15
+  - cod: 20
+    tipo: 15
+  - cod: 21
+    tipo: 15
+  - cod: 30
+    tipo: 15
+  - cod: 27
+    tipo: 15
 3:
   id: 3
   nome: Tubarão
@@ -81,21 +77,20 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 2000
+  hp: 5400
   zona: 3
   xp: 260
   loot:
-    - cod: 16
-      tipo: 15
-    - cod: 17
-      tipo: 15
-    - cod: 22
-      tipo: 15
-    - cod: 31
-      tipo: 15
-    - cod: 28
-      tipo: 15
-
+  - cod: 16
+    tipo: 15
+  - cod: 17
+    tipo: 15
+  - cod: 22
+    tipo: 15
+  - cod: 31
+    tipo: 15
+  - cod: 28
+    tipo: 15
 4:
   id: 4
   nome: Filhote de Tartaruga Marítima
@@ -109,21 +104,20 @@
   dex: 20
   con: 20
   vit: 20
-  hp: 5000
+  hp: 13500
   zona: 5
   xp: 300
   loot:
-    - cod: 17
-      tipo: 15
-    - cod: 18
-      tipo: 15
-    - cod: 23
-      tipo: 15
-    - cod: 32
-      tipo: 15
-    - cod: 29
-      tipo: 15
-
+  - cod: 17
+    tipo: 15
+  - cod: 18
+    tipo: 15
+  - cod: 23
+    tipo: 15
+  - cod: 32
+    tipo: 15
+  - cod: 29
+    tipo: 15
 5:
   id: 5
   nome: Rei dos Mares
@@ -137,21 +131,20 @@
   dex: 25
   con: 25
   vit: 25
-  hp: 7000
+  hp: 18900
   zona: 5
   xp: 300
   loot:
-    - cod: 17
-      tipo: 15
-    - cod: 18
-      tipo: 15
-    - cod: 23
-      tipo: 15
-    - cod: 32
-      tipo: 15
-    - cod: 29
-      tipo: 15
-
+  - cod: 17
+    tipo: 15
+  - cod: 18
+    tipo: 15
+  - cod: 23
+    tipo: 15
+  - cod: 32
+    tipo: 15
+  - cod: 29
+    tipo: 15
 6:
   id: 6
   nome: Rei dos Mares Gigante
@@ -165,21 +158,20 @@
   dex: 30
   con: 30
   vit: 30
-  hp: 15000
+  hp: 40500
   zona: 5
   xp: 400
   loot:
-    - cod: 17
-      tipo: 15
-    - cod: 18
-      tipo: 15
-    - cod: 23
-      tipo: 15
-    - cod: 32
-      tipo: 15
-    - cod: 29
-      tipo: 15
-
+  - cod: 17
+    tipo: 15
+  - cod: 18
+    tipo: 15
+  - cod: 23
+    tipo: 15
+  - cod: 32
+    tipo: 15
+  - cod: 29
+    tipo: 15
 7:
   id: 7
   nome: Foca Kung-Fu Solitária 
@@ -192,18 +184,18 @@
   dex: 50
   con: 50
   vit: 50
-  hp: 20000
+  hp: 54000
   zona: 8
   xp: 440
   loot:
-    - cod: 19
-      tipo: 15
-    - cod: 24
-      tipo: 15
-    - cod: 33
-      tipo: 15
-    - cod: 25
-      tipo: 15
+  - cod: 19
+    tipo: 15
+  - cod: 24
+    tipo: 15
+  - cod: 33
+    tipo: 15
+  - cod: 25
+    tipo: 15
 8:
   id: 8
   nome: Grupo de Foca Kung-Fu
@@ -216,18 +208,18 @@
   dex: 60
   con: 60
   vit: 60
-  hp: 25000
+  hp: 67500
   zona: 8
   xp: 500
   loot:
-    - cod: 19
-      tipo: 15
-    - cod: 24
-      tipo: 15
-    - cod: 34
-      tipo: 15
-    - cod: 26
-      tipo: 15
+  - cod: 19
+    tipo: 15
+  - cod: 24
+    tipo: 15
+  - cod: 34
+    tipo: 15
+  - cod: 26
+    tipo: 15
 9:
   id: 9
   nome: Mohmoo
@@ -240,7 +232,7 @@
   dex: 50
   con: 10
   vit: 100
-  hp: 50000
+  hp: 135000
   zona: 9
   xp: 500
 10:
@@ -255,7 +247,7 @@
   dex: 50
   con: 10
   vit: 100
-  hp: 60000
+  hp: 162000
   zona: 10
   xp: 500
 11:
@@ -270,7 +262,7 @@
   dex: 50
   con: 10
   vit: 100
-  hp: 1000000
+  hp: 2700000
   zona: 11
   xp: 0
   boss: 1
@@ -286,7 +278,7 @@
   dex: 50
   con: 10
   vit: 100
-  hp: 100000
+  hp: 270000
   zona: 12
   xp: 1000
 13:
@@ -301,7 +293,7 @@
   dex: 70
   con: 10
   vit: 100
-  hp: 120000
+  hp: 324000
   zona: 13
   xp: 1000
 14:
@@ -316,7 +308,7 @@
   dex: 70
   con: 10
   vit: 100
-  hp: 200000
+  hp: 540000
   zona: 14
   xp: 1000
 15:
@@ -332,20 +324,19 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 2000
+  hp: 5400
   xp: 600
   loot:
-    - cod: 0
-      tipo: 16
-    - cod: 0
-      tipo: 17
-    - cod: 16
-      tipo: 1
-    - cod: 18
-      tipo: 1
-    - cod: 15
-      tipo: 1
-
+  - cod: 0
+    tipo: 16
+  - cod: 0
+    tipo: 17
+  - cod: 16
+    tipo: 1
+  - cod: 18
+    tipo: 1
+  - cod: 15
+    tipo: 1
 16:
   id: 16
   nome: Tripulação pirata
@@ -359,20 +350,19 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 2200
+  hp: 5940
   xp: 600
   loot:
-    - cod: 0
-      tipo: 16
-    - cod: 0
-      tipo: 17
-    - cod: 16
-      tipo: 1
-    - cod: 18
-      tipo: 1
-    - cod: 1
-      tipo: 13
-
+  - cod: 0
+    tipo: 16
+  - cod: 0
+    tipo: 17
+  - cod: 16
+    tipo: 1
+  - cod: 18
+    tipo: 1
+  - cod: 1
+    tipo: 13
 17:
   id: 17
   nome: Tripulação pirata
@@ -386,24 +376,23 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 2400
+  hp: 6480
   xp: 600
   loot:
-    - cod: 0
-      tipo: 16
-    - cod: 0
-      tipo: 17
-    - cod: 16
-      tipo: 1
-    - cod: 18
-      tipo: 1
-    - cod: 1
-      tipo: 13
-    - cod: 56
-      tipo: 0
-    - cod: 55
-      tipo: 0
-
+  - cod: 0
+    tipo: 16
+  - cod: 0
+    tipo: 17
+  - cod: 16
+    tipo: 1
+  - cod: 18
+    tipo: 1
+  - cod: 1
+    tipo: 13
+  - cod: 56
+    tipo: 0
+  - cod: 55
+    tipo: 0
 18:
   id: 18
   nome: Tripulação pirata
@@ -417,26 +406,25 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 2500
+  hp: 6750
   xp: 600
   loot:
-    - cod: 0
-      tipo: 16
-    - cod: 0
-      tipo: 17
-    - cod: 16
-      tipo: 1
-    - cod: 18
-      tipo: 1
-    - cod: 1
-      tipo: 13
-    - cod: 28
-      tipo: 0
-    - cod: 32
-      tipo: 0
-    - cod: 51
-      tipo: 15
-
+  - cod: 0
+    tipo: 16
+  - cod: 0
+    tipo: 17
+  - cod: 16
+    tipo: 1
+  - cod: 18
+    tipo: 1
+  - cod: 1
+    tipo: 13
+  - cod: 28
+    tipo: 0
+  - cod: 32
+    tipo: 0
+  - cod: 51
+    tipo: 15
 19:
   id: 19
   nome: Tripulação pirata
@@ -450,25 +438,25 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 2900
+  hp: 7830
   xp: 600
   loot:
-    - cod: 0
-      tipo: 16
-    - cod: 0
-      tipo: 17
-    - cod: 16
-      tipo: 1
-    - cod: 18
-      tipo: 1
-    - cod: 1
-      tipo: 13
-    - cod: 120
-      tipo: 0
-    - cod: 110
-      tipo: 0
-    - cod: 51
-      tipo: 15
+  - cod: 0
+    tipo: 16
+  - cod: 0
+    tipo: 17
+  - cod: 16
+    tipo: 1
+  - cod: 18
+    tipo: 1
+  - cod: 1
+    tipo: 13
+  - cod: 120
+    tipo: 0
+  - cod: 110
+    tipo: 0
+  - cod: 51
+    tipo: 15
 20:
   id: 20
   nome: Tripulação pirata
@@ -482,28 +470,27 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 2900
+  hp: 7830
   xp: 600
   loot:
-    - cod: 0
-      tipo: 16
-    - cod: 0
-      tipo: 17
-    - cod: 16
-      tipo: 1
-    - cod: 18
-      tipo: 1
-    - cod: 1
-      tipo: 13
-    - cod: 111
-      tipo: 0
-    - cod: 121
-      tipo: 0
-    - cod: 56
-      tipo: 15
-    - cod: 51
-      tipo: 15
-
+  - cod: 0
+    tipo: 16
+  - cod: 0
+    tipo: 17
+  - cod: 16
+    tipo: 1
+  - cod: 18
+    tipo: 1
+  - cod: 1
+    tipo: 13
+  - cod: 111
+    tipo: 0
+  - cod: 121
+    tipo: 0
+  - cod: 56
+    tipo: 15
+  - cod: 51
+    tipo: 15
 21:
   id: 21
   nome: Tripulação pirata
@@ -517,33 +504,32 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 2900
+  hp: 7830
   xp: 600
   loot:
-    - cod: 0
-      tipo: 16
-    - cod: 0
-      tipo: 17
-    - cod: 16
-      tipo: 1
-    - cod: 18
-      tipo: 1
-    - cod: 1
-      tipo: 13
-    - cod: 112
-      tipo: 0
-    - cod: 122
-      tipo: 0
-    - cod: 1
-      tipo: 15
-    - cod: 3
-      tipo: 15
-    - cod: 51
-      tipo: 15
-    - cod: 56
-      tipo: 15
-
-22: # Ilha Dawn
+  - cod: 0
+    tipo: 16
+  - cod: 0
+    tipo: 17
+  - cod: 16
+    tipo: 1
+  - cod: 18
+    tipo: 1
+  - cod: 1
+    tipo: 13
+  - cod: 112
+    tipo: 0
+  - cod: 122
+    tipo: 0
+  - cod: 1
+    tipo: 15
+  - cod: 3
+    tipo: 15
+  - cod: 51
+    tipo: 15
+  - cod: 56
+    tipo: 15
+22:
   id: 22
   nome: Higuma
   img: 20
@@ -555,12 +541,11 @@
   dex: 20
   con: 15
   vit: 140
-  hp: 5000
+  hp: 13500
   zona: 9001
   xp: 500
   battle_back: 1
-
-23: # Shells Town
+23:
   id: 23
   nome: Capitão Morgan
   img: 21
@@ -572,12 +557,11 @@
   dex: 20
   con: 15
   vit: 140
-  hp: 9000
+  hp: 24300
   zona: 9001
   xp: 500
   battle_back: 12
-
-24: # Orange Town
+24:
   id: 24
   nome: Capitão Buggy
   img: 22
@@ -589,12 +573,11 @@
   dex: 20
   con: 15
   vit: 140
-  hp: 10000
+  hp: 27000
   zona: 9001
   xp: 500
   battle_back: 12
-
-25: # Vila Syrup
+25:
   id: 25
   nome: kuro
   img: 23
@@ -606,12 +589,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 12000
+  hp: 32400
   zona: 9001
   xp: 500
   battle_back: 38
-
-26: # Baratie
+26:
   id: 26
   nome: Don Krieg
   img: 24
@@ -623,12 +605,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 14000
+  hp: 37800
   zona: 9001
   xp: 500
   battle_back: 30
-
-27: # Ilha Cocoyashi
+27:
   id: 27
   nome: Arlong
   img: 25
@@ -640,12 +621,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 16000
+  hp: 43200
   zona: 9001
   xp: 500
   battle_back: 14
-
-28: # Loguetown
+28:
   id: 28
   nome: Alvida
   img: 27
@@ -657,14 +637,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 18000
+  hp: 48600
   zona: 9001
   xp: 500
   battle_back: 30
-
-  # North
-
-29: # Lvneel Kingdom
+29:
   id: 29
   nome: Montblanc Norland
   img: 28
@@ -676,12 +653,11 @@
   dex: 20
   con: 15
   vit: 140
-  hp: 5000
+  hp: 13500
   zona: 9001
   xp: 500
   battle_back: 12
-
-30: # Burlywood Town
+30:
   id: 30
   nome: Sarkies
   img: 29
@@ -693,12 +669,11 @@
   dex: 20
   con: 15
   vit: 140
-  hp: 9000
+  hp: 24300
   zona: 9001
   xp: 500
   battle_back: 14
-
-31: # GoldenRod Town
+31:
   id: 31
   nome: Lao G
   img: 31
@@ -710,12 +685,11 @@
   dex: 20
   con: 15
   vit: 140
-  hp: 10000
+  hp: 27000
   zona: 9001
   xp: 500
   battle_back: 12
-
-32: # Oubliette Town
+32:
   id: 32
   nome: Trebol
   img: 32
@@ -727,12 +701,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 12000
+  hp: 32400
   zona: 9001
   xp: 500
   battle_back: 1
-
-33: # Vila Whitewood
+33:
   id: 33
   nome: Psycho P
   img: 33
@@ -744,12 +717,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 14000
+  hp: 37800
   zona: 9001
   xp: 500
   battle_back: 1
-
-34: # Ilha North Coral
+34:
   id: 34
   nome: Kelly Funk
   img: 34
@@ -761,12 +733,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 16000
+  hp: 43200
   zona: 9001
   xp: 500
   battle_back: 5
-
-35: # Cartigen
+35:
   id: 35
   nome: Vergo
   img: 34
@@ -778,14 +749,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 18000
+  hp: 48600
   zona: 9001
   xp: 500
   battle_back: 30
-
-  # South
-
-36: # Baterilla
+36:
   id: 36
   nome: Formiga do Mar
   img: 36
@@ -797,12 +765,11 @@
   dex: 20
   con: 15
   vit: 140
-  hp: 5000
+  hp: 13500
   zona: 9001
   xp: 500
   battle_back: 38
-
-37: # Zozu Town
+37:
   id: 37
   nome: Jango
   img: 37
@@ -814,12 +781,11 @@
   dex: 20
   con: 15
   vit: 140
-  hp: 9000
+  hp: 24300
   zona: 9001
   xp: 500
   battle_back: 1
-
-38: # Karatê island
+38:
   id: 38
   nome: Fullbody
   img: 38
@@ -831,12 +797,11 @@
   dex: 20
   con: 15
   vit: 140
-  hp: 10000
+  hp: 27000
   zona: 9001
   xp: 500
   battle_back: 14
-
-39: # Avalien Town
+39:
   id: 39
   nome: Inazuma
   img: 39
@@ -848,12 +813,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 12000
+  hp: 32400
   zona: 9001
   xp: 500
   battle_back: 38
-
-40: # Torino
+40:
   id: 40
   nome: Komei
   img: 40
@@ -865,12 +829,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 14000
+  hp: 37800
   zona: 9001
   xp: 500
   battle_back: 1
-
-41: # Cinturão das luas
+41:
   id: 41
   nome: Musshuru
   img: 41
@@ -882,12 +845,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 16000
+  hp: 43200
   zona: 9001
   xp: 500
   battle_back: 41
-
-42: # Kimotsu Town
+42:
   id: 42
   nome: Jean Ango
   img: 42
@@ -899,14 +861,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 18000
+  hp: 48600
   zona: 9001
   xp: 500
   battle_back: 11
-
-  # West
-
-43: # Ilusia Kingdom
+43:
   id: 43
   nome: Boo
   img: 43
@@ -918,12 +877,11 @@
   dex: 20
   con: 15
   vit: 140
-  hp: 5000
+  hp: 13500
   zona: 9001
   xp: 500
   battle_back: 1
-
-44: # Ohara
+44:
   id: 44
   nome: Clover
   img: 44
@@ -935,12 +893,11 @@
   dex: 20
   con: 15
   vit: 140
-  hp: 9000
+  hp: 24300
   zona: 9001
   xp: 500
   battle_back: 38
-
-45: # Ilha Toroa
+45:
   id: 45
   nome: Duval
   img: 45
@@ -952,12 +909,11 @@
   dex: 20
   con: 15
   vit: 140
-  hp: 10000
+  hp: 27000
   zona: 9001
   xp: 500
   battle_back: 22
-
-46: # Las Camp
+46:
   id: 46
   nome: Daz Bones
   img: 46
@@ -969,12 +925,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 12000
+  hp: 32400
   zona: 9001
   xp: 500
   battle_back: 25
-
-47: # Kima Town
+47:
   id: 47
   nome: Mohji e Richie
   img: 47
@@ -986,12 +941,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 14000
+  hp: 37800
   zona: 9001
   xp: 500
   battle_back: 32
-
-48: # Jumbo Town
+48:
   id: 48
   nome: Hamburg
   img: 48
@@ -1003,12 +957,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 16000
+  hp: 43200
   zona: 9001
   xp: 500
   battle_back: 25
-
-49: # Ilha Kagero
+49:
   id: 49
   nome: Capone Bege
   img: 49
@@ -1020,14 +973,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 18000
+  hp: 48600
   zona: 9001
   xp: 500
   battle_back: 35
-
-  # Grand Line
-
-50: # Farol => lvl 17 => (68 + 65) => 133 * 5 => 665 pontos
+50:
   id: 50
   nome: Laboon
   img: 50
@@ -1039,12 +989,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 25000
+  hp: 67500
   zona: 9001
   xp: 500
   battle_back: 28
-
-51: # Whiskey peaks => lvl 19 => (76 + 65) => 171 * 7 => 987 pontos
+51:
   id: 51
   nome: Mr. 5
   img: 51
@@ -1056,12 +1005,11 @@
   dex: 30
   con: 15
   vit: 140
-  hp: 25000
+  hp: 67500
   zona: 9001
   xp: 500
   battle_back: 12
-
-52: # Litle Garden - Marinha => lvl 21 => (84 + 65) => 149 * 9 => 1341 pontos
+52:
   id: 52
   nome: Dorry e Brogy
   img: 52
@@ -1073,12 +1021,11 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 50000
+  hp: 135000
   zona: 9001
   xp: 500
   battle_back: 21
-
-53: # Drum => lvl 23 => (92 + 65) => 157 * 9 => 1413 pontos
+53:
   id: 53
   nome: Wapol
   img: 54
@@ -1090,12 +1037,11 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 55000
+  hp: 148500
   zona: 9001
   xp: 500
   battle_back: 6
-
-54: # Alabasta - Rainbase => lvl 24 => (96 + 65) => 161 * 9 => 1449 pontos
+54:
   id: 54
   nome: Mr. 2
   img: 55
@@ -1107,12 +1053,11 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 60000
+  hp: 162000
   zona: 9001
   xp: 500
   battle_back: 25
-
-55: # Alabasta - Yuba => lvl 26 => (100 + 65) => 164 * 9 => 1476 pontos
+55:
   id: 55
   nome: Mr. 4
   img: 56
@@ -1124,12 +1069,11 @@
   dex: 30
   con: 15
   vit: 150
-  hp: 65000
+  hp: 175500
   zona: 9001
   xp: 500
   battle_back: 25
-
-56: # Alabasta - Alubarna => lvl 26 => (104 + 65) => 169 * 9 => 1521 pontos
+56:
   id: 56
   nome: Miss doublefinger
   img: 57
@@ -1141,12 +1085,11 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 70000
+  hp: 189000
   zona: 9001
   xp: 500
   battle_back: 25
-
-57: # Alabasta - Nanohana => lvl 27 => (108 + 65) => 173 * 9 => 1557 pontos
+57:
   id: 57
   nome: Crocodile
   img: 58
@@ -1158,12 +1101,11 @@
   dex: 40
   con: 15
   vit: 150
-  hp: 90000
+  hp: 243000
   zona: 9001
   xp: 500
   battle_back: 25
-
-58: # Jaya MockTown => lvl 28 => (112 + 65) => 177 * 9 => 1593 pontos
+58:
   id: 58
   nome: Bellamy
   img: 59
@@ -1175,12 +1117,11 @@
   dex: 30
   con: 15
   vit: 150
-  hp: 80000
+  hp: 216000
   zona: 9001
   xp: 500
   battle_back: 30
-
-59: # Jaya Cricket House => lvl 29 => (116 + 65) => 181 * 9 => 1629 pontos
+59:
   id: 59
   nome: Montblanc Cricket
   img: 60
@@ -1192,12 +1133,11 @@
   dex: 20
   con: 15
   vit: 150
-  hp: 85000
+  hp: 229500
   zona: 9001
   xp: 500
   battle_back: 12
-
-60: # Long Ring Long Land => lvl 30 => (120 + 65) => 185 * 9 => 1665 pontos
+60:
   id: 60
   nome: Foxy
   img: 61
@@ -1209,12 +1149,11 @@
   dex: 30
   con: 15
   vit: 150
-  hp: 90000
+  hp: 243000
   zona: 9001
   xp: 500
   battle_back: 38
-
-61: # Triller bark => lvl 31 => (124 + 65) => 189 * 9 => 1701 pontos
+61:
   id: 61
   nome: Gekko Moriah
   img: 62
@@ -1226,12 +1165,11 @@
   dex: 30
   con: 15
   vit: 150
-  hp: 100000
+  hp: 270000
   zona: 9001
   xp: 500
   battle_back: 18
-
-62: # Water 7 => lvl 32 => (128 + 65) => 193 * 11 => 2123 pontos
+62:
   id: 62
   nome: Spandam
   img: 63
@@ -1243,12 +1181,11 @@
   dex: 30
   con: 15
   vit: 150
-  hp: 100000
+  hp: 270000
   zona: 9001
   xp: 500
   battle_back: 30
-
-63: # Arquipélago Sabaody => lvl 33 => (132 + 65) => 197 * 12 => 2364 pontos
+63:
   id: 63
   nome: Bartholomew Kuma
   img: 64
@@ -1260,12 +1197,11 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 110000
+  hp: 297000
   zona: 9001
   xp: 500
   battle_back: 38
-
-64: # Mariejois => lvl 34 => (136 + 65) => 201 * 12 => 2412 pontos
+64:
   id: 64
   nome: Almirante da Frota Sengoku
   img: 65
@@ -1277,14 +1213,11 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 140000
+  hp: 378000
   zona: 9001
   xp: 500
   battle_back: 15
-
-  # Novo Mundo
-
-65: # Punk Hazard => lvl 47 => (188 + 65) => 253 * 15 => 3795 pontos
+65:
   id: 65
   nome: Caesar Clown
   img: 66
@@ -1296,12 +1229,11 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 180000
+  hp: 486000
   zona: 9001
   xp: 500
   battle_back: 43
-
-66: # Ilha Yukiryu => lvl 48 => (192 + 65) => 257 * 15 => 3855 pontos
+66:
   id: 66
   nome: Gombe, o gato
   img: 68
@@ -1313,12 +1245,11 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 200000
+  hp: 540000
   zona: 9001
   xp: 500
   battle_back: 3
-
-67: # Ilha Raijin => lvl 50 => (200 + 65) => 265 * 15 => 3975 pontos
+67:
   id: 67
   nome: Enel Raijin Form
   img: 67
@@ -1330,12 +1261,11 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 220000
+  hp: 594000
   zona: 9001
   xp: 500
   battle_back: 16
-
-68: # Laftel => lvl 50 => (100 + 65) => 164 * 9 => 1476 pontos
+68:
   id: 68
   nome: Gol D. Roger
   img: 78
@@ -1347,7 +1277,7 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 220000
+  hp: 594000
   zona: 9001
   xp: 500
   battle_back: 1
@@ -1363,7 +1293,7 @@
   dex: 50
   con: 10
   vit: 100
-  hp: 1000000
+  hp: 2700000
   zona: 15
   xp: 0
   boss: 2
@@ -1379,7 +1309,7 @@
   dex: 50
   con: 10
   vit: 100
-  hp: 1000000
+  hp: 2700000
   zona: 16
   xp: 0
   boss: 3
@@ -1395,7 +1325,7 @@
   dex: 50
   con: 10
   vit: 100
-  hp: 1000000
+  hp: 2700000
   zona: 17
   xp: 0
   boss: 4
@@ -1411,7 +1341,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 1000000
+  hp: 2700000
   zona: 18
   xp: 0
   boss: 5
@@ -1428,11 +1358,11 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 4000
+  hp: 10800
   xp: 260
   loot:
-    - cod: 134
-      tipo: 15
+  - cod: 134
+    tipo: 15
 74:
   id: 74
   nome: Surume
@@ -1445,7 +1375,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 1000000
+  hp: 2700000
   zona: 19
   xp: 0
   boss: 6
@@ -1462,11 +1392,11 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 4000
+  hp: 10800
   xp: 500
   loot:
-    - cod: 145
-      tipo: 15
+  - cod: 145
+    tipo: 15
 76:
   id: 76
   nome: Protetor do tesouro
@@ -1479,11 +1409,11 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 4000
+  hp: 10800
   xp: 1000
   loot:
-    - cod: 134
-      tipo: 15
+  - cod: 134
+    tipo: 15
 77:
   id: 77
   nome: Protetor do tesouro
@@ -1496,11 +1426,11 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 4000
+  hp: 10800
   xp: 1000
   loot:
-    - cod: 150
-      tipo: 15
+  - cod: 150
+    tipo: 15
 78:
   id: 78
   nome: Crocoré Faminto
@@ -1513,7 +1443,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 1000000
+  hp: 2700000
   zona: 20
   xp: 0
   boss: 7
@@ -1529,10 +1459,9 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 20000
+  hp: 54000
   xp: 100
-
-80: # Impel Down
+80:
   id: 80
   nome: Hannyabal
   img: 79
@@ -1544,10 +1473,10 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 220000
+  hp: 594000
   xp: 500
   battle_back: 1
-81: # Impel Down
+81:
   id: 81
   nome: Sphinx
   img: 80
@@ -1559,10 +1488,10 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 220000
+  hp: 594000
   xp: 500
   battle_back: 56
-82: # Impel Down
+82:
   id: 82
   nome: Shiliew - Carcereiro-Chefe
   img: 81
@@ -1574,10 +1503,10 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 220000
+  hp: 594000
   xp: 500
   battle_back: 56
-83: # Impel Down
+83:
   id: 83
   nome: Saldeath - Guarda-Chefe
   img: 82
@@ -1589,7 +1518,7 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 220000
+  hp: 594000
   xp: 500
   battle_back: 57
 84:
@@ -1605,11 +1534,11 @@
   dex: 50
   con: 15
   vit: 150
-  hp: 20000
+  hp: 54000
   xp: 500
   loot:
-    - cod: 182
-      tipo: 15
+  - cod: 182
+    tipo: 15
 85:
   id: 85
   nome: Baiacão
@@ -1622,7 +1551,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 1000000
+  hp: 2700000
   zona: 21
   xp: 0
   boss: 8
@@ -1638,7 +1567,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 1000000
+  hp: 2700000
   zona: 22
   xp: 0
   boss: 9
@@ -1655,11 +1584,11 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 4000
+  hp: 10800
   xp: 260
   loot:
-    - cod: 195
-      tipo: 15
+  - cod: 195
+    tipo: 15
 88:
   id: 88
   nome: Hildon
@@ -1673,11 +1602,11 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 100000
+  hp: 270000
   xp: 1000
   loot:
-    - cod: 196
-      tipo: 15
+  - cod: 196
+    tipo: 15
 91:
   id: 91
   nome: Senhor Dragonesco
@@ -1690,7 +1619,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 1000000
+  hp: 2700000
   zona: 23
   xp: 0
   boss: 10
@@ -1707,11 +1636,11 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 100000
+  hp: 270000
   xp: 2000
   loot:
-    - cod: 199
-      tipo: 15
+  - cod: 199
+    tipo: 15
 90:
   id: 90
   nome: Navio Mercador
@@ -1725,11 +1654,11 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 420
   loot:
-    - cod: 144
-      tipo: 15
+  - cod: 144
+    tipo: 15
 92:
   id: 92
   nome: Navio da Marinha
@@ -1742,7 +1671,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 20000
+  hp: 54000
   xp: 100
 93:
   id: 93
@@ -1756,10 +1685,8 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 100000
+  hp: 270000
   xp: 100
-
-  # Renas Natal
 94:
   id: 94
   nome: Rudolph
@@ -1772,7 +1699,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
 95:
   id: 95
@@ -1786,7 +1713,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
 96:
   id: 96
@@ -1800,7 +1727,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
 97:
   id: 97
@@ -1814,7 +1741,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
 98:
   id: 98
@@ -1828,7 +1755,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
 99:
   id: 99
@@ -1842,7 +1769,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
 100:
   id: 100
@@ -1856,7 +1783,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
 116:
   id: 116
@@ -1870,7 +1797,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
 117:
   id: 117
@@ -1884,10 +1811,8 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
-
-# Mini Eventos
 101:
   id: 101
   nome: Monstro Marítmo
@@ -1901,7 +1826,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 5000
+  hp: 13500
   zona: 101
   xp: 300
   mini_evento: true
@@ -1918,7 +1843,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 10000
+  hp: 27000
   zona: 102
   xp: 300
   mini_evento: true
@@ -1935,7 +1860,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 20000
+  hp: 54000
   zona: 103
   xp: 300
   mini_evento: true
@@ -1952,7 +1877,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 5000
+  hp: 13500
   zona: 104
   xp: 300
   mini_evento: true
@@ -1969,7 +1894,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 10000
+  hp: 27000
   zona: 105
   xp: 300
   mini_evento: true
@@ -1986,7 +1911,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 20000
+  hp: 54000
   zona: 106
   xp: 300
   mini_evento: true
@@ -2003,7 +1928,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 5000
+  hp: 13500
   zona: 107
   xp: 300
   mini_evento: true
@@ -2020,7 +1945,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 10000
+  hp: 27000
   zona: 108
   xp: 300
   mini_evento: true
@@ -2037,7 +1962,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 20000
+  hp: 54000
   zona: 109
   xp: 300
   mini_evento: true
@@ -2054,7 +1979,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 5000
+  hp: 13500
   zona: 110
   xp: 300
   mini_evento: true
@@ -2071,7 +1996,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 10000
+  hp: 27000
   zona: 111
   xp: 300
   mini_evento: true
@@ -2088,7 +2013,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 20000
+  hp: 54000
   zona: 112
   xp: 300
   mini_evento: true
@@ -2105,7 +2030,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 20000
+  hp: 54000
   zona: 113
   xp: 300
   mini_evento: true
@@ -2122,7 +2047,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 20000
+  hp: 54000
   zona: 114
   xp: 300
   mini_evento: true
@@ -2139,12 +2064,10 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 20000
+  hp: 54000
   zona: 115
   xp: 300
   mini_evento: true
-
-# Fim dos mini eventos
 118:
   id: 118
   nome: Estrela Norte
@@ -2157,7 +2080,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
 119:
   id: 119
@@ -2171,7 +2094,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
 120:
   id: 120
@@ -2185,7 +2108,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
 121:
   id: 121
@@ -2199,7 +2122,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
 122:
   id: 122
@@ -2213,7 +2136,7 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
 123:
   id: 123
@@ -2227,9 +2150,8 @@
   dex: 15
   con: 15
   vit: 15
-  hp: 50000
+  hp: 135000
   xp: 100
-
 9998:
   id: 9998
   nome: Jogador Chefe da Ilha
@@ -2242,7 +2164,7 @@
   dex: 1
   con: 1
   vit: 1
-  hp: 1
+  hp: 2
   zona: 9998
   xp: 300
 9999:
@@ -2257,7 +2179,7 @@
   dex: 1
   con: 1
   vit: 1
-  hp: 1
+  hp: 2
   zona: 9999
   xp: 300
   haki: 1

@@ -51,14 +51,16 @@ $pers = $protector->get_tripulante_or_exit("cod");
         <div class="col-xs-4">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <?php $hdr = MapLoader::find("skil_atk", ["cod_skil" => $COD_HAOSHOKU_LVL[$pers["haki_hdr"] + 1]]); ?>
+                    <?php $hdr = \Regras\Habilidades::get_habilidade_by_cod($COD_HAOSHOKU_LVL[$pers["haki_hdr"] + 1]) ?>
                     <p>
                         O seu capitão pode optar por evoluir um tipo especial de Haki: o Haki do Rei.<br />
                         Esse Haki concede uma habilidade que se torna mais forte a cada ponto aplicado.
                     </p>
                     <div class="text-left">
                         <div>No próximo nível, o Haoshoku será uma habilidade com os seguintes efeitos:</div>
-                        <?php render_skill_efeitos($hdr); ?>
+                    </div>
+                    <div>
+                        <?= \Componentes::render("Habilidades.Icone", ["habilidade" => $hdr, "vontade" => $hdr["vontade"]]) ?>
                     </div>
                 </div>
             </div>

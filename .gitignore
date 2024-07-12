@@ -1,5 +1,4 @@
-public/Editor
+public/ComponentesCache
 servers/vendor
 sql/
-.vscode/
 *.log

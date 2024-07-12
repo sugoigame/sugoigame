@@ -210,7 +210,11 @@ $special_effects = get_special_effects($userDetails->combate_pvp["id_1"], $userD
             <br />
             <br />
             <?php $combate_logger = new CombateLogger($connection, $userDetails); ?>
-            <?php render_relatorio_data($combate_logger->get_relatorio_combate_pvp($userDetails->combate_pvp["combate"]), $userDetails->tripulacao["id"], $userDetails->combate_pvp["permite_dados_1"] && $userDetails->combate_pvp["permite_dados_2"]); ?>
+            <?= Componentes::render("Combate.Relatorio", [
+                "relatorio" => $combate_logger->get_relatorio_combate_pvp($userDetails->combate_pvp["combate"]),
+                "id_azul" => $userDetails->tripulacao["id"],
+                "avancado" => $userDetails->combate_pvp["permite_dados_1"] && $userDetails->combate_pvp["permite_dados_2"]
+            ]); ?>
         </div>
             <?php if ($userDetails->conta) : ?>
             <div style="position: absolute; top: 3%; left: 5%; z-index: 100;">

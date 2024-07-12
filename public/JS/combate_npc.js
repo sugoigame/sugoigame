@@ -1,9 +1,20 @@
 //atualiza o tabuleiro
 var v = 1;
 $(function () {
-    toggleTurn(v);
+    if ($("#turno-vez").length) {
+        var turno = $("#turno-vez").val();
+        setTurno(turno);
+
+        if (turno != 1) {
+            turnoNpc();
+        } else {
+            toggleTurn(2);
+        }
+    }
 });
 function batalha() {
+    var turno = $("#turno-vez").val();
+    setTurno(turno);
     $.ajax({
         type: "get",
         url: "Scripts/Batalha/batalha_tabuleiro.php",
@@ -19,10 +30,24 @@ function batalha() {
             if ($("#botao_atacar").length) {
                 bindDefaultAction();
             }
+            var turno = $("#turno-vez").val();
+            setTimeout(() => toggleTurn(turno), 30);
+
+            if (turno != 1) {
+                turnoNpc();
+            }
         },
     });
 }
 
+function turnoNpc() {
+    setTimeout(function () {
+        var scroll = $(".fight-zone").scrollLeft();
+        sendGet("Batalha/turno_npc.php", function () {
+            $(".fight-zone").scrollLeft(scroll);
+        });
+    }, 1000);
+}
 function getUrlAtacar() {
-    return "Scripts/Batalha/batalha_atacar_npc.php";
+    return "Scripts/Batalha/batalha_atacar.php";
 }

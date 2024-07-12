@@ -78,6 +78,7 @@ foreach ($personagens_combate as $pers) {
             </div>
         </div>
         <div id="menu_batalha">
+            <input type="hidden" id="turno-vez" value="<?= $userDetails->combate_pve["vez"] ?>" />
             <div>
                 <div>
                     <button id="botao_atacar" onclick="atacar()" class="btn btn-sm btn-danger">
@@ -118,7 +119,10 @@ foreach ($personagens_combate as $pers) {
 
         <div id="relatorio-combate-content">
             <?php $combate_logger = new CombateLogger($connection, $userDetails); ?>
-            <?php render_relatorio_data($combate_logger->get_relatorio_combate_pve(), $userDetails->tripulacao["id"]); ?>
+            <?= Componentes::render("Combate.Relatorio", [
+                "relatorio" => $combate_logger->get_relatorio_combate_pve(),
+                "id_azul" => $userDetails->tripulacao["id"]
+            ]); ?>
         </div>
         <?php if ($userDetails->conta) : ?>
             <div style="position: absolute; top: 3%; left: 5%; z-index: 100;">

@@ -85,6 +85,7 @@ function calc_tempo_recuperar_tripulantes($personagens)
 function render_painel_profissao($pers)
 { ?>
     <?php global $userDetails; ?>
+    <?php global $connection; ?>
     <?php if (! $pers["profissao"]) : ?>
         <p>
             Este personagem ainda não tem função no navio, visite a escola de profissões de alguma ilha para aprender
@@ -126,23 +127,25 @@ function render_painel_profissao($pers)
             <p>
                 Correntes Identificadas:
                 <?php
-                if ($pers["profissao_lvl"] <= 3)
+                if ($pers["profissao_lvl"] <= 3) :
                     echo "Apenas correntes muito fracas";
-                else if ($pers["profissao_lvl"] <= 8)
+                elseif ($pers["profissao_lvl"] <= 8) :
                     echo "Correntes intermediárias";
-                else
+                else :
                     echo "Todos os tipos de correntes";
+                endif;
                 ?>
             </p>
             <p>
                 Ventos Identificados:
                 <?php
-                if ($pers["profissao_lvl"] <= 2)
+                if ($pers["profissao_lvl"] <= 2) :
                     echo "Apenas ventos muito fracos";
-                else if ($pers["profissao_lvl"] <= 9)
+                elseif ($pers["profissao_lvl"] <= 9) :
                     echo "Ventos intermdediários";
-                else
+                else :
                     echo "Todos os tipos de ventos";
+                endif;
                 ?>
             </p>
         <?php elseif ($pers["profissao"] == PROFISSAO_CARPINTEIRO) : ?>
@@ -200,6 +203,9 @@ function render_painel_profissao($pers)
                 O artesão ganha experiência construindo itens na oficina do navio
             </p>
         <?php endif; ?>
+
+        <?php $habilidades = \Regras\Habilidades::get_todas_habilidades_profisao($pers["profissao"]); ?>
+        <?= \Componentes::render('Habilidades.Lista', ["pers" => $pers, "habilidades" => $habilidades, "lvl_field" => "profissao_lvl"]); ?>
 
         <p>
             <button class="link_confirm btn btn-info" <?= $userDetails->conta["gold"] >= PRECO_GOLD_RESET_PROFISSAO ? "" : "disabled" ?>
