@@ -34,10 +34,11 @@ class PersonagemJogador extends Personagem
     public function registrar_espera_habilidade(Habilidade $habilidade)
     {
         if ($habilidade->estado["recarga"]) {
-            $this->combate->connection->run("INSERT INTO tb_combate_skil_espera (id, cod, cod_skil, espera) VALUES (?,?,?,?)", "iiii", [
+            $this->combate->connection->run("INSERT INTO tb_combate_skil_espera (id, cod, cod_skil, recarga_universal, espera) VALUES (?,?,?,?,?)", "iiiii", [
                 $this->tripulacao->estado["id"],
                 $this->estado["cod"],
                 $habilidade->estado["cod"],
+                $habilidade->estado["recarga_universal"],
                 $habilidade->estado["recarga"]
             ]);
         }
@@ -55,10 +56,12 @@ class PersonagemJogador extends Personagem
             $this->habilidades = [];
             foreach ($habilidades as $habilidade) {
                 if ($habilidade["vontade"] <= $this->tripulacao->get_vontade()) {
-                    $filtro = ["cod_skil" => $habilidade["cod"]];
-                    if (! $habilidade["recarga_universal"]) {
-                        $filtro["cod"] = $this->estado["cod"];
-                    }
+                    $filtro = $habilidade["recarga_universal"]
+                        ? ["recarga_universal" => true]
+                        : [
+                            "cod_skil" => $habilidade["cod"],
+                            "cod" => $this->estado["cod"]
+                        ];
                     if (! array_find($habilidades_recarga, $filtro)) {
                         $this->habilidades[$habilidade["cod"]] = new Habilidade($this->combate, $this, $habilidade);
                     }

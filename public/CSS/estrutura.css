@@ -680,6 +680,9 @@ table tr td {
     width: 100%;
     z-index: 200;
 }
+.habilidade-icone {
+    position: relative;
+}
 .inventario-items {
     text-align: left;
 }
@@ -692,7 +695,8 @@ table tr td {
     position: relative;
 }
 
-.inventario-item .badge {
+.inventario-item .badge,
+.habilidade-icone .badge {
     position: absolute;
     bottom: 0;
     right: 0;

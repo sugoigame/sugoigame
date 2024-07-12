@@ -3071,6 +3071,7 @@ ALTER TABLE tb_combate_bot ADD vontade_2 INT DEFAULT 1 NOT NULL;
 ALTER TABLE tb_combate_npc ADD vontade_1 INT DEFAULT 1 NOT NULL;
 ALTER TABLE tb_combate_npc ADD vontade_npc INT DEFAULT 1 NOT NULL;
 ALTER TABLE tb_combate_npc ADD vez VARCHAR(10) DEFAULT '1' NOT NULL;
+ALTER TABLE tb_combate_skil_espera ADD recarga_universal BOOL DEFAULT false NOT NULL;
 
 
 SET FOREIGN_KEY_CHECKS=1;

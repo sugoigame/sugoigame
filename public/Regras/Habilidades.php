@@ -58,6 +58,21 @@ class Habilidades
             $habilidades_pers = array_merge($habilidades_pers, array_filter(self::get_todas_habilidades_profisao($pers["profissao"]), function ($habilidade) use ($pers) {
                 return $habilidade["requisito_lvl"] <= $pers["profissao_lvl"];
             }));
+
+            if ($pers["profissao"] == PROFISSAO_MEDICO) {
+                $remedios = $connection->run(
+                    "SELECT * FROM tb_usuario_itens WHERE id=? AND tipo_item=?",
+                    "ii", [$pers["id"], TIPO_ITEM_REMEDIO])->fetch_all_array();
+
+                foreach ($remedios as $remedio) {
+                    $remedio_details = \Utils\Data::find("remedios", ["cod_remedio" => $remedio["cod_item"]]);
+                    $habilidade = self::get_habilidade_by_cod($remedio_details["cod_habilidade"]);
+                    $habilidade["quantidade"] = $remedio["quant"];
+                    if ($habilidade && $habilidade["requisito_lvl"] <= $pers["profissao_lvl"]) {
+                        $habilidades_pers[] = $habilidade;
+                    }
+                }
+            }
         }
 
         foreach ($habilidades_pers as $key => $habilidade) {
@@ -111,7 +126,6 @@ class Habilidades
         $habilidade["recarga"] = $habilidade["recarga"] ?: 0;
         $habilidade["recarga_universal"] = $habilidade["recarga_universal"] ?: false;
         $habilidade["requisito_lvl"] = $habilidade["requisito_lvl"] ?: 1;
-
 
 
         if (isset($habilidade["efeitos"])) {

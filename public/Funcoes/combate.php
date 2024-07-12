@@ -251,6 +251,7 @@ function get_pers_in_combate($id)
         pers.xp AS xp,
         akuma.categoria AS categoria_akuma,
         pers.profissao AS profissao,
+        pers.profissao_lvl AS profissao_lvl,
         pers.profissao_xp AS profissao_xp,
         pers.profissao_xp_max AS profissao_xp_max,
         cbtpers.quadro_x AS quadro_x,
