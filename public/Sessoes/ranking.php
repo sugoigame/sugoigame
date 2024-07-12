@@ -74,17 +74,17 @@
 
     <?php if ($ranking == "reputacao") : ?>
         <?php
-        $query = "SELECT count(*) AS total FROM tb_usuarios ";
+        $query = "SELECT count(*) AS total FROM tb_usuarios WHERE adm = 0 ";
         if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' AND adm = 0";
+            $query .= " AND faccao='$faccao' ";
         }
         $total = $connection->run($query)->fetch_array()["total"];
         ?>
 
         <?php
-        $query = "SELECT *, @rownum := @rownum + 1 as posicao FROM tb_usuarios, ( SELECT @rownum := 0 ) AS r ";
+        $query = "SELECT *, @rownum := @rownum + 1 as posicao FROM tb_usuarios, ( SELECT @rownum := 0 ) AS r WHERE adm = 0 ";
         if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' AND adm = 0 ";
+            $query .= " AND faccao='$faccao' ";
         }
         $query .= " ORDER BY reputacao DESC LIMIT $limit_start, 25 ";
         $result = $connection->run($query);
@@ -107,17 +107,17 @@
         </ul>
     <?php elseif ($ranking == "reputacao_mensal") : ?>
         <?php
-        $query = "SELECT count(*) AS total FROM tb_usuarios ";
+        $query = "SELECT count(*) AS total FROM tb_usuarios WHERE adm = 0 ";
         if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' AND adm = 0";
+            $query .= " AND faccao='$faccao'";
         }
         $total = $connection->run($query)->fetch_array()["total"];
         ?>
 
         <?php
-        $query = "SELECT *, @rownum := @rownum + 1 as posicao FROM tb_usuarios, ( SELECT @rownum := 0 ) AS r ";
+        $query = "SELECT *, @rownum := @rownum + 1 as posicao FROM tb_usuarios, ( SELECT @rownum := 0 ) AS r WHERE adm = 0  ";
         if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' AND adm = 0 ";
+            $query .= " AND faccao='$faccao' ";
         }
         $query .= " ORDER BY reputacao_mensal DESC LIMIT $limit_start, 25 ";
         $result = $connection->run($query);
