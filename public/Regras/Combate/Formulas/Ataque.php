@@ -95,7 +95,7 @@ class Ataque
 
             $retorno["dano"] = max(1, round($dano - $dano_bloq));
 
-            $alvo->estado["hp"] = max(0, $alvo->estado["hp"] - $dano);
+            $alvo->estado["hp"] = max(0, $alvo->estado["hp"] - $retorno["dano"]);
             $retorno["nova_hp"] = $alvo->estado["hp"];
 
             $pers->combate->gatilhos->dispara(Gatilhos::ACERTOU, $pers, $alvo);
