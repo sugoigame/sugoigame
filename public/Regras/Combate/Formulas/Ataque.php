@@ -55,7 +55,7 @@ class Ataque
             $quadro_alvo = $pers->combate->tabuleiro->get_quadro_personagem($alvo);
             $distancia = $pers->combate->tabuleiro->get_quadro_personagem($pers)->get_distancia($quadro_alvo);
             $reducao_distancia = 1.0 - max(0, $distancia - 1.5) * 0.02;
-            $reducao_area = 1.0 - $personagens_atingidos * 0.10;
+            $reducao_area = 1.0 - ($personagens_atingidos - 1) * 0.10;
 
             $dano = (self::get_atk_combate($pers) + $dano_hab) * $reducao_area * $reducao_distancia;
             $dano = max($dano_hab * 0.3, $dano - self::get_def_combate($alvo));
