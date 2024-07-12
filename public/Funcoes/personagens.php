@@ -233,7 +233,7 @@ function preco_selo_exp($pers)
 { ?>
     <div class="row">
         <div class="col-md-5 hidden-sm hidden-xs">
-            <img src="Imagens/Personagens/Big/<?= getImg($pers, "c") ?>.png" style="width: 100%">
+            <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "", 'width="60%"') ?>
         </div>
         <div class="col-md-7 col-xs-12">
             <div class="panel panel-default">
@@ -347,8 +347,8 @@ function preco_selo_exp($pers)
 <?php function render_cartaz_procurado($famoso, $faccao)
 { ?>
     <div class="cartaz_procurado tripulante_quadro <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>">
-            <img class="tripulante_quadro_img  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>"
-                src="Imagens/Personagens/Icons/<?= getImg($famoso, "r"); ?>.jpg">
+        <img class="tripulante_quadro_img  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>"
+            src="Imagens/Personagens/Icons/<?= getImg($famoso, "r"); ?>.jpg">
         <div class="recompensa_text  <?= $faccao == FACCAO_PIRATA ? "pirate" : "marine" ?>">
             <?php if ($faccao == FACCAO_MARINHA) : ?>
                 <div class="recompensa_stars">

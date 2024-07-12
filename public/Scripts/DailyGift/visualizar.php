@@ -81,28 +81,28 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
     <div>
         <ul class="nav nav-pills nav-justified">
             <li class="active">
-                <a href="#calendar-tab-presentes" data-toggle="tab" id="daily-text">
+                <a href="#calendar-tab-presentes" data-toggle="tab">
                     Presentes Diários
                     <?= ! $userDetails->tripulacao["presente_diario_obtido"] ? '<span class="label label-danger">1</span>' : ""; ?>
                 </a>
             </li>
             <li>
-                <a href="#calendar-tab-eventos" data-toggle="tab" id="daily-text">
+                <a href="#calendar-tab-eventos" data-toggle="tab">
                     Eventos Ativos
                 </a>
             </li>
             <li>
-                <a href="#calendar-tab-pvp" data-toggle="tab" id="daily-text">
+                <a href="#calendar-tab-pvp" data-toggle="tab">
                     Calendário PvP
                 </a>
             </li>
             <li>
-                <a href="#calendar-tab-missoes-diarias" data-toggle="tab" id="daily-text">
+                <a href="#calendar-tab-missoes-diarias" data-toggle="tab">
                     Missões diárias
                 </a>
             </li>
             <li>
-                <a href="#calendar-tab-mini-eventos" data-toggle="tab" id="daily-text">
+                <a href="#calendar-tab-mini-eventos" data-toggle="tab">
                     Mini eventos
                     <?= $novos_mini_eventos ? ('<span class="label label-danger">' . $novos_mini_eventos . '</span>') : ""; ?>
                 </a>
@@ -403,110 +403,106 @@ $novos_mini_eventos = $connection->run("SELECT count(*) AS total FROM tb_mini_ev
             <h4>Mini Eventos em andamento:</h4>
             <div>
                 <ul class="nav nav-pills nav-justified">
-                    <li class="active"><a class="noHref" href="#" id="daily-text">East Blue</a></li>
-                    <li><a class="noHref" href="#" id="daily-text">North Blue</a></li>
-                    <li><a class="noHref" href="#" id="daily-text">West Blue</a></li>
-                    <li><a class="noHref" href="#" id="daily-text">South Blue</a></li>
-                    <li><a class="noHref" href="#" id="daily-text">Grand Line</a></li>
-                    <li><a class="noHref" href="#" id="daily-text">Novo Mundo</a></li>
+                    <li class="active">
+                        <a href="#mini-eventos-1" data-toggle="tab">East Blue</a>
+                    </li>
+                    <li><a href="#mini-eventos-2" data-toggle="tab">North Blue</a></li>
+                    <li><a href="#mini-eventos-3" data-toggle="tab">West Blue</a></li>
+                    <li><a href="#mini-eventos-4" data-toggle="tab">South Blue</a></li>
+                    <li><a href="#mini-eventos-5" data-toggle="tab">Grand Line</a></li>
+                    <li><a href="#mini-eventos-6" data-toggle="tab">Novo Mundo</a></li>
                 </ul>
             </div>
-            <div class="row" id="row-eventos">
-                <?php $events_details = DataLoader::load("mini_eventos"); ?>
-                <?php $events = $connection->run(
-                    "SELECT *, (unix_timestamp(fim) - unix_timestamp()) AS restante, (unix_timestamp() - unix_timestamp(inicio)) AS desde_inicio
+            <?php $events_details = DataLoader::load("mini_eventos"); ?>
+            <?php $events = $connection->run(
+                "SELECT *, (unix_timestamp(fim) - unix_timestamp()) AS restante, (unix_timestamp() - unix_timestamp(inicio)) AS desde_inicio
 						 FROM tb_mini_eventos m
 						 LEFT JOIN tb_mini_eventos_concluidos mc ON mc.mini_evento_id = m.id AND mc.tripulacao_id = ?
 						 ORDER BY m.fim, m.id",
-                    "i", array($userDetails->tripulacao["id"])
-                )->fetch_all_array(); ?>
+                "i", array($userDetails->tripulacao["id"])
+            )->fetch_all_array(); ?>
 
-                <script type="text/javascript">
-                    $(function () {
-                        timeOuts["atualiza_tempo_evento"] = setTimeout("atualiza_tempo_evento()", 1000);
-                    });
-                    var start = new Date().getTime();
-                    function atualiza_tempo_evento() {
-                        timeOuts["atualiza_tempo_evento"] = setTimeout("atualiza_tempo_evento()", 1000);
-                        const now = new Date().getTime();
-                        for (let sec_rest of document.getElementsByClassName('tempo_sec')) {
-                            const min_rest = document.getElementById("tempo_min_rest_" + sec_rest.getAttribute('data-ref'));
-                            var tmp = parseFloat(sec_rest.value) - Math.round((now - start) / 1000);
-                            min_rest.innerHTML = transforma_tempo(tmp);
-                            if (tmp < 0) {
-                                reloadPagina();
-                                return;
-                            }
+            <?php
+            $eventos_mar = [];
+            foreach ($events as $event) {
+                $event["details"] = $events_details[$event["id"]];
+                $event["coordenadas"] = $connection->run("SELECT * FROM tb_mapa_rdm WHERE rdm_id IN (" . implode(",", $event["details"]["zonas"]) . ")")->fetch_all_array();
+                foreach ($event["coordenadas"] as $quadro) {
+                    $eventos_mar[get_mar($quadro["x"], $quadro["y"])][] = $event;
+                }
+            }
+            ?>
+
+            <script type="text/javascript">
+                $(function () {
+                    timeOuts["atualiza_tempo_evento"] = setTimeout("atualiza_tempo_evento()", 1000);
+                });
+                var start = new Date().getTime();
+                function atualiza_tempo_evento() {
+                    timeOuts["atualiza_tempo_evento"] = setTimeout("atualiza_tempo_evento()", 1000);
+                    const now = new Date().getTime();
+                    for (let sec_rest of document.getElementsByClassName('tempo_sec')) {
+                        const min_rest = document.getElementById("tempo_min_rest_" + sec_rest.getAttribute('data-ref'));
+                        var tmp = parseFloat(sec_rest.value) - Math.round((now - start) / 1000);
+                        min_rest.innerHTML = transforma_tempo(tmp);
+                        if (tmp < 0) {
+                            reloadPagina();
+                            return;
                         }
                     }
-                </script>
-
-                <!-- <script type="text/javascript">
-                            $(function () {
-                                timeOuts["atualiza_tempo_evento"] = setTimeout("atualiza_tempo_evento()", 1000);
-                            });
-                            var conttmp = 0;
-
-                            function atualiza_tempo_evento() {
-                                timeOuts["atualiza_tempo_evento"] = setTimeout("atualiza_tempo_evento()", 1000);
-                                for (var x = 0; x < 20; x++) {
-                                    var sec_rest = "tempo_sec_rest_" + x;
-                                    var min_rest = "tempo_min_rest_" + x;
-                                    if (document.getElementById(sec_rest) != null) {
-                                        var tmp = document.getElementById(sec_rest).value - conttmp;
-                                        document.getElementById(min_rest).innerHTML = transforma_tempo(tmp);
-                                        if (tmp < 0) {
-                                            reloadPagina();
-                                            return;
-                                        }
-                                    }
-                                }
-                                conttmp += 1;
-                            }
-                        </script> -->
-                <?php foreach ($events as $event) : ?>
-                    <?php $event_detail = $events_details[$event["id"]]; ?>
-                    <?php $coordenadas = $connection->run("SELECT * FROM tb_mapa_rdm WHERE rdm_id IN (" . implode(",", $event_detail["zonas"]) . ")"); ?>
-                    <div class="panel pane-default col-md-5 col-xs-12" id="eventos">
-                        <h4>
-                            <?= $event_detail["nome"] ?>
-                            <?php if ($event["desde_inicio"] < 300) : ?>
-                                <span class="label label-warning">Novo!</span>
+                }
+            </script>
+            <div class="tab-content">
+                <?php for ($mar = 1; $mar <= 6; $mar++) : ?>
+                    <div class="tab-pane <?= $mar == 1 ? "active" : "" ?>" id="mini-eventos-<?= $mar ?>">
+                        <div class="row">
+                            <?php if (isset($eventos_mar[$mar])) : ?>
+                                <?php foreach ($eventos_mar[$mar] as $event) : ?>
+                                    <div class="panel pane-default col-md-4 col-xs-12">
+                                        <h4>
+                                            <?= $event["details"]["nome"] ?>
+                                            <?php if ($event["desde_inicio"] < 300) : ?>
+                                                <span class="label label-warning">Novo!</span>
+                                            <?php endif; ?>
+                                        </h4>
+                                        <h5>Essa criatura pode ser encontrada em:</h5>
+                                        <?php foreach ($event["coordenadas"] as $quadro) : ?>
+                                            <p id="daily-text">
+                                                <?= get_human_location($quadro["x"], $quadro["y"]) ?>
+                                                -
+                                                <?= nome_mar(get_mar($quadro["x"], $quadro["y"])) ?>
+                                            </p>
+                                        <?php endforeach; ?>
+                                        <h5>Recompensas:</h5>
+                                        <?php foreach ($event["details"]["recompensas"][$event["pack_recompensa"]] as $recompensa) : ?>
+                                            <div id="daily-text">
+                                                <?php render_recompensa($recompensa, $reagents, $equipamentos); ?>
+                                            </div>
+                                        <?php endforeach; ?>
+                                        <div>
+                                            <strong style="font-size: 1.2rem;">Tempo Restante: </strong>
+                                            <span style="font-size: 1.2rem;" id="tempo_min_rest_<?= $event["id"] ?>">
+                                                <?= transforma_tempo_min($event["restante"]); ?>
+                                            </span>
+                                            <input class="tempo_sec" data-ref="<?= $event["id"] ?>"
+                                                id="tempo_sec_rest_<?= $event["id"] ?>" type="hidden"
+                                                value="<?= $event["restante"] ?>" />
+                                        </div>
+                                        </h5>
+                                        <?php if ($event["momento"]) : ?>
+                                            <p class="text-success" id="daily-text">
+                                                <i class="fa fa-check"></i>
+                                                Você já concluiu esse evento!
+                                            </p>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <div class="panel pane-default col-xs-12 p4">Sem eventos nesse mar por enquanto.</div>
                             <?php endif; ?>
-                        </h4>
-                        <h5>Essa criatura pode ser encontrada em:</h5>
-                        <?php while ($quadro = $coordenadas->fetch_array()) : ?>
-                            <p id="daily-text">
-                                <?= get_human_location($quadro["x"], $quadro["y"]) ?>
-                                -
-                                <?= nome_mar(get_mar($quadro["x"], $quadro["y"])) ?>
-                            </p>
-                        <?php endwhile; ?>
-                        <h5>Recompensas:</h5>
-                        <?php foreach ($event_detail["recompensas"][$event["pack_recompensa"]] as $recompensa) : ?>
-                            <div id="daily-text">
-                                <?php render_recompensa($recompensa, $reagents, $equipamentos); ?>
-                            </div>
-                        <?php endforeach; ?>
-                        <!-- <h5>Tempo restante:
-                            </?= transforma_tempo_min($event["restante"])?> -->
-                            
-                            <div>
-                                <strong style="font-size: 1.2rem;">Tempo Restante: </strong>
-                                <span style="font-size: 1.2rem;" id="tempo_min_rest_<?= $event["id"] ?>">
-                                    <?= transforma_tempo_min($event["restante"]); ?>
-                                </span>
-                                <input class="tempo_sec" data-ref="<?= $event["id"] ?>" id="tempo_sec_rest_<?= $event["id"] ?>" type="hidden" value="<?= $event["restante"] ?>" />
-                            </div>
-                        </h5>
-                        <?php if ($event["momento"]) : ?>
-                            <p class="text-success" id="daily-text">
-                                <i class="fa fa-check"></i>
-                                Você já concluiu esse evento!
-                            </p>
-                        <?php endif; ?>
+                        </div>
                     </div>
-                <?php endforeach; ?>
+                <?php endfor; ?>
             </div>
         </div>
     </div>

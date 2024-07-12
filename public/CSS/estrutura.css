@@ -278,9 +278,14 @@ table tr td {
     top: 0;
     font-size: min(4vw, 32px);
     z-index: 500;
-    padding: 5px 10px;
+    padding: 0px 10px 10px;
     background-color: #000;
-    border-radius: 3px;;
+    border-radius: 3px;
+    color: white;
+    opacity: 0.5;
+}
+#fundo > .close-session:hover {
+    opacity: 0.8;
 }
 #fundo.fundo-full-wide > .close-session {
     top: 7vh;
@@ -1452,7 +1457,6 @@ input.input-warning[type="range"]:focus::-ms-fill-upper {
     background: #efa17b;
 }
 
-
 #audio-position {
     position: absolute;
     top: 93.5%;
@@ -1460,22 +1464,22 @@ input.input-warning[type="range"]:focus::-ms-fill-upper {
 }
 
 #row-daily {
-    display: flex; 
-    flex-wrap: wrap; 
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin: 0 auto;
 }
 
 #daily-reward {
-    width: 160px; 
-    height: 160px; 
+    width: 160px;
+    height: 180px;
     margin: 0.2rem 0.2rem;
     display: flex;
     flex-direction: column;
 }
 
 #eventos {
-    margin: 0.5rem 1rem; 
+    margin: 0.5rem 1rem;
     min-height: 17vw;
     width: 16vw;
     display: flex;
@@ -1484,15 +1488,15 @@ input.input-warning[type="range"]:focus::-ms-fill-upper {
     justify-content: center;
 }
 #row-eventos {
-    display: flex; 
-    flex-direction: row; 
-    padding: 0.5rem 1rem; 
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 1rem;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
 }
 
-@media (max-width: 992px){
+@media (max-width: 992px) {
     #audio-position {
         position: absolute;
         top: 90%;
@@ -1523,11 +1527,13 @@ input.input-warning[type="range"]:focus::-ms-fill-upper {
         border-radius: 5px;
     }
 
-    #missao-auxiliar a, #torneio-poneglyph a {
+    #missao-auxiliar a,
+    #torneio-poneglyph a {
         padding: 1vh;
         display: block;
         color: #f0f0f0;
-        text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+        text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000,
+            1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
         font-size: 1.1rem;
     }
 
@@ -1540,88 +1546,87 @@ input.input-warning[type="range"]:focus::-ms-fill-upper {
         transform: translateX(-50%);
         border-radius: 5px;
         z-index: 9999;
-        }
-    
-        #torneio-poneglyph {
-            right: 18vw !important;
-            top: 10vh;
-            width: 11vw !important;
-            position: fixed;
-            z-index: 1;
-            text-align: left;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-        }
+    }
 
-        #header-info {
-            
-        }
+    #torneio-poneglyph {
+        right: 18vw !important;
+        top: 10vh;
+        width: 11vw !important;
+        position: fixed;
+        z-index: 1;
+        text-align: left;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+    }
 
-        .panel-status {
-            z-index: 100;
-        }
+    #header-info {
+    }
 
-        .personagem-info:active {
-             display: flex;
-        }
+    .panel-status {
+        z-index: 100;
+    }
 
-        .tripulantes-layout>.tab-content .tripulantes-body>.nav-pills {
-            max-width: 13vh !important;
-            margin: 0;
-            margin-right: 1em;
-            position: sticky;
-            top: 0;
-        }
-    
-        .tripulantes-layout>.tab-content .tripulantes-body>.nav-pills li {
-            display: inline-block;
-            width: 13vh !important;
-            margin: 0;
-        }
+    .personagem-info:active {
+        display: flex;
+    }
 
-        #eventos {
-            margin: 0.5rem 1rem; 
-            min-height: 17vw;
-            width: 80vw;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+    .tripulantes-layout > .tab-content .tripulantes-body > .nav-pills {
+        max-width: 13vh !important;
+        margin: 0;
+        margin-right: 1em;
+        position: sticky;
+        top: 0;
+    }
 
-        #row-eventos {
-            display: flex; 
-            flex-direction: column;
-            justify-content: center;
-            align-items: center; 
-            margin: 0 auto;
-        }
+    .tripulantes-layout > .tab-content .tripulantes-body > .nav-pills li {
+        display: inline-block;
+        width: 13vh !important;
+        margin: 0;
+    }
 
-        #row-daily {
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: start;
-            margin: 0 auto;
-        }
-        
-        #daily-reward {
-            width: 120px; 
-            height: 150px; 
-            margin: 0.2rem 0.2rem;
-            display: flex;
-            flex-direction: column;
-        }
-        #daily-text {
-            font-size: 1rem;
-        }
+    #eventos {
+        margin: 0.5rem 1rem;
+        min-height: 17vw;
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .modal.in .modal-dialog {
-            -webkit-transform: translate(0, 0);
-            -ms-transform: translate(0, 0);
-            -o-transform: translate(0, 0);
-            transform: translate(0, 0);
-            width: 95vw;
-        }
+    #row-eventos {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    #row-daily {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        margin: 0 auto;
+    }
+
+    #daily-reward {
+        width: 120px;
+        height: 150px;
+        margin: 0.2rem 0.2rem;
+        display: flex;
+        flex-direction: column;
+    }
+    #daily-text {
+        font-size: 1rem;
+    }
+
+    .modal.in .modal-dialog {
+        -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0);
+        width: 95vw;
+    }
 }
 
 @media (max-width: 1600px) {
@@ -1650,10 +1655,10 @@ input.input-warning[type="range"]:focus::-ms-fill-upper {
 
 @media (max-width: 992px) {
     #row-eventos {
-        display: flex; 
+        display: flex;
         flex-direction: row;
         justify-content: center;
-        align-items: center; 
+        align-items: center;
         margin: 0 auto;
     }
 

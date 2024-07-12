@@ -91,12 +91,10 @@ function get_patente_nome($faccao, $battle_level)
                     <div class="div-top">
                         <?php render_top_player($famoso, $titulo); ?>
                     </div>
-                    <img style="width: 45px; margin: 10px;" src="Imagens/Bandeiras/img.php?cod=<?= $famoso["bandeira"]; ?>&f=<?= $famoso["faccao"]; ?>" />
+                    <img style="width: 45px; margin: 10px;"
+                        src="Imagens/Bandeiras/img.php?cod=<?= $famoso["bandeira"]; ?>&f=<?= $famoso["faccao"]; ?>" />
                 </div>
             <?php endwhile; ?>
-        </div>
-        <div class="panel-footer">
-            <?= $titulo_plural ?> são eleitos uma vez por mês por terem a maior quantidade de Poneglyphs
         </div>
     </div>
 <?php } ?>
@@ -109,11 +107,11 @@ function get_patente_nome($faccao, $battle_level)
             <?= $famoso["nome"] ?>
         </div>
         <?php if (isset($famoso["titulo_nome"]) && $titulo != $famoso["titulo_nome"]) : ?>
-            <div class="texto-top-alcunha" style="font-size: 1.2rem; line-height: 0.2em;">
+            <div class="texto-top-alcunha" style="font-size: 1.2rem;">
                 <?= $famoso["titulo_nome"] ?>
             </div>
         <?php endif; ?>
-        <div class="texto-top-alcunha" style="font-size: 1.2rem;  line-height: 0.7em;">
+        <div class="texto-top-alcunha" style="font-size: 1.2rem;">
             <?= $famoso["tripulacao"] ?>
         </div>
     </div>
@@ -145,21 +143,21 @@ function get_patente_nome($faccao, $battle_level)
             if ($result->count() > 0) :
                 $famoso = $result->fetch_array(); ?>
                 <div class="col-md-12" style="display: flex; justify-content: center; align-items: center; padding: 0;">
-                    <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "", 'style="max-width: 80%"') ?>
+                    <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "") ?>
                     <div>
                         <div class="texto-top">
-                            <p class="texto-top-cargo" style="font-size: 1.4rem; line-height: 0.9em;">
+                            <p class="texto-top-cargo" style="font-size: 1.4rem;">
                                 <?= $titulo ?>
                             </p>
-                            <p class="texto-top-nome" style="font-size: 1.3rem; line-height: 1.2em;">
+                            <p class="texto-top-nome" style="font-size: 1.3rem;">
                                 <?= $famoso["nome"] ?>
                             </p>
                             <?php if ($titulo != $famoso["titulo_nome"]) : ?>
-                                <p class="texto-top-alcunha" style="font-size: 1.2rem; line-height: 1.1em;">
+                                <p class="texto-top-alcunha" style="font-size: 1.2rem;">
                                     <?= $famoso["titulo_nome"] ?>
                                 </p>
                             <?php endif; ?>
-                            <p class="texto-top-alcunha" style="font-size: 1.1rem; line-height: 1em;">
+                            <p class="texto-top-alcunha" style="font-size: 1.1rem;">
                                 <?= $famoso["tripulacao"] ?>
                             </p>
                         </div>
@@ -170,9 +168,6 @@ function get_patente_nome($faccao, $battle_level)
                         style="margin: 5px; width: 60px" />
                 </div>
             <?php endif; ?>
-        </div>
-        <div class="panel-footer">
-            Eleito na Grande Era dos Piratas.
         </div>
     </div>
 <?php } ?>
@@ -223,10 +218,10 @@ function get_patente_nome($faccao, $battle_level)
             <div class="media" style="display: flex;">
                 <div class="media-left" style="display: flex; justify-content: center; align-items: center;">
                     <img src="Imagens/Bandeiras/img.php?cod=<?= $famoso["bandeira"]; ?>&f=<?= $famoso["faccao"]; ?>"
-                    max-width="60" height="45" />
-                    <img src="Imagens/Personagens/Icons/<?= get_img($famoso, "r") ?>.jpg" max-width="60" height="45"  />
+                        max-width="60" height="45" />
+                    <img src="Imagens/Personagens/Icons/<?= get_img($famoso, "r") ?>.jpg" max-width="60" height="45" />
                 </div>
-                <div class="media-body" >
+                <div class="media-body">
                     <div style="font-size: 1.2rem; line-height: 1.2em;">
                         <?= $famoso["nome"] ?> -
                         <?= $famoso["tripulacao"] ?>

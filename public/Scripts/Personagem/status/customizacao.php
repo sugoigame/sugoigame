@@ -163,7 +163,8 @@ if ($pers["titulo"]) {
             </button>
         </p>
 
-        <h3>Nome:
+        <h3>
+            Nome:
             <?= $pers["nome"]; ?>
         </h3>
         <p>
@@ -172,7 +173,6 @@ if ($pers["titulo"]) {
                 Renomear o personagem
             </button>
         </p>
-
     </div>
 </div>
 
@@ -240,30 +240,31 @@ if ($pers["titulo"]) {
     <?php endfor; ?>
 </div>
 
-<!-- <h3>Bordas</h3>
+<h3>Bordas</h3>
 <div class="row">
-    </?php foreach ($bordas as $id => $borda) : ?>
-        </?php $tem_skin = $id == 0 || isset($minhas_bordas[$id]); ?>
+    <?php foreach ($bordas as $id => $borda) : ?>
+        <?php $tem_skin = $id == 0 || isset($minhas_bordas[$id]); ?>
         <div class="col-xs-3 col-md-2">
             <div class="panel panel-default py1">
-                <div class="</?= $pers["borda"] == $id ? "skin-ativa" : "skin-nao-ativa" ?> </?= $tem_skin ? "link_send" : "" ?>"
-                    style="display: inline-block;" </?= $tem_skin ? 'href="link_Personagem/mudar_borda.php?pers=' . $pers["cod"] . '&borda=' . $id . '"' : "" ?>>
-                    </?= big_pers_skin($pers["img"], $pers["skin_c"], $id, "", 'style="max-width: 100%"') ?>
+                <div class="<?= $pers[" borda"] == $id ? "skin-ativa" : "skin-nao-ativa" ?>
+                <?= $tem_skin ? "link_send" : "" ?>" style="display: inline-block;" <?= $tem_skin ? 'href="link_Personagem/mudar_borda.php?pers=' .
+                          $pers["cod"] . '&borda=' . $id . '"' : "" ?>>
+                    <?= big_pers_skin($pers["img"], $pers["skin_c"], $id, "", 'style="max-width: 100%"') ?>
                 </div>
                 <p>
-                    </?= $borda["msg"] ?>
+                    <?= $borda["msg"] ?>
                 </p>
-                </?php if ($tem_skin) : ?>
+                <?php if ($tem_skin) : ?>
                     <p class="text-success">Borda disponível. <i class="fa fa-check"></i></p>
                     <p>Clique na foto para ativar</p>
-                </?php elseif ($borda["preco"] > 0) : ?>
+                <?php elseif ($borda["preco"] > 0) : ?>
                     <button class="btn btn-info link_confirm" data-question="Deseja adquirir essa borda para sua tripulação?"
-                        href="Vip/comprar_borda.php?borda=</?= $id ?>">
-                        </?= $borda["preco"] ?>
+                        href="Vip/comprar_borda.php?borda=<?= $id ?>">
+                        <?= $borda["preco"] ?>
                         <img src="Imagens/Icones/Gold.png" />
                     </button>
-                </?php endif; ?>
+                <?php endif; ?>
             </div>
         </div>
-    </?php endforeach; ?>
-</div> -->
+    <?php endforeach; ?>
+</div>
