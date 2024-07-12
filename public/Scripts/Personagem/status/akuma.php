@@ -29,7 +29,7 @@ if (! $pers) {
                             <?= $akuma_info["nome"]; ?>
                         </div>
                         <button
-                            data-question="Essa fruta tem um gosto horríve, e quem comer não poderá nadar nem comer outra fruta depois. Tem certeza que deseja continuar?"
+                            data-question="Essa fruta tem um gosto horrível, quem comer não poderá nadar e nem comer outra fruta depois. Tem certeza que deseja continuar?"
                             href="Akuma/comer_akuma.php?cod=<?= $pers["cod"] ?>&akuma=<?= $item["cod_item"] ?>"
                             class="link_confirm btn btn-success">
                             Comer

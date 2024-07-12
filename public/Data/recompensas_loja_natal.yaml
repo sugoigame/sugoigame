@@ -11,62 +11,27 @@
   preco: 50
   xp: 5000
 4:
-  skin: 25
+  skin: 8
   img: 2
   preco: 10
   xp: 3000
-5:
-  skin: 14
-  img: 4
-  preco: 10
-  xp: 4000
 6:
-  skin: 17
+  skin: 5
   img: 7
   preco: 10
   xp: 3000
-7:
-  skin: 10
-  img: 10
-  preco: 10
-  xp: 3000
 8:
-  skin: 14
+  skin: 5
   img: 8
   preco: 10
   xp: 3000
 9:
-  skin: 17
+  skin: 6
   img: 6
   preco: 10
   xp: 3000
-10:
-  skin: 26
-  img: 3
-  preco: 10
-  xp: 3000
-11:
-  skin: 9
-  img: 9
-  preco: 10
-  xp: 3000
-12:
-  skin: 15
-  img: 5
-  preco: 10
-  xp: 3000
 13:
-  skin: 4
+  skin: 2
   img: 86
-  preco: 10
-  xp: 3000
-14:
-  skin: 5
-  img: 86
-  preco: 10
-  xp: 3000
-15:
-  skin: 21
-  img: 85
   preco: 10
   xp: 3000

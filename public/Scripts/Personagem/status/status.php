@@ -80,6 +80,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
         position: relative;
         z-index: 1;
     }
+
 </style>
 
 <script type="text/javascript">
@@ -125,7 +126,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
         </div>
     </div>
 
-    <div class="col-xs-3">
+    <div class="col-xs-3 col-md-3">
         <div class="row mx0">
             <?php for ($i = 1; $i <= 8; $i++) : ?>
                 <?php row_atributo(

@@ -2,18 +2,18 @@
 { ?>
     <?php global $userDetails; ?>
     <div class="navio_batalha">
-        <div class="batalha_background">
+        <div class="batalha_background" style="height: 100%;">
             <div class="fight-zone">
                 <?php if ($x2 <= 5) : ?>
                     <div class="navio navio-player"
                         style="background: url(Imagens/Batalha/bg-navio-<?= $userDetails->tripulacao["faccao"] ?>.png) no-repeat center">
                         <?php render_tabuleiro($tabuleiro[$tipo], $x1, $x2); ?>
                     </div>
-                    <div class="navio navio-player"
+                    <div class="navio navio-player hidden"
                         style="background: url(Imagens/Batalha/bg-navio-<?= $userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? FACCAO_PIRATA : FACCAO_MARINHA ?>.png) no-repeat center">
                     </div>
                 <?php else : ?>
-                    <div class="navio navio-player"
+                    <div class="navio navio-player hidden"
                         style="background: url(Imagens/Batalha/bg-navio-<?= $userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? FACCAO_PIRATA : FACCAO_MARINHA ?>.png) no-repeat center">
                     </div>
                     <div class="navio navio-player"
@@ -27,7 +27,7 @@
     <div>
         <?php foreach ($sem_tatica[$tipo] as $pers) : ?>
             <a href="#" class="personagemRandom noHref" data-cod="<?= $pers["cod"] ?>">
-                <img src="Imagens/Personagens/Icons/<?= get_img($pers, "r") ?>.jpg">
+                <img width="60" src="Imagens/Personagens/Icons/<?= get_img($pers, "r") ?>.jpg">
             </a>
         <?php endforeach; ?>
     </div>
@@ -40,9 +40,8 @@
 
 <style type="text/css">
     <?php include "CSS/combate.css"; ?>
-
     .navio_batalha {
-        height: 73vh;
+        height: 50vh;
     }
 
     #batalha_background,
@@ -140,7 +139,7 @@
         </div>
         <div id="taticsP" class="tab-pane <?= $selected_tatics == "P" ? "active" : "" ?>">
             <div class="navio_batalha">
-                <div id="batalha_background">
+                <div id="batalha_background" style="height: 100%;">
                     <div class="fight-zone">
                         <div class="navio navio-npc"
                             style="background: url(Imagens/Batalha/Npc/1.png) no-repeat center">
@@ -155,7 +154,7 @@
             <div>
                 <?php foreach ($sem_tatica["p"] as $pers) : ?>
                     <a href="#" class="personagemRandom noHref" data-cod="<?= $pers["cod"] ?>">
-                        <img src="Imagens/Personagens/Icons/<?= get_img($pers, "r") ?>.jpg">
+                        <img width="60" src="Imagens/Personagens/Icons/<?= get_img($pers, "r") ?>.jpg">
                     </a>
                 <?php endforeach; ?>
             </div>

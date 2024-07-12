@@ -931,7 +931,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-6" style="width: 100%">
-                                <?= big_pers_skin($pers["img"], $pers["skin_c"], isset($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="60%"') ?>
+                                <?= big_pers_skin($pers["img"], $pers["skin_c"], isset($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="100%"') ?>
                                 <br />
                                 <?php if ($info_avancado) : ?>
                                     <?php if ($pers["akuma"]) : ?>
@@ -974,6 +974,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
 
                                 <?php if ($info_avancado) : ?>
                                     <?php render_personagem_haki_bars($pers); ?>
+                                    <div style="display: flex; justify-content: center;">
                                     <?php render_row_atributo("atk", "Ataque", $pers); ?>
                                     <?php render_row_atributo("def", "Defesa", $pers); ?>
                                     <?php render_row_atributo("pre", "Precisao", $pers); ?>
@@ -982,6 +983,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                     <?php render_row_atributo("con", "Conviccao", $pers); ?>
                                     <?php render_row_atributo("dex", "Dextreza", $pers); ?>
                                     <?php render_row_atributo("vit", "Vitalidade", $pers); ?>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -993,9 +995,9 @@ function inicia_combate($alvo, $tipo, $chave = null)
 <?php } ?>
 <?php function render_row_atributo($abr, $img, $pers)
 { ?>
-    <div>
+    <div style="display: flex; justify-content: center; align-items: center;flex-wrap: wrap; margin: 3px 2px; padding: 2px; background-color: #000; opacity: 0.8;">
         <img src="Imagens/Icones/<?= $img ?>.png" width="25px">
-        <div class="text-center" style="display: inline-block; width:30px">
+        <div class="text-left" style="display: inline-block; color: white; margin: 0 2px;">
             <?= $pers[$abr]; ?>
         </div>
     </div>

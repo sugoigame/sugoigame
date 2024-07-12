@@ -87,35 +87,33 @@ function get_patente_nome($faccao, $battle_level)
                 "iiii", array($id1, $id2, $id3, $id4)
             ); ?>
             <?php while ($famoso = $result->fetch_array()) : ?>
-                <div class="col-xs-12 col-sm-6 col-md-3" style="padding: 0">
+                <div class="col-xs-6 col-sm-6 col-md-6" style="padding: 0;">
                     <div class="div-top">
                         <?php render_top_player($famoso, $titulo); ?>
                     </div>
-                    <img src="Imagens/Bandeiras/img.php?cod=<?= $famoso["bandeira"]; ?>&f=<?= $famoso["faccao"]; ?>" />
+                    <img style="width: 45px; margin: 10px;"
+                        src="Imagens/Bandeiras/img.php?cod=<?= $famoso["bandeira"]; ?>&f=<?= $famoso["faccao"]; ?>" />
                 </div>
             <?php endwhile; ?>
-        </div>
-        <div class="panel-footer">
-            <?= $titulo_plural ?> são eleitos uma vez por mês por terem a maior quantidade de Poneglyphs
         </div>
     </div>
 <?php } ?>
 <?php function render_top_player($famoso, $titulo)
 { ?>
-    <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "", 'style="max-width: 100%"') ?>
+    <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "", 'style="max-width: 100%; padding: 0;"') ?>
     <div class="texto-top">
         <!-- <p class="texto-top-cargo"><?= $titulo ?></p> -->
-        <p class="texto-top-nome">
+        <div class="texto-top-nome">
             <?= $famoso["nome"] ?>
-        </p>
+        </div>
         <?php if (isset($famoso["titulo_nome"]) && $titulo != $famoso["titulo_nome"]) : ?>
-            <p class="texto-top-alcunha">
+            <div class="texto-top-alcunha" style="font-size: 1.2rem;">
                 <?= $famoso["titulo_nome"] ?>
-            </p>
+            </div>
         <?php endif; ?>
-        <p class="texto-top-alcunha">
+        <div class="texto-top-alcunha" style="font-size: 1.2rem;">
             <?= $famoso["tripulacao"] ?>
-        </p>
+        </div>
     </div>
 <?php } ?>
 <?php function render_painel_yonkou($id1, $id2, $id3, $id4)
@@ -144,33 +142,32 @@ function get_patente_nome($faccao, $battle_level)
             );
             if ($result->count() > 0) :
                 $famoso = $result->fetch_array(); ?>
-                <div class="col-md-12">
-                    <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "", 'style="max-width: 100%"') ?>
-                    <div class="texto-top">
-                        <p class="texto-top-cargo">
-                            <?= $titulo ?>
-                        </p>
-                        <p class="texto-top-nome">
-                            <?= $famoso["nome"] ?>
-                        </p>
-                        <?php if ($titulo != $famoso["titulo_nome"]) : ?>
-                            <p class="texto-top-alcunha">
-                                <?= $famoso["titulo_nome"] ?>
+                <div class="col-md-12" style="display: flex; justify-content: center; align-items: center; padding: 0;">
+                    <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "") ?>
+                    <div>
+                        <div class="texto-top">
+                            <p class="texto-top-cargo" style="font-size: 1.4rem;">
+                                <?= $titulo ?>
                             </p>
-                        <?php endif; ?>
-                        <p class="texto-top-alcunha">
-                            <?= $famoso["tripulacao"] ?>
-                        </p>
+                            <p class="texto-top-nome" style="font-size: 1.3rem;">
+                                <?= $famoso["nome"] ?>
+                            </p>
+                            <?php if ($titulo != $famoso["titulo_nome"]) : ?>
+                                <p class="texto-top-alcunha" style="font-size: 1.2rem;">
+                                    <?= $famoso["titulo_nome"] ?>
+                                </p>
+                            <?php endif; ?>
+                            <p class="texto-top-alcunha" style="font-size: 1.1rem;">
+                                <?= $famoso["tripulacao"] ?>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <img src="Imagens/Bandeiras/img.php?cod=<?= $famoso["bandeira"]; ?>&f=<?= $famoso["faccao"]; ?>"
-                        style="margin: 20px" />
+                        style="margin: 5px; width: 60px" />
                 </div>
             <?php endif; ?>
-        </div>
-        <div class="panel-footer">
-            Eleito na Grande Era dos Piratas.
         </div>
     </div>
 <?php } ?>
@@ -218,24 +215,26 @@ function get_patente_nome($faccao, $battle_level)
 { ?>
     <?php while ($famoso = $result->fetch_array()) : ?>
         <div class="panel-footer py0">
-            <div class="media">
-                <div class="media-left">
+            <div class="media" style="display: flex;">
+                <div class="media-left" style="display: flex; justify-content: center; align-items: center;">
                     <img src="Imagens/Bandeiras/img.php?cod=<?= $famoso["bandeira"]; ?>&f=<?= $famoso["faccao"]; ?>"
-                        width="40" />
-                    <img src="Imagens/Personagens/Icons/<?= get_img($famoso, "r") ?>.jpg" width="40" />
+                        max-width="60" height="45" />
+                    <img src="Imagens/Personagens/Icons/<?= get_img($famoso, "r") ?>.jpg" max-width="60" height="45" />
                 </div>
                 <div class="media-body">
-                    <p>
+                    <div style="font-size: 1.2rem; line-height: 1.2em;">
                         <?= $famoso["nome"] ?> -
                         <?= $famoso["tripulacao"] ?>
-                    </p>
-                    <div class="progress" style="margin: 0">
-                        <div class="progress-bar progress-bar-success"
-                            style="width: <?= $mais_forte > 0 ? ($famoso[$column] / $mais_forte * 100) : "" ?>%">
-                            <span>
+                    </div>
+                    <div class="progress" style="height: 20px; display: flex; align-items: center; position: relative;">
+                        <div style="display: flex; justify-content: center; width: 100%;">
+                            <div style="color: #fff; z-index: 100;">
                                 <?= mascara_numeros_grandes($famoso[$column]) ?>
                                 <?= $label ?>
-                            </span>
+                            </div>
+                        </div>
+                        <div class="progress-bar progress-bar-success"
+                            style="width: <?= $mais_forte > 0 ? ($famoso[$column] / $mais_forte * 100) : "" ?>%; position: absolute;">
                         </div>
                     </div>
                 </div>

@@ -46,10 +46,11 @@ foreach ($personagens_combate as $pers) {
             <?php endif; ?>>
             <?php $style = $userDetails->combate_pve["skin_npc"] !== null
                 ? "background: url('Imagens/Personagens/Big/" . get_img(array("img" => $userDetails->combate_pve["img_npc"], "skin_c" => $userDetails->combate_pve["skin_npc"]), "c") . ".jpg') no-repeat center bottom;background-size: 160px;"
-                : "background: url(Imagens/Batalha/Npc/" . $userDetails->combate_pve["img_npc"] . ".png) no-repeat center bottom" ?>
+                : "background: url(Imagens/Batalha/Npc/" . $userDetails->combate_pve["img_npc"] . ".png) no-repeat center bottom;background-size: contain;" ?>
             <div class="fight-zone">
-                <div class="navio navio-npc selecionavel" data-cod="npc" style="<?= $style ?>">
-                    <div class="progress">
+                <div class="row" style="margin-top: 25px;">
+                <div class="navio navio-npc selecionavel" data-cod="npc" style="<?= $style ?>display: flex; flex-direction: column; padding-top: 10px;">
+                    <div class="progress" style="min-height: 1vw;">
                         O adversário está mirando na
                         <?= $userDetails->combate_pve["mira"] + 1 ?>º linha.
                         <small>Seus tripulantes nesta linha ou nas adjacentes tem mais chances de serem atacados</small>
@@ -63,6 +64,7 @@ foreach ($personagens_combate as $pers) {
                     </div>
                     <div id="npc">
                     </div>
+                </div>
                 </div>
                 <div class="navio navio-player" <?php if (! $userDetails->combate_pve["battle_back"]) : ?>
                         style="background: url(Imagens/Bandeiras/Navios/<?= $userDetails->tripulacao["faccao"]; ?>/<?= $userDetails->tripulacao["skin_tabuleiro_navio"] ?>/batalha.png) no-repeat center"
@@ -122,5 +124,17 @@ foreach ($personagens_combate as $pers) {
                 "id_azul" => $userDetails->tripulacao["id"]
             ]); ?>
         </div>
+        <?php if ($userDetails->conta) : ?>
+            <div style="position: absolute; top: 3%; left: 5%; z-index: 100;">
+                <button class="btn btn-primary btn-blocks" id="audio-toggle">
+                <script>
+                        var content = audioEnable
+                        ? '<i class="fa fa-volume-up" aria-hidden="true"></i> Som Ligado'
+                        : '<i class="fa fa-volume-off" aria-hidden="true"></i> Som Desligado';
+                    $("#audio-toggle").html(content);
+                </script>
+                </button>
+            </div>
+        <?php endif; ?>
     <?php endif; ?>
 </div>

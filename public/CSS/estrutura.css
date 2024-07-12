@@ -261,7 +261,7 @@ table tr td {
 #fundo.fundo-window {
     top: 10vh;
     height: 75vh;
-    width: 75vw;
+    width: 76vw !important;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 5px;
@@ -278,6 +278,14 @@ table tr td {
     top: 0;
     font-size: min(4vw, 32px);
     z-index: 500;
+    padding: 0px 10px 10px;
+    background-color: #000;
+    border-radius: 3px;
+    color: white;
+    opacity: 0.5;
+}
+#fundo > .close-session:hover {
+    opacity: 0.8;
 }
 #fundo.fundo-full-wide > .close-session {
     top: 7vh;
@@ -432,6 +440,8 @@ table tr td {
     background-color: #b99769;
     background-repeat: repeat;
     border: none;
+    text-shadow: 1px 1px black;
+    color: white;
 }
 .nav-pills > li > a:hover {
     background-image: url(../Imagens/Backgrounds/conteudo-black-2.png);
@@ -597,6 +607,7 @@ table tr td {
 
 .tripulante_quadro.marine {
     background: url("../Imagens/cartaz-marinha.jpg");
+    z-index: 2;
 }
 
 .tripulante_quadro_img {
@@ -644,10 +655,11 @@ table tr td {
 }
 
 .cartaz_procurado.tripulante_quadro .tripulante_quadro_img.marine {
-    border-radius: 50%;
+    border-radius: 47%;
     width: 82px;
     height: 48px;
     margin-bottom: -35px;
+    object-fit: cover;
 }
 
 .cartaz_procurado.tripulante_quadro:hover {
@@ -806,7 +818,7 @@ table tr td {
 #fullscreen {
     position: fixed;
     bottom: 30px;
-    right: 65px;
+    right: 50px;
     z-index: 1050;
     color: rgba(0, 0, 0, 0.7);
     background: rgba(255, 255, 255, 0.7);
@@ -1083,7 +1095,7 @@ a.list-group-item .list-group-item-text {
     z-index: 1;
     right: 12vw;
     top: 10vh;
-    width: 13vw;
+    width: 6vw;
     text-align: left;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 5px;
@@ -1255,6 +1267,8 @@ a.list-group-item .list-group-item-text {
 .atributo-icon {
     display: inline-block;
     background-color: black;
+    z-index: 999;
+    position: relative;
 }
 
 input[type="range"] {
@@ -1441,4 +1455,220 @@ input.input-warning[type="range"]:focus::-ms-fill-lower {
 
 input.input-warning[type="range"]:focus::-ms-fill-upper {
     background: #efa17b;
+}
+
+#audio-position {
+    position: absolute;
+    top: 93.5%;
+    left: 75%;
+}
+
+#row-daily {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+#daily-reward {
+    width: 160px;
+    height: 180px;
+    margin: 0.2rem 0.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#eventos {
+    margin: 0.5rem 1rem;
+    min-height: 17vw;
+    width: 16vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#row-eventos {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+    #audio-position {
+        position: absolute;
+        top: 90%;
+        left: 77%;
+    }
+
+    #fullscreen {
+        position: fixed;
+        bottom: 15px;
+        right: 20px;
+        z-index: 1050;
+        color: rgba(0, 0, 0, 0.7);
+        background: rgba(255, 255, 255, 0.7);
+        text-align: center;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        font-size: 20px;
+    }
+
+    #missao-auxiliar {
+        position: fixed;
+        z-index: 50;
+        right: 1vw;
+        top: 10vh;
+        width: 16vw;
+        text-align: left;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+    }
+
+    #missao-auxiliar a,
+    #torneio-poneglyph a {
+        padding: 1vh;
+        display: block;
+        color: #f0f0f0;
+        text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000,
+            1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+        font-size: 1.1rem;
+    }
+
+    #fundo.fundo-window {
+        top: 10vh;
+        height: 75vh;
+        /* width: 76vw !important; */
+        width: 98vw !important;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 5px;
+        z-index: 9999;
+    }
+
+    #torneio-poneglyph {
+        right: 18vw !important;
+        top: 10vh;
+        width: 11vw !important;
+        position: fixed;
+        z-index: 1;
+        text-align: left;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+    }
+
+    #header-info {
+    }
+
+    .panel-status {
+        z-index: 100;
+    }
+
+    .personagem-info:active {
+        display: flex;
+    }
+
+    .tripulantes-layout > .tab-content .tripulantes-body > .nav-pills {
+        max-width: 13vh !important;
+        margin: 0;
+        margin-right: 1em;
+        position: sticky;
+        top: 0;
+    }
+
+    .tripulantes-layout > .tab-content .tripulantes-body > .nav-pills li {
+        display: inline-block;
+        width: 13vh !important;
+        margin: 0;
+    }
+
+    #eventos {
+        margin: 0.5rem 1rem;
+        min-height: 17vw;
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #row-eventos {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    #row-daily {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        margin: 0 auto;
+    }
+
+    #daily-reward {
+        width: 120px;
+        height: 150px;
+        margin: 0.2rem 0.2rem;
+        display: flex;
+        flex-direction: column;
+    }
+    #daily-text {
+        font-size: 1rem;
+    }
+
+    .modal.in .modal-dialog {
+        -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0);
+        width: 95vw;
+    }
+}
+
+@media (max-width: 1600px) {
+    #eventos {
+        margin: 0.5rem 1rem;
+        min-height: 17vw;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1920px) {
+    #eventos {
+        margin: 0.5rem 1rem;
+        min-height: 17vw;
+        width: 15vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 992px) {
+    #row-eventos {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    #eventos {
+        margin: 0.5rem 1rem;
+        min-height: 17vw;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }

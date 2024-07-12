@@ -73,9 +73,9 @@
                     <p>
                         <?= icon_pers_skin($recompensa["img"], $recompensa["skin"]) ?>
                     </p>
-                    <p>
+                    <div>
                         <?= big_pers_skin($recompensa["img"], $recompensa["skin"]) ?>
-                    </p>
+                    </div>
                 <?php endif; ?>
                 <?php if (isset($recompensa["tipo_item"])) : ?>
                     <?php if ($recompensa["tipo_item"] == TIPO_ITEM_REAGENT) : ?>

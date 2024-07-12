@@ -17,16 +17,16 @@ $mapa   = $result->fetch_array();
 $mar    = get_mar($userDetails->tripulacao['x'], $userDetails->tripulacao['y']);
 ?>
 <input type="hidden" id="meu_mapa" name="meu_mapa" class="tracar_rota_c" value="<?=$mapa["cod_item"];?>" />
-<div class="modal-body">
+<div class="modal-body" style="padding: 0;">
     <div>
-        <p>Selecione um oceano para ver o mapa</p>
+        <p style="margin: 0 0 2px 0">Selecione um oceano para ver o mapa</p>
         <ul class="nav nav-pills nav-justified menu-cartografo">
             <?php for ($i = 1; $i <= 6; $i++) { ?>
             <li><a href="#" class="select_oceano noHref" id="<?=$i;?>"><?=nome_mar($i);?></a></li>
             <?php } ?>
         </ul>
     </div>
-    <div class="mapa-mundi-view">
+    <div class="mapa-mundi-view" style="margin-top: 5px">
         <div id="mapa_cartografo_oceano"></div>
     </div>
 </div>

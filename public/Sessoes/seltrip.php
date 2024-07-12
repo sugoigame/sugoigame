@@ -119,8 +119,8 @@
                             <?php endfor; ?>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <img id="img_capitao" src="Imagens/Personagens/Big/0000.png" width="200px" height="300px">
+                    <div class="col-md-4" style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                        <img id="img_capitao" src="Imagens/Personagens/Big/0000.png" width="50%">
                     </div>
                 </div>
             </div>
