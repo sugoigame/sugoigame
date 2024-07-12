@@ -28,7 +28,12 @@ class Ataque
             'bloqueio' => 0,
 
             'dano' => 0,
-            'nova_hp' => $alvo->estado["hp"]
+            'nova_hp' => $alvo->estado["hp"],
+
+            'vontade' => $habilidade->personagem->tripulacao->get_vontade(),
+            'mod_akuma' => 0,
+            'reducao_area' => 0,
+            'reducao_distancia' => 0,
         ];
 
         if (! $dano_hab) {
@@ -54,13 +59,14 @@ class Ataque
         } else {
             $quadro_alvo = $pers->combate->tabuleiro->get_quadro_personagem($alvo);
             $distancia = $pers->combate->tabuleiro->get_quadro_personagem($pers)->get_distancia($quadro_alvo);
-            $reducao_distancia = 1.0 - max(0, $distancia - 1.5) * 0.02;
-            $reducao_area = 1.0 - max(0, $personagens_atingidos - 1) * 0.10;
+            $retorno["reducao_distancia"] = 1.0 - max(0, $distancia - 1.5) * 0.02;
+            $retorno["reducao_area"] = 1.0 - max(0, $personagens_atingidos - 1) * 0.10;
 
-            $dano = (self::get_atk_combate($pers) + $dano_hab) * $reducao_area * $reducao_distancia;
+            $dano = (self::get_atk_combate($pers) + $dano_hab) * $retorno["reducao_area"] * $retorno["reducao_distancia"];
             $dano = max($dano_hab * 0.3, $dano - self::get_def_combate($alvo));
 
-            $dano *= self::get_mod_akuma($pers, $alvo);
+            $retorno["mod_akuma"] = self::get_mod_akuma($pers, $alvo);
+            $dano *= $retorno["mod_akuma"];
 
             if ($alvo->estado["cod"] == "npc" && $aumento = $pers->tripulacao->get_efeito("aumento_dano_causado_npc")) {
                 $dano += round($aumento * $dano);
@@ -128,7 +134,7 @@ class Ataque
     public static function calc_dano_vontade(int $vontade, float $multiplicador)
     {
         if ($vontade <= 40) {
-            $dano = 500 + $vontade * 150;
+            $dano = 1000 + $vontade * 130;
         } else {
             $dano = 6500 * pow(1.03, $vontade - 40);
         }
