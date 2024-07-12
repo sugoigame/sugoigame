@@ -1460,7 +1460,7 @@ input.input-warning[type="range"]:focus::-ms-fill-upper {
 #audio-position {
     position: absolute;
     top: 93.5%;
-    left: 75%;
+    left: 77%;
 }
 
 #row-daily {
@@ -1500,7 +1500,7 @@ input.input-warning[type="range"]:focus::-ms-fill-upper {
     #audio-position {
         position: absolute;
         top: 90%;
-        left: 77%;
+        left: 72%;
     }
 
     #fullscreen {
