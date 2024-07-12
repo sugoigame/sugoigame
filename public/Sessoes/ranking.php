@@ -76,7 +76,7 @@
         <?php
         $query = "SELECT count(*) AS total FROM tb_usuarios ";
         if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' AND gm = 0";
+            $query .= " WHERE faccao='$faccao' AND adm = 0";
         }
         $total = $connection->run($query)->fetch_array()["total"];
         ?>
@@ -84,7 +84,7 @@
         <?php
         $query = "SELECT *, @rownum := @rownum + 1 as posicao FROM tb_usuarios, ( SELECT @rownum := 0 ) AS r ";
         if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' AND gm = 0 ";
+            $query .= " WHERE faccao='$faccao' AND adm = 0 ";
         }
         $query .= " ORDER BY reputacao DESC LIMIT $limit_start, 25 ";
         $result = $connection->run($query);
@@ -109,7 +109,7 @@
         <?php
         $query = "SELECT count(*) AS total FROM tb_usuarios ";
         if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' AND gm = 0";
+            $query .= " WHERE faccao='$faccao' AND adm = 0";
         }
         $total = $connection->run($query)->fetch_array()["total"];
         ?>
@@ -117,7 +117,7 @@
         <?php
         $query = "SELECT *, @rownum := @rownum + 1 as posicao FROM tb_usuarios, ( SELECT @rownum := 0 ) AS r ";
         if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' AND gm = 0 ";
+            $query .= " WHERE faccao='$faccao' AND adm = 0 ";
         }
         $query .= " ORDER BY reputacao_mensal DESC LIMIT $limit_start, 25 ";
         $result = $connection->run($query);
