@@ -1,5 +1,5 @@
 <?php
-$_SERVER["HTTP_HOST"] = isset($argv[1]) ? $argv[1] : "sugoigame.com.br";
+$_SERVER["HTTP_HOST"] = isset($argv[1]) ? $argv[1] : "oceano.sugoigame.com.br";
 
 // Permite importar classes automaticamente com uso de namespaces
 spl_autoload_register(function ($class) {
@@ -22,6 +22,7 @@ require __DIR__ . '/src/WsServer.php';
 require __DIR__ . '/src/EventBroker.php';
 require __DIR__ . '/src/MapServerUserDetails.php';
 require __DIR__ . '/src/Navigation.php';
+
 
 // mysqli
 $connection = new mywrap_con();
