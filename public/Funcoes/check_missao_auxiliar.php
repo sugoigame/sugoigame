@@ -50,18 +50,6 @@ function check_progress_personagem_com_atributos($pers)
     }
     return false;
 }
-function check_progress_personagem_com_habilidade($pers_cod)
-{
-    global $connection;
-    $missoes_concluidas = $connection->run(
-        "SELECT count(ps.cod_skil) AS total
-        FROM tb_personagens_skil ps
-        WHERE ps.cod = ?",
-        "i", array($pers_cod)
-    )->fetch_array()["total"];
-
-    return $missoes_concluidas > 1;
-}
 
 function check_progress_barco_comprado()
 {

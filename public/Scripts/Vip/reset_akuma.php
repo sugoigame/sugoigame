@@ -18,7 +18,6 @@ if (! $pers["akuma"]) {
     $protector->exit_error("Esse personagem não comeu nenhuma Akuma no Mi");
 }
 
-$connection->run("DELETE FROM tb_personagens_skil WHERE cod = ? AND tipo IN (7, 8, 9)", 'i', $personagem);
 $connection->run("UPDATE tb_personagens SET akuma = NULL WHERE cod = ?", 'i', $personagem);
 
 $userDetails->reduz_gold(PRECO_GOLD_RESET_AKUMA, "resetar_akuma");

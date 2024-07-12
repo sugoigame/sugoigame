@@ -38,7 +38,7 @@ $personagem = $result->fetch_array();
 $query = "DELETE FROM tb_personagens WHERE id='" . $usuario["id"] . "' AND cod='$cod' LIMIT 1";
 $connection->run($query) or die("Nao foi possivel demitir o persoangem1");
 
-$query = "DELETE FROM tb_personagens_skil WHERE cod='$cod'";
+$query = "DELETE FROM tb_personagens_skil WHERE cod_pers='$cod'";
 $connection->run($query) or die("Nao foi possivel demitir o persoangem");
 
 
