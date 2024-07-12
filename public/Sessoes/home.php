@@ -411,14 +411,7 @@ function render_maior_do_mundo($tipo)
                     <img src="Imagens/Icones/road-poneglyph.png" width="15vw" />
                     Road Poneglyphs
                 </div>
-                <div class="row">
-                    <div class="col-xs-12 col-md-12">
-                        <?php render_top_ranking_reputacao("reputacao", array(FACCAO_PIRATA), 4); ?>
-                    </div>
-                    <div class="col-xs-12 col-md-12">
-                        <?php render_top_ranking_reputacao("reputacao", array(FACCAO_MARINHA), 4); ?>
-                    </div>
-                </div>
+                <?php render_top_ranking_reputacao("reputacao", array(FACCAO_PIRATA, FACCAO_MARINHA), 8); ?>
             </div>
         </div>
         <div class="col-sm-6">
@@ -427,14 +420,7 @@ function render_maior_do_mundo($tipo)
                     <img src="Imagens/Icones/poneglyph.png" width="15vw" />
                     Poneglyphs
                 </div>
-                <div class="row">
-                    <div class="col-xs-12 col-md-12">
-                        <?php render_top_ranking_reputacao("reputacao_mensal", array(FACCAO_PIRATA), 4); ?>
-                    </div>
-                    <div class="col-xs-12 col-md-12">
-                        <?php render_top_ranking_reputacao("reputacao_mensal", array(FACCAO_MARINHA), 4); ?>
-                    </div>
-                </div>
+                <?php render_top_ranking_reputacao("reputacao_mensal", array(FACCAO_PIRATA, FACCAO_MARINHA), 8); ?>
             </div>
         </div>
     </div>
