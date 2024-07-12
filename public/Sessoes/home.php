@@ -262,61 +262,6 @@ function render_maior_do_mundo($tipo)
         </div>
     </div>
 
-    <div class="row">
-
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <div class="row">
-        <div class="col-sm-6 col-md-6">
-                </?php// render_painel_rdp($rdp[0]); ?>
-        </div>
-        <div class="col-sm-6 col-md-6">
-                </?php// render_painel_adf($adf[0]); ?>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6">
-            </?php// render_painel_yonkou($yonkou[0], $yonkou[1], $yonkou[2], $yonkou[3]); ?>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6">
-            </?php// render_painel_almirante($almirante[0], $almirante[1], $almirante[2], $almirante[3]); ?>
-        </div>
-    </div> -->
-    <div class="row">
-        <div class="col-md-12 col-lg-8">
-            <div class="row">
-                <div class="col-md-12">
-                    <?php render_maior_do_mundo("espadachim"); ?>
-                    <?php render_maior_do_mundo("lutador"); ?>
-                    <?php render_maior_do_mundo("atirador"); ?>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 col-xs-12 col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading" style="font-size: 1.2rem;">Os Melhores</div>
-                <?php render_top_ranking_reputacao("reputacao", array(FACCAO_PIRATA, FACCAO_MARINHA)); ?>
-            </div>
-        </div>
-    </div>
     <!-- <div class="row">
         <div class="col-md-6">
             <div class="panel panel-default">

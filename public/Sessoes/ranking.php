@@ -24,17 +24,17 @@
 
     <?php
     $ranking = "reputacao";
-    if (isset ($_GET["rank"]) && validate_alphanumeric($_GET["rank"])) {
+    if (isset($_GET["rank"]) && validate_alphanumeric($_GET["rank"])) {
         $ranking = $_GET["rank"];
     }
     $page = 0;
-    if (isset ($_GET["page"]) && validate_number($_GET["page"])) {
+    if (isset($_GET["page"]) && validate_number($_GET["page"])) {
         $page = $_GET["page"];
     }
     $limit_start = $page * 25;
 
     $faccao = null;
-    if (isset ($_GET["faccao"]) && ($_GET["faccao"] == FACCAO_MARINHA || $_GET["faccao"] == FACCAO_PIRATA)) {
+    if (isset($_GET["faccao"]) && ($_GET["faccao"] == FACCAO_MARINHA || $_GET["faccao"] == FACCAO_PIRATA)) {
         $faccao = $_GET["faccao"];
     }
 
@@ -51,20 +51,6 @@
                 <a href="./?ses=ranking&rank=reputacao_mensal" class="link_content">
                     Batalha pelos Poneglyphs
                 </a>
-            </li>
-            <li class="<?= $ranking == "fa" ? "active" : "" ?>">
-                <a href="./?ses=ranking&rank=fa" class="link_content">Recompensa</a>
-            </li>
-        </ul>
-        <ul class="nav nav-pills nav-justified" style="margin-bottom:5px">
-            <li class="<?= $ranking == "espadachins" ? "active" : "" ?>">
-                <a href="./?ses=ranking&rank=espadachins" class="link_content">Espadachins</a>
-            </li>
-            <li class="<?= $ranking == "lutadores" ? "active" : "" ?>">
-                <a href="./?ses=ranking&rank=lutadores" class="link_content">Lutadores</a>
-            </li>
-            <li class="<?= $ranking == "atiradores" ? "active" : "" ?>">
-                <a href="./?ses=ranking&rank=atiradores" class="link_content">Atiradores</a>
             </li>
         </ul>
     </div>
@@ -88,7 +74,7 @@
 
     <?php if ($ranking == "reputacao") : ?>
         <?php
-        $query = "SELECT count(posicao) AS total FROM tb_ranking_reputacao ";
+        $query = "SELECT count(*) AS total FROM tb_usuarios ";
         if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
@@ -96,11 +82,11 @@
         ?>
 
         <?php
-        $query = "SELECT * FROM tb_ranking_reputacao ";
+        $query = "SELECT *, @rownum := @rownum + 1 as posicao FROM tb_usuarios, ( SELECT @rownum := 0 ) AS r ";
         if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
-        $query .= " ORDER BY posicao LIMIT $limit_start, 25 ";
+        $query .= " ORDER BY reputacao DESC LIMIT $limit_start, 25 ";
         $result = $connection->run($query);
         ?>
 
@@ -109,8 +95,8 @@
                 <li class="list-group-item">
                     <h4>
                         <img src="Imagens/Bandeiras/img.php?cod=<?= $rnk["bandeira"]; ?>&f=<?= $rnk["faccao"]; ?>" />
-                        <?= $rnk["posicao"] ?>º
-                        <?= $rnk["nome"] ?>
+                        <?= $rnk["posicao"] + $limit_start ?>º
+                        <?= $rnk["tripulacao"] ?>
                     </h4>
                     <p>
                         Road Poneglyphs:
@@ -121,7 +107,7 @@
         </ul>
     <?php elseif ($ranking == "reputacao_mensal") : ?>
         <?php
-        $query = "SELECT count(posicao) AS total FROM tb_ranking_reputacao_mensal ";
+        $query = "SELECT count(*) AS total FROM tb_usuarios ";
         if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
@@ -129,11 +115,11 @@
         ?>
 
         <?php
-        $query = "SELECT * FROM tb_ranking_reputacao_mensal ";
+        $query = "SELECT *, @rownum := @rownum + 1 as posicao FROM tb_usuarios, ( SELECT @rownum := 0 ) AS r ";
         if ($faccao !== null) {
             $query .= " WHERE faccao='$faccao' ";
         }
-        $query .= " ORDER BY posicao LIMIT $limit_start, 25 ";
+        $query .= " ORDER BY reputacao_mensal DESC LIMIT $limit_start, 25 ";
         $result = $connection->run($query);
         ?>
         <ul class="list-group">
@@ -142,148 +128,11 @@
                     <h4>
                         <img src="Imagens/Bandeiras/img.php?cod=<?= $rnk["bandeira"]; ?>&f=<?= $rnk["faccao"]; ?>" />
                         <?= $rnk["posicao"] ?>º
-                        <?= $rnk["nome"] ?>
+                        <?= $rnk["tripulacao"] ?>
                     </h4>
                     <p>
                         Poneglyphs:
-                        <?= $rnk["reputacao"] ?>
-                    </p>
-                </li>
-            <?php endwhile; ?>
-        </ul>
-    <?php elseif ($ranking == "fa") : ?>
-        <?php
-        $query = "SELECT count(posicao) AS total FROM tb_ranking_fa ";
-        if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' ";
-        }
-        $total = $connection->run($query)->fetch_array()["total"];
-        ?>
-
-        <?php
-        $query = "SELECT * FROM tb_ranking_fa INNER JOIN tb_personagens ON tb_ranking_fa.cod=tb_personagens.cod ";
-        if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' ";
-        }
-        $query .= " ORDER BY posicao LIMIT $limit_start, 25 ";
-        $result = $connection->run($query);
-        ?>
-
-        <ul class="list-group">
-            <?php while ($rnk = $result->fetch_array()) : ?>
-                <li class="list-group-item">
-                    <h4>
-                        <img src="Imagens/Personagens/Icons/<?= get_img($rnk, "r"); ?>.jpg" />
-                        <img src="Imagens/Bandeiras/img.php?cod=<?= $rnk["bandeira"]; ?>&f=<?= $rnk["faccao"]; ?>" />
-                        <?= $rnk["posicao"] ?>º
-                        <?= $rnk["nome"] ?>
-                    </h4>
-                    <p>
-                        <img src="Imagens/Icones/Berries.png" />
-                        <?= mascara_berries(calc_recompensa($rnk["fama_ameaca"])) ?>
-                    </p>
-                </li>
-            <?php endwhile; ?>
-        </ul>
-    <?php elseif ($ranking == "espadachins") : ?>
-        <?php
-        $query = "SELECT count(posicao) AS total FROM tb_ranking_score_espadachim ";
-        if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' ";
-        }
-        $total = $connection->run($query)->fetch_array()["total"];
-        ?>
-
-        <?php
-        $query = "SELECT * FROM tb_ranking_score_espadachim INNER JOIN tb_personagens ON tb_ranking_score_espadachim.cod=tb_personagens.cod ";
-        if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' ";
-        }
-        $query .= " ORDER BY posicao LIMIT $limit_start, 25 ";
-        $result = $connection->run($query);
-        ?>
-
-        <ul class="list-group">
-            <?php while ($rnk = $result->fetch_array()) : ?>
-                <li class="list-group-item">
-                    <h4>
-                        <img src="Imagens/Personagens/Icons/<?= get_img($rnk, "r"); ?>.jpg" />
-                        <img src="Imagens/Bandeiras/img.php?cod=<?= $rnk["bandeira"]; ?>&f=<?= $rnk["faccao"]; ?>" />
-                        <?= $rnk["posicao"] ?>º
-                        <?= $rnk["nome"] ?>
-                    </h4>
-                    <p>
-                        <img src="Imagens/Icones/Berries.png" />
-                        <?= mascara_berries(calc_recompensa($rnk["score"])) ?>
-                    </p>
-                </li>
-            <?php endwhile; ?>
-        </ul>
-    <?php elseif ($ranking == "lutadores") : ?>
-        <?php
-        $query = "SELECT count(posicao) AS total FROM tb_ranking_score_lutador ";
-        if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' ";
-        }
-        $total = $connection->run($query)->fetch_array()["total"];
-        ?>
-
-        <?php
-        $query = "SELECT * FROM tb_ranking_score_lutador INNER JOIN tb_personagens ON tb_ranking_score_lutador.cod=tb_personagens.cod ";
-        if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' ";
-        }
-        $query .= " ORDER BY posicao LIMIT $limit_start, 25 ";
-        $result = $connection->run($query);
-        ?>
-
-        <ul class="list-group">
-            <?php while ($rnk = $result->fetch_array()) : ?>
-                <li class="list-group-item">
-                    <h4>
-                        <img src="Imagens/Personagens/Icons/<?= get_img($rnk, "r"); ?>.jpg" />
-                        <img src="Imagens/Bandeiras/img.php?cod=<?= $rnk["bandeira"]; ?>&f=<?= $rnk["faccao"]; ?>" />
-                        <?= $rnk["posicao"] ?>º
-                        <?= $rnk["nome"] ?>
-                    </h4>
-                    <p>
-                        <img src="Imagens/Icones/Berries.png" />
-                        <?= mascara_berries(calc_recompensa($rnk["score"])) ?>
-                    </p>
-                </li>
-            <?php endwhile; ?>
-        </ul>
-
-    <?php elseif ($ranking == "atiradores") : ?>
-        <?php
-        $query = "SELECT count(posicao) AS total FROM tb_ranking_score_atirador ";
-        if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' ";
-        }
-        $total = $connection->run($query)->fetch_array()["total"];
-        ?>
-
-        <?php
-        $query = "SELECT * FROM tb_ranking_score_atirador INNER JOIN tb_personagens ON tb_ranking_score_atirador.cod=tb_personagens.cod ";
-        if ($faccao !== null) {
-            $query .= " WHERE faccao='$faccao' ";
-        }
-        $query .= " ORDER BY posicao LIMIT $limit_start, 25 ";
-        $result = $connection->run($query);
-        ?>
-
-        <ul class="list-group">
-            <?php while ($rnk = $result->fetch_array()) : ?>
-                <li class="list-group-item">
-                    <h4>
-                        <img src="Imagens/Personagens/Icons/<?= get_img($rnk, "r"); ?>.jpg" />
-                        <img src="Imagens/Bandeiras/img.php?cod=<?= $rnk["bandeira"]; ?>&f=<?= $rnk["faccao"]; ?>" />
-                        <?= $rnk["posicao"] ?>º
-                        <?= $rnk["nome"] ?>
-                    </h4>
-                    <p>
-                        <img src="Imagens/Icones/Berries.png" />
-                        <?= mascara_berries(calc_recompensa($rnk["score"])) ?>
+                        <?= $rnk["reputacao_mensal"] ?>
                     </p>
                 </li>
             <?php endwhile; ?>
