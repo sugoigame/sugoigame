@@ -20,8 +20,6 @@ class WsServer implements MessageComponentInterface
      */
     private $connection;
 
-    private $lastConnection;
-
     /**
      * @var EventBroker
      */
@@ -36,7 +34,6 @@ class WsServer implements MessageComponentInterface
     {
         $this->clients = new \SplObjectStorage();
         $this->connection = $connection;
-        $this->lastConnection = atual_segundo();
         $this->eventBroker = new EventBroker($this->clients, $navigation, $connection);
         $this->navigation = $navigation;
 
@@ -51,12 +48,6 @@ class WsServer implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $from, $msg)
     {
-        if ($this->lastConnection > (atual_segundo() - 28000)) {
-            $this->connection->close();
-            $this->connection->open();
-            $this->lastConnection = atual_segundo();
-        }
-
         $msg = json_decode($msg);
 
         $this->navigation->update();
