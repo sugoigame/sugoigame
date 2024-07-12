@@ -509,7 +509,9 @@ function render_maior_do_mundo($tipo)
                             <div class="col-xs-3 col-md-3"
                                 style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
                                 <span style="font-size: 0.9rem;"><?= $combate["tripulacao_1"] ?></span>
-                                <?= $combate["vencedor"] == $combate["id_1"] ? "<span class='text-vitoria'>Vitória</span>" : "<span class='text-derrota'>Derrota</span>" ?>
+                                <?php if ($combate["vencedor"]) : ?>
+                                    <?= $combate["vencedor"] == $combate["id_1"] ? "<span class='text-vitoria'>Vitória</span>" : "<span class='text-derrota'>Derrota</span>" ?>
+                                <?php endif; ?>
                                 <img src="Imagens/Bandeiras/img.php?cod=<?= $combate["bandeira_1"] ?>&f=<?= $combate["faccao_1"] ?>"
                                     style="width:100%; max-width: 75px;" />
                             </div>
@@ -529,7 +531,9 @@ function render_maior_do_mundo($tipo)
                             <div class="col-xs-3 col-md-3"
                                 style="display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 0;">
                                 <span style="font-size: 0.9rem;"><?= $combate["tripulacao_2"] ?></span>
-                                <?= $combate["vencedor"] == $combate["id_2"] ? "<span class='text-vitoria'>Vitória</span>" : "<span class='text-derrota'>Derrota</span>" ?>
+                                <?php if ($combate["vencedor"]) : ?>
+                                    <?= $combate["vencedor"] == $combate["id_2"] ? "<span class='text-vitoria'>Vitória</span>" : "<span class='text-derrota'>Derrota</span>" ?>
+                                <?php endif; ?>
                                 <img src="Imagens/Bandeiras/img.php?cod=<?= $combate["bandeira_2"] ?>&f=<?= $combate["faccao_2"] ?>"
                                     style="width:100%; max-width: 75px;" />
                             </div>
