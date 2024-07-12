@@ -43,12 +43,12 @@ class Ataque
 
         if ($habilidade->estado["filtro_dano"] == Habilidades::FILTRO_ALVO_ALIADO && $pers->tripulacao->indice != $alvo->tripulacao->indice) {
             // so pode causar dano em aliado
-            return;
+            return $retorno;
         }
 
         if ($habilidade->estado["filtro_dano"] == Habilidades::FILTRO_ALVO_INIMIGO && $pers->tripulacao->indice == $alvo->tripulacao->indice) {
             // so pode causar dano em inimigo
-            return;
+            return $retorno;
         }
 
         $retorno["dado_esquivou"] = rand(1, 1000) / 10;

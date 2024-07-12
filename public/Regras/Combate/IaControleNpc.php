@@ -35,7 +35,7 @@ class IaControleNpc
     {
         $alvo = $this->escolhe_alvo($this->tripulacao->estado["mira"]);
 
-        $hablidades = array_filter($alvo->get_habilidades(), function ($habilidade) {
+        $hablidades = array_filter($this->tripulacao->personagens["npc"]->get_habilidades(), function ($habilidade) {
             return $habilidade->estado["dano"] > 0;
         });
         $habilidade = $hablidades[array_rand($hablidades)];

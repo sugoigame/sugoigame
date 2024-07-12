@@ -16,6 +16,14 @@ class Empurrar
         }
 
         $origem = $pers->get_posicao_tabuleiro();
+        if ($origem["x"] == "npc") {
+            $origem["x"] = 0;
+            $origem["y"] = 0;
+        }
+        if ($alvo["x"] == "npc") {
+            $alvo["x"] = 0;
+            $alvo["y"] = 0;
+        }
 
         $diferenca_x = $alvo["x"] - $origem["x"];
         $diferenca_y = $alvo["y"] - $origem["y"];

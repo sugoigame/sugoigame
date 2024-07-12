@@ -75,9 +75,7 @@ class CombateBot extends Combate
         /** @var TripulacaoBot */
         $tripulacao_bot = $this->tripulacoes["2"];
 
-        if ($tripulacao_bot->executa_acao() == "ataque") {
-            $this->fim_turno();
-        }
+        $tripulacao_bot->executa_acao();
     }
 
 }

@@ -93,7 +93,7 @@ function add_rdm_loot($rdm)
 {
     global $userDetails;
 
-    if (isset($rdm["loot"])) {
+    if (isset($rdm["loot"]) && is_array($rdm["loot"])) {
         $drop = $rdm["loot"][rand(0, count($rdm["loot"]) - 1)];
 
         $userDetails->add_item($drop["cod"], $drop["tipo"], 1, $drop["tipo"] == TIPO_ITEM_ACESSORIO);

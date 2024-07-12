@@ -967,7 +967,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                     <?php foreach ($pers["efeitos"] as $efeito) : ?>
                                         <div class="text-center">
                                             <?= Componentes::render("Habilidades.Explicacao", ["explicacao" => $efeito["explicacao"]]); ?>
-                                            (<?= $efeito["duracao"]; ?>)
+                                            (<?= $efeito["duracao"] + 1; ?>)
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
@@ -975,14 +975,14 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                 <?php if ($info_avancado) : ?>
                                     <?php render_personagem_haki_bars($pers); ?>
                                     <div style="display: flex; justify-content: center;">
-                                    <?php render_row_atributo("atk", "Ataque", $pers); ?>
-                                    <?php render_row_atributo("def", "Defesa", $pers); ?>
-                                    <?php render_row_atributo("pre", "Precisao", $pers); ?>
-                                    <?php render_row_atributo("agl", "Agilidade", $pers); ?>
-                                    <?php render_row_atributo("res", "Resistencia", $pers); ?>
-                                    <?php render_row_atributo("con", "Conviccao", $pers); ?>
-                                    <?php render_row_atributo("dex", "Dextreza", $pers); ?>
-                                    <?php render_row_atributo("vit", "Vitalidade", $pers); ?>
+                                        <?php render_row_atributo("atk", "Ataque", $pers); ?>
+                                        <?php render_row_atributo("def", "Defesa", $pers); ?>
+                                        <?php render_row_atributo("pre", "Precisao", $pers); ?>
+                                        <?php render_row_atributo("agl", "Agilidade", $pers); ?>
+                                        <?php render_row_atributo("res", "Resistencia", $pers); ?>
+                                        <?php render_row_atributo("con", "Conviccao", $pers); ?>
+                                        <?php render_row_atributo("dex", "Dextreza", $pers); ?>
+                                        <?php render_row_atributo("vit", "Vitalidade", $pers); ?>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -995,7 +995,8 @@ function inicia_combate($alvo, $tipo, $chave = null)
 <?php } ?>
 <?php function render_row_atributo($abr, $img, $pers)
 { ?>
-    <div style="display: flex; justify-content: center; align-items: center;flex-wrap: wrap; margin: 3px 2px; padding: 2px; background-color: #000; opacity: 0.8;">
+    <div
+        style="display: flex; justify-content: center; align-items: center;flex-wrap: wrap; margin: 3px 2px; padding: 2px; background-color: #000; opacity: 0.8;">
         <img src="Imagens/Icones/<?= $img ?>.png" width="25px">
         <div class="text-left" style="display: inline-block; color: white; margin: 0 2px;">
             <?= $pers[$abr]; ?>

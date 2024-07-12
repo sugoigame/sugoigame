@@ -74,8 +74,6 @@ class CombateNpc extends Combate
         /** @var TripulacaoNpc */
         $tripulacao = $this->tripulacoes["npc"];
 
-        if ($tripulacao->executa_acao() == "ataque") {
-            $this->fim_turno();
-        }
+        $tripulacao->executa_acao();
     }
 }

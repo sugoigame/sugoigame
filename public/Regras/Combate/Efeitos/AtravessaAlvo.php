@@ -12,6 +12,10 @@ class AtravessaAlvo
         $alvo = $pers->combate->relatorio->consequencias[0]["quadro"];
         $origem = $pers->get_posicao_tabuleiro();
 
+        if ($alvo["x"] == "npc" || $origem["x"] == "npc") {
+            return;
+        }
+
         $diferenca_x = $alvo["x"] - $origem["x"];
         $diferenca_y = $alvo["y"] - $origem["y"];
 
