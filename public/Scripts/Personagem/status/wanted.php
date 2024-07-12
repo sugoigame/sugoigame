@@ -76,7 +76,7 @@ if (! $pers) {
             </li>
             <li>Você bloquear (1.000 Berries por nível do adversário)</li>
             <li>
-                Você acertar um ataque com mais precisão que a resistência do adversário (200
+                Você acertar um ataque com mais percepção que a resistência do adversário (200
                 Berries por nível do adversário)
             </li>
             <li>Você acertar um ataque crítico (1.000 Berries por nível do adversário)</li>
@@ -95,8 +95,7 @@ if (! $pers) {
                 reduzida.
             </li>
             <li>
-                Caso você perca uma batalha, seus tripulantes perdem 1.000.000 de Berries menos 750
-                Berries por cada ponto em vitalidade.
+                Caso você perca uma batalha, seus tripulantes perdem 1.000.000 de Berries.
             </li>
         </ul>
         <p>Observações:</p>

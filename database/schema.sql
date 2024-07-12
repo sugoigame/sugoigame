@@ -3043,10 +3043,35 @@ ALTER TABLE tb_missoes_r_dia ADD dia DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
 ALTER TABLE tb_missoes_caca_diario ADD inicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL;
 ALTER TABLE tb_missoes_concluidas_dia ADD dia TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL;
 
-
+-- NOVO SISTEMA DE HABILIDADES:
 ALTER TABLE tb_combate_personagens ADD efeitos json NULL;
 ALTER TABLE tb_combate_npc ADD efeitos json NULL;
 ALTER TABLE tb_combate_personagens_bot ADD efeitos json NULL;
+DELETE FROM tb_personagens_skil WHERE cod_skil > 14 or cod_skil = 1 or tipo <> 1;
+ALTER TABLE tb_personagens_skil DROP COLUMN tipo;
+ALTER TABLE tb_personagens_skil CHANGE effect animacao varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT 'Atingir fisicamente' NULL;
+ALTER TABLE tb_personagens_skil DROP COLUMN special_effect;
+ALTER TABLE tb_personagens_skil DROP COLUMN special_target;
+ALTER TABLE tb_personagens_skil DROP COLUMN special_apply_type;
+ALTER TABLE tb_personagens_skil DROP COLUMN lvl;
+ALTER TABLE tb_personagens_skil DROP COLUMN xp;
+ALTER TABLE tb_personagens_skil DROP COLUMN xp_max;
+ALTER TABLE tb_personagens_skil MODIFY COLUMN cod_skil int(4) unsigned NOT NULL;
+ALTER TABLE tb_personagens_skil CHANGE icon icone int unsigned DEFAULT 1 NOT NULL;
+ALTER TABLE tb_personagens_skil CHANGE cod cod_pers int(6) unsigned zerofill NOT NULL;
+CREATE UNIQUE INDEX tb_personagens_skil_cod_IDX USING BTREE ON tb_personagens_skil (cod,cod_skil);
+ALTER TABLE tb_combate_skil_espera ADD CONSTRAINT tb_combate_skil_espera_unique UNIQUE KEY (cod,cod_skil,id);
+ALTER TABLE tb_combate_skil_espera DROP PRIMARY KEY;
+ALTER TABLE tb_combate_skil_espera DROP COLUMN tipo;
+ALTER TABLE tb_combate_skil_espera ADD CONSTRAINT tb_combate_skil_espera_pk PRIMARY KEY (cod,cod_skil);
+ALTER TABLE tb_combate ADD vontade_1 INT DEFAULT 1 NOT NULL;
+ALTER TABLE tb_combate ADD vontade_2 INT DEFAULT 1 NOT NULL;
+ALTER TABLE tb_combate_bot ADD vontade_1 INT DEFAULT 1 NOT NULL;
+ALTER TABLE tb_combate_bot ADD vontade_2 INT DEFAULT 1 NOT NULL;
+ALTER TABLE tb_combate_npc ADD vontade_1 INT DEFAULT 1 NOT NULL;
+ALTER TABLE tb_combate_npc ADD vontade_npc INT DEFAULT 1 NOT NULL;
+ALTER TABLE tb_combate_npc ADD vez VARCHAR(10) DEFAULT '1' NOT NULL;
+ALTER TABLE tb_combate_skil_espera ADD recarga_universal BOOL DEFAULT false NOT NULL;
 
 
 SET FOREIGN_KEY_CHECKS=1;

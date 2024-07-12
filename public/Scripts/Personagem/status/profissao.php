@@ -54,19 +54,6 @@ if (! $pers) {
 </div>
 <?php render_personagem_sub_panel_with_img_bottom(); ?>
 
-<?php if ($pers["profissao"] == PROFISSAO_MUSICO || $pers["profissao"] == PROFISSAO_COMBATENTE) : ?>
-    <?php $skills = get_basic_skills("requisito_prof", $pers["profissao"], 3); ?>
-    <?php $pode_aprender_func = function ($pers, $skill) {
-        global $userDetails;
-        return $pers["profissao_lvl"] >= $skill["requisito_lvl"]
-            && $userDetails->tripulacao["berries"] >= $skill["requisito_berries"]
-            && $pers["profissao"] == $skill["requisito_prof"];
-    }; ?>
-    <div class="row">
-        <?php render_habilidades_tab($skills, $pers, "Profissao/aprender_skil_prof.php", $pode_aprender_func) ?>
-    </div>
-<?php endif; ?>
-
 <?php if ($pers["profissao"] == PROFISSAO_MEDICO) : ?>
     <?php $items = MapLoader::filter("remedios", function ($remedio) {
         return $remedio["requisito_lvl"] != 0;
@@ -74,7 +61,7 @@ if (! $pers) {
 
     <div class="row">
         <?php foreach ($items as $item) : ?>
-            <?php $preco = (($item["hp_recuperado"] + $item["mp_recuperado"]) * 60) * (1 - $pers["profissao_lvl"] * 0.05); ?>
+            <?php $preco = $item["requisito_lvl"] * 5000; ?>
             <div class="panel panel-default col-xs-4 h-100 m0">
                 <div class="panel-body">
                     <?= info_item_with_img($item, $item, FALSE, FALSE, FALSE) ?>

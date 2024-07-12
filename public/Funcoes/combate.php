@@ -233,30 +233,31 @@ function ao_lado($content)
 function get_pers_in_combate($id)
 {
     global $connection;
-    return $connection->run(
+    $personagens = $connection->run(
         "SELECT
+        pers.cod as cod,
+        pers.cod as cod_pers,
         pers.id AS id,
         pers.id AS tripulacao_id,
         pers.nome AS nome,
         pers.lvl AS lvl,
         pers.classe AS classe,
         pers.classe_score AS classe_score,
-        pers.id AS tripulacao_id,
         pers.haki_esq AS haki_esq,
         pers.haki_cri AS haki_cri,
+        pers.haki_hdr as haki_hdr,
         pers.fama_ameaca AS fama_ameaca,
         pers.akuma AS akuma,
+        pers.xp AS xp,
         akuma.categoria AS categoria_akuma,
         pers.profissao AS profissao,
+        pers.profissao_lvl AS profissao_lvl,
         pers.profissao_xp AS profissao_xp,
         pers.profissao_xp_max AS profissao_xp_max,
-        cbtpers.cod AS cod,
         cbtpers.quadro_x AS quadro_x,
         cbtpers.quadro_y AS quadro_y,
         cbtpers.hp AS hp,
         cbtpers.hp_max AS hp_max,
-        cbtpers.mp AS mp,
-        cbtpers.mp_max AS mp_max,
         IFnull(cbtpers.img, pers.img) AS img,
         IFnull(cbtpers.skin_c, pers.skin_c) AS skin_c,
         IFnull(cbtpers.skin_r, pers.skin_r) AS skin_r,
@@ -271,31 +272,45 @@ function get_pers_in_combate($id)
         cbtpers.con AS con,
         cbtpers.vit AS vit,
         cbtpers.fa_ganha AS fa_ganha,
-        usr.cod_personagem AS cod_capitao
+        usr.cod_personagem AS cod_capitao,
+        cbtpers.efeitos as efeitos
         FROM tb_combate_personagens cbtpers
         INNER JOIN tb_personagens pers ON cbtpers.cod = pers.cod
         INNER JOIN tb_usuarios usr ON usr.id = pers.id
         LEFT JOIN tb_titulos titulo ON pers.titulo = titulo.cod_titulo
         LEFT JOIN tb_akuma akuma ON pers.akuma = akuma.cod_akuma
         WHERE cbtpers.id = ? AND cbtpers.hp > 0",
-        "i", $id
+        "i", [$id]
     )->fetch_all_array();
+
+    foreach ($personagens as $key => $pers) {
+        $personagens[$key]["efeitos"] = $pers["efeitos"] ? json_decode($pers["efeitos"], true) : [];
+    }
+
+    return $personagens;
 }
 
 function get_pers_bot_in_combate($id)
 {
     global $connection;
-    return $connection->run(
+    $personagens = $connection->run(
         "SELECT
         concat('bot_', cbtpers.id) AS cod,
+        concat('bot_', cbtpers.id) as cod_pers,
         cbtpers.id AS bot_id,
         'bot' AS id,
         'bot' AS tripulacao_id,
         cbtpers.*
         FROM tb_combate_personagens_bot cbtpers
         WHERE cbtpers.combate_bot_id = ? AND hp > 0",
-        "i", array($id)
+        "i", [$id]
     )->fetch_all_array();
+
+    foreach ($personagens as $key => $pers) {
+        $personagens[$key]["efeitos"] = $pers["efeitos"] ? json_decode($pers["efeitos"], true) : [];
+    }
+
+    return $personagens;
 }
 
 function get_buffs_combate($id_1, $id_2 = null)
@@ -471,159 +486,6 @@ function get_cross_guild_stars($reward)
     return $ret;
 }
 
-function min_max($value, $min, $max)
-{
-    if ($value < $min) {
-        $value = $min;
-    }
-    if ($value > $max) {
-        $value = $max;
-    }
-    return $value;
-}
-
-function chance_esquiva($pers, $alvo)
-{
-    $pre = $pers["pre"];
-    $agl = $alvo["agl"];
-
-    $esquiva_haki = max(0, $alvo["haki_esq"] - $pers["haki_esq"]);
-
-    $esquiva = min_max($agl - $pre, 0, 50) + $esquiva_haki;
-
-    return round($esquiva);
-}
-
-function chance_crit($pers, $alvo)
-{
-    $dex = $pers["dex"];
-    $con = $alvo["con"];
-
-    $crit_haki = max(0, $pers["haki_cri"] - $alvo["haki_cri"]);
-
-    $chance_crit = min_max($dex - $con, 0, 50) + $crit_haki;
-
-    return round($chance_crit);
-}
-
-function dano_crit($pers, $alvo)
-{
-    $dex = $pers["dex"];
-    $con = $alvo["con"];
-
-    return (float) min_max($dex - $con, 25, 90) / 100;
-}
-
-function chance_bloq($pers, $alvo)
-{
-    $res = $alvo["res"];
-    $per = $pers["con"];
-
-    $bloq_haki = max(0, $alvo["haki_cri"] - $pers["haki_cri"]);
-
-    $chance_bloq = min_max($res - $per, 0, 50) + $bloq_haki;
-
-    return round($chance_bloq);
-}
-
-function get_atk_combate($pers)
-{
-    $atk = $pers["atk"];
-
-    return $atk * 10;
-}
-function get_def_combate($pers)
-{
-    $def = $pers["def"];
-
-    return $def * 10;
-}
-
-function calc_dano($pers, $alvo, $dano_hab = 0)
-{
-    $retorno = [
-        'esquivou' => false,
-        'dado_esquivou' => 0,
-        'critou' => false,
-        'dado_critou' => 0,
-        'critico' => 0,
-        'bloqueou' => false,
-        'dado_bloqueou' => 0,
-        'bloqueio' => 0,
-        'dano' => 0
-    ];
-
-    $esquiva = chance_esquiva($pers, $alvo);
-
-    $retorno["chance_esquiva"] = $esquiva;
-    $retorno["dado_esquivou"] = rand(1, 1000) / 10;
-
-    if ($retorno["dado_esquivou"] <= $esquiva) {
-        $retorno["esquivou"] = true;
-    } else {
-        $dano = max($dano_hab * 0.3, ($pers["atk"] * 10) + $dano_hab - ($alvo["def"] * 10));
-
-        $chance_crit = chance_crit($pers, $alvo);
-
-        $retorno["chance_critico"] = $chance_crit;
-        $retorno["dado_critou"] = rand(1, 1000) / 10;
-        if ($retorno["dado_critou"] <= $chance_crit) {
-            $retorno["critou"] = true;
-
-            $retorno["critico"] = dano_crit($pers, $alvo);
-        }
-
-        $chance_bloq = chance_bloq($pers, $alvo);
-
-        $retorno["chance_bloqueio"] = $chance_bloq;
-        $retorno["dado_bloqueou"] = rand(1, 1000) / 10;
-        if ($retorno["dado_bloqueou"] <= $chance_bloq) {
-            $retorno["bloqueou"] = true;
-
-            $retorno["bloqueio"] = 0.9;
-        }
-
-        $dano_crit = $retorno["critico"] * $dano;
-
-        $dano += $dano_crit;
-
-        // dano bloqueado é calculado em cima do dano já critado
-        $dano_bloq = $retorno["bloqueio"] * $dano;
-
-        $retorno["dano"] = max(1, round($dano - $dano_bloq));
-    }
-
-    return $retorno;
-}
-
-function get_categoria_akuma($cod_akuma)
-{
-    return DataLoader::find("akumas", ["cod_akuma" => $cod_akuma])["categoria"];
-}
-
-function calc_mod_akuma_for_cbt($pers, $alvo)
-{
-    if ($pers["akuma"] && $alvo["akuma"]) {
-        return categoria_akuma(
-            DataLoader::find("akumas", ["cod_akuma" => $pers["akuma"]]),
-            DataLoader::find("akumas", ["cod_akuma" => $alvo["akuma"]])
-        );
-    } else {
-        return 1;
-    }
-}
-
-function get_special_effect_classes($special_effects)
-{
-    $effects = [];
-
-    foreach ($special_effects as $effect) {
-        $effects[] = "special-effect-" . $effect["special_effect"];
-    }
-
-    return implode(" ", $effects);
-}
-
 function atacar_rdm($rdm_id, $details = null, $conn = null)
 {
     if (! $conn) {
@@ -729,9 +591,6 @@ function cria_crianca($id)
         "iisiii", array($id, $img["img"], "Catarrento " . $id, $img["skin"], $img["skin"], 0));
 
     $cod = $result->last_id();
-
-    $connection->run("INSERT INTO tb_personagens_skil (cod, cod_skil, tipo, nome, descricao, icon)
-    VALUES ('$cod', '" . COD_SKILL_SOCO . "', '" . TIPO_SKILL_ATAQUE_CLASSE . "', 'Soco', 'Tenta acerta um soco no oponente.', '1')");
 
     return $connection->run("SELECT * FROM tb_personagens WHERE cod = ?",
         "i", array($cod))->fetch_array();
@@ -1014,8 +873,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                     style="width: <?= $tabuleiro[$x][$y]["hp"] / $tabuleiro[$x][$y]["hp_max"] * 100 ?>%">
                                 </div>
                             </div>
-                            <img class="<?= (isset($special_effects[$tabuleiro[$x][$y]["cod"]])) ? get_special_effect_classes($special_effects[$tabuleiro[$x][$y]["cod"]]) : "" ?>"
-                                src="Imagens/Personagens/Icons/<?= getImg($tabuleiro[$x][$y], "r") ?>.jpg">
+                            <img src="Imagens/Personagens/Icons/<?= getImg($tabuleiro[$x][$y], "r") ?>.jpg">
                         <?php endif; ?>
                     </td>
                 <?php endfor; ?>
@@ -1028,8 +886,23 @@ function inicia_combate($alvo, $tipo, $chave = null)
                 <td class="td-mira">
                 </td>
                 <?php for ($y = 0; $y < 20; $y++) : ?>
+                    <?php
+                    $efeitos = [];
+                    if (isset($tabuleiro[$x][$y])) {
+                        $pers = $tabuleiro[$x][$y];
+                        if (isset($pers["efeitos"]) && count($pers["efeitos"])) {
+                            foreach ($pers["efeitos"] as $efeito) {
+                                if (isset($efeito["bonus"]) && isset($efeito["bonus"]["atr"])) {
+                                    $efeitos[] = "efeito-" . $efeito["bonus"]["atr"];
+                                }
+                            }
+                        }
+                    }
+                    $efeitos = implode(" ", $efeitos);
+                    ?>
+
                     <td id="<?= $x . "_" . $y; ?>"
-                        class="selecionavel td-selecao <?= isset($tabuleiro[$x][$y]) ? "personagem" : "" ?> <?= isset($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "aliado" : "inimigo") : "" ?>"
+                        class="selecionavel td-selecao <?= $efeitos ?> <?= isset($tabuleiro[$x][$y]) ? "personagem" : "" ?> <?= isset($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "aliado" : "inimigo") : "" ?>"
                         data-x="<?= $x ?>" data-y="<?= $y ?>"
                         data-cod="<?= isset($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>">
                         <img src="Imagens/Icones/selecao.png" />
@@ -1046,6 +919,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
         $id_blue = $userDetails->tripulacao["id"];
     } ?>
     <?php foreach ($personagens_combate as $pers) : ?>
+        <?php $info_avancado = ($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]; ?>
         <?php if ($pers["hp"]) : ?>
             <?php $pers["id"] = $pers["tripulacao_id"]; ?>
             <div class="personagem-info container hidden" id="personagem-info-<?= $pers["cod"] ?>">
@@ -1059,7 +933,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                             <div class="col-xs-6" style="width: 100%">
                                 <?= big_pers_skin($pers["img"], $pers["skin_c"], isset($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="60%"') ?>
                                 <br />
-                                <?php if (($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]) : ?>
+                                <?php if ($info_avancado) : ?>
                                     <?php if ($pers["akuma"]) : ?>
                                         <div>
                                             Akuma no Mi:
@@ -1088,30 +962,17 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                 <?php render_personagem_hp_bar($pers); ?>
                             </div>
                             <div class="col-xs-6" style="width: 100%">
-                                <?php if (isset($buffs[$pers["cod"]])) : ?>
+                                <?php if (isset($pers["efeitos"]) && count($pers["efeitos"])) : ?>
                                     <h4>Buffs</h4>
-                                    <?php foreach ($buffs[$pers["cod"]] as $buff) : ?>
+                                    <?php foreach ($pers["efeitos"] as $efeito) : ?>
                                         <div class="text-center">
-                                            <img class="buff-atributo-icon" src="Imagens/Icones/<?= nome_atributo_img($buff["atr"]) ?>.png"
-                                                width="20vw">
-                                            <?= $buff["efeito"] > 0 ? "+" : "" ?>
-                                            <?= $buff["efeito"]; ?>
-                                            <?= "(" . $buff["espera"] . ")" ?>
-                                        </div>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                                <?php if (isset($special_effects[$pers["cod"]])) : ?>
-                                    <h4>Estado</h4>
-                                    <?php foreach ($special_effects[$pers["cod"]] as $effect) : ?>
-                                        <div class="text-center">
-                                            <?= nome_special_effect($effect["special_effect"]) ?>
-                                            (
-                                            <?= $effect["duracao"] ?>)
+                                            <?= Componentes::render("Habilidades.Explicacao", ["explicacao" => $efeito["explicacao"]]); ?>
+                                            (<?= $efeito["duracao"]; ?>)
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
 
-                                <?php if (($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]) : ?>
+                                <?php if ($info_avancado) : ?>
                                     <?php render_personagem_haki_bars($pers); ?>
                                     <?php render_row_atributo("atk", "Ataque", $pers); ?>
                                     <?php render_row_atributo("def", "Defesa", $pers); ?>
@@ -1287,7 +1148,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
         </span>
         <?php if ($personagens_combate["1"]) : ?>
             <?php if (! $esconder_vontade) : ?>
-                <?php render_vontade($personagens_combate["1"][0]["mp"]) ?>
+                <?php render_vontade($combate["vontade_1"]) ?>
             <?php endif; ?>
             <span class="placar text-<?= $tripulacao["1"]["id"] == $id_blue ? "info" : "danger" ?>">
                 <?= count($personagens_combate["1"]) ?>
@@ -1299,7 +1160,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                 <?= count($personagens_combate["2"]) ?>
             </span>
             <?php if (! $esconder_vontade) : ?>
-                <?php render_vontade($personagens_combate["2"][0]["mp"]) ?>
+                <?php render_vontade($combate["vontade_2"]) ?>
             <?php endif; ?>
         <?php endif; ?>
         <span class="battle-player text-left">
@@ -1330,7 +1191,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                     <img
                         src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->tripulacao["bandeira"] ?>&f=<?= $userDetails->tripulacao["faccao"] ?>">
                 </span>
-                <?php render_vontade($personagens_combate[0]["mp"]) ?>
+                <?php render_vontade($userDetails->combate_pve["vontade_1"]) ?>
                 <span class="placar">
                     <?= count($personagens_combate) ?>
                 </span>
@@ -1338,7 +1199,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                 <span class="placar">
                     <?= $userDetails->combate_pve["hp_npc"] ? "1" : "0" ?>
                 </span>
-                <?php render_vontade($userDetails->combate_pve["mp_npc"]) ?>
+                <?php render_vontade($userDetails->combate_pve["vontade_npc"]) ?>
                 <span class="battle-player text-left">
                     <img src="Imagens/Batalha/npc.jpg" />
                     <?= $userDetails->combate_pve["nome_npc"] ?>
@@ -1351,7 +1212,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                     <img
                         src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->tripulacao["bandeira"] ?>&f=<?= $userDetails->tripulacao["faccao"] ?>">
                 </span>
-                <?php render_vontade($personagens_combate[0]["mp"]) ?>
+                <?php render_vontade($userDetails->combate_bot["vontade_1"]) ?>
                 <span class="placar text-info">
                     <?= count($personagens_combate) ?>
                 </span>
@@ -1359,7 +1220,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                 <span class="placar text-danger">
                     <?= count($personagens_combate_bot) ?>
                 </span>
-                <?php render_vontade($personagens_combate_bot[0]["mp"]) ?>
+                <?php render_vontade($userDetails->combate_bot["vontade_2"]) ?>
                 <span class="battle-player text-left">
                     <img
                         src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->combate_bot["bandeira_inimiga"] ?>&f=<?= $userDetails->combate_bot["faccao_inimiga"] ?>">

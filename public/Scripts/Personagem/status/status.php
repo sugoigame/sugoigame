@@ -4,7 +4,7 @@ $protector->need_tripulacao();
 
 $pers = $protector->get_tripulante_or_exit("cod");
 ?>
-<?php function get_atributo_max($pers, $bonus)
+<?php function get_atributo_max($pers)
 {
     $max = 1;
     for ($x = 1; $x <= 8; $x++) {
@@ -21,7 +21,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
 <?php function row_atributo($abr, $nome, $img, $desc, $pers, $bonus)
 { ?>
     <?php $total = $pers[$abr]; ?>
-    <?php $max = get_atributo_max($pers, $bonus); ?>
+    <?php $max = get_atributo_max($pers); ?>
     <div class="col-xs-3 mb attribute-box" data-toggle="tooltip" data-html="true" data-placement="bottom"
         data-container="body" title="<strong><?= $nome ?></strong><br/> <?= $desc ?>">
         <div class="attribute-progress-bar-bg" style="height: 100%"> </div>
@@ -112,10 +112,10 @@ $pers = $protector->get_tripulante_or_exit("cod");
 
 <?php $bonus = calc_bonus($pers); ?>
 <div class="row pt1">
-    <div class="col-xs-5">
+    <div class="col-xs-4">
         <div>
-            <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "", 'width="60%"') ?>
-            <?php if ($pers["xp"] >= $pers["xp_max"] and $pers["lvl"] < 50) : ?>
+            <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "", 'width="80%"') ?>
+            <?php if ($pers["xp"] >= $pers["xp_max"] && $pers["lvl"] < 50) : ?>
                 <button id="status_evoluir" href="link_Personagem/personagem_evoluir.php?cod=<?= $pers["cod"] ?>"
                     class="link_send btn btn-info">
                     Evoluir <i class="fa fa-arrow-up"></i>
@@ -138,20 +138,29 @@ $pers = $protector->get_tripulante_or_exit("cod");
         </div>
         <?php render_personagem_status_bars($pers); ?>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-5">
         <!--- Menu de modo de criacao de atributos -->
         <ul class="nav nav-pills nav-justified mb">
             <li class="<?= ! isset($_GET["buildtype"]) || $_GET["buildtype"] == "simples" ? "active" : "" ?>">
                 <a data-toggle="tab" onclick="setQueryParam('buildtype','simples');"
-                    href="#atributos-simples-<?= $pers["cod"] ?>">Simples</a>
+                    href="#atributos-simples-<?= $pers["cod"] ?>">
+                    Simples
+                    <?= ajuda_tooltip("No modo simples você pode escolher uma das seguintes builds.", "span") ?>
+                </a>
             </li>
             <li class="<?= $_GET["buildtype"] == "intermediaria" ? "active" : "" ?>">
                 <a data-toggle="tab" onclick="setQueryParam('buildtype','intermediaria');"
-                    href="#atributos-intermediarios-<?= $pers["cod"] ?>">Intermediário</a>
+                    href="#atributos-intermediarios-<?= $pers["cod"] ?>">
+                    Intermediário
+                    <?= ajuda_tooltip("No modo intermediário você pode escolher seus três atributos preferidos e a build será criada automaticamente.", "span") ?>
+                </a>
             </li>
             <li class="<?= $_GET["buildtype"] == "avancada" ? "active" : "" ?>">
                 <a data-toggle="tab" onclick="setQueryParam('buildtype','avancada');"
-                    href="#atributos-avancados-<?= $pers["cod"] ?>">Avançado</a>
+                    href="#atributos-avancados-<?= $pers["cod"] ?>">
+                    Avançado
+                    <?= ajuda_tooltip("No modo avançado você tem liberdade total para escolher seus atributos.", "span") ?>
+                </a>
             </li>
         </ul>
         <?php if ($pers["pts"]) : ?>
@@ -170,7 +179,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                 <div class="tab-pane <?= ! isset($_GET["buildtype"]) || $_GET["buildtype"] == "simples" ? "active" : "" ?>"
                     id="atributos-simples-<?= $pers["cod"] ?>">
                     <p class="text-left">
-                        No modo simples você pode escolher uma das seguintes builds:
+
                     </p>
                     <?php for ($i = 1; $i <= 8; $i++) : ?>
                         <div class="text-left" style="margin: 0.5rem 0; font-size: 1rem;">
@@ -179,7 +188,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                                 v-on:click="buildAutomatica(atrKey)">
                                 <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="25vw"
                                     style="max-width: 100%;" class="atributo-icon" />
-                                Usar build baseada em
+                                Se basear em
                                 <?= nome_atributo($i) ?>
                             </a>
                         </div>
@@ -190,11 +199,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                 <div class="tab-pane <?= $_GET["buildtype"] == "intermediaria" ? "active" : "" ?>"
                     id="atributos-intermediarios-<?= $pers["cod"] ?>">
                     <p class="text-left">
-                        No modo intermediário você pode escolher seus três atributos
-                        preferidos e a build será criada automaticamente:
-                    </p>
-                    <p class="text-left">
-                        Selecione o atributo primário:
+                        Atributo primário:
                     </p>
                     <div class="mb">
                         <?php for ($i = 1; $i <= 8; $i++) : ?>
@@ -206,7 +211,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                         <?php endfor; ?>
                     </div>
                     <p class="text-left">
-                        Selecione o atributo secundário:
+                        Atributo secundário:
                     </p>
                     <div class="mb">
                         <?php for ($i = 1; $i <= 8; $i++) : ?>
@@ -218,7 +223,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                         <?php endfor; ?>
                     </div>
                     <p class="text-left">
-                        Selecione o atributo terciário:
+                        Atributo terciário:
                     </p>
                     <div class="mb">
                         <?php for ($i = 1; $i <= 8; $i++) : ?>
@@ -239,17 +244,13 @@ $pers = $protector->get_tripulante_or_exit("cod");
                 <!--- Avançado -->
                 <div class="tab-pane <?= $_GET["buildtype"] == "avancada" ? "active" : "" ?>"
                     id="atributos-avancados-<?= $pers["cod"] ?>">
-                    <p class="text-left">
-                        No modo avançado você tem liberdade total para escolher seus
-                        atributos:
-                    </p>
-
                     <input id="atributos-total-<?= $pers["cod"] ?>" type="hidden"
                         value="<?= get_total_atributos($pers) ?>" />
                     <?php for ($i = 1; $i <= 8; $i++) : ?>
                         <div class="text-left">
                             <div style="display: flex; align-items: center; margin-bottom: 0.8em;">
-                                    <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="25vw" height="25vw" class="atributo-icon" style="margin-right: 1em;" />
+                                <img src="Imagens/Icones/<?= nome_atributo_img($i) ?>.png" width="25vw" height="25vw"
+                                    class="atributo-icon" style="margin-right: 1em;" />
                                 <div style="width: 100%">
                                     <input data-atr="<?= $i ?>" data-cod="<?= $pers["cod"] ?>" class="atr-input atributo"
                                         type="range" step="1" min="1" value="<?= $pers[nome_atributo_tabela($i)] ?>"

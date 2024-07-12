@@ -96,124 +96,147 @@ function toggleTurn(vez) {
             bindDefaultAction();
         }
 
-        var origemGolpe = $(
-            "#relatorio-combate-content .relatorio-origem-meta-data"
+        const relatorio = $(
+            "#relatorio-combate-content .relatorio-meta-data"
         ).data("log");
 
-        $("#relatorio-combate-content .relatorio-meta-data").each(function () {
-            var log = $(this).data("log");
-            var offset = $("#" + log.quadro).offset();
+        const origem = $(
+            '.selecionavel[data-cod="' + relatorio?.personagem?.cod + '"]'
+        );
+        const origemOffset = origem.offset();
+        if (origemOffset) {
+            origemOffset.top += origem.height() / 2 - 20;
+            origemOffset.left += origem.width() / 2 - 20;
+        }
 
-            var origemOffset = $(
-                '.selecionavel[data-cod="' + origemGolpe.cod + '"]'
-            ).offset();
+        const animacao =
+            relatorio?.habilidade?.animacao || "Atingir fisicamente";
 
-            var effect = origemGolpe.effect;
-            if (log.tipo == 2) {
-                effect = "Cura 1";
-            }
+        if (relatorio?.habilidade) {
+            for (let consequencia of relatorio.consequencias) {
+                const target = $(
+                    consequencia.quadro.x == "npc"
+                        ? "#npc"
+                        : "#" +
+                              consequencia.quadro.x +
+                              "_" +
+                              consequencia.quadro.y
+                );
+                const offset = target.offset();
+                if (offset) {
+                    offset.top += target.height() / 2 - 20;
+                    offset.left += target.width() / 2 - 20;
+                }
 
-            var animation = new Animation(effect || "Atingir fisicamente");
+                const animation = new Animation(animacao);
 
-            $("body").append(
-                $("<DIV>")
-                    .css("position", "absolute")
-                    .css("top", origemOffset.top)
-                    .css("left", origemOffset.left)
-                    .html(
-                        '<img src="Imagens/Skils/' +
-                            origemGolpe.img_skil +
-                            '.jpg" width="35px" />'
-                    )
-                    .animate(
-                        {
-                            top: offset.top,
-                            left: offset.left,
-                        },
-                        500,
-                        function () {
-                            $(this).remove();
-                            animation.play({
-                                top: offset.top + 20,
-                                left: offset.left + 20,
-                                callback: function () {
-                                    if (log.tipo || log.tipo === 0) {
-                                        var $danoDiv = $("<DIV>")
-                                            .css("position", "absolute")
-                                            .css("top", offset.top)
-                                            .css("left", offset.left)
-                                            .css("color", "#E00")
-                                            .css("font-weight", "800")
-                                            .css("padding", "1px 3px")
-                                            .css("border-radius", "3px")
-                                            .css("z-index", "1000")
-                                            .css(
-                                                "text-shadow",
-                                                "1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000,  -1px -1px #000, 1px -1px #000, -1px 1px #000"
-                                            )
-                                            .html(log.efeito)
-                                            .animate(
-                                                {
-                                                    top: offset.top - 20,
-                                                },
-                                                3000,
-                                                function () {
-                                                    $(this).remove();
+                $("body").append(
+                    $("<DIV>")
+                        .css("position", "absolute")
+                        .css("top", origemOffset.top)
+                        .css("left", origemOffset.left)
+                        .css("z-index", 1000000)
+                        .html(
+                            '<img src="Imagens/Skils/' +
+                                relatorio.habilidade.icone +
+                                '.jpg" width="35px" />'
+                        )
+                        .animate(
+                            {
+                                top: offset.top,
+                                left: offset.left,
+                            },
+                            500,
+                            function () {
+                                $(this).remove();
+                                animation.play({
+                                    top: offset.top + 20,
+                                    left: offset.left + 20,
+                                    callback: function () {
+                                        if (
+                                            consequencia.dano ||
+                                            typeof consequencia.cura !==
+                                                "undefined"
+                                        ) {
+                                            const $danoDiv = $("<DIV>")
+                                                .css("position", "absolute")
+                                                .css("top", offset.top)
+                                                .css("left", offset.left)
+                                                .css("color", "#E00")
+                                                .css("font-weight", "800")
+                                                .css("padding", "1px 3px")
+                                                .css("border-radius", "3px")
+                                                .css("z-index", "1000")
+                                                .css(
+                                                    "text-shadow",
+                                                    "1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000,  -1px -1px #000, 1px -1px #000, -1px 1px #000"
+                                                )
+                                                .html(
+                                                    typeof consequencia.cura !==
+                                                        "undefined"
+                                                        ? consequencia.cura
+                                                        : consequencia.dano
+                                                              ?.dano
+                                                )
+                                                .animate(
+                                                    {
+                                                        top: offset.top - 20,
+                                                    },
+                                                    3000,
+                                                    function () {
+                                                        $(this).remove();
+                                                    }
+                                                );
+
+                                            if (consequencia.dano) {
+                                                if (consequencia.dano.critou) {
+                                                    $danoDiv
+                                                        .addClass("critico")
+                                                        .css("color", "#fff");
                                                 }
-                                            );
 
-                                        if (log.tipo == 0) {
-                                            if (log.cri) {
-                                                $danoDiv
-                                                    .addClass("critico")
-                                                    .css("color", "#fff");
+                                                if (
+                                                    consequencia.dano.bloqueou
+                                                ) {
+                                                    $danoDiv
+                                                        .removeClass("critico")
+                                                        .addClass("bloqueio")
+                                                        .css("color", "#fff");
+                                                }
+
+                                                if (
+                                                    consequencia.dano.esquivou
+                                                ) {
+                                                    $danoDiv
+                                                        .addClass("esquiva")
+                                                        .css(
+                                                            "font-weight",
+                                                            "normal"
+                                                        )
+                                                        .css(
+                                                            "font-size",
+                                                            "10px"
+                                                        )
+                                                        .css("color", "#fff")
+                                                        .css(
+                                                            "padding",
+                                                            "1px 1px"
+                                                        )
+                                                        .html("esquivou");
+                                                }
+                                            } else {
+                                                $danoDiv.css("color", "#0F0");
                                             }
 
-                                            if (log.bloq) {
-                                                $danoDiv
-                                                    .removeClass("critico")
-                                                    .addClass("bloqueio")
-                                                    .css("color", "#fff");
-                                            }
-
-                                            if (log.esq) {
-                                                $danoDiv
-                                                    .addClass("esquiva")
-                                                    .css(
-                                                        "font-weight",
-                                                        "normal"
-                                                    )
-                                                    .css("font-size", "10px")
-                                                    .css("color", "#fff")
-                                                    .css("padding", "1px 1px")
-                                                    .html("esquivou");
-                                            }
-                                        } else if (log.tipo == 1) {
-                                            $danoDiv
-                                                .css("color", "#FF0")
-                                                .html(
-                                                    log.efeito > 0
-                                                        ? "+" + log.efeito
-                                                        : log.efeito
-                                                );
-                                        } else if (log.tipo == 2) {
-                                            $danoDiv
-                                                .css("color", "#0F0")
-                                                .html(
-                                                    log.cura_h +
-                                                        ", " +
-                                                        log.cura_m
-                                                );
+                                            $("body").append($danoDiv);
                                         }
-
-                                        $("body").append($danoDiv);
-                                    }
-                                },
-                            });
-                        }
-                    )
-            );
-        });
+                                    },
+                                });
+                            }
+                        )
+                );
+            }
+        }
     }
 }
 
@@ -285,11 +308,18 @@ function moveCom(pers) {
     var perm = pers.id.split("_");
     var permx = parseInt(perm[0], 10);
     var permy = parseInt(perm[1], 10);
-    var $quadro;
     var quadro;
     var alcance = parseInt($("#moves_remain").val(), 10);
     var x;
     var y;
+
+    if (
+        $(pers).hasClass("efeito-IMOBILIZACAO") ||
+        $(pers).hasClass("efeito-ATORDOAMENTO")
+    ) {
+        return;
+    }
+
     for (var dirX = -1; dirX <= 1; dirX++) {
         for (var dirY = -1; dirY <= 1; dirY++) {
             if (dirX != 0 || dirY != 0) {
@@ -311,17 +341,6 @@ function moveCom(pers) {
             }
         }
     }
-    // for (var x = (permx - 1); x <= (permx + 1); x++) {
-    //     for (var y = (permy - 1); y <= (permy + 1); y++) {
-    //         $quadro = $('#' + x + '_' + y);
-    //         if (!$quadro.hasClass('personagem')) {
-    //             addSelectors($quadro, 'rgba(0,50,50,0.7');
-    //             $quadro.click(function () {
-    //                 movePara(this, pers.id);
-    //             });
-    //         }
-    //     }
-    // }
 }
 
 function movePara(quadro, origem) {
@@ -359,6 +378,9 @@ function atacar($elem) {
 }
 
 function atacarWithOne($elem) {
+    if ($(elem).hasClass("efeito-ATORDOAMENTO")) {
+        return;
+    }
     addSelectorsPersonagem("rgba(255,100,100,0.5)", $elem).click(function () {
         unbindClicks();
         removeSelectors();

@@ -35,7 +35,7 @@ if (! $userDetails->conta &&
     <link rel="stylesheet" type="text/css" href="CSS/bootstrap-select.min.css" />
     <link rel="stylesheet" type="text/css" href="CSS/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="CSS/jquery.bracket.min.css" />
-    <link rel="stylesheet" type="text/css" href="CSS/estrutura.css?ver=2.0.14" />
+    <link rel="stylesheet" type="text/css" href="CSS/estrutura.css?ver=2.0.15" />
 
     <?php if ($_SERVER['HTTP_HOST'] == 'sugoigame.com.br') { ?>
         <script data-ad-client="ca-pub-6665062829379662" async
@@ -101,8 +101,8 @@ if (! $userDetails->conta &&
     <script type="text/javascript" src="JS/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="JS/phaser.min.js"></script>
     <script type="text/javascript" src="JS/jquery.bracket.min.js"></script>
-    <script type="text/javascript" src="JS/library.js?ver=1.0.0"></script>
-    <script type="text/javascript" src="JS/main.js?ver=1.0.0"></script>
+    <script type="text/javascript" src="JS/library.js?ver=1.0.1"></script>
+    <script type="text/javascript" src="JS/main.js?ver=1.0.1"></script>
 
     <script src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.9"></script>
 </body>

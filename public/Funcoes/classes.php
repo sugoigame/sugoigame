@@ -1,23 +1,15 @@
 <?php
-function nome_classe($cod) {
-    switch ($cod) {
-        case 0:
-            $classe = "Sem classe";
-            break;
-        case 1:
-            $classe = "Espadachim";
-            break;
-        case 2:
-            $classe = "Lutador";
-            break;
-        case 3:
-            $classe = "Atirador";
-            break;
+function nome_classe($cod)
+{
+    $classes = DataLoader::load("habilidades")["classes"];
+    if (! isset($classes[$cod])) {
+        return "";
     }
-    return $classe;
+    return $classes[$cod]["nome"];
 }
 
-function get_bonus_excelencia($classe, $lvl) {
+function get_bonus_excelencia($classe, $lvl)
+{
     return array(
         "atk" => floor(($lvl + 2) / 10) + ($classe == 1 ? floor(($lvl) / 10) : 0),
         "def" => floor(($lvl + 3) / 10) + ($classe == 2 ? floor(($lvl) / 10) : 0),
@@ -32,7 +24,8 @@ function get_bonus_excelencia($classe, $lvl) {
     );
 }
 
-function get_next_bonus_excelencia($classe, $lvl) {
+function get_next_bonus_excelencia($classe, $lvl)
+{
     $atual = get_bonus_excelencia($classe, $lvl);
     $proximo = get_bonus_excelencia($classe, $lvl + 1);
 

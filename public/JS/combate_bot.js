@@ -49,5 +49,5 @@ function turnoBot() {
 }
 
 function getUrlAtacar() {
-    return "Scripts/Batalha/batalha_atacar_bot.php";
+    return "Scripts/Batalha/batalha_atacar.php";
 }

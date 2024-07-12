@@ -150,7 +150,6 @@ function super_menu_can_be_active($menu)
                                 <?= menu_link("upgrader", "Aprimoramentos", "fa fa-arrow-up", "") ?>
                                 <?= menu_link("estaleiro", "Estaleiro", "fa fa-ship", "") ?>
                                 <?= menu_link("hospital", "Hospital", "fa fa-h-square", "") ?>
-                                <?= menu_link("academia", "Academia", "fa fa-star-o", "") ?>
                                 <?= menu_link("profissoesAprender", "Escola de Profissões", "fa fa-university", "") ?>
                                 <?= menu_link("missoesCaca", "Missões de caça", "glyphicon glyphicon-screenshot", "") ?>
                                 <?= menu_link("missoesR", "Pesquisas", "fa fa-search", "Pesquise para evoluir continuamente.") ?>

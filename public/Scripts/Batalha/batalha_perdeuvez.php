@@ -2,10 +2,9 @@
 require "../../Includes/conectdb.php";
 
 $protector->need_tripulacao();
-$protector->must_be_in_combat_pvp();
 
-$combate = new Combate($connection, $userDetails, $protector);
+$combate = Regras\Combate\Combate::build($connection, $userDetails, $protector);
 
-$combate->perdeu_vez_pvp();
+$combate->perder_vez();
 
 echo("%combate");

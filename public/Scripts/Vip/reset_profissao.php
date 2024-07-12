@@ -12,8 +12,6 @@ $connection->run("UPDATE tb_personagens
 	SET profissao='0', profissao_lvl='0', profissao_xp='0', profissao_xp_max='0'
 	WHERE cod=?", "i", array($pers["cod"]));
 
-$userDetails->remove_skills_profissao($pers);
-
 $userDetails->reduz_gold($tipo, PRECO_GOLD_RESET_PROFISSAO, "resetar_profissao");
 
 echo("-Profissão resetada!");

@@ -118,7 +118,10 @@ $special_effects = get_special_effects_bot($userDetails->tripulacao["id"], $user
 
         <div id="relatorio-combate-content">
             <?php $combate_logger = new CombateLogger($connection, $userDetails); ?>
-            <?php render_relatorio_data($combate_logger->get_relatorio_combate_bot(), $userDetails->tripulacao["id"]); ?>
+            <?= Componentes::render("Combate.Relatorio", [
+                "relatorio" => $combate_logger->get_relatorio_combate_bot(),
+                "id_azul" => $userDetails->tripulacao["id"]
+            ]); ?>
         </div>
     <?php endif; ?>
 </div>

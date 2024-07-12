@@ -52,7 +52,7 @@ function get_img_item_src($item)
 
 function get_img_item($item)
 {
-    return "<img src=\"" . get_img_item_src($item) . "\"/>";
+    return "<img src=\"" . get_img_item_src($item) . "\" height=\"40px\" />";
 }
 
 function info_item_with_img($item, $item_info, $extra, $acao, $incombate = FALSE, $porcent = 1, $treino = array())
@@ -89,6 +89,11 @@ function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcen
     $return .= '<div class="col-xs-8">';
     if (isset($item_info["descricao"])) {
         $return .= '<p class="info-item-descricao">' . $item_info["descricao"] . "</p>";
+    }
+    if (isset($item_info["cod_habilidade"])) {
+        $return .= '<p class="info-item-descricao">' . \Componentes::render("Habilidades.Descricao", [
+            "habilidade" => \Regras\Habilidades::get_habilidade_by_cod($item_info["cod_habilidade"])
+        ]) . "</p>";
     }
     $return .= '</div>';
     $return .= '</div>';
@@ -136,11 +141,6 @@ function info_item($item, $item_info, $extra, $acao, $incombate = FALSE, $porcen
     if (isset($item_info["hp_recuperado"])) {
         $return .= '<div>';
         $return .= "HP + " . ($item_info["hp_recuperado"] * 10);
-        $return .= '</div>';
-    }
-    if (isset($item["tipo_item"]) && $item_info["tipo_item"] === TIPO_ITEM_REMEDIO) {
-        $return .= '<div>';
-        $return .= "Vontade: " . ($item_info["requisito_lvl"] * 4);
         $return .= '</div>';
     }
     if (isset($item_info["apontando"])) {

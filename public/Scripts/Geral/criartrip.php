@@ -134,11 +134,6 @@ if ($erro) {
             $codcapitao,
             $id
         ]);
-        $connection->run("INSERT INTO tb_personagens_skil (cod, cod_skil, tipo, nome, descricao, icon) VALUES (?, ?, ?, 'Soco', 'Tenta acerta um soco no oponente.', '1')", 'iii', [
-            $codcapitao,
-            COD_SKILL_SOCO,
-            TIPO_SKILL_ATAQUE_CLASSE
-        ]);
 
         $connection->run("INSERT INTO tb_vip (id) VALUES (?)", 'i', $id);
 

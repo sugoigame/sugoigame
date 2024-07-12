@@ -1,5 +1,4 @@
 <?php
-require_once dirname(__FILE__) . "/Spyc.php";
 
 class DataLoader
 {
@@ -8,7 +7,7 @@ class DataLoader
     public static function load($data)
     {
         if (! isset(DataLoader::$cache[$data])) {
-            DataLoader::$cache[$data] = Spyc::YAMLLoad(dirname(__FILE__) . "/../Data/" . $data . ".yaml");
+            DataLoader::$cache[$data] = \Classes\Spyc::YAMLLoad(dirname(__FILE__) . "/../Data/" . $data . ".yaml");
         }
         return DataLoader::$cache[$data];
     }

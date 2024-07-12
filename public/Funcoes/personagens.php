@@ -14,15 +14,15 @@
         }
     }
 
-    $result = $connection->run(
-        "SELECT * FROM tb_akuma_skil_passiva
-			INNER JOIN tb_personagens_skil ON tb_personagens_skil.cod_skil=tb_akuma_skil_passiva.cod_skil
-			WHERE tb_personagens_skil.cod=?
-			AND tb_personagens_skil.tipo='9'", "i", $pers["cod"]
-    );
-
-    while ($passiva = $result->fetch_array()) {
-        $bonus[nome_atributo_tabela($passiva["bonus_atr"])] += $passiva["bonus_atr_qnt"];
+    $habilidades = \Regras\Habilidades::get_todas_habilidades_pers($pers);
+    foreach ($habilidades as $habilidade) {
+        if (isset($habilidade["efeitos"]) && isset($habilidade["efeitos"]["passivos"])) {
+            foreach ($habilidade["efeitos"]["passivos"] as $passiva) {
+                if (is_numeric($passiva["bonus"]["valor"])) {
+                    $bonus[$passiva["bonus"]["atr"]] = (isset($bonus[$passiva["bonus"]["atr"]]) ? $bonus[$passiva["bonus"]["atr"]] : 0) + $passiva["bonus"]["valor"];
+                }
+            }
+        }
     }
 
     $result = $connection->run(
@@ -51,12 +51,18 @@
         }
     }
 
+    for ($i = 1; $i <= 7; $i++) {
+        if (isset($bonus[nome_atributo_tabela($i) . "_porcentagem"])) {
+            $bonus[nome_atributo_tabela($i)] += round($pers[nome_atributo_tabela($i)] * $bonus[nome_atributo_tabela($i) . "_porcentagem"]);
+        }
+    }
+
     return $bonus;
 }
 
 function calc_pers_hp_max($pers)
 {
-    return(($pers["lvl"] - 1) * HP_POR_NIVEL) + HP_INICIAL + (($pers["vit"] - 1) * HP_POR_VITALIDADE);
+    return (($pers["lvl"] - 1) * HP_POR_NIVEL) + HP_INICIAL + (($pers["vit"] - 1) * HP_POR_VITALIDADE);
 }
 
 function ajusta_hp($pers, $bonus)

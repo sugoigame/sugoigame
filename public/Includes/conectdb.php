@@ -1,6 +1,17 @@
 <?php
 require_once "database/mywrap.php";
 
+// Permite importar classes automaticamente com uso de namespaces
+spl_autoload_register(function ($class) {
+    $class_path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
+
+    $file = str_replace("Includes", "", __DIR__) . $class_path . '.php';
+
+    if (file_exists($file)) {
+        require_once $file;
+    }
+});
+
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 date_default_timezone_set('America/Sao_Paulo');
 
@@ -41,7 +52,7 @@ define('FACCAO_PIRATA', 1);
 
 define('COD_CASCO_KAIROUSEKI', 2);
 
-define('SKILLS_ICONS_MAX', 512);
+define('SKILLS_ICONS_MAX', 515);
 
 define('PERSONAGENS_MAX', 369);
 
@@ -80,3 +91,5 @@ $response = new Response();
 $protector = new Protector($userDetails, $response);
 
 require_once (dirname(__FILE__) . "/../Cron/cron.php");
+
+

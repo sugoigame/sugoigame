@@ -29,8 +29,7 @@ if ($personagem["profissao"] != 3) {
 }
 
 $item = MapLoader::find("remedios", ["cod_remedio" => $item]);
-$item["preco"] = ($item["hp_recuperado"] + $item["mp_recuperado"]) * 60;
-$item["preco"] *= (((1 - $personagem["profissao_lvl"] * 0.05)) * $quant_faz);
+$item["preco"] = $item["requisito_lvl"] * 5000;
 
 if ($usuario["berries"] < $item["preco"]) {
     $protector->exit_error("Você não tem dinheiro para essa quantidade de itens.");
@@ -56,10 +55,11 @@ if ($cont != 0) {
 		VALUES ('" . $usuario["id"] . "', '" . $item["cod_remedio"] . "', '7', '$quant_faz')";
     $connection->run($query) or die("Nao foi possivel criar o item");
 }
-if ($personagem["profissao_xp"] < $personagem["profissao_xp_max"] and $personagem["profissao_lvl"] == $item["requisito_lvl"]) {
+if ($personagem["profissao_xp"] < $personagem["profissao_xp_max"] && $personagem["profissao_lvl"] == $item["requisito_lvl"]) {
     $xp = $personagem["profissao_xp"] + $quant_faz;
-    if ($xp > $personagem["profissao_xp_max"])
+    if ($xp > $personagem["profissao_xp_max"]) {
         $xp = $personagem["profissao_xp_max"];
+    }
     $query = "UPDATE tb_personagens SET profissao_xp='$xp' WHERE id='" . $usuario["id"] . "' AND cod='" . $personagem["cod"] . "'";
     $connection->run($query) or die("Nao foi possivel evoluir profisssao");
 }
