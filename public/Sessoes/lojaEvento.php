@@ -66,7 +66,7 @@
                     </p>
                     <div style="width: 100%">
                         <img
-                            src="Imagens/Personagens/Big/<?= get_img(array("img" => $recompensa["img"], "skin_c" => $recompensa["skin"]), "c") ?>.png" width="100%">
+                            src="Imagens/Personagens/Big/<?= get_img(array("img" => $recompensa["img"], "skin_c" => $recompensa["skin"]), "c") ?>.jpg" width="100%">
                     </div>
                 <?php endif; ?>
                 <?php if (isset($recompensa["tipo_item"])) : ?>
