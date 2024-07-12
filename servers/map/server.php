@@ -35,6 +35,6 @@ $connection->run("SET CHARACTER SET utf8");
 $navigation = new Navigation($connection);
 
 // Run the server application through the WebSocket protocol on port 9000
-$app = new Ratchet\App('localhost', 9000, "0.0.0.0");
+$app = new Ratchet\App($_SERVER["HTTP_HOST"], 9000, "0.0.0.0");
 $app->route('/mar', new WsServer($connection, $navigation), ['*']);
 $app->run();
