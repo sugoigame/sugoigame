@@ -922,7 +922,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
         <?php $info_avancado = ($userDetails->vip["conhecimento_duracao"] && $pers["tripulacao_id"] == $userDetails->tripulacao["id"]) || $userDetails->tripulacao["adm"]; ?>
         <?php if ($pers["hp"]) : ?>
             <?php $pers["id"] = $pers["tripulacao_id"]; ?>
-            <div class="personagem-info container hidden" id="personagem-info-<?= $pers["cod"] ?>">
+            <div class="personagem-info hidden" id="personagem-info-<?= $pers["cod"] ?>">
                 <div class="panel panel-<?= $pers["tripulacao_id"] == $id_blue ? "info" : "danger" ?>">
                     <div class="panel-heading">
                         <?= $pers["nome"]; ?>,
@@ -1130,7 +1130,8 @@ function inicia_combate($alvo, $tipo, $chave = null)
 <?php } ?>
 <?php function render_vontade($amount)
 { ?>
-    <span class="vontade" data-toggle="tooltip" data-placement="bottom" data-container="body"
+    <span class="vontade" style="background-size: <?= min($amount / 50, 1) * 100; ?>%" data-toggle="tooltip"
+        data-placement="bottom" data-container="body"
         title="Vontade: A cada turno essa tripulação pode utilizar habilidades mais poderosas. Você ganha um ponto de Vontade adicional sempre que um tripulante for derrotado.">
         <?= $amount ?>
     </span>

@@ -1,23 +1,11 @@
 $(function () {
     $(document).on("mouseenter", ".personagem", function () {
-        if ($(document).width() >= 1000) {
-            var cod = $(this).data("cod");
-            var x = $(this).data("x");
-            var top = $(this).position().top;
-            var left = $(this).position().left + 130;
-            if (left + 500 > $("#navio_batalha").width()) {
-                left -= 500;
-            }
-            if (x >= 5) {
-                top += 200;
-            }
-            $("#personagem-info-" + cod)
-                .css("top", top)
-                .css("left", left)
-                .removeClass("hidden");
-        }
+        hoverPersonagem(this);
     });
-    
+    $(document).on("taphold", ".personagem", function () {
+        hoverPersonagem(this);
+    });
+
     $(document).on("mouseleave", ".personagem", function () {
         $(".personagem-info").addClass("hidden");
     });
@@ -35,7 +23,47 @@ $(function () {
                 $("#key-code-" + e.key).click();
             }
         });
+
+    checkTurno();
 });
+
+function checkTurno() {
+    setTimeout(() => {
+        toggleTurn($("#botao_atacar").length ? "eu" : "ele");
+        if ($("#botao_atacar").length) {
+            bindDefaultAction();
+        } else {
+            turnoAdversario();
+        }
+    }, 100);
+}
+
+function hoverPersonagem(pers) {
+    const cod = $(pers).data("cod");
+
+    let top = $(pers).offset().top;
+    let left = $(pers).offset().left + 140;
+
+    const elem = $("#personagem-info-" + cod).removeClass("hidden");
+    if (!elem) {
+        return;
+    }
+
+    const height = elem.height();
+    const width = elem.width();
+
+    const totalHeight = top + height;
+    const totalWidth = left + width;
+    const windowHeight = $(window).height();
+    const windowWidth = $(window).width() - 70;
+    if (totalWidth >= windowWidth) {
+        left = $(pers).offset().left - width - 70;
+    }
+    if (totalHeight >= windowHeight) {
+        top -= totalHeight - windowHeight;
+    }
+    elem.css("top", top).css("left", left);
+}
 
 function getKeyCode(index) {
     if (index < 9) {
@@ -62,7 +90,7 @@ function getKeyCode(index) {
 
 function bindShortcutsToPers() {
     $(".personagem.aliado").each(function (index) {
-        var key = getKeyCode(index);
+        const key = getKeyCode(index);
         $(this).prepend(
             $("<SPAN>")
                 .attr("id", "key-code-" + key)
@@ -71,14 +99,15 @@ function bindShortcutsToPers() {
                 .css("background", "rgba(0,0,0,0.7)")
                 .css("padding", "3px 7px")
                 .css("border-radius", "5px")
+                .css("color", "white")
         );
     });
 }
 
-var turno = "eu";
+window.turno = null;
 
 function setTurno(t) {
-    turno = t;
+    window.turno = t;
 }
 
 function bindDefaultAction() {
@@ -90,8 +119,8 @@ function bindDefaultAction() {
 }
 
 function toggleTurn(vez) {
-    if (turno != vez) {
-        turno = vez;
+    if (window.turno != vez) {
+        window.turno = vez;
 
         if ($("#botao_atacar").length) {
             bindDefaultAction();
@@ -242,21 +271,20 @@ function toggleTurn(vez) {
 }
 
 function passar_vez() {
-    var locale = "Batalha/batalha_passar.php";
     bootbox.confirm("Passar a vez?", function (result) {
         if (result) {
-            sendGet(locale);
+            sendGet("Batalha/batalha_passar.php");
         }
     });
 }
 
-function unbindClicks() {
-    $(".td-selecao").unbind("click");
+function unbindClicks($elem) {
+    ($elem || $(".td-selecao")).unbind("click");
     $("#npc").unbind("click");
 }
 
-function removeSelectors() {
-    removeSelectorsElem($(".td-selecao"));
+function removeSelectors($elem) {
+    removeSelectorsElem($elem || $(".td-selecao"));
     removeSelectorsElem($("#npc"));
 }
 
@@ -264,12 +292,12 @@ function addSelectorsPersonagem(color, $elem) {
     return addSelectors($elem || $(".personagem:not(.inimigo)"), color);
 }
 
-function removeSelectorsPersonagem() {
-    removeSelectorsElem($(".personagem"));
+function removeSelectorsPersonagem(pers) {
+    removeSelectorsElem($(pers) || $(".personagem"));
 }
 
-function unbindClicksPersonagem() {
-    $(".personagem").unbind("click");
+function unbindClicksPersonagem(pers) {
+    ($(pers) || $(".personagem")).unbind("click");
 }
 
 function removeSelectorsElem($elem) {
@@ -301,18 +329,21 @@ function mover() {
 }
 
 function moveCom(pers) {
-    removeSelectorsPersonagem();
-    unbindClicksPersonagem();
+    unbindClicks();
+    removeSelectors($(".td-selecao:not(.personagem)"));
 
-    addSelectors($(pers), "rgba(255,255,0,0.5");
+    addSelectorsPersonagem("rgba(0,200,200,0.5)").click(function () {
+        moveCom(this);
+    });
+    unbindClicks($(pers));
+    addSelectorsPersonagem("rgba(255,100,100,0.5)", $(pers)).click(function () {
+        ataqueCom(this);
+    });
 
-    var perm = pers.id.split("_");
-    var permx = parseInt(perm[0], 10);
-    var permy = parseInt(perm[1], 10);
-    var quadro;
-    var alcance = parseInt($("#moves_remain").val(), 10);
-    var x;
-    var y;
+    const perm = pers.id.split("_");
+    const permx = parseInt(perm[0], 10);
+    const permy = parseInt(perm[1], 10);
+    const alcance = parseInt($("#moves_remain").val(), 10);
 
     if (
         $(pers).hasClass("efeito-IMOBILIZACAO") ||
@@ -321,38 +352,52 @@ function moveCom(pers) {
         return;
     }
 
-    for (var dirX = -1; dirX <= 1; dirX++) {
-        for (var dirY = -1; dirY <= 1; dirY++) {
-            if (dirX != 0 || dirY != 0) {
-                for (var i = 1; i <= alcance; i++) {
-                    x = permx + i * dirX;
-                    y = permy + i * dirY;
-                    quadro = "#" + x + "_" + y;
-                    if ($(quadro).length && !$(quadro).hasClass("personagem")) {
+    const grid = [];
+    for (let y = 0; y < 20; y++) {
+        grid[y] = [];
+        for (let x = 0; x < 10; x++) {
+            const quadro = "#" + x + "_" + y;
+            grid[y][x] = $(quadro).hasClass("personagem") ? 1 : 0;
+        }
+    }
+
+    for (let x = permx - alcance; x <= permx + alcance; x++) {
+        for (let y = permy - alcance; y <= permy + alcance; y++) {
+            const quadro = "#" + x + "_" + y;
+            if (
+                x >= 0 &&
+                x < 10 &&
+                y >= 0 &&
+                y < 20 &&
+                !$(quadro).hasClass("personagem") &&
+                (x != permx || y != permy)
+            ) {
+                const easystar = new EasyStar.js();
+                easystar.setGrid(grid);
+                easystar.setAcceptableTiles([0]);
+                easystar.enableDiagonals();
+                easystar.findPath(permx, permy, x, y, (path) => {
+                    if (path && path.length - 1 <= alcance) {
                         addSelectors($(quadro), "rgba(0,50,50,0.7");
                         $(quadro).click(function () {
-                            movePara(this, pers.id);
+                            movePara(path.slice(1), pers.id);
                         });
-                    } else if ($(quadro).length) {
-                        i = alcance + 1;
-                    } else {
-                        i = alcance + 1;
                     }
-                }
+                });
+                easystar.calculate();
             }
         }
     }
 }
 
-function movePara(quadro, origem) {
-    var quadro = quadro.id;
-    var pers = document.getElementsByClassName(origem)[0].id;
+function movePara(path, origem) {
+    const pers = document.getElementsByClassName(origem)[0].id;
     loadingIn();
     $.ajax({
         type: "get",
         url:
             "Scripts/Batalha/batalha_mover.php?quadro=" +
-            quadro +
+            path.map((it) => it.x + "_" + it.y).join(";") +
             "&pers=" +
             pers,
         cache: false,
@@ -379,7 +424,7 @@ function atacar($elem) {
 }
 
 function atacarWithOne($elem) {
-    if ($(elem).hasClass("efeito-ATORDOAMENTO")) {
+    if ($($elem).hasClass("efeito-ATORDOAMENTO")) {
         return;
     }
     addSelectorsPersonagem("rgba(255,100,100,0.5)", $elem).click(function () {
@@ -391,11 +436,16 @@ function atacarWithOne($elem) {
 }
 
 function ataqueCom(pers) {
-    removeSelectorsPersonagem();
-    unbindClicksPersonagem();
+    removeSelectorsPersonagem(pers);
+    unbindClicksPersonagem(pers);
 
     addSelectors($(pers), "rgba(255,255,0,0.5");
+    bindDefaultAction();
 
+    showHabilidades(pers);
+}
+
+function showHabilidades(pers) {
     pers = document.getElementsByClassName(pers.id)[0].id;
     loadingIn();
     $.ajax({
@@ -415,7 +465,6 @@ function ataqueCom(pers) {
             }
         },
     });
-    bindDefaultAction();
 }
 
 function cancelaskil() {
@@ -466,11 +515,7 @@ function runDirectionAtachingAttackUntilPers(
     var quadro;
     var x;
     var y;
-    for (
-        var i = tipo == 1 || tipo == 4 || tipo == 7 ? 1 : 0;
-        i <= alcance;
-        i++
-    ) {
+    for (let i = 1; i <= alcance; i++) {
         x = startX + i * dirX;
         y = startY + i * dirY;
         quadro = "#" + x + "_" + y;
@@ -517,7 +562,7 @@ function atacaquadro(quadro, cod, pers, tipo, area) {
         }
         $.ajax({
             type: "post",
-            url: getUrlAtacar(),
+            url: "Scripts/Batalha/batalha_atacar.php",
             data:
                 "cod_skil=" +
                 cod +
@@ -595,4 +640,36 @@ function relatorioCombate() {
     );
 
     $("#modal-relatorio-combate").modal();
+}
+
+function batalha() {
+    $.ajax({
+        type: "get",
+        url: getUrlTabuleiro(),
+        cache: false,
+        success: function (retorno) {
+            retorno = retorno.trim();
+            if (retorno.substr(0, 1) == "#") {
+                bancandoEspertinho(retorno.substr(0, retorno.length));
+            } else if (retorno.substr(0, 1) == "%") {
+                loadPagina(retorno.substr(1, retorno.length - 1));
+            } else {
+                const scrollRelatorio = $(
+                    "#relatorio-combate-content"
+                ).scrollTop();
+                $("#batalha-content").html(retorno);
+                $("#relatorio-combate-content").scrollTop(scrollRelatorio);
+
+                checkTurno();
+            }
+        },
+    });
+}
+
+function turnoAdversario() {
+    addSelectorsPersonagem("rgba(0,0,0,0)").click(function () {
+        showHabilidades(this);
+    });
+
+    processaTurnoAdversario();
 }

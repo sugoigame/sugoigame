@@ -2,6 +2,7 @@
     <?php include "CSS/combate.css"; ?>
 </style>
 <script type="text/javascript">
+    <?php include "JS/easystar-0.4.4.min.js"; ?>
     <?php include "JS/combate.js"; ?>
     <?php if ($userDetails->combate_pve)
         include "JS/combate_npc.js"; ?>

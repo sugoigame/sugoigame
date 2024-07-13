@@ -49,22 +49,23 @@ foreach ($personagens_combate as $pers) {
                 : "background: url(Imagens/Batalha/Npc/" . $userDetails->combate_pve["img_npc"] . ".png) no-repeat center bottom;background-size: contain;" ?>
             <div class="fight-zone">
                 <div class="row" style="margin-top: 25px;">
-                <div class="navio navio-npc selecionavel" data-cod="npc" style="<?= $style ?>display: flex; flex-direction: column; padding-top: 10px;">
-                    <div class="progress" style="min-height: 1vw;">
-                        O adversário está mirando na
-                        <?= $userDetails->combate_pve["mira"] + 1 ?>º linha.
-                        <small>Seus tripulantes nesta linha ou nas adjacentes tem mais chances de serem atacados</small>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-danger"
-                            style="width: <?= $userDetails->combate_pve["hp_npc"] / $userDetails->combate_pve["hp_max_npc"] * 100 ?>%;">
-                            <?= $userDetails->combate_pve["nome_npc"] . ":" .
-                                $userDetails->combate_pve["hp_npc"] . "/" . $userDetails->combate_pve["hp_max_npc"] ?>
+                    <div class="navio navio-npc selecionavel" data-cod="npc"
+                        style="<?= $style ?>display: flex; flex-direction: column; padding-top: 10px;">
+                        <div class="progress" style="min-height: 1vw;">
+                            O adversário está mirando na
+                            <?= $userDetails->combate_pve["mira"] + 1 ?>º linha.
+                            <small>Seus tripulantes nesta linha ou nas adjacentes tem mais chances de serem atacados</small>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-danger"
+                                style="width: <?= $userDetails->combate_pve["hp_npc"] / $userDetails->combate_pve["hp_max_npc"] * 100 ?>%;">
+                                <?= $userDetails->combate_pve["nome_npc"] . ":" .
+                                    $userDetails->combate_pve["hp_npc"] . "/" . $userDetails->combate_pve["hp_max_npc"] ?>
+                            </div>
+                        </div>
+                        <div id="npc">
                         </div>
                     </div>
-                    <div id="npc">
-                    </div>
-                </div>
                 </div>
                 <div class="navio navio-player" <?php if (! $userDetails->combate_pve["battle_back"]) : ?>
                         style="background: url(Imagens/Bandeiras/Navios/<?= $userDetails->tripulacao["faccao"]; ?>/<?= $userDetails->tripulacao["skin_tabuleiro_navio"] ?>/batalha.png) no-repeat center"
@@ -79,38 +80,42 @@ foreach ($personagens_combate as $pers) {
         </div>
         <div id="menu_batalha">
             <input type="hidden" id="turno-vez" value="<?= $userDetails->combate_pve["vez"] ?>" />
-            <div>
+            <?php if ($userDetails->combate_pve["vez"] == 1) : ?>
                 <div>
-                    <button id="botao_atacar" onclick="atacar()" class="btn btn-sm btn-danger">
-                        <i class="fa fa-dot-circle-o"></i><br />
-                        Atacar
-                    </button>
+                    <div>
+                        <button id="botao_atacar" onclick="atacar()" class="btn btn-sm btn-danger">
+                            <i class="fa fa-dot-circle-o"></i><br />
+                            Atacar
+                        </button>
+                    </div>
+                    <input type="hidden" id="moves_remain" value="<?= $userDetails->combate_pve["move"] ?>">
+                    <?php if ($userDetails->combate_pve["move"]) : ?>
+                        <button id="botao_mover" data-move="<?= $userDetails->combate_pve["move"] ?>" onclick="mover()"
+                            class="btn btn-sm btn-info">
+                            <i class="fa fa-arrows-alt"></i>
+                            <?= $userDetails->combate_pve["move"] ?><br />
+                            Mover
+                        </button>
+                    <?php endif; ?>
+                    <div>
+                        <button id="botao_passar" onclick="passar_vez()" class="btn btn-sm btn-primary">
+                            <i class="fa fa-step-forward"></i><br />
+                            Passar
+                        </button>
+                    </div>
+                    <div>
+                        <input type="hidden" id="moves_remain" value="<?= $userDetails->combate_bot["move"] ?>">
+                    </div>
+                    <div>
+                        <button id="botao_desistir" onclick="desistir()" class="btn btn-sm btn-primary">
+                            <i class="fa fa-flag"></i><br />
+                            Desistir
+                        </button>
+                    </div>
                 </div>
-                <input type="hidden" id="moves_remain" value="<?= $userDetails->combate_pve["move"] ?>">
-                <?php if ($userDetails->combate_pve["move"]) : ?>
-                    <button id="botao_mover" data-move="<?= $userDetails->combate_pve["move"] ?>" onclick="mover()"
-                        class="btn btn-sm btn-info">
-                        <i class="fa fa-arrows-alt"></i>
-                        <?= $userDetails->combate_pve["move"] ?><br />
-                        Mover
-                    </button>
-                <?php endif; ?>
-                <div>
-                    <button id="botao_passar" onclick="passar_vez()" class="btn btn-sm btn-primary">
-                        <i class="fa fa-step-forward"></i><br />
-                        Passar
-                    </button>
-                </div>
-                <div>
-                    <input type="hidden" id="moves_remain" value="<?= $userDetails->combate_bot["move"] ?>">
-                </div>
-                <div>
-                    <button id="botao_desistir" onclick="desistir()" class="btn btn-sm btn-primary">
-                        <i class="fa fa-flag"></i><br />
-                        Desistir
-                    </button>
-                </div>
-            </div>
+            <?php else : ?>
+                <img src="Imagens/Batalha/Menu/Tempo.png" class="mr2" />
+            <?php endif; ?>
         </div>
         <button id="botao_relatorio" onclick="relatorioCombate()" class="btn btn-sm btn-primary">
             <i class="fa fa-file-text"></i><br />
@@ -127,12 +132,12 @@ foreach ($personagens_combate as $pers) {
         <?php if ($userDetails->conta) : ?>
             <div style="position: absolute; top: 3%; left: 5%; z-index: 100;">
                 <button class="btn btn-primary btn-blocks" id="audio-toggle">
-                <script>
+                    <script>
                         var content = audioEnable
-                        ? '<i class="fa fa-volume-up" aria-hidden="true"></i> Som Ligado'
-                        : '<i class="fa fa-volume-off" aria-hidden="true"></i> Som Desligado';
-                    $("#audio-toggle").html(content);
-                </script>
+                            ? '<i class="fa fa-volume-up" aria-hidden="true"></i> Som Ligado'
+                            : '<i class="fa fa-volume-off" aria-hidden="true"></i> Som Desligado';
+                        $("#audio-toggle").html(content);
+                    </script>
                 </button>
             </div>
         <?php endif; ?>

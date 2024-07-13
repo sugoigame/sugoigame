@@ -101,6 +101,7 @@ if (! $userDetails->conta &&
     <script type="text/javascript" src="JS/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="JS/phaser.min.js"></script>
     <script type="text/javascript" src="JS/jquery.bracket.min.js"></script>
+    <script type="text/javascript" src="JS/jquery.mobile-1.4.5.min.js"></script>
     <script type="text/javascript" src="JS/library.js?ver=1.0.1"></script>
     <script type="text/javascript" src="JS/main.js?ver=1.0.1"></script>
 

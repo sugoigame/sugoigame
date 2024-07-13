@@ -51,6 +51,7 @@ padrao:
   - cod: 1
     nome: Soco
     descricao: Tenta acertar um soco no adversário
+    explicacao: "Causa {DANO} no alvo atingido."
     icone: 1
     animacao: Atingir fisicamente
 haki:
@@ -2320,7 +2321,7 @@ akumas:
         vontade: 36
         requisito_lvl: 50
         recarga: 4
-        explicacao: "Causa {DANO} dividido entre os inimigos atingidos e aplica um debuff de { RES} -30% por 3 turnos. O dano aumenta conforme a vontade da tripulação."
+        explicacao: "Causa {DANO} dividido entre os inimigos atingidos e aplica um debuff de {RES} -30% por 3 turnos. O dano aumenta conforme a vontade da tripulação."
         alcance: 1
         area: 2
         efeitos:

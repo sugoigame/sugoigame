@@ -102,18 +102,19 @@ abstract class Tripulacao
         $this->reduzir_espera_habilidades();
     }
 
-    public function mover($cod_pers, Quadro $destino)
+    public function mover($cod_pers, array $caminho)
     {
         if (! isset($this->personagens[$cod_pers])) {
             $this->combate->protector->exit_error("Personagem invalido");
         }
 
         $pers = $this->personagens[$cod_pers];
-        $custo = $this->combate->tabuleiro->get_custo_movimento($pers, $destino);
+        $custo = $this->combate->tabuleiro->get_custo_movimento($pers, $caminho);
         if (! $this->get_movimentos_restantes($custo - 1)) {
             $this->combate->protector->exit_error("Você não pode se movimentar tanto");
         }
 
+        $destino = $caminho[count($caminho) - 1];
         if (! $pers->get_valor_atributo("IMOBILIZACAO")) {
             $pers->mover($destino);
         }

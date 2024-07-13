@@ -59,7 +59,7 @@ $skill_espera = $connection->run(
                                 <p>Tripulante artodoado</p>
                             <?php elseif ($combate->minhaTripulacao->get_vontade() < $habilidade["vontade"]) : ?>
                                 <p>Vontade insuficiente</p>
-                            <?php elseif (! $espera["espera"] && $combate->minhaTripulacao->get_vontade() >= $habilidade["vontade"]) : ?>
+                            <?php elseif ($combate->vez_de_quem() == $combate->minhaTripulacao->indice && ! $espera["espera"] && $combate->minhaTripulacao->get_vontade() >= $habilidade["vontade"]) : ?>
                                 <button class="btn btn-success" data-dismiss="modal"
                                     onclick="usaSkil('<?= $habilidade["cod"]; ?>','<?= $pers["cod"]; ?>','<?= $habilidade["alcance"]; ?>', '1','<?= $habilidade["area"]; ?>')">
                                     Usar

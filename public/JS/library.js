@@ -452,10 +452,12 @@ function loadPagina(pagina, callback, preventPushState) {
 
                 setAudioEnableButtonAparence();
 
-                if ($("#should_show_world_map").val() == 1) {
-                    window.WorldMap.load();
-                } else {
-                    window.WorldMap.unload();
+                if (window.WorldMap) {
+                    if ($("#should_show_world_map").val() == 1) {
+                        window.WorldMap.load();
+                    } else {
+                        window.WorldMap.unload();
+                    }
                 }
             } else if (paginas_visualizadas == 1) {
                 loadPagina("home");

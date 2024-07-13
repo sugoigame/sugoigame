@@ -25,9 +25,8 @@
     font-size: 5vh;
     width: 8vw;
     background: url(Imagens/Icones/vontade_new.gif);
-    background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: 50% 90%;
 }
 
 .battle-heading .battle-player {
@@ -151,7 +150,7 @@
 .personagem-info {
     position: absolute;
     top: 15vh;
-    max-width: 400px;
+    max-width: 15vw;
     z-index: 100;
     color: black !important;
 }

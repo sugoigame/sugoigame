@@ -114,10 +114,17 @@ class Tabuleiro
     }
 
 
-    public function get_custo_movimento(Personagem $pers, Quadro $destino) : int
+    public function get_custo_movimento(Personagem $pers, array $caminho) : int
     {
         $origem = $pers->get_posicao_tabuleiro();
-        return max(abs($origem["x"] - $destino->x), abs($origem["y"] - $destino->y));
+        foreach ($caminho as $quadro) {
+            if (max(abs($origem["x"] - $quadro->x), abs($origem["y"] - $quadro->y)) > 1) {
+                $this->combate->protector->exit_error("Caminho invalido");
+            }
+            $origem["x"] = $quadro->x;
+            $origem["y"] = $quadro->y;
+        }
+        return count($caminho);
     }
 
 
