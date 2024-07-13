@@ -5,6 +5,8 @@ class TripulacaoJogador extends Tripulacao
 {
     protected function init()
     {
+        $this->controle = new IaControleTripulacao($this->combate, $this);
+
         $estados = get_pers_in_combate($this->estado["id"]);
 
         $this->personagens = [];

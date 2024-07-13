@@ -29,6 +29,7 @@ abstract class Relatorio
     public function registra_ataque(Personagem $atacante, Habilidade $habilidade)
     {
         $this->acao = [
+            "id" => atual_segundo(),
             "tipo" => "ataque",
             "personagem" => [
                 "nome" => $atacante->estado["nome"],
@@ -76,6 +77,7 @@ abstract class Relatorio
     public function perder_vez(Tripulacao $tripulacao)
     {
         $this->acao = [
+            "id" => atual_segundo(),
             "tipo" => "perder_vez",
             "tripulacao" => [
                 "nome" => $tripulacao->estado["tripulacao"],
@@ -86,6 +88,7 @@ abstract class Relatorio
     public function passar_vez(Tripulacao $tripulacao)
     {
         $this->acao = [
+            "id" => atual_segundo(),
             "tipo" => "passe",
             "tripulacao" => [
                 "nome" => $tripulacao->estado["tripulacao"],
@@ -96,6 +99,7 @@ abstract class Relatorio
     public function registra_movimento(Personagem $pers, Quadro $destino)
     {
         $this->acao = [
+            "id" => atual_segundo(),
             "tipo" => "movimento",
             "personagem" => [
                 "nome" => $pers->estado["nome"],

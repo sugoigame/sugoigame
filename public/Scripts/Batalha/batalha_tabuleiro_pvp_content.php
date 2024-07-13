@@ -1,4 +1,5 @@
 <?php
+$combate = Regras\Combate\Combate::build($connection, $userDetails, $protector);
 $my_id = $userDetails->combate_pvp["id_1"] == $userDetails->tripulacao["id"] ? "1" : "2";
 $ini_id = $userDetails->combate_pvp["id_1"] == $userDetails->tripulacao["id"] ? "2" : "1";
 
@@ -91,46 +92,8 @@ $special_effects = get_special_effects($userDetails->combate_pvp["id_1"], $userD
                 ); ?>
             </div>
         </div>
-        <div id="menu_batalha">
-            <div class="tempo-combate mb2">
-                <img src="Imagens/Batalha/Menu/Tempo.png" />
-                <span id="tempo_batalha">
-                    <?= $userDetails->combate_pvp["vez_tempo"] - atual_segundo(); ?>
-                </span>
-            </div>
-            <?php if ($userDetails->combate_pvp["vez"] == $my_id) : ?>
-                <div>
-                    <button id="botao_atacar" onclick="atacar()" class="btn btn-sm btn-danger">
-                        <i class="fa fa-dot-circle-o"></i><br />
-                        Atacar
-                    </button>
-                </div>
-                <input type="hidden" id="moves_remain" value="<?= $userDetails->combate_pvp["move_$my_id"] ?>">
-                <?php if ($userDetails->combate_pvp["move_$my_id"]) : ?>
-                    <button id="botao_mover" data-move="<?= $userDetails->combate_pvp["move_$my_id"] ?> ?>" onclick="mover()"
-                        class="btn btn-sm btn-info">
-                        <i class="fa fa-arrows-alt"></i>
-                        <?= $userDetails->combate_pvp["move_$my_id"] ?><br />
-                        Mover
-                    </button>
-                <?php endif; ?>
-                <div>
-                    <button id="botao_passar" onclick="passar_vez()" class="btn btn-sm btn-primary">
-                        <i class="fa fa-step-forward"></i><br />
-                        Passar
-                    </button>
-                </div>
-                <div>
-                    <input type="hidden" id="moves_remain" value="<?= $userDetails->combate_bot["move"] ?>">
-                </div>
-            <?php endif; ?>
-            <div>
-                <button id="botao_desistir" onclick="desistir()" class="btn btn-sm btn-primary">
-                    <i class="fa fa-flag"></i><br />
-                    Desistir
-                </button>
-            </div>
-        </div>
+
+        <?= \Componentes::render("Combate.Menu", ["combate" => $combate]); ?>
 
         <button id="botao_relatorio" onclick="relatorioCombate()" class="btn btn-sm btn-primary">
             <i class="fa fa-file-text"></i><br />
@@ -216,15 +179,15 @@ $special_effects = get_special_effects($userDetails->combate_pvp["id_1"], $userD
                 "avancado" => $userDetails->combate_pvp["permite_dados_1"] && $userDetails->combate_pvp["permite_dados_2"]
             ]); ?>
         </div>
-            <?php if ($userDetails->conta) : ?>
+        <?php if ($userDetails->conta) : ?>
             <div style="position: absolute; top: 3%; left: 5%; z-index: 100;">
                 <button class="btn btn-primary btn-blocks" id="audio-toggle">
-                <script>
+                    <script>
                         var content = audioEnable
-                        ? '<i class="fa fa-volume-up" aria-hidden="true"></i> Som Ligado'
-                        : '<i class="fa fa-volume-off" aria-hidden="true"></i> Som Desligado';
-                    $("#audio-toggle").html(content);
-                </script>
+                            ? '<i class="fa fa-volume-up" aria-hidden="true"></i> Som Ligado'
+                            : '<i class="fa fa-volume-off" aria-hidden="true"></i> Som Desligado';
+                        $("#audio-toggle").html(content);
+                    </script>
                 </button>
             </div>
         <?php endif; ?>

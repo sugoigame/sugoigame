@@ -56,6 +56,7 @@ class CombateBot extends Combate
 
     public function consome_movimentos(Tripulacao $tripulacao, $custo)
     {
+        $this->estado["move"] -= $custo;
         $this->connection->run("UPDATE tb_combate_bot SET `move` = `move` - $custo WHERE id = ?",
             "i", [$this->estado["id"]]);
     }
@@ -65,17 +66,11 @@ class CombateBot extends Combate
         // nao tem perder vez contra bot
     }
 
-
-    public function turno_bot()
+    /**
+     * @return int|null
+     */
+    public function get_tempo_restante_turno()
     {
-        if ($this->vez_de_quem() != "2") {
-            $this->protector->exit_error("Não é a vez do bot");
-        }
-
-        /** @var TripulacaoBot */
-        $tripulacao_bot = $this->tripulacoes["2"];
-
-        $tripulacao_bot->executa_acao();
+        return null;
     }
-
 }

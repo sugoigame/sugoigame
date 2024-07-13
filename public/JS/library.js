@@ -551,9 +551,11 @@ function loadSubSession(pagina, destination, callback) {
 }
 
 getDisponivel = true;
-function sendGet(locale, callback) {
+function sendGet(locale, callback, showLoading = true) {
     if (getDisponivel) {
-        $("#icon_carregando").fadeIn();
+        if (showLoading) {
+            $("#icon_carregando").fadeIn();
+        }
         getDisponivel = false;
         $.ajax({
             type: "get",

@@ -25,6 +25,7 @@ $(function () {
         });
 
     checkTurno();
+    updateBotaoTurnoAutomatico();
 });
 
 function checkTurno() {
@@ -32,6 +33,7 @@ function checkTurno() {
         toggleTurn($("#botao_atacar").length ? "eu" : "ele");
         if ($("#botao_atacar").length) {
             bindDefaultAction();
+            checkTurnoAutomatico();
         } else {
             turnoAdversario();
         }
@@ -142,7 +144,8 @@ function toggleTurn(vez) {
         const animacao =
             relatorio?.habilidade?.animacao || "Atingir fisicamente";
 
-        if (relatorio?.habilidade) {
+        if (relatorio?.habilidade && window.ultimoRelatorioId != relatorio.id) {
+            window.ultimoRelatorioId = relatorio.id;
             for (let consequencia of relatorio.consequencias) {
                 const target = $(
                     consequencia.quadro.x == "npc"
@@ -156,6 +159,8 @@ function toggleTurn(vez) {
                 if (offset) {
                     offset.top += target.height() / 2 - 20;
                     offset.left += target.width() / 2 - 20;
+                } else {
+                    continue;
                 }
 
                 const animation = new Animation(animacao);
@@ -667,9 +672,71 @@ function batalha() {
 }
 
 function turnoAdversario() {
-    addSelectorsPersonagem("rgba(0,0,0,0)").click(function () {
-        showHabilidades(this);
-    });
+    if ($("#batalha_background").length) {
+        addSelectorsPersonagem("rgba(0,0,0,0)").click(function () {
+            showHabilidades(this);
+        });
 
-    processaTurnoAdversario();
+        timeOuts["turnoAdversario"] = setTimeout(function () {
+            sendGet("Batalha/turno_adversario.php", null, false);
+        }, 500);
+    }
+}
+
+function toggleTurnoAutomatico() {
+    sessionStorage.setItem(
+        "turnoAutomatico",
+        sessionStorage.getItem("turnoAutomatico") == "true" ? "false" : "true"
+    );
+    checkTurnoAutomatico();
+}
+
+function checkTurnoAutomatico() {
+    const turnoAutomaticoAtivo =
+        sessionStorage.getItem("turnoAutomatico") == "true";
+
+    if (turnoAutomaticoAtivo) {
+        setTimeout(() => turnoAutomatico(), 100);
+    }
+    updateBotaoTurnoAutomatico();
+}
+
+function updateBotaoTurnoAutomatico() {
+    if (podeTerTurnoAutomatico()) {
+        const turnoAutomaticoAtivo =
+            sessionStorage.getItem("turnoAutomatico") == "true";
+
+        if (turnoAutomaticoAtivo) {
+            $("#botao_turno_automatico")
+                .removeClass("btn-primary")
+                .addClass("btn-warning");
+            $("#botao_turno_automatico i")
+                .removeClass("fa-pause")
+                .addClass("fa-refresh");
+        } else {
+            $("#botao_turno_automatico")
+                .removeClass("btn-warning")
+                .addClass("btn-primary");
+            $("#botao_turno_automatico i")
+                .removeClass("fa-refresh")
+                .addClass("fa-pause");
+        }
+    } else {
+        $("#botao_turno_automatico").addClass("hidden");
+    }
+}
+
+function turnoAutomatico() {
+    if (
+        podeTerTurnoAutomatico() &&
+        $("#batalha_background").length &&
+        $("#botao_atacar").length &&
+        sessionStorage.getItem("turnoAutomatico") == "true"
+    ) {
+        timeOuts["turnoAutomatico"] = sendGet(
+            "Batalha/turno_automatico.php",
+            null,
+            false
+        );
+    }
 }

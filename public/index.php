@@ -102,8 +102,9 @@ if (! $userDetails->conta &&
     <script type="text/javascript" src="JS/phaser.min.js"></script>
     <script type="text/javascript" src="JS/jquery.bracket.min.js"></script>
     <script type="text/javascript" src="JS/jquery.mobile-1.4.5.min.js"></script>
-    <script type="text/javascript" src="JS/library.js?ver=1.0.2"></script>
-    <script type="text/javascript" src="JS/main.js?ver=1.0.2"></script>
+    <script type="text/javascript" src="JS/easystar-0.4.4.min.js"></script>
+    <script type="text/javascript" src="JS/library.js?ver=1.0.3"></script>
+    <script type="text/javascript" src="JS/main.js?ver=1.0.3"></script>
 
     <script src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.9"></script>
 </body>

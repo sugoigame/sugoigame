@@ -25,6 +25,6 @@ function getUrlTabuleiro() {
     return "Scripts/Batalha/batalha_tabuleiro_pvp.php";
 }
 
-function processaTurnoAdversario() {
-    // nothing
+function podeTerTurnoAutomatico() {
+    return false;
 }

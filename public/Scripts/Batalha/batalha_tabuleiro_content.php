@@ -1,4 +1,5 @@
 <?php
+$combate = Regras\Combate\Combate::build($connection, $userDetails, $protector);
 $personagens_combate = get_pers_in_combate($userDetails->tripulacao["id"]);
 
 $perdeu = true;
@@ -78,45 +79,7 @@ foreach ($personagens_combate as $pers) {
                 <?php render_personagens_info($personagens_combate, get_buffs_combate($userDetails->tripulacao["id"])) ?>
             </div>
         </div>
-        <div id="menu_batalha">
-            <input type="hidden" id="turno-vez" value="<?= $userDetails->combate_pve["vez"] ?>" />
-            <?php if ($userDetails->combate_pve["vez"] == 1) : ?>
-                <div>
-                    <div>
-                        <button id="botao_atacar" onclick="atacar()" class="btn btn-sm btn-danger">
-                            <i class="fa fa-dot-circle-o"></i><br />
-                            Atacar
-                        </button>
-                    </div>
-                    <input type="hidden" id="moves_remain" value="<?= $userDetails->combate_pve["move"] ?>">
-                    <?php if ($userDetails->combate_pve["move"]) : ?>
-                        <button id="botao_mover" data-move="<?= $userDetails->combate_pve["move"] ?>" onclick="mover()"
-                            class="btn btn-sm btn-info">
-                            <i class="fa fa-arrows-alt"></i>
-                            <?= $userDetails->combate_pve["move"] ?><br />
-                            Mover
-                        </button>
-                    <?php endif; ?>
-                    <div>
-                        <button id="botao_passar" onclick="passar_vez()" class="btn btn-sm btn-primary">
-                            <i class="fa fa-step-forward"></i><br />
-                            Passar
-                        </button>
-                    </div>
-                    <div>
-                        <input type="hidden" id="moves_remain" value="<?= $userDetails->combate_bot["move"] ?>">
-                    </div>
-                    <div>
-                        <button id="botao_desistir" onclick="desistir()" class="btn btn-sm btn-primary">
-                            <i class="fa fa-flag"></i><br />
-                            Desistir
-                        </button>
-                    </div>
-                </div>
-            <?php else : ?>
-                <img src="Imagens/Batalha/Menu/Tempo.png" class="mr2" />
-            <?php endif; ?>
-        </div>
+        <?= \Componentes::render("Combate.Menu", ["combate" => $combate]); ?>
         <button id="botao_relatorio" onclick="relatorioCombate()" class="btn btn-sm btn-primary">
             <i class="fa fa-file-text"></i><br />
             Relatório

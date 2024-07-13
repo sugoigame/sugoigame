@@ -25,6 +25,12 @@ abstract class Tripulacao
     public $indice;
 
     /**
+     * @var IaControle
+     */
+    public $controle;
+
+
+    /**
      * @param Combate
      */
     public function __construct($combate, $estado, $indice)
@@ -67,6 +73,15 @@ abstract class Tripulacao
     abstract public function salvar();
 
     abstract public function reduzir_espera_habilidades();
+
+    public function turno_automatico()
+    {
+        if (! $this->controle) {
+            $this->combate->protector->exit_error("Essa tripulação não pode jogar automaticamente.");
+        }
+
+        return $this->controle->executa_acao();
+    }
 
     /**
      * @param int

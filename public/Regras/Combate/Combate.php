@@ -114,6 +114,10 @@ abstract class Combate
      */
     abstract public function vale_quanta_recompensa();
 
+    /**
+     * @return int|null
+     */
+    abstract public function get_tempo_restante_turno();
 
     abstract public function get_vontade(Tripulacao $tripulacao);
 
@@ -124,6 +128,12 @@ abstract class Combate
     abstract public function consome_movimentos(Tripulacao $tripulacao, $custo);
 
     abstract public function aplica_penalidade_perder_vez(Tripulacao $tripulacao);
+
+    public function turno_automatico()
+    {
+        $tripulacao = $this->tripulacoes[$this->vez_de_quem()];
+        $tripulacao->turno_automatico();
+    }
 
     /**
      * @param int

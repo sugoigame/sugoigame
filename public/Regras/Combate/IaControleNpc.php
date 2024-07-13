@@ -1,7 +1,7 @@
 <?php
 namespace Regras\Combate;
 
-class IaControleNpc
+class IaControleNpc extends IaControle
 {
 
     /**

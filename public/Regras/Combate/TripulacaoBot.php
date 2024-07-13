@@ -4,11 +4,6 @@ namespace Regras\Combate;
 class TripulacaoBot extends Tripulacao
 {
 
-    /**
-     * @var IaControleTripulacao
-     */
-    public $controle;
-
     protected function init()
     {
         $this->controle = new IaControleTripulacao($this->combate, $this);
@@ -45,11 +40,5 @@ class TripulacaoBot extends Tripulacao
     public function reduzir_espera_habilidades()
     {
         // habilidades de bot não tem recarga
-    }
-
-    public function executa_acao()
-    {
-        $moves = $this->combate->estado["move"];
-        return $this->controle->executa_acao($moves);
     }
 }

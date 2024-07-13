@@ -56,6 +56,7 @@ class CombateNpc extends Combate
 
     public function consome_movimentos(Tripulacao $tripulacao, $custo)
     {
+        $this->estado["move"] -= $custo;
         $this->connection->run("UPDATE tb_combate_npc SET `move` = `move` - $custo WHERE id = ?",
             "i", [$this->estado["id"]]);
     }
@@ -65,15 +66,11 @@ class CombateNpc extends Combate
         // nao tem perder vez contra npc
     }
 
-    public function turno_npc()
+    /**
+     * @return int|null
+     */
+    public function get_tempo_restante_turno()
     {
-        if ($this->vez_de_quem() != "npc") {
-            $this->protector->exit_error("Não é a vez do npc");
-        }
-
-        /** @var TripulacaoNpc */
-        $tripulacao = $this->tripulacoes["npc"];
-
-        $tripulacao->executa_acao();
+        return null;
     }
 }

@@ -21,9 +21,17 @@ class CombateJogador extends Combate
         return $this->userDetails->combate_pvp["vez"];
     }
 
+    /**
+     * @return int|null
+     */
+    public function get_tempo_restante_turno()
+    {
+        return $this->userDetails->combate_pvp["vez_tempo"] - atual_segundo();
+    }
+
     public function perdeu_vez()
     {
-        return $this->userDetails->combate_pvp["vez_tempo"] < atual_segundo();
+        return $this->get_tempo_restante_turno() < 0;
     }
 
     public function muda_vez()
@@ -67,6 +75,7 @@ class CombateJogador extends Combate
     public function consome_movimentos(Tripulacao $tripulacao, $custo)
     {
         $coluna = "move_" . $tripulacao->indice;
+        $this->estado[$coluna] -= $custo;
         $this->connection->run("UPDATE tb_combate SET $coluna = $coluna - $custo WHERE combate = ?",
             "i", [$this->estado["combate"]]);
     }

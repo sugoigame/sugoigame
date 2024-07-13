@@ -3,11 +3,6 @@ namespace Regras\Combate;
 
 class TripulacaoNpc extends Tripulacao
 {
-    /**
-     * @var IaControleNpc
-     */
-    public $controle;
-
     protected function init()
     {
         $this->controle = new IaControleNpc($this->combate, $this);
@@ -83,9 +78,5 @@ class TripulacaoNpc extends Tripulacao
             $this->combate->connection->run("UPDATE tb_boss SET hp = ? WHERE id = ?",
                 "ii", [$this->personagens["npc"]->estado["hp"], $this->estado["boss_id"]]);
         }
-    }
-    public function executa_acao()
-    {
-        return $this->controle->executa_acao();
     }
 }
