@@ -179,7 +179,7 @@ class IaControleTripulacao extends IaControle
         foreach ($this->tripulacao->personagens as $pers) {
             for ($x = $pers->estado["quadro_x"] - $moves; $x <= $pers->estado["quadro_x"] + $moves; $x++) {
                 for ($y = $pers->estado["quadro_y"] - $moves; $y <= $pers->estado["quadro_y"] + $moves; $y++) {
-                    if ($x == 0) {
+                    if ($x < 0) {
                         $pers_in_coord = $this->get_pers_in_cod("npc", "npc");
                         if ($pers_in_coord) {
                             $move_x = $pers->estado["quadro_x"] - 1;
