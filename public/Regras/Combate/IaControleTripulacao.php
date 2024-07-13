@@ -270,7 +270,7 @@ class IaControleTripulacao extends IaControle
 
     public function atacar($pers, $alvo, $habilidade)
     {
-        if ($alvo->estado["quadro_x"] == 'npc') {
+        if ($alvo->estado["quadro_x"] === 'npc') {
             $this->combate->atacar($pers->estado["cod_pers"], $habilidade->estado["cod"], "npc_npc");
             return;
         }
