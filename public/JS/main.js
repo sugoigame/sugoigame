@@ -207,6 +207,7 @@ function appendLinks() {
         } else if (method.toLowerCase() == "post") {
             sendForm(action, values);
         }
+        return false;
     });
 
     $(document).on("click", "#audio-toggle", function (e) {
