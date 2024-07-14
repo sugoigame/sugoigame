@@ -107,7 +107,7 @@
                                 @if (count($animacoes))
                                     <form class="ajax_form"
                                         method="post"
-                                        action="Personagem/mudar_animacao_skill"
+                                        action="Scripts/Personagem/mudar_animacao_skill"
                                         onsubmit="$('#modal-edit-skill-{{ $modal_id }}').modal('hide');"
                                         data-question="Você consumirá uma unidade da animação para aplica-la a essa habilidade. Deseja continuar?">
                                         <input type="hidden"
