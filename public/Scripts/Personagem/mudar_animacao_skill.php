@@ -3,15 +3,11 @@ require "../../Includes/conectdb.php";
 
 $protector->need_tripulacao();
 
-$pers = $protector->post_number_or_exit("pers");
+$pers = $protector->post_tripulante_or_exit("pers");
 $effect = $protector->post_value_or_exit("effect");
 $cod_skil = $protector->post_number_or_exit("cod_skil");
 
-if (! $userDetails->get_pers_by_cod($pers)) {
-    $protector->exit_error("Personagem Invalido");
-}
-
-$habilidade = \Regras\Habilidades::get_habilidade_by_cod($cod_skill);
+$habilidade = \Regras\Habilidades::get_habilidade_by_cod($cod_skil);
 
 if (! $habilidade) {
     $protector->exit_error("Habilidade inválida");
@@ -27,15 +23,15 @@ if (! $animacao->count()) {
 $n_quant = $animacao->fetch_array()["quant"] - 1;
 
 $skill = $connection->run("SELECT * FROM tb_personagens_skil WHERE cod_pers = ? AND cod_skil = ?",
-    "ii", array($cod_pers, $cod_skill));
+    "ii", array($pers["cod"], $cod_skil));
 
 if ($skill->count()) {
     $connection->run("UPDATE tb_personagens_skil SET animacao = ? WHERE cod_pers = ? AND cod_skil = ?",
-        "sii", array($effect, $pers, $cod_skil));
+        "sii", array($effect, $pers["cod"], $cod_skil));
 } else {
     $connection->run(
         "INSERT INTO tb_personagens_skil SET nome = ?, descricao = ?, icone = ?, editado = 1, cod_pers = ?, cod_skil = ?, animacao = ?",
-        "ssiiis", array($habilidade["nome"], $habilidade["descricao"], $habilidade["icone"], $cod_pers, $cod_skill, $effect));
+        "ssiiis", array($habilidade["nome"], $habilidade["descricao"], $habilidade["icone"], $pers["cod"], $cod_skil, $effect));
 }
 
 if ($n_quant) {
