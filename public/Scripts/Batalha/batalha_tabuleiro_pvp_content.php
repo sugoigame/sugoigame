@@ -179,17 +179,5 @@ $special_effects = get_special_effects($userDetails->combate_pvp["id_1"], $userD
                 "avancado" => $userDetails->combate_pvp["permite_dados_1"] && $userDetails->combate_pvp["permite_dados_2"]
             ]); ?>
         </div>
-        <?php if ($userDetails->conta) : ?>
-            <div style="position: absolute; top: 3%; left: 5%; z-index: 100;">
-                <button class="btn btn-primary btn-blocks" id="audio-toggle">
-                    <script>
-                        var content = audioEnable
-                            ? '<i class="fa fa-volume-up" aria-hidden="true"></i> Som Ligado'
-                            : '<i class="fa fa-volume-off" aria-hidden="true"></i> Som Desligado';
-                        $("#audio-toggle").html(content);
-                    </script>
-                </button>
-            </div>
-        <?php endif; ?>
     <?php endif; ?>
 </div>

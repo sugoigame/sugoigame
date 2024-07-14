@@ -330,18 +330,5 @@ FROM tb_forum_categoria c ",
             </div>
         <?php endif; ?>
     </div>
-    
-</div>
 
-<?php if ($userDetails->conta) : ?>
-    <div id="audio-position">
-        <button class="btn btn-primary btn-blocks" id="audio-toggle">
-        <script>
-                var content = audioEnable
-                ? '<i class="fa fa-volume-up" aria-hidden="true"></i> Som Ligado'
-                : '<i class="fa fa-volume-off" aria-hidden="true"></i> Som Desligado';
-            $("#audio-toggle").html(content);
-        </script>
-        </button>
-    </div>
-<?php endif; ?>
+</div>

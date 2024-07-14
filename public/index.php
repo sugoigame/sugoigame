@@ -34,13 +34,7 @@ if (! $userDetails->conta &&
     <link rel="stylesheet" type="text/css" href="CSS/theme.css?ver=1.0.4" />
     <link rel="stylesheet" type="text/css" href="CSS/bootstrap-select.min.css" />
     <link rel="stylesheet" type="text/css" href="CSS/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="CSS/jquery.bracket.min.css" />
-    <link rel="stylesheet" type="text/css" href="CSS/estrutura.css?ver=2.0.16" />
-
-    <?php if ($_SERVER['HTTP_HOST'] == 'sugoigame.com.br') { ?>
-        <script data-ad-client="ca-pub-6665062829379662" async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <?php } ?>
+    <link rel="stylesheet" type="text/css" href="CSS/estrutura.css?ver=2.0.17" />
 </head>
 
 <body>
@@ -63,6 +57,13 @@ if (! $userDetails->conta &&
     <button id="fullscreen" title="Tela cheia" data-toggle="tooltip" data-placement="top" data-trigger="hover">
         <i class="fa fa-arrows-alt"></i>
     </button>
+
+    <?php if ($userDetails->conta) : ?>
+        <div id="audio-position">
+            <button class="btn btn-primary btn-blocks" id="audio-toggle">
+            </button>
+        </div>
+    <?php endif; ?>
 
     <!-- Modais globais que precisam permanecer abertas mesmo caso haja mudança de sessao.
         Como a mudanca de sessao desencadeia uma atualizacao do html da pagina, essas
@@ -100,13 +101,10 @@ if (! $userDetails->conta &&
     <script type="text/javascript" src="JS/reconnecting-websocket.min.js"></script>
     <script type="text/javascript" src="JS/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="JS/phaser.min.js"></script>
-    <script type="text/javascript" src="JS/jquery.bracket.min.js"></script>
     <script type="text/javascript" src="JS/jquery.mobile-1.4.5.min.js"></script>
     <script type="text/javascript" src="JS/easystar-0.4.4.min.js"></script>
-    <script type="text/javascript" src="JS/library.js?ver=1.0.3"></script>
-    <script type="text/javascript" src="JS/main.js?ver=1.0.3"></script>
-
-    <script src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.9"></script>
+    <script type="text/javascript" src="JS/library.js?ver=1.0.4"></script>
+    <script type="text/javascript" src="JS/main.js?ver=1.0.4"></script>
 </body>
 
 </html>

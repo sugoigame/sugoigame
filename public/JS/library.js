@@ -450,8 +450,6 @@ function loadPagina(pagina, callback, preventPushState) {
 
                 background(parseInt($("#ilha_atual").val(), 10));
 
-                setAudioEnableButtonAparence();
-
                 if (window.WorldMap) {
                     if ($("#should_show_world_map").val() == 1) {
                         window.WorldMap.load();
@@ -712,19 +710,22 @@ function loadingOut() {
     loading = false;
 }
 
-var audioEnable = true;
+window.audioEnable = true;
 
 function loadAudioConfig() {
     if (window.localStorage) {
-        audioEnable = JSON.parse(window.localStorage.getItem("audioEnable"));
-        if (audioEnable === null) {
-            audioEnable = true;
+        window.audioEnable = JSON.parse(
+            window.localStorage.getItem("audioEnable")
+        );
+        if (window.audioEnable === null) {
+            window.audioEnable = true;
         }
     }
+    setAudioEnableButtonAparence();
 }
 
 function setAudioEnable(value) {
-    audioEnable = value;
+    window.audioEnable = value;
     if (window.localStorage) {
         window.localStorage.setItem("audioEnable", value);
     }
@@ -735,7 +736,7 @@ function toggleAudioEnable() {
 }
 
 function playAudio(audio, element) {
-    if (!audioEnable) {
+    if (!window.audioEnable) {
         return;
     }
     if (element) {
@@ -754,9 +755,9 @@ function pauseAudio(elementId) {
 }
 
 function setAudioEnableButtonAparence() {
-    var content = audioEnable
-        ? '<i class="fa fa-volume-up" aria-hidden="true"></i> Som Ligado'
-        : '<i class="fa fa-volume-off" aria-hidden="true"></i> Som Desligado';
+    var content = window.audioEnable
+        ? '<i class="fa fa-volume-up" aria-hidden="true"></i>'
+        : '<i class="fa fa-volume-off" aria-hidden="true"></i>';
     $("#audio-toggle").html(content);
 }
 

@@ -28,7 +28,7 @@ function has_mapa()
     <nav class="header-navbar header-navbar-left">
         <ul class="nav navbar-nav">
             <li id="div_icon_coordenada" data-toggle="tooltip" title="Localização atual" data-placement="bottom">
-                <a>
+                <a class="ml4">
                     <img src="Imagens/Icones/Pose.png" height="21px" />
                     <span id="location">
                         <?= get_current_location(); ?>
