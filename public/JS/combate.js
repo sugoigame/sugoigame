@@ -165,6 +165,31 @@ function toggleTurn(vez) {
 
                 const animation = new Animation(animacao);
 
+                const nomeSkill = $("<DIV>")
+                    .css("position", "absolute")
+                    .css("z-index", 1000000)
+                    .css("background", "white")
+                    .css("padding", "4px 8px")
+                    .css("border", "1px solid #000")
+                    .css("color", "#000")
+                    .css("border-radius", "5px")
+                    .html(relatorio.habilidade.nome);
+
+                $("body").append(nomeSkill);
+
+                nomeSkill
+                    .css("top", origem.offset().top - 10)
+                    .css("left", origemOffset.left - nomeSkill.width() / 2 + 10)
+                    .animate(
+                        {
+                            top: origem.offset().top - 25,
+                        },
+                        2000,
+                        function () {
+                            $(this).remove();
+                        }
+                    );
+
                 $("body").append(
                     $("<DIV>")
                         .css("position", "absolute")
