@@ -115,7 +115,7 @@
                                             value="{{ $pers['cod'] }}" />
                                         <input type="hidden"
                                             name="cod_skil"
-                                            value="{{ $habilidade['cod_skil'] }}" />
+                                            value="{{ $habilidade['cod'] }}" />
                                         <div class="form-group">
                                             <select class="form-control"
                                                 name="effect"
