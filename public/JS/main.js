@@ -12,6 +12,8 @@ $(function () {
         }
     }
 
+    document.addEventListener("contextmenu", (event) => event.preventDefault());
+
     var queryParams = getQueryParams();
     if (queryParams["erro"] === "1") {
         bootbox.alert({
