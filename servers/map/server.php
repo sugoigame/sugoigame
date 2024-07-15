@@ -32,9 +32,6 @@ $connection->run("SET character_set_connection=utf8");
 $connection->run("SET character_set_client=utf8");
 $connection->run("SET character_set_results=utf8");
 $connection->run("SET CHARACTER SET utf8");
-$connection->run("set wait_timeout=3;");
-$connection->run("set interactive_timeout=3;");
-var_dump($connection->run("SHOW VARIABLES LIKE 'wait_%'")->fetch_all_array());
 
 $navigation = new Navigation($connection);
 
