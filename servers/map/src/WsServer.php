@@ -81,6 +81,11 @@ class WsServer implements MessageComponentInterface
     public function onError(ConnectionInterface $conn, \Exception $e)
     {
         echo "An error has occurred: {$e->getMessage()}\n";
+        echo $e->getTraceAsString();
         $conn->close();
+
+        if (strpos($e->getMessage(), "MySQL server has gone away") !== false) {
+            exit(1);
+        }
     }
 }
