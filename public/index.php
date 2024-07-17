@@ -34,7 +34,7 @@ if (! $userDetails->conta &&
     <link rel="stylesheet" type="text/css" href="CSS/theme.css?ver=1.0.4" />
     <link rel="stylesheet" type="text/css" href="CSS/bootstrap-select.min.css" />
     <link rel="stylesheet" type="text/css" href="CSS/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="CSS/estrutura.css?ver=2.0.17" />
+    <link rel="stylesheet" type="text/css" href="CSS/estrutura.css?ver=2.0.18" />
 </head>
 
 <body>
