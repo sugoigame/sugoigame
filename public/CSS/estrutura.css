@@ -1678,9 +1678,6 @@ input.input-warning[type="range"]:focus::-ms-fill-upper {
         border-radius: 5px;
     }
 
-    #header-info {
-    }
-
     .panel-status {
         z-index: 100;
     }
