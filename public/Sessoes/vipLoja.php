@@ -3,17 +3,18 @@
     <?php global $userDetails; ?>
     <li class="col-xs-12 col-md-4 panel panel-default" style="margin: 0.1em 0.1em;">
         <style>
-                @media (min-width: 992px) {
-                    #colunaloja {
-                        display: flex;
-                        flex-direction: column;
-                    }
-                    .col-md-4 {
-                        max-width: 24vw;
-                    }
+            @media (min-width: 992px) {
+                #colunaloja {
+                    display: flex;
+                    flex-direction: column;
                 }
+
+                .col-md-4 {
+                    max-width: 24vw;
+                }
+            }
         </style>
-        <div class="row" style="justify-content: center; align-items: center;"  id="colunaloja">
+        <div class="row" style="justify-content: center; align-items: center;" id="colunaloja">
             <div class="col-xs-2 col-md-2">
                 <img src="Imagens/Vip/<?= $img ?>" height="60px" />
             </div>
@@ -91,7 +92,7 @@
         <?php render_vantagem(
             "luneta.png",
             "Luneta",
-            "Aumenta o campo de visão no oceano em um quadro em cada direção.",
+            "Aumenta o campo de visão no oceano.",
             $userDetails->vip["luneta_duracao"],
             PRECO_GOLD_LUNETA,
             "Vip/luneta_comprar.php"
@@ -106,19 +107,10 @@
             "Vip/formacao_comprar.php?tipo=gold"
         ); ?>
 
-        <?php render_vantagem(
-            "coup-de-burst.gif",
-            "Pacote de Coup De Burst diário",
-            "Reduz em 10 segundos o tempo necessário para navegar 1 quadro da rota traçada. Pode ser usado 5 vezes por dia. Não pode ser usado se você estiver invisível. Não pode ser usado duas vezes no mesmo quadro.",
-            $userDetails->vip["coup_de_burst_duracao"],
-            PRECO_GOLD_COUP_DE_BURST,
-            "Vip/coup_de_burst_comprar.php?tipo=gold"
-        ); ?>
-
         <li class="col-xs-12 col-md-4 panel panel-default">
             <div class="row" style="display: flex; justify-content: center; align-items: center;" id="colunaloja">
                 <div class="col-xs-2 col-md-2">
-                    <img src="Imagens/Vip/renomear.png"  />
+                    <img src="Imagens/Vip/renomear.png" />
                 </div>
                 <div class="col-xs-7 col-md-7">
                     <h4>Renomear tripulação</h4>

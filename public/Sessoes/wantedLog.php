@@ -1,9 +1,11 @@
-<?php function render_ganhos($combate) { ?>
+<?php function render_ganhos($combate)
+{ ?>
     <ul>
         <li>Aumento na recompensa: <?= mascara_berries(calc_recompensa($combate["fa_ganha"])); ?></li>
     </ul>
 <?php } ?>
-<?php function render_perdas($combate) { ?>
+<?php function render_perdas($combate)
+{ ?>
     <ul>
         <li>Redução na recompensa: <?= mascara_berries(calc_recompensa($combate["fa_perdida"])); ?></li>
     </ul>
@@ -17,11 +19,15 @@
     .personagem-aliado {
         border: 3px solid blue;
     }
+
+    .personagem-inimigo {
+        border: 3px solid red;
+    }
 </style>
 
 <div class="panel-body">
     <?php $result = $connection->run(
-        "SELECT 
+        "SELECT
           log.data AS horario,
           log.vencedor_cod AS vencedor_cod,
           log.perdedor_cod AS perdedor_cod,
@@ -43,7 +49,7 @@
         "ii", array($userDetails->tripulacao["id"], $userDetails->tripulacao["id"])
     ); ?>
     <ul class="list-group">
-        <?php if (!$result->count()): ?>
+        <?php if (! $result->count()) : ?>
             <p>Você ainda não participou de nenhum combate</p>
         <?php endif; ?>
         <?php while ($combate = $result->fetch_array()) : ?>
@@ -51,26 +57,25 @@
                 <p><?= date("d/m/Y - H:i", strtotime($combate["horario"])) ?></p>
                 <div class="row">
                     <div class="col-md-5 text-right">
-                        <?= $combate["vencedor_nome"] ?><br/>
-                        <span class='text-warning'>Vencedor</span>
+                        <?= $combate["vencedor_nome"] ?><br />
                     </div>
                     <div class="col-md-2">
                     </div>
                     <div class="col-md-5 text-left">
-                        <?= $combate["perdedor_nome"] ?><br/>
+                        <?= $combate["perdedor_nome"] ?><br />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-5 text-right">
-                        <img <?= $combate["vencedor_id"] == $userDetails->tripulacao["id"] ? 'class="personagem-aliado"' : '' ?>
-                                src="Imagens/Personagens/Icons/<?= get_img(array("img" => $combate["vencedor_img"], "skin_r" => $combate["vencedor_skin_r"]), "r") ?>.jpg">
+                        <img class="<?= $combate["vencedor_id"] == $userDetails->tripulacao["id"] ? 'personagem-aliado' : 'personagem-inimigo' ?>"
+                            src="Imagens/Personagens/Icons/<?= get_img(array("img" => $combate["vencedor_img"], "skin_r" => $combate["vencedor_skin_r"]), "r") ?>.jpg">
                     </div>
                     <div class="col-md-2">
                         <img src="Imagens/Batalha/vs.png">
                     </div>
                     <div class="col-md-5 text-left">
-                        <img <?= $combate["vencedor_id"] == $userDetails->tripulacao["id"] ? 'class="personagem-aliado"' : '' ?>
-                                src="Imagens/Personagens/Icons/<?= get_img(array("img" => $combate["perdedor_img"], "skin_r" => $combate["perdedor_skin_r"]), "r") ?>.jpg">
+                        <img class="<?= $combate["perdedor_id"] == $userDetails->tripulacao["id"] ? 'personagem-aliado' : 'personagem-inimigo' ?>"
+                            src="Imagens/Personagens/Icons/<?= get_img(array("img" => $combate["perdedor_img"], "skin_r" => $combate["perdedor_skin_r"]), "r") ?>.jpg">
                     </div>
                 </div>
                 <div class="row text-left">

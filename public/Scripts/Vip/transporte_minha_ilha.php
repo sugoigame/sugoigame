@@ -4,8 +4,6 @@ require "../../Includes/conectdb.php";
 include "../../Includes/verifica_login.php";
 
 if (! $conect) {
-
-
     echo ("#Você precisa estar logado.");
     exit();
 }

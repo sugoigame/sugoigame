@@ -96,11 +96,13 @@ class Recompensa
         $bonus = $pers->tripulacao->get_efeito("aumento_ganho_fa") * $quantidade;
         $quantidade += $bonus;
 
-        $pers->combate->connection->run(
-            "INSERT INTO tb_wanted_log (vencedor_cod, perdedor_cod, fa_ganha, fa_perdida, vencedor_lvl, perdedor_lvl)
+        if ($quantidade > 0) {
+            $pers->combate->connection->run(
+                "INSERT INTO tb_wanted_log (vencedor_cod, perdedor_cod, fa_ganha, fa_perdida, vencedor_lvl, perdedor_lvl)
 							 VALUES (?, ?, ?, ?, ?, ?)",
-            "iiiiii", array($pers->estado["cod"], $outro->estado["cod"], $quantidade, 0, $pers->estado["lvl"], $outro->estado["lvl"])
-        );
+                "iiiiii", array($pers->estado["cod"], $outro->estado["cod"], $quantidade, 0, $pers->estado["lvl"], $outro->estado["lvl"])
+            );
+        }
 
         $pers->estado["fa_ganha"] += $quantidade;
         $pers->estado["fama_ameaca"] += $quantidade;
