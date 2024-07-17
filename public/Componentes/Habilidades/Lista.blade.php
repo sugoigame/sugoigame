@@ -33,7 +33,7 @@
             @endphp
             <div class="d-inline-block mx2 mb2">
                 <div>
-                    @component('Habilidades.Icone', ['habilidade' => $habilidade, 'vontade' => $habilidade['vontade']])
+                    @component('Habilidades.Icone', ['habilidade' => $habilidade])
                     @endcomponent
                 </div>
                 @if ($habilidade['requisito_lvl'] <= $pers[$lvl_field])

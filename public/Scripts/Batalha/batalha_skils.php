@@ -44,16 +44,17 @@ $skill_espera = $connection->run(
                 ];
             ?>
             <?php $espera = array_find($skill_espera, $filtro) ?: []; ?>
+            <?php $espera = isset($espera["espera"]) ? $espera["espera"] + 1 : 0; ?>
             <div class="col-md-2 col-sm-2 col-xs-2 p0 h-100">
                 <div class="panel panel-default m0 h-100">
                     <div class="panel-body">
                         <div>
-                            <?= Componentes::render('Habilidades.Icone', ["habilidade" => $habilidade, "vontade" => max($habilidade["vontade"], $combate->minhaTripulacao->get_vontade())]) ?>
+                            <?= Componentes::render('Habilidades.Icone', ["habilidade" => $habilidade, "vontade" => max($habilidade["vontade"], $combate->minhaTripulacao->get_vontade()), "espera" => $espera]) ?>
                         </div>
                         <div>
-                            <?php if (isset($espera["espera"])) : ?>
+                            <?php if ($espera) : ?>
                                 <p>
-                                    <?= $espera["espera"] ?> turno(s)
+                                    <?= $espera ?> turno(s)
                                 </p>
                             <?php elseif ($combate->minhaTripulacao->personagens[$pers["cod"]]->get_valor_atributo("ATORDOAMENTO")) : ?>
                                 <p>Tripulante artodoado</p>

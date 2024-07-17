@@ -60,7 +60,7 @@ $pers = $protector->get_tripulante_or_exit("cod");
                         <div>No próximo nível, o Haoshoku será uma habilidade com os seguintes efeitos:</div>
                     </div>
                     <div>
-                        <?= \Componentes::render("Habilidades.Icone", ["habilidade" => $hdr, "vontade" => $hdr["vontade"]]) ?>
+                        <?= \Componentes::render("Habilidades.Icone", ["habilidade" => $hdr]) ?>
                     </div>
                 </div>
             </div>

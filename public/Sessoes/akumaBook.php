@@ -59,7 +59,7 @@
                         <?php foreach ($habilidades as $habilidade) : ?>
                             <div class="d-inline-block">
                                 <div>
-                                    <?= \Componentes::render("Habilidades.Icone", ["habilidade" => $habilidade, "vontade" => $habilidade["vontade"]]); ?>
+                                    <?= \Componentes::render("Habilidades.Icone", ["habilidade" => $habilidade]); ?>
                                 </div>
                                 <div>
                                     <?= $habilidade["requisito_lvl"] ?>

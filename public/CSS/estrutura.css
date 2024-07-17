@@ -712,8 +712,125 @@ table tr td {
     z-index: 200;
 }
 .habilidade-icone {
+    display: inline-block;
     position: relative;
+    height: 80px;
+    width: 90px;
+    margin-top: 20px;
 }
+
+.habilidade-icone .habilidade-dano {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-image: url("../Imagens/Icones/badges/behavior-bg-demotivation.png");
+    background-size: 100% 100%;
+    width: 54px;
+    height: 25px;
+    padding-top: 1px;
+}
+
+.habilidade-icone .habilidade-vontade {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-image: url("../Imagens/Icones/vontade.png");
+    background-size: 100% 100%;
+    width: 25px;
+    height: 25px;
+    padding-top: 7px;
+    text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000,
+        -1px -1px #000, 1px -1px #000, -1px 1px #000;
+}
+
+.habilidade-icone .habilidade-alcance {
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    color: white;
+    background-image: url("../Imagens/Icones/ranges/bg-blue.png");
+    background-size: 100% 100%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.habilidade-icone .habilidade-area {
+    position: absolute;
+    top: 50px;
+    right: 0px;
+    color: white;
+    background-image: url("../Imagens/Icones/ranges/bg-red.png");
+    background-size: 100% 100%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.habilidade-icone .habilidade-recarga {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: white;
+    background-image: url("../Imagens/Icones/badges/behavior-bg-control.png");
+    background-size: 100% 100%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.habilidade-icone .habilidade-espera {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: white;
+    background-image: url("../Imagens/Icones/badges/damage-circle.png");
+    background-size: 100% 100%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.habilidade-icone .habilidade-quantidade {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    color: white;
+    background-image: url("../Imagens/Icones/badges/heal-circle.png");
+    background-size: 100% 100%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.habilidade-icone .habilidade-etiquetas {
+    position: absolute;
+    top: 0px;
+    right: 4px;
+    width: 15px;
+    height: 50px;
+}
+.habilidade-icone .habilidade-etiquetas .habilidade-etiqueta {
+    margin-bottom: 1px;
+    background-size: 100% 100%;
+    width: 15px;
+    height: 15px;
+    display: block;
+}
+
 .inventario-items {
     text-align: left;
 }
@@ -726,8 +843,7 @@ table tr td {
     position: relative;
 }
 
-.inventario-item .badge,
-.habilidade-icone .badge {
+.inventario-item .badge {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -944,11 +1060,6 @@ body:fullscreen #fullscreen {
 
 .selecao_img img {
     border: 1px solid #000;
-}
-
-.habilidade-icone {
-    display: inline-block;
-    position: relative;
 }
 
 .icone-atributo {
