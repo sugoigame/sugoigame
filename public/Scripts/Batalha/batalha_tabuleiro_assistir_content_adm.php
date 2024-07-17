@@ -32,7 +32,6 @@ foreach ($personagens_combate["2"] as $pers) {
         $tabuleiro[$pers["quadro_x"]][$pers["quadro_y"]] = $pers;
     }
 }
-$special_effects = get_special_effects($combate["id_1"], $combate["id_2"]);
 
 $id_blue = $combate["id_1"];
 ?>

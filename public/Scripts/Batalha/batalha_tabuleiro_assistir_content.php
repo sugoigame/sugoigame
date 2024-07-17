@@ -32,7 +32,6 @@ foreach ($personagens_combate["2"] as $pers) {
         $tabuleiro[$pers["quadro_x"]][$pers["quadro_y"]] = $pers;
     }
 }
-$special_effects = get_special_effects($combate["id_1"], $combate["id_2"]);
 
 $id_blue = $combate["id_1"];
 ?>
@@ -88,20 +87,18 @@ $id_blue = $combate["id_1"];
                 <div class="navio navio-player" <?php if (! $combate["battle_back"]) : ?>
                         style="background: url(Imagens/Bandeiras/Navios/<?= $tripulacao["2"]["faccao"] ?>/<?= $tripulacao["2"]["skin_tabuleiro_navio"] ?>/batalha.png) no-repeat center"
                     <?php endif; ?>>
-                    <?php render_tabuleiro($tabuleiro, 0, 5, $id_blue, NULL, $special_effects); ?>
+                    <?php render_tabuleiro($tabuleiro, 0, 5, $id_blue); ?>
                 </div>
                 <div class="navio navio-player" <?php if (! $combate["battle_back"]) : ?>
                         style="background: url(Imagens/Bandeiras/Navios/<?= $tripulacao["1"]["faccao"] ?>/<?= $tripulacao["1"]["skin_tabuleiro_navio"] ?>/batalha.png) no-repeat center"
                     <?php endif; ?>>
-                    <?php render_tabuleiro($tabuleiro, 5, 10, $id_blue, NULL, $special_effects); ?>
+                    <?php render_tabuleiro($tabuleiro, 5, 10, $id_blue); ?>
                 </div>
             </div>
             <div class="personagens-info">
                 <?php render_personagens_info(
                     array_merge($personagens_combate["1"], $personagens_combate["2"]),
-                    get_buffs_combate($combate["id_1"], $combate["id_2"]),
-                    $id_blue,
-                    $special_effects
+                    $id_blue
                 ); ?>
             </div>
         </div>

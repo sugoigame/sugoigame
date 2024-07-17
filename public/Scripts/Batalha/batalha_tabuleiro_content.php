@@ -76,7 +76,7 @@ foreach ($personagens_combate as $pers) {
             </div>
 
             <div class="personagens-info">
-                <?php render_personagens_info($personagens_combate, get_buffs_combate($userDetails->tripulacao["id"])) ?>
+                <?php render_personagens_info($personagens_combate) ?>
             </div>
         </div>
         <?= \Componentes::render("Combate.Menu", ["combate" => $combate]); ?>

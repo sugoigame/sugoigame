@@ -48,6 +48,29 @@ schema:
       -  # repete do pre ataque
     passivos: # array de efeitos aplicados no comeco da partida que vao turar a partida inteira
       -  # repete do pre ataque
+cores-efeitos:
+  atk: "#9f9f9f"
+  def: "#4ad3ff"
+  agl: "#00bd13"
+  pre: "#ffb127"
+  res: "#1300e6"
+  per: "#a702bf"
+  dex: "#df4949"
+  vit: "#dfd649"
+  atk_porcentagem: "#9f9f9f"
+  def_porcentagem: "#4ad3ff"
+  agl_porcentagem: "#00bd13"
+  pre_porcentagem: "#ffb127"
+  res_porcentagem: "#1300e6"
+  per_porcentagem: "#a702bf"
+  dex_porcentagem: "#df4949"
+  vit_porcentagem: "#dfd649"
+  Sangramento: "#c30000"
+  AtravessaAlvo: "#000000"
+  Queimadura: "#ff8017"
+  IMOBILIZACAO: "#004490"
+  Veneno: "#009024"
+  Cura: "#5cff85"
 
 padrao:
   - cod: 1

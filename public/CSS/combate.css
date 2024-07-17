@@ -147,6 +147,11 @@
     background-color: #ff0000;
 }
 
+.personagem-aliado.efeito-estetico,
+.personagem-inimigo.efeito-estetico {
+    padding: 0.6vh;
+}
+
 .personagem-info {
     position: absolute;
     top: 15vh;

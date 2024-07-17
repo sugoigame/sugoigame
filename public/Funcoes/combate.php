@@ -13,43 +13,6 @@ function has_ilha_envolta_target($content)
     return ! ! $ilha_envolta;
 }
 
-function get_player_in_coord($x, $y)
-{
-    global $connection;
-    return $connection->run(
-        "SELECT
-          contem.increment_id AS increment_id,
-          contem.nps_id AS nps_id,
-          contem.mercador_id AS mercador_id,
-          contem.x AS x,
-          contem.y AS y,
-          usr.id AS id,
-          usr.tripulacao AS tripulacao,
-          usr.bandeira AS bandeira,
-          usr.faccao AS faccao,
-          usr.coord_x_navio AS coord_x_navio,
-          usr.coord_y_navio AS coord_y_navio,
-          usr.skin_navio AS skin_navio,
-          usr.reputacao AS reputacao,
-          usr.adm,
-          pers.nome AS capitao,
-          pers.lvl AS capitao_lvl,
-          IF (pers.sexo = 0, titulo.nome, titulo.nome_f) AS titulo,
-          ally.nome AS alianca,
-          ally.cod_alianca AS cod_alianca,
-          guerra.cod_inimigo AS cod_inimigo,
-          (SELECT max(allpers.lvl) FROM tb_personagens allpers WHERE allpers.id = usr.id  AND allpers.ativo = 1) AS nivel_mais_forte
-        FROM tb_mapa_contem contem
-        LEFT JOIN tb_usuarios usr ON usr.id = contem.id
-        LEFT JOIN tb_personagens pers ON usr.cod_personagem = pers.cod
-        LEFT JOIN tb_titulos titulo ON pers.titulo = titulo.cod_titulo
-        LEFT JOIN tb_alianca_membros allymember ON usr.id = allymember.id
-        LEFT JOIN tb_alianca ally ON ally.cod_alianca = allymember.cod_alianca
-        LEFT JOIN tb_alianca_guerra guerra ON ally.cod_alianca = guerra.cod_alianca
-        WHERE contem.x = ? AND contem.y = ?", "ii", array($x, $y)
-    );
-}
-
 function get_player_data_for_combat_check($alvo_id)
 {
     global $connection;
@@ -152,46 +115,6 @@ function get_tempo_desde_ultimo_ataque($target)
     return $result->fetch_array()["duracao"];
 }
 
-function can_attack_mercador($content)
-{
-    global $connection;
-    global $userDetails;
-
-    if (! $content["mercador_id"]) {
-        return false;
-    }
-
-    $ilha_dono = $connection->run("SELECT mapa.ilha_dono FROM tb_ilha_mercador m INNER JOIN tb_mapa mapa ON m.ilha_origem = mapa.ilha WHERE m.id = ?",
-        "i", $content["mercador_id"])->fetch_array()["ilha_dono"];
-
-    if (! $ilha_dono) {
-        return false;
-    }
-
-    return $userDetails->is_visivel
-        && ! $userDetails->has_ilha_envolta_me
-        && ! has_ilha_envolta_target(array("x" => $content["x"], "y" => $content["y"]))
-        && ao_lado(array("x" => $content["x"], "y" => $content["y"]));
-}
-
-function can_attack_nps($content)
-{
-    return ao_lado(array("x" => $content["x"], "y" => $content["y"]));
-}
-
-
-function can_dispair_cannon($content)
-{
-    global $userDetails;
-
-    return ! same_id($content)
-        && ! both_marine($content)
-        && $userDetails->is_visivel
-        && ! has_ilha_envolta_target($content)
-        && ! $userDetails->has_ilha_envolta_me
-        && ! same_ally($content);
-}
-
 function in_guerra($content)
 {
     global $userDetails;
@@ -222,12 +145,6 @@ function both_marine($content)
 {
     global $userDetails;
     return $userDetails->tripulacao["faccao"] == 0 && $content["faccao"] == 0;
-}
-
-function ao_lado($content)
-{
-    global $userDetails;
-    return sqrt(pow($content["x"] - $userDetails->tripulacao["x"], 2) + pow($content["y"] - $userDetails->tripulacao["y"], 2)) <= 2;
 }
 
 function get_pers_in_combate($id)
@@ -313,78 +230,6 @@ function get_pers_bot_in_combate($id)
     return $personagens;
 }
 
-function get_buffs_combate($id_1, $id_2 = null)
-{
-    global $connection;
-    $buffs_desordenados = $connection->run("SELECT * FROM tb_combate_buff WHERE id = ?", "i", array($id_1))->fetch_all_array();
-    $buffs = [];
-    foreach ($buffs_desordenados as $buff) {
-        $buffs[$buff["cod"]][] = $buff;
-    }
-
-    if ($id_2) {
-        $buffs_desordenados = $connection->run("SELECT * FROM tb_combate_buff WHERE id = ?", "i", array($id_2))->fetch_all_array();
-        foreach ($buffs_desordenados as $buff) {
-            $buffs[$buff["cod"]][] = $buff;
-        }
-    }
-
-    return $buffs;
-}
-
-function get_special_effects($id_1, $id_2 = null)
-{
-    global $connection;
-    $buffs_desordenados = $connection->run("SELECT * FROM tb_combate_special_effect WHERE tripulacao_id = ?", "i", array($id_1))->fetch_all_array();
-    $buffs = [];
-    foreach ($buffs_desordenados as $buff) {
-        $buffs[$buff["personagem_id"]][] = $buff;
-    }
-
-    if ($id_2) {
-        $buffs_desordenados = $connection->run("SELECT * FROM tb_combate_special_effect WHERE tripulacao_id = ?", "i", array($id_2))->fetch_all_array();
-        foreach ($buffs_desordenados as $buff) {
-            $buffs[$buff["personagem_id"]][] = $buff;
-        }
-    }
-
-    return $buffs;
-}
-
-function get_special_effects_bot($id_1, $id)
-{
-    global $connection;
-    $buffs_desordenados = $connection->run("SELECT * FROM tb_combate_special_effect WHERE tripulacao_id = ?", "i", array($id_1))->fetch_all_array();
-    $buffs = [];
-    foreach ($buffs_desordenados as $buff) {
-        $buffs[$buff["personagem_id"]][] = $buff;
-    }
-
-    $buffs_desordenados = $connection->run("SELECT * FROM tb_combate_special_effect WHERE bot_id = ?", "i", array($id))->fetch_all_array();
-    foreach ($buffs_desordenados as $buff) {
-        $buffs['bot_' . $buff["personagem_bot_id"]][] = $buff;
-    }
-
-    return $buffs;
-}
-
-function get_buffs_combate_bot($user_id, $id)
-{
-    global $connection;
-    $buffs_desordenados = $connection->run("SELECT * FROM tb_combate_buff WHERE id = ?", "i", array($user_id))->fetch_all_array();
-    $buffs = [];
-    foreach ($buffs_desordenados as $buff) {
-        $buffs[$buff["cod"]][] = $buff;
-    }
-
-    $buffs_desordenados = $connection->run("SELECT * FROM tb_combate_buff_bot WHERE id = ?", "i", array($id))->fetch_all_array();
-    foreach ($buffs_desordenados as $buff) {
-        $buffs['bot_' . $buff["cod"]][] = $buff;
-    }
-
-    return $buffs;
-}
-
 function nome_tipo_combate($tipo)
 {
     switch ($tipo) {
@@ -406,42 +251,6 @@ function nome_tipo_combate($tipo)
             return "Batalha pelo Poneglyph";
         default:
             return "";
-    }
-}
-
-function calc_redutor_rep_vencedor($rep)
-{
-    return 1 - (pow((0.001 * $rep + 1), (1 / 10)) - 1.0);
-}
-
-function calc_redutor_rep_perdedor($rep)
-{
-    return pow((0.001 * $rep + 1), (1 / 20)) - 1.0;
-}
-
-function calc_rep_base_no_lvl($lvl)
-{
-    return pow($lvl, 2);
-}
-
-function calc_modificador_reputacao($vencedor, $perdedor)
-{
-    if ($vencedor <= 0) {
-        return 1;
-    }
-    $dif = max(0, $perdedor / $vencedor - 0.3);
-    return $dif < 1.5 ? $dif : 1.5;
-}
-
-function calc_modificador_lvl($vencedor_rep, $perdedor_rep)
-{
-    $dif = abs($vencedor_rep - $perdedor_rep);
-    if ($dif <= 0) {
-        return 1;
-    } else if ($dif >= 5) {
-        return 0;
-    } else {
-        return 1 - ($dif * 10) / 100;
     }
 }
 
@@ -541,26 +350,6 @@ function atacar_rdm($rdm_id, $details = null, $conn = null)
     $userDetails->reload_personagems();
 
     insert_personagens_combate($userDetails->tripulacao["id"], $userDetails->personagens, $userDetails->vip, "tatic_p", 0, 4, array(), false, $userDetails, $connection);
-}
-
-function is_tanque($pers)
-{
-    return $pers["def"] > 100;
-}
-
-function fadiga_batalha_ativa($personagens)
-{
-    $count_tanque = 0;
-    $count_ataque = 0;
-    foreach ($personagens as $pers) {
-        if (is_tanque($pers)) {
-            $count_tanque++;
-        } else {
-            $count_ataque++;
-        }
-    }
-
-    return $count_tanque > $count_ataque;
 }
 
 function cria_crianca($id)
@@ -848,12 +637,45 @@ function inicia_combate($alvo, $tipo, $chave = null)
 }
 
 ?>
-<?php function render_tabuleiro($tabuleiro, $x1, $x2, $id_blue = null, $mira = null, $special_effects = array())
+<?php function render_tabuleiro($tabuleiro, $x1, $x2, $id_blue = null, $mira = null)
 { ?>
-    <?php global $userDetails; ?>
-    <?php if ($id_blue === null) {
+    <?php
+    global $userDetails;
+    if ($id_blue === null) {
         $id_blue = $userDetails->tripulacao["id"];
-    } ?>
+    }
+
+    $classes = [];
+    $backgrounds = [];
+    for ($x = $x1; $x < $x2; $x++) {
+        $classes[$x] = [];
+        $backgrounds[$x] = [];
+        for ($y = 0; $y < 20; $y++) {
+            $classes[$x][$y] = [
+                "base" => [$x . "_" . $y],
+                "selecao" => ["selecionavel", "td-selecao"]
+            ];
+            $backgrounds[$x][$y] = [];
+            if (isset($tabuleiro[$x][$y])) {
+                $pers = $tabuleiro[$x][$y];
+                $classes[$x][$y]["base"][] = $pers["tripulacao_id"] == $id_blue ? "personagem-aliado" : "personagem-inimigo";
+                $classes[$x][$y]["selecao"][] = "personagem";
+                $classes[$x][$y]["selecao"][] = $pers["tripulacao_id"] == $id_blue ? "aliado" : "inimigo";
+
+                if (isset($pers["efeitos"]) && count($pers["efeitos"])) {
+                    $classes[$x][$y]["base"][] = "efeito-estetico";
+                    foreach ($pers["efeitos"] as $index => $efeito) {
+                        $classes[$x][$y]["base"][] = "efeito-estetico-" . $efeito["bonus"]["atr"];
+                        $classes[$x][$y]["selecao"][] = "efeito-" . $efeito["bonus"]["atr"];
+                        $backgrounds[$x][$y][] = $efeito["bonus"]["cor"] . " " . (($index / count($pers["efeitos"])) * 100) . "%";
+                        $backgrounds[$x][$y][] = $efeito["bonus"]["cor"] . " " . ((($index + 1) / count($pers["efeitos"])) * 100) . "%";
+                    }
+                }
+            }
+        }
+    }
+    ?>
+
     <table class="table_batalha">
         <?php for ($x = $x1; $x < $x2; $x++) : ?>
             <tr>
@@ -866,7 +688,8 @@ function inicia_combate($alvo, $tipo, $chave = null)
                 </td>
                 <?php for ($y = 0; $y < 20; $y++) : ?>
                     <td id="<?= isset($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>"
-                        class="<?= $x . "_" . $y; ?> <?= isset($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "personagem-aliado" : "personagem-inimigo") : "" ?>">
+                        class="<?= implode(' ', $classes[$x][$y]["base"]); ?>"
+                        style="<?= count($backgrounds[$x][$y]) ? "background: linear-gradient(90deg, " . implode(", ", $backgrounds[$x][$y]) . ");" : ""; ?>">
                         <?php if (isset($tabuleiro[$x][$y])) : ?>
                             <div class="progress progress-red">
                                 <div class="progress-bar progress-bar-success"
@@ -886,25 +709,8 @@ function inicia_combate($alvo, $tipo, $chave = null)
                 <td class="td-mira">
                 </td>
                 <?php for ($y = 0; $y < 20; $y++) : ?>
-                    <?php
-                    $efeitos = [];
-                    if (isset($tabuleiro[$x][$y])) {
-                        $pers = $tabuleiro[$x][$y];
-                        if (isset($pers["efeitos"]) && count($pers["efeitos"])) {
-                            foreach ($pers["efeitos"] as $efeito) {
-                                if (isset($efeito["bonus"]) && isset($efeito["bonus"]["atr"])) {
-                                    $efeitos[] = "efeito-" . $efeito["bonus"]["atr"];
-                                }
-                            }
-                        }
-                    }
-                    $efeitos = implode(" ", $efeitos);
-                    ?>
-
-                    <td id="<?= $x . "_" . $y; ?>"
-                        class="selecionavel td-selecao <?= $efeitos ?> <?= isset($tabuleiro[$x][$y]) ? "personagem" : "" ?> <?= isset($tabuleiro[$x][$y]) ? ($tabuleiro[$x][$y]["tripulacao_id"] == $id_blue ? "aliado" : "inimigo") : "" ?>"
-                        data-x="<?= $x ?>" data-y="<?= $y ?>"
-                        data-cod="<?= isset($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>">
+                    <td id="<?= $x . "_" . $y; ?>" class="<?= implode(' ', $classes[$x][$y]["selecao"]); ?>" data-x="<?= $x ?>"
+                        data-y="<?= $y ?>" data-cod="<?= isset($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>">
                         <img src="Imagens/Icones/selecao.png" />
                     </td>
                 <?php endfor; ?>
@@ -912,7 +718,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
         <?php endfor; ?>
     </table>
 <?php } ?>
-<?php function render_personagens_info($personagens_combate, $buffs, $id_blue = null, $special_effects = array())
+<?php function render_personagens_info($personagens_combate, $id_blue = null)
 { ?>
     <?php global $userDetails; ?>
     <?php if ($id_blue === null) {

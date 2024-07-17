@@ -161,6 +161,9 @@ class Habilidades
         $efeito["quant_alvo"] = $efeito["quant_alvo"] ?: 1;
         $efeito["explicacao"] = $efeito["explicacao"] ?: $habilidade["explicacao"];
 
+        $cores_efeitos = \Utils\Data::load("habilidades")["cores-efeitos"];
+        $efeito["bonus"]["cor"] = $cores_efeitos[$efeito["bonus"]["atr"]];
+
         if (self::is_efeito_valor_habilidade($efeito["bonus"]["atr"])) {
             $efeito["bonus"]["valor"] = self::habilidade_default_values($efeito["bonus"]["valor"]);
         }

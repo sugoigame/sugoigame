@@ -711,6 +711,7 @@ table tr td {
     width: 100%;
     z-index: 200;
 }
+
 .habilidade-icone {
     display: inline-block;
     position: relative;
@@ -729,9 +730,8 @@ table tr td {
     background-size: 100% 100%;
     width: 54px;
     height: 25px;
-    padding-top: 1px;
+    padding-top: 2px;
 }
-
 .habilidade-icone .habilidade-vontade {
     position: absolute;
     top: -20px;
@@ -746,7 +746,6 @@ table tr td {
     text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000, 1px 1px #000,
         -1px -1px #000, 1px -1px #000, -1px 1px #000;
 }
-
 .habilidade-icone .habilidade-alcance {
     position: absolute;
     top: 50px;
@@ -760,7 +759,6 @@ table tr td {
     align-items: center;
     justify-content: center;
 }
-
 .habilidade-icone .habilidade-area {
     position: absolute;
     top: 50px;
@@ -774,7 +772,6 @@ table tr td {
     align-items: center;
     justify-content: center;
 }
-
 .habilidade-icone .habilidade-recarga {
     position: absolute;
     top: 0px;
@@ -788,7 +785,6 @@ table tr td {
     align-items: center;
     justify-content: center;
 }
-
 .habilidade-icone .habilidade-espera {
     position: absolute;
     top: 0px;
@@ -802,7 +798,6 @@ table tr td {
     align-items: center;
     justify-content: center;
 }
-
 .habilidade-icone .habilidade-quantidade {
     position: absolute;
     top: 20px;
