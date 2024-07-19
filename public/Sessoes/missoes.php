@@ -55,16 +55,8 @@
             <?php if ($index <= $count_missoes_concluidas && $userDetails->capitao["lvl"] >= $missao["requisito_lvl"] && MAX_MISSOES_ILHA_DIA > $total_concluido_hoje) : ?>
                 <div>
                     <button href='link_Missoes/missao_iniciar.php?cod=<?= $missao["cod_missao"]; ?>&tipo=bom'
-                        class="link_send btn btn-info" title="Fazer de boa fé" data-toggle="tooltip">
-                        <i class="fa fa-smile-o"></i>
-                        (
-                        <?= $userDetails->tripulacao["missoes_automaticas"] ? floor($missao["karma"] * 0.5) : $missao["karma"]; ?>)
-                    </button>
-                    <button href='link_Missoes/missao_iniciar.php?cod=<?= $missao["cod_missao"]; ?>&tipo=mau'
-                        class="link_send btn btn-danger" title="Fazer de má fé" data-toggle="tooltip">
-                        <i class="fa fa-frown-o"></i>
-                        (
-                        <?= $userDetails->tripulacao["missoes_automaticas"] ? floor($missao["karma"] * 0.5) : $missao["karma"]; ?>)
+                        class="link_send btn btn-success">
+                        Iniciar
                     </button>
                 </div>
             <?php endif; ?>
@@ -126,13 +118,6 @@
         <?php $count_missoes_concluidas = count($missoes_concluidas); ?>
         <?php $count_missoes_disponiveis = count($missoes_disponiveis) - $count_missoes_concluidas; ?>
         <?php $missoes_total = count($missoes_disponiveis); ?>
-
-        <?php render_karma_bars(); ?>
-        <p>
-            <a class="link_content" href="./?ses=karma">
-                Ver recompensas de Karma
-            </a>
-        </p>
 
         <?php $result = $connection->run("SELECT quant FROM tb_missoes_concluidas_dia WHERE tripulacao_id = ? AND ilha = ? AND cast(dia as date) = CURDATE()",
             "ii", array($userDetails->tripulacao["id"], $userDetails->ilha["ilha"]));
@@ -203,11 +188,6 @@
                 </div>
             <?php endif; ?>
         </div>
-
-        <label class="link_send" href="link_Missoes/ativar_missao_automatica.php" style="cursor: pointer">
-            <input type="checkbox" <?= $userDetails->tripulacao["missoes_automaticas"] ? "checked" : "" ?>>
-            Fazer as missões automaticamente
-        </label>
 
     <?php else : ?>
         <?php $missao = $userDetails->missao; ?>

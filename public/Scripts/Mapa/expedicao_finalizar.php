@@ -4,7 +4,6 @@ require "../../Includes/conectdb.php";
 $protector->need_tripulacao();
 $protector->must_be_out_of_any_kind_of_combat();
 $protector->must_be_out_of_rota();
-$protector->must_be_next_to_land();
 
 $pers = $protector->get_number_or_exit("pers");
 $tipo = $protector->get_alphanumeric_or_exit("tipo");

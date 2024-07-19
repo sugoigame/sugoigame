@@ -22,21 +22,20 @@ if (! preg_match("/^[\d]+$/", $destino)) {
 $query = "SELECT * FROM tb_mapa WHERE ilha='$destino'";
 $result = $connection->run($query);
 $mapa = $result->fetch_array();
+$ilha = \Regras\Ilhas::get_ilha($destino);
 
 if ($mapa["ilha_dono"] != $userDetails->tripulacao["id"]) {
-
     echo ("#O sistema de transporte não pode te levar para essa ilha.");
     exit();
 }
 
 if ($usuario["berries"] < 3000000) {
-
     echo ("#Você não possui berries suficiente.");
     exit();
 }
 
 $berries = $usuario["berries"] - 3000000;
-$query = "UPDATE tb_usuarios SET berries='$berries', x='" . $mapa["x"] . "', y='" . $mapa["y"] . "', mar_visivel=0
+$query = "UPDATE tb_usuarios SET berries='$berries', x='" . $ilha["x"] . "', y='" . $ilha["y"] . "', mar_visivel=0
 	WHERE id='" . $usuario["id"] . "'";
 $connection->run($query) or die("#Nao foi possivel iniciar navegação");
 

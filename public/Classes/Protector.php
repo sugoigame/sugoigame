@@ -27,7 +27,7 @@ class Protector
     public function protect($session)
     {
         global $sistemas_por_sessao;
-        if (isset ($sistemas_por_sessao[$session])) {
+        if (isset($sistemas_por_sessao[$session])) {
             $this->need_sistema($sistemas_por_sessao[$session]);
         }
 
@@ -101,7 +101,6 @@ class Protector
             case "realizacoes":
             case "tatics":
             case "combateLog":
-            case "karma":
             case "lojaEvento":
             case "recrutamento":
             case "leiloes":
@@ -118,7 +117,6 @@ class Protector
                 $this->need_tripulacao_alive();
                 break;
             case "expulsar":
-            case "missoesCaca":
                 $this->need_tripulacao();
                 $this->must_be_in_ilha();
                 $this->must_be_out_of_any_kind_of_combat();
@@ -168,17 +166,9 @@ class Protector
                 $this->must_be_out_of_rota();
                 $this->must_be_out_of_missao_and_recrute();
                 break;
-            case "amigaveis":
-                $this->need_tripulacao();
-                $this->must_be_out_of_missao_and_recrute();
-                $this->must_be_out_of_any_kind_of_combat();
-                $this->need_navio_alive();
-                $this->need_tripulacao_alive();
-                break;
             case "servicoDenDen":
                 $this->need_tripulacao();
                 $this->must_be_out_of_any_kind_of_combat();
-                $this->must_be_out_of_ilha();
                 $this->must_be_out_of_rota();
                 break;
             case "arvoreAnM":
@@ -333,13 +323,6 @@ class Protector
     {
         if ($this->userDetails->tripulacao_alive) {
             $this->exit_error("Você não pode fazer isso agora");
-        }
-    }
-
-    public function must_be_next_to_land()
-    {
-        if (! $this->userDetails->has_ilha_or_terra_envolta_me) {
-            $this->exit_error("Você precisa estar próximo a uma ilha");
         }
     }
 
@@ -577,7 +560,7 @@ class Protector
 
     public function get_number_or_exit($key)
     {
-        if (! isset ($_GET[$key]) || ! validate_number($_GET[$key])) {
+        if (! isset($_GET[$key]) || ! validate_number($_GET[$key])) {
             $this->_exit_with_msg_for_input();
         }
         return $_GET[$key];
@@ -585,7 +568,7 @@ class Protector
 
     public function get_alphanumeric_or_exit($key)
     {
-        if (! isset ($_GET[$key]) || ! validate_alphanumeric($_GET[$key])) {
+        if (! isset($_GET[$key]) || ! validate_alphanumeric($_GET[$key])) {
             $this->_exit_with_msg_for_input();
         }
         return $_GET[$key];
@@ -593,7 +576,7 @@ class Protector
 
     public function get_enum_or_exit($key, $enum)
     {
-        if (! isset ($_GET[$key]) || ! in_array($_GET[$key], $enum)) {
+        if (! isset($_GET[$key]) || ! in_array($_GET[$key], $enum)) {
             $this->_exit_with_msg_for_input();
         }
         return $_GET[$key];
@@ -601,7 +584,7 @@ class Protector
 
     public function get_test_pass_or_exit($key, $test)
     {
-        if (! isset ($_GET[$key]) || ! preg_match($test, $_GET[$key])) {
+        if (! isset($_GET[$key]) || ! preg_match($test, $_GET[$key])) {
             $this->_exit_with_msg_for_input();
         }
         return $_GET[$key];
@@ -619,7 +602,7 @@ class Protector
 
     public function post_enum_or_exit($key, $enum)
     {
-        if (! isset ($_POST[$key]) || ! in_array($_POST[$key], $enum)) {
+        if (! isset($_POST[$key]) || ! in_array($_POST[$key], $enum)) {
             $this->_exit_with_msg_for_input();
         }
         return $_POST[$key];
@@ -627,7 +610,7 @@ class Protector
 
     public function post_number_or_exit($key)
     {
-        if (! isset ($_POST[$key]) || ! validate_number($_POST[$key])) {
+        if (! isset($_POST[$key]) || ! validate_number($_POST[$key])) {
             $this->_exit_with_msg_for_input();
         }
         return $_POST[$key];
@@ -635,7 +618,7 @@ class Protector
 
     public function post_alphanumeric_or_exit($key)
     {
-        if (! isset ($_POST[$key]) || ! validate_alphanumeric($_POST[$key])) {
+        if (! isset($_POST[$key]) || ! validate_alphanumeric($_POST[$key])) {
             $this->_exit_with_msg_for_input();
         }
         return $_POST[$key];
@@ -643,7 +626,7 @@ class Protector
 
     public function post_value_or_exit($key)
     {
-        if (! isset ($_POST[$key])) {
+        if (! isset($_POST[$key])) {
             $this->_exit_with_msg_for_input();
         }
         return $_POST[$key];

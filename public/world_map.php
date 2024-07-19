@@ -602,7 +602,7 @@ require_once "Includes/conectdb.php";
                             .addClass('text-left')
                             .append(
                                 $('<DIV>')
-                                    .append('<small>Esta ilha está ' + (island.data.govern.karma_bom ? 'protegida por ' : 'sob o controle do ') + island.data.govern.tripulacao + '</small>')
+                                    .append('<small>Esta ilha está sob o controle do ' + island.data.govern.tripulacao + '</small>')
                             )
                     )
             );

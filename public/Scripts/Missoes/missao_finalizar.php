@@ -16,24 +16,6 @@ $connection->run("DELETE FROM tb_missoes_iniciadas WHERE id = ? AND cod_missao =
     "ii", array($userDetails->tripulacao["id"], $userDetails->missao["cod_missao"]));
 
 if ($userDetails->missao["venceu"]) {
-    $karma = "karma_" . $userDetails->missao["tipo_karma"];
-
-    $karma_reverso = ($karma == "karma_bom") ? "karma_mau" : "karma_bom";
-
-    if ($userDetails->tripulacao[$karma_reverso]) {
-        $userDetails->tripulacao[$karma_reverso] -= $userDetails->missao["karma"];
-
-        if ($userDetails->tripulacao[$karma_reverso] < 0) {
-            $userDetails->tripulacao[$karma] = abs($userDetails->tripulacao[$karma_reverso]);
-            $userDetails->tripulacao[$karma_reverso] = 0;
-        }
-    } else {
-        $userDetails->tripulacao[$karma] += floor($userDetails->missao["karma"] * 0.5);
-    }
-
-    $connection->run("UPDATE tb_usuarios SET karma_bom = ?, karma_mau = ? WHERE id = ?",
-        "iii", array($userDetails->tripulacao["karma_bom"], $userDetails->tripulacao["karma_mau"], $userDetails->tripulacao["id"]));
-
     $concluida = $connection->run("SELECT count(*) AS total FROM tb_missoes_concluidas WHERE id = ? AND cod_missao = ?",
         "ii", array($userDetails->tripulacao["id"], $userDetails->missao["cod_missao"]))->fetch_array()["total"];
     if (! $concluida) {

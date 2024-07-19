@@ -48,4 +48,10 @@ class Data
         $data = self::load($map);
         return array_find($data, $search);
     }
+
+    public static function find_inside($map, $key, $search)
+    {
+        $data = self::load($map);
+        return array_find($data[$key], $search);
+    }
 }

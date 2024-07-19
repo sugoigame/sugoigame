@@ -9,14 +9,11 @@ $negociacao_id = $protector->get_number_or_exit("id");
 $negociacao = $connection->run("SELECT * FROM tb_ilha_recurso_venda WHERE id = ?",
     "i", array($negociacao_id));
 
-if (!$negociacao->count()) {
+if (! $negociacao->count()) {
     $protector->exit_error("Essa negociação não existe");
 }
 
 $negociacao = $negociacao->fetch_array();
-
-$dono_outra_ilha = $connection->run("SELECT * FROM tb_mapa WHERE ilha = ?",
-    "i", array($negociacao["ilha"]))->fetch_array();
 
 $recursos = $connection->run("SELECT * FROM tb_ilha_recurso WHERE ilha = ?",
     "i", array($userDetails->ilha["ilha"]))->fetch_array();
@@ -38,7 +35,7 @@ $connection->run("INSERT INTO tb_mapa_contem (x, y, mercador_id) VALUE (?,?,?)",
     "iii", array($origem["x"] + 1, $origem["y"] + 1, $mercador_id));
 
 
-$destino = $connection->run("SELECT * FROM tb_mapa WHERE  ilha = ?", "i", array($negociacao["ilha"]))->fetch_array();
+$destino = \Regras\Ilhas::get_ilha($negociacao["ilha"]);
 
 $result = $connection->run("INSERT INTO tb_ilha_mercador (ilha_origem, ilha_destino, recurso, quant) VALUE (?,?,?,?)",
     "iiii", array($negociacao["ilha"], $userDetails->ilha["ilha"], $negociacao["recurso_oferecido"], $negociacao["quant"]));

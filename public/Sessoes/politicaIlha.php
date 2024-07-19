@@ -100,14 +100,14 @@ function is_buff_ativo($bonus_ativos, $buff_id) {
     <?php else: ?>
         <?php $dono = $userDetails->ilha["ilha_dono"]
             ? $connection->run("SELECT * FROM tb_usuarios WHERE id = ?", "i", array($userDetails->ilha["ilha_dono"]))->fetch_array()
-            : array("tripulacao" => "Governo Mundial", "faccao" => FACCAO_MARINHA, "bandeira" => "030128044241030118456317010115204020", "karma_bom" => 1, "karma_mau" => 0) ?>
+            : array("tripulacao" => "Governo Mundial", "faccao" => FACCAO_MARINHA, "bandeira" => "030128044241030118456317010115204020") ?>
         <h3>
             <?= nome_ilha($userDetails->ilha["ilha"]) ?>
         </h3>
         <h4>
             <img src="Imagens/Bandeiras/img.php?cod=<?= $dono["bandeira"] ?>&f=<?= $dono["faccao"] ?>">
             Essa ilha
-            está <?= $dono["karma_bom"] ? "protegida pelo" : "sob o domínio de" ?> <?= $dono["tripulacao"] ?>
+            está sob o domínio de <?= $dono["tripulacao"] ?>
         </h4>
 
         <?php if ($userDetails->ilha["ilha_dono"] == $userDetails->tripulacao["id"]): ?>

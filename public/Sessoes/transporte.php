@@ -8,8 +8,7 @@
     <div class="row" style="margin: 0;">
         <div class="list-group-item col-xs-12 col-md-4">
             <div class="row" style="margin: 0;">
-                <?php $ilha_retorno = $connection->run("SELECT * FROM tb_mapa WHERE x = ? AND y = ?",
-                    "ii", array($userDetails->tripulacao["res_x"], $userDetails->tripulacao["res_y"]))->fetch_array(); ?>
+                <?php $ilha_retorno = \Regras\Ilhas::get_ilha_by_coord($userDetails->tripulacao["res_x"], $userDetails->tripulacao["res_y"]); ?>
                 <div class="col-xs-6 col-md-6">
                     <h4>Viajar para ilha de retorno:</h4>
                     <p>Seu retorno está salvo em
@@ -35,11 +34,14 @@
             </div>
         </div>
         <?php $result = $userDetails->capitao["lvl"] >= 45
-            ? $connection->run("SELECT * FROM tb_mapa WHERE ilha<>'0' AND (ilha<>'47' OR ilha_dono = ?) AND ilha<>'101' ORDER BY ilha", "i", array($userDetails->tripulacao["id"]))
-            : $connection->run("SELECT * FROM tb_mapa WHERE mar = ? AND ilha<>'0' AND ilha<>'47' AND ilha<>'101' ORDER BY ilha",
-                "i", $userDetails->ilha["mar"]); ?>
+            ? array_filter(\Utils\Data::load("mundo")["ilhas"], function ($ilha) {
+                        return ! isset($ilha["restrita"]);
+                    })
+            : array_filter(\Utils\Data::load("mundo")["ilhas"], function ($ilha) use ($userDetails) {
+                        return $userDetails->ilha["mar"] == $ilha["mar"] && ! isset($ilha["restrita"]);
+                    }); ?>
 
-        <?php while ($ilha = $result->fetch_array()) : ?>
+        <?php foreach ($result as $ilha) : ?>
             <?php if ($userDetails->ilha["ilha"] != $ilha["ilha"]) : ?>
                 <div class="list-group-item col-xs-12 col-md-4">
                     <div class="row">
@@ -61,8 +63,7 @@
                                     || $ilha["ilha"] == 44)
                             ) : ?>
                                 <button href="Vip/transporte_berries.php?destino=<?= $ilha["ilha"]; ?>"
-                                    class="link_confirm btn btn-info"
-                                    data-question="Deseja viajar para <?= nome_ilha($ilha["ilha"]); ?>?"
+                                    class="link_confirm btn btn-info" data-question="Deseja viajar para <?= $ilha["nome"]; ?>?"
                                     <?= $userDetails->tripulacao["berries"] >= 1000000 && $userDetails->has_ilha_envolta_me ? "" : "disabled" ?>>
                                     1.000.000 <img src="Imagens/Icones/Berries.png" /> Viajar
                                 </button>
@@ -70,8 +71,7 @@
                             <?php endif; ?>
                             <?php if ($ilha["ilha_dono"] == $userDetails->tripulacao["id"]) : ?>
                                 <button href="Vip/transporte_minha_ilha.php?destino=<?= $ilha["ilha"]; ?>"
-                                    class="link_confirm btn btn-info"
-                                    data-question="Deseja viajar para <?= nome_ilha($ilha["ilha"]); ?>?"
+                                    class="link_confirm btn btn-info" data-question="Deseja viajar para <?= $ilha["nome"]; ?>?"
                                     <?= $userDetails->tripulacao["berries"] >= 3000000 && $userDetails->has_ilha_envolta_me ? "" : "disabled" ?>>
                                     3.000.000 <img src="Imagens/Icones/Berries.png" /> Viajar
                                 </button>
@@ -82,8 +82,7 @@
                             <?php if ($preco < 20)
                                 $preco = 20; ?>
                             <button href="Vip/transporte_gold.php?tipo=gold&destino=<?= $ilha["ilha"]; ?>"
-                                class="link_confirm btn btn-success"
-                                data-question="Deseja viajar para <?= nome_ilha($ilha["ilha"]); ?>?"
+                                class="link_confirm btn btn-success" data-question="Deseja viajar para <?= $ilha["nome"]; ?>?"
                                 <?= $userDetails->conta["gold"] >= $preco ? "" : "disabled" ?>>
                                 <?= $preco ?> <img src="Imagens/Icones/Gold.png" /> Viajar
                             </button>
@@ -93,17 +92,16 @@
                     </div>
                 </div>
             <?php endif; ?>
-        <?php endwhile; ?>
+        <?php endforeach; ?>
     </div>
     <ul class="list-group" style="display: none;">
         <li class="list-group-item">
             <div class="row">
-                <?php $ilha_retorno = $connection->run("SELECT * FROM tb_mapa WHERE x = ? AND y = ?",
-                    "ii", array($userDetails->tripulacao["res_x"], $userDetails->tripulacao["res_y"]))->fetch_array(); ?>
+                <?php $ilha_retorno = \Regras\Ilhas::get_ilha_by_coord($userDetails->tripulacao["res_x"], $userDetails->tripulacao["res_y"]); ?>
                 <div class="col-md-6">
                     <h4>Viajar para ilha de retorno:</h4>
                     <p>Seu retorno está salvo em
-                        <?= nome_ilha($ilha_retorno["ilha"]) ?>
+                        <?= $ilha_retorno["nome"] ?>
                         (
                         <?= nome_mar($ilha_retorno["mar"]) ?>)
                     </p>
@@ -124,12 +122,7 @@
                 </div>
             </div>
         </li>
-        <?php $result = $userDetails->capitao["lvl"] >= 45
-            ? $connection->run("SELECT * FROM tb_mapa WHERE ilha<>'0' AND (ilha<>'47' OR ilha_dono = ?) AND ilha<>'101' ORDER BY ilha", "i", array($userDetails->tripulacao["id"]))
-            : $connection->run("SELECT * FROM tb_mapa WHERE mar = ? AND ilha<>'0' AND ilha<>'47' AND ilha<>'101' ORDER BY ilha",
-                "i", $userDetails->ilha["mar"]); ?>
-
-        <?php while ($ilha = $result->fetch_array()) : ?>
+        <?php foreach ($result as $ilha) : ?>
             <?php if ($userDetails->ilha["ilha"] != $ilha["ilha"] && $ilha["ilha"] != 102) : ?>
                 <li class="list-group-item">
                     <div class="row">
@@ -151,8 +144,7 @@
                                     || $ilha["ilha"] == 44)
                             ) : ?>
                                 <button href="Vip/transporte_berries.php?destino=<?= $ilha["ilha"]; ?>"
-                                    class="link_confirm btn btn-info"
-                                    data-question="Deseja viajar para <?= nome_ilha($ilha["ilha"]); ?>?"
+                                    class="link_confirm btn btn-info" data-question="Deseja viajar para <?= $ilha["nome"]; ?>?"
                                     <?= $userDetails->tripulacao["berries"] >= 1000000 && $userDetails->has_ilha_envolta_me ? "" : "disabled" ?>>
                                     1.000.000 <img src="Imagens/Icones/Berries.png" /> Viajar
                                 </button>
@@ -160,8 +152,7 @@
                             <?php endif; ?>
                             <?php if ($ilha["ilha_dono"] == $userDetails->tripulacao["id"]) : ?>
                                 <button href="Vip/transporte_minha_ilha.php?destino=<?= $ilha["ilha"]; ?>"
-                                    class="link_confirm btn btn-info"
-                                    data-question="Deseja viajar para <?= nome_ilha($ilha["ilha"]); ?>?"
+                                    class="link_confirm btn btn-info" data-question="Deseja viajar para <?= $ilha["nome"]; ?>?"
                                     <?= $userDetails->tripulacao["berries"] >= 3000000 && $userDetails->has_ilha_envolta_me ? "" : "disabled" ?>>
                                     3.000.000 <img src="Imagens/Icones/Berries.png" /> Viajar
                                 </button>
@@ -172,8 +163,7 @@
                             <?php if ($preco < 20)
                                 $preco = 20; ?>
                             <button href="Vip/transporte_gold.php?tipo=gold&destino=<?= $ilha["ilha"]; ?>"
-                                class="link_confirm btn btn-success"
-                                data-question="Deseja viajar para <?= nome_ilha($ilha["ilha"]); ?>?"
+                                class="link_confirm btn btn-success" data-question="Deseja viajar para <?= $ilha["nome"]; ?>?"
                                 <?= $userDetails->conta["gold"] >= $preco ? "" : "disabled" ?>>
                                 <?= $preco ?> <img src="Imagens/Icones/Gold.png" /> Viajar
                             </button>
@@ -183,6 +173,6 @@
                     </div>
                 </li>
             <?php endif; ?>
-        <?php endwhile; ?>
+        <?php endforeach; ?>
     </ul>
 </div>

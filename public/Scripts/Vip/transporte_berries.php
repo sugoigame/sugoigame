@@ -25,9 +25,7 @@ if ($destino != 1 and $destino != 8 and $destino != 15 and $destino != 22 and $d
     echo ("#Você não pode acessar essa ilha com Berries");
     exit();
 }
-$query = "SELECT * FROM tb_mapa WHERE ilha='$destino'";
-$result = $connection->run($query);
-$mapa = $result->fetch_array();
+$mapa = \Regras\Ilhas::get_ilha($destino);
 
 if ($mapa["mar"] != $usuario["mar"]) {
 

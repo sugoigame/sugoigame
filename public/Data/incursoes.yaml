@@ -2,7 +2,7 @@
   niveis:
     1:
       recompensas:
-       - tipo_item: 15
+        - tipo_item: 15
           cod_item: 134
           quant: 1
           tipo: reagent
@@ -48,7 +48,7 @@
   niveis:
     1:
       recompensas:
-       - tipo_item: 15
+        - tipo_item: 15
           cod_item: 134
           quant: 1
           tipo: reagent
@@ -71,7 +71,7 @@
   niveis:
     1:
       recompensas:
-       - tipo_item: 15
+        - tipo_item: 15
           cod_item: 134
           quant: 1
           tipo: reagent
@@ -94,7 +94,7 @@
   niveis:
     1:
       recompensas:
-       - tipo_item: 15
+        - tipo_item: 15
           cod_item: 134
           quant: 1
           tipo: reagent
@@ -278,7 +278,7 @@
   niveis:
     1:
       recompensas:
-       - tipo_item: 15
+        - tipo_item: 15
           cod_item: 146
           quant: 1
           tipo: reagent
@@ -301,7 +301,7 @@
   niveis:
     1:
       recompensas:
-       - tipo_item: 15
+        - tipo_item: 15
           cod_item: 146
           quant: 1
           tipo: reagent
@@ -781,14 +781,14 @@
         berries: 120000
         battle_back: 25
 35:
-#  especial: 1
-#  niveis:
-#    1:
-#      1:
-#        tripulacao: 47
-#        xp: 600
-#        berries: 200000
-#        battle_back: 47
+  #  especial: 1
+  #  niveis:
+  #    1:
+  #      1:
+  #        tripulacao: 47
+  #        xp: 600
+  #        berries: 200000
+  #        battle_back: 47
   niveis:
     1:
       recompensas:

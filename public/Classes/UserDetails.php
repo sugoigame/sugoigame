@@ -679,11 +679,10 @@ class UserDetails
             return ($this->ilha = false);
         }
 
-        $result = $this->connection->run("SELECT * FROM tb_mapa WHERE x = ? AND y = ? LIMIT 1",
-            "ii", array($this->tripulacao["x"], $this->tripulacao["y"]));
+        $coordenada = \Regras\Ilhas::get_ilha_by_coord($this->tripulacao["x"], $this->tripulacao["y"]);
 
-        if ($result->count()) {
-            $this->ilha = $result->fetch_array();
+        if ($coordenada) {
+            $this->ilha = $coordenada;
         } else {
             $this->ilha = [
                 "ilha" => 0,
@@ -868,31 +867,7 @@ class UserDetails
         if (! $this->tripulacao) {
             return ($this->has_ilha_envolta_me = false);
         }
-
-        $my_x = $this->tripulacao["x"];
-        $my_y = $this->tripulacao["y"];
-        $result = $this->connection->run(
-            "SELECT * FROM tb_mapa WHERE x >= ? AND x <= ? AND y >= ? AND y <= ? AND ilha <> 0",
-            "iiii", array($my_x - 2, $my_x + 2, $my_y - 2, $my_y + 2)
-        );
-
-        return ($this->has_ilha_envolta_me = ! ! $result->count());
-    }
-
-    private function _load_has_ilha_or_terra_envolta_me()
-    {
-        if ($this->has_ilha_envolta_me) {
-            return ($this->has_ilha_or_terra_envolta_me = true);
-        } else {
-            $ilha_proxima = $this->connection->run("SELECT * FROM tb_mapa WHERE x >= ? AND x <= ? AND y >= ? AND y <= ? AND (navegavel = 0 OR ilha <> 0)",
-                "iiii", array(
-                    $this->tripulacao["x"] - 1,
-                    $this->tripulacao["x"] + 1,
-                    $this->tripulacao["y"] - 1,
-                    $this->tripulacao["y"] + 1
-                ));
-            return ($this->has_ilha_or_terra_envolta_me = ! ! $ilha_proxima->count());
-        }
+        return ($this->has_ilha_envolta_me = \Regras\Ilhas::has_ilha_envolta($this->tripulacao["x"], $this->tripulacao["y"]));
     }
 
     private function _load_tripulacao_alive()
@@ -1023,7 +998,7 @@ class UserDetails
     private function get_all_progress_info()
     {
         global $connection;
-        $ilhas = $connection->run("SELECT ilha, x, y FROM tb_mapa WHERE ilha <> 0")->fetch_all_array();
+        $ilhas = \Utils\Data::load("mundo")["ilhas"];
 
         $mar = $this->ilha["mar"] == 4 ? 3 : ($this->ilha["mar"] == 3 ? 4 : $this->ilha["mar"]);
         $primeira_ilha = ($mar - 1) * 7 + 1;

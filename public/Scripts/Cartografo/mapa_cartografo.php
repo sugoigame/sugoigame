@@ -14,7 +14,7 @@ $result = $connection->run(
     "ii", array($userDetails->tripulacao["id"], $codmapa)
 );
 
-if (!$result->count()) {
+if (! $result->count()) {
     $protector->exit_error("Você precisa de um mapa");
 }
 $mapa = $result->fetch_array();
@@ -69,8 +69,9 @@ switch ($mar) {
 
 $visivel = $mapa["desenho"] ? json_decode($mapa["desenho"], true) : [];
 
-$ilhas = $connection->run("SELECT * FROM tb_mapa WHERE x >= ? AND x <= ? AND y >= ? AND y <= ?",
-    "iiii", array($xmin, $xmax, $ymin, $ymax))->fetch_all_array();
+$ilhas = array_filter(\Utils\Data::load("mundo")["ilhas"], function ($ilha) use ($xmin, $xmax, $ymin, $ymax) {
+    return $ilha["x"] >= $xmin && $ilha["x"] <= $xmax && $ilha["y"] >= $ymin && $ilha["y"] <= $ymax;
+});
 
 $rdm_data = DataLoader::load("rdm");
 
@@ -100,35 +101,34 @@ $tesouros = $connection->run("SELECT * FROM tb_usuario_itens ui INNER JOIN tb_it
     <?php if ($userDetails->tripulacao["x"] >= $xmin
         && $userDetails->tripulacao["x"] <= $xmax
         && $userDetails->tripulacao["y"] >= $ymin
-        && $userDetails->tripulacao["y"] <= $ymax): ?>
-        <img src="Imagens/Mapa/Mapa_Cartografo/mostra_2.png"
-             class="map-indicator"
-             style="top: <?= ($userDetails->tripulacao["y"] - $ymin - 1) * 5; ?>px; left: <?= ($userDetails->tripulacao["x"] - $xmin - 1) * 5; ?>px;"/>
+        && $userDetails->tripulacao["y"] <= $ymax) : ?>
+        <img src="Imagens/Mapa/Mapa_Cartografo/mostra_2.png" class="map-indicator"
+            style="top: <?= ($userDetails->tripulacao["y"] - $ymin - 1) * 5; ?>px; left: <?= ($userDetails->tripulacao["x"] - $xmin - 1) * 5; ?>px;" />
     <?php endif; ?>
 
-    <?php foreach ($ilhas as $ilha): ?>
-        <?php if (isset($visivel[$ilha["x"]]) && isset($visivel[$ilha["x"]][$ilha["y"]])): ?>
-        <img src="Imagens/Mapa/Mapa_Cartografo/mostra_3.png"
-             class="map-indicator" data-toggle="tooltip" title="<?= nome_ilha($ilha["ilha"]) ?>"
-             style="top: <?= ($ilha["y"] - $ymin - 1) * 5; ?>px; left: <?= ($ilha["x"] - $xmin - 1) * 5; ?>px;"/>
+    <?php foreach ($ilhas as $ilha) : ?>
+        <?php if (isset($visivel[$ilha["x"]]) && isset($visivel[$ilha["x"]][$ilha["y"]])) : ?>
+            <img src="Imagens/Mapa/Mapa_Cartografo/mostra_3.png" class="map-indicator" data-toggle="tooltip"
+                title="<?= nome_ilha($ilha["ilha"]) ?>"
+                style="top: <?= ($ilha["y"] - $ymin - 1) * 5; ?>px; left: <?= ($ilha["x"] - $xmin - 1) * 5; ?>px;" />
         <?php endif; ?>
     <?php endforeach; ?>
 
-    <?php foreach ($tesouros as $tesouro): ?>
-        <?php if (isset($visivel[$tesouro["x"]]) && isset($visivel[$tesouro["x"]][$tesouro["y"]])): ?>
-            <img src="Imagens/Mapa/Mapa_Cartografo/mostra_4.png"
-                 class="map-indicator" data-toggle="tooltip" title="Tesouro escondido"
-                 style="top: <?= ($tesouro["y"] - $ymin - 1) * 5; ?>px; left: <?= ($tesouro["x"] - $xmin - 1) * 5; ?>px;"/>
+    <?php foreach ($tesouros as $tesouro) : ?>
+        <?php if (isset($visivel[$tesouro["x"]]) && isset($visivel[$tesouro["x"]][$tesouro["y"]])) : ?>
+            <img src="Imagens/Mapa/Mapa_Cartografo/mostra_4.png" class="map-indicator" data-toggle="tooltip"
+                title="Tesouro escondido"
+                style="top: <?= ($tesouro["y"] - $ymin - 1) * 5; ?>px; left: <?= ($tesouro["x"] - $xmin - 1) * 5; ?>px;" />
         <?php endif; ?>
     <?php endforeach; ?>
 
-    <?php foreach ($rdms as $rdm): ?>
-        <?php if (isset($visivel[$rdm["x"]]) && isset($visivel[$rdm["x"]][$rdm["y"]])): ?>
-            <img src="Imagens/Mapa/Mapa_Cartografo/mostra_5.png"
-                 class="map-indicator" data-toggle="tooltip" title="<?= $rdm_data[$rdm["rdm_id"]]["nome"] ?>"
-                 style="top: <?= ($rdm["y"] - $ymin - 1) * 5; ?>px; left: <?= ($rdm["x"] - $xmin - 1) * 5; ?>px;"/>
+    <?php foreach ($rdms as $rdm) : ?>
+        <?php if (isset($visivel[$rdm["x"]]) && isset($visivel[$rdm["x"]][$rdm["y"]])) : ?>
+            <img src="Imagens/Mapa/Mapa_Cartografo/mostra_5.png" class="map-indicator" data-toggle="tooltip"
+                title="<?= $rdm_data[$rdm["rdm_id"]]["nome"] ?>"
+                style="top: <?= ($rdm["y"] - $ymin - 1) * 5; ?>px; left: <?= ($rdm["x"] - $xmin - 1) * 5; ?>px;" />
         <?php endif; ?>
     <?php endforeach; ?>
     <img id="hidden-areas"
-         src="Scripts/Cartografo/hidden_areas.php?mar=<?= $mar ?>&cod=<?= $codmapa ?>&_=<?= atual_segundo() ?>"/>
+        src="Scripts/Cartografo/hidden_areas.php?mar=<?= $mar ?>&cod=<?= $codmapa ?>&_=<?= atual_segundo() ?>" />
 </div>

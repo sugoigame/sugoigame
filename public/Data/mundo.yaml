@@ -1,0 +1,472 @@
+mares:
+  1:
+    ilha: 1
+    nome: "East Blue"
+  2:
+    ilha: 2
+    nome: "North Blue"
+  3:
+    ilha: 3
+    nome: "West Blue"
+  4:
+    ilha: 4
+    nome: "South Blue"
+  5:
+    ilha: 5
+    nome: "Grand Line"
+  6:
+    ilha: 6
+    nome: "Novo Mundo"
+  7:
+    ilha: 7
+    nome: "Calm Belt"
+
+ilhas:
+  # East
+  1:
+    ilha: 1
+    nome: "Ilha Dawn"
+    mar: 1
+    x: 428
+    y: 31
+    faccao_base: 1
+    conflitos: 5
+  2:
+    ilha: 2
+    nome: "Shells Town"
+    mar: 1
+    x: 373
+    y: 30
+    faccao_base: 1
+    conflitos: 5
+  3:
+    ilha: 3
+    nome: "Orange Town"
+    mar: 1
+    x: 352
+    y: 52
+    faccao_base: 1
+    conflitos: 5
+  4:
+    ilha: 4
+    nome: "Vila Syrup"
+    mar: 1
+    x: 368
+    y: 76
+    faccao_base: 1
+    conflitos: 5
+  5:
+    ilha: 5
+    nome: "Baratie"
+    mar: 1
+    x: 335
+    y: 48
+    faccao_base: 1
+    conflitos: 5
+  6:
+    ilha: 6
+    nome: "Ilha Cocoyashi"
+    mar: 1
+    x: 331
+    y: 19
+    faccao_base: 1
+    conflitos: 5
+  7:
+    ilha: 7
+    nome: "Loguetown"
+    mar: 1
+    x: 309
+    y: 71
+    faccao_base: 1
+    conflitos: 5
+
+  # North
+  8:
+    ilha: 8
+    nome: "Lvneel Kingdom"
+    mar: 2
+    x: 70
+    y: 51
+    faccao_base: 1
+    conflitos: 5
+  9:
+    ilha: 9
+    nome: "Burlywood Town"
+    mar: 2
+    x: 107
+    y: 25
+    faccao_base: 1
+    conflitos: 5
+  10:
+    ilha: 10
+    nome: "GoldenRod Town"
+    mar: 2
+    x: 124
+    y: 26
+    faccao_base: 1
+    conflitos: 5
+  11:
+    ilha: 11
+    nome: "Oubliette Town"
+    mar: 2
+    x: 170
+    y: 31
+    faccao_base: 1
+    conflitos: 5
+  12:
+    ilha: 12
+    nome: "Vila Whitewood"
+    mar: 2
+    x: 149
+    y: 48
+    faccao_base: 1
+    conflitos: 5
+  13:
+    ilha: 13
+    nome: "Ilha North Coral"
+    mar: 2
+    x: 130
+    y: 70
+    faccao_base: 1
+    conflitos: 5
+  14:
+    ilha: 14
+    nome: "Cartigen"
+    mar: 2
+    x: 144
+    y: 85
+    faccao_base: 1
+    conflitos: 5
+
+  # South
+  15:
+    ilha: 15
+    nome: "Baterilla"
+    mar: 4
+    x: 424
+    y: 341
+    faccao_base: 1
+    conflitos: 5
+  16:
+    ilha: 16
+    nome: "Zozu Town"
+    mar: 4
+    x: 415
+    y: 311
+    faccao_base: 1
+    conflitos: 5
+  17:
+    ilha: 17
+    nome: "Karatê island"
+    mar: 4
+    x: 384
+    y: 294
+    faccao_base: 1
+    conflitos: 5
+  18:
+    ilha: 18
+    nome: "Avalien Town"
+    mar: 4
+    x: 353
+    y: 318
+    faccao_base: 1
+    conflitos: 5
+  19:
+    ilha: 19
+    nome: "Torino"
+    mar: 4
+    x: 336
+    y: 286
+    faccao_base: 1
+    conflitos: 5
+  20:
+    ilha: 20
+    nome: "Cinturão das luas"
+    mar: 4
+    x: 304
+    y: 318
+    faccao_base: 1
+    conflitos: 5
+  21:
+    ilha: 21
+    nome: "Kimotsu Town"
+    mar: 4
+    x: 289
+    y: 292
+    faccao_base: 1
+    conflitos: 5
+
+  # West
+  22:
+    ilha: 22
+    nome: "Ilusia Kingdom"
+    mar: 3
+    x: 35
+    y: 337
+    faccao_base: 1
+    conflitos: 5
+  23:
+    ilha: 23
+    nome: "Ohara"
+    mar: 3
+    x: 45
+    y: 296
+    faccao_base: 1
+    conflitos: 5
+  24:
+    ilha: 24
+    nome: "Ilha Toroa"
+    mar: 3
+    x: 81
+    y: 290
+    faccao_base: 1
+    conflitos: 5
+  25:
+    ilha: 25
+    nome: "Las Camp"
+    mar: 3
+    x: 104
+    y: 308
+    faccao_base: 1
+    conflitos: 5
+  26:
+    ilha: 26
+    nome: "Kima Town"
+    mar: 3
+    x: 127
+    y: 329
+    faccao_base: 1
+    conflitos: 5
+  27:
+    ilha: 27
+    nome: "Jumbo Town"
+    mar: 3
+    x: 166
+    y: 325
+    faccao_base: 1
+    conflitos: 5
+  28:
+    ilha: 28
+    nome: "Ilha Kagero"
+    mar: 3
+    x: 157
+    y: 289
+    faccao_base: 1
+    conflitos: 5
+
+  # Grand Line
+  29:
+    ilha: 29
+    nome: "Cabos Gêmeos"
+    mar: 5
+    x: 281
+    y: 177
+    faccao_base: 2
+    conflitos: 10
+  30:
+    ilha: 30
+    nome: "Whiskey Peak"
+    mar: 5
+    x: 292
+    y: 207
+    faccao_base: 2
+    conflitos: 10
+  31:
+    ilha: 31
+    nome: "Little Garden"
+    mar: 5
+    x: 306
+    y: 219
+    faccao_base: 2
+    conflitos: 10
+  32:
+    ilha: 32
+    nome: "Drum"
+    mar: 5
+    x: 323
+    y: 229
+    faccao_base: 2
+    conflitos: 10
+  33:
+    ilha: 33
+    nome: "Rainbase"
+    mar: 5
+    x: 346
+    y: 229
+    faccao_base: 2
+    conflitos: 10
+  34:
+    ilha: 34
+    nome: "Yuba"
+    mar: 5
+    x: 352
+    y: 229
+    faccao_base: 2
+    conflitos: 10
+  35:
+    ilha: 35
+    nome: "Alubarna"
+    mar: 5
+    x: 347
+    y: 225
+    faccao_base: 2
+    conflitos: 10
+  36:
+    ilha: 36
+    nome: "Nanohana"
+    mar: 5
+    x: 352
+    y: 225
+    faccao_base: 2
+    conflitos: 10
+  37:
+    ilha: 37
+    nome: "Mock Town"
+    mar: 5
+    x: 375
+    y: 234
+    faccao_base: 2
+    conflitos: 10
+  38:
+    ilha: 38
+    nome: "South Grave"
+    mar: 5
+    x: 377
+    y: 236
+    faccao_base: 2
+    conflitos: 10
+  39:
+    ilha: 39
+    nome: "Long Ring Long Land"
+    mar: 5
+    x: 395
+    y: 234
+    faccao_base: 2
+    conflitos: 10
+  40:
+    ilha: 40
+    nome: "Water 7"
+    mar: 5
+    x: 424
+    y: 215
+    faccao_base: 2
+    conflitos: 10
+  41:
+    ilha: 41
+    nome: "Thriller Bark"
+    mar: 5
+    x: 442
+    y: 197
+    faccao_base: 2
+    conflitos: 10
+  42:
+    ilha: 42
+    nome: "Sabaody"
+    mar: 5
+    x: 446
+    y: 179
+    faccao_base: 2
+    conflitos: 10
+  43:
+    ilha: 43
+    nome: "Mariejois"
+    mar: 5
+    x: 453
+    y: 192
+    faccao_base: 2
+    conflitos: 10
+
+  # Novo Mundo
+  44:
+    ilha: 44
+    nome: "Punk Hazard"
+    mar: 6
+    x: 34
+    y: 164
+    faccao_base: 2
+    conflitos: 10
+  45:
+    ilha: 45
+    nome: "Yukiryu"
+    mar: 6
+    x: 38
+    y: 119
+    faccao_base: 2
+    conflitos: 10
+  46:
+    ilha: 46
+    nome: "Raijin"
+    mar: 6
+    x: 38
+    y: 190
+    faccao_base: 2
+    conflitos: 10
+  47:
+    ilha: 47
+    nome: "Laugh Tale"
+    restrita: true
+    mar: 6
+    x: 181
+    y: 181
+
+  # outras
+  101:
+    ilha: 101
+    nome: "Impel Down"
+    restrita: true
+    mar: 7
+    x: 430
+    y: 258
+  102:
+    ilha: 102
+    nome: "Enies Lobby"
+    restrita: true
+    mar: 5
+    x: 421
+    y: 239
+
+faccoes:
+  1:
+    nome: Jornal Econômico Mundial
+    viajante:
+      producao: xp
+  2:
+    nome: Governo Mundial
+    viajante:
+      producao: haki
+  3:
+    nome: Exército Revolucionário
+    viajante:
+      producao: haki
+  4:
+    nome: Caçadores de recompensas
+    viajante:
+      producao: berries
+  5:
+    nome: Skypeans
+    viajante:
+      producao: haki
+  7:
+    nome: Homens Peixe
+    viajante:
+      producao: xp
+  8:
+    nome: Kuja
+    viajante:
+      producao: berries
+  9:
+    nome: Tontatta
+    viajante:
+      producao: berries
+  10:
+    nome: Minks
+    viajante:
+      producao: xp
+  11:
+    nome: Samurais
+    viajante:
+      producao: haki
+  12:
+    nome: Gigantes
+    viajante:
+      producao: xp

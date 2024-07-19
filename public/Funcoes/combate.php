@@ -1,17 +1,4 @@
 <?php
-function has_ilha_envolta_target($content)
-{
-    global $connection;
-
-    $x = $content["x"];
-    $y = $content["y"];
-    $ilha_envolta = $connection->run(
-        "SELECT * FROM tb_mapa WHERE x >= ? AND x <= ? AND y >= ? AND y <= ? AND ilha <> 0 AND ilha <> 47",
-        "iiii", array($x - 2, $x + 2, $y - 2, $y + 2)
-    )->count();
-
-    return ! ! $ilha_envolta;
-}
 
 function get_player_data_for_combat_check($alvo_id)
 {
@@ -70,7 +57,7 @@ function get_attack_restriction($content)
         return "Você não pode atacar enquanto estiver invisível.";
     }
 
-    if (has_ilha_envolta_target($content)) {
+    if (\Regras\Ilhas::has_ilha_envolta($content["x"], $content["y"])) {
         return "O alvo está em uma área segura.";
     }
 

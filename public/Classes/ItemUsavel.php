@@ -702,8 +702,7 @@ class ItemUsavel
             $ilha = 44;
         }
 
-        $coordenada = $this->connection->run("SELECT * FROM tb_mapa WHERE ilha = ? LIMIT 1",
-            "i", array($ilha))->fetch_array();
+        $coordenada = \Utils\Data::load("mundo")["ilhas"][$ilha];
 
         $descricao = "<i>\"A quem estiver lendo essa mensagem, por favor me ajude! Estou em " . get_human_location($coordenada["x"], $coordenada["y"])
             . " lhe darei detalhes assim que chegar\"</i>"
@@ -777,8 +776,7 @@ class ItemUsavel
             $ilha = 44;
         }
 
-        $coordenada = $this->connection->run("SELECT * FROM tb_mapa WHERE ilha = ? LIMIT 1",
-            "i", array($ilha))->fetch_array();
+        $coordenada = \Utils\Data::load("mundo")["ilhas"][$ilha];
 
         $descricao = "Leve os materiais de volta a " . get_human_location($coordenada["x"], $coordenada["y"])
             . " e clique em Usar quando chegar.";
@@ -911,18 +909,6 @@ class ItemUsavel
         return "Você aprendeu uma nova receita para a Oficina do Navio!";
     }
 
-    public function inicia_evento_fuga_kiritsugu()
-    {
-        $this->connection->run(
-            "INSERT INTO tb_mapa_contem (x, y, nps_id)
-			(SELECT mapa.x, mapa.y, 10 FROM tb_mapa mapa WHERE (mar = 5 OR mar = 6) AND navegavel = 1 ORDER BY RAND() LIMIT 10);");
-
-        $this->connection->run("INSERT INTO tb_mensagens_globais (assunto, mensagem) VALUE
-			('Evento dos fugitivos de Impel Down', 'Um jogador concluiu a Campanha de Impel Down e ajudou um fugitivo muito perigoso a escapar. Depois do Governo movimentar suas tropas para recapturar os fugitivos, alguns Navios de fugitivos de Impel Down foram vistos navegando pelo oceano. Os primeiros jogadores que encontrarem e derrotarem esses navios receberão um baú de recompensas que pode conter muitos pontos de Haki, Fragmentos de Essência Verde e Akumas no Mi.')");
-
-        return "Você iniciou o Evento dos Fugitivos de Impel Down!";
-    }
-
     public function abre_bau_tesouro_impel_down()
     {
         if (! $this->userDetails->can_add_item()) {
@@ -988,10 +974,10 @@ class ItemUsavel
             .bootbox-body .icon-pers-skin {
                 width: 75px;
             }
-        
-        </style>" 
-        . 
-        icon_pers_skin($img, $skin) . "<br/>";
+
+        </style>"
+            .
+            icon_pers_skin($img, $skin) . "<br/>";
         echo big_pers_skin($img, $skin) . "<br/>";
         echo "</div>";
 
@@ -1139,9 +1125,9 @@ class ItemUsavel
 
             return "Você recebeu uma Instrução de Combate";
         } /*else {
-   $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
+ $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
 
-   return "Você recebeu uma Akuma no Mi";
+ return "Você recebeu uma Akuma no Mi";
 }*/
     }
 
@@ -1298,9 +1284,9 @@ class ItemUsavel
 
             return "Você recebeu 7 mil Experiência para toda tripulação.";
         } /*else {
-   $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
+ $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
 
-   return "Você recebeu uma Akuma no Mi";
+ return "Você recebeu uma Akuma no Mi";
 }*/
     }
 
@@ -1348,9 +1334,9 @@ class ItemUsavel
 
             return "Você recebeu 5 mil pontos de Experiência para toda tripulação.";
         }/*else {
-   $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
+ $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
 
-   return "Você recebeu uma Akuma no Mi";
+ return "Você recebeu uma Akuma no Mi";
 }*/
     }
 

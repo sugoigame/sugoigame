@@ -45,7 +45,6 @@ function get_super_menu($sess = null)
         case "tatics":
         case "combateLog":
         case "wantedLog":
-        case "karma":
         case "skins":
             return "tripulacao";
         case "statusNavio":

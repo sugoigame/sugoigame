@@ -44,7 +44,7 @@ class Navigation
         $this->fog = MapLoader::load("mapa_nevoa");
         $this->fixed_chains = MapLoader::load("mapa_corrente");
         $this->fixed_swirls = MapLoader::load("mapa_redemoinho");
-        $islands = MapLoader::load("mapa_ilhas");
+        $islands = \Utils\Data::load("mundo")["ilhas"];
 
         foreach ($islands as $island) {
             $this->islands[$island["x"]][$island["y"]] = $island["ilha"];
@@ -105,14 +105,16 @@ class Navigation
         $this->last_nps_update = atual_segundo();
 
         $mercadores = $this->connection->run(
-            "SELECT c.mercador_id, c.x, c.y, mapa.x AS destino_x, mapa.y AS destino_y
+            "SELECT c.mercador_id, c.x, c.y, m.ilha_destino
              FROM tb_mapa_contem c
              INNER JOIN tb_ilha_mercador m ON c.mercador_id = m.id
-             INNER JOIN tb_mapa mapa ON m.ilha_destino = mapa.ilha
              WHERE c.mercador_id IS NOT null "
         )->fetch_all_array();
 
         foreach ($mercadores as $mercador) {
+            $ilha_destino = \Regras\Ilhas::get_ilha($mercador["ilha_destino"]);
+            $mercador["destino_x"] = $ilha_destino["x"];
+            $mercador["destino_y"] = $ilha_destino["y"];
             $nps = array(
                 "id" => 100000 + $mercador["mercador_id"],
                 "x" => $mercador["x"],
@@ -601,7 +603,7 @@ class Navigation
                 $island = $this->get_island($px, $py);
                 if ($island) {
                     $island_govern = $connection->run(
-                        "SELECT u.tripulacao, u.faccao, u.bandeira, u.karma_bom, u.karma_mau
+                        "SELECT u.tripulacao, u.faccao, u.bandeira
                          FROM tb_mapa m
                          LEFT JOIN tb_usuarios u ON m.ilha_dono = u.id
                          WHERE m.ilha = ?",

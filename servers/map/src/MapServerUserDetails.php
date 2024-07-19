@@ -87,15 +87,13 @@ class MapServerUserDetails extends UserDetails
             v.coup_de_burst,
             IF(u.reputacao_mensal > 0, 0, u.protecao_pvp) as protecao_pvp,
             u.kai AS kairouseki_ativo,
-            c.kairouseki AS has_kairouseki,
-            m.ilha
+            c.kairouseki AS has_kairouseki
             FROM tb_usuarios u
             INNER JOIN tb_personagens p ON u.cod_personagem = p.cod
             LEFT JOIN tb_titulos t ON p.titulo=t.cod_titulo
             LEFT JOIN tb_usuario_navio n ON n.id = u.id
             INNER JOIN tb_vip v ON u.id = v.id
             LEFT JOIN tb_item_navio_casco c ON n.cod_casco = c.cod_casco
-            LEFT JOIN tb_mapa m ON u.x = m.x AND u.y = m.y
             WHERE u.id = ?",
             "i", array($id)
         )->fetch_array();
@@ -106,6 +104,8 @@ class MapServerUserDetails extends UserDetails
         $me["destino_ilha"] = nome_ilha($me["ilha"]);
         $me['coup_de_burst'] = $me['coup_de_burst'] < 0 ? 0 : $me['coup_de_burst'];
         $me['poder_batalha'] = 0;
+        $ilha = \Regras\Ilhas::get_ilha_by_coord($me["x"], $me["y"]);
+        $me['ilha'] = $ilha ? $ilha["Ilha"] : 0;
 
         unset($me['adm']);
 

@@ -21,7 +21,7 @@
                 </a>
             </p>
         <?php else : ?>
-            <?php $ilha_retorno = get_ilha_by_coord($userDetails->tripulacao["res_x"], $userDetails->tripulacao["res_y"]); ?>
+            <?php $ilha_retorno = \Regras\Ilhas::get_ilha_by_coord($userDetails->tripulacao["res_x"], $userDetails->tripulacao["res_y"]); ?>
             <p>
                 <button class="btn btn-primary link_confirm"
                     data-question="Deseja voltar para <?= nome_ilha($ilha_retorno["ilha"]) ?>?"

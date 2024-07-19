@@ -103,12 +103,11 @@ function super_menu_can_be_active($menu)
                     <ul class="vertical-nav nav navbar-nav">
                         <?= menu_link("tripulacao", "Visão geral", "fa fa-file-text", "") ?>
                         <?= menu_link("status", "Tripulantes", "fa fa-users", "") ?>
-                        <?= menu_link("karma", "Karma", "glyphicon glyphicon-adjust", "") ?>
                         <?= menu_link("realizacoes", "Conquistas", "glyphicon glyphicon-star-empty", "") ?>
                         <?= menu_link("listaNegra", "Lista Negra", "fa fa-th-list", "") ?>
                         <?= menu_link("tatics", "Táticas", "glyphicon glyphicon-knight", "") ?>
-                        <?= menu_link("combateLog", "Histórico de Combates", "fa fa-file-text", "") ?>
-                        <?= menu_link("wantedLog", "Histórico de Recompensas", "fa fa-file-text", "") ?>
+                        <?= menu_link("combateLog", "Combates", "fa fa-file-text", "") ?>
+                        <?= menu_link("wantedLog", "Recompensas", "fa fa-file-text", "") ?>
                     </ul>
                 </div>
                 <?php if ($userDetails->navio) : ?>
@@ -136,7 +135,6 @@ function super_menu_can_be_active($menu)
                     <div id="menu-ilha" class="collapse <?= super_menu_in_out("ilha") ?>">
                         <ul class="vertical-nav nav navbar-nav">
                             <?= menu_link("missoes", "Missões", "fa fa-road", "Aventure-se! Essa ilha tem muito a ser explorado!") ?>
-                            <?= menu_link("incursao", "Incursão", "fa fa-fort-awesome", "") ?>
                             <?= menu_link("recrutar", "Recrutar", "fa fa-street-view", "") ?>
                             <?php if (! $userDetails->tripulacao["recrutando"]) : ?>
                                 <?php if (count($userDetails->personagens) > 1) : ?>
@@ -151,11 +149,7 @@ function super_menu_can_be_active($menu)
                                 <?= menu_link("estaleiro", "Estaleiro", "fa fa-ship", "") ?>
                                 <?= menu_link("hospital", "Hospital", "fa fa-h-square", "") ?>
                                 <?= menu_link("profissoesAprender", "Escola de Profissões", "fa fa-university", "") ?>
-                                <?= menu_link("missoesCaca", "Missões de caça", "glyphicon glyphicon-screenshot", "") ?>
                                 <?= menu_link("missoesR", "Pesquisas", "fa fa-search", "Pesquise para evoluir continuamente.") ?>
-                            <?php endif; ?>
-                            <?php if ($userDetails->ilha["ilha"] == 47) : ?>
-                                <?= menu_link("arvoreAnM", "Jardim de Laftel", "fa fa-circle", "") ?>
                             <?php endif; ?>
 
                             <?php if (
@@ -167,9 +161,9 @@ function super_menu_can_be_active($menu)
 
                             <?php endif; ?>
 
-                            <?php if ((($userDetails->ilha["ilha"] == 42 and $userDetails->tripulacao["faccao"] == FACCAO_PIRATA)
-                                or ($userDetails->ilha["ilha"] == 43 and $userDetails->tripulacao["faccao"] == FACCAO_MARINHA))
-                                and $userDetails->capitao["lvl"] >= 45
+                            <?php if ((($userDetails->ilha["ilha"] == 42 && $userDetails->tripulacao["faccao"] == FACCAO_PIRATA)
+                                || ($userDetails->ilha["ilha"] == 43 && $userDetails->tripulacao["faccao"] == FACCAO_MARINHA))
+                                && $userDetails->capitao["lvl"] >= 45
                             ) : ?>
                                 <?= menu_link("Geral/novo_mundo.php", "Ir para o Novo Mundo", "fa fa-globe", "Hora de navegar! Rumo ao desconhecido!", "", "link_sends") ?>
                             </ul>
@@ -183,9 +177,6 @@ function super_menu_can_be_active($menu)
                         <ul class="vertical-nav nav navbar-nav">
                             <?php if (! $userDetails->missao && ! $userDetails->tripulacao["recrutando"] && $userDetails->navio) : ?>
                                 <?= menu_link("oceano", "Ir para o oceano", "glyphicon glyphicon-tint", "") ?>
-                                <?= menu_link("amigaveis", "Batalhas Amigáveis", "glyphicon glyphicon-screenshot", "") ?>
-                            <?php endif; ?>
-                            <?php if (! $userDetails->in_ilha) : ?>
                                 <?= menu_link("servicoDenDen", "Vendas por correio", "fa fa-shopping-basket", "") ?>
                             <?php endif; ?>
                             <?php if (! $userDetails->rotas
