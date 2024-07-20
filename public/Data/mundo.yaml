@@ -1,24 +1,24 @@
 mares:
   1:
-    ilha: 1
+    mar: 1
     nome: "East Blue"
   2:
-    ilha: 2
+    mar: 2
     nome: "North Blue"
   3:
-    ilha: 3
+    mar: 3
     nome: "West Blue"
   4:
-    ilha: 4
+    mar: 4
     nome: "South Blue"
   5:
-    ilha: 5
+    mar: 5
     nome: "Grand Line"
   6:
-    ilha: 6
+    mar: 6
     nome: "Novo Mundo"
   7:
-    ilha: 7
+    mar: 7
     nome: "Calm Belt"
 
 ilhas:
@@ -426,47 +426,98 @@ ilhas:
     y: 239
 
 faccoes:
-  1:
+  - cod: 1
     nome: Jornal Econômico Mundial
+    evolui_outros: true
     viajante:
       producao: xp
-  2:
+  - cod: 2
     nome: Governo Mundial
     viajante:
       producao: haki
-  3:
+    bonus:
+      - atk
+      - dex
+      - res
+      - hp
+  - cod: 3
     nome: Exército Revolucionário
     viajante:
       producao: haki
-  4:
+    bonus:
+      - atk
+      - def
+      - dex
+      - hp
+  - cod: 4
     nome: Caçadores de recompensas
     viajante:
       producao: berries
-  5:
+    bonus:
+      - atk
+      - def
+      - agl
+      - hp
+  - cod: 5
     nome: Skypeans
     viajante:
       producao: haki
-  7:
+    bonus:
+      - atk
+      - def
+      - agl
+      - pre
+  - cod: 6
     nome: Homens Peixe
     viajante:
       producao: xp
-  8:
+    bonus:
+      - def
+      - agl
+      - pre
+      - con
+  - cod: 7
     nome: Kuja
     viajante:
       producao: berries
-  9:
+    bonus:
+      - agl
+      - pre
+      - con
+      - res
+  - cod: 8
     nome: Tontatta
     viajante:
       producao: berries
-  10:
+    bonus:
+      - dex
+      - res
+      - con
+      - pre
+  - cod: 9
     nome: Minks
     viajante:
       producao: xp
-  11:
+    bonus:
+      - hp
+      - dex
+      - res
+      - con
+  - cod: 10
     nome: Samurais
     viajante:
       producao: haki
-  12:
+    bonus:
+      - atk
+      - def
+      - agl
+      - pre
+  - cod: 11
     nome: Gigantes
     viajante:
       producao: xp
+    bonus:
+      - con
+      - res
+      - dex
+      - hp

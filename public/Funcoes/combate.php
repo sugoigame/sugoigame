@@ -153,6 +153,7 @@ function get_pers_in_combate($id)
         pers.fama_ameaca AS fama_ameaca,
         pers.akuma AS akuma,
         pers.xp AS xp,
+        pers.titulo as titulo,
         akuma.categoria AS categoria_akuma,
         pers.profissao AS profissao,
         pers.profissao_lvl AS profissao_lvl,
@@ -177,7 +178,10 @@ function get_pers_in_combate($id)
         cbtpers.vit AS vit,
         cbtpers.fa_ganha AS fa_ganha,
         usr.cod_personagem AS cod_capitao,
-        cbtpers.efeitos as efeitos
+        cbtpers.efeitos as efeitos,
+        usr.faccao as faccao,
+        usr.tripulacao as tripulacao,
+        usr.bandeira as bandeira
         FROM tb_combate_personagens cbtpers
         INNER JOIN tb_personagens pers ON cbtpers.cod = pers.cod
         INNER JOIN tb_usuarios usr ON usr.id = pers.id
@@ -246,13 +250,13 @@ function calc_recompensa($fa)
     $milhao = 1000000;
     if ($fa < $milhao) {
         return floor($fa / 1000) * 1000;
-    } else if ($fa < 5 * $milhao) {
+    } elseif ($fa < 5 * $milhao) {
         return floor($fa / 500000) * 500000;
-    } else if ($fa < 500 * $milhao) {
+    } elseif ($fa < 500 * $milhao) {
         return floor($fa / $milhao) * $milhao;
-    } else if ($fa < 1000 * $milhao) {
+    } elseif ($fa < 1000 * $milhao) {
         return floor($fa / (5 * $milhao)) * 5 * $milhao;
-    } else if ($fa < 2000 * $milhao) {
+    } elseif ($fa < 2000 * $milhao) {
         return floor($fa / (50 * $milhao)) * 50 * $milhao;
     } else {
         return floor($fa / (100 * $milhao)) * 100 * $milhao;
@@ -716,16 +720,16 @@ function inicia_combate($alvo, $tipo, $chave = null)
         <?php if ($pers["hp"]) : ?>
             <?php $pers["id"] = $pers["tripulacao_id"]; ?>
             <div class="personagem-info hidden" id="personagem-info-<?= $pers["cod"] ?>">
-                <div class="panel panel-<?= $pers["tripulacao_id"] == $id_blue ? "info" : "danger" ?>">
-                    <div class="panel-heading">
-                        <?= $pers["nome"]; ?>,
-                        <?= $pers["titulo"] ?>
+                <div class="row">
+                    <div class="col-xs-6 mb" style="padding: 0">
+                        <?= \Componentes::render('Personagem.Avatar', [
+                            'pers' => $pers,
+                            'tripulacao' => $pers
+                        ]); ?>
                     </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-6" style="width: 100%">
-                                <?= big_pers_skin($pers["img"], $pers["skin_c"], isset($pers["borda"]) ? $pers["borda"] : 0, "tripulante_big_img", 'width="100%"') ?>
-                                <br />
+                    <div class="col-xs-6" style="padding: 0">
+                        <div class="panel panel-<?= $pers["tripulacao_id"] == $id_blue ? "info" : "danger" ?>">
+                            <div class="panel-body">
                                 <?php if ($info_avancado) : ?>
                                     <?php if ($pers["akuma"]) : ?>
                                         <div>
@@ -753,8 +757,6 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                 <?php endif; ?>
 
                                 <?php render_personagem_hp_bar($pers); ?>
-                            </div>
-                            <div class="col-xs-6" style="width: 100%">
                                 <?php if (isset($pers["efeitos"]) && count($pers["efeitos"])) : ?>
                                     <h4>Buffs</h4>
                                     <?php foreach ($pers["efeitos"] as $efeito) : ?>
@@ -989,11 +991,11 @@ function inicia_combate($alvo, $tipo, $chave = null)
                         src="Imagens/Bandeiras/img.php?cod=<?= $userDetails->tripulacao["bandeira"] ?>&f=<?= $userDetails->tripulacao["faccao"] ?>">
                 </span>
                 <?php render_vontade($userDetails->combate_pve["vontade_1"]) ?>
-                <span class="placar">
+                <span class="placar text-info">
                     <?= count($personagens_combate) ?>
                 </span>
                 <img src="Imagens/Batalha/vs.png" />
-                <span class="placar">
+                <span class="placar text-danger">
                     <?= $userDetails->combate_pve["hp_npc"] ? "1" : "0" ?>
                 </span>
                 <?php render_vontade($userDetails->combate_pve["vontade_npc"]) ?>

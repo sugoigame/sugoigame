@@ -66,6 +66,26 @@ hr {
     margin: 0;
 }
 
+.mt0 {
+    margin-top: 0;
+}
+
+.mt {
+    margin-top: 1em;
+}
+
+.mt2 {
+    margin-top: 2em;
+}
+
+.mt3 {
+    margin-top: 3em;
+}
+
+.mt4 {
+    margin-top: 4em;
+}
+
 .mb {
     margin-bottom: 1em;
 }
@@ -172,7 +192,11 @@ hr {
 .d-flex {
     display: flex;
 }
-.flex-colum {
+.flex-grow {
+    flex-grow: 1;
+}
+.flex-colum,
+.flex-column {
     flex-direction: column;
 }
 .align-items-center {
@@ -391,6 +415,8 @@ table tr td {
 #vertical-menu .navbar-nav {
     float: left;
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #vertical-menu .navbar a:hover {
@@ -514,13 +540,82 @@ table tr td {
     display: none;
 }
 
+.big-pers-avatar,
 .big-pers-skin {
     position: relative;
+    display: inline-block;
+    max-width: 100%;
 }
 
 .big-pers-skin .big-pers-borda {
     position: absolute;
     z-index: 2;
+    max-width: 100%;
+}
+.big-pers-skin .big-pers-skin-img {
+    max-width: 100%;
+}
+
+.big-pers-skin .big-pers-skin-cartaz {
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+    z-index: 3;
+}
+
+.big-pers-avatar.small .big-pers-skin-cartaz {
+    right: 50%;
+    transform: translateX(50%);
+}
+.big-pers-avatar .big-pers-skin-bandeira {
+    position: relative;
+    z-index: 3;
+}
+
+.big-pers-avatar .big-pers-skin-bandeira img {
+    position: absolute;
+    left: 0;
+    width: 25%;
+    min-height: 20px;
+}
+.big-pers-avatar.pirate .big-pers-skin-bandeira .nome-tripulacao,
+.big-pers-avatar.pirate .big-pers-detail {
+    background-color: #d9a267;
+}
+.big-pers-avatar.pirate .big-pers-skin-bandeira .nome-tripulacao {
+    border-top: 3px solid #c07617;
+    border-right: 3px solid #c07617;
+}
+.big-pers-avatar.pirate .big-pers-detail {
+    border: 3px solid #c07617;
+}
+.big-pers-avatar.marine .big-pers-skin-bandeira .nome-tripulacao,
+.big-pers-avatar.marine .big-pers-detail {
+    background-color: #85bb85;
+}
+.big-pers-avatar.marine .big-pers-skin-bandeira .nome-tripulacao {
+    border-top: 3px solid #2c6a2c;
+    border-right: 3px solid #2c6a2c;
+}
+.big-pers-avatar.marine .big-pers-detail {
+    border: 3px solid #2c6a2c;
+}
+.big-pers-avatar .big-pers-skin-bandeira .nome-tripulacao {
+    padding: 3px;
+    height: 20px;
+    border-radius: 0 8px 0 0;
+    font-size: 70%;
+}
+
+.big-pers-avatar .big-pers-detail {
+    border-top: none;
+    padding: 3px 80px 3px 3px;
+    border-radius: 0 0 8px 8px;
+    height: 46px;
+}
+.big-pers-avatar.small .big-pers-detail {
+    padding: 33px 3px 0px 3px;
+    height: 76px;
 }
 
 #tripulantes-bar {
@@ -691,9 +786,6 @@ table tr td {
 
 .cartaz_procurado .recompensa_text {
     display: block;
-}
-.cartaz_procurado .recompensa_text .recompensa_name {
-    font-weight: bold;
 }
 
 .tripulante-lvl-up {

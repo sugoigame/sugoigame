@@ -58,9 +58,7 @@ class Protector
                 $this->need_tripulacao();
                 $this->must_be_out_of_any_kind_of_combat();
                 break;
-            case "missoes":
-            case "missoesConcluidas":
-            case "incursao":
+            case "conflitos":
                 $this->need_tripulacao();
                 $this->must_be_in_ilha();
                 $this->must_be_out_of_any_kind_of_combat();
@@ -96,6 +94,7 @@ class Protector
             case "equipamentos":
             case "status":
             case "tripulacao":
+            case "influencia":
             case "haki":
             case "listaNegra":
             case "realizacoes":

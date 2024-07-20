@@ -74,13 +74,13 @@ function render_recompensa($recompensa, $reagents, $equipamentos)
     global $userDetails, $connection; ?>
     <?php if ($recompensa["tipo"] == "berries") : ?>
         <p>
-            <img src="Imagens/Icones/Berries.png" />
+            <img src="Imagens/Icones/Berries.png" alt="" />
             <?= mascara_berries($recompensa["quant"]) ?>
         </p>
     <?php elseif ($recompensa["tipo"] == "xp") : ?>
         <p>
             <img style="border-radius: 5px" src="Imagens/NPC/xp.jpg" data-toggle="tooltip"
-                title="Pontos de Experiência para toda tripulação" />
+                title="Pontos de Experiência para toda tripulação" alt="" />
             <?= mascara_numeros_grandes($recompensa["quant"]) ?>
         </p>
 
@@ -90,7 +90,7 @@ function render_recompensa($recompensa, $reagents, $equipamentos)
         </p>
     <?php elseif ($recompensa["tipo"] == "akuma") : ?>
         <p>
-            <img src="Imagens/Itens/100.png"> Akuma no Mi Aleatória
+            <img src="Imagens/Itens/100.png" alt="" /> Akuma no Mi Aleatória
         </p>
     <?php elseif ($recompensa["tipo"] == "alcunha") : ?>
         <?php $alcunha = $connection->run("SELECT * FROM tb_titulos WHERE cod_titulo = ?", "i", array($recompensa["cod_titulo"]))->fetch_array(); ?>
@@ -115,15 +115,15 @@ function render_recompensa($recompensa, $reagents, $equipamentos)
     <?php elseif ($recompensa["tipo"] == "moeda_evento") : ?>
         <p>
             <?= $recompensa["quant"] ?>
-            <img src="Imagens/Icones/MoedaEvento.png" data-toggle="tooltip"
+            <img src="Imagens/Icones/MoedaEvento.png" data-toggle="tooltip" alt=""
                 title="Medalha de Evento. Pode ser usada para comprar recompensas especiais na Loja de Eventos">
             Medalha de Evento
         </p>
     <?php elseif ($recompensa["tipo"] == "reagent") : ?>
         <div class="clearfix">
             <div class="equipamentos_classe_1" style="display: inline-block; margin: auto">
-                <img
-                    src="Imagens/Itens/<?= $reagents[$recompensa["cod_item"]]["img"] ?>.<?= $reagents[$recompensa["cod_item"]]["img_format"] ?>">
+                <img alt=""
+                    src="Imagens/Itens/<?= $reagents[$recompensa["cod_item"]]["img"] ?>.<?= $reagents[$recompensa["cod_item"]]["img_format"] ?>" />
             </div>
             <p>
                 <?= $reagents[$recompensa["cod_item"]]["nome"] ?>
@@ -140,7 +140,7 @@ function render_recompensa($recompensa, $reagents, $equipamentos)
             Aumento na
             <?= $userDetails->tripulacao["faccao"] == FACCAO_MARINHA ? "gratificação" : "recompensa"; ?> da
             tripulação em
-            <img src="Imagens/Icones/Berries.png" />
+            <img src="Imagens/Icones/Berries.png" alt="" />
             <?= mascara_berries($recompensa["quant"]) ?>
         </div>
     <?php endif; ?>

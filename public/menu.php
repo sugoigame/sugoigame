@@ -80,20 +80,6 @@ function super_menu_can_be_active($menu)
                 </ul>
             </div>
             <?php if (! $userDetails->combate_pvp && ! $userDetails->combate_pve && ! $userDetails->combate_bot) : ?>
-                <?php if ($userDetails->tripulacao["campanha_impel_down"] || $userDetails->tripulacao["campanha_enies_lobby"]) : ?>
-                    <?= super_menu_link("campanhaImpelDown", "menu-campanha", "Campanhas", "campanha", "campanha") ?>
-                    <div id="menu-campanha" class="collapse <?= super_menu_in_out("campanha") ?>">
-                        <ul class="vertical-nav nav navbar-nav">
-                            <?php if ($userDetails->tripulacao["campanha_impel_down"]) : ?>
-                                <?= menu_link("campanhaImpelDown", "Impel Down", "fa fa-book", "") ?>
-                            <?php endif; ?>
-                            <?php if ($userDetails->tripulacao["campanha_enies_lobby"]) : ?>
-                                <?= menu_link("campanhaEniesLobby", "Enies Lobby", "fa fa-book", "") ?>
-                            <?php endif; ?>
-                        </ul>
-                    </div>
-                <?php endif; ?>
-
                 <?= super_menu_link("status", "menu-tripulacao", "Tripulação", "tripulacao", "tripulacao", [
                     SISTEMA_VISAO_GERAL_TRIPULACAO,
                     SISTEMA_HAKI
@@ -103,6 +89,7 @@ function super_menu_can_be_active($menu)
                     <ul class="vertical-nav nav navbar-nav">
                         <?= menu_link("tripulacao", "Visão geral", "fa fa-file-text", "") ?>
                         <?= menu_link("status", "Tripulantes", "fa fa-users", "") ?>
+                        <?= menu_link("influencia", "Influência", "fa fa-globe", "") ?>
                         <?= menu_link("realizacoes", "Conquistas", "glyphicon glyphicon-star-empty", "") ?>
                         <?= menu_link("listaNegra", "Lista Negra", "fa fa-th-list", "") ?>
                         <?= menu_link("tatics", "Táticas", "glyphicon glyphicon-knight", "") ?>
@@ -134,7 +121,7 @@ function super_menu_can_be_active($menu)
 
                     <div id="menu-ilha" class="collapse <?= super_menu_in_out("ilha") ?>">
                         <ul class="vertical-nav nav navbar-nav">
-                            <?= menu_link("missoes", "Missões", "fa fa-road", "Aventure-se! Essa ilha tem muito a ser explorado!") ?>
+                            <?= menu_link("conflitos", "Conflitos", "fa fa-bolt", "Aventure-se! Essa ilha tem muito a ser explorado!") ?>
                             <?= menu_link("recrutar", "Recrutar", "fa fa-street-view", "") ?>
                             <?php if (! $userDetails->tripulacao["recrutando"]) : ?>
                                 <?php if (count($userDetails->personagens) > 1) : ?>

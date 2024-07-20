@@ -80,7 +80,6 @@ $pers = $protector->get_tripulante_or_exit("cod");
         position: relative;
         z-index: 1;
     }
-
 </style>
 
 <script type="text/javascript">
@@ -115,7 +114,10 @@ $pers = $protector->get_tripulante_or_exit("cod");
 <div class="row pt1">
     <div class="col-xs-4">
         <div>
-            <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "", 'width="80%"') ?>
+            <?= \Componentes::render('Personagem.Avatar', [
+                'pers' => $pers,
+                'tripulacao' => $userDetails->tripulacao
+            ]); ?>
             <?php if ($pers["xp"] >= $pers["xp_max"] && $pers["lvl"] < 50) : ?>
                 <button id="status_evoluir" href="link_Personagem/personagem_evoluir.php?cod=<?= $pers["cod"] ?>"
                     class="link_send btn btn-info">

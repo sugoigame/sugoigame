@@ -87,12 +87,8 @@ function get_patente_nome($faccao, $battle_level)
                 "iiii", array($id1, $id2, $id3, $id4)
             ); ?>
             <?php while ($famoso = $result->fetch_array()) : ?>
-                <div class="col-xs-6 col-sm-6 col-md-6" style="padding: 0;">
-                    <div class="div-top">
-                        <?php render_top_player($famoso, $titulo); ?>
-                    </div>
-                    <img style="width: 45px; margin: 10px;"
-                        src="Imagens/Bandeiras/img.php?cod=<?= $famoso["bandeira"]; ?>&f=<?= $famoso["faccao"]; ?>" />
+                <div class="col-xs-6 col-sm-6 col-md-6 mb mt" style="padding: 0;">
+                    <?php render_top_player($famoso, $titulo); ?>
                 </div>
             <?php endwhile; ?>
         </div>
@@ -100,21 +96,11 @@ function get_patente_nome($faccao, $battle_level)
 <?php } ?>
 <?php function render_top_player($famoso, $titulo)
 { ?>
-    <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "", 'style="max-width: 100%; padding: 0;"') ?>
-    <div class="texto-top">
-        <!-- <p class="texto-top-cargo"><?= $titulo ?></p> -->
-        <div class="texto-top-nome">
-            <?= $famoso["nome"] ?>
-        </div>
-        <?php if (isset($famoso["titulo_nome"]) && $titulo != $famoso["titulo_nome"]) : ?>
-            <div class="texto-top-alcunha" style="font-size: 1.2rem;">
-                <?= $famoso["titulo_nome"] ?>
-            </div>
-        <?php endif; ?>
-        <div class="texto-top-alcunha" style="font-size: 1.2rem;">
-            <?= $famoso["tripulacao"] ?>
-        </div>
-    </div>
+    <?= \Componentes::render('Personagem.Avatar', [
+        'pers' => $famoso,
+        'tripulacao' => $famoso,
+        'class' => 'small'
+    ]); ?>
 <?php } ?>
 <?php function render_painel_yonkou($id1, $id2, $id3, $id4)
 {
@@ -131,7 +117,7 @@ function get_patente_nome($faccao, $battle_level)
         <div class="panel-heading">
             <?= $titulo ?>
         </div>
-        <div class="panel-panel-body clearfix">
+        <div class="panel-panel-body clearfix mt mb">
             <?php $result = $connection->run(
                 "SELECT *, IF (pers.sexo = 0, titulo.nome, titulo.nome_f) titulo_nome
                   FROM tb_personagens pers
@@ -142,31 +128,10 @@ function get_patente_nome($faccao, $battle_level)
             );
             if ($result->count() > 0) :
                 $famoso = $result->fetch_array(); ?>
-                <div class="col-md-12" style="display: flex; justify-content: center; align-items: center; padding: 0;">
-                    <?= big_pers_skin($famoso["img"], $famoso["skin_c"], $famoso["borda"], "") ?>
-                    <div>
-                        <div class="texto-top">
-                            <p class="texto-top-cargo" style="font-size: 1.4rem;">
-                                <?= $titulo ?>
-                            </p>
-                            <p class="texto-top-nome" style="font-size: 1.3rem;">
-                                <?= $famoso["nome"] ?>
-                            </p>
-                            <?php if ($titulo != $famoso["titulo_nome"]) : ?>
-                                <p class="texto-top-alcunha" style="font-size: 1.2rem;">
-                                    <?= $famoso["titulo_nome"] ?>
-                                </p>
-                            <?php endif; ?>
-                            <p class="texto-top-alcunha" style="font-size: 1.1rem;">
-                                <?= $famoso["tripulacao"] ?>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <img src="Imagens/Bandeiras/img.php?cod=<?= $famoso["bandeira"]; ?>&f=<?= $famoso["faccao"]; ?>"
-                        style="margin: 5px; width: 60px" />
-                </div>
+                <?= \Componentes::render('Personagem.Avatar', [
+                    'pers' => $famoso,
+                    'tripulacao' => $famoso
+                ]); ?>
             <?php endif; ?>
         </div>
     </div>

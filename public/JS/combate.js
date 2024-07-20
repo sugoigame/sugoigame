@@ -1,6 +1,8 @@
 $(function () {
     $(document).on("mouseenter", ".personagem", function () {
-        hoverPersonagem(this);
+        if (!("ontouchstart" in document.documentElement)) {
+            hoverPersonagem(this);
+        }
     });
     $(document).on("taphold", ".personagem", function () {
         hoverPersonagem(this);

@@ -155,7 +155,7 @@
 .personagem-info {
     position: absolute;
     top: 15vh;
-    max-width: 15vw;
+    max-width: 30vw;
     z-index: 100;
     color: black !important;
 }

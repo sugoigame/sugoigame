@@ -1,4 +1,6 @@
-<?php $missoes = DataLoader::load("missoes"); ?>
+<?= \Componentes::render("Sessoes.Conflitos"); ?>
+
+<!-- <?php $missoes = DataLoader::load("missoes"); ?>
 
 <?php function render_missao($missao, $index, $count_missoes_concluidas, $total_concluido_hoje)
 { ?>
@@ -202,4 +204,4 @@
             </button>
         </p>
     <?php endif; ?>
-</div>
+</div> -->

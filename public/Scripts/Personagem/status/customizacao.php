@@ -132,7 +132,10 @@ if ($pers["titulo"]) {
 </script>
 <div class="row">
     <div class="col-md-5 col-xs-12">
-        <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "hidden-sm hidden-xs") ?>
+        <?= \Componentes::render('Personagem.Avatar', [
+            'pers' => $pers,
+            'tripulacao' => $userDetails->tripulacao
+        ]); ?>
         <button class="btn btn-info trocar-personagem" data-pers="<?= $pers["cod"] ?>" data-tipo="gold"
             <?= $userDetails->conta["gold"] >= PRECO_GOLD_TROCAR_PERSONAGEM ? "" : "disabled" ?>>
             <?= PRECO_GOLD_TROCAR_PERSONAGEM ?>

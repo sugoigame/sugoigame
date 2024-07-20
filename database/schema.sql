@@ -3074,4 +3074,8 @@ ALTER TABLE tb_combate_npc ADD vez VARCHAR(10) DEFAULT '1' NOT NULL;
 ALTER TABLE tb_combate_skil_espera ADD recarga_universal BOOL DEFAULT false NOT NULL;
 
 
+-- sistema de influencia
+
+
+
 SET FOREIGN_KEY_CHECKS=1;

@@ -230,10 +230,14 @@ function preco_selo_exp($pers)
     </div>
 <?php } ?>
 <?php function render_personagem_sub_panel_with_img_top($pers)
-{ ?>
+{
+    global $userDetails; ?>
     <div class="row">
         <div class="col-md-5 hidden-sm hidden-xs">
-            <?= big_pers_skin($pers["img"], $pers["skin_c"], $pers["borda"], "", 'width="60%"') ?>
+            <?= \Componentes::render('Personagem.Avatar', [
+                'pers' => $pers,
+                'tripulacao' => $userDetails->tripulacao
+            ]); ?>
         </div>
         <div class="col-md-7 col-xs-12">
             <div class="panel panel-default">
