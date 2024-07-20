@@ -26,6 +26,9 @@ ilhas:
   1:
     ilha: 1
     nome: "Ilha Dawn"
+    bg: 9
+    cor_dia: "#00adf1"
+    cor_noite: "#00053d"
     mar: 1
     x: 428
     y: 31
@@ -34,6 +37,9 @@ ilhas:
   2:
     ilha: 2
     nome: "Shells Town"
+    bg: 10
+    cor_dia: "#1d50a9"
+    cor_noite: "#000269"
     mar: 1
     x: 373
     y: 30
@@ -42,6 +48,7 @@ ilhas:
   3:
     ilha: 3
     nome: "Orange Town"
+    bg: 13
     mar: 1
     x: 352
     y: 52
@@ -50,6 +57,7 @@ ilhas:
   4:
     ilha: 4
     nome: "Vila Syrup"
+    bg: 14
     mar: 1
     x: 368
     y: 76
@@ -58,6 +66,7 @@ ilhas:
   5:
     ilha: 5
     nome: "Baratie"
+    bg: 2
     mar: 1
     x: 335
     y: 48
@@ -66,6 +75,7 @@ ilhas:
   6:
     ilha: 6
     nome: "Ilha Cocoyashi"
+    bg: 15
     mar: 1
     x: 331
     y: 19
@@ -74,6 +84,7 @@ ilhas:
   7:
     ilha: 7
     nome: "Loguetown"
+    bg: 19
     mar: 1
     x: 309
     y: 71
@@ -84,6 +95,7 @@ ilhas:
   8:
     ilha: 8
     nome: "Lvneel Kingdom"
+    bg: 9
     mar: 2
     x: 70
     y: 51
@@ -92,6 +104,7 @@ ilhas:
   9:
     ilha: 9
     nome: "Burlywood Town"
+    bg: 13
     mar: 2
     x: 107
     y: 25
@@ -100,6 +113,7 @@ ilhas:
   10:
     ilha: 10
     nome: "GoldenRod Town"
+    bg: 1
     mar: 2
     x: 124
     y: 26
@@ -108,6 +122,7 @@ ilhas:
   11:
     ilha: 11
     nome: "Oubliette Town"
+    bg: 20
     mar: 2
     x: 170
     y: 31
@@ -116,6 +131,7 @@ ilhas:
   12:
     ilha: 12
     nome: "Vila Whitewood"
+    bg: 1
     mar: 2
     x: 149
     y: 48
@@ -124,6 +140,7 @@ ilhas:
   13:
     ilha: 13
     nome: "Ilha North Coral"
+    bg: 11
     mar: 2
     x: 130
     y: 70
@@ -132,6 +149,7 @@ ilhas:
   14:
     ilha: 14
     nome: "Cartigen"
+    bg: 17
     mar: 2
     x: 144
     y: 85
@@ -142,6 +160,7 @@ ilhas:
   15:
     ilha: 15
     nome: "Baterilla"
+    bg: 21
     mar: 4
     x: 424
     y: 341
@@ -150,6 +169,7 @@ ilhas:
   16:
     ilha: 16
     nome: "Zozu Town"
+    bg: 13
     mar: 4
     x: 415
     y: 311
@@ -158,6 +178,7 @@ ilhas:
   17:
     ilha: 17
     nome: "Karatê island"
+    bg: 12
     mar: 4
     x: 384
     y: 294
@@ -166,6 +187,7 @@ ilhas:
   18:
     ilha: 18
     nome: "Avalien Town"
+    bg: 13
     mar: 4
     x: 353
     y: 318
@@ -174,6 +196,7 @@ ilhas:
   19:
     ilha: 19
     nome: "Torino"
+    bg: 1
     mar: 4
     x: 336
     y: 286
@@ -182,6 +205,7 @@ ilhas:
   20:
     ilha: 20
     nome: "Cinturão das luas"
+    bg: 14
     mar: 4
     x: 304
     y: 318
@@ -190,6 +214,7 @@ ilhas:
   21:
     ilha: 21
     nome: "Kimotsu Town"
+    bg: 18
     mar: 4
     x: 289
     y: 292
@@ -200,6 +225,7 @@ ilhas:
   22:
     ilha: 22
     nome: "Ilusia Kingdom"
+    bg: 9
     mar: 3
     x: 35
     y: 337
@@ -208,6 +234,7 @@ ilhas:
   23:
     ilha: 23
     nome: "Ohara"
+    bg: 22
     mar: 3
     x: 45
     y: 296
@@ -216,6 +243,7 @@ ilhas:
   24:
     ilha: 24
     nome: "Ilha Toroa"
+    bg: 3
     mar: 3
     x: 81
     y: 290
@@ -224,6 +252,7 @@ ilhas:
   25:
     ilha: 25
     nome: "Las Camp"
+    bg: 3
     mar: 3
     x: 104
     y: 308
@@ -232,6 +261,7 @@ ilhas:
   26:
     ilha: 26
     nome: "Kima Town"
+    bg: 3
     mar: 3
     x: 127
     y: 329
@@ -240,6 +270,7 @@ ilhas:
   27:
     ilha: 27
     nome: "Jumbo Town"
+    bg: 3
     mar: 3
     x: 166
     y: 325
@@ -248,6 +279,7 @@ ilhas:
   28:
     ilha: 28
     nome: "Ilha Kagero"
+    bg: 1
     mar: 3
     x: 157
     y: 289
@@ -258,6 +290,7 @@ ilhas:
   29:
     ilha: 29
     nome: "Cabos Gêmeos"
+    bg: 23
     mar: 5
     x: 281
     y: 177
@@ -266,6 +299,7 @@ ilhas:
   30:
     ilha: 30
     nome: "Whiskey Peak"
+    bg: 8
     mar: 5
     x: 292
     y: 207
@@ -274,6 +308,7 @@ ilhas:
   31:
     ilha: 31
     nome: "Little Garden"
+    bg: 11
     mar: 5
     x: 306
     y: 219
@@ -282,6 +317,7 @@ ilhas:
   32:
     ilha: 32
     nome: "Drum"
+    bg: 4
     mar: 5
     x: 323
     y: 229
@@ -290,6 +326,7 @@ ilhas:
   33:
     ilha: 33
     nome: "Rainbase"
+    bg: 3
     mar: 5
     x: 346
     y: 229
@@ -298,6 +335,7 @@ ilhas:
   34:
     ilha: 34
     nome: "Yuba"
+    bg: 3
     mar: 5
     x: 352
     y: 229
@@ -306,6 +344,7 @@ ilhas:
   35:
     ilha: 35
     nome: "Alubarna"
+    bg: 3
     mar: 5
     x: 347
     y: 225
@@ -314,6 +353,7 @@ ilhas:
   36:
     ilha: 36
     nome: "Nanohana"
+    bg: 3
     mar: 5
     x: 352
     y: 225
@@ -322,6 +362,7 @@ ilhas:
   37:
     ilha: 37
     nome: "Mock Town"
+    bg: 24
     mar: 5
     x: 375
     y: 234
@@ -330,6 +371,7 @@ ilhas:
   38:
     ilha: 38
     nome: "South Grave"
+    bg: 25
     mar: 5
     x: 377
     y: 236
@@ -338,6 +380,7 @@ ilhas:
   39:
     ilha: 39
     nome: "Long Ring Long Land"
+    bg: 11
     mar: 5
     x: 395
     y: 234
@@ -346,6 +389,7 @@ ilhas:
   40:
     ilha: 40
     nome: "Water 7"
+    bg: 6
     mar: 5
     x: 424
     y: 215
@@ -354,6 +398,7 @@ ilhas:
   41:
     ilha: 41
     nome: "Thriller Bark"
+    bg: 26
     mar: 5
     x: 442
     y: 197
@@ -362,6 +407,7 @@ ilhas:
   42:
     ilha: 42
     nome: "Sabaody"
+    bg: 5
     mar: 5
     x: 446
     y: 179
@@ -370,6 +416,7 @@ ilhas:
   43:
     ilha: 43
     nome: "Mariejois"
+    bg: 7
     mar: 5
     x: 453
     y: 192
@@ -380,6 +427,7 @@ ilhas:
   44:
     ilha: 44
     nome: "Punk Hazard"
+    bg: 27
     mar: 6
     x: 34
     y: 164
@@ -388,6 +436,7 @@ ilhas:
   45:
     ilha: 45
     nome: "Yukiryu"
+    bg: 28
     mar: 6
     x: 38
     y: 119
@@ -396,6 +445,7 @@ ilhas:
   46:
     ilha: 46
     nome: "Raijin"
+    bg: 29
     mar: 6
     x: 38
     y: 190
@@ -404,6 +454,7 @@ ilhas:
   47:
     ilha: 47
     nome: "Laugh Tale"
+    bg: 30
     restrita: true
     mar: 6
     x: 181
@@ -413,6 +464,7 @@ ilhas:
   101:
     ilha: 101
     nome: "Impel Down"
+    bg: 31
     restrita: true
     mar: 7
     x: 430
@@ -420,6 +472,7 @@ ilhas:
   102:
     ilha: 102
     nome: "Enies Lobby"
+    bg: 32
     restrita: true
     mar: 5
     x: 421
