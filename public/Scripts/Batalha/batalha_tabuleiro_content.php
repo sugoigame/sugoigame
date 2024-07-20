@@ -59,7 +59,7 @@ foreach ($personagens_combate as $pers) {
                         </div>
                         <div class="progress">
                             <div class="progress-bar progress-bar-danger"
-                                style="width: <?= $userDetails->combate_pve["hp_npc"] / $userDetails->combate_pve["hp_max_npc"] * 100 ?>%;">
+                                style="width: <?= $userDetails->combate_pve["hp_npc"] / $userDetails->combate_pve["hp_max_npc"] * 100.0 ?>%;">
                                 <?= $userDetails->combate_pve["nome_npc"] . ":" .
                                     $userDetails->combate_pve["hp_npc"] . "/" . $userDetails->combate_pve["hp_max_npc"] ?>
                             </div>
@@ -71,7 +71,7 @@ foreach ($personagens_combate as $pers) {
                 <div class="navio navio-player" <?php if (! $userDetails->combate_pve["battle_back"]) : ?>
                         style="background: url(Imagens/Bandeiras/Navios/<?= $userDetails->tripulacao["faccao"]; ?>/<?= $userDetails->tripulacao["skin_tabuleiro_navio"] ?>/batalha.png) no-repeat center"
                     <?php endif; ?>>
-                    <?php render_tabuleiro($tabuleiro, 0, 5, NULL, $userDetails->combate_pve["mira"]); ?>
+                    <?php render_tabuleiro($tabuleiro, 0, 5, null, $userDetails->combate_pve["mira"]); ?>
                 </div>
             </div>
 

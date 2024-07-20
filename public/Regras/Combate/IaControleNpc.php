@@ -43,12 +43,20 @@ class IaControleNpc extends IaControle
         $this->combate->atacar("npc", $habilidade->estado["cod"], $posicao_alvo["x"] . "_" . $posicao_alvo["y"]);
     }
 
-    public function escolhe_alvo($mira)
+    public function escolhe_alvo($mira, $count = 0)
     {
+        if ($count > 5) {
+            foreach ($this->combate->tripulacoes['1']->personagens as $pers) {
+                if ($pers->estado["hp"] > 0) {
+                    return $pers;
+                }
+            }
+        }
+
         if ($mira < 0) {
-            return $this->escolhe_alvo(0);
+            return $this->escolhe_alvo(0, ++$count);
         } elseif ($mira > 4) {
-            return $this->escolhe_alvo(4);
+            return $this->escolhe_alvo(4, ++$count);
         }
 
         $personagens = $this->combate->tabuleiro->get_personagens_linha($mira);
@@ -56,7 +64,7 @@ class IaControleNpc extends IaControle
             shuffle($personagens);
             return $personagens[0];
         } else {
-            return $this->escolhe_alvo($this->get_mira_adjacente($mira));
+            return $this->escolhe_alvo($this->get_mira_adjacente($mira), ++$count);
         }
     }
 

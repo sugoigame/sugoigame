@@ -1,8 +1,10 @@
 <?php
 namespace Regras\Combate\Efeitos;
 
+use Regras\Combate\CombateNpc;
 use Regras\Combate\Personagem;
 use Regras\Combate\Quadro;
+use Regras\Combate\Tabuleiro;
 
 class Empurrar
 {
@@ -35,8 +37,8 @@ class Empurrar
         $distancia_y = $incremento_y * $efeito["bonus"]["valor"];
 
         $destino = [
-            "x" => $alvo["x"] + $distancia_x,
-            "y" => $alvo["y"] + $distancia_y,
+            "x" => max(0, min($alvo["x"] + $distancia_x, array_key_exists("npc", $pers->combate->tripulacoes) ? floor(Tabuleiro::MAX_TABULEIRO_X / 2) : Tabuleiro::MAX_TABULEIRO_X)),
+            "y" => max(0, min($alvo["y"] + $distancia_y, Tabuleiro::MAX_TABULEIRO_Y)),
         ];
         if ($pers->combate->tabuleiro->get_quadro($destino["x"] . "_" . $destino["y"])->personagem) {
             return;

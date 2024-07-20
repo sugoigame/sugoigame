@@ -34,6 +34,12 @@ ilhas:
     y: 31
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 2
+      - 3
+      - 12
+      - 36
+      - 37
   2:
     ilha: 2
     nome: "Shells Town"
@@ -45,6 +51,12 @@ ilhas:
     y: 30
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 73
+      - 96
+      - 124
+      - 199
+      - 207
   3:
     ilha: 3
     nome: "Orange Town"
@@ -54,6 +66,12 @@ ilhas:
     y: 52
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 74
+      - 104
+      - 135
+      - 143
+      - 208
   4:
     ilha: 4
     nome: "Vila Syrup"
@@ -63,6 +81,12 @@ ilhas:
     y: 76
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 4
+      - 39
+      - 40
+      - 69
+      - 204
   5:
     ilha: 5
     nome: "Baratie"
@@ -72,6 +96,12 @@ ilhas:
     y: 48
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 5
+      - 83
+      - 103
+      - 106
+      - 120
   6:
     ilha: 6
     nome: "Ilha Cocoyashi"
@@ -81,6 +111,12 @@ ilhas:
     y: 19
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 6
+      - 16
+      - 70
+      - 79
+      - 116
   7:
     ilha: 7
     nome: "Loguetown"
@@ -90,6 +126,12 @@ ilhas:
     y: 71
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 1
+      - 34
+      - 142
+      - 154
+      - 216
 
   # North
   8:
@@ -101,6 +143,12 @@ ilhas:
     y: 51
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 90
+      - 100
+      - 137
+      - 139
+      - 140
   9:
     ilha: 9
     nome: "Burlywood Town"
@@ -110,6 +158,11 @@ ilhas:
     y: 25
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 76
+      - 118
+      - 130
+      - 152
   10:
     ilha: 10
     nome: "GoldenRod Town"
@@ -119,6 +172,11 @@ ilhas:
     y: 26
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 148
+      - 150
+      - 156
+      - 158
   11:
     ilha: 11
     nome: "Oubliette Town"
@@ -128,6 +186,12 @@ ilhas:
     y: 31
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 60
+      - 105
+      - 131
+      - 159
+      - 163
   12:
     ilha: 12
     nome: "Vila Whitewood"
@@ -137,6 +201,11 @@ ilhas:
     y: 48
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 63
+      - 160
+      - 190
+      - 213
   13:
     ilha: 13
     nome: "Ilha North Coral"
@@ -146,6 +215,11 @@ ilhas:
     y: 70
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 71
+      - 171
+      - 175
+      - 181
   14:
     ilha: 14
     nome: "Cartigen"
@@ -155,6 +229,11 @@ ilhas:
     y: 85
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 133
+      - 170
+      - 173
+      - 178
 
   # South
   15:
@@ -166,6 +245,12 @@ ilhas:
     y: 341
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 144
+      - 149
+      - 168
+      - 176
+      - 177
   16:
     ilha: 16
     nome: "Zozu Town"
@@ -175,6 +260,11 @@ ilhas:
     y: 311
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 185
+      - 192
+      - 201
+      - 206
   17:
     ilha: 17
     nome: "Karatê island"
@@ -184,6 +274,12 @@ ilhas:
     y: 294
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 179
+      - 191
+      - 200
+      - 205
+      - 214
   18:
     ilha: 18
     nome: "Avalien Town"
@@ -193,6 +289,11 @@ ilhas:
     y: 318
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 197
+      - 202
+      - 203
+      - 212
   19:
     ilha: 19
     nome: "Torino"
@@ -202,6 +303,11 @@ ilhas:
     y: 286
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 193
+      - 198
+      - 217
+      - 218
   20:
     ilha: 20
     nome: "Cinturão das luas"
@@ -211,6 +317,12 @@ ilhas:
     y: 318
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 82
+      - 101
+      - 110
+      - 115
+      - 122
   21:
     ilha: 21
     nome: "Kimotsu Town"
@@ -220,6 +332,12 @@ ilhas:
     y: 292
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 161
+      - 166
+      - 172
+      - 174
+      - 194
 
   # West
   22:
@@ -231,6 +349,12 @@ ilhas:
     y: 337
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 132
+      - 134
+      - 138
+      - 141
+      - 209
   23:
     ilha: 23
     nome: "Ohara"
@@ -240,6 +364,12 @@ ilhas:
     y: 296
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 8
+      - 62
+      - 102
+      - 189
+      - 196
   24:
     ilha: 24
     nome: "Ilha Toroa"
@@ -249,6 +379,11 @@ ilhas:
     y: 290
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 25
+      - 28
+      - 46
+      - 55
   25:
     ilha: 25
     nome: "Las Camp"
@@ -258,6 +393,11 @@ ilhas:
     y: 308
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 65
+      - 117
+      - 129
+      - 147
   26:
     ilha: 26
     nome: "Kima Town"
@@ -267,6 +407,11 @@ ilhas:
     y: 329
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 61
+      - 153
+      - 164
+      - 195
   27:
     ilha: 27
     nome: "Jumbo Town"
@@ -276,6 +421,11 @@ ilhas:
     y: 325
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 75
+      - 169
+      - 188
+      - 210
   28:
     ilha: 28
     nome: "Ilha Kagero"
@@ -285,6 +435,11 @@ ilhas:
     y: 289
     faccao_base: 1
     conflitos: 5
+    personagens_disponiveis:
+      - 32
+      - 119
+      - 184
+      - 211
 
   # Grand Line
   29:
@@ -296,6 +451,12 @@ ilhas:
     y: 177
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 125
+      - 127
+      - 145
+      - 155
+      - 186
   30:
     ilha: 30
     nome: "Whiskey Peak"
@@ -305,6 +466,12 @@ ilhas:
     y: 207
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 66
+      - 77
+      - 136
+      - 146
+      - 215
   31:
     ilha: 31
     nome: "Little Garden"
@@ -314,6 +481,12 @@ ilhas:
     y: 219
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 42
+      - 167
+      - 182
+      - 183
+      - 187
   32:
     ilha: 32
     nome: "Drum"
@@ -323,6 +496,12 @@ ilhas:
     y: 229
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 7
+      - 91
+      - 97
+      - 108
+      - 113
   33:
     ilha: 33
     nome: "Rainbase"
@@ -332,6 +511,13 @@ ilhas:
     y: 229
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 21
+      - 30
+      - 31
+      - 33
+      - 67
+      - 367
   34:
     ilha: 34
     nome: "Yuba"
@@ -341,6 +527,12 @@ ilhas:
     y: 229
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 38
+      - 41
+      - 123
+      - 151
+      - 157
   35:
     ilha: 35
     nome: "Alubarna"
@@ -350,6 +542,12 @@ ilhas:
     y: 225
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 43
+      - 45
+      - 50
+      - 126
+      - 162
   36:
     ilha: 36
     nome: "Nanohana"
@@ -359,6 +557,12 @@ ilhas:
     y: 225
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 44
+      - 72
+      - 81
+      - 107
+      - 128
   37:
     ilha: 37
     nome: "Mock Town"
@@ -368,6 +572,12 @@ ilhas:
     y: 234
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 18
+      - 51
+      - 78
+      - 93
+      - 112
   38:
     ilha: 38
     nome: "South Grave"
@@ -377,6 +587,12 @@ ilhas:
     y: 236
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 68
+      - 80
+      - 98
+      - 111
+      - 114
   39:
     ilha: 39
     nome: "Long Ring Long Land"
@@ -386,6 +602,12 @@ ilhas:
     y: 234
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 49
+      - 59
+      - 89
+      - 165
+      - 180
   40:
     ilha: 40
     nome: "Water 7"
@@ -395,6 +617,13 @@ ilhas:
     y: 215
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 10
+      - 20
+      - 24
+      - 47
+      - 48
+      - 363
   41:
     ilha: 41
     nome: "Thriller Bark"
@@ -404,6 +633,13 @@ ilhas:
     y: 197
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 9
+      - 11
+      - 26
+      - 27
+      - 29
+      - 364
   42:
     ilha: 42
     nome: "Sabaody"
@@ -413,6 +649,13 @@ ilhas:
     y: 179
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 57
+      - 84
+      - 85
+      - 86
+      - 87
+      - 121
   43:
     ilha: 43
     nome: "Mariejois"
@@ -422,6 +665,12 @@ ilhas:
     y: 192
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 19
+      - 35
+      - 94
+      - 95
+      - 109
 
   # Novo Mundo
   44:
@@ -433,6 +682,13 @@ ilhas:
     y: 164
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 13
+      - 17
+      - 52
+      - 56
+      - 64
+      - 366
   45:
     ilha: 45
     nome: "Yukiryu"
@@ -442,6 +698,13 @@ ilhas:
     y: 119
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 14
+      - 22
+      - 54
+      - 58
+      - 99
+      - 369
   46:
     ilha: 46
     nome: "Raijin"
@@ -451,6 +714,14 @@ ilhas:
     y: 190
     faccao_base: 2
     conflitos: 10
+    personagens_disponiveis:
+      - 15
+      - 23
+      - 53
+      - 88
+      - 92
+      - 365
+      - 368
   47:
     ilha: 47
     nome: "Laugh Tale"

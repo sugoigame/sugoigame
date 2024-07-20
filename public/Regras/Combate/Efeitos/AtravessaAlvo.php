@@ -9,6 +9,8 @@ class AtravessaAlvo
 {
     public function resolve(Personagem $pers, array $efeito)
     {
+        $max_tabuleiro_x = array_key_exists("npc", $pers->combate->tripulacoes) ? floor(Tabuleiro::MAX_TABULEIRO_X / 2) : Tabuleiro::MAX_TABULEIRO_X;
+
         $alvo = $pers->combate->relatorio->consequencias[0]["quadro"];
         $origem = $pers->get_posicao_tabuleiro();
 
@@ -34,7 +36,7 @@ class AtravessaAlvo
             $destino["y"] += $incremento_y;
         }
 
-        if ($destino["x"] > Tabuleiro::MAX_TABULEIRO_X || $destino["y"] > Tabuleiro::MAX_TABULEIRO_Y
+        if ($destino["x"] > $max_tabuleiro_x || $destino["y"] > Tabuleiro::MAX_TABULEIRO_Y
             || $destino["x"] < 0 || $destino["y"] < 0) {
 
             $destino = [
@@ -47,7 +49,7 @@ class AtravessaAlvo
             }
         }
 
-        if ($destino["x"] > Tabuleiro::MAX_TABULEIRO_X || $destino["y"] > Tabuleiro::MAX_TABULEIRO_Y
+        if ($destino["x"] > $max_tabuleiro_x || $destino["y"] > Tabuleiro::MAX_TABULEIRO_Y
             || $destino["x"] < 0 || $destino["y"] < 0) {
             return;
         }

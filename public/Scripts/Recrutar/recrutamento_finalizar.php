@@ -86,12 +86,12 @@ if ($result->count() != 0) {
     exit();
 }
 
-$result = $connection->run("SELECT * FROM tb_ilha_personagens WHERE ilha = ?", 'i', [
-    $usuario['ilha']
-]);
+$result = array_map(function ($img) {
+    return ["img" => $img];
+}, \Utils\Data::find_inside("mundo", "ilhas", ["ilha" => $usuario["ilha"]])["personagens_disponiveis"]);
 
-for ($x = 0; $sql = $result->fetch_array(); $x++) {
-    $ilha_personagens[$x] = $sql;
+for ($x = 0; $x < count($result); $x++) {
+    $ilha_personagens[$x] = $result[$x];
 }
 
 $possivel = FALSE;

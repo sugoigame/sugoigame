@@ -691,7 +691,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                     style="width: <?= $tabuleiro[$x][$y]["hp"] / $tabuleiro[$x][$y]["hp_max"] * 100 ?>%">
                                 </div>
                             </div>
-                            <img src="Imagens/Personagens/Icons/<?= getImg($tabuleiro[$x][$y], "r") ?>.jpg">
+                            <img src="Imagens/Personagens/Icons/<?= getImg($tabuleiro[$x][$y], "r") ?>.jpg" alt="">
                         <?php endif; ?>
                     </td>
                 <?php endfor; ?>
@@ -706,7 +706,7 @@ function inicia_combate($alvo, $tipo, $chave = null)
                 <?php for ($y = 0; $y < 20; $y++) : ?>
                     <td id="<?= $x . "_" . $y; ?>" class="<?= implode(' ', $classes[$x][$y]["selecao"]); ?>" data-x="<?= $x ?>"
                         data-y="<?= $y ?>" data-cod="<?= isset($tabuleiro[$x][$y]) ? $tabuleiro[$x][$y]["cod"] : "" ?>">
-                        <img src="Imagens/Icones/selecao.png" />
+                        <img src="Imagens/Icones/selecao.png" alt="" />
                     </td>
                 <?php endfor; ?>
             </tr>

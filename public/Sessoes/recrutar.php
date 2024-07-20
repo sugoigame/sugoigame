@@ -141,8 +141,9 @@ function can_recruit($img)
 </script>
 
 <div class="panel-body">
-    <?php $ilha_personagens_db = $connection->run("SELECT * FROM tb_ilha_personagens WHERE ilha = ?",
-        "i", $userDetails->ilha["ilha"])->fetch_all_array(); ?>
+    <?php $ilha_personagens_db = array_map(function ($img) {
+        return ["img" => $img];
+    }, \Utils\Data::find_inside("mundo", "ilhas", ["ilha" => $userDetails->ilha["ilha"]])["personagens_disponiveis"]); ?>
 
     <?php $personagens_skins = $connection->run("SELECT * FROM tb_tripulacao_skins WHERE tripulacao_id = ? GROUP BY img",
         "i", $userDetails->tripulacao["id"])->fetch_all_array(); ?>
@@ -160,9 +161,17 @@ function can_recruit($img)
                 <p>Você já recrutou todos os personagens dessa ilha</p>
             <?php elseif (count($userDetails->personagens) < $userDetails->navio["limite"]) : ?>
                 <h4>Está pronto para encontrar um novo companheiro?</h4>
+                <h5>Tripulantes disponíveis nessa ilha:</h5>
+                <div class="row justify-content-center">
+                    <?php foreach ($ilha_personagens as $ilha_pers) : ?>
+                        <div class="list-group-item col-md-2">
+                            <img src="Imagens/Personagens/Icons/<?= sprintf("%04d", $ilha_pers["img"]) ?>(0).jpg">
+                        </div>
+                    <?php endforeach; ?>
+                </div>
                 <p>
                     <button href="link_Recrutar/recrutamento_iniciar.php" class="link_send btn btn-success">
-                        Procurar tripulantes
+                        Iniciar recrutamento
                     </button>
                 </p>
             <?php else : ?>
@@ -194,7 +203,7 @@ function can_recruit($img)
             interessaram
             em entrar na sua tripulação:
         </p>
-        <div class="row">
+        <div class="row justify-content-center">
             <?php foreach ($ilha_personagens as $ilha_pers) : ?>
                 <div class="list-group-item col-md-2">
                     <img style="cursor: pointer" onclick="recruta('<?= sprintf("%04d", $ilha_pers["img"]) ?>',this)"
