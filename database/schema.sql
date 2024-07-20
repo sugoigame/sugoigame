@@ -3075,7 +3075,19 @@ ALTER TABLE tb_combate_skil_espera ADD recarga_universal BOOL DEFAULT false NOT 
 
 
 -- sistema de influencia
+ALTER TABLE tb_usuarios ADD influencia INT UNSIGNED DEFAULT 1 NOT NULL;
+ALTER TABLE tb_usuarios ADD nivel_conflito INT UNSIGNED DEFAULT 1 NOT NULL;
 
-
+CREATE TABLE tb_tripulacao_faccao (
+	id BIGINT auto_increment NOT NULL,
+	tripulacao_id varchar(100) NOT NULL,
+	faccao_id INT NOT NULL,
+	nivel INT UNSIGNED DEFAULT 1 NOT NULL,
+	reputacao INT UNSIGNED DEFAULT 0 NOT NULL,
+	confrontos INTEGER UNSIGNED DEFAULT 0 NOT null,
+    producao json NOT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+ALTER TABLE tb_tripulacao_faccao ADD CONSTRAINT tb_tripulacao_faccao_unique UNIQUE KEY (tripulacao_id,faccao_id);
 
 SET FOREIGN_KEY_CHECKS=1;

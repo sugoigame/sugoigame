@@ -1,8 +1,30 @@
+@php
+    global $userDetails;
+
+    $requisitos = \Regras\Influencia::get_requisitos($userDetails->tripulacao['influencia']);
+@endphp
 <h5>
     Requisitos para o próximo nível:
 </h5>
 <div>
-    <div>Relação de nível 10 com Jornal Econômico Mundial</div>
-    <div class="text-line-through text-success">Relação de nível 10 com Governo Mundial</div>
+    @php
+        $todos_concluidos = true;
+    @endphp
+    @foreach ($requisitos as $requisito)
+        @php
+            $faccao = \Utils\Data::find_inside('mundo', 'faccoes', ['cod' => $requisito['faccao']]);
+            $relacao = array_find($relacoes, ['faccao_id' => $requisito['faccao']]);
+            $concluido = $relacao >= $requisito['nivel'];
+            if (!$concluido) {
+                $todos_concluidos = false;
+            }
+        @endphp
+        <div class="{{ $concluido ? 'text-line-through text-success' : '' }}">
+            Relação de nível {{ $requisito['nivel'] }} com {{ $faccao['nome'] }}
+        </div>
+    @endforeach
 </div>
-<button class="btn btn-success">Evoluir</button>
+<button class="btn btn-success"
+    {{ !$todos_concluidos ? 'disabled' : '' }}>
+    Evoluir
+</button>

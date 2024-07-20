@@ -2,7 +2,7 @@
     global $userDetails;
 @endphp
 <div class="panel-heading">
-    Conflitos
+    Confrontos
     {!! ajuda_tooltip(
         'Participe de eventos importantes para ganhar recompensas e aumentar sua influência no mundo.',
     ) !!}
@@ -13,7 +13,7 @@
         <div class="progress">
             <div class="progress-bar progress-bar-success"
                 style="width: 25%">
-                <span>Conflitos disponíveis: 1/5</span>
+                <span>Confrontos disponíveis: 1/5</span>
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
         <div class="col col-xs-3 d-flex flex-column justify-content-center align-items-center">
             <div class="panel">
                 <div class="panel-heading">
-                    Próximo conflito
+                    Próximo confronto
                 </div>
                 <div class="panel-body">
                     <div>Dificuldade: Nível 10</div>

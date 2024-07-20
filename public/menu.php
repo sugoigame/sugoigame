@@ -121,7 +121,7 @@ function super_menu_can_be_active($menu)
 
                     <div id="menu-ilha" class="collapse <?= super_menu_in_out("ilha") ?>">
                         <ul class="vertical-nav nav navbar-nav">
-                            <?= menu_link("conflitos", "Conflitos", "fa fa-bolt", "Aventure-se! Essa ilha tem muito a ser explorado!") ?>
+                            <?= menu_link("confrontos", "Confrontos", "fa fa-bolt", "Aventure-se! Essa ilha tem muito a ser explorado!") ?>
                             <?= menu_link("recrutar", "Recrutar", "fa fa-street-view", "") ?>
                             <?php if (! $userDetails->tripulacao["recrutando"]) : ?>
                                 <?php if (count($userDetails->personagens) > 1) : ?>

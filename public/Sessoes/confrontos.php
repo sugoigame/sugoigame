@@ -1,4 +1,4 @@
-<?= \Componentes::render("Sessoes.Conflitos"); ?>
+<?= \Componentes::render("Sessoes.Confrontos"); ?>
 
 <!-- <?php $missoes = DataLoader::load("missoes"); ?>
 
