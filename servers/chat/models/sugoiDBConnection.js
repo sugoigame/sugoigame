@@ -61,12 +61,10 @@ var SugoiDB = function () {
             "pers.skin_c as capitao_skin_corpo, " +
             "pers.lvl as capitao_lvl, " +
             "pers.fama_ameaca as fama_ameaca, " +
-            "IF (pers.sexo = 0, titulo.nome, titulo.nome_f) as capitao_titulo, " +
             "(SELECT max(allpers.lvl) as lvl FROM tb_personagens allpers WHERE allpers.id = usuarios.id) as nivel_mais_forte " +
             "FROM tb_conta conta " +
             "INNER JOIN tb_usuarios usuarios ON conta.tripulacao_id = usuarios.id " +
             "INNER JOIN tb_personagens pers ON usuarios.cod_personagem = pers.cod " +
-            "LEFT JOIN tb_titulos titulo ON pers.titulo = titulo.cod_titulo " +
             "WHERE conta.conta_id = ? LIMIT 1";
 
         connection.query(sql, codUser, function (err, rows) {

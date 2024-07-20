@@ -52,7 +52,7 @@
                     </p>
                 <?php endif; ?>
                 <?php if (isset($recompensa["alcunha"])) : ?>
-                    <?php $alcunha = $connection->run("SELECT * FROM tb_titulos WHERE cod_titulo = ?", "i", array($recompensa["alcunha"]))->fetch_array(); ?>
+                    <?php $alcunha = \Utils\Data::find("titulos", ["cod_titulo" => $recompensa["alcunha"]]); ?>
                     <p>
                         Alcunha:
                         <?= $alcunha["nome"]; ?>
@@ -65,8 +65,8 @@
                             src="Imagens/Personagens/Icons/<?= get_img(array("img" => $recompensa["img"], "skin_r" => $recompensa["skin"]), "r") ?>.jpg">
                     </p>
                     <div style="width: 100%">
-                        <img
-                            src="Imagens/Personagens/Big/<?= get_img(array("img" => $recompensa["img"], "skin_c" => $recompensa["skin"]), "c") ?>.jpg" width="100%">
+                        <img src="Imagens/Personagens/Big/<?= get_img(array("img" => $recompensa["img"], "skin_c" => $recompensa["skin"]), "c") ?>.jpg"
+                            width="100%">
                     </div>
                 <?php endif; ?>
                 <?php if (isset($recompensa["tipo_item"])) : ?>

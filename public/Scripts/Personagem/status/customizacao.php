@@ -12,10 +12,9 @@ if (! $pers) {
 
 
 <?php $titulos_compartilhados = $connection->run(
-    "SELECT tit.cod_titulo, tit.nome, tit.nome_f, tit.cod_titulo AS titulo FROM tb_personagem_titulo pertit
+    "SELECT pertit.titulo FROM tb_personagem_titulo pertit
 			INNER JOIN tb_personagens per ON pertit.cod = per.cod
-			INNER JOIN tb_titulos tit ON pertit.titulo = tit.cod_titulo
-			WHERE tit.compartilhavel = 1 AND per.id = ?",
+			WHERE per.id = ?",
     "i", array($userDetails->tripulacao["id"])
 )->fetch_all_array(); ?>
 
@@ -24,7 +23,7 @@ if (! $pers) {
 <?php $minhas_bordas = array(); ?>
 
 <?php foreach ($minhas_bordas_db as $borda) {
-    $minhas_bordas[$borda["borda"]] = TRUE;
+    $minhas_bordas[$borda["borda"]] = true;
 } ?>
 
 <?php $skins = DataLoader::load("skins"); ?>
@@ -39,26 +38,24 @@ if (! $pers) {
 <?php $skins_pers = isset($skins[$pers["img"]]) ? count($skins[$pers["img"]]) : 0; ?>
 
 <?php
-$titulos_bd = $connection->run(
-    "SELECT tit.cod_titulo, tit.nome, tit.nome_f, tit.cod_titulo AS titulo FROM tb_personagem_titulo pertit
-							INNER JOIN tb_titulos tit ON pertit.titulo = tit.cod_titulo
-							WHERE pertit.cod = ?", "i", $pers["cod"]
-)->fetch_all_array();
-$titulos = array();
+$titulos_data = \Utils\Data::load("titulos");
+$titulos_bd = $connection->run("SELECT pertit.titulo FROM tb_personagem_titulo pertit WHERE pertit.cod = ?",
+    "i", $pers["cod"])->fetch_all_array();
+$titulos = [];
 foreach ($titulos_bd as $titulo) {
-    if ($pers["sexo"] == 1) {
-        $titulo["nome"] = $titulo["nome_f"];
-    }
-    $titulos[$titulo["cod_titulo"]] = $titulo;
+    $titulo_data = array_find($titulos_data, ["cod_titulo" => $titulo["titulo"]]);
+    $titulo["nome"] = $pers["sexo"] ? $titulo_data["nome_f"] : $titulo_data["nome"];
+    $titulos[$titulo["titulo"]] = $titulo;
 }
 foreach ($titulos_compartilhados as $titulo) {
-    if ($pers["sexo"] == 1) {
-        $titulo["nome"] = $titulo["nome_f"];
+    $titulo_data = array_find($titulos_data, ["cod_titulo" => $titulo["titulo"]]);
+    if (isset($titulo_data["compartilhavel"]) && $titulo_data["compartilhavel"]) {
+        $titulo["nome"] = $pers["sexo"] ? $titulo_data["nome_f"] : $titulo_data["nome"];
+        $titulos[$titulo["titulo"]] = $titulo;
     }
-    $titulos[$titulo["cod_titulo"]] = $titulo;
 }
 
-$pers_titulo = FALSE;
+$pers_titulo = false;
 if ($pers["titulo"]) {
     foreach ($titulos as $titulo) {
         if ($pers["titulo"] == $titulo["cod_titulo"]) {
@@ -139,7 +136,7 @@ if ($pers["titulo"]) {
         <button class="btn btn-info trocar-personagem" data-pers="<?= $pers["cod"] ?>" data-tipo="gold"
             <?= $userDetails->conta["gold"] >= PRECO_GOLD_TROCAR_PERSONAGEM ? "" : "disabled" ?>>
             <?= PRECO_GOLD_TROCAR_PERSONAGEM ?>
-            <img src="Imagens/Icones/Gold.png" />
+            <img src="Imagens/Icones/Gold.png" alt="" />
             Trocar Personagem
         </button>
     </div>
@@ -172,7 +169,7 @@ if ($pers["titulo"]) {
         </h3>
         <p>
             <button class="reset-nome btn btn-info" data-pers="<?= $pers["cod"] ?>" <?= $userDetails->conta["gold"] >= PRECO_GOLD_RESET_NOME_PERSONAGEM ? "" : "disabled" ?>>
-                <?= PRECO_GOLD_RESET_NOME_PERSONAGEM ?> <img src="Imagens/Icones/Gold.png" />
+                <?= PRECO_GOLD_RESET_NOME_PERSONAGEM ?> <img src="Imagens/Icones/Gold.png" alt="" />
                 Renomear o personagem
             </button>
         </p>
@@ -193,7 +190,8 @@ if ($pers["titulo"]) {
                     <?php $tem_skin = $skin == 0 || (isset($minhas_skins[$pers["img"]]) && in_array($skin, $minhas_skins[$pers["img"]])); ?>
                     <img class="<?= $pers["skin_r"] == $skin ? "skin-ativa" : "skin-nao-ativa" ?> <?= $tem_skin ? "link_send" : "" ?>"
                         <?= $tem_skin ? 'href="link_Personagem/mudar_skin.php?pers=' . $pers["cod"] . '&tipo=r&skin=' . $skin . '"' : "" ?>
-                        src="Imagens/Personagens/Icons/<?= get_img(array("img" => $pers["img"], "skin_r" => $skin), "r") ?>.jpg">
+                        src="Imagens/Personagens/Icons/<?= get_img(array("img" => $pers["img"], "skin_r" => $skin), "r") ?>.jpg"
+                        alt="">
                     <br />
                     <div class="<?= $pers["skin_c"] == $skin ? "skin-ativa" : "skin-nao-ativa" ?> <?= $tem_skin ? "link_send" : "" ?>"
                         style="display: inline-block" <?= $tem_skin ? 'href="link_Personagem/mudar_skin.php?pers=' . $pers["cod"] . '&tipo=c&skin=' . $skin . '"' : "" ?>>
@@ -214,7 +212,7 @@ if ($pers["titulo"]) {
                                     data-question="Deseja comprar essa aparência para <?= $pers["nome"] ?>?"
                                     class="btn btn-info link_confirm">
                                     <?= $skins[$pers["img"]][$skin] ?>
-                                    <img src="Imagens/Icones/Gold.png">
+                                    <img src="Imagens/Icones/Gold.png" alt="" />
                                 </button>
                             <?php else : ?>
                                 <p>
@@ -264,7 +262,7 @@ if ($pers["titulo"]) {
                     <button class="btn btn-info link_confirm" data-question="Deseja adquirir essa borda para sua tripulação?"
                         href="Vip/comprar_borda.php?borda=<?= $id ?>">
                         <?= $borda["preco"] ?>
-                        <img src="Imagens/Icones/Gold.png" />
+                        <img src="Imagens/Icones/Gold.png" alt="" />
                     </button>
                 <?php endif; ?>
             </div>

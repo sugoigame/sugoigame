@@ -16,11 +16,10 @@ function render_maior_do_mundo($tipo)
     }
 
     $result = $connection->run(
-        "SELECT p.*, u.*, IF(p.sexo =0, t.nome, t.nome_f) AS titulo_nome FROM tb_personagens p
-            LEFT JOIN tb_titulos t ON p.titulo = t.cod_titulo
+        "SELECT p.*, u.* FROM tb_personagens p
             INNER JOIN tb_usuarios u ON p.id = u.id
             WHERE u.adm = 0 AND p.classe = ? ORDER BY fama_ameaca DESC LIMIT 1",
-        "i", $class
+        "i", [$class]
     );
     ?>
     <div class="col-sm-4 col-md-4">

@@ -989,22 +989,28 @@ class ItemUsavel
         $alcunhas = array(141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 96, 97, 98, 104, 105, 106, 111, 112,
             113, 114, 115, 130, 131, 133, 134, 132, 135, 138);
 
-        $alcunha = $this->connection->run(
-            "SELECT * FROM tb_titulos t
-			LEFT JOIN tb_personagem_titulo p ON p.titulo = t.cod_titulo AND p.cod = ?
-			WHERE t.cod_titulo IN (" . implode(",", $alcunhas) . ") AND p.cod IS NULL
-			ORDER BY RAND() LIMIT 1",
-            "i", array($this->userDetails->capitao["cod"])
-        );
+        $alcunha_obtidas = $this->connection->run(
+            "SELECT * FROM tb_personagem_titulo p WHERE p.cod = ? AND t.cod_titulo IN (" . implode(",", $alcunhas) . ")",
+            "i", [$this->userDetails->capitao["cod"]]
+        )->fetch_all_array();
 
-        if (! $alcunha->count()) {
+        if (count($alcunha_obtidas) >= count($alcunhas)) {
             $this->protector->exit_error("Você já adquiriu todas as Alcunhas disponíveis.");
         }
 
-        $alcunha = $alcunha->fetch_array();
+        $alcunhas_validas = [];
+        foreach ($alcunhas as $alcunha) {
+            if (! array_find($alcunha_obtidas, ["titulo" => $alcunha])) {
+                $alcunhas_validas[] = $alcunha;
+            }
+        }
+
+        $alcunha = $alcunhas_validas[array_rand($alcunhas_validas)];
 
         $this->connection->run("INSERT INTO tb_personagem_titulo (cod, titulo) VALUE (?,?)",
-            "ii", array($this->userDetails->capitao["cod"], $alcunha["cod_titulo"]));
+            "ii", array($this->userDetails->capitao["cod"], $alcunha));
+
+        $alcunha = \Utils\Data::find("titulos", ["cod_titulo" => $alcunha]);
 
         return "Você recebeu a alcunha \"" . $alcunha["nome"] . "\"";
     }
@@ -1125,9 +1131,9 @@ class ItemUsavel
 
             return "Você recebeu uma Instrução de Combate";
         } /*else {
- $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
+$this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
 
- return "Você recebeu uma Akuma no Mi";
+return "Você recebeu uma Akuma no Mi";
 }*/
     }
 
@@ -1284,9 +1290,9 @@ class ItemUsavel
 
             return "Você recebeu 7 mil Experiência para toda tripulação.";
         } /*else {
- $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
+$this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
 
- return "Você recebeu uma Akuma no Mi";
+return "Você recebeu uma Akuma no Mi";
 }*/
     }
 
@@ -1334,9 +1340,9 @@ class ItemUsavel
 
             return "Você recebeu 5 mil pontos de Experiência para toda tripulação.";
         }/*else {
- $this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
+$this->userDetails->add_item(121, TIPO_ITEM_REAGENT, 1);
 
- return "Você recebeu uma Akuma no Mi";
+return "Você recebeu uma Akuma no Mi";
 }*/
     }
 

@@ -25,24 +25,6 @@
         }
     }
 
-    $result = $connection->run(
-        "SELECT * FROM tb_personagem_titulo pertit
-			INNER JOIN tb_titulos titulos ON pertit.titulo = titulos.cod_titulo
-			WHERE pertit.cod = ?", "i", $pers["cod"]
-    );
-
-    while ($titulo = $result->fetch_array()) {
-        if ($titulo["bonus_atr_quant"]) {
-            if ($titulo["bonus_atr"] == 0) {
-                for ($i = 1; $i <= 7; $i++) {
-                    $bonus[nome_atributo_tabela($i)] += $titulo["bonus_atr_quant"];
-                }
-            } elseif (isset($bonus[nome_atributo_tabela($titulo["bonus_atr"])])) {
-                $bonus[nome_atributo_tabela($titulo["bonus_atr"])] += $titulo["bonus_atr_quant"];
-            }
-        }
-    }
-
     $bonus["atk"] += $pers["haki_blo"] * 2;
 
     if ($nivelamento && $pers["lvl"] < 50) {

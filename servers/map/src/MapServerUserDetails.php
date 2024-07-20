@@ -78,7 +78,6 @@ class MapServerUserDetails extends UserDetails
             p.img AS capitao_img,
             p.skin_r AS capitao_skin_r,
             p.fama_ameaca AS capitao_wanted,
-            IF(p.sexo = 0, t.nome, t.nome_f) AS capitao_titulo,
             (SELECT max(lvl) FROM tb_personagens WHERE id = u.id AND p.ativo = 1) AS lvl_mais_forte,
             n.cod_canhao AS canhao,
             (SELECT quant FROM tb_usuario_itens WHERE id = u.id AND tipo_item = 13) AS canhao_balas,
@@ -90,7 +89,6 @@ class MapServerUserDetails extends UserDetails
             c.kairouseki AS has_kairouseki
             FROM tb_usuarios u
             INNER JOIN tb_personagens p ON u.cod_personagem = p.cod
-            LEFT JOIN tb_titulos t ON p.titulo=t.cod_titulo
             LEFT JOIN tb_usuario_navio n ON n.id = u.id
             INNER JOIN tb_vip v ON u.id = v.id
             LEFT JOIN tb_item_navio_casco c ON n.cod_casco = c.cod_casco
@@ -137,12 +135,10 @@ class MapServerUserDetails extends UserDetails
                 p.img AS capitao_img,
                 p.skin_r AS capitao_skin_r,
                 p.fama_ameaca AS capitao_wanted,
-                IF(p.sexo = 0, t.nome, t.nome_f) AS capitao_titulo,
                 (SELECT max(lvl) FROM tb_personagens WHERE id = u.id AND p.ativo = 1) AS lvl_mais_forte,
                 (n.hp_teste / n.hp_max) AS hp_navio
                 FROM tb_usuarios u
                 INNER JOIN tb_personagens p ON u.cod_personagem = p.cod
-                LEFT JOIN tb_titulos t ON p.titulo=t.cod_titulo
                 INNER JOIN tb_usuario_navio n ON n.id = u.id
                 WHERE u.x >= ? AND u.x <= ? AND u.y >= ? AND u.y <= ? AND u.mar_visivel = 1 AND u.id <> ?",
                 "iiiii", array(

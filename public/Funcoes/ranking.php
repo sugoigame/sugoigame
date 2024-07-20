@@ -78,10 +78,9 @@ function get_patente_nome($faccao, $battle_level)
         </div>
         <div class="panel-panel-body clearfix">
             <?php $result = $connection->run(
-                "SELECT *, IF (pers.sexo = 0, titulo.nome, titulo.nome_f) AS titulo_nome
+                "SELECT *
                   FROM tb_personagens pers
                   INNER JOIN tb_usuarios usr ON usr.cod_personagem = pers.cod
-                  LEFT JOIN tb_titulos titulo ON pers.titulo = titulo.cod_titulo
                   WHERE usr.id IN (?, ?, ?, ?)
                   ORDER BY usr.reputacao DESC",
                 "iiii", array($id1, $id2, $id3, $id4)
@@ -119,10 +118,9 @@ function get_patente_nome($faccao, $battle_level)
         </div>
         <div class="panel-panel-body clearfix mt mb">
             <?php $result = $connection->run(
-                "SELECT *, IF (pers.sexo = 0, titulo.nome, titulo.nome_f) titulo_nome
+                "SELECT *
                   FROM tb_personagens pers
                   INNER JOIN tb_usuarios usr ON usr.cod_personagem = pers.cod
-                  LEFT JOIN tb_titulos titulo ON pers.titulo = titulo.cod_titulo
                   WHERE usr.id = ?",
                 "i", array($id)
             );

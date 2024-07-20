@@ -1,0 +1,368 @@
+- cod_titulo: 1
+  nome: Rei dos Piratas
+  nome_f: Rainha dos Piratas
+- cod_titulo: 2
+  nome: Almirante de Frota
+  nome_f: Almirante de Frota
+- cod_titulo: 3
+  nome: A cabeça de 100 milhões de Berries
+  nome_f: A cabeça de 100 milhões de Berries
+- cod_titulo: 4
+  nome: A cabeça de 200 milhões de Berries
+  nome_f: A cabeça de 200 milhões de Berries
+- cod_titulo: 5
+  nome: A cabeça de 300 milhões de Berries
+  nome_f: A cabeça de 300 milhões de Berries
+- cod_titulo: 6
+  nome: A cabeça de 400 milhões de Berries
+  nome_f: A cabeça de 400 milhões de Berries
+- cod_titulo: 7
+  nome: A cabeça de 500 milhões de Berries
+  nome_f: A cabeça de 500 milhões de Berries
+- cod_titulo: 8
+  nome: A cabeça de 600 milhões de Berries
+  nome_f: A cabeça de 600 milhões de Berries
+- cod_titulo: 9
+  nome: O melhor Espadachim do mundo
+  nome_f: A melhor Espadachim do mundo
+- cod_titulo: 10
+  nome: O melhor Lutador do mundo
+  nome_f: A melhor Lutadora do mundo
+- cod_titulo: 11
+  nome: O melhor Atirador do mundo
+  nome_f: A melhor Atiradora do mundo
+- cod_titulo: 12
+  nome: Perna Vermelha
+  nome_f: Perna Vermelha
+- cod_titulo: 13
+  nome: Perna Negra
+  nome_f: Perna Negra
+- cod_titulo: 14
+  nome: Estilo Santoryuu
+  nome_f: Estilo Santoryuu
+- cod_titulo: 15
+  nome: Mestre Santoryuu
+  nome_f: Mestre Santoryuu
+- cod_titulo: 16
+  nome: O Retalhador
+  nome_f: A Retalhadora
+- cod_titulo: 17
+  nome: Mestre do corte
+  nome_f: Mestre do corte
+- cod_titulo: 18
+  nome: Grande Atirador
+  nome_f: Grande Atiradora
+- cod_titulo: 19
+  nome: O Rei Atirador
+  nome_f: A Rainha Atiradora
+- cod_titulo: 20
+  nome: Usuário de fogo
+  nome_f: Usuária de fogo
+- cod_titulo: 21
+  nome: Mestre do Fogo
+  nome_f: Mestre do Fogo
+- cod_titulo: 22
+  nome: Usuário de água
+  nome_f: Usuária de água
+- cod_titulo: 23
+  nome: Controlador de água
+  nome_f: Controladora de água
+- cod_titulo: 24
+  nome: Punhos de Ferro
+  nome_f: Punhos de Ferro
+- cod_titulo: 25
+  nome: Punhos de Aço
+  nome_f: Punhos de Aço
+- cod_titulo: 32
+  nome: O Caçador de Piratas
+  nome_f: A Caçadora de Piratas
+  compartilhavel: true
+- cod_titulo: 35
+  nome: O Caçador de Ladrões
+  nome_f: A Caçadora de Ladrões
+  compartilhavel: true
+- cod_titulo: 36
+  nome: O Justiceiro
+  nome_f: A Justiceira
+  compartilhavel: true
+- cod_titulo: 37
+  nome: O Palhaço
+  nome_f: A Palhaça
+  compartilhavel: true
+- cod_titulo: 38
+  nome: Unhas de Gato
+  nome_f: Unhas de Gato
+  compartilhavel: true
+- cod_titulo: 39
+  nome: O cozinheiro
+  nome_f: A cozinheira
+  compartilhavel: true
+- cod_titulo: 40
+  nome: Dentes de Serrote
+  nome_f: Dentes de Serrote
+  compartilhavel: true
+- cod_titulo: 41
+  nome: O Sonhador
+  nome_f: A Sonhadora
+  compartilhavel: true
+- cod_titulo: 42
+  nome: O Mentiroso
+  nome_f: A Mentirosa
+  compartilhavel: true
+- cod_titulo: 43
+  nome: O Trapaceiro
+  nome_f: A Trapaceira
+  compartilhavel: true
+- cod_titulo: 44
+  nome: G
+  nome_f: G
+  compartilhavel: true
+- cod_titulo: 45
+  nome: O Catarrento
+  nome_f: A Catarrenta
+  compartilhavel: true
+- cod_titulo: 46
+  nome: O Friorento
+  nome_f: A Friorenta
+  compartilhavel: true
+- cod_titulo: 47
+  nome: O Boxeador
+  nome_f: A Boxeadora
+  compartilhavel: true
+- cod_titulo: 48
+  nome: O Musculoso
+  nome_f: A Musculosa
+  compartilhavel: true
+- cod_titulo: 49
+  nome: Pena de Pardal
+  nome_f: Pena de Pardal
+  compartilhavel: true
+- cod_titulo: 50
+  nome: O Rei do Pop
+  nome_f: A Rainha do Pop
+  compartilhavel: true
+- cod_titulo: 51
+  nome: Punhos de Ferro
+  nome_f: Punhos de Ferro
+  compartilhavel: true
+- cod_titulo: 52
+  nome: Mãos de tesoura
+  nome_f: Mãos de tesoura
+  compartilhavel: true
+- cod_titulo: 53
+  nome: Gênio Tático
+  nome_f: Gênio Tático
+  compartilhavel: true
+- cod_titulo: 54
+  nome: O Vilão
+  nome_f: A Vilã
+  compartilhavel: true
+- cod_titulo: 55
+  nome: O Bandido
+  nome_f: A Bandida
+  compartilhavel: true
+- cod_titulo: 56
+  nome: Artista Marcial
+  nome_f: Artista Marcial
+  compartilhavel: true
+- cod_titulo: 57
+  nome: O Explorador
+  nome_f: A Exploradora
+  compartilhavel: true
+- cod_titulo: 58
+  nome: O Assustador
+  nome_f: A Assustadora
+  compartilhavel: true
+- cod_titulo: 59
+  nome: O Homem de Ferro
+  nome_f: A Mulher de Ferro
+  compartilhavel: true
+- cod_titulo: 60
+  nome: O Domador de Leões
+  nome_f: A Domadora de Leões
+  compartilhavel: true
+- cod_titulo: 61
+  nome: O Homem Macaco
+  nome_f: A Mulher Macaco
+  compartilhavel: true
+- cod_titulo: 62
+  nome: O Poderoso Chefão
+  nome_f: A Poderosa Chefã
+  compartilhavel: true
+- cod_titulo: 63
+  nome: Envolvido em uma grande promessa
+  nome_f: Envolvida em uma grande promessa
+  compartilhavel: true
+- cod_titulo: 64
+  nome: O Caçador de Recompensas
+  nome_f: A Caçadora de Recompensas
+  compartilhavel: true
+- cod_titulo: 65
+  nome: O Gigante
+  nome_f: A Gigante
+  compartilhavel: true
+- cod_titulo: 66
+  nome: O Médico
+  nome_f: A Médica
+  compartilhavel: true
+- cod_titulo: 67
+  nome: Metamorfose Ambulante
+  nome_f: Metamorfose Ambulante
+  compartilhavel: true
+- cod_titulo: 68
+  nome: O Grande
+  nome_f: A Grande
+  compartilhavel: true
+- cod_titulo: 69
+  nome: O Impaciente
+  nome_f: A Impaciente
+  compartilhavel: true
+- cod_titulo: 70
+  nome: O Rebelde
+  nome_f: A Rebelde
+  compartilhavel: true
+- cod_titulo: 71
+  nome: O Impiedoso
+  nome_f: A Impiedosa
+  compartilhavel: true
+- cod_titulo: 72
+  nome: O Verdadeiro
+  nome_f: A Verdadeira
+  compartilhavel: true
+- cod_titulo: 73
+  nome: A Raposa
+  nome_f: A Raposa
+  compartilhavel: true
+- cod_titulo: 74
+  nome: O Cirurgião
+  nome_f: A Cirurgiã
+  compartilhavel: true
+- cod_titulo: 75
+  nome: O Carpinteiro
+  nome_f: A Carpinteira
+  compartilhavel: true
+- cod_titulo: 76
+  nome: Da Pior Geração
+  nome_f: Da Pior Geração
+  compartilhavel: true
+- cod_titulo: 77
+  nome: O Anti-Tenryuubito
+  nome_f: A Anti-Tenryuubito
+  compartilhavel: true
+- cod_titulo: 78
+  nome: Choque Térmico
+  nome_f: Choque Térmico
+  compartilhavel: true
+- cod_titulo: 79
+  nome: Sopro Congelante
+  nome_f: Sopro Congelante
+  compartilhavel: true
+- cod_titulo: 80
+  nome: Senhor dos Raios
+  nome_f: Senhora dos Raios
+  compartilhavel: true
+- cod_titulo: 81
+  nome: Chefe de Laftel
+  nome_f: Chefe de Laftel
+  compartilhavel: true
+- cod_titulo: 86
+  nome: O Caçador de Insetos
+  nome_f: A Caçadora de Insetos
+  compartilhavel: true
+- cod_titulo: 87
+  nome: O Demônio Vermelho
+  nome_f: A Demônio Vermelho
+  compartilhavel: true
+- cod_titulo: 88
+  nome: O Sedento por Sangue
+  nome_f: A Sedenta por Sangue
+  compartilhavel: true
+- cod_titulo: 89
+  nome: O Desbravador
+  nome_f: A Desbravadora
+  compartilhavel: true
+- cod_titulo: 90
+  nome: O Conquistador
+  nome_f: A Conquistadora
+  compartilhavel: true
+- cod_titulo: 93
+  nome: Yonkou
+  nome_f: Yonkou
+- cod_titulo: 94
+  nome: Almirante
+  nome_f: Almirante
+- cod_titulo: 95
+  nome: das Cem Feras
+  nome_f: das Cem Feras
+  compartilhavel: true
+- cod_titulo: 96
+  nome: Animal selvagem
+  nome_f: Animal selvagem
+  compartilhavel: true
+- cod_titulo: 97
+  nome: A muralha
+  nome_f: A muralha
+  compartilhavel: true
+- cod_titulo: 98
+  nome: O Destruidor
+  nome_f: A Destruidora
+  compartilhavel: true
+- cod_titulo: 101
+  nome: Caçador
+  nome_f: Caçadora
+  compartilhavel: true
+- cod_titulo: 102
+  nome: O Bom Companheiro
+  nome_f: A Boa Companheira
+  compartilhavel: true
+- cod_titulo: 109
+  nome: A Calamidade
+  nome_f: A Calamidade
+  compartilhavel: true
+- cod_titulo: 111
+  nome: O Deus da Guerra
+  nome_f: A Deusa da Guerra
+  compartilhavel: true
+- cod_titulo: 112
+  nome: A Besta Indomável
+  nome_f: A Besta Indomável
+  compartilhavel: true
+- cod_titulo: 113
+  nome: O Caçador Branco
+  nome_f: A Caçadora Branca
+  compartilhavel: true
+- cod_titulo: 114
+  nome: O Lobo do mar
+  nome_f: A Loba do mar
+  compartilhavel: true
+- cod_titulo: 115
+  nome: Cria do Demônio
+  nome_f: Cria do Demônio
+  compartilhavel: true
+- cod_titulo: 116
+  nome: Punhos Negros
+  nome_f: Punhos Negros
+  compartilhavel: true
+- cod_titulo: 119
+  nome: O Paizão
+  nome_f: A Mãezona
+  compartilhavel: true
+- cod_titulo: 120
+  nome: Quebrador de Correntes
+  nome_f: Quebradora de Correntes
+  compartilhavel: true
+- cod_titulo: 122
+  nome: O Rancoroso
+  nome_f: A Rancorosa
+  compartilhavel: true
+- cod_titulo: 138
+  nome: Assassino do submundo
+  nome_f: Assassina do submundo
+  compartilhavel: true
+- cod_titulo: 139
+  nome: Campeão do Coliseu
+  nome_f: Campeã do Coliseu
+  compartilhavel: true
+- cod_titulo: 140
+  nome: Rushador Sugoi!
+  nome_f: Rushadora Sugoi!

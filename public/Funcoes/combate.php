@@ -167,7 +167,8 @@ function get_pers_in_combate($id)
         IFnull(cbtpers.skin_c, pers.skin_c) AS skin_c,
         IFnull(cbtpers.skin_r, pers.skin_r) AS skin_r,
         pers.borda AS borda,
-        IF (pers.sexo = 0, titulo.nome, titulo.nome_f) AS titulo,
+        pers.titulo AS titulo,
+        pers.sexo as sexo,
         cbtpers.atk AS atk,
         cbtpers.def AS def,
         cbtpers.agl AS agl,
@@ -185,7 +186,6 @@ function get_pers_in_combate($id)
         FROM tb_combate_personagens cbtpers
         INNER JOIN tb_personagens pers ON cbtpers.cod = pers.cod
         INNER JOIN tb_usuarios usr ON usr.id = pers.id
-        LEFT JOIN tb_titulos titulo ON pers.titulo = titulo.cod_titulo
         LEFT JOIN tb_akuma akuma ON pers.akuma = akuma.cod_akuma
         WHERE cbtpers.id = ? AND cbtpers.hp > 0",
         "i", [$id]
@@ -193,6 +193,10 @@ function get_pers_in_combate($id)
 
     foreach ($personagens as $key => $pers) {
         $personagens[$key]["efeitos"] = $pers["efeitos"] ? json_decode($pers["efeitos"], true) : [];
+        if ($personagens[$key]["titulo"]) {
+            $titulo = \Utils\Data::find("titulos", ["cod_titulo" => $personagens[$key]["titulo"]]);
+            $personagens[$key]["titulo"] = $personagens[$key]["sexo"] ? $titulo["nome_f"] : $titulo["nome"];
+        }
     }
 
     return $personagens;

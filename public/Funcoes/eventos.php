@@ -93,7 +93,7 @@ function render_recompensa($recompensa, $reagents, $equipamentos)
             <img src="Imagens/Itens/100.png" alt="" /> Akuma no Mi Aleatória
         </p>
     <?php elseif ($recompensa["tipo"] == "alcunha") : ?>
-        <?php $alcunha = $connection->run("SELECT * FROM tb_titulos WHERE cod_titulo = ?", "i", array($recompensa["cod_titulo"]))->fetch_array(); ?>
+        <?php $alcunha = \Utils\Data::find("titulos", ["cod_titulo" => $recompensa["cod_titulo"]]); ?>
         <p>
             Alcunha: <strong>
                 <?= $alcunha["nome"] ?>
