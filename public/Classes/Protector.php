@@ -545,7 +545,7 @@ class Protector
     {
         if ($tipo == "gold") {
             $this->need_gold($quant_gold);
-        } else if ($tipo == "dobrao") {
+        } elseif ($tipo == "dobrao") {
             $this->need_dobroes($quant_dobrao);
         }
     }

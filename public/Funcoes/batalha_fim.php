@@ -341,6 +341,61 @@ function atualiza_disputa_ilha()
     }
 }
 
+function atualiza_influencia()
+{
+    global $userDetails;
+    global $connection;
+    if ($userDetails->combate_bot["confronto"]) {
+        $connection->run("UPDATE tb_usuarios SET nivel_confronto = nivel_confronto + 1 WHERE id = ?",
+            "i", [$userDetails->tripulacao["id"]]);
+
+        $ilha = \Regras\Ilhas::get_ilha($userDetails->ilha['ilha']);
+
+        $confrontos_realizados =
+            $connection
+                ->run('SELECT * FROM tb_tripulacao_ilha_confrontos WHERE tripulacao_id = ? AND ilha_id = ?', 'ii', [
+                    $userDetails->tripulacao['id'],
+                    $userDetails->ilha['ilha'],
+                ])
+                ->fetch_array()['confrontos'] ?:
+            0;
+
+        if ($confrontos_realizados == 0) {
+            $connection->run("INSERT INTO tb_tripulacao_ilha_confrontos (tripulacao_id, ilha_id, confrontos) VALUES (?, ?, 1)",
+                "ii", [$userDetails->tripulacao["id"], $userDetails->ilha['ilha']]);
+        } else {
+            $connection->run("UPDATE tb_tripulacao_ilha_confrontos SET confrontos = confrontos + 1 WHERE tripulacao_id = ? AND ilha_id = ?",
+                "ii", [$userDetails->tripulacao["id"], $userDetails->ilha['ilha']]);
+        }
+
+        $faccao =
+            $confrontos_realizados < $ilha['confrontos']
+            ? \Utils\Data::find_inside('mundo', 'faccoes', ['evolui_outros' => true])
+            : \Utils\Data::load('mundo')['faccoes'][array_rand(\Utils\Data::load('mundo')['faccoes'])];
+
+        $relacao = $connection
+            ->run('SELECT * FROM tb_tripulacao_faccao WHERE tripulacao_id = ? AND faccao_id = ?',
+                'ii', [$userDetails->tripulacao['id'], $faccao["cod"]]);
+
+        $produzido = [
+            "inicio" => atual_segundo(),
+            "quantidade" => 1
+        ];
+        if ($relacao->count()) {
+            $relacao = $relacao->fetch_array();
+            $relacao["producao"] = json_decode($relacao["producao"], true);
+            $relacao["producao"][] = $produzido;
+            $connection->run("UPDATE tb_tripulacao_faccao SET confrontos = confrontos + 1, producao = ? WHERE tripulacao_id = ? AND faccao_id = ?",
+                "sii", [json_encode($relacao["producao"]), $userDetails->tripulacao["id"], $faccao["cod"]]);
+        } else {
+            $producao = [$produzido];
+            $connection->run("INSERT INTO tb_tripulacao_faccao (tripulacao_id, faccao_id, confrontos, producao) VALUES (?, ?, 1, ?)",
+                "iis", [$userDetails->tripulacao["id"], $faccao["cod"], json_encode($producao)]);
+        }
+
+    }
+}
+
 function atualiza_incursao()
 {
     global $userDetails;

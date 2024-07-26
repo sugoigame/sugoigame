@@ -212,8 +212,12 @@ function get_pers_bot_in_combate($id)
         cbtpers.id AS bot_id,
         'bot' AS id,
         'bot' AS tripulacao_id,
-        cbtpers.*
+        cbtpers.*,
+        cb.tripulacao_inimiga as tripulacao,
+        cb.faccao_inimiga as faccao,
+        cb.bandeira_inimiga as bandeira
         FROM tb_combate_personagens_bot cbtpers
+        INNER JOIN tb_combate_bot cb ON cb.id = cbtpers.combate_bot_id
         WHERE cbtpers.combate_bot_id = ? AND hp > 0",
         "i", [$id]
     )->fetch_all_array();
@@ -766,7 +770,9 @@ function inicia_combate($alvo, $tipo, $chave = null)
                                     <?php foreach ($pers["efeitos"] as $efeito) : ?>
                                         <div class="text-center">
                                             <?= Componentes::render("Habilidades.Explicacao", ["explicacao" => $efeito["explicacao"]]); ?>
-                                            (<?= $efeito["duracao"] + 1; ?>)
+                                            <?php if ($efeito["duracao"] < 40) : ?>
+                                                (<?= $efeito["duracao"] + 1; ?>)
+                                            <?php endif; ?>
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>

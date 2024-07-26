@@ -2,16 +2,7 @@
 @php
     $faccoes = \Utils\Data::load('mundo')['faccoes'];
 
-    $bonus = [];
-    foreach ($relacoes as $relacao) {
-        $faccao = array_find($faccoes, ['cod' => $relacao['faccao_id']]);
-        foreach ($faccao['bonus'] as $atr) {
-            if (!isset($bonus[$atr])) {
-                $bonus[$atr] = 0;
-            }
-            $bonus[$atr] += \Regras\Influencia::get_bonus_faccao($relacao['nivel'] ?: 0);
-        }
-    }
+    $bonus = \Regras\Influencia::get_bonus_todas_faccoes($relacoes);
 @endphp
 <h4>Bônus em conflitos:</h4>
 <div>
@@ -19,7 +10,7 @@
         <div>
             @component('Habilidades.IconeAtributo', ['atr' => $atr])
             @endcomponent
-            +{{ abrevia_numero_grande($valor) }}%
+            +{{ abrevia_numero_grande(round($valor)) }}%
         </div>
     @endforeach
 </div>

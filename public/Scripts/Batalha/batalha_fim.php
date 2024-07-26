@@ -130,9 +130,11 @@ if ($userDetails->combate_pve) {
 
         atualiza_disputa_ilha();
 
-        atualiza_incursao();
+        atualiza_influencia();
 
-        atualiza_missao();
+        //atualiza_incursao();
+
+        // atualiza_missao();
     }
 
     remove_missao();
@@ -143,8 +145,8 @@ if ($userDetails->combate_pve) {
 if ($venceu) {
     if ($userDetails->combate_pve && isset($rdm['haki'])) {
         echo ("%haki");
-    } elseif ($userDetails->combate_bot && $userDetails->combate_bot["incursao"]) {
-        echo ("%incursao");
+    } elseif ($userDetails->combate_bot && $userDetails->combate_bot["confronto"]) {
+        echo ("%confrontos");
     } elseif ($userDetails->combate_bot && $userDetails->combate_bot["disputa_ilha"]) {
         echo ("%politicaIlha");
     } elseif ($userDetails->combate_pve && $userDetails->combate_pve["chefe_especial"]) {

@@ -34,7 +34,6 @@ $sessoes_por_sistema = array(
     SISTEMA_TRIPULANTES_FORA_BARCO => ["tripulantesInativos"],
     SISTEMA_DOMINIO_ILHA => ["politicaIlha"],
     SISTEMA_COLISEU => ["coliseu", "localizadorCasual", "localizadorCompetitivo"],
-    SISTEMA_INCURSOES => ["incursao"],
     SISTEMA_PESQUISAS => ["missoesR"],
     SISTEMA_RECRUTAR_TRIPULANTE => ["recrutar", "expulsar"],
     SISTEMA_VISAO_GERAL_TRIPULACAO => ["status", "tripulacao"],

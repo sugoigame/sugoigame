@@ -73,7 +73,6 @@ function get_super_menu($sess = null)
         case "arvoreAnM":
         case "coliseu":
         case "leiloes":
-        case "incursao":
         case "politicaIlha":
             return "ilha";
         case "oceano":

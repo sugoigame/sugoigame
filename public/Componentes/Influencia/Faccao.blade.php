@@ -3,7 +3,9 @@
     global $userDetails;
 
     $reputacao_necessaria = \Regras\Influencia::get_reputacao_necessaria($relacao['nivel'] ?: 0);
-    $reputacao = ($relacao['reputacao'] ?: 0) + \Regras\Influencia::get_reputacao_produzida($relacao['producao'] ?: []);
+    $reputacao =
+        ($relacao['reputacao'] ?: 0) +
+        \Regras\Influencia::get_reputacao_produzida(json_decode($relacao['producao'], true) ?: []);
     $nivel = ($relacao['nivel'] ?: 0) + ($nivel_base ?: 0);
 @endphp
 
@@ -40,13 +42,13 @@
             @endif
             @if (isset($faccao['bonus']))
                 <div>
-                    <div>Bônus em conflitos:</div>
+                    <div>Bônus em confrontos:</div>
                     <div>
                         @foreach ($faccao['bonus'] as $atr)
                             <div>
                                 @component('Habilidades.IconeAtributo', ['atr' => $atr])
                                 @endcomponent
-                                +{{ abrevia_numero_grande(\Regras\Influencia::get_bonus_faccao($relacao['nivel'] ?: 0)) }}%
+                                +{{ abrevia_numero_grande(round(\Regras\Influencia::get_bonus_faccao($nivel ?: 0))) }}%
                             </div>
                         @endforeach
                     </div>
@@ -55,7 +57,8 @@
         </div>
     </div>
     <div class="panel-footer">
-        <button class="btn btn-success"
+        <button class="btn btn-success link_send"
+            href='link_Influencia/evoluir_faccao.php?faccao={{ $faccao['cod'] }}'
             {{ $reputacao < $reputacao_necessaria || $nivel >= $userDetails->tripulacao['influencia'] ? 'disabled' : '' }}>Evoluir</button>
     </div>
 </div>

@@ -3,9 +3,9 @@
     global $connection;
 
     $faccoes = \Utils\Data::load('mundo')['faccoes'];
-    $relacoes = $connection
-        ->run('SELECT * FROM tb_tripulacao_faccao WHERE tripulacao_id = ?', 'i', [$userDetails->tripulacao['id']])
-        ->fetch_all_array();
+    $relacoes = \Regras\Influencia::get_relacoes();
+    $relacao_base = array_find($relacoes, ['faccao_id' => $faccoes[0]['cod']]);
+    $nivel_base = $relacao_base['nivel'] ?: 0;
 @endphp
 <div class="panel-heading">
     Influência
@@ -32,7 +32,10 @@
 
 
     <h4>Sua relação com as facções do mundo:</h4>
-    @component('Influencia.Faccao', ['faccao' => $faccoes[0]])
+    @component('Influencia.Faccao', [
+        'faccao' => $faccoes[0],
+        'relacao' => $relacao_base,
+    ])
     @endcomponent
     <div class="row justify-content-center">
         @foreach ($faccoes as $key => $faccao)
@@ -41,6 +44,7 @@
                     @component('Influencia.Faccao', [
                         'faccao' => $faccao,
                         'relacao' => array_find($relacoes, ['faccao_id' => $faccao['cod']]),
+                        'nivel_base' => $nivel_base,
                     ])
                     @endcomponent
                 </div>

@@ -128,7 +128,11 @@ class Ataque
 
     public static function calc_dano_habilidade(Habilidade $habilidade)
     {
-        return self::calc_dano_vontade($habilidade->personagem->tripulacao->get_vontade(), $habilidade->estado["dano"]);
+        $dano = self::calc_dano_vontade($habilidade->personagem->tripulacao->get_vontade(), $habilidade->estado["dano"]);
+
+        $dano += $dano * $habilidade->personagem->get_valor_atributo("dano_habilidade");
+
+        return $dano;
     }
 
     public static function calc_dano_vontade(int $vontade, float $multiplicador)

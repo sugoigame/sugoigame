@@ -148,9 +148,9 @@ function insert_personagens_combate($id, $all_pers, $vip, $tatic_type, $x1, $x2,
              mp, mp_max,
              atk, def, agl, res, pre, dex, con, vit,
              quadro_x, quadro_y,
-             haki_esq, haki_cri, img, skin_r, skin_c)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            "iiiiiiiiiiiiiiiiiiiii", array(
+             haki_esq, haki_cri, img, skin_r, skin_c, efeitos)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "iiiiiiiiiiiiiiiiiiiiis", array(
                 $id,
                 $pers["cod"],
                 $pers["hp"], $pers["hp_max"],
@@ -158,7 +158,8 @@ function insert_personagens_combate($id, $all_pers, $vip, $tatic_type, $x1, $x2,
                 $pers["atk"], $pers["def"], $pers["agl"], $pers["res"], $pers["pre"], $pers["dex"], $pers["con"], $pers["vit"],
                 $pers["quadro_x"], $pers["quadro_y"],
                 $pers["haki_esq"], $pers["haki_cri"],
-                $pers["img"], $pers["skin_r"], $pers["skin_c"]
+                $pers["img"], $pers["skin_r"], $pers["skin_c"],
+                isset($pers["efeitos"]) ? json_encode($pers["efeitos"]) : null
             )
         );
     }

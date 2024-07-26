@@ -14,7 +14,7 @@
         @php
             $faccao = \Utils\Data::find_inside('mundo', 'faccoes', ['cod' => $requisito['faccao']]);
             $relacao = array_find($relacoes, ['faccao_id' => $requisito['faccao']]);
-            $concluido = $relacao >= $requisito['nivel'];
+            $concluido = $relacao['nivel'] >= $requisito['nivel'];
             if (!$concluido) {
                 $todos_concluidos = false;
             }
@@ -24,7 +24,8 @@
         </div>
     @endforeach
 </div>
-<button class="btn btn-success"
+<button class="btn btn-success link_send"
+    href='link_Influencia/evoluir_influencia.php'
     {{ !$todos_concluidos ? 'disabled' : '' }}>
     Evoluir
 </button>

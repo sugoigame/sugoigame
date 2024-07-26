@@ -604,6 +604,8 @@ table tr td {
     padding: 3px;
     height: 20px;
     border-radius: 0 8px 0 0;
+}
+.big-pers-avatar.small .big-pers-skin-bandeira .nome-tripulacao {
     font-size: 70%;
 }
 
