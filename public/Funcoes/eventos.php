@@ -13,6 +13,20 @@ function recebe_recompensa($recompensa, $pers = null, $exit_error = true)
         case "xp":
             $userDetails->xp_for_all($recompensa["quant"]);
             return "Você recebeu " . mascara_berries($recompensa["quant"]) . " Pontos de experiência";
+        case "reputacao":
+            $faccao = \Utils\Data::find_inside("mundo", "faccoes", ["cod" => $recompensa["faccao"]]);
+            $relacao = $connection
+                ->run('SELECT * FROM tb_tripulacao_faccao WHERE tripulacao_id = ? AND faccao_id = ?',
+                    'ii', [$userDetails->tripulacao['id'], $faccao["cod"]]);
+
+            if ($relacao->count()) {
+                $connection->run("UPDATE tb_tripulacao_faccao SET reputacao = reputacao + ? WHERE tripulacao_id = ? AND faccao_id = ?",
+                    "iii", [$recompensa["quant"], $userDetails->tripulacao["id"], $faccao["cod"]]);
+            } else {
+                $connection->run("INSERT INTO tb_tripulacao_faccao (tripulacao_id, faccao_id, confrontos, producao, reputacao) VALUES (?, ?, 0, null, ?)",
+                    "iii", [$userDetails->tripulacao["id"], $faccao["cod"], $recompensa["quant"]]);
+            }
+            return "Você recebeu " . mascara_berries($recompensa["quant"]) . " pontos de reputação com " . $faccao["nome"];
 
         // case "haki":
         //     $userDetails->haki_for_all($recompensa["quant"]);
@@ -83,7 +97,13 @@ function render_recompensa($recompensa, $reagents, $equipamentos)
                 title="Pontos de Experiência para toda tripulação" alt="" />
             <?= mascara_numeros_grandes($recompensa["quant"]) ?>
         </p>
-
+    <?php elseif ($recompensa["tipo"] == "reputacao") : ?>
+        <?php $faccao = \Utils\Data::find_inside("mundo", "faccoes", ["cod" => $recompensa["faccao"]]) ?>
+        <div class="clearfix">
+            <?= mascara_berries($recompensa["quant"]) ?>
+            pontos de reputação com
+            <?= $faccao["nome"] ?>
+        </div>
     <?php elseif ($recompensa["tipo"] == "haki") : ?>
         <p>
             <?= mascara_numeros_grandes($recompensa["quant"]) ?> pontos de Haki para distribuir entre os tripulantes

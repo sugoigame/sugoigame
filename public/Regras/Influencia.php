@@ -65,7 +65,7 @@ class Influencia
         $necessario = 0;
 
         for ($lvl = 0; $lvl <= $nivel; $lvl++) {
-            $necessario += ($lvl + 1) * 15;
+            $necessario += ($lvl + 1) * 1500;
         }
 
         return $necessario;
@@ -76,15 +76,15 @@ class Influencia
         $now = atual_segundo();
         $total = 0;
         foreach ($producao as $produzido) {
-            $segundos = min($now - $produzido["inicio"], 24 * 60 * 60);
-            $total += floor(($segundos / 60.0 / 60.0) * $produzido["quantidade"]);
+            $segundos = $now - $produzido["inicio"];
+            $total += floor(($segundos / 60.0 / 60.0) * $produzido["quantidade"] * 100);
         }
         return $total;
     }
 
     public static function get_limite_confrontos($influencia)
     {
-        return $influencia * 5;
+        return max(0, ($influencia - 100) * 2);
     }
 
     public static function generate_confronto($nivel)
@@ -156,6 +156,11 @@ class Influencia
             [
                 'tipo' => 'xp',
                 'quant' => 1000,
+            ],
+            [
+                'tipo' => 'reputacao',
+                'faccao' => 1,
+                'quant' => 1500,
             ]
         ];
     }

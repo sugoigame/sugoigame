@@ -6,7 +6,11 @@
     $reputacao =
         ($relacao['reputacao'] ?: 0) +
         \Regras\Influencia::get_reputacao_produzida(json_decode($relacao['producao'], true) ?: []);
+
+    $reputacao = min($reputacao_necessaria, $reputacao);
     $nivel = ($relacao['nivel'] ?: 0) + ($nivel_base ?: 0);
+
+    $limite_confrontos = \Regras\Influencia::get_limite_confrontos($userDetails->tripulacao['influencia']);
 @endphp
 
 <div class="panel">
@@ -19,17 +23,21 @@
             <div class="progress-bar progress-bar-{{ $faccao['evolui_outros'] ? 'secondary' : 'info' }}"
                 style="width: {{ min(1.0, $reputacao / $reputacao_necessaria) * 100 }}%">
                 <span>Reputação:
-                    {{ abrevia_numero_grande($reputacao) }}/{{ abrevia_numero_grande($reputacao_necessaria) }}</span>
+                    {{ mascara_numeros_grandes($reputacao) }} /
+                    {{ mascara_numeros_grandes($reputacao_necessaria) }}</span>
             </div>
         </div>
         <div>
             Confrontos:
-            {{ $relacao['confrontos'] ?: 0 }}/{{ \Regras\Influencia::get_limite_confrontos($userDetails->tripulacao['influencia']) }}
+            {{ $relacao['confrontos'] ?: 0 }}
+            @if (!$faccao['evolui_outros'])
+                / {{ $limite_confrontos }}
+            @endif
             {!! ajuda_tooltip(
                 'Você participou de ' .
                     ($relacao['confrontos'] ?: 0) .
                     ' confrontos envolvendo essa facção, a cada hora você ganha ' .
-                    ($relacao['confrontos'] ?: 0) .
+                    ($relacao['confrontos'] ?: 0) * 100 .
                     ' pontos de reputação.',
             ) !!}
         </div>

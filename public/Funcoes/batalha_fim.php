@@ -393,6 +393,10 @@ function atualiza_influencia()
                 "iis", [$userDetails->tripulacao["id"], $faccao["cod"], json_encode($producao)]);
         }
 
+        $recompensas = \Regras\Influencia::generate_recompensas($userDetails->tripulacao['nivel_confronto']);
+        foreach ($recompensas as $recompensa) {
+            recebe_recompensa($recompensa, null, false);
+        }
     }
 }
 

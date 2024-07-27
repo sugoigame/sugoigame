@@ -6,6 +6,8 @@
     $relacoes = \Regras\Influencia::get_relacoes();
     $relacao_base = array_find($relacoes, ['faccao_id' => $faccoes[0]['cod']]);
     $nivel_base = $relacao_base['nivel'] ?: 0;
+
+    $limite_confrontos = \Regras\Influencia::get_limite_confrontos($userDetails->tripulacao['influencia']);
 @endphp
 <div class="panel-heading">
     Influência
@@ -37,18 +39,20 @@
         'relacao' => $relacao_base,
     ])
     @endcomponent
-    <div class="row justify-content-center">
-        @foreach ($faccoes as $key => $faccao)
-            @if ($key > 0)
-                <div class="col-xs-3">
-                    @component('Influencia.Faccao', [
-                        'faccao' => $faccao,
-                        'relacao' => array_find($relacoes, ['faccao_id' => $faccao['cod']]),
-                        'nivel_base' => $nivel_base,
-                    ])
-                    @endcomponent
-                </div>
-            @endif
-        @endforeach
-    </div>
+    @if ($limite_confrontos > 0)
+        <div class="row justify-content-center">
+            @foreach ($faccoes as $key => $faccao)
+                @if ($key > 0)
+                    <div class="col-xs-3">
+                        @component('Influencia.Faccao', [
+                            'faccao' => $faccao,
+                            'relacao' => array_find($relacoes, ['faccao_id' => $faccao['cod']]),
+                            'nivel_base' => $nivel_base,
+                        ])
+                        @endcomponent
+                    </div>
+                @endif
+            @endforeach
+        </div>
+    @endif
 </div>

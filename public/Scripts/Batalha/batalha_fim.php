@@ -131,10 +131,6 @@ if ($userDetails->combate_pve) {
         atualiza_disputa_ilha();
 
         atualiza_influencia();
-
-        //atualiza_incursao();
-
-        // atualiza_missao();
     }
 
     remove_missao();
