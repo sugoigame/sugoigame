@@ -7,7 +7,6 @@
         ($relacao['reputacao'] ?: 0) +
         \Regras\Influencia::get_reputacao_produzida(json_decode($relacao['producao'], true) ?: []);
 
-    $reputacao = min($reputacao_necessaria, $reputacao);
     $nivel = ($relacao['nivel'] ?: 0) + ($nivel_base ?: 0);
 
     $limite_confrontos = \Regras\Influencia::get_limite_confrontos($userDetails->tripulacao['influencia']);

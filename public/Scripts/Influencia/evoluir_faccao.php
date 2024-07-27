@@ -35,7 +35,6 @@ $reputacao_necessaria = \Regras\Influencia::get_reputacao_necessaria($relacao['n
 $reputacao =
     ($relacao['reputacao'] ?: 0) +
     \Regras\Influencia::get_reputacao_produzida(json_decode($relacao['producao'], true) ?: []);
-$reputacao = min($reputacao_necessaria, $reputacao);
 $nivel = ($relacao['nivel'] ?: 0) + ($nivel_base ?: 0);
 
 if ($reputacao < $reputacao_necessaria || $nivel >= $userDetails->tripulacao['influencia']) {

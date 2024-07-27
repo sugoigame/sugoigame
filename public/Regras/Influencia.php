@@ -5,7 +5,7 @@ class Influencia
 {
     public static function get_requisitos($influencia)
     {
-        if ($influencia < 100) {
+        if ($influencia < 10) {
             return [["faccao" => 1, "nivel" => $influencia]];
         }
 
@@ -76,7 +76,7 @@ class Influencia
         $now = atual_segundo();
         $total = 0;
         foreach ($producao as $produzido) {
-            $segundos = $now - $produzido["inicio"];
+            $segundos = min($now - $produzido["inicio"], 24 * 60 * 60);
             $total += floor(($segundos / 60.0 / 60.0) * $produzido["quantidade"] * 100);
         }
         return $total;
@@ -84,7 +84,7 @@ class Influencia
 
     public static function get_limite_confrontos($influencia)
     {
-        return max(0, ($influencia - 100) * 2);
+        return max(0, ($influencia - 10) * 2);
     }
 
     public static function generate_confronto($nivel)
@@ -99,7 +99,7 @@ class Influencia
 
         $quant_personagens = min(10, ceil($nivel / 5));
         $alcunhas = \Utils\Data::load("titulos");
-        $dificultador = self::get_bonus_faccao($nivel) * 5;
+        $dificultador = self::get_bonus_faccao($nivel) * 2;
 
         for ($x = 0; $x < $quant_personagens; $x++) {
             $lvl = min(50, ceil($nivel / 2));
@@ -160,7 +160,7 @@ class Influencia
             [
                 'tipo' => 'reputacao',
                 'faccao' => 1,
-                'quant' => 1500,
+                'quant' => 10000,
             ]
         ];
     }
