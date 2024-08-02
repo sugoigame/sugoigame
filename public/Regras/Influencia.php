@@ -99,7 +99,7 @@ class Influencia
 
         $quant_personagens = min(10, ceil($nivel / 5));
         $alcunhas = \Utils\Data::load("titulos");
-        $dificultador = self::get_bonus_faccao($nivel) * 2;
+        $dificultador = self::get_bonus_faccao($nivel) - 50;
 
         for ($x = 0; $x < $quant_personagens; $x++) {
             $lvl = min(50, ceil($nivel / 2));

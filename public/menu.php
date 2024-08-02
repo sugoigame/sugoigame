@@ -80,10 +80,7 @@ function super_menu_can_be_active($menu)
                 </ul>
             </div>
             <?php if (! $userDetails->combate_pvp && ! $userDetails->combate_pve && ! $userDetails->combate_bot) : ?>
-                <?= super_menu_link("status", "menu-tripulacao", "Tripulação", "tripulacao", "tripulacao", [
-                    SISTEMA_VISAO_GERAL_TRIPULACAO,
-                    SISTEMA_HAKI
-                ]) ?>
+                <?= super_menu_link("status", "menu-tripulacao", "Tripulação", "tripulacao", "tripulacao", []) ?>
 
                 <div id="menu-tripulacao" class="collapse <?= super_menu_in_out("tripulacao") ?>">
                     <ul class="vertical-nav nav navbar-nav">

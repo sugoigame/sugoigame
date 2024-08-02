@@ -1,6 +1,5 @@
 <?php
 define('SISTEMA_ACADEMIA', 'SISTEMA_ACADEMIA');
-define('SISTEMA_VISAO_GERAL_TRIPULACAO', 'SISTEMA_VISAO_GERAL_TRIPULACAO');
 define('SISTEMA_ESTALEIRO', 'SISTEMA_ESTALEIRO');
 define('SISTEMA_BANDEIRA', 'SISTEMA_BANDEIRA');
 define('SISTEMA_RECRUTAR_TRIPULANTE', 'SISTEMA_RECRUTAR_TRIPULANTE');
@@ -36,7 +35,6 @@ $sessoes_por_sistema = array(
     SISTEMA_COLISEU => ["coliseu", "localizadorCasual", "localizadorCompetitivo"],
     SISTEMA_PESQUISAS => ["missoesR"],
     SISTEMA_RECRUTAR_TRIPULANTE => ["recrutar", "expulsar"],
-    SISTEMA_VISAO_GERAL_TRIPULACAO => ["status", "tripulacao"],
     SISTEMA_HAKI => ["haki"],
     SISTEMA_EVENTOS => ["lojaEvento"],
     SISTEMA_CACA => ["missoesCaca"],

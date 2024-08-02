@@ -8,7 +8,7 @@ $trip = $protector->get_number_or_exit("trip");
 $result = $connection->run("SELECT conta_id FROM tb_usuarios WHERE id = ?",
     "i", array($trip));
 
-if (!$result->count()) {
+if (! $result->count()) {
     $protector->redirect_error("Tripulação não encontrada", "seltrip");
 }
 
@@ -21,5 +21,5 @@ if ($tripulacao["conta_id"] != $userDetails->conta["conta_id"]) {
 $connection->run("UPDATE tb_conta SET tripulacao_id = ? WHERE conta_id = ?",
     "ii", array($trip, $userDetails->conta["conta_id"]));
 
-header("location:../../?ses=home");
-	
+echo "%home";
+

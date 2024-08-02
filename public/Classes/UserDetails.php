@@ -1020,66 +1020,56 @@ class UserDetails
 
         return array(
             0 => array(
-                "goal" => "Complete uma missão na ilha",
-                "link" => "missoes",
-                "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [],
-                "next" => 1,
-                "check_progress" => function () use ($primeira_ilha) {
-                    return check_progress_missoes_realizadas($primeira_ilha, 1);
-                }
-            ),
-            1 => array(
-                "goal" => "Se recupere no hospital",
-                "link" => "hospital",
-                "unlock" => [],
-                "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "next" => 2,
-                "check_progress" => function () {
-                    return check_progress_personagens_recuperados();
-                }
-            ),
-            2 => array(
-                "goal" => "Complete mais uma missão na ilha",
-                "link" => "missoes",
-                "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [SISTEMA_VISAO_GERAL_TRIPULACAO],
-                "next" => 3,
-                "check_progress" => function () use ($primeira_ilha) {
-                    return check_progress_missoes_realizadas($primeira_ilha, 2);
-                }
-            ),
-            3 => array(
                 "goal" => "Escolha a classe do capitão",
                 "link" => "status&nav=classe",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
                 "unlock" => [],
-                "next" => 4,
+                "next" => 2,
                 "check_progress" => function () {
                     return check_progress_personagem_com_classe($this->capitao);
                 }
             ),
-            4 => array(
+            2 => array(
                 "goal" => "Escolha os atributos do capitão",
                 "link" => "status",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
                 "unlock" => [],
-                "next" => 5,
+                "next" => 3,
                 "check_progress" => function () {
                     return check_progress_personagem_com_atributos($this->capitao);
                 }
             ),
-            5 => array(
-                "goal" => "Complete mais uma missão na ilha",
-                "link" => "missoes",
+            3 => array(
+                "goal" => "Complete um confronto na ilha",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [SISTEMA_ESTALEIRO],
-                "next" => 7,
+                "unlock" => [],
+                "next" => 4,
                 "check_progress" => function () use ($primeira_ilha) {
-                    return check_progress_missoes_realizadas($primeira_ilha, 3);
+                    return check_progress_missoes_realizadas($primeira_ilha, 1);
                 }
             ),
-            7 => array(
+            4 => array(
+                "goal" => "Se recupere no hospital",
+                "link" => "hospital",
+                "unlock" => [],
+                "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
+                "next" => 5,
+                "check_progress" => function () {
+                    return check_progress_personagens_recuperados();
+                }
+            ),
+            5 => array(
+                "goal" => "Complete mais um confronto na ilha",
+                "link" => "confrontos",
+                "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
+                "unlock" => [SISTEMA_ESTALEIRO],
+                "next" => 6,
+                "check_progress" => function () use ($primeira_ilha) {
+                    return check_progress_missoes_realizadas($primeira_ilha, 2);
+                }
+            ),
+            6 => array(
                 "goal" => "Compre um barco",
                 "link" => "estaleiro",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
@@ -1160,8 +1150,8 @@ class UserDetails
                 }
             ),
             17 => array(
-                "goal" => "Complete todas as missões da ilha",
-                "link" => "missoes",
+                "goal" => "Complete todas os confrontos da ilha",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 19,
@@ -1170,17 +1160,7 @@ class UserDetails
                 }
             ),
             19 => array(
-                "goal" => "Derrote o chefe da ilha",
-                "link" => "missoes",
-                "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [SISTEMA_INCURSOES],
-                "next" => 20,
-                "check_progress" => function () use ($primeira_ilha) {
-                    return check_progress_chefe_ilha_derrotado($primeira_ilha);
-                }
-            ),
-            20 => array(
-                "goal" => "Complete a incursão da ilha",
+                "goal" => "Convide um viajante para viajar com você",
                 "link" => "incursao",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
                 "unlock" => [SISTEMA_PESQUISAS],
@@ -1225,19 +1205,9 @@ class UserDetails
                 "link" => "restaurante",
                 "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
                 "unlock" => [SISTEMA_CACA],
-                "next" => 25,
-                "check_progress" => function () {
-                    return check_progress_comida_comprada();
-                }
-            ),
-            25 => array(
-                "goal" => "Inicie uma missão de caça",
-                "link" => "missoesCaca",
-                "rewards" => array("xp" => 0, "berries" => 1000, "dobroes" => 0),
-                "unlock" => [SISTEMA_OCEANO],
                 "next" => 26,
                 "check_progress" => function () {
-                    return $this->tripulacao["missao_caca"];
+                    return check_progress_comida_comprada();
                 }
             ),
             26 => array(
@@ -1273,7 +1243,7 @@ class UserDetails
             ),
             29 => array(
                 "goal" => "Complete todas as missões de " . nome_ilha($segunda_ilha),
-                "link" => "missoes",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 2000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 30,
@@ -1283,7 +1253,7 @@ class UserDetails
             ),
             30 => array(
                 "goal" => "Derrote o chefe de " . nome_ilha($segunda_ilha),
-                "link" => "missoes",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 2000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 31,
@@ -1314,7 +1284,7 @@ class UserDetails
             ),
             33 => array(
                 "goal" => "Complete todas as missões de " . nome_ilha($terceira_ilha),
-                "link" => "missoes",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 3000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 34,
@@ -1324,7 +1294,7 @@ class UserDetails
             ),
             34 => array(
                 "goal" => "Derrote o chefe de " . nome_ilha($terceira_ilha),
-                "link" => "missoes",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 3000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 35,
@@ -1355,7 +1325,7 @@ class UserDetails
             ),
             37 => array(
                 "goal" => "Complete todas as missões de " . nome_ilha($quarta_ilha),
-                "link" => "missoes",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 4000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 38,
@@ -1365,7 +1335,7 @@ class UserDetails
             ),
             38 => array(
                 "goal" => "Derrote o chefe de " . nome_ilha($quarta_ilha),
-                "link" => "missoes",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 4000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 39,
@@ -1396,7 +1366,7 @@ class UserDetails
             ),
             41 => array(
                 "goal" => "Complete todas as missões de " . nome_ilha($quinta_ilha),
-                "link" => "missoes",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 5000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 42,
@@ -1406,7 +1376,7 @@ class UserDetails
             ),
             42 => array(
                 "goal" => "Derrote o chefe de " . nome_ilha($quinta_ilha),
-                "link" => "missoes",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 5000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 43,
@@ -1437,7 +1407,7 @@ class UserDetails
             ),
             45 => array(
                 "goal" => "Complete todas as missões de " . nome_ilha($sexta_ilha),
-                "link" => "missoes",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 6000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 46,
@@ -1447,7 +1417,7 @@ class UserDetails
             ),
             46 => array(
                 "goal" => "Derrote o chefe de " . nome_ilha($sexta_ilha),
-                "link" => "missoes",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 6000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 47,
@@ -1518,7 +1488,7 @@ class UserDetails
             ),
             53 => array(
                 "goal" => "Complete todas as missões de " . nome_ilha($setima_ilha),
-                "link" => "missoes",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 7000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 54,
@@ -1528,7 +1498,7 @@ class UserDetails
             ),
             54 => array(
                 "goal" => "Derrote o chefe de " . nome_ilha($setima_ilha),
-                "link" => "missoes",
+                "link" => "confrontos",
                 "rewards" => array("xp" => 0, "berries" => 7000, "dobroes" => 0),
                 "unlock" => [],
                 "next" => 55,

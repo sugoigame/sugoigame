@@ -3,25 +3,12 @@
 function check_progress_missoes_realizadas($ilha, $amount)
 {
     global $userDetails;
-    global $connection;
-    $missoes_concluidas = $connection->run(
-        "SELECT count(missaoc.cod_missao) AS total
-        FROM tb_missoes_concluidas missaoc
-        INNER JOIN tb_ilha_missoes imissao ON missaoc.cod_missao = imissao.cod_missao AND imissao.ilha = ?
-        WHERE missaoc.id = ?",
-        "ii", array($ilha, $userDetails->tripulacao["id"])
-    )->fetch_array()["total"];
 
     if ($amount == -1) {
-        $amount = $connection->run(
-            "SELECT count(missao.cod_missao) AS total
-            FROM tb_ilha_missoes missao
-            WHERE missao.ilha = ?",
-            "i", array($ilha)
-        )->fetch_array()["total"];
+        $amount = \Regras\Ilhas::get_ilha($ilha)["confrontos"];
     }
 
-    return $missoes_concluidas >= $amount;
+    return $userDetails->tripulacao["nivel_confronto"] > $amount;
 }
 
 function check_progress_personagens_recuperados()

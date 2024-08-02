@@ -623,6 +623,14 @@ class Protector
         return $_POST[$key];
     }
 
+    public function post_alphanumeric_with_space_or_exit($key)
+    {
+        if (! isset($_POST[$key]) || ! preg_match("/^[\\w\\- ]+$/", $_POST[$key])) {
+            $this->_exit_with_msg_for_input();
+        }
+        return $_POST[$key];
+    }
+
     public function post_value_or_exit($key)
     {
         if (! isset($_POST[$key])) {
