@@ -15,10 +15,13 @@
         $confronto = null;
     } else {
         // todo carregar faccao do governante da ilha
+        $faccao_ilha = $connection
+            ->run('SELECT faccao FROM tb_mapa WHERE ilha = ?', 'i', [$userDetails->ilha['ilha']])
+            ->fetch_array()['faccao'];
         $faccao =
             $confrontos_realizados < $ilha['confrontos']
                 ? \Utils\Data::find_inside('mundo', 'faccoes', ['evolui_outros' => true])
-                : \Utils\Data::load('mundo')['faccoes'][array_rand(\Utils\Data::load('mundo')['faccoes'])];
+                : \Utils\Data::find_inside('mundo', 'faccoes', ['cod' => $faccao_ilha]);
 
         $confronto = \Regras\Influencia::generate_confronto($userDetails->tripulacao['nivel_confronto']);
         $recompensas = \Regras\Influencia::generate_recompensas($userDetails->tripulacao['nivel_confronto']);
@@ -39,6 +42,64 @@
                     style="width: {{ ($confrontos_realizados / $ilha['confrontos']) * 100 }}%">
                     <span>Confrontos realizados: {{ $confrontos_realizados }}/{{ $ilha['confrontos'] }}</span>
                 </div>
+            </div>
+        </div>
+    @else
+        <div class="panel panel-default m0 h-100">
+            @php
+                $chefe_derrotado_data = $connection->run(
+                    'SELECT * FROM tb_missoes_chefe_ilha WHERE tripulacao_id = ? AND ilha_derrotado = ?',
+                    'ii',
+                    [$userDetails->tripulacao['id'], $userDetails->ilha['ilha']],
+                );
+                $chefe_derrotado = $chefe_derrotado_data->count();
+                $chefe_derrotado_data = $chefe_derrotado_data->fetch_array();
+            @endphp
+            <div class="panel-body">
+                @if (!$chefe_derrotado_data['recompensa_recebida'])
+                    @php
+                        $chefes_ilha = DataLoader::load('chefes_ilha');
+                        $rdms = DataLoader::load('rdm');
+
+                        $chefe = $chefes_ilha[$userDetails->ilha['ilha']];
+                        $recompensas_chefe = $chefe['recompensas'];
+                    @endphp
+                    <p>
+                        Chefe da Ilha: <strong>{{ $rdms[$chefe['rdm']]['nome'] }}</strong>
+                    </p>
+                    <div>Recompensa:</div>
+                    <small>
+                        @foreach ($recompensas_chefe as $recompensa)
+                            {{ render_recompensa($recompensa, [], []) }}
+                        @endforeach
+                    </small>
+                @endif
+            </div>
+            <div class="panel-footer">
+                @if ($count_missoes_concluidas >= $missoes_total)
+                    @if (!$chefe_derrotado)
+                        <p>
+                            <button data-question="Deseja enfrentar o Chefe da Ilha agora?"
+                                href="Missoes/atacar_chefe.php"
+                                class="link_confirm btn btn-success">
+                                Desafiar
+                            </button>
+                        </p>
+                    @else
+                        @if (!$chefe_derrotado_data['recompensa_recebida'])
+                            <p>
+                                <button class="btn btn-success link_send"
+                                    href="link_Missoes/receber_recompensa_chefe.php">
+                                    Receber a recompensa
+                                </button>
+                            </p>
+                        @else
+                            <p class="text-success">
+                                Chefe Derrotado <i class="fa fa-check"></i>
+                            </p>
+                        @endif
+                    @endif
+                @endif
             </div>
         </div>
     @endif
@@ -85,8 +146,6 @@
                 </div>
             </div>
         </div>
-    @else
-        <div>Você já completou todos os confrontos aqui, viaje para outra ilha.</div>
     @endif
 </div>
 

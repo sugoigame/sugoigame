@@ -3099,5 +3099,29 @@ CREATE TABLE tb_tripulacao_ilha_confrontos (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 ALTER TABLE tb_tripulacao_ilha_confrontos ADD CONSTRAINT tb_tripulacao_ilha_confrontos_unique UNIQUE KEY (tripulacao_id,ilha_id);
 ALTER TABLE tb_combate_bot CHANGE incursao confronto BOOL NULL;
+ALTER TABLE tb_mapa ADD faccao BIGINT NULL;
+UPDATE tb_mapa SET faccao = 2 WHERE ilha = 29;
+UPDATE tb_mapa SET faccao = 4 WHERE ilha = 30;
+UPDATE tb_mapa SET faccao = 11 WHERE ilha = 31;
+UPDATE tb_mapa SET faccao = 2 WHERE ilha = 32;
+UPDATE tb_mapa SET faccao = 3 WHERE ilha = 33;
+UPDATE tb_mapa SET faccao = 2 WHERE ilha = 34;
+UPDATE tb_mapa SET faccao = 4 WHERE ilha = 35;
+UPDATE tb_mapa SET faccao = 4 WHERE ilha = 36;
+UPDATE tb_mapa SET faccao = 10 WHERE ilha = 37;
+UPDATE tb_mapa SET faccao = 5 WHERE ilha = 38;
+UPDATE tb_mapa SET faccao = 5 WHERE ilha = 39;
+UPDATE tb_mapa SET faccao = 2 WHERE ilha = 40;
+UPDATE tb_mapa SET faccao = 3 WHERE ilha = 41;
+UPDATE tb_mapa SET faccao = 6 WHERE ilha = 42;
+UPDATE tb_mapa SET faccao = 2 WHERE ilha = 43;
+UPDATE tb_mapa SET faccao = 9 WHERE ilha = 44;
+UPDATE tb_mapa SET faccao = 7 WHERE ilha = 45;
+UPDATE tb_mapa SET faccao = 8 WHERE ilha = 46;
+ALTER TABLE tb_usuarios ADD viajante_faccao int NULL;
+ALTER TABLE tb_usuarios ADD viajante_ilha_origem int NULL;
+ALTER TABLE tb_usuarios ADD viajante_img int NULL;
+ALTER TABLE tb_usuarios ADD viajante_ultima_coleta TIMESTAMP NULL;
+
 
 SET FOREIGN_KEY_CHECKS=1;

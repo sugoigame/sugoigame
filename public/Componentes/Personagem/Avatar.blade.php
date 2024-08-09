@@ -22,10 +22,13 @@
                 {{ $attributes }}
                 alt="" />
         @endif
-        <img class="big-pers-skin-img {{ $class }}"
-            src="Imagens/Personagens/Big/{{ sprintf('%04d', $pers['img']) }}({{ $pers['skin_c'] }}).jpg"
-            {{ $attributes }}
-            alt="" />
+        @component('Personagem.BigImg', [
+            'class' => $class,
+            'img' => $pers['img'],
+            'skin_c' => $pers['skin_c'],
+            'attributes' => $attributes,
+        ])
+        @endcomponent
     </div>
 
     <div class="big-pers-detail d-flex">

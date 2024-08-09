@@ -84,7 +84,7 @@ class Influencia
 
     public static function get_limite_confrontos($influencia)
     {
-        return max(0, ($influencia - 10) * 2);
+        return max(0, ($influencia - 9) * 2);
     }
 
     public static function generate_confronto($nivel)

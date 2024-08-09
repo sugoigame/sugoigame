@@ -110,11 +110,7 @@ function super_menu_can_be_active($menu)
                     </div>
                 <?php endif; ?>
                 <?php if ($userDetails->in_ilha) : ?>
-                    <?= super_menu_link($userDetails->tripulacao["recrutando"]
-                        ? "recrutar"
-                        : ($userDetails->missao_r
-                            ? "missoesR"
-                            : "missoes"), "menu-ilha", "Ilha Atual", "ilha", "ilha") ?>
+                    <?= super_menu_link("", "menu-ilha", "Ilha Atual", "ilha", "ilha") ?>
 
                     <div id="menu-ilha" class="collapse <?= super_menu_in_out("ilha") ?>">
                         <ul class="vertical-nav nav navbar-nav">
@@ -133,7 +129,7 @@ function super_menu_can_be_active($menu)
                                 <?= menu_link("estaleiro", "Estaleiro", "fa fa-ship", "") ?>
                                 <?= menu_link("hospital", "Hospital", "fa fa-h-square", "") ?>
                                 <?= menu_link("profissoesAprender", "Escola de Profissões", "fa fa-university", "") ?>
-                                <?= menu_link("missoesR", "Pesquisas", "fa fa-search", "Pesquise para evoluir continuamente.") ?>
+                                <?= menu_link("viajantesIlha", "Viajantes", "fa fa-ship", "") ?>
                             <?php endif; ?>
 
                             <?php if (

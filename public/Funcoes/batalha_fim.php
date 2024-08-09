@@ -368,10 +368,14 @@ function atualiza_influencia()
                 "ii", [$userDetails->tripulacao["id"], $userDetails->ilha['ilha']]);
         }
 
+        $faccao_ilha = $connection
+            ->run('SELECT faccao FROM tb_mapa WHERE ilha = ?', 'i', [$userDetails->ilha['ilha']])
+            ->fetch_array()['faccao'];
+
         $faccao =
             $confrontos_realizados < $ilha['confrontos']
             ? \Utils\Data::find_inside('mundo', 'faccoes', ['evolui_outros' => true])
-            : \Utils\Data::load('mundo')['faccoes'][array_rand(\Utils\Data::load('mundo')['faccoes'])];
+            : \Utils\Data::find_inside('mundo', 'faccoes', ['cod' => $faccao_ilha]);
 
         $relacao = $connection
             ->run('SELECT * FROM tb_tripulacao_faccao WHERE tripulacao_id = ? AND faccao_id = ?',

@@ -59,12 +59,7 @@ class Protector
                 $this->must_be_out_of_any_kind_of_combat();
                 break;
             case "conflitos":
-                $this->need_tripulacao();
-                $this->must_be_in_ilha();
-                $this->must_be_out_of_any_kind_of_combat();
-                $this->must_be_out_of_recrute();
-                break;
-            case "missoesR":
+            case "viajantesIlha":
                 $this->need_tripulacao();
                 $this->must_be_in_ilha();
                 $this->must_be_out_of_any_kind_of_combat();
@@ -81,6 +76,7 @@ class Protector
             case "quartos":
             case "forja":
             case "oficina":
+            case "viajante":
                 $this->need_tripulacao();
                 $this->must_be_out_of_any_kind_of_combat();
                 $this->must_be_out_of_missao_and_recrute();
