@@ -2,6 +2,7 @@
     global $userDetails;
     global $connection;
     $faccao = \Utils\Data::find_inside('mundo', 'faccoes', ['cod' => $userDetails->tripulacao['viajante_faccao']]);
+    $ilha = \Regras\Ilhas::get_ilha($userDetails->tripulacao['viajante_ilha_origem']);
 @endphp
 <div class="panel-heading">
     Seu viajante
@@ -20,6 +21,7 @@
             ])
             @endcomponent
         </p>
+        <p>Ilha de origem: {{ $ilha['nome'] }}</p>
         <p>
             Produção: {{ $faccao['viajante']['producao'] }}
         </p>
