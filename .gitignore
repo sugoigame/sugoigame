@@ -1,4 +1,4 @@
-public/ComponentesCache
+public/ComponentesCache/*.bladec
 servers/vendor
 sql/
 *.log

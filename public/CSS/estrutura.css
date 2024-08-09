@@ -1039,23 +1039,6 @@ table tr td {
     display: none;
 }
 
-#fullscreen {
-    position: fixed;
-    bottom: 30px;
-    right: 50px;
-    z-index: 1050;
-    color: rgba(0, 0, 0, 0.7);
-    background: rgba(255, 255, 255, 0.7);
-    text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    font-size: 20px;
-}
-
-body:fullscreen #fullscreen {
-    display: none;
-}
-
 .info-item {
     padding: 1em;
     min-width: 5vw;
@@ -1678,9 +1661,29 @@ input.input-warning[type="range"]:focus::-ms-fill-upper {
 
 #audio-position {
     position: absolute;
-    top: 5px;
+    top: 9px;
     left: 5px;
     z-index: 1060;
+}
+
+#fullscreen {
+    position: fixed;
+    top: 9px;
+    left: 55px;
+    z-index: 1050;
+    color: rgba(0, 0, 0, 0.7);
+    background: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    font-size: 20px;
+}
+body:fullscreen #fullscreen {
+    display: none;
+}
+
+#div_icon_coordenada {
+    padding-left: 50px;
 }
 
 #row-daily {
@@ -1717,19 +1720,6 @@ input.input-warning[type="range"]:focus::-ms-fill-upper {
 }
 
 @media (max-width: 992px) {
-    #fullscreen {
-        position: fixed;
-        bottom: 15px;
-        right: 20px;
-        z-index: 1050;
-        color: rgba(0, 0, 0, 0.7);
-        background: rgba(255, 255, 255, 0.7);
-        text-align: center;
-        border: 1px solid rgba(0, 0, 0, 0.5);
-        border-radius: 5px;
-        font-size: 20px;
-    }
-
     #missao-auxiliar {
         position: fixed;
         z-index: 50;

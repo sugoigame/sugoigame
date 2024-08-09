@@ -25,7 +25,7 @@
     }
 @endphp
 <div class="panel-heading">
-    Confrontos
+    Próximo confronto
     {!! ajuda_tooltip(
         'Participe de eventos importantes para ganhar recompensas e aumentar sua influência no mundo.',
     ) !!}
@@ -89,3 +89,6 @@
         <div>Você já completou todos os confrontos aqui, viaje para outra ilha.</div>
     @endif
 </div>
+
+@component('Sessoes.Influencia')
+@endcomponent

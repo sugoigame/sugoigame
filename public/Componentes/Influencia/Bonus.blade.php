@@ -4,7 +4,7 @@
 
     $bonus = \Regras\Influencia::get_bonus_todas_faccoes($relacoes);
 @endphp
-<h4>Bônus em conflitos:</h4>
+<h4>Bônus em confrontos:</h4>
 <div>
     @foreach ($bonus as $atr => $valor)
         <div>
