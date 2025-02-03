@@ -5,7 +5,7 @@ require_once "database/mywrap.php";
 spl_autoload_register(function ($class) {
     $class_path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
 
-    $file = str_replace("Includes", "", __DIR__) . $class_path . '.php';
+    $file = str_replace("Includes", "", __DIR__).$class_path.'.php';
 
     if (file_exists($file)) {
         require_once $file;
@@ -37,7 +37,7 @@ define('EMAIL_FORMAT_2', "/^[A-Za-z0-9_\\-\\.]+@[A-Za-z0-9_\\-\\.]{2,}\\.[A-Za-z
 define('DATA_FORMAT', "/^\\d{4}-\\d{1,2}-\\d{1,2}$/");
 define('COORD_FORMAT', "/^\\d{1,3}_\\d{1,3}$/");
 
-define('IS_BETA', true);
+define('IS_BETA', false);
 
 define('BONUS_GOLD_ATIVACAO', 300);
 
@@ -82,14 +82,14 @@ $COD_HAOSHOKU_LVL = [
 define('ILHA_COLISEU', 42);
 define('ILHA_COLISEU_2', 44);
 
-require_once (dirname(__FILE__) . "/../Funcoes/requires.php");
-require_once (dirname(__FILE__) . "/../Classes/requires.php");
+require_once(dirname(__FILE__)."/../Funcoes/requires.php");
+require_once(dirname(__FILE__)."/../Classes/requires.php");
 
 
 $userDetails = new UserDetails($connection);
 $response = new Response();
 $protector = new Protector($userDetails, $response);
 
-require_once (dirname(__FILE__) . "/../Cron/cron.php");
+require_once(dirname(__FILE__)."/../Cron/cron.php");
 
 
